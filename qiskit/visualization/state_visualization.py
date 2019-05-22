@@ -54,7 +54,7 @@ if HAS_MATPLOTLIB:
 
 
 def plot_state_hinton(rho, title='', figsize=None):
-    """Plot a hinton diagram for the quanum state.
+    """Plot a Hinton diagram for the quantum state.
 
     Args:
         rho (ndarray): Numpy array for state vector or density matrix.

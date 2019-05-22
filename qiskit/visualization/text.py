@@ -189,7 +189,7 @@ class MultiBox(DrawElement):
         """
         In multi-bit elements, the label is centered vertically.
         Args:
-            input_length (int): Rhe amount of wires affected.
+            input_length (int): The amount of wires affected.
             order (int): Which middle element is this one?
         """
         location_in_the_box = '*'.center(input_length * 2 - 1).index('*') + 1
@@ -623,7 +623,7 @@ class TextDrawing():
     @staticmethod
     def params_for_label(instruction):
         """Get the params and format them to add them to a label. None if there
-         are no params of if the params are numpy.ndarrays."""
+         are no params of if the params are numpy.ndarray."""
 
         if not hasattr(instruction.op, 'params'):
             return None
@@ -882,7 +882,7 @@ class Layer:
         """
         Sets the qubit to the element
         Args:
-            qubit (qbit): Element of self.qregs.
+            qubit (qubit): Element of self.qregs.
             element (DrawElement): Element to set in the qubit
         """
         self.qubit_layer[self.qregs.index(qubit)] = element

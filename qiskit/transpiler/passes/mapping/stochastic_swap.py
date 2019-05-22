@@ -55,7 +55,7 @@ class StochasticSwap(TransformationPass):
         Map a DAGCircuit onto a `coupling_map` using swap gates.
 
         If initial_layout is not None, we assume the input circuit
-        has been layed out before running this pass, and that
+        has been laid out before running this pass, and that
         the layout process yields a DAG, coupling map, and layout
         with the following properties:
 

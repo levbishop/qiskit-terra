@@ -72,6 +72,7 @@ class Arrow3D(FancyArrowPatch):
 
 
 class Bloch():
+    # pylint: disable=wrong-spelling-in-docstring
     """Class for plotting data on the Bloch sphere.  Valid data can be
     either points, vectors, or qobj objects.
 

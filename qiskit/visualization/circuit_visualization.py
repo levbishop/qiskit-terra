@@ -54,6 +54,7 @@ def circuit_drawer(circuit,
                    plot_barriers=True,
                    reverse_bits=False,
                    justify=None):
+    # pylint: disable=wrong-spelling-in-docstring
     """Draw a quantum circuit to different formats (set by output parameter):
     0. text: ASCII art TextDrawing that can be printed in the console.
     1. latex: high-quality images, but heavy external software dependencies
@@ -103,7 +104,7 @@ def circuit_drawer(circuit,
         TextDrawing: (output `text`). A drawing that can be printed as ascii art
     Raises:
         VisualizationError: when an invalid output method is selected
-        ImportError: when the output methods requieres non-installed libraries.
+        ImportError: when the output methods requires non-installed libraries.
 
     .. _style-dict-doc:
 
@@ -231,6 +232,7 @@ def circuit_drawer(circuit,
 # Plot style sheet option
 # -----------------------------------------------------------------------------
 def qx_color_scheme():
+    # pylint: disable=wrong-spelling-in-docstring
     """Return default style for matplotlib_circuit_drawer (IBM QX style)."""
     return {
         "comment": "Style file for matplotlib_circuit_drawer (IBM QX Composer style)",

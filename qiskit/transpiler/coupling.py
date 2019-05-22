@@ -203,7 +203,7 @@ class CouplingMap:
         Calculates symmetry
 
         Returns:
-            Bool: True if symmetric, False otherwise
+            bool: True if symmetric, False otherwise
         """
         mat = nx.adjacency_matrix(self.graph)
         return (mat - mat.T).nnz == 0

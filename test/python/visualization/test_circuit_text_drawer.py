@@ -478,7 +478,7 @@ class TestTextDrawerGatesInCircuit(QiskitTestCase):
         self.assertEqual(str(_text_circuit_drawer(circuit)), expected)
 
     def test_text_single_gate(self):
-        """ Single Qbit gate drawing. """
+        """ Single qubit gate drawing. """
         expected = '\n'.join(['         ┌───┐',
                               'q1_0: |0>┤ H ├',
                               '         ├───┤',
@@ -516,7 +516,7 @@ class TestTextDrawerGatesInCircuit(QiskitTestCase):
         self.assertEqual(str(_text_circuit_drawer(circuit)), expected)
 
     def test_text_no_barriers(self):
-        """ Drawing without plotbarriers. """
+        """ Drawing without plot barriers. """
         expected = '\n'.join(['         ┌───┐     ',
                               'q1_0: |0>┤ H ├─────',
                               '         ├───┤     ',
@@ -896,7 +896,7 @@ class TestTextDrawerGatesInCircuit(QiskitTestCase):
 
 
 class TestTextDrawerMultiQGates(QiskitTestCase):
-    """ Gates impling multiple qubits."""
+    """ Gates affecting multiple qubits."""
 
     def test_2Qgate(self):
         """ 2Q no params. """

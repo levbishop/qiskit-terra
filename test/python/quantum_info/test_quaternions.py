@@ -82,7 +82,7 @@ class TestQuaternions(QiskitTestCase):
             self.assertTrue(np.allclose(abs(quat1.data.dot(quat2.data)), 1))
 
     def test_mul_by_quat(self):
-        """Quarternions should multiply correctly."""
+        """Quaternions should multiply correctly."""
         # multiplication of quarternions is equivalent to the
         # multiplication of corresponding rotation matrices.
         other_quat = Quaternion(np.array([0.4, 0.2, -0.7, 0.8]))

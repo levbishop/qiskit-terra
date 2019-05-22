@@ -123,7 +123,7 @@ class CmdDef:
             cmd_name: Name of the command
             qubits: Ordered list of qubits command applies to
             *params: Command parameters to be used to generate schedule
-            **kwparams: Keyworded command parameters to be used to generate schedule
+            **kwparams: Keyword command parameters to be used to generate schedule
 
         Raises:
             PulseError: If command for qubits is not available
@@ -168,7 +168,7 @@ class CmdDef:
             cmd_name: Name of the command
             qubits: Ordered list of qubits command applies to
             *params: Command parameters to be used to generate schedule
-            **kwparams: Keyworded command parameters to be used to generate schedule
+            **kwparams: Keyword command parameters to be used to generate schedule
 
         Raises:
             PulseError: If command for qubits is not available

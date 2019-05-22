@@ -321,7 +321,7 @@ class TestTwoQubitDecomposeExact(QiskitTestCase):
             self.check_exact_decomposition(random_unitary(4).data, decomposer)
 
     def test_exact_nonsupercontrolled_decompose(self):
-        """Check that the nonsupercontrolled basis throws a warning"""
+        """Check that the non-supercontrolled basis throws a warning"""
         with self.assertWarns(UserWarning, msg="Supposed to warn when basis non-supercontrolled"):
             TwoQubitBasisDecomposer(UnitaryGate(Ud(np.pi/4, 0.2, 0.1)))
 

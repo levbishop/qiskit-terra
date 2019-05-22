@@ -123,7 +123,7 @@ class DAGNode:
             node2 (DAGNode): The other node to compare.
 
         Return:
-            Bool: If node1 == node2
+            bool: If node1 == node2
         """
         # For barriers, qarg order is not significant so compare as sets
         if 'barrier' == node1.name == node2.name:

@@ -68,7 +68,7 @@ class IdRemoverPersister(FilesystemPersister):
 
     @staticmethod
     def get_matching_dicts(data_dict, map_list):
-        """Find subdicts that are described in map_list.
+        """Find sub-dicts that are described in map_list.
 
         Args:
             data_dict (dict): in which the map_list is going to be searched.

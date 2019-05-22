@@ -151,7 +151,7 @@ class LayoutTest(QiskitTestCase):
         self.assertEqual(layout[(QuantumRegister(1, 'qr1'), 0)], 2)
 
     def test_physical_keyerror(self):
-        """When asking for an unexistant physical qubit, KeyError"""
+        """When asking for an nonexistent physical qubit, KeyError"""
         layout = Layout()
         layout[self.qr[0]] = 1
 
@@ -159,7 +159,7 @@ class LayoutTest(QiskitTestCase):
             _ = layout[0]
 
     def test_virtual_keyerror(self):
-        """When asking for an unexistant virtual qubit, KeyError"""
+        """When asking for an nonexistent virtual qubit, KeyError"""
         layout = Layout()
         layout[self.qr[0]] = 1
 
@@ -531,7 +531,7 @@ class LayoutDeprecatedTest(QiskitTestCase):
         self.assertEqual(layout[(QuantumRegister(1, 'qr1'), 0)], 2)
 
     def test_physical_keyerror(self):
-        """When asking for an unexistant physical qubit, KeyError"""
+        """When asking for an nonexistent physical qubit, KeyError"""
         layout = Layout()
         layout[(self.qr, 0)] = 1
 
@@ -539,7 +539,7 @@ class LayoutDeprecatedTest(QiskitTestCase):
             _ = layout[0]
 
     def test_virtual_keyerror(self):
-        """When asking for an unexistant virtual qubit, KeyError"""
+        """When asking for an nonexistent virtual qubit, KeyError"""
         layout = Layout()
         layout[(self.qr, 0)] = 1
 

@@ -601,7 +601,7 @@ class TestDumpPasses(SchedulerTestCase):
 
 
 class TestPassManagerReuse(SchedulerTestCase):
-    """ The PassManager instance should be resusable"""
+    """ The PassManager instance should be reusable"""
     def setUp(self):
         self.passmanager = PassManager()
         self.circuit = QuantumCircuit(QuantumRegister(1))

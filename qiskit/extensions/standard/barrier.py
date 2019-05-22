@@ -38,7 +38,7 @@ class Barrier(Instruction):
 
 def barrier(self, *qargs):
     """Apply barrier to circuit.
-    If qargs is None, applies to all the qbits.
+    If qargs is None, applies to all the qubits.
     Args is a list of QuantumRegister or single qubits.
     For QuantumRegister, applies barrier to all the qubits in that register."""
     qubits = []

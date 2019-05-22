@@ -115,7 +115,7 @@ def _fix_gaussian_width(gaussian_samples, amp: float, center: float, sigma: floa
     sigma: Width (standard deviation) of pulse.
     zeroed_width: Subtract baseline to gaussian pulses to make sure
              $\Omega_g(center \pm zeroed_width/2)=0$ is satisfied. This is used to avoid
-             large discontinuities at the start of a gaussian pulse. If unsupplied,
+             large discontinuities at the start of a gaussian pulse. If not supplied,
              defaults to $2*(center+1)$ such that the samples are zero at $\Omega_g(-1)$.
     rescale_amp: If `zeroed_width` is not `None` and `rescale_amp=True` the pulse will
                  be rescaled so that $\Omega_g(center)-\Omega_g(center\pm zeroed_width/2)=amp$.

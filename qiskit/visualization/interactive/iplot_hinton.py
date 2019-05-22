@@ -28,10 +28,10 @@ if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
 
 
 def iplot_state_hinton(rho, figsize=None):
-    """ Create a hinton representation.
+    """ Create a Hinton representation.
 
         Graphical representation of the input array using a 2D city style
-        graph (hinton).
+        graph (Hinton).
 
         Args:
             rho (array): Density matrix

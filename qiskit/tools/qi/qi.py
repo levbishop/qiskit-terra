@@ -269,9 +269,9 @@ def choi_to_rauli(choi, order=1):
         choi (matrix): the input Choi-matrix.
         order (int): ordering of the Pauli group vector.
             order=1 (default) is standard lexicographic ordering.
-                Eg: [II, IX, IY, IZ, XI, XX, XY,...]
+                E.g.: [II, IX, IY, IZ, XI, XX, XY,...]
             order=0 is ordered by weights.
-                Eg. [II, IX, IY, IZ, XI, XY, XZ, XX, XY,...]
+                E.g. [II, IX, IY, IZ, XI, XY, XZ, XX, XY,...]
 
     Returns:
         np.array: A superoperator in the Pauli basis.
@@ -407,7 +407,7 @@ def shannon_entropy(pvec, base=2):
     """
     Compute the Shannon entropy of a probability vector.
 
-    The shannon entropy of a probability vector pv is defined as
+    The Shannon entropy of a probability vector pv is defined as
     $H(pv) = - \\sum_j pv[j] log_b (pv[j])$ where $0 log_b 0 = 0$.
 
     Args:

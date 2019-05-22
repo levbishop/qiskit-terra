@@ -23,7 +23,7 @@ import qiskit.pulse.pulse_lib.continuous as continuous
 
 
 class TestDiscretePulses(QiskitTestCase):
-    """Test discreted sampled pulses."""
+    """Test discrete sampled pulses."""
 
     def test_constant(self):
         """Test discrete sampled constant pulse."""

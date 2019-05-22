@@ -40,7 +40,7 @@ def dag_drawer(dag, scale=0.7, filename=None, style='color'):
                      'color' (default): color input/output/op nodes
 
     Returns:
-        Ipython.display.Image: if in Jupyter notebook and not saving to file,
+        IPython.display.Image: if in Jupyter notebook and not saving to file,
             otherwise None.
 
     Raises:

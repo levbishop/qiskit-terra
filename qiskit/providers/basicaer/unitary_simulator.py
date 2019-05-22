@@ -238,7 +238,7 @@ class UnitarySimulatorPy(BaseBackend):
             The "initial_unitary" option specifies a custom initial unitary
             matrix for the simulator to be used instead of the identity
             matrix. This size of this matrix must be correct for the number
-            of qubits inall experiments in the qobj.
+            of qubits in all experiments in the qobj.
 
             The "chop_threshold" option specifies a truncation value for
             setting small values to zero in the output unitary. The default

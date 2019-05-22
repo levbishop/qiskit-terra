@@ -599,7 +599,7 @@ class QuantumCircuit:
             int: Depth of circuit.
 
         Notes:
-            The circuit depth and the DAG depth need not bt the
+            The circuit depth and the DAG depth need not be the
             same.
         """
         # Labels the registers by ints
