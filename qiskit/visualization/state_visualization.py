@@ -458,7 +458,7 @@ def phase_to_color_wheel(complex_number):
         2: (1, 0, 1),  # violet
         3: (1, 0, 0.5),  # red-violet,
         4: (1, 0, 0),  # red
-        5: (1, 0.5, 0),  # red-oranage,
+        5: (1, 0.5, 0),  # red-orange,
         6: (1, 1, 0),  # orange
         7: (0.5, 1, 0),  # orange-yellow
         8: (0, 1, 0),  # yellow,

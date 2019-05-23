@@ -71,7 +71,7 @@ class TestQuaternions(QiskitTestCase):
 
     def test_equiv_quaternions(self):
         """Different Euler rotations give same quaternion, up to sign."""
-        # Check if euler angles from to_zyz return same quaternion
+        # Check if Euler angles from to_zyz return same quaternion
         # up to a sign (2pi rotation)
         rot = ['xyz', 'xyx', 'xzy', 'xzx', 'yzx', 'yzy', 'yxz', 'yxy', 'zxy', 'zxz', 'zyx', 'zyz']
         for value in rot:
@@ -83,7 +83,7 @@ class TestQuaternions(QiskitTestCase):
 
     def test_mul_by_quat(self):
         """Quaternions should multiply correctly."""
-        # multiplication of quarternions is equivalent to the
+        # multiplication of quaternions is equivalent to the
         # multiplication of corresponding rotation matrices.
         other_quat = Quaternion(np.array([0.4, 0.2, -0.7, 0.8]))
         other_mat = other_quat.to_matrix()

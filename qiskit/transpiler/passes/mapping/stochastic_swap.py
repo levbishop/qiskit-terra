@@ -267,7 +267,7 @@ class StochasticSwap(TransformationPass):
                 raise TranspilerError("Coupling map too small for default layout")
             self.input_layout = self.initial_layout.copy()
 
-        # Find swap circuit to preceed to each layer of input circuit
+        # Find swap circuit to precede to each layer of input circuit
         layout = self.initial_layout.copy()
 
         # Construct an empty DAGCircuit with the same set of

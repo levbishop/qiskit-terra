@@ -28,7 +28,7 @@ class TestUtil(QiskitTestCase):
     @mock.patch('psutil.cpu_count', return_value=None)
     def test_local_hardware_none_cpu_count(self, cpu_count_mock, vmem_mock,
                                            platform_mock):
-        """Test cpu count fallback to 1 when true value can't be determined"""
+        """Test CPU count fallback to 1 when true value can't be determined"""
         del cpu_count_mock, vmem_mock, platform_mock  # unused
         result = util.local_hardware_info()
         self.assertEqual(1, result['cpus'])

@@ -135,7 +135,7 @@ class Initialize(Instruction):
         param_len = len(local_param)
 
         for i in range(param_len // 2):
-            # Ry and Rz rotations to move bloch vector from 0 to "imaginary"
+            # Ry and Rz rotations to move Bloch vector from 0 to "imaginary"
             # qubit
             # (imagine a qubit state signified by the amplitudes at index 2*i
             # and 2*(i+1), corresponding to the select qubits of the
@@ -209,12 +209,12 @@ class Initialize(Instruction):
             circuit.append(target_gate(list_of_angles[0]), [q[0]])
             return circuit
 
-        # calc angle weights, assuming recursion (that is the lower-level
+        # calculate angle weights, assuming recursion (that is the lower-level
         # requested angles have been correctly implemented by recursion
         angle_weight = scipy.kron([[0.5, 0.5], [0.5, -0.5]],
                                   np.identity(2 ** (local_num_qubits - 2)))
 
-        # calc the combo angles
+        # calculate the combo angles
         list_of_angles = angle_weight.dot(np.array(list_of_angles)).tolist()
 
         # recursive step on half the angles fulfilling the above assumption

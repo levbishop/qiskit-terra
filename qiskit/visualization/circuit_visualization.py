@@ -17,7 +17,7 @@
 
 """
 Two quantum circuit drawers based on:
-    0. Ascii art
+    0. ASCII art
     1. LaTeX
     2. Matplotlib
 """

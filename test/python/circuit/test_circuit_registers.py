@@ -344,7 +344,7 @@ class TestCircuitRegisters(QiskitTestCase):
         qc = QuantumCircuit(qr, cr)
         with self.assertRaises(QiskitError):
             qc.measure(qr[0:2], cr[2])
-        # this is ok
+        # this is OK
         qc.measure(qr[0], cr[0:2])
 
     def test_list_indexing(self):

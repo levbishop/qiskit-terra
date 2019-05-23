@@ -40,7 +40,7 @@ class QiskitTestCase(unittest.TestCase):
         # Determines if the TestCase is using IBMQ credentials.
         cls.using_ibmq_credentials = False
 
-        # Set logging to file and stdout if the LOG_LEVEL envar is set.
+        # Set logging to file and stdout if the LOG_LEVEL env var is set.
         cls.log = logging.getLogger(cls.__name__)
         if os.getenv('LOG_LEVEL'):
             filename = '%s.log' % os.path.splitext(inspect.getfile(cls))[0]

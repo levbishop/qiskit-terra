@@ -430,7 +430,7 @@ class TwoQubitBasisDecomposer():
             # If input is Gate subclass or some other class object that has
             # a to_matrix method this will call that method.
             target = target.to_matrix()
-        # Convert to numpy array incase not already an array
+        # Convert to numpy array in case not already an array
         target = np.asarray(target, dtype=complex)
         # Check input is a 2-qubit unitary
         if target.shape != (4, 4):

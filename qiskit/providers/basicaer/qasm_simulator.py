@@ -480,7 +480,7 @@ class QasmSimulatorPy(BaseBackend):
         elif hasattr(self._qobj_config, 'seed_simulator'):
             seed_simulator = self._qobj_config.seed_simulator
         else:
-            # For compatibility on Windows force dyte to be int32
+            # For compatibility on Windows force dtype to be int32
             # and set the maximum value to be (2 ** 31) - 1
             seed_simulator = np.random.randint(2147483647, dtype='int32')
 

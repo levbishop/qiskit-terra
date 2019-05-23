@@ -112,7 +112,7 @@ class LegacySwap(TransformationPass):
             qubit_subset = qubit_subset[0:dag.width()]
             initial_layout = {a: b for a, b in zip(dag.qubits(), qubit_subset)}
 
-        # Find swap circuit to preceed to each layer of input circuit
+        # Find swap circuit to precede to each layer of input circuit
         layout = initial_layout.copy()
 
         # Construct an empty DAGCircuit with one qreg "q"

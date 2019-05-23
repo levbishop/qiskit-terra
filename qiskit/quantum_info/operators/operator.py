@@ -446,7 +446,7 @@ class Operator(BaseOperator):
                 except QiskitError:
                     pass
             if mat is not None:
-                # Perform the composition and inplace update the current state
+                # Perform the composition and in-place update the current state
                 # of the operator
                 op = self.compose(mat, qargs=qargs)
                 self._data = op.data

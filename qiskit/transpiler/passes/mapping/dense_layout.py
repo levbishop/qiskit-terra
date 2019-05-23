@@ -92,7 +92,7 @@ class DenseLayout(AnalysisPass):
                                 shape=(device_qubits, device_qubits)).tocsr()
         best = 0
         best_map = None
-        # do bfs with each node as starting point
+        # do BFS with each node as starting point
         for k in range(sp_cmap.shape[0]):
             bfs = cs.breadth_first_order(sp_cmap, i_start=k, directed=False,
                                          return_predecessors=False)

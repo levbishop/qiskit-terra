@@ -60,7 +60,7 @@ from qiskit.tools.events.pubsub import Publisher
 # Set parallel flag
 os.environ['QISKIT_IN_PARALLEL'] = 'FALSE'
 
-# Number of local physical cpus
+# Number of local physical CPUs
 CPU_COUNT = local_hardware_info()['cpus']
 
 

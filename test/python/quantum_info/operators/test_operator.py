@@ -253,7 +253,7 @@ class TestOperator(OperatorTestCase):
 
     def test_evolve(self):
         """Test _evolve method."""
-        # Test hadamard
+        # Test Hadamard
         op = Operator(np.array([[1, 1], [1, -1]]) / np.sqrt(2))
         target_psi = np.array([1, 1]) / np.sqrt(2)
         target_rho = np.array([[0.5, 0.5], [0.5, 0.5]])

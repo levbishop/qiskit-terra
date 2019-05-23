@@ -30,9 +30,9 @@ if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
 
 
 def iplot_bloch_multivector(rho, figsize=None):
-    """ Create a bloch sphere representation.
+    """ Create a Bloch sphere representation.
 
-        Graphical representation of the input array, using as much bloch
+        Graphical representation of the input array, using as much Bloch
         spheres as qubit are required.
 
         Args:

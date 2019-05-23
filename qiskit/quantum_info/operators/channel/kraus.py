@@ -168,7 +168,7 @@ class Kraus(QuantumChannel):
             # Just the fist set
             return self._data[0]
         else:
-            # Otherwise return the tuple of both kraus sets
+            # Otherwise return the tuple of both Kraus sets
             return self._data
 
     def is_cptp(self, atol=None, rtol=None):
@@ -353,7 +353,7 @@ class Kraus(QuantumChannel):
         if not isinstance(other, Number):
             raise QiskitError("other is not a number")
         # If the number is complex we need to convert to general
-        # kraus channel so we multiply via Choi representation
+        # Kraus channel so we multiply via Choi representation
         if isinstance(other, complex) or other < 0:
             # Convert to Choi-matrix
             return Kraus(Choi(self).multiply(other))

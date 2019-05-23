@@ -43,7 +43,7 @@ class QasmParser:
             ('left', '*', '/'),
             ('left', 'negative', 'positive'),
             ('right', '^'))
-        # For yacc, also, write_tables = Bool and optimize = Bool
+        # For yacc, also, write_tables = bool and optimize = bool
         self.parser = yacc.yacc(module=self, debug=False,
                                 outputdir=self.parse_dir)
         self.qasm = None
@@ -848,7 +848,7 @@ class QasmParser:
     # ----------------------------------------
     # barrier : BARRIER primary_list
     #
-    # Errors are covered by handling erros in primary_list
+    # Errors are covered by handling errors in primary_list
     # ----------------------------------------
     def p_barrier(self, program):
         """

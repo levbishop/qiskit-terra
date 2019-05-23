@@ -121,7 +121,7 @@ def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
                 instruction.conditional = conditional_reg_idx
                 max_conditional_idx += 1
                 # Delete control attribute now that we have replaced it with
-                # the conditional and bfuc
+                # the conditional and bfunc
                 del instruction._control
 
             instructions.append(instruction)

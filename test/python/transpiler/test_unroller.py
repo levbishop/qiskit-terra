@@ -44,7 +44,7 @@ class TestUnroller(QiskitTestCase):
         self.assertEqual(op_nodes[0].name, 'u2')
 
     def test_unroll_toffoli(self):
-        """Test unroll toffoli on multi regs to h, t, tdg, cx.
+        """Test unroll Toffoli on multi regs to h, t, tdg, cx.
         """
         qr1 = QuantumRegister(2, 'qr1')
         qr2 = QuantumRegister(1, 'qr2')
