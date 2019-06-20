@@ -31,7 +31,7 @@ def linear(times: np.ndarray, m: float, b: float = 0.1) -> np.ndarray:
     Returns:
         np.ndarray
     """
-    return m*times+b
+    return m * times + b
 
 
 class TestSampler(QiskitTestCase):
@@ -80,9 +80,9 @@ class TestSampler(QiskitTestCase):
         duration = 2
         left_linear_pulse_fun = samplers.left(linear)
 
-        pulse = left_linear_pulse_fun(duration, m=m, b=b, name='test')
+        pulse = left_linear_pulse_fun(duration, m=m, b=b, name="test")
         self.assertIsInstance(pulse, commands.SamplePulse)
-        self.assertEqual(pulse.name, 'test')
+        self.assertEqual(pulse.name, "test")
 
     def test_default_arg_sampler(self):
         """Test that default arguments work with sampler."""

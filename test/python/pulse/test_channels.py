@@ -16,7 +16,12 @@
 
 import unittest
 
-from qiskit.pulse.channels import AcquireChannel, MemorySlot, RegisterSlot, SnapshotChannel
+from qiskit.pulse.channels import (
+    AcquireChannel,
+    MemorySlot,
+    RegisterSlot,
+    SnapshotChannel,
+)
 from qiskit.pulse.channels import DeviceSpecification, Qubit
 from qiskit.pulse.channels import DriveChannel, ControlChannel, MeasureChannel
 from qiskit.test import QiskitTestCase
@@ -32,7 +37,7 @@ class TestAcquireChannel(QiskitTestCase):
         acquire_channel = AcquireChannel(123)
 
         self.assertEqual(acquire_channel.index, 123)
-        self.assertEqual(acquire_channel.name, 'a123')
+        self.assertEqual(acquire_channel.name, "a123")
 
 
 class TestMemorySlot(QiskitTestCase):
@@ -44,7 +49,7 @@ class TestMemorySlot(QiskitTestCase):
         memory_slot = MemorySlot(123)
 
         self.assertEqual(memory_slot.index, 123)
-        self.assertEqual(memory_slot.name, 'm123')
+        self.assertEqual(memory_slot.name, "m123")
 
 
 class TestRegisterSlot(QiskitTestCase):
@@ -56,7 +61,7 @@ class TestRegisterSlot(QiskitTestCase):
         register_slot = RegisterSlot(123)
 
         self.assertEqual(register_slot.index, 123)
-        self.assertEqual(register_slot.name, 'c123')
+        self.assertEqual(register_slot.name, "c123")
 
 
 class TestSnapshotChannel(QiskitTestCase):
@@ -68,7 +73,7 @@ class TestSnapshotChannel(QiskitTestCase):
         snapshot_channel = SnapshotChannel()
 
         self.assertEqual(snapshot_channel.index, 0)
-        self.assertEqual(snapshot_channel.name, 's0')
+        self.assertEqual(snapshot_channel.name, "s0")
 
 
 class TestDriveChannel(QiskitTestCase):
@@ -80,7 +85,7 @@ class TestDriveChannel(QiskitTestCase):
         drive_channel = DriveChannel(123)
 
         self.assertEqual(drive_channel.index, 123)
-        self.assertEqual(drive_channel.name, 'd123')
+        self.assertEqual(drive_channel.name, "d123")
 
 
 class TestControlChannel(QiskitTestCase):
@@ -92,7 +97,7 @@ class TestControlChannel(QiskitTestCase):
         control_channel = ControlChannel(123)
 
         self.assertEqual(control_channel.index, 123)
-        self.assertEqual(control_channel.name, 'u123')
+        self.assertEqual(control_channel.name, "u123")
 
 
 class TestMeasureChannel(QiskitTestCase):
@@ -104,7 +109,7 @@ class TestMeasureChannel(QiskitTestCase):
         measure_channel = MeasureChannel(123)
 
         self.assertEqual(measure_channel.index, 123)
-        self.assertEqual(measure_channel.name, 'm123')
+        self.assertEqual(measure_channel.name, "m123")
 
 
 class TestQubit(QiskitTestCase):
@@ -113,8 +118,13 @@ class TestQubit(QiskitTestCase):
     def test_default(self):
         """Test default qubit.
         """
-        qubit = Qubit(1, DriveChannel(2), MeasureChannel(4), AcquireChannel(5),
-                      control_channels=[ControlChannel(3)])
+        qubit = Qubit(
+            1,
+            DriveChannel(2),
+            MeasureChannel(4),
+            AcquireChannel(5),
+            control_channels=[ControlChannel(3)],
+        )
 
         self.assertEqual(qubit.drive, DriveChannel(2))
         self.assertEqual(qubit.controls[0], ControlChannel(3))
@@ -130,7 +140,7 @@ class TestDeviceSpecification(QiskitTestCase):
         """
         qubits = [
             Qubit(0, DriveChannel(0), MeasureChannel(0), AcquireChannel(0)),
-            Qubit(1, DriveChannel(1), MeasureChannel(1), AcquireChannel(1))
+            Qubit(1, DriveChannel(1), MeasureChannel(1), AcquireChannel(1)),
         ]
         registers = [RegisterSlot(i) for i in range(2)]
         mem_slots = [MemorySlot(i) for i in range(2)]
@@ -151,5 +161,5 @@ class TestDeviceSpecification(QiskitTestCase):
         self.assertEqual(device.q[0].drive, DriveChannel(0))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

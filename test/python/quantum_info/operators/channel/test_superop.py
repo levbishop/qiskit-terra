@@ -41,8 +41,7 @@ class TestSuperOp(ChannelTestCase):
         self.assertEqual(chan.dim, (2, 4))
 
         # Wrong input or output dims should raise exception
-        self.assertRaises(
-            QiskitError, SuperOp, mat, input_dims=[4], output_dims=[4])
+        self.assertRaises(QiskitError, SuperOp, mat, input_dims=[4], output_dims=[4])
 
     def test_circuit_init(self):
         """Test initialization from a circuit."""
@@ -157,8 +156,7 @@ class TestSuperOp(ChannelTestCase):
         """Test is_cptp method."""
         self.assertTrue(SuperOp(self.depol_sop(0.25)).is_cptp())
         # Non-CPTP should return false
-        self.assertFalse(
-            SuperOp(1.25 * self.sopI - 0.25 * self.depol_sop(1)).is_cptp())
+        self.assertFalse(SuperOp(1.25 * self.sopI - 0.25 * self.depol_sop(1)).is_cptp())
 
     def test_conjugate(self):
         """Test conjugate method."""
@@ -183,8 +181,7 @@ class TestSuperOp(ChannelTestCase):
 
     def test_compose_except(self):
         """Test compose different dimension exception"""
-        self.assertRaises(QiskitError,
-                          SuperOp(np.eye(4)).compose, SuperOp(np.eye(16)))
+        self.assertRaises(QiskitError, SuperOp(np.eye(4)).compose, SuperOp(np.eye(16)))
         self.assertRaises(QiskitError, SuperOp(np.eye(4)).compose, 2)
 
     def test_compose(self):
@@ -216,7 +213,7 @@ class TestSuperOp(ChannelTestCase):
 
         # Compose different dimensions
         chan1 = SuperOp(self.rand_matrix(16, 4))
-        chan2 = SuperOp(self.rand_matrix(4, 16), )
+        chan2 = SuperOp(self.rand_matrix(4, 16))
         chan = chan1.compose(chan2)
         self.assertEqual(chan.dim, (2, 2))
         chan = chan2.compose(chan1)
@@ -317,42 +314,35 @@ class TestSuperOp(ChannelTestCase):
         # op3 qargs=[0, 1, 2]
         full_op = SuperOp(mat_c).tensor(SuperOp(mat_b)).tensor(SuperOp(mat_a))
         targ = np.dot(mat, full_op.data)
-        self.assertEqual(
-            op.compose(op3, qargs=[0, 1, 2], front=True), SuperOp(targ))
+        self.assertEqual(op.compose(op3, qargs=[0, 1, 2], front=True), SuperOp(targ))
         # op3 qargs=[2, 1, 0]
         full_op = SuperOp(mat_a).tensor(SuperOp(mat_b)).tensor(SuperOp(mat_c))
         targ = np.dot(mat, full_op.data)
-        self.assertEqual(
-            op.compose(op3, qargs=[2, 1, 0], front=True), SuperOp(targ))
+        self.assertEqual(op.compose(op3, qargs=[2, 1, 0], front=True), SuperOp(targ))
 
         # op2 qargs=[0, 1]
         full_op = iden.tensor(SuperOp(mat_b)).tensor(SuperOp(mat_a))
         targ = np.dot(mat, full_op.data)
-        self.assertEqual(
-            op.compose(op2, qargs=[0, 1], front=True), SuperOp(targ))
+        self.assertEqual(op.compose(op2, qargs=[0, 1], front=True), SuperOp(targ))
         # op2 qargs=[2, 0]
         full_op = SuperOp(mat_a).tensor(iden).tensor(SuperOp(mat_b))
         targ = np.dot(mat, full_op.data)
-        self.assertEqual(
-            op.compose(op2, qargs=[2, 0], front=True), SuperOp(targ))
+        self.assertEqual(op.compose(op2, qargs=[2, 0], front=True), SuperOp(targ))
 
         # op1 qargs=[0]
         full_op = iden.tensor(iden).tensor(SuperOp(mat_a))
         targ = np.dot(mat, full_op.data)
-        self.assertEqual(
-            op.compose(op1, qargs=[0], front=True), SuperOp(targ))
+        self.assertEqual(op.compose(op1, qargs=[0], front=True), SuperOp(targ))
 
         # op1 qargs=[1]
         full_op = iden.tensor(SuperOp(mat_a)).tensor(iden)
         targ = np.dot(mat, full_op.data)
-        self.assertEqual(
-            op.compose(op1, qargs=[1], front=True), SuperOp(targ))
+        self.assertEqual(op.compose(op1, qargs=[1], front=True), SuperOp(targ))
 
         # op1 qargs=[2]
         full_op = SuperOp(mat_a).tensor(iden).tensor(iden)
         targ = np.dot(mat, full_op.data)
-        self.assertEqual(
-            op.compose(op1, qargs=[2], front=True), SuperOp(targ))
+        self.assertEqual(op.compose(op1, qargs=[2], front=True), SuperOp(targ))
 
     def test_expand(self):
         """Test expand method."""
@@ -404,7 +394,7 @@ class TestSuperOp(ChannelTestCase):
         depol = SuperOp(self.depol_sop(1 - p_id))
 
         # Compose 3 times
-        p_id3 = p_id**3
+        p_id3 = p_id ** 3
         chan3 = depol.power(3)
         targ3 = SuperOp(self.depol_sop(1 - p_id3))
         self.assertEqual(chan3, targ3)
@@ -463,7 +453,7 @@ class TestSuperOp(ChannelTestCase):
     def test_multiply_except(self):
         """Test multiply method raises exceptions."""
         chan = SuperOp(self.sopI)
-        self.assertRaises(QiskitError, chan.multiply, 's')
+        self.assertRaises(QiskitError, chan.multiply, "s")
         self.assertRaises(QiskitError, chan.multiply, chan)
 
     def test_negate(self):
@@ -473,5 +463,5 @@ class TestSuperOp(ChannelTestCase):
         self.assertEqual(-chan, targ)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

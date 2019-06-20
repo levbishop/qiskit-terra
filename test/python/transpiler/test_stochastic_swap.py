@@ -38,9 +38,9 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2]])
 
-        qr_q = QuantumRegister(2, 'q')
-        qr_a = QuantumRegister(1, 'a')
-        cr_c = ClassicalRegister(3, 'c')
+        qr_q = QuantumRegister(2, "q")
+        qr_a = QuantumRegister(1, "a")
+        cr_c = ClassicalRegister(3, "c")
         circ = QuantumCircuit(qr_q, qr_a, cr_c)
         circ.cx(qr_q[0], qr_a[0])
         circ.cx(qr_q[1], qr_a[0])
@@ -63,9 +63,9 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2]])
 
-        qr_q = QuantumRegister(2, 'q')
-        qr_a = QuantumRegister(1, 'a')
-        cr_c = ClassicalRegister(3, 'c')
+        qr_q = QuantumRegister(2, "q")
+        qr_a = QuantumRegister(1, "a")
+        cr_c = ClassicalRegister(3, "c")
         circ = QuantumCircuit(qr_q, qr_a, cr_c)
         circ.cx(qr_q[0], qr_a[0])
         circ.cx(qr_q[1], qr_a[0])
@@ -92,7 +92,7 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [0, 2]])
 
-        qr = QuantumRegister(3, 'q')
+        qr = QuantumRegister(3, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         circuit.h(qr[0])
@@ -116,7 +116,7 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'q')
+        qr = QuantumRegister(4, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[2], qr[3])
         circuit.cx(qr[0], qr[1])
@@ -143,7 +143,7 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [0, 2]])
 
-        qr = QuantumRegister(3, 'q')
+        qr = QuantumRegister(3, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[1], qr[2])
         dag = circuit_to_dag(circuit)
@@ -173,7 +173,7 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[1, 0], [1, 2]])
 
-        qr = QuantumRegister(3, 'q')
+        qr = QuantumRegister(3, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[2])
         circuit.h(qr[0])
@@ -209,7 +209,7 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'q')
+        qr = QuantumRegister(4, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[3])
         circuit.cx(qr[3], qr[0])
@@ -248,7 +248,7 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'q')
+        qr = QuantumRegister(4, "q")
         circuit = QuantumCircuit(qr)
         circuit.h(qr[3])
         circuit.cx(qr[3], qr[0])
@@ -287,7 +287,7 @@ class TestStochasticSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'q')
+        qr = QuantumRegister(4, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[3], qr[0])
         circuit.h(qr[3])
@@ -311,8 +311,8 @@ class TestStochasticSwap(QiskitTestCase):
         https://github.com/Qiskit/qiskit-terra/issues/81
         """
         coupling = CouplingMap([[0, 2], [1, 2], [2, 3]])
-        qr = QuantumRegister(4, 'q')
-        cr = ClassicalRegister(4, 'c')
+        qr = QuantumRegister(4, "q")
+        cr = ClassicalRegister(4, "c")
         circuit = QuantumCircuit(qr, cr)
         circuit.x(qr[0])
         circuit.y(qr[1])
@@ -396,12 +396,34 @@ class TestStochasticSwap(QiskitTestCase):
         See: https://github.com/Qiskit/qiskit-terra/issues/342
         """
         coupling = CouplingMap(
-            [[1, 0], [1, 2], [2, 3], [3, 4], [3, 14], [5, 4], [6, 5],
-             [6, 7], [6, 11], [7, 10], [8, 7], [9, 8], [9, 10],
-             [11, 10], [12, 5], [12, 11], [12, 13], [13, 4], [13, 14],
-             [15, 0], [15, 0], [15, 2], [15, 14]])
-        qr = QuantumRegister(16, 'q')
-        cr = ClassicalRegister(16, 'c')
+            [
+                [1, 0],
+                [1, 2],
+                [2, 3],
+                [3, 4],
+                [3, 14],
+                [5, 4],
+                [6, 5],
+                [6, 7],
+                [6, 11],
+                [7, 10],
+                [8, 7],
+                [9, 8],
+                [9, 10],
+                [11, 10],
+                [12, 5],
+                [12, 11],
+                [12, 13],
+                [13, 4],
+                [13, 14],
+                [15, 0],
+                [15, 0],
+                [15, 2],
+                [15, 14],
+            ]
+        )
+        qr = QuantumRegister(16, "q")
+        cr = ClassicalRegister(16, "c")
         circ = QuantumCircuit(qr, cr)
         circ.cx(qr[3], qr[14])
         circ.cx(qr[5], qr[4])
@@ -423,9 +445,9 @@ class TestStochasticSwap(QiskitTestCase):
     def test_map_with_layout(self):
         """Test using an initial layout."""
         coupling = CouplingMap([[0, 1], [1, 2]])
-        qra = QuantumRegister(2, 'qa')
-        qrb = QuantumRegister(1, 'qb')
-        cr = ClassicalRegister(3, 'r')
+        qra = QuantumRegister(2, "qa")
+        qrb = QuantumRegister(1, "qb")
+        cr = ClassicalRegister(3, "r")
         circ = QuantumCircuit(qra, qrb, cr)
         circ.cx(qra[0], qrb[0])
         circ.measure(qra[0], cr[0])
@@ -443,9 +465,9 @@ class TestStochasticSwap(QiskitTestCase):
     def test_congestion(self):
         """Test code path that falls back to serial layers."""
         coupling = CouplingMap([[0, 1], [1, 2], [1, 3]])
-        qr = QuantumRegister(2, 'q')
-        ar = QuantumRegister(2, 'a')
-        cr = ClassicalRegister(4, 'c')
+        qr = QuantumRegister(2, "q")
+        ar = QuantumRegister(2, "a")
+        cr = ClassicalRegister(4, "c")
         circ = QuantumCircuit(qr, ar, cr)
         circ.cx(qr[1], ar[0])
         circ.cx(qr[0], ar[1])
@@ -531,9 +553,9 @@ class TestStochasticSwap(QiskitTestCase):
     def test_all_single_qubit(self):
         """Test all trivial layers."""
         coupling = CouplingMap([[0, 1], [1, 2], [1, 3]])
-        qr = QuantumRegister(2, 'q')
-        ar = QuantumRegister(2, 'a')
-        cr = ClassicalRegister(4, 'c')
+        qr = QuantumRegister(2, "q")
+        ar = QuantumRegister(2, "a")
+        cr = ClassicalRegister(4, "c")
         circ = QuantumCircuit(qr, ar, cr)
         circ.h(qr)
         circ.h(ar)
@@ -558,8 +580,8 @@ class TestStochasticSwap(QiskitTestCase):
         """Test that output DAG contains only 2q gates from the the coupling map."""
 
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
-        qr = QuantumRegister(4, 'q')
-        cr = ClassicalRegister(4, 'c')
+        qr = QuantumRegister(4, "q")
+        cr = ClassicalRegister(4, "c")
         circuit = QuantumCircuit(qr, cr)
         circuit.h(qr[0])
         circuit.cx(qr[0], qr[1])
@@ -573,8 +595,9 @@ class TestStochasticSwap(QiskitTestCase):
         pass_ = StochasticSwap(coupling, layout, 20, 5)
         after = pass_.run(dag)
 
-        valid_couplings = [set([layout[a], layout[b]])
-                           for (a, b) in coupling.get_edges()]
+        valid_couplings = [
+            set([layout[a], layout[b]]) for (a, b) in coupling.get_edges()
+        ]
 
         for _2q_gate in after.twoQ_gates():
             self.assertIn(set(_2q_gate.qargs), valid_couplings)
@@ -583,8 +606,8 @@ class TestStochasticSwap(QiskitTestCase):
         """Test error if coupling map and dag are not the same size."""
 
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3], [3, 4]])
-        qr = QuantumRegister(4, 'q')
-        cr = ClassicalRegister(4, 'c')
+        qr = QuantumRegister(4, "q")
+        cr = ClassicalRegister(4, "c")
         circuit = QuantumCircuit(qr, cr)
         circuit.h(qr[0])
         circuit.cx(qr[0], qr[1])
@@ -601,8 +624,8 @@ class TestStochasticSwap(QiskitTestCase):
         """Test error if the layout and dag are not the same size."""
 
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
-        qr = QuantumRegister(4, 'q')
-        cr = ClassicalRegister(4, 'c')
+        qr = QuantumRegister(4, "q")
+        cr = ClassicalRegister(4, "c")
         circuit = QuantumCircuit(qr, cr)
         circuit.h(qr[0])
         circuit.cx(qr[0], qr[1])
@@ -618,5 +641,5 @@ class TestStochasticSwap(QiskitTestCase):
             _ = pass_.run(dag)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

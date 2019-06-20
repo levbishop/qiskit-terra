@@ -41,8 +41,7 @@ class TestChi(ChannelTestCase):
         self.assertRaises(QiskitError, Chi, mat16, input_dims=2, output_dims=4)
 
         # Non multi-qubit dimensions should raise exception
-        self.assertRaises(
-            QiskitError, Chi, np.eye(6) / 2, input_dims=3, output_dims=2)
+        self.assertRaises(QiskitError, Chi, np.eye(6) / 2, input_dims=3, output_dims=2)
 
     def test_circuit_init(self):
         """Test initialization from a circuit."""
@@ -102,8 +101,7 @@ class TestChi(ChannelTestCase):
         """Test is_cptp method."""
         self.assertTrue(Chi(self.depol_chi(0.25)).is_cptp())
         # Non-CPTP should return false
-        self.assertFalse(
-            Chi(1.25 * self.chiI - 0.25 * self.depol_chi(1)).is_cptp())
+        self.assertFalse(Chi(1.25 * self.chiI - 0.25 * self.depol_chi(1)).is_cptp())
 
     def test_compose_except(self):
         """Test compose different dimension exception"""
@@ -224,7 +222,7 @@ class TestChi(ChannelTestCase):
         depol = Chi(self.depol_chi(1 - p_id))
 
         # Compose 3 times
-        p_id3 = p_id**3
+        p_id3 = p_id ** 3
         chan3 = depol.power(3)
         targ3 = Chi(self.depol_chi(1 - p_id3))
         self.assertEqual(chan3, targ3)
@@ -283,7 +281,7 @@ class TestChi(ChannelTestCase):
     def test_multiply_except(self):
         """Test multiply method raises exceptions."""
         chan = Chi(self.chiI)
-        self.assertRaises(QiskitError, chan.multiply, 's')
+        self.assertRaises(QiskitError, chan.multiply, "s")
         self.assertRaises(QiskitError, chan.multiply, chan)
 
     def test_negate(self):
@@ -293,5 +291,5 @@ class TestChi(ChannelTestCase):
         self.assertEqual(-chan, targ)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -23,7 +23,7 @@ import re
 import numpy as np
 from ..exceptions import VisualizationError
 
-if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
+if ("ipykernel" in sys.modules) and ("spyder" not in sys.modules):
     try:
         from IPython.core.display import display, HTML
     except ImportError:
@@ -45,7 +45,7 @@ def process_data(data, number_to_keep):
 
     if number_to_keep != 0:
         data_temp = dict(Counter(data).most_common(number_to_keep))
-        data_temp['rest'] = sum(data.values()) - sum(data_temp.values())
+        data_temp["rest"] = sum(data.values()) - sum(data_temp.values())
         data = data_temp
 
     labels = data
@@ -57,8 +57,7 @@ def process_data(data, number_to_keep):
     return result
 
 
-def iplot_histogram(data, figsize=None, number_to_keep=None,
-                    sort='asc', legend=None):
+def iplot_histogram(data, figsize=None, number_to_keep=None, sort="asc", legend=None):
     """ Create a histogram representation.
 
         Graphical representation of the input array using a vertical bars
@@ -79,14 +78,17 @@ def iplot_histogram(data, figsize=None, number_to_keep=None,
     """
 
     # HTML
-    html_template = Template("""
+    html_template = Template(
+        """
     <p>
         <div id="histogram_$divNumber"></div>
     </p>
-    """)
+    """
+    )
 
     # JavaScript
-    javascript_template = Template("""
+    javascript_template = Template(
+        """
     <script>
         requirejs.config({
             paths: {
@@ -101,48 +103,48 @@ def iplot_histogram(data, figsize=None, number_to_keep=None,
                                       $options);
         });
     </script>
-    """)
+    """
+    )
 
     # Process data and execute
     div_number = str(time.time())
-    div_number = re.sub('[.]', '', div_number)
+    div_number = re.sub("[.]", "", div_number)
 
     # set default figure size if none provided
     if figsize is None:
         figsize = (7, 5)
 
-    options = {'number_to_keep': 0 if number_to_keep is None else number_to_keep,
-               'sort': sort,
-               'show_legend': 0,
-               'width': int(figsize[0]),
-               'height': int(figsize[1])}
+    options = {
+        "number_to_keep": 0 if number_to_keep is None else number_to_keep,
+        "sort": sort,
+        "show_legend": 0,
+        "width": int(figsize[0]),
+        "height": int(figsize[1]),
+    }
     if legend:
-        options['show_legend'] = 1
+        options["show_legend"] = 1
 
     data_to_plot = []
     if isinstance(data, dict):
         data = [data]
 
     if legend and len(legend) != len(data):
-        raise VisualizationError("Length of legendL (%s) doesn't match number "
-                                 "of input executions: %s" %
-                                 (len(legend), len(data)))
+        raise VisualizationError(
+            "Length of legendL (%s) doesn't match number "
+            "of input executions: %s" % (len(legend), len(data))
+        )
 
     for item, execution in enumerate(data):
-        exec_data = process_data(execution, options['number_to_keep'])
-        out_dict = {'data': exec_data}
+        exec_data = process_data(execution, options["number_to_keep"])
+        out_dict = {"data": exec_data}
         if legend:
-            out_dict['name'] = legend[item]
+            out_dict["name"] = legend[item]
         data_to_plot.append(out_dict)
 
-    html = html_template.substitute({
-        'divNumber': div_number
-    })
+    html = html_template.substitute({"divNumber": div_number})
 
-    javascript = javascript_template.substitute({
-        'divNumber': div_number,
-        'executions': data_to_plot,
-        'options': options
-    })
+    javascript = javascript_template.substitute(
+        {"divNumber": div_number, "executions": data_to_plot, "options": options}
+    )
 
     display(HTML(html + javascript))

@@ -20,7 +20,8 @@ import sys
 import time
 import re
 from qiskit.visualization.utils import _validate_input_state
-if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
+
+if ("ipykernel" in sys.modules) and ("spyder" not in sys.modules):
     try:
         from IPython.core.display import display, HTML
     except ImportError:
@@ -39,14 +40,17 @@ def iplot_state_hinton(rho, figsize=None):
     """
 
     # HTML
-    html_template = Template("""
+    html_template = Template(
+        """
     <p>
         <div id="hinton_$divNumber"></div>
     </p>
-    """)
+    """
+    )
 
     # JavaScript
-    javascript_template = Template("""
+    javascript_template = Template(
+        """
     <script>
         requirejs.config({
             paths: {
@@ -61,16 +65,17 @@ def iplot_state_hinton(rho, figsize=None):
                                       $options);
         });
     </script>
-    """)
+    """
+    )
     rho = _validate_input_state(rho)
     if figsize is None:
         options = {}
     else:
-        options = {'width': figsize[0], 'height': figsize[1]}
+        options = {"width": figsize[0], "height": figsize[1]}
 
     # Process data and execute
     div_number = str(time.time())
-    div_number = re.sub('[.]', '', div_number)
+    div_number = re.sub("[.]", "", div_number)
 
     # Process data and execute
     real = []
@@ -87,14 +92,14 @@ def iplot_state_hinton(rho, figsize=None):
             col_imag.append(float(value_imag))
         imag.append(col_imag)
 
-    html = html_template.substitute({
-        'divNumber': div_number
-    })
+    html = html_template.substitute({"divNumber": div_number})
 
-    javascript = javascript_template.substitute({
-        'divNumber': div_number,
-        'executions': [{'data': real}, {'data': imag}],
-        'options': options
-    })
+    javascript = javascript_template.substitute(
+        {
+            "divNumber": div_number,
+            "executions": [{"data": real}, {"data": imag}],
+            "options": options,
+        }
+    )
 
     display(HTML(html + javascript))

@@ -32,9 +32,9 @@ class TestAssembler(QiskitTestCase):
     def test_disassemble_single_circuit(self):
         """Test assembling a single circuit.
         """
-        qr = QuantumRegister(2, name='q')
-        cr = ClassicalRegister(2, name='c')
-        circ = QuantumCircuit(qr, cr, name='circ')
+        qr = QuantumRegister(2, name="q")
+        cr = ClassicalRegister(2, name="c")
+        circ = QuantumCircuit(qr, cr, name="circ")
         circ.h(qr[0])
         circ.cx(qr[0], qr[1])
         circ.measure(qr, cr)
@@ -53,16 +53,16 @@ class TestAssembler(QiskitTestCase):
     def test_disssemble_multiple_circuits(self):
         """Test assembling multiple circuits, all should have the same config.
         """
-        qr0 = QuantumRegister(2, name='q0')
-        qc0 = ClassicalRegister(2, name='c0')
-        circ0 = QuantumCircuit(qr0, qc0, name='circ0')
+        qr0 = QuantumRegister(2, name="q0")
+        qc0 = ClassicalRegister(2, name="c0")
+        circ0 = QuantumCircuit(qr0, qc0, name="circ0")
         circ0.h(qr0[0])
         circ0.cx(qr0[0], qr0[1])
         circ0.measure(qr0, qc0)
 
-        qr1 = QuantumRegister(3, name='q1')
-        qc1 = ClassicalRegister(3, name='c1')
-        circ1 = QuantumCircuit(qr1, qc1, name='circ0')
+        qr1 = QuantumRegister(3, name="q1")
+        qc1 = ClassicalRegister(3, name="c1")
+        circ1 = QuantumCircuit(qr1, qc1, name="circ0")
         circ1.h(qr1[0])
         circ1.cx(qr1[0], qr1[1])
         circ1.cx(qr1[0], qr1[2])
@@ -84,9 +84,9 @@ class TestAssembler(QiskitTestCase):
     def test_assemble_no_run_config(self):
         """Test assembling with no run_config, relying on default.
         """
-        qr = QuantumRegister(2, name='q')
-        qc = ClassicalRegister(2, name='c')
-        circ = QuantumCircuit(qr, qc, name='circ')
+        qr = QuantumRegister(2, name="q")
+        qc = ClassicalRegister(2, name="c")
+        circ = QuantumCircuit(qr, qc, name="circ")
         circ.h(qr[0])
         circ.cx(qr[0], qr[1])
         circ.measure(qr, qc)
@@ -103,9 +103,9 @@ class TestAssembler(QiskitTestCase):
     def test_assemble_initialize(self):
         """Test assembling a circuit with an initialize.
         """
-        q = QuantumRegister(2, name='q')
-        circ = QuantumCircuit(q, name='circ')
-        circ.initialize([1/np.sqrt(2), 0, 0, 1/np.sqrt(2)], q[:])
+        q = QuantumRegister(2, name="q")
+        circ = QuantumCircuit(q, name="circ")
+        circ.initialize([1 / np.sqrt(2), 0, 0, 1 / np.sqrt(2)], q[:])
 
         qobj = assemble(circ)
         circuits, run_config_out, header = disassemble(qobj)
@@ -118,11 +118,12 @@ class TestAssembler(QiskitTestCase):
 
     def test_opaque_instruction(self):
         """Test the disassembler handles opaque instructions correctly."""
-        opaque_inst = Instruction(name='my_inst', num_qubits=4,
-                                  num_clbits=2, params=[0.5, 0.4])
-        q = QuantumRegister(6, name='q')
-        c = ClassicalRegister(4, name='c')
-        circ = QuantumCircuit(q, c, name='circ')
+        opaque_inst = Instruction(
+            name="my_inst", num_qubits=4, num_clbits=2, params=[0.5, 0.4]
+        )
+        q = QuantumRegister(6, name="q")
+        c = ClassicalRegister(4, name="c")
+        circ = QuantumCircuit(q, c, name="circ")
         circ.append(opaque_inst, [q[0], q[2], q[5], q[3]], [c[3], c[0]])
         qobj = assemble(circ)
         circuits, run_config_out, header = disassemble(qobj)
@@ -190,5 +191,5 @@ class TestAssembler(QiskitTestCase):
         self.assertEqual({}, header)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

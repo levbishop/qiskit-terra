@@ -29,12 +29,17 @@ class BinaryOp(Node):
 
     def __init__(self, children):
         """Create the binaryop node."""
-        super().__init__('binop', children, None)
+        super().__init__("binop", children, None)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""
-        return "(" + self.children[1].qasm(prec) + self.children[0].value + \
-               self.children[2].qasm(prec) + ")"
+        return (
+            "("
+            + self.children[1].qasm(prec)
+            + self.children[0].value
+            + self.children[2].qasm(prec)
+            + ")"
+        )
 
     def latex(self, prec=15, nested_scope=None):
         """Return the corresponding math mode latex string."""

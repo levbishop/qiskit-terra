@@ -38,9 +38,7 @@ class SGate(Gate):
         """
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U1Gate(pi/2), [q[0]], [])
-        ]
+        rule = [(U1Gate(pi / 2), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition
@@ -51,8 +49,7 @@ class SGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the S gate."""
-        return numpy.array([[1, 0],
-                            [0, 1j]], dtype=complex)
+        return numpy.array([[1, 0], [0, 1j]], dtype=complex)
 
 
 class SdgGate(Gate):
@@ -68,9 +65,7 @@ class SdgGate(Gate):
         """
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U1Gate(-pi/2), [q[0]], [])
-        ]
+        rule = [(U1Gate(-pi / 2), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition
@@ -81,8 +76,7 @@ class SdgGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the Sdg gate."""
-        return numpy.array([[1, 0],
-                            [0, -1j]], dtype=complex)
+        return numpy.array([[1, 0], [0, -1j]], dtype=complex)
 
 
 def s(self, q):

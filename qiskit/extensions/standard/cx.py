@@ -37,10 +37,9 @@ class CnotGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the Cx gate."""
-        return numpy.array([[1, 0, 0, 0],
-                            [0, 0, 0, 1],
-                            [0, 0, 1, 0],
-                            [0, 1, 0, 0]], dtype=complex)
+        return numpy.array(
+            [[1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0]], dtype=complex
+        )
 
 
 def cx(self, ctl, tgt):

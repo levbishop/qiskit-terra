@@ -23,7 +23,7 @@ from .command import Command
 class Snapshot(Command, Instruction):
     """Snapshot."""
 
-    prefix = 'snap'
+    prefix = "snap"
 
     def __init__(self, name: str, snap_type: str):
         """Create new snapshot command.
@@ -56,17 +56,24 @@ class Snapshot(Command, Instruction):
         Returns:
             bool: are self and other equal.
         """
-        if (type(self) is type(other) and
-                self.name == other.name and
-                self.type == other.type):
+        if (
+            type(self) is type(other)
+            and self.name == other.name
+            and self.type == other.type
+        ):
             return True
         return False
 
     # pylint: disable=arguments-differ
     def to_instruction(self):
         return self
+
     # pylint: enable=arguments-differ
 
     def __repr__(self):
-        return '%s(%s, %s) -> %s' % (self.__class__.__name__, self.name,
-                                     self.type, self.channels)
+        return "%s(%s, %s) -> %s" % (
+            self.__class__.__name__,
+            self.name,
+            self.type,
+            self.channels,
+        )

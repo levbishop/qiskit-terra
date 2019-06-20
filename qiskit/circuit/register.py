@@ -29,7 +29,7 @@ class Register:
     # Counter for the number of instances in this class.
     instances_counter = itertools.count()
     # Prefix to use for auto naming.
-    prefix = 'reg'
+    prefix = "reg"
     bit_type = None
 
     def __init__(self, size, name=None):
@@ -40,22 +40,28 @@ class Register:
         try:
             size = int(size)
         except Exception:
-            raise QiskitError("Register size must be castable to an int (%s '%s' was provided)"
-                              % (type(size).__name__, size))
+            raise QiskitError(
+                "Register size must be castable to an int (%s '%s' was provided)"
+                % (type(size).__name__, size)
+            )
         if size <= 0:
-            raise QiskitError("Register size must be positive (%s '%s' was provided)"
-                              % (type(size).__name__, size))
+            raise QiskitError(
+                "Register size must be positive (%s '%s' was provided)"
+                % (type(size).__name__, size)
+            )
 
         # validate (or cast) name
         if name is None:
-            name = '%s%i' % (self.prefix, next(self.instances_counter))
+            name = "%s%i" % (self.prefix, next(self.instances_counter))
         else:
             try:
                 name = str(name)
             except Exception:
-                raise QiskitError("The circuit name should be castable to a string "
-                                  "(or None for autogenerate a name).")
-            name_format = re.compile('[a-z][a-zA-Z0-9_]*')
+                raise QiskitError(
+                    "The circuit name should be castable to a string "
+                    "(or None for autogenerate a name)."
+                )
+            name_format = re.compile("[a-z][a-zA-Z0-9_]*")
             if name_format.match(name) is None:
                 raise QiskitError("%s is an invalid OPENQASM register name." % name)
 
@@ -92,7 +98,7 @@ class Register:
             if max(key) < len(self):
                 return [self.bit_type(self, ind) for ind in key]
             else:
-                raise QiskitError('register index out of range')
+                raise QiskitError("register index out of range")
         else:
             return self.bit_type(self, key)
 
@@ -111,9 +117,11 @@ class Register:
             bool: are self and other equal.
         """
         res = False
-        if type(self) is type(other) and \
-                self.name == other.name and \
-                self.size == other.size:
+        if (
+            type(self) is type(other)
+            and self.name == other.name
+            and self.size == other.size
+        ):
             res = True
         return res
 

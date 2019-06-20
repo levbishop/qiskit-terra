@@ -37,22 +37,31 @@ class QasmParser:
             filename = ""
         self.lexer = QasmLexer(filename)
         self.tokens = self.lexer.tokens
-        self.parse_dir = tempfile.mkdtemp(prefix='qiskit')
+        self.parse_dir = tempfile.mkdtemp(prefix="qiskit")
         self.precedence = (
-            ('left', '+', '-'),
-            ('left', '*', '/'),
-            ('left', 'negative', 'positive'),
-            ('right', '^'))
+            ("left", "+", "-"),
+            ("left", "*", "/"),
+            ("left", "negative", "positive"),
+            ("right", "^"),
+        )
         # For yacc, also, write_tables = Bool and optimize = Bool
-        self.parser = yacc.yacc(module=self, debug=False,
-                                outputdir=self.parse_dir)
+        self.parser = yacc.yacc(module=self, debug=False, outputdir=self.parse_dir)
         self.qasm = None
         self.parse_deb = False
-        self.global_symtab = {}                          # global symtab
-        self.current_symtab = self.global_symtab         # top of symbol stack
-        self.symbols = []                                # symbol stack
-        self.external_functions = ['sin', 'cos', 'tan', 'exp', 'ln', 'sqrt',
-                                   'acos', 'atan', 'asin']
+        self.global_symtab = {}  # global symtab
+        self.current_symtab = self.global_symtab  # top of symbol stack
+        self.symbols = []  # symbol stack
+        self.external_functions = [
+            "sin",
+            "cos",
+            "tan",
+            "exp",
+            "ln",
+            "sqrt",
+            "acos",
+            "atan",
+            "asin",
+        ]
 
     def __enter__(self):
         return self
@@ -72,11 +81,14 @@ class QasmParser:
         """
         if obj.name in self.current_symtab:
             prev = self.current_symtab[obj.name]
-            raise QasmError("Duplicate declaration for", obj.type + " '"
-                            + obj.name + "' at line", str(obj.line)
-                            + ', file', obj.file
-                            + '.\nPrevious occurrence at line',
-                            str(prev.line) + ', file', prev.file)
+            raise QasmError(
+                "Duplicate declaration for",
+                obj.type + " '" + obj.name + "' at line",
+                str(obj.line) + ", file",
+                obj.file + ".\nPrevious occurrence at line",
+                str(prev.line) + ", file",
+                prev.file,
+            )
         self.current_symtab[obj.name] = obj
 
     def verify_declared_bit(self, obj):
@@ -84,16 +96,18 @@ class QasmParser:
         # We are verifying gate args against the formal parameters of a
         # gate prototype.
         if obj.name not in self.current_symtab:
-            raise QasmError("Cannot find symbol '" + obj.name
-                            + "' in argument list for gate, line",
-                            str(obj.line), 'file', obj.file)
+            raise QasmError(
+                "Cannot find symbol '" + obj.name + "' in argument list for gate, line",
+                str(obj.line),
+                "file",
+                obj.file,
+            )
 
         # This insures the thing is from the bitlist and not from the
         # argument list.
         sym = self.current_symtab[obj.name]
-        if not (sym.type == 'id' and sym.is_bit):
-            raise QasmError("Bit", obj.name,
-                            'is not declared as a bit in the gate.')
+        if not (sym.type == "id" and sym.is_bit):
+            raise QasmError("Bit", obj.name, "is not declared as a bit in the gate.")
 
     def verify_bit_list(self, obj):
         """Verify each qubit in a list of ids."""
@@ -117,10 +131,15 @@ class QasmParser:
                         continue
 
                     if children.name not in self.current_symtab:
-                        raise QasmError("Argument '" + children.name
-                                        + "' in expression cannot be "
-                                        + "found, line", str(children.line),
-                                        "file", children.file)
+                        raise QasmError(
+                            "Argument '"
+                            + children.name
+                            + "' in expression cannot be "
+                            + "found, line",
+                            str(children.line),
+                            "file",
+                            children.file,
+                        )
                 else:
                     if hasattr(children, "children"):
                         self.verify_exp_list(children)
@@ -128,35 +147,66 @@ class QasmParser:
     def verify_as_gate(self, obj, bitlist, arglist=None):
         """Verify a user defined gate call."""
         if obj.name not in self.global_symtab:
-            raise QasmError("Cannot find gate definition for '" + obj.name
-                            + "', line", str(obj.line), 'file', obj.file)
+            raise QasmError(
+                "Cannot find gate definition for '" + obj.name + "', line",
+                str(obj.line),
+                "file",
+                obj.file,
+            )
         g_sym = self.global_symtab[obj.name]
-        if not (g_sym.type == 'gate' or g_sym.type == 'opaque'):
-            raise QasmError("'" + obj.name + "' is used as a gate "
-                            + "or opaque call but the symbol is neither;"
-                            + " it is a '" + g_sym.type + "' line",
-                            str(obj.line), 'file', obj.file)
+        if not (g_sym.type == "gate" or g_sym.type == "opaque"):
+            raise QasmError(
+                "'"
+                + obj.name
+                + "' is used as a gate "
+                + "or opaque call but the symbol is neither;"
+                + " it is a '"
+                + g_sym.type
+                + "' line",
+                str(obj.line),
+                "file",
+                obj.file,
+            )
 
         if g_sym.n_bits() != bitlist.size():
-            raise QasmError("Gate or opaque call to '" + obj.name
-                            + "' uses", str(bitlist.size()),
-                            "qubits but is declared for",
-                            str(g_sym.n_bits()), "qubits", "line",
-                            str(obj.line), 'file', obj.file)
+            raise QasmError(
+                "Gate or opaque call to '" + obj.name + "' uses",
+                str(bitlist.size()),
+                "qubits but is declared for",
+                str(g_sym.n_bits()),
+                "qubits",
+                "line",
+                str(obj.line),
+                "file",
+                obj.file,
+            )
 
         if arglist:
             if g_sym.n_args() != arglist.size():
-                raise QasmError("Gate or opaque call to '" + obj.name
-                                + "' uses", str(arglist.size()),
-                                "qubits but is declared for",
-                                str(g_sym.n_args()), "qubits", "line",
-                                str(obj.line), 'file', obj.file)
+                raise QasmError(
+                    "Gate or opaque call to '" + obj.name + "' uses",
+                    str(arglist.size()),
+                    "qubits but is declared for",
+                    str(g_sym.n_args()),
+                    "qubits",
+                    "line",
+                    str(obj.line),
+                    "file",
+                    obj.file,
+                )
         else:
             if g_sym.n_args() > 0:
-                raise QasmError("Gate or opaque call to '" + obj.name
-                                + "' has no arguments but is declared for",
-                                str(g_sym.n_args()), "qubits", "line",
-                                str(obj.line), 'file', obj.file)
+                raise QasmError(
+                    "Gate or opaque call to '"
+                    + obj.name
+                    + "' has no arguments but is declared for",
+                    str(g_sym.n_args()),
+                    "qubits",
+                    "line",
+                    str(obj.line),
+                    "file",
+                    obj.file,
+                )
 
     def verify_reg(self, obj, object_type):
         """Verify a register."""
@@ -164,26 +214,47 @@ class QasmParser:
         #    types must match
         #    indexes must be checked
         if obj.name not in self.global_symtab:
-            raise QasmError('Cannot find definition for', object_type, "'"
-                            + obj.name + "'", 'at line', str(obj.line),
-                            'file', obj.file)
+            raise QasmError(
+                "Cannot find definition for",
+                object_type,
+                "'" + obj.name + "'",
+                "at line",
+                str(obj.line),
+                "file",
+                obj.file,
+            )
 
         g_sym = self.global_symtab[obj.name]
 
         if g_sym.type != object_type:
-            raise QasmError("Type for '" + g_sym.name + "' should be '"
-                            + object_type + "' but was found to be '"
-                            + g_sym.type + "'", "line", str(obj.line),
-                            "file", obj.file)
+            raise QasmError(
+                "Type for '"
+                + g_sym.name
+                + "' should be '"
+                + object_type
+                + "' but was found to be '"
+                + g_sym.type
+                + "'",
+                "line",
+                str(obj.line),
+                "file",
+                obj.file,
+            )
 
-        if obj.type == 'indexed_id':
+        if obj.type == "indexed_id":
             bound = g_sym.index
             ndx = obj.index
             if ndx < 0 or ndx >= bound:
-                raise QasmError("Register index for '" + g_sym.name
-                                + "' out of bounds. Index is", str(ndx),
-                                "bound is 0 <= index <", str(bound),
-                                "at line", str(obj.line), "file", obj.file)
+                raise QasmError(
+                    "Register index for '" + g_sym.name + "' out of bounds. Index is",
+                    str(ndx),
+                    "bound is 0 <= index <",
+                    str(bound),
+                    "at line",
+                    str(obj.line),
+                    "file",
+                    obj.file,
+                )
 
     def verify_reg_list(self, obj, object_type):
         """Verify a list of registers."""
@@ -252,8 +323,9 @@ class QasmParser:
             else:
                 raise QasmError("internal error, verify_distinct")
         if len(bit_list) != len(set(bit_list)):
-            raise QasmError("duplicate identifiers at line %d file %s"
-                            % (line_number, filename))
+            raise QasmError(
+                "duplicate identifiers at line %d file %s" % (line_number, filename)
+            )
 
     def pop_scope(self):
         """Return to the previous scope."""
@@ -265,7 +337,7 @@ class QasmParser:
         self.current_symtab = {}
 
     # ---- Begin the PLY parser ----
-    start = 'main'
+    start = "main"
 
     def p_main(self, program):
         """
@@ -305,9 +377,11 @@ class QasmParser:
                      | format error
         """
         if len(program) > 2:
-            if program[2] != ';':
-                raise QasmError("Missing ';' at end of statement; "
-                                + "received", str(program[2].value))
+            if program[2] != ";":
+                raise QasmError(
+                    "Missing ';' at end of statement; " + "received",
+                    str(program[2].value),
+                )
         program[0] = program[1]
 
     def p_format(self, program):
@@ -321,8 +395,11 @@ class QasmParser:
            format : FORMAT error
         """
         version = "2.0;"
-        raise QasmError("Invalid version string. Expected '" + version
-                        + "'.  Is the semicolon missing?")
+        raise QasmError(
+            "Invalid version string. Expected '"
+            + version
+            + "'.  Is the semicolon missing?"
+        )
 
     # ----------------------------------------
     #  id : ID
@@ -337,8 +414,7 @@ class QasmParser:
         """
            id : error
         """
-        raise QasmError("Expected an ID, received '"
-                        + str(program[1].value) + "'")
+        raise QasmError("Expected an ID, received '" + str(program[1].value) + "'")
 
     # ----------------------------------------
     #  indexed_id : ID [ int ]
@@ -350,11 +426,13 @@ class QasmParser:
                       | id '[' error
         """
         if len(program) == 4:
-            raise QasmError("Expecting an integer index; received",
-                            str(program[3].value))
-        if program[4] != ']':
-            raise QasmError("Missing ']' in indexed ID; received",
-                            str(program[4].value))
+            raise QasmError(
+                "Expecting an integer index; received", str(program[3].value)
+            )
+        if program[4] != "]":
+            raise QasmError(
+                "Missing ']' in indexed ID; received", str(program[4].value)
+            )
         program[0] = node.IndexedId([program[1], node.Int(program[3])])
 
     # ----------------------------------------
@@ -456,9 +534,11 @@ class QasmParser:
                 | gate_decl
         """
         if len(program) > 2:
-            if program[2] != ';':
-                raise QasmError("Missing ';' in qreg or creg declaration."
-                                " Instead received '" + program[2].value + "'")
+            if program[2] != ";":
+                raise QasmError(
+                    "Missing ';' in qreg or creg declaration."
+                    " Instead received '" + program[2].value + "'"
+                )
         program[0] = program[1]
 
     # ----------------------------------------
@@ -470,8 +550,12 @@ class QasmParser:
         """
         program[0] = node.Qreg([program[2]])
         if program[2].name in self.external_functions:
-            raise QasmError("QREG names cannot be reserved words. "
-                            + "Received '" + program[2].name + "'")
+            raise QasmError(
+                "QREG names cannot be reserved words. "
+                + "Received '"
+                + program[2].name
+                + "'"
+            )
         if program[2].index == 0:
             raise QasmError("QREG size must be positive")
         self.update_symtab(program[0])
@@ -480,8 +564,10 @@ class QasmParser:
         """
            qreg_decl : QREG error
         """
-        raise QasmError("Expecting indexed id (ID[int]) in QREG"
-                        + " declaration; received", program[2].value)
+        raise QasmError(
+            "Expecting indexed id (ID[int]) in QREG" + " declaration; received",
+            program[2].value,
+        )
 
     # ----------------------------------------
     #  creg_decl : QREG indexed_id
@@ -492,8 +578,12 @@ class QasmParser:
         """
         program[0] = node.Creg([program[2]])
         if program[2].name in self.external_functions:
-            raise QasmError("CREG names cannot be reserved words. "
-                            + "Received '" + program[2].name + "'")
+            raise QasmError(
+                "CREG names cannot be reserved words. "
+                + "Received '"
+                + program[2].name
+                + "'"
+            )
         if program[2].index == 0:
             raise QasmError("CREG size must be positive")
         self.update_symtab(program[0])
@@ -502,8 +592,10 @@ class QasmParser:
         """
            creg_decl : CREG error
         """
-        raise QasmError("Expecting indexed id (ID[int]) in CREG"
-                        + " declaration; received", program[2].value)
+        raise QasmError(
+            "Expecting indexed id (ID[int]) in CREG" + " declaration; received",
+            program[2].value,
+        )
 
     # Gate_body will throw if there are errors, so we don't need to cover
     # that here. Same with the id_lists - if they are not legal, we die
@@ -521,8 +613,12 @@ class QasmParser:
         """
         program[0] = node.Gate([program[2], program[4], program[5]])
         if program[2].name in self.external_functions:
-            raise QasmError("GATE names cannot be reserved words. "
-                            + "Received '" + program[2].name + "'")
+            raise QasmError(
+                "GATE names cannot be reserved words. "
+                + "Received '"
+                + program[2].name
+                + "'"
+            )
         self.pop_scope()
         self.update_symtab(program[0])
 
@@ -532,8 +628,12 @@ class QasmParser:
         """
         program[0] = node.Gate([program[2], program[6], program[7]])
         if program[2].name in self.external_functions:
-            raise QasmError("GATE names cannot be reserved words. "
-                            + "Received '" + program[2].name + "'")
+            raise QasmError(
+                "GATE names cannot be reserved words. "
+                + "Received '"
+                + program[2].name
+                + "'"
+            )
         self.pop_scope()
         self.update_symtab(program[0])
 
@@ -541,11 +641,14 @@ class QasmParser:
         """
         gate_decl : GATE id gate_scope '(' gate_id_list ')' bit_list gate_body
         """
-        program[0] = node.Gate(
-            [program[2], program[5], program[7], program[8]])
+        program[0] = node.Gate([program[2], program[5], program[7], program[8]])
         if program[2].name in self.external_functions:
-            raise QasmError("GATE names cannot be reserved words. "
-                            + "Received '" + program[2].name + "'")
+            raise QasmError(
+                "GATE names cannot be reserved words. "
+                + "Received '"
+                + program[2].name
+                + "'"
+            )
         self.pop_scope()
         self.update_symtab(program[0])
 
@@ -570,9 +673,12 @@ class QasmParser:
         """
            gate_body : '{' '}'
         """
-        if program[2] != '}':
-            raise QasmError("Missing '}' in gate definition; received'"
-                            + str(program[2].value) + "'")
+        if program[2] != "}":
+            raise QasmError(
+                "Missing '}' in gate definition; received'"
+                + str(program[2].value)
+                + "'"
+            )
         program[0] = node.GateBody(None)
 
     def p_gate_body_1(self, program):
@@ -619,7 +725,7 @@ class QasmParser:
           unitary_op : U '(' exp_list ')' primary
         """
         program[0] = node.UniversalUnitary([program[3], program[5]])
-        self.verify_reg(program[5], 'qreg')
+        self.verify_reg(program[5], "qreg")
         self.verify_exp_list(program[3])
 
     def p_unitary_op_1(self, program):
@@ -627,8 +733,8 @@ class QasmParser:
         unitary_op : CX primary ',' primary
         """
         program[0] = node.Cnot([program[2], program[4]])
-        self.verify_reg(program[2], 'qreg')
-        self.verify_reg(program[4], 'qreg')
+        self.verify_reg(program[2], "qreg")
+        self.verify_reg(program[4], "qreg")
         self.verify_distinct([program[2], program[4]])
         # TODO: check that if both primary are id, same size
         # TODO: this needs to be checked in other cases too
@@ -639,7 +745,7 @@ class QasmParser:
         """
         program[0] = node.CustomUnitary([program[1], program[2]])
         self.verify_as_gate(program[1], program[2])
-        self.verify_reg_list(program[2], 'qreg')
+        self.verify_reg_list(program[2], "qreg")
         self.verify_distinct([program[2]])
 
     def p_unitary_op_3(self, program):
@@ -648,7 +754,7 @@ class QasmParser:
         """
         program[0] = node.CustomUnitary([program[1], program[4]])
         self.verify_as_gate(program[1], program[4])
-        self.verify_reg_list(program[4], 'qreg')
+        self.verify_reg_list(program[4], "qreg")
         self.verify_distinct([program[4]])
 
     def p_unitary_op_4(self, program):
@@ -657,7 +763,7 @@ class QasmParser:
         """
         program[0] = node.CustomUnitary([program[1], program[3], program[5]])
         self.verify_as_gate(program[1], program[5], arglist=program[3])
-        self.verify_reg_list(program[5], 'qreg')
+        self.verify_reg_list(program[5], "qreg")
         self.verify_exp_list(program[3])
         self.verify_distinct([program[5]])
 
@@ -684,8 +790,7 @@ class QasmParser:
         """
         gate_op : U '(' exp_list ')' error
         """
-        raise QasmError("Invalid U inside gate definition. "
-                        + "Missing bit id or ';'")
+        raise QasmError("Invalid U inside gate definition. " + "Missing bit id or ';'")
 
     def p_gate_op_0e2(self, program):
         """
@@ -706,17 +811,23 @@ class QasmParser:
         """
         gate_op : CX error
         """
-        raise QasmError("Invalid CX inside gate definition. "
-                        + "Expected an ID or ',', received '"
-                        + str(program[2].value) + "'")
+        raise QasmError(
+            "Invalid CX inside gate definition. "
+            + "Expected an ID or ',', received '"
+            + str(program[2].value)
+            + "'"
+        )
 
     def p_gate_op_1e2(self, program):
         """
         gate_op : CX id ',' error
         """
-        raise QasmError("Invalid CX inside gate definition. "
-                        + "Expected an ID or ';', received '"
-                        + str(program[4].value) + "'")
+        raise QasmError(
+            "Invalid CX inside gate definition. "
+            + "Expected an ID or ';', received '"
+            + str(program[4].value)
+            + "'"
+        )
 
     def p_gate_op_2(self, program):
         """
@@ -759,15 +870,13 @@ class QasmParser:
         """
         gate_op : id '(' ')'  error
         """
-        raise QasmError("Invalid bit list inside gate definition or"
-                        + " missing ';'")
+        raise QasmError("Invalid bit list inside gate definition or" + " missing ';'")
 
     def p_gate_op_4e1(self, program):
         """
         gate_op : id '('   error
         """
-        raise QasmError("Unmatched () for gate invocation inside gate"
-                        + " invocation.")
+        raise QasmError("Unmatched () for gate invocation inside gate" + " invocation.")
 
     def p_gate_op_5(self, program):
         """
@@ -797,8 +906,12 @@ class QasmParser:
         # TODO: Review Opaque function
         program[0] = node.Opaque([program[2], program[4]])
         if program[2].name in self.external_functions:
-            raise QasmError("OPAQUE names cannot be reserved words. "
-                            + "Received '" + program[2].name + "'")
+            raise QasmError(
+                "OPAQUE names cannot be reserved words. "
+                + "Received '"
+                + program[2].name
+                + "'"
+            )
         self.pop_scope()
         self.update_symtab(program[0])
 
@@ -816,8 +929,12 @@ class QasmParser:
         """
         program[0] = node.Opaque([program[2], program[5], program[7]])
         if program[2].name in self.external_functions:
-            raise QasmError("OPAQUE names cannot be reserved words. "
-                            + "Received '" + program[2].name + "'")
+            raise QasmError(
+                "OPAQUE names cannot be reserved words. "
+                + "Received '"
+                + program[2].name
+                + "'"
+            )
         self.pop_scope()
         self.update_symtab(program[0])
 
@@ -835,15 +952,14 @@ class QasmParser:
            measure : MEASURE primary ASSIGN primary
         """
         program[0] = node.Measure([program[2], program[4]])
-        self.verify_reg(program[2], 'qreg')
-        self.verify_reg(program[4], 'creg')
+        self.verify_reg(program[2], "qreg")
+        self.verify_reg(program[4], "creg")
 
     def p_measure_e(self, program):
         """
            measure : MEASURE primary error
         """
-        raise QasmError("Illegal measure statement." +
-                        str(program[3].value))
+        raise QasmError("Illegal measure statement." + str(program[3].value))
 
     # ----------------------------------------
     # barrier : BARRIER primary_list
@@ -855,7 +971,7 @@ class QasmParser:
         barrier : BARRIER primary_list
         """
         program[0] = node.Barrier([program[2]])
-        self.verify_reg_list(program[2], 'qreg')
+        self.verify_reg_list(program[2], "qreg")
         self.verify_distinct([program[2]])
 
     # ----------------------------------------
@@ -866,7 +982,7 @@ class QasmParser:
         reset : RESET primary
         """
         program[0] = node.Reset([program[2]])
-        self.verify_reg(program[2], 'qreg')
+        self.verify_reg(program[2], "qreg")
 
     # ----------------------------------------
     # IF '(' ID MATCHES NNINTEGER ')' quantum_op
@@ -880,20 +996,25 @@ class QasmParser:
         if : IF error
         """
         if len(program) == 3:
-            raise QasmError("Ill-formed IF statement. Perhaps a"
-                            + " missing '('?")
+            raise QasmError("Ill-formed IF statement. Perhaps a" + " missing '('?")
         if len(program) == 5:
-            raise QasmError("Ill-formed IF statement.  Expected '==', "
-                            + "received '" + str(program[4].value))
+            raise QasmError(
+                "Ill-formed IF statement.  Expected '==', "
+                + "received '"
+                + str(program[4].value)
+            )
         if len(program) == 6:
-            raise QasmError("Ill-formed IF statement.  Expected a number, "
-                            + "received '" + str(program[5].value))
+            raise QasmError(
+                "Ill-formed IF statement.  Expected a number, "
+                + "received '"
+                + str(program[5].value)
+            )
         if len(program) == 7:
             raise QasmError("Ill-formed IF statement, unmatched '('")
 
-        if program[7].type == 'if':
+        if program[7].type == "if":
             raise QasmError("Nested IF statements not allowed")
-        if program[7].type == 'barrier':
+        if program[7].type == "barrier":
             raise QasmError("barrier not permitted in IF statement")
 
         program[0] = node.If([program[3], node.Int(program[5]), program[7]])
@@ -965,8 +1086,7 @@ class QasmParser:
         """
         # note this is a semantic check, not syntactic
         if program[1].name not in self.external_functions:
-            raise QasmError("Illegal external function call: ",
-                            str(program[1].name))
+            raise QasmError("Illegal external function call: ", str(program[1].name))
         program[0] = node.External([program[1], program[3]])
 
     # ----------------------------------------
@@ -988,8 +1108,9 @@ class QasmParser:
                     | expression '-' expression
                     | expression '^' expression
         """
-        program[0] = node.BinaryOp([node.BinaryOperator(program[2]),
-                                    program[1], program[3]])
+        program[0] = node.BinaryOp(
+            [node.BinaryOperator(program[2]), program[1], program[3]]
+        )
 
     def p_expression_2(self, program):
         """
@@ -1025,11 +1146,10 @@ class QasmParser:
         # EOF is a special case because the stupid error token isn't placed
         # on the stack
         if not program:
-            raise QasmError("Error at end of file. "
-                            + "Perhaps there is a missing ';'")
+            raise QasmError("Error at end of file. " + "Perhaps there is a missing ';'")
 
         col = self.find_column(self.lexer.data, program)
-        print("Error near line", str(self.lexer.lineno), 'Column', col)
+        print("Error near line", str(self.lexer.lineno), "Column", col)
 
     def find_column(self, input_, token):
         """Compute the column.
@@ -1039,7 +1159,7 @@ class QasmParser:
         """
         if token is None:
             return 0
-        last_cr = input_.rfind('\n', 0, token.lexpos)
+        last_cr = input_.rfind("\n", 0, token.lexpos)
         if last_cr < 0:
             last_cr = 0
         column = (token.lexpos - last_cr) + 1
@@ -1056,7 +1176,7 @@ class QasmParser:
 
                 yield token
         except QasmError as e:
-            print('Exception tokenizing qasm file:', e.msg)
+            print("Exception tokenizing qasm file:", e.msg)
 
     def parse_debug(self, val):
         """Set the parse_deb field."""
@@ -1065,15 +1185,17 @@ class QasmParser:
         elif val is False:
             self.parse_deb = False
         else:
-            raise QasmError("Illegal debug value '" + str(val)
-                            + "' must be True or False.")
+            raise QasmError(
+                "Illegal debug value '" + str(val) + "' must be True or False."
+            )
 
     def parse(self, data):
         """Parse some data."""
         self.parser.parse(data, lexer=self.lexer, debug=self.parse_deb)
         if self.qasm is None:
-            raise QasmError("Uncaught exception in parser; "
-                            + "see previous messages for details.")
+            raise QasmError(
+                "Uncaught exception in parser; " + "see previous messages for details."
+            )
         return self.qasm
 
     def print_tree(self):

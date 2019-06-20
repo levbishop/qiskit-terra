@@ -26,7 +26,7 @@ from marshmallow.warnings import ChangedInMarshmallow3Warning
 def _check_python_version():
     """Check for Python version 3.5+."""
     if sys.version_info < (3, 5):
-        raise Exception('Qiskit requires Python version 3.5 or greater.')
+        raise Exception("Qiskit requires Python version 3.5 or greater.")
 
 
 def _filter_deprecation_warnings():
@@ -42,8 +42,13 @@ def _filter_deprecation_warnings():
     [1] https://docs.python.org/3/library/warnings.html#default-warning-filters
     [2] https://www.python.org/dev/peps/pep-0565/
     """
-    deprecation_filter = ('always', None, DeprecationWarning,
-                          re.compile(r'^qiskit\.*', re.UNICODE), 0)
+    deprecation_filter = (
+        "always",
+        None,
+        DeprecationWarning,
+        re.compile(r"^qiskit\.*", re.UNICODE),
+        0,
+    )
 
     # Instead of using warnings.simple_filter() directly, the internal
     # _add_filter() function is used for being able to match against the
@@ -57,7 +62,7 @@ def _filter_deprecation_warnings():
     # Add a filter for ignoring ChangedInMarshmallow3Warning, as we depend on
     # marhsmallow 2 explicitly. 2.17.0 introduced new deprecation warnings that
     # are useful for eventually migrating, but too verbose for our purposes.
-    warnings.simplefilter('ignore', category=ChangedInMarshmallow3Warning)
+    warnings.simplefilter("ignore", category=ChangedInMarshmallow3Warning)
 
 
 _check_python_version()
@@ -74,9 +79,9 @@ def local_hardware_info():
         dict: The hardware information.
     """
     results = {
-        'os': platform.system(),
-        'memory': psutil.virtual_memory().total / (1024 ** 3),
-        'cpus': psutil.cpu_count(logical=False) or 1
+        "os": platform.system(),
+        "memory": psutil.virtual_memory().total / (1024 ** 3),
+        "cpus": psutil.cpu_count(logical=False) or 1,
     }
     return results
 

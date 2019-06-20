@@ -31,8 +31,8 @@ class TestCircuitQasm(QiskitTestCase):
     def test_circuit_qasm(self):
         """Test circuit qasm() method.
         """
-        qr = QuantumRegister(1, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(1, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
 
         circuit.s(qr)
@@ -56,5 +56,5 @@ measure qr[0] -> cr[0];\n"""
         self.assertEqual(circuit.qasm(), expected_qasm)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

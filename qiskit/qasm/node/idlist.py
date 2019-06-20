@@ -25,7 +25,7 @@ class IdList(Node):
 
     def __init__(self, children):
         """Create the idlist node."""
-        super().__init__('id_list', children, None)
+        super().__init__("id_list", children, None)
 
     def size(self):
         """Return the length of the list."""
@@ -33,5 +33,4 @@ class IdList(Node):
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""
-        return ",".join([self.children[j].qasm(prec)
-                         for j in range(self.size())])
+        return ",".join([self.children[j].qasm(prec) for j in range(self.size())])

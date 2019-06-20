@@ -28,14 +28,16 @@ class TestRegisterlessCircuit(QiskitTestCase):
         """
         circuit = QuantumCircuit(2)
 
-        expected = QuantumCircuit(QuantumRegister(2, 'q'))
+        expected = QuantumCircuit(QuantumRegister(2, "q"))
 
         self.assertEqual(circuit, expected)
 
     def test_circuit_constructor_wires_wrong(self):
         """Create a registerless QuantumCircuit wrongly
         """
-        self.assertRaises(QiskitError, QuantumCircuit, 1, 2, 3)  # QuantumCircuit(1, 2, 3)
+        self.assertRaises(
+            QiskitError, QuantumCircuit, 1, 2, 3
+        )  # QuantumCircuit(1, 2, 3)
 
     def test_circuit_constructor_wires_wrong_mix(self):
         """Create an almost-registerless QuantumCircuit
@@ -273,7 +275,9 @@ class TestGatesOnWireRange(QiskitTestCase):
         """
         qreg = QuantumRegister(2)
         circuit = QuantumCircuit(qreg)
-        self.assertRaises(QiskitError, circuit.h, range(9, 99))  # circuit.h(range(9,99))
+        self.assertRaises(
+            QiskitError, circuit.h, range(9, 99)
+        )  # circuit.h(range(9,99))
 
     def test_circuit_cwire_out_of_range(self):
         """Fail if classical wire is out of range.
@@ -315,7 +319,7 @@ class TestGatesOnWireSlice(QiskitTestCase):
     def test_wire_np_int(self):
         """Test gate wire with numpy int
         """
-        numpy_int = numpy.dtype('int').type(2)
+        numpy_int = numpy.dtype("int").type(2)
         qreg = QuantumRegister(4)
         circuit = QuantumCircuit(qreg)
         circuit.h(numpy_int)
@@ -417,7 +421,9 @@ class TestGatesOnWireSlice(QiskitTestCase):
         """
         qreg = QuantumRegister(2)
         circuit = QuantumCircuit(qreg)
-        self.assertRaises(QiskitError, circuit.h, slice(9, 99))  # circuit.h(slice(9,99))
+        self.assertRaises(
+            QiskitError, circuit.h, slice(9, 99)
+        )  # circuit.h(slice(9,99))
 
     def test_circuit_cwire_out_of_range(self):
         """Fail if classical wire is out of range.

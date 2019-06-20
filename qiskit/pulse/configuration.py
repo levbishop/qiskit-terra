@@ -64,9 +64,11 @@ class LoRange:
         Returns:
             bool: are self and other equal.
         """
-        if (type(self) is type(other) and
-                self._ub == other._ub and
-                self._lb == other._lb):
+        if (
+            type(self) is type(other)
+            and self._ub == other._ub
+            and self._lb == other._lb
+        ):
             return True
         return False
 
@@ -74,8 +76,11 @@ class LoRange:
 class LoConfig:
     """Pulse channel LO frequency container."""
 
-    def __init__(self, channel_los: Dict[PulseChannel, float] = None,
-                 lo_ranges: Dict[PulseChannel, Union[LoRange, Tuple[int]]] = None):
+    def __init__(
+        self,
+        channel_los: Dict[PulseChannel, float] = None,
+        lo_ranges: Dict[PulseChannel, Union[LoRange, Tuple[int]]] = None,
+    ):
         """Lo channel configuration data structure.
 
         Args:
@@ -109,8 +114,9 @@ class LoConfig:
             self.check_lo(channel, freq)
             self._m_lo_freq[channel] = freq
         else:
-            raise PulseError("Specified channel %s cannot be configured." %
-                             channel.name)
+            raise PulseError(
+                "Specified channel %s cannot be configured." % channel.name
+            )
 
     def add_lo_range(self, channel: DriveChannel, lo_range: Union[LoRange, Tuple[int]]):
         """Add lo range to configuration.
@@ -124,7 +130,9 @@ class LoConfig:
             lo_range = LoRange(*lo_range)
         self._lo_ranges[channel] = lo_range
 
-    def check_lo(self, channel: Union[DriveChannel, MeasureChannel], freq: float) -> bool:
+    def check_lo(
+        self, channel: Union[DriveChannel, MeasureChannel], freq: float
+    ) -> bool:
         """Check that lo is valid for channel.
 
         Args:
@@ -137,8 +145,9 @@ class LoConfig:
         if channel in lo_ranges:
             lo_range = lo_ranges[channel]
             if not lo_range.includes(freq):
-                raise PulseError("Specified LO freq %f is out of range %s" %
-                                 (freq, lo_range))
+                raise PulseError(
+                    "Specified LO freq %f is out of range %s" % (freq, lo_range)
+                )
 
     def channel_lo(self, channel: Union[DriveChannel, MeasureChannel]) -> float:
         """Return channel lo.
@@ -158,7 +167,7 @@ class LoConfig:
             if channel in self.meas_los:
                 return self.meas_los[channel]
 
-        raise PulseError('Channel %s is not configured' % channel)
+        raise PulseError("Channel %s is not configured" % channel)
 
     @property
     def qubit_los(self) -> Dict:

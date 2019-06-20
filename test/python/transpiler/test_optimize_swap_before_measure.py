@@ -35,8 +35,8 @@ class TestOptimizeSwapBeforeMeasure(QiskitTestCase):
                      |               |
             cr0:-----.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.swap(qr[0], qr[1])
         circuit.measure(qr[0], cr[0])
@@ -59,8 +59,8 @@ class TestOptimizeSwapBeforeMeasure(QiskitTestCase):
             cr0:-----.--|--      cr0:--|--.-
             cr1:--------.--      cr1:--.----
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(2, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(2, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.swap(qr[0], qr[1])
         circuit.measure(qr[0], cr[0])
@@ -84,8 +84,8 @@ class TestOptimizeSwapBeforeMeasure(QiskitTestCase):
                         |
             cr0:--------.--
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.swap(qr[0], qr[1])
         circuit.h(qr[1])
@@ -109,8 +109,8 @@ class TestOptimizeSwapBeforeMeasureFixedPoint(QiskitTestCase):
                         |               |
             cr0:--------.--       cr0:--.--
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.swap(qr[0], qr[1])
         circuit.swap(qr[0], qr[1])
@@ -122,7 +122,8 @@ class TestOptimizeSwapBeforeMeasureFixedPoint(QiskitTestCase):
         pass_manager = PassManager()
         pass_manager.append(
             [OptimizeSwapBeforeMeasure(), DAGFixedPoint()],
-            do_while=lambda property_set: not property_set['dag_fixed_point'])
+            do_while=lambda property_set: not property_set["dag_fixed_point"],
+        )
         after = transpile(circuit, pass_manager=pass_manager)
 
         self.assertEqual(expected, after)
@@ -137,8 +138,8 @@ class TestOptimizeSwapBeforeMeasureFixedPoint(QiskitTestCase):
                         |               |
             cr0:--------.--       cr0:--.--
         """
-        qr = QuantumRegister(3, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(3, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.swap(qr[0], qr[1])
         circuit.swap(qr[1], qr[2])
@@ -150,11 +151,12 @@ class TestOptimizeSwapBeforeMeasureFixedPoint(QiskitTestCase):
         pass_manager = PassManager()
         pass_manager.append(
             [OptimizeSwapBeforeMeasure(), DAGFixedPoint()],
-            do_while=lambda property_set: not property_set['dag_fixed_point'])
+            do_while=lambda property_set: not property_set["dag_fixed_point"],
+        )
         after = transpile(circuit, pass_manager=pass_manager)
 
         self.assertEqual(expected, after)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

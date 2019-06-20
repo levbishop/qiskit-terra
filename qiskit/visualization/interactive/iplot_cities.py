@@ -20,7 +20,8 @@ import sys
 import time
 import re
 from qiskit.visualization.utils import _validate_input_state
-if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
+
+if ("ipykernel" in sys.modules) and ("spyder" not in sys.modules):
     try:
         from IPython.core.display import display, HTML
     except ImportError:
@@ -38,16 +39,19 @@ def iplot_state_city(rho, figsize=None):
     """
 
     # HTML
-    html_template = Template("""
+    html_template = Template(
+        """
     <p>
         <div id="content_$divNumber" style="position: absolute; z-index: 1;">
             <div id="cities_$divNumber"></div>
         </div>
     </p>
-    """)
+    """
+    )
 
     # JavaScript
-    javascript_template = Template("""
+    javascript_template = Template(
+        """
     <script>
         requirejs.config({
             paths: {
@@ -69,12 +73,13 @@ def iplot_state_city(rho, figsize=None):
                                       $options);
         });
     </script>
-    """)
+    """
+    )
     rho = _validate_input_state(rho)
     if figsize is None:
         options = {}
     else:
-        options = {'width': figsize[0], 'height': figsize[1]}
+        options = {"width": figsize[0], "height": figsize[1]}
     # Process data and execute
     real = []
     imag = []
@@ -91,18 +96,18 @@ def iplot_state_city(rho, figsize=None):
         imag.append(col_imag)
 
     div_number = str(time.time())
-    div_number = re.sub('[.]', '', div_number)
+    div_number = re.sub("[.]", "", div_number)
 
-    html = html_template.substitute({
-        'divNumber': div_number
-    })
+    html = html_template.substitute({"divNumber": div_number})
 
-    javascript = javascript_template.substitute({
-        'real': real,
-        'imag': imag,
-        'qbits': len(real),
-        'divNumber': div_number,
-        'options': options
-    })
+    javascript = javascript_template.substitute(
+        {
+            "real": real,
+            "imag": imag,
+            "qbits": len(real),
+            "divNumber": div_number,
+            "options": options,
+        }
+    )
 
     display(HTML(html + javascript))

@@ -28,7 +28,7 @@ from .command import Command
 class SamplePulse(Command):
     """Container for functional pulse."""
 
-    prefix = 'p'
+    prefix = "p"
 
     def __init__(self, samples, name=None):
         """Create new sample pulse command.
@@ -42,7 +42,7 @@ class SamplePulse(Command):
         super().__init__(duration=len(samples))
 
         if np.any(np.abs(samples) > 1):
-            raise PulseError('Absolute value of pulse envelope amplitude exceeds 1.')
+            raise PulseError("Absolute value of pulse envelope amplitude exceeds 1.")
 
         self._samples = np.asarray(samples, dtype=np.complex_)
         self._name = SamplePulse.create_name(name)
@@ -52,9 +52,15 @@ class SamplePulse(Command):
         """Return sample values."""
         return self._samples
 
-    def draw(self, dt: float = 1, style=None,
-             filename: str = None, interp_method: Callable = None,
-             scaling: float = 1, interactive: bool = False):
+    def draw(
+        self,
+        dt: float = 1,
+        style=None,
+        filename: str = None,
+        interp_method: Callable = None,
+        scaling: float = 1,
+        interactive: bool = False,
+    ):
         """Plot the interpolated envelope of pulse.
 
         Args:
@@ -73,9 +79,15 @@ class SamplePulse(Command):
 
         from qiskit import visualization
 
-        return visualization.pulse_drawer(self, dt=dt, style=style, filename=filename,
-                                          interp_method=interp_method, scaling=scaling,
-                                          interactive=interactive)
+        return visualization.pulse_drawer(
+            self,
+            dt=dt,
+            style=style,
+            filename=filename,
+            interp_method=interp_method,
+            scaling=scaling,
+            interactive=interactive,
+        )
 
     def __eq__(self, other):
         """Two SamplePulses are the same if they are of the same type
@@ -87,8 +99,7 @@ class SamplePulse(Command):
         Returns:
             bool: are self and other equal.
         """
-        if super().__eq__(other) and \
-                (self._samples == other._samples).all():
+        if super().__eq__(other) and (self._samples == other._samples).all():
             return True
         return False
 
@@ -96,11 +107,16 @@ class SamplePulse(Command):
         return hash((super().__hash__(), self._samples.tostring()))
 
     def __repr__(self):
-        return '%s(%s, duration=%d)' % (self.__class__.__name__, self.name, self.duration)
+        return "%s(%s, duration=%d)" % (
+            self.__class__.__name__,
+            self.name,
+            self.duration,
+        )
 
     # pylint: disable=arguments-differ
-    def to_instruction(self, channel: PulseChannel, name=None) -> 'PulseInstruction':
+    def to_instruction(self, channel: PulseChannel, name=None) -> "PulseInstruction":
         return PulseInstruction(self, channel, name=name)
+
     # pylint: enable=arguments-differ
 
 

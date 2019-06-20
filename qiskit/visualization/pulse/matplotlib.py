@@ -22,17 +22,28 @@ import numpy as np
 
 try:
     from matplotlib import pyplot as plt, gridspec
+
     HAS_MATPLOTLIB = True
 except ImportError:
     HAS_MATPLOTLIB = False
 
 from qiskit.visualization.pulse.qcstyle import PulseStyle, SchedStyle
 from qiskit.visualization.pulse import interpolation
-from qiskit.pulse.channels import (DriveChannel, ControlChannel,
-                                   MeasureChannel, AcquireChannel,
-                                   SnapshotChannel)
-from qiskit.pulse import (SamplePulse, FrameChange, PersistentValue, Snapshot,
-                          Acquire, PulseError)
+from qiskit.pulse.channels import (
+    DriveChannel,
+    ControlChannel,
+    MeasureChannel,
+    AcquireChannel,
+    SnapshotChannel,
+)
+from qiskit.pulse import (
+    SamplePulse,
+    FrameChange,
+    PersistentValue,
+    Snapshot,
+    Acquire,
+    PulseError,
+)
 
 
 class EventsOutputChannels:
@@ -75,7 +86,7 @@ class EventsOutputChannels:
         if self._waveform is None:
             self._build_waveform()
 
-        return self._waveform[self.t0:self.tf]
+        return self._waveform[self.t0 : self.tf]
 
     @property
     def framechanges(self):
@@ -115,7 +126,12 @@ class EventsOutputChannels:
         Returns:
             bool: if the channel has nothing to plot
         """
-        if any(self.waveform) or self.framechanges or self.conditionals or self.snapshots:
+        if (
+            any(self.waveform)
+            or self.framechanges
+            or self.conditionals
+            or self.snapshots
+        ):
             return False
 
         return True
@@ -136,13 +152,13 @@ class EventsOutputChannels:
         snapshots = self.snapshots
 
         for key, val in framechanges.items():
-            data_str = 'framechange: %.2f' % val
+            data_str = "framechange: %.2f" % val
             time_event.append((key, name, data_str))
         for key, val in conditionals.items():
-            data_str = 'conditional, %s' % val
+            data_str = "conditional, %s" % val
             time_event.append((key, name, data_str))
         for key, val in snapshots.items():
-            data_str = 'snapshot: %s' % val
+            data_str = "snapshot: %s" % val
             time_event.append((key, name, data_str))
 
         return time_event
@@ -173,7 +189,7 @@ class EventsOutputChannels:
                 fc += tmp_fc
             for command in commands:
                 if isinstance(command, PersistentValue):
-                    pv[time:] = np.exp(1j*fc) * command.value
+                    pv[time:] = np.exp(1j * fc) * command.value
                     last_pv = (time, command)
                     break
 
@@ -181,7 +197,7 @@ class EventsOutputChannels:
                 duration = command.duration
                 tf = min(time + duration, self.tf)
                 if isinstance(command, SamplePulse):
-                    wf[time:tf] = np.exp(1j*fc) * command.samples[:tf-time]
+                    wf[time:tf] = np.exp(1j * fc) * command.samples[: tf - time]
                     pv[time:] = 0
                     self._labels[time] = (tf, command)
                     if last_pv is not None:
@@ -249,14 +265,26 @@ class SamplePulseDrawer:
         time, re, im = interp_method(time, samples, self.style.num_points)
 
         # plot
-        ax.fill_between(x=time, y1=re, y2=np.zeros_like(time),
-                        facecolor=self.style.wave_color[0], alpha=0.3,
-                        edgecolor=self.style.wave_color[0], linewidth=1.5,
-                        label='real part')
-        ax.fill_between(x=time, y1=im, y2=np.zeros_like(time),
-                        facecolor=self.style.wave_color[1], alpha=0.3,
-                        edgecolor=self.style.wave_color[1], linewidth=1.5,
-                        label='imaginary part')
+        ax.fill_between(
+            x=time,
+            y1=re,
+            y2=np.zeros_like(time),
+            facecolor=self.style.wave_color[0],
+            alpha=0.3,
+            edgecolor=self.style.wave_color[0],
+            linewidth=1.5,
+            label="real part",
+        )
+        ax.fill_between(
+            x=time,
+            y1=im,
+            y2=np.zeros_like(time),
+            facecolor=self.style.wave_color[1],
+            alpha=0.3,
+            edgecolor=self.style.wave_color[1],
+            linewidth=1.5,
+            label="imaginary part",
+        )
 
         ax.set_xlim(0, pulse.duration * dt)
         if scaling:
@@ -314,14 +342,20 @@ class ScheduleDrawer:
                 except PulseError:
                     pass
 
-        output_channels = {**drive_channels, **measure_channels,
-                           **control_channels, **acquire_channels}
+        output_channels = {
+            **drive_channels,
+            **measure_channels,
+            **control_channels,
+            **acquire_channels,
+        }
         channels = {**output_channels, **acquire_channels, **snapshot_channels}
         # sort by index then name to group qubits together.
-        output_channels = collections.OrderedDict(sorted(output_channels.items(),
-                                                         key=lambda x: (x[0].index, x[0].name)))
-        channels = collections.OrderedDict(sorted(channels.items(),
-                                                  key=lambda x: (x[0].index, x[0].name)))
+        output_channels = collections.OrderedDict(
+            sorted(output_channels.items(), key=lambda x: (x[0].index, x[0].name))
+        )
+        channels = collections.OrderedDict(
+            sorted(channels.items(), key=lambda x: (x[0].index, x[0].name))
+        )
 
         for start_time, instruction in schedule.instructions:
             for channel in instruction.channels:
@@ -331,8 +365,9 @@ class ScheduleDrawer:
                     snapshot_channels[channel].add_instruction(start_time, instruction)
         return channels, output_channels, snapshot_channels
 
-    def _count_valid_waveforms(self, channels, scaling=1, channels_to_plot=None,
-                               plot_all=False):
+    def _count_valid_waveforms(
+        self, channels, scaling=1, channels_to_plot=None, plot_all=False
+    ):
         # count numbers of valid waveform
         n_valid_waveform = 0
         v_max = 0
@@ -340,17 +375,21 @@ class ScheduleDrawer:
             if channels_to_plot:
                 if channel in channels_to_plot:
                     waveform = events.waveform
-                    v_max = max(v_max,
-                                max(np.abs(np.real(waveform))),
-                                max(np.abs(np.imag(waveform))))
+                    v_max = max(
+                        v_max,
+                        max(np.abs(np.real(waveform))),
+                        max(np.abs(np.imag(waveform))),
+                    )
                     n_valid_waveform += 1
                     events.enable = True
             else:
                 if not events.is_empty() or plot_all:
                     waveform = events.waveform
-                    v_max = max(v_max,
-                                max(np.abs(np.real(waveform))),
-                                max(np.abs(np.imag(waveform))))
+                    v_max = max(
+                        v_max,
+                        max(np.abs(np.real(waveform))),
+                        max(np.abs(np.imag(waveform))),
+                    )
                     n_valid_waveform += 1
                     events.enable = True
         if scaling:
@@ -374,11 +413,11 @@ class ScheduleDrawer:
         if table_data:
             # table area size
             ncols = self.style.table_columns
-            nrows = int(np.ceil(len(table_data)/ncols))
+            nrows = int(np.ceil(len(table_data) / ncols))
 
             # fig size
             h_table = nrows * self.style.fig_unit_h_table
-            h_waves = (self.style.figsize[1] - h_table)
+            h_waves = self.style.figsize[1] - h_table
 
             # create subplots
             gs = gridspec.GridSpec(2, 1, height_ratios=[h_table, h_waves], hspace=0)
@@ -386,25 +425,27 @@ class ScheduleDrawer:
             ax = plt.subplot(gs[1])
 
             # configure each cell
-            tb.axis('off')
-            cell_value = [['' for _kk in range(ncols * 3)] for _jj in range(nrows)]
+            tb.axis("off")
+            cell_value = [["" for _kk in range(ncols * 3)] for _jj in range(nrows)]
             cell_color = [self.style.table_color * ncols for _jj in range(nrows)]
             cell_width = [*([0.2, 0.2, 0.5] * ncols)]
             for ii, data in enumerate(table_data):
                 # pylint: disable=unbalanced-tuple-unpacking
-                r, c = np.unravel_index(ii, (nrows, ncols), order='f')
+                r, c = np.unravel_index(ii, (nrows, ncols), order="f")
                 # pylint: enable=unbalanced-tuple-unpacking
                 time, ch_name, data_str = data
                 # item
-                cell_value[r][3 * c + 0] = 't = %s' % time * dt
-                cell_value[r][3 * c + 1] = 'ch %s' % ch_name
+                cell_value[r][3 * c + 0] = "t = %s" % time * dt
+                cell_value[r][3 * c + 1] = "ch %s" % ch_name
                 cell_value[r][3 * c + 2] = data_str
-            table = tb.table(cellText=cell_value,
-                             cellLoc='left',
-                             rowLoc='center',
-                             colWidths=cell_width,
-                             bbox=[0, 0, 1, 1],
-                             cellColours=cell_color)
+            table = tb.table(
+                cellText=cell_value,
+                cellLoc="left",
+                rowLoc="center",
+                colWidths=cell_width,
+                bbox=[0, 0, 1, 1],
+                cellColours=cell_color,
+            )
             table.auto_set_font_size(False)
             table.set_fontsize = self.style.table_font_size
         else:
@@ -419,15 +460,25 @@ class ScheduleDrawer:
             snapshots = events.snapshots
             if snapshots:
                 for time in snapshots:
-                    ax.annotate(s=u"\u25D8", xy=(time*dt, y0), xytext=(time*dt, y0+0.08),
-                                arrowprops={'arrowstyle': 'wedge'}, ha='center')
+                    ax.annotate(
+                        s="\u25D8",
+                        xy=(time * dt, y0),
+                        xytext=(time * dt, y0 + 0.08),
+                        arrowprops={"arrowstyle": "wedge"},
+                        ha="center",
+                    )
 
     def _draw_framechanges(self, ax, fcs, dt, y0):
         framechanges_present = True
         for time in fcs.keys():
-            ax.text(x=time*dt, y=y0, s=r'$\circlearrowleft$',
-                    fontsize=self.style.icon_font_size,
-                    ha='center', va='center')
+            ax.text(
+                x=time * dt,
+                y=y0,
+                s=r"$\circlearrowleft$",
+                fontsize=self.style.icon_font_size,
+                ha="center",
+                va="center",
+            )
         return framechanges_present
 
     def _get_channel_color(self, channel):
@@ -441,7 +492,7 @@ class ScheduleDrawer:
         elif isinstance(channel, AcquireChannel):
             color = self.style.a_ch_color
         else:
-            color = 'black'
+            color = "black"
         return color
 
     def _prev_label_at_time(self, prev_labels, time):
@@ -454,31 +505,46 @@ class ScheduleDrawer:
     def _draw_labels(self, ax, labels, prev_labels, dt, y0):
         for t0, (tf, cmd) in labels.items():
             if isinstance(cmd, PersistentValue):
-                name = cmd.name if cmd.name else 'pv'
+                name = cmd.name if cmd.name else "pv"
             elif isinstance(cmd, Acquire):
-                name = cmd.name if cmd.name else 'acquire'
+                name = cmd.name if cmd.name else "acquire"
             else:
                 name = cmd.name
 
-            ax.annotate(r'%s' % name,
-                        xy=((t0+tf)//2*dt, y0),
-                        xytext=((t0+tf)//2*dt, y0-0.07),
-                        fontsize=self.style.label_font_size,
-                        ha='center', va='center')
+            ax.annotate(
+                r"%s" % name,
+                xy=((t0 + tf) // 2 * dt, y0),
+                xytext=((t0 + tf) // 2 * dt, y0 - 0.07),
+                fontsize=self.style.label_font_size,
+                ha="center",
+                va="center",
+            )
 
             linestyle = self.style.label_ch_linestyle
             alpha = self.style.label_ch_alpha
             color = self.style.label_ch_color
 
             if not self._prev_label_at_time(prev_labels, t0):
-                ax.axvline(t0*dt, -1, 1, color=color,
-                           linestyle=linestyle, alpha=alpha)
+                ax.axvline(
+                    t0 * dt, -1, 1, color=color, linestyle=linestyle, alpha=alpha
+                )
             if not (self._prev_label_at_time(prev_labels, tf) or tf in labels):
-                ax.axvline(tf*dt, -1, 1, color=color,
-                           linestyle=linestyle, alpha=alpha)
+                ax.axvline(
+                    tf * dt, -1, 1, color=color, linestyle=linestyle, alpha=alpha
+                )
 
-    def _draw_channels(self, ax, output_channels, interp_method, t0, tf, dt, v_max,
-                       label=False, framechange=True):
+    def _draw_channels(
+        self,
+        ax,
+        output_channels,
+        interp_method,
+        t0,
+        tf,
+        dt,
+        v_max,
+        label=False,
+        framechange=True,
+    ):
         y0 = 0
         prev_labels = []
         for channel, events in output_channels.items():
@@ -493,15 +559,27 @@ class ScheduleDrawer:
                 im = v_max * im + y0
                 offset = np.zeros_like(time) + y0
                 # plot
-                ax.fill_between(x=time, y1=re, y2=offset,
-                                facecolor=color[0], alpha=0.3,
-                                edgecolor=color[0], linewidth=1.5,
-                                label='real part')
-                ax.fill_between(x=time, y1=im, y2=offset,
-                                facecolor=color[1], alpha=0.3,
-                                edgecolor=color[1], linewidth=1.5,
-                                label='imaginary part')
-                ax.plot((t0, tf), (y0, y0), color='#000000', linewidth=1.0)
+                ax.fill_between(
+                    x=time,
+                    y1=re,
+                    y2=offset,
+                    facecolor=color[0],
+                    alpha=0.3,
+                    edgecolor=color[0],
+                    linewidth=1.5,
+                    label="real part",
+                )
+                ax.fill_between(
+                    x=time,
+                    y1=im,
+                    y2=offset,
+                    facecolor=color[1],
+                    alpha=0.3,
+                    edgecolor=color[1],
+                    linewidth=1.5,
+                    label="imaginary part",
+                )
+                ax.plot((t0, tf), (y0, y0), color="#000000", linewidth=1.0)
 
                 # plot frame changes
                 fcs = events.framechanges
@@ -516,16 +594,31 @@ class ScheduleDrawer:
             else:
                 continue
             # plot label
-            ax.text(x=0, y=y0, s=channel.name,
-                    fontsize=self.style.axis_font_size,
-                    ha='right', va='center')
+            ax.text(
+                x=0,
+                y=y0,
+                s=channel.name,
+                fontsize=self.style.axis_font_size,
+                ha="right",
+                va="center",
+            )
 
             y0 -= 1
         return y0
 
-    def draw(self, schedule, dt, interp_method, plot_range,
-             scaling=1, channels_to_plot=None, plot_all=True,
-             table=True, label=False, framechange=True):
+    def draw(
+        self,
+        schedule,
+        dt,
+        interp_method,
+        plot_range,
+        scaling=1,
+        channels_to_plot=None,
+        plot_all=True,
+        table=True,
+        label=False,
+        framechange=True,
+    ):
         """Draw figure.
         Args:
             schedule (ScheduleComponent): Schedule to draw
@@ -553,19 +646,23 @@ class ScheduleDrawer:
 
         # setup plot range
         if plot_range:
-            t0 = int(np.floor(plot_range[0]/dt))
-            tf = int(np.floor(plot_range[1]/dt))
+            t0 = int(np.floor(plot_range[0] / dt))
+            tf = int(np.floor(plot_range[1] / dt))
         else:
             t0 = 0
             tf = schedule.stop_time
         # prepare waveform channels
-        (channels, output_channels,
-         snapshot_channels) = self._build_channels(schedule, t0, tf)
+        (channels, output_channels, snapshot_channels) = self._build_channels(
+            schedule, t0, tf
+        )
 
         # count numbers of valid waveform
-        n_valid_waveform, v_max = self._count_valid_waveforms(output_channels, scaling=scaling,
-                                                              channels_to_plot=channels_to_plot,
-                                                              plot_all=plot_all)
+        n_valid_waveform, v_max = self._count_valid_waveforms(
+            output_channels,
+            scaling=scaling,
+            channels_to_plot=channels_to_plot,
+            plot_all=plot_all,
+        )
 
         if table:
             ax = self._draw_table(figure, channels, dt, n_valid_waveform)
@@ -576,9 +673,17 @@ class ScheduleDrawer:
 
         ax.set_facecolor(self.style.bg_color)
 
-        y0 = self._draw_channels(ax, output_channels, interp_method,
-                                 t0, tf, dt, v_max, label=label,
-                                 framechange=framechange)
+        y0 = self._draw_channels(
+            ax,
+            output_channels,
+            interp_method,
+            t0,
+            tf,
+            dt,
+            v_max,
+            label=label,
+            framechange=framechange,
+        )
 
         self._draw_snapshots(ax, snapshot_channels, dt, y0)
 

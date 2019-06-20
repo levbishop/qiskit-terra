@@ -16,7 +16,13 @@
 
 import unittest.mock
 from qiskit.test import QiskitTestCase
-from ._dummy_passes import DummyAP, DummyTP, PassA_TP_NR_NP, PassD_TP_NR_NP, PassE_AP_NR_NP
+from ._dummy_passes import (
+    DummyAP,
+    DummyTP,
+    PassA_TP_NR_NP,
+    PassD_TP_NR_NP,
+    PassE_AP_NR_NP,
+)
 
 
 class TestGenericPass(QiskitTestCase):
@@ -80,5 +86,5 @@ class TestGenericPass(QiskitTestCase):
         self.assertNotEqual(PassE_AP_NR_NP(True), PassE_AP_NR_NP(1))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

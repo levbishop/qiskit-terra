@@ -34,6 +34,7 @@ class TestConsolidateBlocks(QiskitTestCase):
     Tests to verify that consolidating blocks of gates into unitaries
     works correctly.
     """
+
     def test_consolidate_small_block(self):
         """test a small block of gates can be turned into a unitary on same wires"""
         qr = QuantumRegister(2, "qr")
@@ -44,14 +45,16 @@ class TestConsolidateBlocks(QiskitTestCase):
         dag = circuit_to_dag(qc)
 
         pass_ = ConsolidateBlocks()
-        pass_.property_set['block_list'] = [list(dag.topological_op_nodes())]
+        pass_.property_set["block_list"] = [list(dag.topological_op_nodes())]
         new_dag = pass_.run(dag)
 
         sim = UnitarySimulatorPy()
         result = execute(qc, sim).result()
         unitary = UnitaryGate(result.get_unitary())
         self.assertEqual(len(new_dag.op_nodes()), 1)
-        fidelity = process_fidelity(new_dag.op_nodes()[0].op.to_matrix(), unitary.to_matrix())
+        fidelity = process_fidelity(
+            new_dag.op_nodes()[0].op.to_matrix(), unitary.to_matrix()
+        )
         self.assertAlmostEqual(fidelity, 1.0, places=7)
 
     def test_wire_order(self):
@@ -62,17 +65,17 @@ class TestConsolidateBlocks(QiskitTestCase):
         dag = circuit_to_dag(qc)
 
         pass_ = ConsolidateBlocks()
-        pass_.property_set['block_list'] = [dag.op_nodes()]
+        pass_.property_set["block_list"] = [dag.op_nodes()]
         new_dag = pass_.run(dag)
 
         new_node = new_dag.op_nodes()[0]
         self.assertEqual(new_node.qargs, [qr[0], qr[1]])
         # the canonical CNOT matrix occurs when the control is more
         # significant than target, which is the case here
-        fidelity = process_fidelity(new_node.op.to_matrix(), np.array([[1, 0, 0, 0],
-                                                                       [0, 1, 0, 0],
-                                                                       [0, 0, 0, 1],
-                                                                       [0, 0, 1, 0]]))
+        fidelity = process_fidelity(
+            new_node.op.to_matrix(),
+            np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]),
+        )
         self.assertAlmostEqual(fidelity, 1.0, places=7)
 
     def test_topological_order_preserved(self):
@@ -96,10 +99,10 @@ class TestConsolidateBlocks(QiskitTestCase):
         topo_ops = list(dag.topological_op_nodes())
         block_1 = [topo_ops[1], topo_ops[2]]
         block_2 = [topo_ops[0], topo_ops[3]]
-        pass_.property_set['block_list'] = [block_1, block_2]
+        pass_.property_set["block_list"] = [block_1, block_2]
         new_dag = pass_.run(dag)
 
-        new_topo_ops = [i for i in new_dag.topological_op_nodes() if i.type == 'op']
+        new_topo_ops = [i for i in new_dag.topological_op_nodes() if i.type == "op"]
         self.assertEqual(len(new_topo_ops), 2)
         self.assertEqual(new_topo_ops[0].qargs, [qr[1], qr[2]])
         self.assertEqual(new_topo_ops[1].qargs, [qr[0], qr[1]])
@@ -115,14 +118,16 @@ class TestConsolidateBlocks(QiskitTestCase):
         dag = circuit_to_dag(qc)
 
         pass_ = ConsolidateBlocks()
-        pass_.property_set['block_list'] = [list(dag.topological_op_nodes())]
+        pass_.property_set["block_list"] = [list(dag.topological_op_nodes())]
         new_dag = pass_.run(dag)
 
         sim = UnitarySimulatorPy()
         result = execute(qc, sim).result()
         unitary = UnitaryGate(result.get_unitary())
         self.assertEqual(len(new_dag.op_nodes()), 1)
-        fidelity = process_fidelity(new_dag.op_nodes()[0].op.to_matrix(), unitary.to_matrix())
+        fidelity = process_fidelity(
+            new_dag.op_nodes()[0].op.to_matrix(), unitary.to_matrix()
+        )
         self.assertAlmostEqual(fidelity, 1.0, places=7)
 
     def test_block_spanning_two_regs(self):
@@ -136,16 +141,18 @@ class TestConsolidateBlocks(QiskitTestCase):
         dag = circuit_to_dag(qc)
 
         pass_ = ConsolidateBlocks()
-        pass_.property_set['block_list'] = [list(dag.topological_op_nodes())]
+        pass_.property_set["block_list"] = [list(dag.topological_op_nodes())]
         new_dag = pass_.run(dag)
 
         sim = UnitarySimulatorPy()
         result = execute(qc, sim).result()
         unitary = UnitaryGate(result.get_unitary())
         self.assertEqual(len(new_dag.op_nodes()), 1)
-        fidelity = process_fidelity(new_dag.op_nodes()[0].op.to_matrix(), unitary.to_matrix())
+        fidelity = process_fidelity(
+            new_dag.op_nodes()[0].op.to_matrix(), unitary.to_matrix()
+        )
         self.assertAlmostEqual(fidelity, 1.0, places=7)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

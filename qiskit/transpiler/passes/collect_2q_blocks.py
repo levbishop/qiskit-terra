@@ -34,6 +34,7 @@ from qiskit.transpiler.basepasses import AnalysisPass
 class Collect2qBlocks(AnalysisPass):
     """Pass to collect sequences of uninterrupted gates acting on 2 qubits.
     """
+
     def run(self, dag):
         """collect blocks of adjacent gates acting on a pair of "cx" qubits.
 
@@ -46,7 +47,7 @@ class Collect2qBlocks(AnalysisPass):
         Return a list of tuples of "op" node labels.
         """
         # Initiate the commutation set
-        self.property_set['commutation_set'] = defaultdict(list)
+        self.property_set["commutation_set"] = defaultdict(list)
 
         good_names = ["cx", "u1", "u2", "u3", "id"]
         block_list = []
@@ -66,8 +67,9 @@ class Collect2qBlocks(AnalysisPass):
                     if len(pred) == 1 and not nodes_seen[pred[0]]:
                         pnd = pred[0]
                         if pnd.name in good_names:
-                            if (pnd.name == "cx" and set(pnd.qargs) == these_qubits) or \
-                                    pnd.name != "cx":
+                            if (
+                                pnd.name == "cx" and set(pnd.qargs) == these_qubits
+                            ) or pnd.name != "cx":
                                 group.append(pnd)
                                 nodes_seen[pnd] = True
                                 pred_next.extend(dag.predecessors(pnd))
@@ -75,21 +77,30 @@ class Collect2qBlocks(AnalysisPass):
                     elif len(pred) == 2:
                         # First, check if there is a relationship
                         if pred[0] in dag.predecessors(pred[1]):
-                            sorted_pred = [pred[1]]   # was [pred[1], pred[0]]
+                            sorted_pred = [pred[1]]  # was [pred[1], pred[0]]
                         elif pred[1] in dag.predecessors(pred[0]):
-                            sorted_pred = [pred[0]]   # was [pred[0], pred[1]]
+                            sorted_pred = [pred[0]]  # was [pred[0], pred[1]]
                         else:
                             # We need to avoid accidentally adding a cx on these_qubits
                             # since these must have a dependency through the other predecessor
                             # in this case
-                            if pred[0].name == "cx" and set(pred[0].qargs) == these_qubits:
+                            if (
+                                pred[0].name == "cx"
+                                and set(pred[0].qargs) == these_qubits
+                            ):
                                 sorted_pred = [pred[1]]
-                            elif pred[1].name == "cx" and set(pred[1].qargs) == these_qubits:
+                            elif (
+                                pred[1].name == "cx"
+                                and set(pred[1].qargs) == these_qubits
+                            ):
                                 sorted_pred = [pred[0]]
                             else:
                                 sorted_pred = pred
-                        if len(sorted_pred) == 2 and sorted_pred[0].name == "cx" and \
-                           sorted_pred[1].name == "cx":
+                        if (
+                            len(sorted_pred) == 2
+                            and sorted_pred[0].name == "cx"
+                            and sorted_pred[1].name == "cx"
+                        ):
                             break  # stop immediately if we hit a pair of cx
                         # Examine each predecessor
                         for pnd in sorted_pred:
@@ -112,8 +123,9 @@ class Collect2qBlocks(AnalysisPass):
                                         pred_next.extend(dag.predecessors(pnd))
                                 else:
                                     # remove qubit from consideration if not
-                                    these_qubits = list(set(these_qubits) -
-                                                        set(pred_qubits))
+                                    these_qubits = list(
+                                        set(these_qubits) - set(pred_qubits)
+                                    )
                     # Update predecessors
                     # Stop if there aren't any more
                     pred = list(set(pred_next))
@@ -134,8 +146,9 @@ class Collect2qBlocks(AnalysisPass):
                     if len(succ) == 1 and not nodes_seen[succ[0]]:
                         snd = succ[0]
                         if snd.name in good_names:
-                            if (snd.name == "cx" and set(snd.qargs) == these_qubits) or \
-                                    snd.name != "cx":
+                            if (
+                                snd.name == "cx" and set(snd.qargs) == these_qubits
+                            ) or snd.name != "cx":
                                 group.append(snd)
                                 nodes_seen[snd] = True
                                 succ_next.extend(dag.successors(snd))
@@ -150,15 +163,23 @@ class Collect2qBlocks(AnalysisPass):
                             # We need to avoid accidentally adding a cx on these_qubits
                             # since these must have a dependency through the other successor
                             # in this case
-                            if succ[0].name == "cx" and set(succ[0].qargs) == these_qubits:
+                            if (
+                                succ[0].name == "cx"
+                                and set(succ[0].qargs) == these_qubits
+                            ):
                                 sorted_succ = [succ[1]]
-                            elif succ[1].name == "cx" and set(succ[1].qargs) == these_qubits:
+                            elif (
+                                succ[1].name == "cx"
+                                and set(succ[1].qargs) == these_qubits
+                            ):
                                 sorted_succ = [succ[0]]
                             else:
                                 sorted_succ = succ
-                        if len(sorted_succ) == 2 and \
-                           sorted_succ[0].name == "cx" and \
-                           sorted_succ[1].name == "cx":
+                        if (
+                            len(sorted_succ) == 2
+                            and sorted_succ[0].name == "cx"
+                            and sorted_succ[1].name == "cx"
+                        ):
                             break  # stop immediately if we hit a pair of cx
                         # Examine each successor
                         for snd in sorted_succ:
@@ -181,8 +202,9 @@ class Collect2qBlocks(AnalysisPass):
                                         succ_next.extend(dag.successors(snd))
                                 else:
                                     # remove qubit from consideration if not
-                                    these_qubits = list(set(these_qubits) -
-                                                        set(succ_qubits))
+                                    these_qubits = list(
+                                        set(these_qubits) - set(succ_qubits)
+                                    )
                     # Update successors
                     # Stop if there aren't any more
                     succ = list(set(succ_next))
@@ -191,6 +213,6 @@ class Collect2qBlocks(AnalysisPass):
 
                 block_list.append(tuple(group))
 
-        self.property_set['block_list'] = block_list
+        self.property_set["block_list"] = block_list
 
         return dag

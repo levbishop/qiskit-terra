@@ -37,7 +37,7 @@ class TestOptimize1qGates(QiskitTestCase):
 
         See: https://github.com/Qiskit/qiskit-terra/issues/2373
         """
-        qr = QuantumRegister(1, 'qr')
+        qr = QuantumRegister(1, "qr")
         circuit = QuantumCircuit(qr)
         circuit.iden(qr)
         circuit.iden(qr)
@@ -50,7 +50,7 @@ class TestOptimize1qGates(QiskitTestCase):
 
     def test_optimize_h_gates_pass_manager(self):
         """Transpile: qr:--[H]-[H]-[H]-- == qr:--[u2]-- """
-        qr = QuantumRegister(1, 'qr')
+        qr = QuantumRegister(1, "qr")
         circuit = QuantumCircuit(qr)
         circuit.h(qr[0])
         circuit.h(qr[0])
@@ -60,7 +60,7 @@ class TestOptimize1qGates(QiskitTestCase):
         expected.u2(0, np.pi, qr[0])
 
         passmanager = PassManager()
-        passmanager.append(Unroller(['u2']))
+        passmanager.append(Unroller(["u2"]))
         passmanager.append(Optimize1qGates())
         result = transpile(circuit, FakeRueschlikon(), pass_manager=passmanager)
 
@@ -71,15 +71,15 @@ class TestOptimize1qGates(QiskitTestCase):
 
         See: https://github.com/Qiskit/qiskit-terra/issues/159
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(2, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(2, "cr")
         qc = QuantumCircuit(qr, cr)
         qc.h(qr[0])
         qc.cx(qr[1], qr[0])
         qc.u1(2 * sympy.pi, qr[0])
         qc.cx(qr[1], qr[0])
         qc.u1(sympy.pi / 2, qr[0])  # these three should combine
-        qc.u1(sympy.pi, qr[0])      # to identity then
+        qc.u1(sympy.pi, qr[0])  # to identity then
         qc.u1(sympy.pi / 2, qr[0])  # optimized away.
         qc.cx(qr[1], qr[0])
         qc.u1(np.pi, qr[1])
@@ -90,7 +90,7 @@ class TestOptimize1qGates(QiskitTestCase):
         dag = circuit_to_dag(qc)
         simplified_dag = Optimize1qGates().run(dag)
 
-        num_u1_gates_remaining = len(simplified_dag.named_nodes('u1'))
+        num_u1_gates_remaining = len(simplified_dag.named_nodes("u1"))
         self.assertEqual(num_u1_gates_remaining, 0)
 
     def test_optimize_1q_gates_sympy_expressions(self):
@@ -118,13 +118,15 @@ class TestOptimize1qGates(QiskitTestCase):
         simplified_dag = Optimize1qGates().run(dag)
 
         params = set()
-        for node in simplified_dag.named_nodes('u1'):
+        for node in simplified_dag.named_nodes("u1"):
             params.add(node.op.params[0])
 
-        expected_params = {sympy.Number(-3 * np.pi / 2),
-                           sympy.Number(1.0 + 0.55 * np.pi),
-                           sympy.Number(-0.479425538604203),
-                           sympy.Number(0.3 + np.pi + np.pi ** 2)}
+        expected_params = {
+            sympy.Number(-3 * np.pi / 2),
+            sympy.Number(1.0 + 0.55 * np.pi),
+            sympy.Number(-0.479425538604203),
+            sympy.Number(0.3 + np.pi + np.pi ** 2),
+        }
 
         self.assertEqual(params, expected_params)
 
@@ -137,8 +139,8 @@ class TestOptimize1qGates(QiskitTestCase):
                     ||                            ||
         cr1:========.=============    cr1:========.===
         """
-        qr = QuantumRegister(1, 'qr')
-        cr = ClassicalRegister(2, 'cr')
+        qr = QuantumRegister(1, "qr")
+        cr = ClassicalRegister(2, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.u1(0.1, qr).c_if(cr, 1)
         circuit.u1(0.2, qr).c_if(cr, 3)
@@ -162,14 +164,14 @@ class TestOptimize1qGates(QiskitTestCase):
 
         qr0:--[U1]-[U1]-[H]--    qr0:--[U1]-[H]--
         """
-        qr = QuantumRegister(1, 'qr')
+        qr = QuantumRegister(1, "qr")
         circuit = QuantumCircuit(qr)
         circuit.u1(0.3, qr)
         circuit.u1(0.4, qr)
         circuit.h(qr)
         dag = circuit_to_dag(circuit)
 
-        expected = QuantumCircuit(qr,)
+        expected = QuantumCircuit(qr)
         expected.u1(0.7, qr)
         expected.h(qr)
 
@@ -182,7 +184,7 @@ class TestOptimize1qGates(QiskitTestCase):
         """Parameters should be treated as opaque gates."""
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
-        theta = Parameter('theta')
+        theta = Parameter("theta")
 
         qc.u1(0.3, qr)
         qc.u1(0.4, qr)
@@ -204,7 +206,7 @@ class TestOptimize1qGates(QiskitTestCase):
         """Parameters should be treated as opaque gates."""
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
-        theta = Parameter('theta')
+        theta = Parameter("theta")
 
         qc.u1(0.3, qr)
         qc.u1(0.4, qr)
@@ -229,5 +231,5 @@ class TestOptimize1qGates(QiskitTestCase):
         self.assertEqual(circuit_to_dag(expected), after)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

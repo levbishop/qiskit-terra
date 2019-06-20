@@ -34,6 +34,8 @@ def circuit_to_dag(circuit):
         dagcircuit.add_creg(register)
 
     for instruction, qargs, cargs in circuit.data:
-        dagcircuit.apply_operation_back(instruction.copy(), qargs, cargs, instruction.control)
+        dagcircuit.apply_operation_back(
+            instruction.copy(), qargs, cargs, instruction.control
+        )
 
     return dagcircuit

@@ -49,8 +49,7 @@ class BasePolyField(PolyField, ModelTypeValidator):
         elif isinstance(choices, (list, tuple)):
             self._choices = list(choices)
         else:
-            raise ValueError(
-                '`choices` parameter must be a dict, a list or a tuple')
+            raise ValueError("`choices` parameter must be a dict, a list or a tuple")
 
         to_dict_selector = partial(self.to_dict_selector, choices)
         from_dict_selector = partial(self.from_dict_selector, choices)
@@ -70,8 +69,8 @@ class BasePolyField(PolyField, ModelTypeValidator):
         try:
             return super()._deserialize(value, attr, data)
         except ValidationError as ex:
-            if 'deserialization_schema_selector' in ex.messages[0]:
-                ex.messages[0] = 'Cannot find a valid schema among the choices'
+            if "deserialization_schema_selector" in ex.messages[0]:
+                ex.messages[0] = "Cannot find a valid schema among the choices"
             raise
 
     def _serialize(self, value, key, obj):
@@ -79,8 +78,8 @@ class BasePolyField(PolyField, ModelTypeValidator):
         try:
             return super()._serialize(value, key, obj)
         except TypeError as ex:
-            if 'serialization_schema_selector' in str(ex):
-                raise ValidationError('Data from an invalid schema')
+            if "serialization_schema_selector" in str(ex):
+                raise ValidationError("Data from an invalid schema")
             raise
 
     def _expected_types(self):
@@ -93,7 +92,8 @@ class BasePolyField(PolyField, ModelTypeValidator):
         """
         if self.many and not is_collection(value):
             raise self._not_expected_type(
-                value, Iterable, fields=[self], field_names=attr, data=data)
+                value, Iterable, fields=[self], field_names=attr, data=data
+            )
 
         _check_type = super().check_type
 
@@ -134,7 +134,7 @@ class TryFrom(BasePolyField):
 
     def to_dict_selector(self, choices, base_object, *_):
         # pylint: disable=arguments-differ
-        if getattr(base_object, 'schema'):
+        if getattr(base_object, "schema"):
             if base_object.schema.__class__ in choices:
                 return base_object.schema
 
@@ -174,7 +174,7 @@ class ByAttribute(BasePolyField):
 
     def to_dict_selector(self, choices, base_object, *_):
         # pylint: disable=arguments-differ
-        if getattr(base_object, 'schema'):
+        if getattr(base_object, "schema"):
             if base_object.schema.__class__ in choices.values():
                 return base_object.schema
 
@@ -208,7 +208,7 @@ class ByType(ModelTypeValidator):
     """
 
     default_error_messages = {
-        'invalid': 'Value {value} does not fit any of the types {types}.'
+        "invalid": "Value {value} does not fit any of the types {types}."
     }
 
     def __init__(self, choices, *args, **kwargs):
@@ -222,7 +222,7 @@ class ByType(ModelTypeValidator):
             except ValidationError:
                 pass
 
-        self.fail('invalid', value=value, types=self.choices)
+        self.fail("invalid", value=value, types=self.choices)
 
     def _deserialize(self, value, attr, data):
         for field in self.choices:
@@ -231,7 +231,7 @@ class ByType(ModelTypeValidator):
             except ValidationError:
                 pass
 
-        self.fail('invalid', value=value, types=self.choices)
+        self.fail("invalid", value=value, types=self.choices)
 
     def check_type(self, value, attr, data):
         """Check if at least one of the possible choices validates the value.
@@ -246,5 +246,9 @@ class ByType(ModelTypeValidator):
                     pass
 
         raise self._not_expected_type(
-            value, [field.__class__ for field in self.choices],
-            fields=[self], field_names=attr, data=data)
+            value,
+            [field.__class__ for field in self.choices],
+            fields=[self],
+            field_names=attr,
+            data=data,
+        )

@@ -35,7 +35,9 @@ from typing import Callable
 import numpy as np
 
 
-def left_sample(continuous_pulse: Callable, duration: int, *args, **kwargs) -> np.ndarray:
+def left_sample(
+    continuous_pulse: Callable, duration: int, *args, **kwargs
+) -> np.ndarray:
     """Left sample a continuous function.
     Args:
         continuous_pulse: Continuous pulse function to sample.
@@ -47,7 +49,9 @@ def left_sample(continuous_pulse: Callable, duration: int, *args, **kwargs) -> n
     return continuous_pulse(times, *args, **kwargs)
 
 
-def right_sample(continuous_pulse: Callable, duration: int, *args, **kwargs) -> np.ndarray:
+def right_sample(
+    continuous_pulse: Callable, duration: int, *args, **kwargs
+) -> np.ndarray:
     """Sampling strategy for decorator.
     Args:
         continuous_pulse: Continuous pulse function to sample.
@@ -55,11 +59,13 @@ def right_sample(continuous_pulse: Callable, duration: int, *args, **kwargs) -> 
         *args: Continuous pulse function args.
         **kwargs: Continuous pulse function kwargs.
     """
-    times = np.arange(1, duration+1)
+    times = np.arange(1, duration + 1)
     return continuous_pulse(times, *args, **kwargs)
 
 
-def midpoint_sample(continuous_pulse: Callable, duration: int, *args, **kwargs) -> np.ndarray:
+def midpoint_sample(
+    continuous_pulse: Callable, duration: int, *args, **kwargs
+) -> np.ndarray:
     """Sampling strategy for decorator.
     Args:
         continuous_pulse: Continuous pulse function to sample.
@@ -67,5 +73,5 @@ def midpoint_sample(continuous_pulse: Callable, duration: int, *args, **kwargs) 
         *args: Continuous pulse function args.
         **kwargs: Continuous pulse function kwargs.
     """
-    times = np.arange(1/2, duration + 1/2)
+    times = np.arange(1 / 2, duration + 1 / 2)
     return continuous_pulse(times, *args, **kwargs)

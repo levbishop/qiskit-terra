@@ -25,8 +25,10 @@ class JobStatusSchema(BaseSchema):
 
     # Required properties.
     job_id = String(required=True)
-    status = String(required=True,
-                    validate=OneOf(['DONE', 'QUEUED', 'CANCELLED', 'RUNNING', 'ERROR']))
+    status = String(
+        required=True,
+        validate=OneOf(["DONE", "QUEUED", "CANCELLED", "RUNNING", "ERROR"]),
+    )
     status_msg = String(required=True)
 
 

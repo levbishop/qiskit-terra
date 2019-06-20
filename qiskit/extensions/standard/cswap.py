@@ -42,7 +42,7 @@ class FredkinGate(Gate):
         rule = [
             (CnotGate(), [q[2], q[1]], []),
             (ToffoliGate(), [q[0], q[1], q[2]], []),
-            (CnotGate(), [q[2], q[1]], [])
+            (CnotGate(), [q[2], q[1]], []),
         ]
         for inst in rule:
             definition.append(inst)

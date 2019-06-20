@@ -67,7 +67,7 @@ def level_1_pass_manager(transpile_config):
     _given_layout = SetLayout(initial_layout)
 
     def _choose_layout_condition(property_set):
-        return not property_set['layout']
+        return not property_set["layout"]
 
     _choose_layout = TrivialLayout(coupling_map)
 
@@ -75,7 +75,7 @@ def level_1_pass_manager(transpile_config):
     _layout_check = CheckMap(coupling_map)
 
     def _improve_layout_condition(property_set):
-        return not property_set['is_swap_mapped']
+        return not property_set["is_swap_mapped"]
 
     _improve_layout = DenseLayout(coupling_map)
 
@@ -89,26 +89,29 @@ def level_1_pass_manager(transpile_config):
     _swap_check = CheckMap(coupling_map)
 
     def _swap_condition(property_set):
-        return not property_set['is_swap_mapped']
+        return not property_set["is_swap_mapped"]
 
-    _swap = [BarrierBeforeFinalMeasurements(),
-             LegacySwap(coupling_map, trials=20, seed=seed_transpiler),
-             Decompose(SwapGate)]
+    _swap = [
+        BarrierBeforeFinalMeasurements(),
+        LegacySwap(coupling_map, trials=20, seed=seed_transpiler),
+        Decompose(SwapGate),
+    ]
 
     # 5. Fix any bad CX directions
     # _direction_check = CheckCXDirection(coupling_map)  # TODO
     def _direction_condition(property_set):
-        return not coupling_map.is_symmetric and not property_set['is_direction_mapped']
+        return not coupling_map.is_symmetric and not property_set["is_direction_mapped"]
+
     _direction = [CXDirection(coupling_map)]
 
     # 6. Remove zero-state reset
     _reset = RemoveResetInZeroState()
 
     # 7. Merge 1q rotations and cancel CNOT gates iteratively until no more change in depth
-    _depth_check = [Depth(), FixedPoint('depth')]
+    _depth_check = [Depth(), FixedPoint("depth")]
 
     def _opt_control(property_set):
-        return not property_set['depth_fixed_point']
+        return not property_set["depth_fixed_point"]
 
     _opt = [Optimize1qGates(), CXCancellation()]
 

@@ -27,7 +27,7 @@ class Qreg(Node):
 
     def __init__(self, children):
         """Create the qreg node."""
-        super().__init__('qreg', children, None)
+        super().__init__("qreg", children, None)
         # This is the indexed id, the full "id[n]" object
         self.id = children[0]
         # Name of the qreg
@@ -41,8 +41,8 @@ class Qreg(Node):
 
     def to_string(self, indent):
         """Print the node data, with indent."""
-        ind = indent * ' '
-        print(ind, 'qreg')
+        ind = indent * " "
+        print(ind, "qreg")
         self.children[0].to_string(indent + 3)
 
     def qasm(self, prec=15):

@@ -29,16 +29,19 @@ class Qubit(Bit):
         if isinstance(register, QuantumRegister):
             super().__init__(register, index)
         else:
-            raise QiskitError('Qubit needs a QuantumRegister and %s was provided' %
-                              type(register).__name__)
+            raise QiskitError(
+                "Qubit needs a QuantumRegister and %s was provided"
+                % type(register).__name__
+            )
 
 
 class QuantumRegister(Register):
     """Implement a quantum register."""
+
     # Counter for the number of instances in this class.
     instances_counter = itertools.count()
     # Prefix to use for auto naming.
-    prefix = 'q'
+    prefix = "q"
     bit_type = Qubit
 
     def qasm(self):

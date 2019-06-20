@@ -33,13 +33,20 @@ class TestIsometry(QiskitTestCase):
 
     def test_isometry(self):
         """Tests for the decomposition of isometries from m to n qubits"""
-        for iso in [np.eye(2, 2), random_unitary(2).data, np.eye(4, 4),
-                    random_unitary(4).data[:, 0],
-                    np.eye(4, 4)[:, 0:2], random_unitary(4).data,
-                    np.eye(4, 4)[:, np.random.permutation(np.eye(4, 4).shape[1])][:, 0:2],
-                    np.eye(8, 8)[:, np.random.permutation(np.eye(8, 8).shape[1])],
-                    random_unitary(8).data[:, 0:4], random_unitary(8).data, random_unitary(16).data,
-                    random_unitary(16).data[:, 0:8]]:
+        for iso in [
+            np.eye(2, 2),
+            random_unitary(2).data,
+            np.eye(4, 4),
+            random_unitary(4).data[:, 0],
+            np.eye(4, 4)[:, 0:2],
+            random_unitary(4).data,
+            np.eye(4, 4)[:, np.random.permutation(np.eye(4, 4).shape[1])][:, 0:2],
+            np.eye(8, 8)[:, np.random.permutation(np.eye(8, 8).shape[1])],
+            random_unitary(8).data[:, 0:4],
+            random_unitary(8).data,
+            random_unitary(16).data,
+            random_unitary(16).data[:, 0:8],
+        ]:
             with self.subTest(iso=iso):
                 if len(iso.shape) == 1:
                     iso = iso.reshape((len(iso), 1))
@@ -50,15 +57,17 @@ class TestIsometry(QiskitTestCase):
                 qc = QuantumCircuit(q)
                 qc.iso(iso, q[:num_q_input], q[num_q_input:])
                 # Decompose the gate
-                qc = transpile(qc, basis_gates=['u1', 'u3', 'u2', 'cx', 'id'])
+                qc = transpile(qc, basis_gates=["u1", "u3", "u2", "cx", "id"])
                 # Simulate the decomposed gate
-                simulator = BasicAer.get_backend('unitary_simulator')
+                simulator = BasicAer.get_backend("unitary_simulator")
                 result = execute(qc, simulator).result()
                 unitary = result.get_unitary(qc)
-                iso_from_circuit = unitary[::, 0:2 ** num_q_input]
+                iso_from_circuit = unitary[::, 0 : 2 ** num_q_input]
                 iso_desired = iso
-                self.assertTrue(matrix_equal(iso_from_circuit, iso_desired, ignore_phase=True))
+                self.assertTrue(
+                    matrix_equal(iso_from_circuit, iso_desired, ignore_phase=True)
+                )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -34,6 +34,7 @@ class BackendTestCase(QiskitTestCase):
             ``_get_backend`` function.
         circuit (QuantumCircuit): circuit to be used for the tests.
     """
+
     backend_cls = None
     circuit = ReferenceCircuits.bell()
 
@@ -44,7 +45,7 @@ class BackendTestCase(QiskitTestCase):
     @classmethod
     def setUpClass(cls):
         if cls is BackendTestCase:
-            raise SkipTest('Skipping base class tests')
+            raise SkipTest("Skipping base class tests")
         super().setUpClass()
 
     def _get_backend(self):

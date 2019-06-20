@@ -36,11 +36,13 @@ class TestCircuitOperations(QiskitTestCase):
         qc1.measure(qr[0], cr[0])
         qc2.measure(qr[1], cr[1])
         new_circuit = qc1 + qc2
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         shots = 1024
-        result = execute(new_circuit, backend=backend, shots=shots, seed_simulator=78).result()
+        result = execute(
+            new_circuit, backend=backend, shots=shots, seed_simulator=78
+        ).result()
         counts = result.get_counts()
-        target = {'00': shots / 2, '01': shots / 2}
+        target = {"00": shots / 2, "01": shots / 2}
         threshold = 0.04 * shots
         self.assertDictAlmostEqual(counts, target, threshold)
 
@@ -54,12 +56,13 @@ class TestCircuitOperations(QiskitTestCase):
         qc2 = QuantumCircuit(qr, cr)
         qc2.measure(qr, cr)
         new_circuit = qc1 + qc2
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         shots = 1024
-        result = execute(new_circuit, backend=backend, shots=shots,
-                         seed_simulator=78).result()
+        result = execute(
+            new_circuit, backend=backend, shots=shots, seed_simulator=78
+        ).result()
         counts = result.get_counts()
-        target = {'11': shots}
+        target = {"11": shots}
         self.assertEqual(counts, target)
 
     def test_combine_circuit_fail(self):
@@ -89,12 +92,11 @@ class TestCircuitOperations(QiskitTestCase):
         qc1.measure(qr[0], cr[0])
         qc2.measure(qr[1], cr[1])
         qc1 += qc2
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         shots = 1024
-        result = execute(qc1, backend=backend, shots=shots,
-                         seed_simulator=78).result()
+        result = execute(qc1, backend=backend, shots=shots, seed_simulator=78).result()
         counts = result.get_counts()
-        target = {'00': shots / 2, '01': shots / 2}
+        target = {"00": shots / 2, "01": shots / 2}
         threshold = 0.04 * shots
         self.assertDictAlmostEqual(counts, target, threshold)
 
@@ -108,12 +110,11 @@ class TestCircuitOperations(QiskitTestCase):
         qc2 = QuantumCircuit(qr, cr)
         qc2.measure(qr, cr)
         qc1 += qc2
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         shots = 1024
-        result = execute(qc1, backend=backend, shots=shots,
-                         seed_simulator=78).result()
+        result = execute(qc1, backend=backend, shots=shots, seed_simulator=78).result()
         counts = result.get_counts()
-        target = {'11': shots}
+        target = {"11": shots}
         self.assertEqual(counts, target)
 
     def test_extend_circuit_fail(self):
@@ -138,14 +139,12 @@ class TestCircuitOperations(QiskitTestCase):
         quantum_reg = QuantumRegister(3)
         classical_reg_0 = ClassicalRegister(1)
         classical_reg_1 = ClassicalRegister(2)
-        quantum_circuit = QuantumCircuit(quantum_reg, classical_reg_0,
-                                         classical_reg_1)
+        quantum_circuit = QuantumCircuit(quantum_reg, classical_reg_0, classical_reg_1)
         quantum_circuit.h(quantum_reg)
 
         with self.assertRaises(QiskitError) as ctx:
             quantum_circuit.measure(quantum_reg, classical_reg_1)
-        self.assertEqual(ctx.exception.message,
-                         'register size error')
+        self.assertEqual(ctx.exception.message, "register size error")
 
     def test_copy_circuit(self):
         """ Test copy method makes a copy"""

@@ -26,9 +26,14 @@ class Measure(Node):
 
     def __init__(self, children):
         """Create the measure node."""
-        super().__init__('measure', children, None)
+        super().__init__("measure", children, None)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""
-        return "measure " + self.children[0].qasm(prec) + " -> " + \
-               self.children[1].qasm(prec) + ";"
+        return (
+            "measure "
+            + self.children[0].qasm(prec)
+            + " -> "
+            + self.children[1].qasm(prec)
+            + ";"
+        )

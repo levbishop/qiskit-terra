@@ -38,8 +38,8 @@ class Id(Node):
 
     def to_string(self, indent):
         """Print the node with indent."""
-        ind = indent * ' '
-        print(ind, 'id', self.name)
+        ind = indent * " "
+        print(ind, "id", self.name)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""
@@ -52,28 +52,31 @@ class Id(Node):
             return "\textrm{" + self.name + "}"
         else:
             if self.name not in nested_scope[-1]:
-                raise NodeException("Expected local parameter name: ",
-                                    "name=%s, " % self.name,
-                                    "line=%s, " % self.line,
-                                    "file=%s" % self.file)
+                raise NodeException(
+                    "Expected local parameter name: ",
+                    "name=%s, " % self.name,
+                    "line=%s, " % self.line,
+                    "file=%s" % self.file,
+                )
 
-            return nested_scope[-1][self.name].latex(prec,
-                                                     nested_scope[0:-1])
+            return nested_scope[-1][self.name].latex(prec, nested_scope[0:-1])
 
     def sym(self, nested_scope=None):
         """Return the correspond symbolic number."""
         if not nested_scope or self.name not in nested_scope[-1]:
-            raise NodeException("Expected local parameter name: ",
-                                "name=%s, line=%s, file=%s" % (
-                                    self.name, self.line, self.file))
+            raise NodeException(
+                "Expected local parameter name: ",
+                "name=%s, line=%s, file=%s" % (self.name, self.line, self.file),
+            )
 
         return nested_scope[-1][self.name].sym(nested_scope[0:-1])
 
     def real(self, nested_scope=None):
         """Return the correspond floating point number."""
         if not nested_scope or self.name not in nested_scope[-1]:
-            raise NodeException("Expected local parameter name: ",
-                                "name=%s, line=%s, file=%s" % (
-                                    self.name, self.line, self.file))
+            raise NodeException(
+                "Expected local parameter name: ",
+                "name=%s, line=%s, file=%s" % (self.name, self.line, self.file),
+            )
 
         return nested_scope[-1][self.name].real(nested_scope[0:-1])

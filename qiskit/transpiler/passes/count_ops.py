@@ -22,4 +22,4 @@ class CountOps(AnalysisPass):
     """
 
     def run(self, dag):
-        self.property_set['count_ops'] = dag.count_ops()
+        self.property_set["count_ops"] = dag.count_ops()

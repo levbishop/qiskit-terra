@@ -47,21 +47,21 @@ class String(_fields.String, ModelTypeValidator):
     # pylint: disable=missing-docstring
     __doc__ = _fields.String.__doc__
 
-    valid_types = (str, )
+    valid_types = (str,)
 
 
 class Date(_fields.Date, ModelTypeValidator):
     # pylint: disable=missing-docstring
     __doc__ = _fields.Date.__doc__
 
-    valid_types = (date, )
+    valid_types = (date,)
 
 
 class DateTime(_fields.DateTime, ModelTypeValidator):
     # pylint: disable=missing-docstring
     __doc__ = _fields.DateTime.__doc__
 
-    valid_types = (datetime, )
+    valid_types = (datetime,)
 
 
 class Email(_fields.Email, String):
@@ -96,7 +96,7 @@ class Boolean(_fields.Boolean, ModelTypeValidator):
     # pylint: disable=missing-docstring
     __doc__ = _fields.Boolean.__doc__
 
-    valid_types = (bool, )
+    valid_types = (bool,)
 
 
 class Raw(_fields.Raw, ModelTypeValidator):

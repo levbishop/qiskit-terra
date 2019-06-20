@@ -14,12 +14,14 @@
 
 """Circuit transpile function"""
 
-from qiskit.transpiler.preset_passmanagers import (default_pass_manager_simulator,
-                                                   default_pass_manager,
-                                                   level_0_pass_manager,
-                                                   level_1_pass_manager,
-                                                   level_2_pass_manager,
-                                                   level_3_pass_manager)
+from qiskit.transpiler.preset_passmanagers import (
+    default_pass_manager_simulator,
+    default_pass_manager,
+    level_0_pass_manager,
+    level_1_pass_manager,
+    level_2_pass_manager,
+    level_3_pass_manager,
+)
 from qiskit.transpiler.exceptions import TranspilerError
 
 

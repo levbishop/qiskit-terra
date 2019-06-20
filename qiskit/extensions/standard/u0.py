@@ -34,9 +34,7 @@ class U0Gate(Gate):
     def _define(self):
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U3Gate(0, 0, 0), [q[0]], [])
-        ]
+        rule = [(U3Gate(0, 0, 0), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition
@@ -47,8 +45,7 @@ class U0Gate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the Id gate."""
-        return numpy.array([[1, 0],
-                            [0, 1]], dtype=complex)
+        return numpy.array([[1, 0], [0, 1]], dtype=complex)
 
 
 def u0(self, m, q):

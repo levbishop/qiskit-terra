@@ -42,15 +42,16 @@ class QiskitTestCase(unittest.TestCase):
 
         # Set logging to file and stdout if the LOG_LEVEL envar is set.
         cls.log = logging.getLogger(cls.__name__)
-        if os.getenv('LOG_LEVEL'):
-            filename = '%s.log' % os.path.splitext(inspect.getfile(cls))[0]
-            setup_test_logging(cls.log, os.getenv('LOG_LEVEL'), filename)
+        if os.getenv("LOG_LEVEL"):
+            filename = "%s.log" % os.path.splitext(inspect.getfile(cls))[0]
+            setup_test_logging(cls.log, os.getenv("LOG_LEVEL"), filename)
 
     def tearDown(self):
         # Reset the default providers, as in practice they acts as a singleton
         # due to importing the wrapper from qiskit.
         try:
             from qiskit.providers.ibmq import IBMQ
+
             IBMQ._accounts.clear()
         except ImportError:
             pass
@@ -78,8 +79,9 @@ class QiskitTestCase(unittest.TestCase):
         """
         return _AssertNoLogsContext(self, logger, level)
 
-    def assertDictAlmostEqual(self, dict1, dict2, delta=None, msg=None,
-                              places=None, default_value=0):
+    def assertDictAlmostEqual(
+        self, dict1, dict2, delta=None, msg=None, places=None, default_value=0
+    ):
         """Assert two dictionaries with numeric values are almost equal.
 
         Fail if the two dictionaries are unequal as determined by
@@ -147,26 +149,28 @@ def dicts_almost_equal(dict1, dict2, delta=None, places=None, default_value=0):
 
     # Check arguments.
     if dict1 == dict2:
-        return ''
+        return ""
     if places is not None:
         if delta is not None:
             raise TypeError("specify delta or places not both")
-        msg_suffix = ' within %s places' % places
+        msg_suffix = " within %s places" % places
     else:
         delta = delta or 1e-8
-        msg_suffix = ' within %s delta' % delta
+        msg_suffix = " within %s delta" % delta
 
     # Compare all keys in both dicts, populating error_msg.
-    error_msg = ''
+    error_msg = ""
     for key in set(dict1.keys()) | set(dict2.keys()):
         val1 = dict1.get(key, default_value)
         val2 = dict2.get(key, default_value)
         if not valid_comparison(abs(val1 - val2)):
-            error_msg += '(%s: %s != %s), ' % (safe_repr(key),
-                                               safe_repr(val1),
-                                               safe_repr(val2))
+            error_msg += "(%s: %s != %s), " % (
+                safe_repr(key),
+                safe_repr(val1),
+                safe_repr(val2),
+            )
 
     if error_msg:
         return error_msg[:-2] + msg_suffix
     else:
-        return ''
+        return ""

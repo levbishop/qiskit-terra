@@ -22,4 +22,4 @@ class Size(AnalysisPass):
     """
 
     def run(self, dag):
-        self.property_set['size'] = dag.size()
+        self.property_set["size"] = dag.size()

@@ -40,9 +40,7 @@ class XGate(Gate):
         """
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U3Gate(pi, 0, pi), [q[0]], [])
-        ]
+        rule = [(U3Gate(pi, 0, pi), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition
@@ -53,8 +51,7 @@ class XGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the X gate."""
-        return numpy.array([[0, 1],
-                            [1, 0]], dtype=complex)
+        return numpy.array([[0, 1], [1, 0]], dtype=complex)
 
 
 def x(self, q):

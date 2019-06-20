@@ -34,24 +34,24 @@ class DAGNode:
     @property
     def type(self):
         """Returns a str which is the type of the node else None"""
-        return self.data_dict.get('type')
+        return self.data_dict.get("type")
 
     @property
     def op(self):
         """Returns the Instruction object corresponding to the op for the node else None"""
-        if 'type' not in self.data_dict or self.data_dict['type'] != 'op':
+        if "type" not in self.data_dict or self.data_dict["type"] != "op":
             raise QiskitError("The node %s is not an op node" % (str(self)))
-        return self.data_dict.get('op')
+        return self.data_dict.get("op")
 
     @property
     def name(self):
         """Returns a str which is the name of the node else None"""
-        return self.data_dict.get('name')
+        return self.data_dict.get("name")
 
     @name.setter
     def name(self, new_name):
         """Sets the name of the node to be the given value"""
-        self.data_dict['name'] = new_name
+        self.data_dict["name"] = new_name
 
     @property
     def qargs(self):
@@ -59,12 +59,12 @@ class DAGNode:
         Returns list of (QuantumRegister, int) tuples where the int is the index
         of the qubit else an empty list
         """
-        return self.data_dict.get('qargs', [])
+        return self.data_dict.get("qargs", [])
 
     @qargs.setter
     def qargs(self, new_qargs):
         """Sets the qargs to be the given list of qargs"""
-        self.data_dict['qargs'] = new_qargs
+        self.data_dict["qargs"] = new_qargs
 
     @property
     def cargs(self):
@@ -72,7 +72,7 @@ class DAGNode:
         Returns list of (ClassicalRegister, int) tuples where the int is the index
         of the cbit else an empty list
         """
-        return self.data_dict.get('cargs', [])
+        return self.data_dict.get("cargs", [])
 
     @property
     def condition(self):
@@ -80,7 +80,7 @@ class DAGNode:
         Returns a tuple (ClassicalRegister, int) where the int is the
         value of the condition else None
         """
-        return self.data_dict.get('condition')
+        return self.data_dict.get("condition")
 
     @property
     def wire(self):
@@ -88,9 +88,9 @@ class DAGNode:
         Returns (Register, int) tuple where the int is the index of
         the wire else None
         """
-        if self.data_dict['type'] not in ['in', 'out']:
-            raise QiskitError('The node %s is not an input/output node' % str(self))
-        return self.data_dict.get('wire')
+        if self.data_dict["type"] not in ["in", "out"]:
+            raise QiskitError("The node %s is not an input/output node" % str(self))
+        return self.data_dict.get("wire")
 
     def __lt__(self, other):
         return self._node_id < other._node_id
@@ -126,6 +126,6 @@ class DAGNode:
             Bool: If node1 == node2
         """
         # For barriers, qarg order is not significant so compare as sets
-        if 'barrier' == node1.name == node2.name:
+        if "barrier" == node1.name == node2.name:
             return set(node1.qargs) == set(node2.qargs)
         return node1.data_dict == node2.data_dict

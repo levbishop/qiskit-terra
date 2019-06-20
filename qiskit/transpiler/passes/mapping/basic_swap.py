@@ -32,9 +32,7 @@ class BasicSwap(TransformationPass):
     Maps (with minimum effort) a DAGCircuit onto a `coupling_map` adding swap gates.
     """
 
-    def __init__(self,
-                 coupling_map,
-                 initial_layout=None):
+    def __init__(self, coupling_map, initial_layout=None):
         """
         Maps a DAGCircuit onto a `coupling_map` using swap gates.
         Args:
@@ -64,19 +62,24 @@ class BasicSwap(TransformationPass):
             if self.property_set["layout"]:
                 self.initial_layout = self.property_set["layout"]
             else:
-                self.initial_layout = Layout.generate_trivial_layout(*dag.qregs.values())
+                self.initial_layout = Layout.generate_trivial_layout(
+                    *dag.qregs.values()
+                )
 
         if len(dag.qubits()) != len(self.initial_layout):
-            raise TranspilerError('The layout does not match the amount of qubits in the DAG')
+            raise TranspilerError(
+                "The layout does not match the amount of qubits in the DAG"
+            )
 
         if len(self.coupling_map.physical_qubits) != len(self.initial_layout):
             raise TranspilerError(
-                "Mappers require to have the layout to be the same size as the coupling map")
+                "Mappers require to have the layout to be the same size as the coupling map"
+            )
 
         current_layout = self.initial_layout.copy()
 
         for layer in dag.serial_layers():
-            subdag = layer['graph']
+            subdag = layer["graph"]
 
             for gate in subdag.twoQ_gates():
                 physical_q0 = current_layout[gate.qargs[0]]
@@ -85,7 +88,9 @@ class BasicSwap(TransformationPass):
                     # Insert a new layer with the SWAP(s).
                     swap_layer = DAGCircuit()
 
-                    path = self.coupling_map.shortest_undirected_path(physical_q0, physical_q1)
+                    path = self.coupling_map.shortest_undirected_path(
+                        physical_q0, physical_q1
+                    )
                     for swap in range(len(path) - 2):
                         connected_wire_1 = path[swap]
                         connected_wire_2 = path[swap + 1]
@@ -99,9 +104,9 @@ class BasicSwap(TransformationPass):
                                 swap_layer.add_qreg(qreg)
 
                         # create the swap operation
-                        swap_layer.apply_operation_back(SwapGate(),
-                                                        qargs=[qubit_1, qubit_2],
-                                                        cargs=[])
+                        swap_layer.apply_operation_back(
+                            SwapGate(), qargs=[qubit_1, qubit_2], cargs=[]
+                        )
 
                     # layer insertion
                     edge_map = current_layout.combine_into_edge_map(self.initial_layout)

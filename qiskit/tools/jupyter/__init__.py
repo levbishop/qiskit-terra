@@ -15,9 +15,9 @@
 """Initialize the Jupyter routines.
 """
 
-from IPython import get_ipython          # pylint: disable=import-error
+from IPython import get_ipython  # pylint: disable=import-error
 from qiskit.tools.visualization import HAS_MATPLOTLIB
-from .jupyter_magics import (ProgressBarMagic, StatusMagic)
+from .jupyter_magics import ProgressBarMagic, StatusMagic
 from .progressbar import HTMLProgressBar
 
 if HAS_MATPLOTLIB:
@@ -26,6 +26,7 @@ if HAS_MATPLOTLIB:
 
 try:
     from qiskit.providers.ibmq.ibmqbackend import IBMQBackend
+
     HAS_IBMQ = True
 except ImportError:
     HAS_IBMQ = False
@@ -39,6 +40,6 @@ if _IP is not None:
         _IP.register_magics(BackendOverview)
         _IP.register_magics(BackendMonitor)
         if HAS_IBMQ:
-            HTML_FORMATTER = _IP.display_formatter.formatters['text/html']
+            HTML_FORMATTER = _IP.display_formatter.formatters["text/html"]
             # Make _backend_monitor the html repr for IBM Q backends
             HTML_FORMATTER.for_type(IBMQBackend, _backend_monitor)

@@ -28,7 +28,7 @@ class IndexedId(Node):
 
     def __init__(self, children):
         """Create the indexed id node."""
-        super().__init__('indexed_id', children, None)
+        super().__init__("indexed_id", children, None)
         self.id = children[0]
         self.name = self.id.name
         self.line = self.id.line
@@ -37,8 +37,8 @@ class IndexedId(Node):
 
     def to_string(self, indent):
         """Print with indent."""
-        ind = indent * ' '
-        print(ind, 'indexed_id', self.name, self.index)
+        ind = indent * " "
+        print(ind, "indexed_id", self.name, self.index)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""

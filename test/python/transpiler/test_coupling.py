@@ -21,7 +21,6 @@ from qiskit.test import QiskitTestCase
 
 
 class CouplingTest(QiskitTestCase):
-
     def test_empty_coupling_class(self):
         coupling = CouplingMap()
         self.assertEqual(0, coupling.size())
@@ -33,7 +32,7 @@ class CouplingTest(QiskitTestCase):
     def test_coupling_str(self):
         coupling_list = [[0, 1], [0, 2], [1, 2]]
         coupling = CouplingMap(coupling_list)
-        expected = ("[[0, 1], [0, 2], [1, 2]]")
+        expected = "[[0, 1], [0, 2], [1, 2]]"
         self.assertEqual(expected, str(coupling))
 
     def test_coupling_distance(self):
@@ -53,13 +52,13 @@ class CouplingTest(QiskitTestCase):
 
     def test_add_physical_qubits_not_int(self):
         coupling = CouplingMap()
-        self.assertRaises(CouplingError, coupling.add_physical_qubit, 'q')
+        self.assertRaises(CouplingError, coupling.add_physical_qubit, "q")
 
     def test_add_edge(self):
         coupling = CouplingMap()
         self.assertEqual("", str(coupling))
         coupling.add_edge(0, 1)
-        expected = ("[[0, 1]]")
+        expected = "[[0, 1]]"
         self.assertEqual(expected, str(coupling))
 
     def test_distance_error(self):
@@ -106,9 +105,26 @@ class CouplingTest(QiskitTestCase):
         self.assertTrue(coupling.is_symmetric)
 
     def test_symmetric_big_false(self):
-        coupling_list = [[1, 0], [1, 2], [2, 3], [4, 3], [4, 10], [5, 4], [5, 6], [5, 9], [6, 8],
-                         [9, 8], [9, 10], [7, 8], [11, 3], [11, 10], [11, 12], [12, 2], [13, 1],
-                         [13, 12]]
+        coupling_list = [
+            [1, 0],
+            [1, 2],
+            [2, 3],
+            [4, 3],
+            [4, 10],
+            [5, 4],
+            [5, 6],
+            [5, 9],
+            [6, 8],
+            [9, 8],
+            [9, 10],
+            [7, 8],
+            [11, 3],
+            [11, 10],
+            [11, 12],
+            [12, 2],
+            [13, 1],
+            [13, 12],
+        ]
         coupling = CouplingMap(coupling_list)
 
         self.assertFalse(coupling.is_symmetric)

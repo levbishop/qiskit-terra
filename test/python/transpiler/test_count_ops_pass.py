@@ -33,7 +33,7 @@ class TestCountOpsPass(QiskitTestCase):
         pass_ = CountOps()
         _ = pass_.run(dag)
 
-        self.assertDictEqual(pass_.property_set['count_ops'], {})
+        self.assertDictEqual(pass_.property_set["count_ops"], {})
 
     def test_just_qubits(self):
         """ A dag with 8 operations (6 CXs and 2 Hs)"""
@@ -52,8 +52,8 @@ class TestCountOpsPass(QiskitTestCase):
         pass_ = CountOps()
         _ = pass_.run(dag)
 
-        self.assertDictEqual(pass_.property_set['count_ops'], {'cx': 6, 'h': 2})
+        self.assertDictEqual(pass_.property_set["count_ops"], {"cx": 6, "h": 2})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

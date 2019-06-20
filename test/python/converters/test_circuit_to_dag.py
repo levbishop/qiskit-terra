@@ -42,5 +42,5 @@ class TestCircuitToDag(QiskitTestCase):
         self.assertEqual(circuit_out, circuit_in)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

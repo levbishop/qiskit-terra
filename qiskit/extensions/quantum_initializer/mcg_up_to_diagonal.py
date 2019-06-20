@@ -59,7 +59,9 @@ class MCGupDiag(Gate):
         self.num_ancillas_dirty = num_ancillas_dirty
         # Check if the gate has the right dimension
         if not gate.shape == (2, 2):
-            raise QiskitError("The dimension of the controlled gate is not equal to (2,2).")
+            raise QiskitError(
+                "The dimension of the controlled gate is not equal to (2,2)."
+            )
         # Check if the single-qubit gate is unitary
         if not is_isometry(gate, _EPS):
             raise QiskitError("The controlled gate is not unitary.")
@@ -92,7 +94,12 @@ class MCGupDiag(Gate):
         diag = np.ones(2 ** (self.num_controls + 1)).tolist()
         q = QuantumRegister(self.num_qubits)
         circuit = QuantumCircuit(q)
-        (q_target, q_controls, q_ancillas_zero, q_ancillas_dirty) = self._define_qubit_role(q)
+        (
+            q_target,
+            q_controls,
+            q_ancillas_zero,
+            q_ancillas_dirty,
+        ) = self._define_qubit_role(q)
         # ToDo: Keep this threshold updated such that the lowest gate count is achieved:
         # ToDo: we implement the MCG with a UCG up to diagonal if the number of controls is
         # ToDo: smaller than the threshold.
@@ -112,7 +119,9 @@ class MCGupDiag(Gate):
     def _define_qubit_role(self, q):
         # Define the role of the qubits
         q_target = q[0]
-        q_controls = q[1:self.num_controls + 1]
-        q_ancillas_zero = q[self.num_controls + 1:self.num_controls + 1 + self.num_ancillas_zero]
-        q_ancillas_dirty = q[self.num_controls + 1 + self.num_ancillas_zero:]
+        q_controls = q[1 : self.num_controls + 1]
+        q_ancillas_zero = q[
+            self.num_controls + 1 : self.num_controls + 1 + self.num_ancillas_zero
+        ]
+        q_ancillas_dirty = q[self.num_controls + 1 + self.num_ancillas_zero :]
         return q_target, q_controls, q_ancillas_zero, q_ancillas_dirty

@@ -82,7 +82,9 @@ class CouplingMap:
             raise CouplingError("Physical qubits should be integers.")
         if physical_qubit in self.physical_qubits:
             raise CouplingError(
-                "The physical qubit %s is already in the coupling graph" % physical_qubit)
+                "The physical qubit %s is already in the coupling graph"
+                % physical_qubit
+            )
         self.graph.add_node(physical_qubit)
         self._dist_matrix = None  # invalidate
         self._qubit_list = None  # invalidate
@@ -140,13 +142,16 @@ class CouplingMap:
         """
         if not self.is_connected():
             raise CouplingError("coupling graph not connected")
-        lengths = nx.all_pairs_shortest_path_length(self.graph.to_undirected(as_view=True))
+        lengths = nx.all_pairs_shortest_path_length(
+            self.graph.to_undirected(as_view=True)
+        )
         lengths = dict(lengths)
         size = len(lengths)
         cmap = np.zeros((size, size))
         for idx in range(size):
             cmap[idx, np.fromiter(lengths[idx].keys(), dtype=int)] = np.fromiter(
-                lengths[idx].values(), dtype=int)
+                lengths[idx].values(), dtype=int
+            )
         self._dist_matrix = cmap
 
     def distance(self, physical_qubit1, physical_qubit2):
@@ -181,11 +186,16 @@ class CouplingMap:
             CouplingError: When there is no path between physical_qubit1, physical_qubit2.
         """
         try:
-            return nx.shortest_path(self.graph.to_undirected(as_view=True), source=physical_qubit1,
-                                    target=physical_qubit2)
+            return nx.shortest_path(
+                self.graph.to_undirected(as_view=True),
+                source=physical_qubit1,
+                target=physical_qubit2,
+            )
         except nx.exception.NetworkXNoPath:
             raise CouplingError(
-                "Nodes %s and %s are not connected" % (str(physical_qubit1), str(physical_qubit2)))
+                "Nodes %s and %s are not connected"
+                % (str(physical_qubit1), str(physical_qubit2))
+            )
 
     @property
     def is_symmetric(self):
@@ -239,11 +249,12 @@ class CouplingMap:
         cols = np.array([edge[1] for edge in reduced_cmap], dtype=int)
         data = np.ones_like(rows)
 
-        mat = sp.coo_matrix((data, (rows, cols)),
-                            shape=(reduced_qubits, reduced_qubits)).tocsr()
+        mat = sp.coo_matrix(
+            (data, (rows, cols)), shape=(reduced_qubits, reduced_qubits)
+        ).tocsr()
 
         if cs.connected_components(mat)[0] != 1:
-            raise CouplingError('coupling_map must be connected.')
+            raise CouplingError("coupling_map must be connected.")
 
         return CouplingMap(reduced_cmap)
 
@@ -252,6 +263,8 @@ class CouplingMap:
         string = ""
         if self.get_edges():
             string += "["
-            string += ", ".join(["[%s, %s]" % (src, dst) for (src, dst) in self.get_edges()])
+            string += ", ".join(
+                ["[%s, %s]" % (src, dst) for (src, dst) in self.get_edges()]
+            )
             string += "]"
         return string

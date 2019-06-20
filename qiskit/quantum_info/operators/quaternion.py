@@ -40,13 +40,13 @@ class Quaternion:
         if isinstance(r, Quaternion):
             q = self
             out_data = np.zeros(4, dtype=float)
-            out_data[0] = r(0)*q(0) - r(1)*q(1) - r(2)*q(2) - r(3)*q(3)
-            out_data[1] = r(0)*q(1) + r(1)*q(0) - r(2)*q(3) + r(3)*q(2)
-            out_data[2] = r(0)*q(2) + r(1)*q(3) + r(2)*q(0) - r(3)*q(1)
-            out_data[3] = r(0)*q(3) - r(1)*q(2) + r(2)*q(1) + r(3)*q(0)
+            out_data[0] = r(0) * q(0) - r(1) * q(1) - r(2) * q(2) - r(3) * q(3)
+            out_data[1] = r(0) * q(1) + r(1) * q(0) - r(2) * q(3) + r(3) * q(2)
+            out_data[2] = r(0) * q(2) + r(1) * q(3) + r(2) * q(0) - r(3) * q(1)
+            out_data[3] = r(0) * q(3) - r(1) * q(2) + r(2) * q(1) + r(3) * q(0)
             return Quaternion(out_data)
         else:
-            raise Exception('Multiplication by other not supported.')
+            raise Exception("Multiplication by other not supported.")
 
     def norm(self):
         """ Norm of quaternion.
@@ -79,11 +79,26 @@ class Quaternion:
             ndarray: Rotation matrix.
         """
         w, x, y, z = self.normalize().data
-        mat = np.array([
-            [1-2*y**2-2*z**2, 2*x*y-2*z*w, 2*x*z+2*y*w],
-            [2*x*y+2*z*w, 1-2*x**2-2*z**2, 2*y*z-2*x*w],
-            [2*x*z-2*y*w, 2*y*z+2*x*w, 1-2*x**2-2*y**2]
-        ], dtype=float)
+        mat = np.array(
+            [
+                [
+                    1 - 2 * y ** 2 - 2 * z ** 2,
+                    2 * x * y - 2 * z * w,
+                    2 * x * z + 2 * y * w,
+                ],
+                [
+                    2 * x * y + 2 * z * w,
+                    1 - 2 * x ** 2 - 2 * z ** 2,
+                    2 * y * z - 2 * x * w,
+                ],
+                [
+                    2 * x * z - 2 * y * w,
+                    2 * y * z + 2 * x * w,
+                    1 - 2 * x ** 2 - 2 * y ** 2,
+                ],
+            ],
+            dtype=float,
+        )
         return mat
 
     def to_zyz(self):
@@ -122,20 +137,20 @@ def quaternion_from_axis_rotation(angle, axis):
         ValueError: Invalid input axis.
     """
     out = np.zeros(4, dtype=float)
-    if axis == 'x':
+    if axis == "x":
         out[1] = 1
-    elif axis == 'y':
+    elif axis == "y":
         out[2] = 1
-    elif axis == 'z':
+    elif axis == "z":
         out[3] = 1
     else:
-        raise ValueError('Invalid axis input.')
-    out *= math.sin(angle/2.0)
-    out[0] = math.cos(angle/2.0)
+        raise ValueError("Invalid axis input.")
+    out *= math.sin(angle / 2.0)
+    out[0] = math.cos(angle / 2.0)
     return Quaternion(out)
 
 
-def quaternion_from_euler(angles, order='yzy'):
+def quaternion_from_euler(angles, order="yzy"):
     """Generate a quaternion from a set of Euler angles.
 
     Args:
@@ -146,8 +161,9 @@ def quaternion_from_euler(angles, order='yzy'):
         Quaternion: Quaternion representation of Euler rotation.
     """
     angles = np.asarray(angles, dtype=float)
-    quat = quaternion_from_axis_rotation(angles[0], order[0])\
-        * (quaternion_from_axis_rotation(angles[1], order[1])
-           * quaternion_from_axis_rotation(angles[2], order[2]))
+    quat = quaternion_from_axis_rotation(angles[0], order[0]) * (
+        quaternion_from_axis_rotation(angles[1], order[1])
+        * quaternion_from_axis_rotation(angles[2], order[2])
+    )
     quat.normalize(inplace=True)
     return quat

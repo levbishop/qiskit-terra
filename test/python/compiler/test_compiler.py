@@ -38,11 +38,8 @@ class TestCompiler(QiskitTestCase):
 
         Pass if the results are correct.
         """
-        backend = BasicAer.get_backend('qasm_simulator')
-        coupling_map = [[0, 1], [0, 2],
-                        [1, 2],
-                        [3, 2], [3, 4],
-                        [4, 2]]
+        backend = BasicAer.get_backend("qasm_simulator")
+        coupling_map = [[0, 1], [0, 2], [1, 2], [3, 2], [3, 4], [4, 2]]
 
         qr = QuantumRegister(5)
         cr = ClassicalRegister(5)
@@ -65,22 +62,19 @@ class TestCompiler(QiskitTestCase):
         bell.measure(qr[1], cr[1])
         shots = 2048
         bell_backend = transpile(bell, backend=backend)
-        ghz_backend = transpile(ghz, backend=backend,
-                                coupling_map=coupling_map)
-        bell_qobj = assemble(bell_backend, shots=shots,
-                             seed_simulator=10)
-        ghz_qobj = assemble(ghz_backend, shots=shots,
-                            seed_simulator=10)
+        ghz_backend = transpile(ghz, backend=backend, coupling_map=coupling_map)
+        bell_qobj = assemble(bell_backend, shots=shots, seed_simulator=10)
+        ghz_qobj = assemble(ghz_backend, shots=shots, seed_simulator=10)
         bell_result = backend.run(bell_qobj).result()
         ghz_result = backend.run(ghz_qobj).result()
 
         threshold = 0.05 * shots
         counts_bell = bell_result.get_counts()
-        target_bell = {'00000': shots / 2, '00011': shots / 2}
+        target_bell = {"00000": shots / 2, "00011": shots / 2}
         self.assertDictAlmostEqual(counts_bell, target_bell, threshold)
 
         counts_ghz = ghz_result.get_counts()
-        target_ghz = {'00000': shots / 2, '11111': shots / 2}
+        target_ghz = {"00000": shots / 2, "11111": shots / 2}
         self.assertDictAlmostEqual(counts_ghz, target_ghz, threshold)
 
     def test_compile_coupling_map(self):
@@ -88,11 +82,11 @@ class TestCompiler(QiskitTestCase):
         If all correct should return data with the same stats. The circuit may
         be different.
         """
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
 
-        qr = QuantumRegister(3, 'qr')
-        cr = ClassicalRegister(3, 'cr')
-        qc = QuantumCircuit(qr, cr, name='qccccccc')
+        qr = QuantumRegister(3, "qr")
+        cr = ClassicalRegister(3, "cr")
+        qc = QuantumCircuit(qr, cr, name="qccccccc")
         qc.h(qr[0])
         qc.cx(qr[0], qr[1])
         qc.cx(qr[0], qr[2])
@@ -102,9 +96,12 @@ class TestCompiler(QiskitTestCase):
         shots = 2048
         coupling_map = [[0, 1], [1, 2]]
         initial_layout = [0, 1, 2]
-        qc_b = transpile(qc, backend=backend,
-                         coupling_map=coupling_map,
-                         initial_layout=initial_layout)
+        qc_b = transpile(
+            qc,
+            backend=backend,
+            coupling_map=coupling_map,
+            initial_layout=initial_layout,
+        )
         qobj = assemble(qc_b, shots=shots, seed_simulator=88)
         job = backend.run(qobj)
         result = job.result()
@@ -112,7 +109,7 @@ class TestCompiler(QiskitTestCase):
         self.assertEqual(len(qasm_to_check), 173)
 
         counts = result.get_counts(qc)
-        target = {'000': shots / 2, '111': shots / 2}
+        target = {"000": shots / 2, "111": shots / 2}
         threshold = 0.05 * shots
         self.assertDictAlmostEqual(counts, target, threshold)
 
@@ -121,11 +118,31 @@ class TestCompiler(QiskitTestCase):
 
         Uses the mapper. Pass if results are correct.
         """
-        backend = BasicAer.get_backend('qasm_simulator')
-        coupling_map = [[0, 1], [0, 8], [1, 2], [1, 9], [2, 3], [2, 10],
-                        [3, 4], [3, 11], [4, 5], [4, 12], [5, 6], [5, 13],
-                        [6, 7], [6, 14], [7, 15], [8, 9], [9, 10], [10, 11],
-                        [11, 12], [12, 13], [13, 14], [14, 15]]
+        backend = BasicAer.get_backend("qasm_simulator")
+        coupling_map = [
+            [0, 1],
+            [0, 8],
+            [1, 2],
+            [1, 9],
+            [2, 3],
+            [2, 10],
+            [3, 4],
+            [3, 11],
+            [4, 5],
+            [4, 12],
+            [5, 6],
+            [5, 13],
+            [6, 7],
+            [6, 14],
+            [7, 15],
+            [8, 9],
+            [9, 10],
+            [10, 11],
+            [11, 12],
+            [12, 13],
+            [13, 14],
+            [14, 15],
+        ]
 
         n = 3  # make this at least 3
         qr0 = QuantumRegister(n)
@@ -146,15 +163,19 @@ class TestCompiler(QiskitTestCase):
             qc.measure(qr0[j], ans[j])
             qc.measure(qr1[j], ans[j + n])
         # First version: no mapping
-        result = execute(qc, backend=backend,
-                         coupling_map=None, shots=1024,
-                         seed_simulator=14).result()
-        self.assertEqual(result.get_counts(qc), {'010000': 1024})
+        result = execute(
+            qc, backend=backend, coupling_map=None, shots=1024, seed_simulator=14
+        ).result()
+        self.assertEqual(result.get_counts(qc), {"010000": 1024})
         # Second version: map to coupling graph
-        result = execute(qc, backend=backend,
-                         coupling_map=coupling_map, shots=1024,
-                         seed_simulator=14).result()
-        self.assertEqual(result.get_counts(qc), {'010000': 1024})
+        result = execute(
+            qc,
+            backend=backend,
+            coupling_map=coupling_map,
+            shots=1024,
+            seed_simulator=14,
+        ).result()
+        self.assertEqual(result.get_counts(qc), {"010000": 1024})
 
     def test_parallel_compile(self):
         """Trigger parallel routines in compile.
@@ -174,20 +195,43 @@ class TestCompiler(QiskitTestCase):
     def test_compile_single_qubit(self):
         """ Compile a single-qubit circuit in a non-trivial layout
         """
-        qr = QuantumRegister(1, 'qr')
+        qr = QuantumRegister(1, "qr")
         circuit = QuantumCircuit(qr)
         circuit.h(qr[0])
         layout = {qr[0]: 12}
-        cmap = [[1, 0], [1, 2], [2, 3], [4, 3], [4, 10], [5, 4], [5, 6], [5, 9], [6, 8], [7, 8],
-                [9, 8], [9, 10], [11, 3], [11, 10], [11, 12], [12, 2], [13, 1], [13, 12]]
+        cmap = [
+            [1, 0],
+            [1, 2],
+            [2, 3],
+            [4, 3],
+            [4, 10],
+            [5, 4],
+            [5, 6],
+            [5, 9],
+            [6, 8],
+            [7, 8],
+            [9, 8],
+            [9, 10],
+            [11, 3],
+            [11, 10],
+            [11, 12],
+            [12, 2],
+            [13, 1],
+            [13, 12],
+        ]
 
-        circuit2 = transpile(circuit, backend=None, coupling_map=cmap, basis_gates=['u2'],
-                             initial_layout=layout)
+        circuit2 = transpile(
+            circuit,
+            backend=None,
+            coupling_map=cmap,
+            basis_gates=["u2"],
+            initial_layout=layout,
+        )
         qobj = assemble(circuit2)
 
         compiled_instruction = qobj.experiments[0].instructions[0]
 
-        self.assertEqual(compiled_instruction.name, 'u2')
+        self.assertEqual(compiled_instruction.name, "u2")
         self.assertEqual(compiled_instruction.qubits, [12])
         self.assertEqual(str(compiled_instruction.params), str([0, 3.14159265358979]))
 
@@ -200,13 +244,13 @@ class TestCompiler(QiskitTestCase):
         qc.u2(3.14, 1.57, qr[0])
         qc.barrier(qr)
         qc.measure(qr, cr)
-        backend = BasicAer.get_backend('qasm_simulator')
-        qrtrue = assemble(transpile(qc, backend, seed_transpiler=8),
-                          seed_simulator=42)
+        backend = BasicAer.get_backend("qasm_simulator")
+        qrtrue = assemble(transpile(qc, backend, seed_transpiler=8), seed_simulator=42)
         rtrue = backend.run(qrtrue).result()
-        qrfalse = assemble(transpile(qc, backend, seed_transpiler=8,
-                                     pass_manager=PassManager()),
-                           seed_simulator=42)
+        qrfalse = assemble(
+            transpile(qc, backend, seed_transpiler=8, pass_manager=PassManager()),
+            seed_simulator=42,
+        )
         rfalse = backend.run(qrfalse).result()
         self.assertEqual(rtrue.get_counts(), rfalse.get_counts())
 
@@ -226,7 +270,7 @@ class TestCompiler(QiskitTestCase):
 
         compiled_ops = qobj.experiments[0].instructions
         for operation in compiled_ops:
-            if operation.name == 'cx':
+            if operation.name == "cx":
                 self.assertIn(operation.qubits, backend.configuration().coupling_map)
                 self.assertIn(operation.qubits, [[15, 0], [15, 2]])
 
@@ -261,16 +305,23 @@ class TestCompiler(QiskitTestCase):
         coupling_map = [[0, 2], [1, 2], [2, 3]]
         shots = 1000
 
-        result1 = execute(circ, backend=self.backend,
-                          coupling_map=coupling_map,
-                          seed_simulator=self.seed_simulator,
-                          seed_transpiler=8,
-                          shots=shots)
+        result1 = execute(
+            circ,
+            backend=self.backend,
+            coupling_map=coupling_map,
+            seed_simulator=self.seed_simulator,
+            seed_transpiler=8,
+            shots=shots,
+        )
         count1 = result1.result().get_counts()
-        result2 = execute(circ, backend=self.backend,
-                          coupling_map=None,
-                          seed_simulator=self.seed_simulator,
-                          seed_transpiler=8, shots=shots)
+        result2 = execute(
+            circ,
+            backend=self.backend,
+            coupling_map=None,
+            seed_simulator=self.seed_simulator,
+            seed_transpiler=8,
+            shots=shots,
+        )
         count2 = result2.result().get_counts()
         self.assertDictAlmostEqual(count1, count2, shots * 0.02)
 
@@ -282,7 +333,7 @@ class TestCompiler(QiskitTestCase):
         # 6-qubit grovers
         qr = QuantumRegister(6)
         cr = ClassicalRegister(2)
-        circuit = QuantumCircuit(qr, cr, name='grovers')
+        circuit = QuantumCircuit(qr, cr, name="grovers")
 
         circuit.h(qr[0])
         circuit.h(qr[1])
@@ -312,15 +363,16 @@ class TestCompiler(QiskitTestCase):
         circuit.measure(qr[0], cr[0])
         circuit.measure(qr[1], cr[1])
 
-        result = execute(circuit, backend=self.backend,
-                         coupling_map=coupling_map,
-                         seed_simulator=self.seed_simulator, shots=shots)
+        result = execute(
+            circuit,
+            backend=self.backend,
+            coupling_map=coupling_map,
+            seed_simulator=self.seed_simulator,
+            shots=shots,
+        )
         counts = result.result().get_counts()
 
-        expected_probs = {'00': 0.64,
-                          '01': 0.117,
-                          '10': 0.113,
-                          '11': 0.13}
+        expected_probs = {"00": 0.64, "01": 0.117, "10": 0.113, "11": 0.13}
 
         target = {key: shots * val for key, val in expected_probs.items()}
         threshold = 0.04 * shots
@@ -351,57 +403,66 @@ class TestCompiler(QiskitTestCase):
 
         coupling_map = [[0, 2], [1, 2], [2, 3]]
         shots = 2000
-        job = execute(circ, backend=self.backend,
-                      coupling_map=coupling_map,
-                      seed_simulator=self.seed_simulator, shots=shots)
+        job = execute(
+            circ,
+            backend=self.backend,
+            coupling_map=coupling_map,
+            seed_simulator=self.seed_simulator,
+            shots=shots,
+        )
         counts = job.result().get_counts()
-        target = {'0001': shots / 2, '0101': shots / 2}
+        target = {"0001": shots / 2, "0101": shots / 2}
         threshold = 0.04 * shots
         self.assertDictAlmostEqual(counts, target, threshold)
 
     def test_random_parameter_circuit(self):
         """Run a circuit with randomly generated parameters."""
         circ = QuantumCircuit.from_qasm_file(
-            self._get_resource_path('random_n5_d5.qasm', Path.QASMS))
+            self._get_resource_path("random_n5_d5.qasm", Path.QASMS)
+        )
         coupling_map = [[0, 1], [1, 2], [2, 3], [3, 4]]
         shots = 1024
-        qobj = execute(circ, backend=self.backend,
-                       coupling_map=coupling_map, shots=shots,
-                       seed_simulator=self.seed_simulator)
+        qobj = execute(
+            circ,
+            backend=self.backend,
+            coupling_map=coupling_map,
+            shots=shots,
+            seed_simulator=self.seed_simulator,
+        )
         counts = qobj.result().get_counts()
         expected_probs = {
-            '00000': 0.079239867254200971,
-            '00001': 0.032859032998526903,
-            '00010': 0.10752610993531816,
-            '00011': 0.018818532050952699,
-            '00100': 0.054830807251011054,
-            '00101': 0.0034141983951965164,
-            '00110': 0.041649309748902276,
-            '00111': 0.039967731207338125,
-            '01000': 0.10516937819949743,
-            '01001': 0.026635620063700002,
-            '01010': 0.0053475143548793866,
-            '01011': 0.01940513314416064,
-            '01100': 0.0044028405481225047,
-            '01101': 0.057524760052126644,
-            '01110': 0.010795354134597078,
-            '01111': 0.026491296821535528,
-            '10000': 0.094827455395274859,
-            '10001': 0.0008373965072688836,
-            '10010': 0.029082297894094441,
-            '10011': 0.012386622870598416,
-            '10100': 0.018739140061148799,
-            '10101': 0.01367656456536896,
-            '10110': 0.039184170706009248,
-            '10111': 0.062339335178438288,
-            '11000': 0.00293674365989009,
-            '11001': 0.012848433960739968,
-            '11010': 0.018472497159499782,
-            '11011': 0.0088903691234912003,
-            '11100': 0.031305389080034329,
-            '11101': 0.0004788556283690458,
-            '11110': 0.002232419390471667,
-            '11111': 0.017684822659235985
+            "00000": 0.079239867254200971,
+            "00001": 0.032859032998526903,
+            "00010": 0.10752610993531816,
+            "00011": 0.018818532050952699,
+            "00100": 0.054830807251011054,
+            "00101": 0.0034141983951965164,
+            "00110": 0.041649309748902276,
+            "00111": 0.039967731207338125,
+            "01000": 0.10516937819949743,
+            "01001": 0.026635620063700002,
+            "01010": 0.0053475143548793866,
+            "01011": 0.01940513314416064,
+            "01100": 0.0044028405481225047,
+            "01101": 0.057524760052126644,
+            "01110": 0.010795354134597078,
+            "01111": 0.026491296821535528,
+            "10000": 0.094827455395274859,
+            "10001": 0.0008373965072688836,
+            "10010": 0.029082297894094441,
+            "10011": 0.012386622870598416,
+            "10100": 0.018739140061148799,
+            "10101": 0.01367656456536896,
+            "10110": 0.039184170706009248,
+            "10111": 0.062339335178438288,
+            "11000": 0.00293674365989009,
+            "11001": 0.012848433960739968,
+            "11010": 0.018472497159499782,
+            "11011": 0.0088903691234912003,
+            "11100": 0.031305389080034329,
+            "11101": 0.0004788556283690458,
+            "11110": 0.002232419390471667,
+            "11111": 0.017684822659235985,
         }
         target = {key: shots * val for key, val in expected_probs.items()}
         threshold = 0.04 * shots
@@ -430,5 +491,5 @@ class TestCompiler(QiskitTestCase):
         self.assertIsInstance(qobj2, QasmQobj)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

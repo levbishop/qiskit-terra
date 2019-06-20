@@ -75,15 +75,19 @@ class UCG(Gate):
             raise QiskitError("The single-qubit unitaries are not provided in a list.")
         for gate in gate_list:
             if not gate.shape == (2, 2):
-                raise QiskitError("The dimension of a controlled gate is not equal to (2,2).")
+                raise QiskitError(
+                    "The dimension of a controlled gate is not equal to (2,2)."
+                )
         if not gate_list:
             raise QiskitError("The gate list cannot be empty.")
 
         # Check if number of gates in gate_list is a positive power of two
         num_contr = math.log2(len(gate_list))
         if num_contr < 0 or not num_contr.is_integer():
-            raise QiskitError("The number of controlled single-qubit gates is not a "
-                              "non-negative power of 2.")
+            raise QiskitError(
+                "The number of controlled single-qubit gates is not a "
+                "non-negative power of 2."
+            )
 
         # Check if the single-qubit gates are unitaries
         for gate in gate_list:
@@ -148,7 +152,7 @@ class UCG(Gate):
             # The number of the control qubit is given by the number of zeros at the end
             # of the binary representation of (i+1)
             binary_rep = np.binary_repr(i + 1)
-            num_trailing_zeros = len(binary_rep) - len(binary_rep.rstrip('0'))
+            num_trailing_zeros = len(binary_rep) - len(binary_rep.rstrip("0"))
             q_contr_index = num_trailing_zeros
             # Add C-NOT gate
             if not i == len(single_qubit_gates) - 1:
@@ -200,20 +204,29 @@ class UCG(Gate):
                         # merge the UC-Rz rotation with the following UCG,
                         # which hasn't been decomposed yet.
                         k = shift + len_ucg + i
-                        single_qubit_gates[k] = \
-                            single_qubit_gates[k].dot(_ct(r)) * _rz(np.pi / 2).item((0, 0))
+                        single_qubit_gates[k] = single_qubit_gates[k].dot(_ct(r)) * _rz(
+                            np.pi / 2
+                        ).item((0, 0))
                         k = k + len_ucg // 2
-                        single_qubit_gates[k] = \
-                            single_qubit_gates[k].dot(r) * _rz(np.pi / 2).item((1, 1))
+                        single_qubit_gates[k] = single_qubit_gates[k].dot(r) * _rz(
+                            np.pi / 2
+                        ).item((1, 1))
                     else:
                         # Absorb the Rz(pi/2) rotation on the control into the UC-Rz gate and merge
                         # the trailing UC-Rz rotation into a diagonal gate at the end of the circuit
                         for ucg_index_2 in range(num_ucgs):
                             shift_2 = ucg_index_2 * len_ucg
                             k = 2 * (i + shift_2)
-                            diag[k] = diag[k] * _ct(r).item((0, 0)) * _rz(np.pi / 2).item((0, 0))
-                            diag[k + 1] = diag[k + 1] * _ct(r).item((1, 1)) * _rz(np.pi / 2).item(
-                                (0, 0))
+                            diag[k] = (
+                                diag[k]
+                                * _ct(r).item((0, 0))
+                                * _rz(np.pi / 2).item((0, 0))
+                            )
+                            diag[k + 1] = (
+                                diag[k + 1]
+                                * _ct(r).item((1, 1))
+                                * _rz(np.pi / 2).item((0, 0))
+                            )
                             k = len_ucg + k
                             diag[k] *= r.item((0, 0)) * _rz(np.pi / 2).item((1, 1))
                             diag[k + 1] *= r.item((1, 1)) * _rz(np.pi / 2).item((1, 1))
@@ -296,24 +309,32 @@ def ucg(self, gate_list, q_controls, q_target, up_to_diagonal=False):
         if len(q_target) == 1:
             q_target = q_target[0]
         else:
-            raise QiskitError("The target qubit is a QuantumRegister containing more than"
-                              " one qubit.")
+            raise QiskitError(
+                "The target qubit is a QuantumRegister containing more than"
+                " one qubit."
+            )
     # Check if q_controls has type "list"
     if not isinstance(q_controls, list):
-        raise QiskitError("The control qubits must be provided as a list"
-                          " (also if there is only one control qubit).")
+        raise QiskitError(
+            "The control qubits must be provided as a list"
+            " (also if there is only one control qubit)."
+        )
     # Check if gate_list has type "list"
     if not isinstance(gate_list, list):
         raise QiskitError("The single-qubit unitaries are not provided in a list.")
         # Check if number of gates in gate_list is a positive power of two
     num_contr = math.log2(len(gate_list))
     if num_contr < 0 or not num_contr.is_integer():
-        raise QiskitError("The number of controlled single-qubit gates is not a non negative"
-                          " power of 2.")
+        raise QiskitError(
+            "The number of controlled single-qubit gates is not a non negative"
+            " power of 2."
+        )
     # Check if number of control qubits does correspond to the number of single-qubit rotations
     if num_contr != len(q_controls):
-        raise QiskitError("Number of controlled gates does not correspond to the number of"
-                          " control qubits.")
+        raise QiskitError(
+            "Number of controlled gates does not correspond to the number of"
+            " control qubits."
+        )
     return self.append(UCG(gate_list, up_to_diagonal), [q_target] + q_controls)
 
 

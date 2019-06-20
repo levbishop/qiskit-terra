@@ -34,6 +34,7 @@ class ConsolidateBlocks(TransformationPass):
     Important note: this pass assumes that the 'blocks_list' property that
     it reads is given such that blocks are in topological order.
     """
+
     def run(self, dag):
         """iterate over each block and replace it with an equivalent Unitary
         on the same wires.
@@ -52,12 +53,12 @@ class ConsolidateBlocks(TransformationPass):
             global_qregs = list(dag.qregs.values())
             global_index_map[wire] = global_qregs.index(wire.register) + wire.index
 
-        blocks = self.property_set['block_list']
+        blocks = self.property_set["block_list"]
         nodes_seen = set()
 
         for node in dag.topological_op_nodes():
             # skip already-visited nodes or input/output nodes
-            if node in nodes_seen or node.type == 'in' or node.type == 'out':
+            if node in nodes_seen or node.type == "in" or node.type == "out":
                 continue
             # check if the node belongs to the next block
             if blocks and node in blocks[0]:
@@ -70,14 +71,16 @@ class ConsolidateBlocks(TransformationPass):
                 block_width = len(block_qargs)
                 q = QuantumRegister(block_width)
                 subcirc = QuantumCircuit(q)
-                block_index_map = self._block_qargs_to_indices(block_qargs,
-                                                               global_index_map)
+                block_index_map = self._block_qargs_to_indices(
+                    block_qargs, global_index_map
+                )
                 for nd in block:
                     nodes_seen.add(nd)
                     subcirc.append(nd.op, [q[block_index_map[i]] for i in nd.qargs])
                 unitary = UnitaryGate(Operator(subcirc))  # simulates the circuit
                 new_dag.apply_operation_back(
-                    unitary, sorted(block_qargs, key=lambda x: block_index_map[x]))
+                    unitary, sorted(block_qargs, key=lambda x: block_index_map[x])
+                )
                 del blocks[0]
             else:
                 # the node could belong to some future block, but in that case
@@ -105,6 +108,7 @@ class ConsolidateBlocks(TransformationPass):
         """
         block_indices = [global_index_map[q] for q in block_qargs]
         ordered_block_indices = sorted(block_indices)
-        block_positions = {q: ordered_block_indices.index(global_index_map[q])
-                           for q in block_qargs}
+        block_positions = {
+            q: ordered_block_indices.index(global_index_map[q]) for q in block_qargs
+        }
         return block_positions

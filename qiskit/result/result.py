@@ -41,8 +41,9 @@ class Result(BaseModel):
             experiments of the input qobj
     """
 
-    def __init__(self, backend_name, backend_version, qobj_id, job_id, success,
-                 results, **kwargs):
+    def __init__(
+        self, backend_name, backend_version, qobj_id, job_id, success, results, **kwargs
+    ):
         self.backend_name = backend_name
         self.backend_version = backend_version
         self.qobj_id = qobj_id
@@ -139,7 +140,7 @@ class Result(BaseModel):
 
             meas_level = exp_result.meas_level
 
-            memory = self.data(experiment)['memory']
+            memory = self.data(experiment)["memory"]
 
             if meas_level == 2:
                 return postprocess.format_level_2_memory(memory, header)
@@ -148,7 +149,9 @@ class Result(BaseModel):
             elif meas_level == 0:
                 return postprocess.format_level_0_memory(memory)
             else:
-                raise QiskitError('Measurement level {0} is not supported'.format(meas_level))
+                raise QiskitError(
+                    "Measurement level {0} is not supported".format(meas_level)
+                )
 
         except KeyError:
             raise QiskitError('No memory for experiment "{0}".'.format(experiment))
@@ -176,8 +179,7 @@ class Result(BaseModel):
             except (AttributeError, QiskitError):  # header is not available
                 header = None
 
-            return postprocess.format_counts(self.data(experiment)['counts'],
-                                             header)
+            return postprocess.format_counts(self.data(experiment)["counts"], header)
         except KeyError:
             raise QiskitError('No counts for experiment "{0}"'.format(experiment))
 
@@ -197,8 +199,9 @@ class Result(BaseModel):
             QiskitError: if there is no statevector for the experiment.
         """
         try:
-            return postprocess.format_statevector(self.data(experiment)['statevector'],
-                                                  decimals=decimals)
+            return postprocess.format_statevector(
+                self.data(experiment)["statevector"], decimals=decimals
+            )
         except KeyError:
             raise QiskitError('No statevector for experiment "{0}"'.format(experiment))
 
@@ -219,8 +222,9 @@ class Result(BaseModel):
             QiskitError: if there is no unitary for the experiment.
         """
         try:
-            return postprocess.format_unitary(self.data(experiment)['unitary'],
-                                              decimals=decimals)
+            return postprocess.format_unitary(
+                self.data(experiment)["unitary"], decimals=decimals
+            )
         except KeyError:
             raise QiskitError('No unitary for experiment "{0}"'.format(experiment))
 
@@ -239,15 +243,15 @@ class Result(BaseModel):
                 error occurred while fetching the data.
         """
         if not self.success:
-            raise QiskitError(getattr(self, 'status',
-                                      'Result was not successful'))
+            raise QiskitError(getattr(self, "status", "Result was not successful"))
 
         # Automatically return the first result if no key was provided.
         if key is None:
             if len(self.results) != 1:
                 raise QiskitError(
-                    'You have to select a circuit or schedule when there is more than '
-                    'one available')
+                    "You have to select a circuit or schedule when there is more than "
+                    "one available"
+                )
 
             key = 0
 
@@ -261,9 +265,10 @@ class Result(BaseModel):
 
         try:
             # Look into `result[x].header.name` for the names.
-            return next(result for result in self.results
-                        if getattr(getattr(result, 'header', None),
-                                   'name', '') == key)
+            return next(
+                result
+                for result in self.results
+                if getattr(getattr(result, "header", None), "name", "") == key
+            )
         except StopIteration:
-            raise QiskitError('Data for experiment "%s" could not be found.' %
-                              key)
+            raise QiskitError('Data for experiment "%s" could not be found.' % key)

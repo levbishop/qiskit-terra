@@ -26,10 +26,10 @@ class TestCircuitMultiRegs(QiskitTestCase):
     def test_circuit_multi(self):
         """Test circuit multi regs declared at start.
         """
-        qreg0 = QuantumRegister(2, 'q0')
-        creg0 = ClassicalRegister(2, 'c0')
-        qreg1 = QuantumRegister(2, 'q1')
-        creg1 = ClassicalRegister(2, 'c1')
+        qreg0 = QuantumRegister(2, "q0")
+        creg0 = ClassicalRegister(2, "c0")
+        qreg1 = QuantumRegister(2, "q1")
+        creg1 = ClassicalRegister(2, "c1")
         circ = QuantumCircuit(qreg0, qreg1)
         circ.x(qreg0[1])
         circ.x(qreg1[0])
@@ -67,6 +67,6 @@ class TestCircuitMultiRegs(QiskitTestCase):
     def test_circuit_multi_name_collision(self):
         """Test circuit multi regs, with name collision.
         """
-        qreg0 = QuantumRegister(2, 'q')
-        qreg1 = QuantumRegister(3, 'q')
+        qreg0 = QuantumRegister(2, "q")
+        qreg1 = QuantumRegister(3, "q")
         self.assertRaises(QiskitError, QuantumCircuit, qreg0, qreg1)

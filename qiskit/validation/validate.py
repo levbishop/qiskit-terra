@@ -45,8 +45,7 @@ class Or(Validator):
             except ValidationError:
                 pass
 
-        raise ValidationError('Data could not be validated against any '
-                              'validator')
+        raise ValidationError("Data could not be validated against any " "validator")
 
 
 class PatternProperties(Validator):

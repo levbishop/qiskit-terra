@@ -68,17 +68,19 @@ class CXDirection(TransformationPass):
             self.layout = Layout.generate_trivial_layout(*dag.qregs.values())
 
         for layer in dag.serial_layers():
-            subdag = layer['graph']
+            subdag = layer["graph"]
 
-            for cnot_node in subdag.named_nodes('cx', 'CX'):
+            for cnot_node in subdag.named_nodes("cx", "CX"):
                 control = cnot_node.qargs[0]
                 target = cnot_node.qargs[1]
 
                 physical_q0 = self.layout[control]
                 physical_q1 = self.layout[target]
                 if self.coupling_map.distance(physical_q0, physical_q1) != 1:
-                    raise TranspilerError('The circuit requires a connection between physical '
-                                          'qubits %s and %s' % (physical_q0, physical_q1))
+                    raise TranspilerError(
+                        "The circuit requires a connection between physical "
+                        "qubits %s and %s" % (physical_q0, physical_q1)
+                    )
 
                 if (physical_q0, physical_q1) not in self.coupling_map.get_edges():
                     # A flip needs to be done

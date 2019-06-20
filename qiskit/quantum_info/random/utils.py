@@ -47,8 +47,8 @@ def random_state(dim, seed=None):
     x += x == 0
     x = -np.log(x)
     sumx = sum(x)
-    phases = rng.rand(dim)*2.0*np.pi
-    return np.sqrt(x/sumx)*np.exp(1j*phases)
+    phases = rng.rand(dim) * 2.0 * np.pi
+    return np.sqrt(x / sumx) * np.exp(1j * phases)
 
 
 def random_unitary(dim, seed=None):
@@ -73,7 +73,7 @@ def random_unitary(dim, seed=None):
 
 
 # TODO: return a DensityMatrix object.
-def random_density_matrix(length, rank=None, method='Hilbert-Schmidt', seed=None):
+def random_density_matrix(length, rank=None, method="Hilbert-Schmidt", seed=None):
     """
     Generate a random density matrix rho.
 
@@ -90,12 +90,12 @@ def random_density_matrix(length, rank=None, method='Hilbert-Schmidt', seed=None
     Raises:
         QiskitError: if the method is not valid.
     """
-    if method == 'Hilbert-Schmidt':
+    if method == "Hilbert-Schmidt":
         return __random_density_hs(length, rank, seed)
-    elif method == 'Bures':
+    elif method == "Bures":
         return __random_density_bures(length, rank, seed)
     else:
-        raise QiskitError('Error: unrecognized method {}'.format(method))
+        raise QiskitError("Error: unrecognized method {}".format(method))
 
 
 def __ginibre_matrix(nrow, ncol=None, seed=None):
@@ -114,8 +114,7 @@ def __ginibre_matrix(nrow, ncol=None, seed=None):
         ncol = nrow
     if seed is not None:
         np.random.seed(seed)
-    G = np.random.normal(size=(nrow, ncol)) + \
-        np.random.normal(size=(nrow, ncol)) * 1j
+    G = np.random.normal(size=(nrow, ncol)) + np.random.normal(size=(nrow, ncol)) * 1j
     return G
 
 

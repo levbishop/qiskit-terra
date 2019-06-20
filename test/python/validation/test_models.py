@@ -24,11 +24,13 @@ from qiskit.test import QiskitTestCase
 
 class DummySchema(BaseSchema):
     """Example Dummy schema."""
+
     pass
 
 
 class PersonSchema(BaseSchema):
     """Example Person schema."""
+
     name = fields.String(required=True)
     birth_date = fields.Date()
     email = fields.Email()
@@ -36,6 +38,7 @@ class PersonSchema(BaseSchema):
 
 class BookSchema(BaseSchema):
     """Example Book schema."""
+
     title = fields.String(required=True)
     date = fields.Date()
     author = fields.Nested(PersonSchema, required=True)
@@ -44,18 +47,21 @@ class BookSchema(BaseSchema):
 @bind_schema(DummySchema)
 class NotAPerson(BaseModel):
     """Example of NotAPerson model."""
+
     pass
 
 
 @bind_schema(PersonSchema)
 class Person(BaseModel):
     """Example Person model."""
+
     pass
 
 
 @bind_schema(BookSchema)
 class Book(BaseModel):
     """Example Book model."""
+
     pass
 
 
@@ -64,12 +70,12 @@ class TestModels(QiskitTestCase):
 
     def test_instantiate(self):
         """Test model instantiation."""
-        person = Person(name='Foo')
-        self.assertEqual(person.name, 'Foo')
+        person = Person(name="Foo")
+        self.assertEqual(person.name, "Foo")
 
         # From dict.
-        person_dict = Person.from_dict({'name': 'Foo'})
-        self.assertEqual(person_dict.name, 'Foo')
+        person_dict = Person.from_dict({"name": "Foo"})
+        self.assertEqual(person_dict.name, "Foo")
 
         self.assertEqual(person, person_dict)
 
@@ -89,54 +95,56 @@ class TestModels(QiskitTestCase):
 
         # From dict.
         with self.assertRaises(ModelValidationError):
-            _ = Person.from_dict({'name': 1})
+            _ = Person.from_dict({"name": 1})
 
     def test_instantiate_deserialized_types(self):
         """Test model instantiation with fields of deserialized type."""
         birth_date = datetime(2000, 1, 1).date()
 
-        person = Person(name='Foo', birth_date=birth_date)
+        person = Person(name="Foo", birth_date=birth_date)
         self.assertEqual(person.birth_date, birth_date)
         with self.assertRaises(ModelValidationError):
-            _ = Person(name='Foo', birth_date=birth_date.isoformat())
+            _ = Person(name="Foo", birth_date=birth_date.isoformat())
 
         # From dict.
-        person_dict = Person.from_dict({'name': 'Foo',
-                                        'birth_date': birth_date.isoformat()})
+        person_dict = Person.from_dict(
+            {"name": "Foo", "birth_date": birth_date.isoformat()}
+        )
         self.assertEqual(person_dict.birth_date, birth_date)
         with self.assertRaises(ModelValidationError):
-            _ = Person.from_dict({'name': 'Foo', 'birth_date': birth_date})
+            _ = Person.from_dict({"name": "Foo", "birth_date": birth_date})
 
         self.assertEqual(person, person_dict)
 
     def test_instantiate_additional(self):
         """Test model instantiation with additional fields."""
-        person = Person(name='Foo', other='bar')
-        self.assertEqual(person.name, 'Foo')
-        self.assertEqual(person.other, 'bar')
+        person = Person(name="Foo", other="bar")
+        self.assertEqual(person.name, "Foo")
+        self.assertEqual(person.other, "bar")
 
         # From dict.
-        person_dict = Person.from_dict({'name': 'Foo', 'other': 'bar'})
-        self.assertEqual(person_dict.name, 'Foo')
-        self.assertEqual(person_dict.other, 'bar')
+        person_dict = Person.from_dict({"name": "Foo", "other": "bar"})
+        self.assertEqual(person_dict.name, "Foo")
+        self.assertEqual(person_dict.other, "bar")
 
         self.assertEqual(person, person_dict)
 
     def test_instantiate_nested(self):
         """Test model instantiation with nested fields."""
-        book = Book(title='A Book', author=Person(name='Foo', other='bar'))
-        self.assertEqual(book.title, 'A Book')
-        self.assertEqual(book.author.name, 'Foo')
-        self.assertEqual(book.author.other, 'bar')
+        book = Book(title="A Book", author=Person(name="Foo", other="bar"))
+        self.assertEqual(book.title, "A Book")
+        self.assertEqual(book.author.name, "Foo")
+        self.assertEqual(book.author.other, "bar")
         with self.assertRaises(AttributeError):
             _ = book.date
 
         # From dict.
-        book_dict = Book.from_dict({'title': 'A Book',
-                                    'author': {'name': 'Foo', 'other': 'bar'}})
-        self.assertEqual(book_dict.title, 'A Book')
-        self.assertEqual(book_dict.author.name, 'Foo')
-        self.assertEqual(book_dict.author.other, 'bar')
+        book_dict = Book.from_dict(
+            {"title": "A Book", "author": {"name": "Foo", "other": "bar"}}
+        )
+        self.assertEqual(book_dict.title, "A Book")
+        self.assertEqual(book_dict.author.name, "Foo")
+        self.assertEqual(book_dict.author.other, "bar")
         with self.assertRaises(AttributeError):
             _ = book_dict.date
 
@@ -145,22 +153,21 @@ class TestModels(QiskitTestCase):
     def test_instantiate_nested_wrong_type(self):
         """Test model instantiation with nested fields of the wrong type."""
         with self.assertRaises(ModelValidationError):
-            _ = Book(title='A Book', author=NotAPerson())
+            _ = Book(title="A Book", author=NotAPerson())
 
         # From dict.
         with self.assertRaises(ModelValidationError):
-            _ = Book.from_dict({'title': 'A Book',
-                                'author': {'fur_density': '1.2'}})
+            _ = Book.from_dict({"title": "A Book", "author": {"fur_density": "1.2"}})
 
     def test_serialize(self):
         """Test model serialization to dict."""
-        person = Person(name='Foo', other='bar')
-        self.assertEqual(person.to_dict(),
-                         {'name': 'Foo', 'other': 'bar'})
+        person = Person(name="Foo", other="bar")
+        self.assertEqual(person.to_dict(), {"name": "Foo", "other": "bar"})
 
     def test_serialize_nested(self):
         """Test model serialization to dict, with nested fields."""
-        book = Book(title='A Book', author=Person(name='Foo', other='bar'))
-        self.assertEqual(book.to_dict(),
-                         {'title': 'A Book',
-                          'author': {'name': 'Foo', 'other': 'bar'}})
+        book = Book(title="A Book", author=Person(name="Foo", other="bar"))
+        self.assertEqual(
+            book.to_dict(),
+            {"title": "A Book", "author": {"name": "Foo", "other": "bar"}},
+        )

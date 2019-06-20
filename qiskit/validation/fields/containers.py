@@ -37,7 +37,8 @@ class Nested(_fields.Nested, ModelTypeValidator):
         """
         if self.many and not is_collection(value):
             raise self._not_expected_type(
-                value, Iterable, fields=[self], field_names=attr, data=data)
+                value, Iterable, fields=[self], field_names=attr, data=data
+            )
 
         _check_type = super().check_type
 
@@ -60,7 +61,7 @@ class List(_fields.List, ModelTypeValidator):
     # pylint: disable=missing-docstring
     __doc__ = _fields.List.__doc__
 
-    valid_types = (Iterable, )
+    valid_types = (Iterable,)
 
     def check_type(self, value, attr, data):
         """Validate if it's a list of valid item-field values.
@@ -87,4 +88,4 @@ class Dict(_fields.Dict, ModelTypeValidator):
     # pylint: disable=missing-docstring
     __doc__ = _fields.Dict.__doc__
 
-    valid_types = (Mapping, )
+    valid_types = (Mapping,)

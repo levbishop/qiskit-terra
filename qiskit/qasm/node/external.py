@@ -28,12 +28,11 @@ class External(Node):
 
     def __init__(self, children):
         """Create the external node."""
-        super().__init__('external', children, None)
+        super().__init__("external", children, None)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""
-        return self.children[0].qasm(prec) + "(" + \
-            self.children[1].qasm(prec) + ")"
+        return self.children[0].qasm(prec) + "(" + self.children[1].qasm(prec) + ")"
 
     def latex(self, prec=15, nested_scope=None):
         """Return the corresponding math mode latex string."""
@@ -45,15 +44,15 @@ class External(Node):
         op = self.children[0].name
         expr = self.children[1]
         dispatch = {
-            'sin': sympy.sin,
-            'cos': sympy.cos,
-            'tan': sympy.tan,
-            'asin': sympy.asin,
-            'acos': sympy.acos,
-            'atan': sympy.atan,
-            'exp': sympy.exp,
-            'ln': sympy.log,
-            'sqrt': sympy.sqrt
+            "sin": sympy.sin,
+            "cos": sympy.cos,
+            "tan": sympy.tan,
+            "asin": sympy.asin,
+            "acos": sympy.acos,
+            "atan": sympy.atan,
+            "exp": sympy.exp,
+            "ln": sympy.log,
+            "sqrt": sympy.sqrt,
         }
         if op in dispatch:
             arg = expr.real(nested_scope)
@@ -66,15 +65,15 @@ class External(Node):
         op = self.children[0].name
         expr = self.children[1]
         dispatch = {
-            'sin': sympy.sin,
-            'cos': sympy.cos,
-            'tan': sympy.tan,
-            'asin': sympy.asin,
-            'acos': sympy.acos,
-            'atan': sympy.atan,
-            'exp': sympy.exp,
-            'ln': sympy.log,
-            'sqrt': sympy.sqrt
+            "sin": sympy.sin,
+            "cos": sympy.cos,
+            "tan": sympy.tan,
+            "asin": sympy.asin,
+            "acos": sympy.acos,
+            "atan": sympy.atan,
+            "exp": sympy.exp,
+            "ln": sympy.log,
+            "sqrt": sympy.sqrt,
         }
         if op in dispatch:
             arg = expr.sym(nested_scope)

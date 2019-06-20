@@ -24,7 +24,7 @@ from .command import Command
 class FrameChange(Command):
     """Frame change pulse."""
 
-    prefix = 'fc'
+    prefix = "fc"
 
     def __init__(self, phase, name=None):
         """Create new frame change pulse.
@@ -53,17 +53,19 @@ class FrameChange(Command):
         Returns:
             bool: are self and other equal.
         """
-        if type(self) is type(other) and \
-                self.phase == other.phase:
+        if type(self) is type(other) and self.phase == other.phase:
             return True
         return False
 
     def __repr__(self):
-        return '%s(%s, phase=%.3f)' % (self.__class__.__name__, self.name, self.phase)
+        return "%s(%s, phase=%.3f)" % (self.__class__.__name__, self.name, self.phase)
 
     # pylint: disable=arguments-differ
-    def to_instruction(self, channel: PulseChannel, name=None) -> 'FrameChangeInstruction':
+    def to_instruction(
+        self, channel: PulseChannel, name=None
+    ) -> "FrameChangeInstruction":
         return FrameChangeInstruction(self, channel, name=name)
+
     # pylint: enable=arguments-differ
 
 

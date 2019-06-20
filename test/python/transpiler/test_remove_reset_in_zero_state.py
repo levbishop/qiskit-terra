@@ -31,7 +31,7 @@ class TestRemoveResetInZeroState(QiskitTestCase):
         """ Remove a single reset
             qr0:--|0>--   ==>    qr0:----
         """
-        qr = QuantumRegister(1, 'qr')
+        qr = QuantumRegister(1, "qr")
         circuit = QuantumCircuit(qr)
         circuit.reset(qr)
         dag = circuit_to_dag(circuit)
@@ -47,7 +47,7 @@ class TestRemoveResetInZeroState(QiskitTestCase):
         """ Do not remove reset if not in a zero state
             qr0:--[H]--|0>--   ==>    qr0:--[H]--|0>--
         """
-        qr = QuantumRegister(1, 'qr')
+        qr = QuantumRegister(1, "qr")
         circuit = QuantumCircuit(qr)
         circuit.h(qr)
         circuit.reset(qr)
@@ -68,7 +68,7 @@ class TestRemoveResetInZeroState(QiskitTestCase):
                           ==>
             qr1:--|0>--          qr1:----
         """
-        qr = QuantumRegister(2, 'qr')
+        qr = QuantumRegister(2, "qr")
         circuit = QuantumCircuit(qr)
         circuit.reset(qr)
         dag = circuit_to_dag(circuit)
@@ -88,7 +88,7 @@ class TestRemoveResetInZeroStateFixedPoint(QiskitTestCase):
         """ Remove two initial resets
             qr0:--|0>-|0>--   ==>    qr0:----
         """
-        qr = QuantumRegister(1, 'qr')
+        qr = QuantumRegister(1, "qr")
         circuit = QuantumCircuit(qr)
         circuit.reset(qr[0])
         circuit.reset(qr[0])
@@ -98,11 +98,12 @@ class TestRemoveResetInZeroStateFixedPoint(QiskitTestCase):
         pass_manager = PassManager()
         pass_manager.append(
             [RemoveResetInZeroState(), DAGFixedPoint()],
-            do_while=lambda property_set: not property_set['dag_fixed_point'])
+            do_while=lambda property_set: not property_set["dag_fixed_point"],
+        )
         after = transpile(circuit, pass_manager=pass_manager)
 
         self.assertEqual(expected, after)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

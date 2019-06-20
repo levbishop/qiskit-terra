@@ -33,9 +33,7 @@ class ZGate(Gate):
     def _define(self):
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U1Gate(pi), [q[0]], [])
-        ]
+        rule = [(U1Gate(pi), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition
@@ -46,8 +44,7 @@ class ZGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the X gate."""
-        return numpy.array([[1, 0],
-                            [0, -1]], dtype=complex)
+        return numpy.array([[1, 0], [0, -1]], dtype=complex)
 
 
 def z(self, q):

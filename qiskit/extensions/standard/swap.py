@@ -40,7 +40,7 @@ class SwapGate(Gate):
         rule = [
             (CnotGate(), [q[0], q[1]], []),
             (CnotGate(), [q[1], q[0]], []),
-            (CnotGate(), [q[0], q[1]], [])
+            (CnotGate(), [q[0], q[1]], []),
         ]
         for inst in rule:
             definition.append(inst)
@@ -52,10 +52,9 @@ class SwapGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the Swap gate."""
-        return numpy.array([[1, 0, 0, 0],
-                            [0, 0, 1, 0],
-                            [0, 1, 0, 0],
-                            [0, 0, 0, 1]], dtype=complex)
+        return numpy.array(
+            [[1, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 1]], dtype=complex
+        )
 
 
 def swap(self, qubit1, qubit2):

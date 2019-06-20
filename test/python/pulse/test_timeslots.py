@@ -71,8 +71,10 @@ class TestTimeslotCollection(QiskitTestCase):
     def test_can_create_with_valid_timeslots(self):
         """Test valid time-slot collection creation without error.
         """
-        slots = [Timeslot(Interval(1, 3), AcquireChannel(0)),
-                 Timeslot(Interval(3, 5), AcquireChannel(0))]
+        slots = [
+            Timeslot(Interval(1, 3), AcquireChannel(0)),
+            Timeslot(Interval(3, 5), AcquireChannel(0)),
+        ]
         TimeslotCollection(*slots)
 
     def test_empty_collection(self):
@@ -82,8 +84,10 @@ class TestTimeslotCollection(QiskitTestCase):
         self.assertEqual(True, empty.is_mergeable_with(empty))
 
         # can merge with normal collection
-        normal = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(0)),
-                                    Timeslot(Interval(3, 5), AcquireChannel(0)))
+        normal = TimeslotCollection(
+            Timeslot(Interval(1, 3), AcquireChannel(0)),
+            Timeslot(Interval(3, 5), AcquireChannel(0)),
+        )
         self.assertEqual(True, empty.is_mergeable_with(normal))
         self.assertEqual(normal, empty.merged(normal))
 
@@ -94,16 +98,20 @@ class TestTimeslotCollection(QiskitTestCase):
         col1 = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(0)))
         col2 = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(1)))
         self.assertEqual(True, col1.is_mergeable_with(col2))
-        expected = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(0)),
-                                      Timeslot(Interval(1, 3), AcquireChannel(1)))
+        expected = TimeslotCollection(
+            Timeslot(Interval(1, 3), AcquireChannel(0)),
+            Timeslot(Interval(1, 3), AcquireChannel(1)),
+        )
         self.assertEqual(expected, col1.merged(col2))
 
         # same channel but different interval
         col1 = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(0)))
         col2 = TimeslotCollection(Timeslot(Interval(3, 5), AcquireChannel(0)))
         self.assertEqual(True, col1.is_mergeable_with(col2))
-        expected = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(0)),
-                                      Timeslot(Interval(3, 5), AcquireChannel(0)))
+        expected = TimeslotCollection(
+            Timeslot(Interval(1, 3), AcquireChannel(0)),
+            Timeslot(Interval(3, 5), AcquireChannel(0)),
+        )
         self.assertEqual(expected, col1.merged(col2))
 
     def test_unmergeable_collections(self):
@@ -116,7 +124,9 @@ class TestTimeslotCollection(QiskitTestCase):
     def test_shift(self):
         """Test if `shift` shifts the collection for specified time.
         """
-        actual = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(0))).shift(10)
+        actual = TimeslotCollection(Timeslot(Interval(1, 3), AcquireChannel(0))).shift(
+            10
+        )
         expected = TimeslotCollection(Timeslot(Interval(11, 13), AcquireChannel(0)))
         self.assertEqual(expected, actual)
 
@@ -138,5 +148,5 @@ class TestTimeslotCollection(QiskitTestCase):
         self.assertEqual(col1.channels, expected_channels)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -39,9 +39,7 @@ class HGate(Gate):
         """
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U2Gate(0, pi), [q[0]], [])
-        ]
+        rule = [(U2Gate(0, pi), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition
@@ -52,8 +50,7 @@ class HGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the H gate."""
-        return numpy.array([[1, 1],
-                            [1, -1]], dtype=complex) / numpy.sqrt(2)
+        return numpy.array([[1, 1], [1, -1]], dtype=complex) / numpy.sqrt(2)
 
 
 def h(self, q):

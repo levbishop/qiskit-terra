@@ -61,7 +61,7 @@ class Interval:
         """Duration of this interval."""
         return self._end - self._begin
 
-    def has_overlap(self, interval: 'Interval') -> bool:
+    def has_overlap(self, interval: "Interval") -> bool:
         """Check if self has overlap with `interval`.
 
         Args:
@@ -74,7 +74,7 @@ class Interval:
             return True
         return False
 
-    def shift(self, time: int) -> 'Interval':
+    def shift(self, time: int) -> "Interval":
         """Return a new interval shifted by `time` from self
 
         Args:
@@ -116,7 +116,7 @@ class Timeslot:
         """Channel of this time slot."""
         return self._channel
 
-    def shift(self, time: int) -> 'Timeslot':
+    def shift(self, time: int) -> "Timeslot":
         """Return a new Timeslot shifted by `time`.
 
         Args:
@@ -151,7 +151,9 @@ class TimeslotCollection:
         for slot in timeslots:
             for interval in self._table[slot.channel]:
                 if slot.interval.has_overlap(interval):
-                    raise PulseError("Cannot create TimeslotCollection from overlapped timeslots")
+                    raise PulseError(
+                        "Cannot create TimeslotCollection from overlapped timeslots"
+                    )
             self._table[slot.channel].append(slot.interval)
 
         self._timeslots = tuple(timeslots)
@@ -187,8 +189,11 @@ class TimeslotCollection:
         Args:
             *channels: Channels over which to obtain start_time.
         """
-        intervals = list(itertools.chain(*(self._table[chan] for chan in channels
-                                           if chan in self._table)))
+        intervals = list(
+            itertools.chain(
+                *(self._table[chan] for chan in channels if chan in self._table)
+            )
+        )
         if intervals:
             return min(interval.begin for interval in intervals)
         return 0
@@ -199,8 +204,11 @@ class TimeslotCollection:
         Args:
             *channels: Channels over which to obtain stop time.
         """
-        intervals = list(itertools.chain(*(self._table[chan] for chan in channels
-                                           if chan in self._table)))
+        intervals = list(
+            itertools.chain(
+                *(self._table[chan] for chan in channels if chan in self._table)
+            )
+        )
         if intervals:
             return max(interval.end for interval in intervals)
         return 0
@@ -213,7 +221,7 @@ class TimeslotCollection:
         """
         return self.ch_stop_time(*channels)
 
-    def is_mergeable_with(self, timeslots: 'TimeslotCollection') -> bool:
+    def is_mergeable_with(self, timeslots: "TimeslotCollection") -> bool:
         """Return if self is mergeable with `timeslots`.
 
         Args:
@@ -226,23 +234,27 @@ class TimeslotCollection:
                         return False
         return True
 
-    def merged(self, timeslots: 'TimeslotCollection') -> 'TimeslotCollection':
+    def merged(self, timeslots: "TimeslotCollection") -> "TimeslotCollection":
         """Return a new TimeslotCollection merged with a specified `timeslots`
 
         Args:
             timeslots: TimeslotCollection to be merged
         """
         slots = [Timeslot(slot.interval, slot.channel) for slot in self.timeslots]
-        slots.extend([Timeslot(slot.interval, slot.channel) for slot in timeslots.timeslots])
+        slots.extend(
+            [Timeslot(slot.interval, slot.channel) for slot in timeslots.timeslots]
+        )
         return TimeslotCollection(*slots)
 
-    def shift(self, time: int) -> 'TimeslotCollection':
+    def shift(self, time: int) -> "TimeslotCollection":
         """Return a new TimeslotCollection shifted by `time`.
 
         Args:
             time: time to be shifted by
         """
-        slots = [Timeslot(slot.interval.shift(time), slot.channel) for slot in self.timeslots]
+        slots = [
+            Timeslot(slot.interval.shift(time), slot.channel) for slot in self.timeslots
+        ]
         return TimeslotCollection(*slots)
 
     def __eq__(self, other) -> bool:

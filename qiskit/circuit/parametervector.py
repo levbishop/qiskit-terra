@@ -18,8 +18,9 @@ Parameter Vector Class to simplify management of parameter lists.
 from .parameter import Parameter
 
 
-class ParameterVector():
+class ParameterVector:
     """ParameterVector Class to quickly generate lists of parameters"""
+
     def __init__(self, name, length=0):
         self._name = name
         self._params = []
@@ -46,7 +47,9 @@ class ParameterVector():
         return len(self.params)
 
     def __str__(self):
-        return '{}, {}'.format(self.name, [str(item) for item in self.params])
+        return "{}, {}".format(self.name, [str(item) for item in self.params])
 
     def __repr__(self):
-        return '{}(name={}, length={})'.format(self.__class__.__name__, self.name, len(self))
+        return "{}(name={}, length={})".format(
+            self.__class__.__name__, self.name, len(self)
+        )

@@ -63,7 +63,7 @@ class CHGate(Gate):
             (HGate(), [q[1]], []),
             (SGate(), [q[1]], []),
             (XGate(), [q[1]], []),
-            (SGate(), [q[0]], [])
+            (SGate(), [q[0]], []),
         ]
         for inst in rule:
             definition.append(inst)

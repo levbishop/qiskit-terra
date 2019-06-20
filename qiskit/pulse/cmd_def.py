@@ -64,8 +64,11 @@ class CmdDef:
                 self.add(key[0], key[1:], schedule)
 
     @classmethod
-    def from_defaults(cls, flat_cmd_def: List[PulseQobjInstruction],
-                      pulse_library: Dict[str, SamplePulse]) -> 'CmdDef':
+    def from_defaults(
+        cls,
+        flat_cmd_def: List[PulseQobjInstruction],
+        pulse_library: Dict[str, SamplePulse],
+    ) -> "CmdDef":
         """Create command definition from backend defaults output.
         Args:
             flat_cmd_def: Command definition list returned by backend
@@ -85,8 +88,12 @@ class CmdDef:
 
         return cmd_def
 
-    def add(self, cmd_name: str, qubits: Union[int, Iterable[int]],
-            schedule: Union[ParameterizedSchedule, Schedule]):
+    def add(
+        self,
+        cmd_name: str,
+        qubits: Union[int, Iterable[int]],
+        schedule: Union[ParameterizedSchedule, Schedule],
+    ):
         """Add a command to the `CommandDefinition`
 
         Args:
@@ -115,9 +122,13 @@ class CmdDef:
 
         return False
 
-    def get(self, cmd_name: str, qubits: Union[int, Iterable[int]],
-            *params: List[Union[int, float, complex]],
-            **kwparams: Dict[str, Union[int, float, complex]]) -> Schedule:
+    def get(
+        self,
+        cmd_name: str,
+        qubits: Union[int, Iterable[int]],
+        *params: List[Union[int, float, complex]],
+        **kwparams: Dict[str, Union[int, float, complex]],
+    ) -> Schedule:
         """Get command from command definition.
         Args:
             cmd_name: Name of the command
@@ -138,10 +149,14 @@ class CmdDef:
             return schedule.flatten()
 
         else:
-            raise PulseError('Command {0} for qubits {1} is not present '
-                             'in CmdDef'.format(cmd_name, qubits))
+            raise PulseError(
+                "Command {0} for qubits {1} is not present "
+                "in CmdDef".format(cmd_name, qubits)
+            )
 
-    def get_parameters(self, cmd_name: str, qubits: Union[int, Iterable[int]]) -> Tuple[str]:
+    def get_parameters(
+        self, cmd_name: str, qubits: Union[int, Iterable[int]]
+    ) -> Tuple[str]:
         """Get command parameters from command definition.
         Args:
             cmd_name: Name of the command
@@ -156,12 +171,18 @@ class CmdDef:
             return schedule.parameters
 
         else:
-            raise PulseError('Command {0} for qubits {1} is not present '
-                             'in CmdDef'.format(cmd_name, qubits))
+            raise PulseError(
+                "Command {0} for qubits {1} is not present "
+                "in CmdDef".format(cmd_name, qubits)
+            )
 
-    def pop(self, cmd_name: str, qubits: Union[int, Iterable[int]],
-            *params: List[Union[int, float, complex]],
-            **kwparams: Dict[str, Union[int, float, complex]]) -> Schedule:
+    def pop(
+        self,
+        cmd_name: str,
+        qubits: Union[int, Iterable[int]],
+        *params: List[Union[int, float, complex]],
+        **kwparams: Dict[str, Union[int, float, complex]],
+    ) -> Schedule:
         """Pop command from command definition.
 
         Args:
@@ -184,8 +205,10 @@ class CmdDef:
             return schedule
 
         else:
-            raise PulseError('Command {0} for qubits {1} is not present '
-                             'in CmdDef'.format(cmd_name, qubits))
+            raise PulseError(
+                "Command {0} for qubits {1} is not present "
+                "in CmdDef".format(cmd_name, qubits)
+            )
 
     def cmds(self) -> List[str]:
         """Return all command names available in CmdDef."""

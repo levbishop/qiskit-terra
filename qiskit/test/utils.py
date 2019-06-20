@@ -28,13 +28,13 @@ class Path(Enum):
     # Main SDK path:    qiskit/
     SDK = qiskit_path[0]
     # test.python path: qiskit/test/python/
-    TEST = os.path.normpath(os.path.join(SDK, '..', 'test', 'python'))
+    TEST = os.path.normpath(os.path.join(SDK, "..", "test", "python"))
     # Examples path:    examples/
-    EXAMPLES = os.path.normpath(os.path.join(SDK, '..', 'examples'))
+    EXAMPLES = os.path.normpath(os.path.join(SDK, "..", "examples"))
     # Schemas path:     qiskit/schemas
-    SCHEMAS = os.path.normpath(os.path.join(SDK, 'schemas'))
+    SCHEMAS = os.path.normpath(os.path.join(SDK, "schemas"))
     # Sample QASMs path: qiskit/test/python/qasm
-    QASMS = os.path.normpath(os.path.join(TEST, 'qasm'))
+    QASMS = os.path.normpath(os.path.join(TEST, "qasm"))
 
 
 def setup_test_logging(logger, log_level, filename):
@@ -46,8 +46,9 @@ def setup_test_logging(logger, log_level, filename):
         filename (str): name of the output file.
     """
     # Set up formatter.
-    log_fmt = ('{}.%(funcName)s:%(levelname)s:%(asctime)s:'
-               ' %(message)s'.format(logger.name))
+    log_fmt = "{}.%(funcName)s:%(levelname)s:%(asctime)s:" " %(message)s".format(
+        logger.name
+    )
     formatter = logging.Formatter(log_fmt)
 
     # Set up the file handler.
@@ -77,11 +78,15 @@ class _AssertNoLogsContext(unittest.case._AssertLogsContext):
             return False
 
         if self.watcher.records:
-            msg = 'logs of level {} or higher triggered on {}:\n'.format(
-                logging.getLevelName(self.level), self.logger.name)
+            msg = "logs of level {} or higher triggered on {}:\n".format(
+                logging.getLevelName(self.level), self.logger.name
+            )
             for record in self.watcher.records:
-                msg += 'logger %s %s:%i: %s\n' % (record.name, record.pathname,
-                                                  record.lineno,
-                                                  record.getMessage())
+                msg += "logger %s %s:%i: %s\n" % (
+                    record.name,
+                    record.pathname,
+                    record.lineno,
+                    record.getMessage(),
+                )
 
             self._raiseFailure(msg)

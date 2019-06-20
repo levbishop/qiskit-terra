@@ -60,7 +60,7 @@ class ToffoliGate(Gate):
             (CnotGate(), [q[0], q[1]], []),
             (TGate(), [q[0]], []),
             (TdgGate(), [q[1]], []),
-            (CnotGate(), [q[0], q[1]], [])
+            (CnotGate(), [q[0], q[1]], []),
         ]
         for inst in rule:
             definition.append(inst)
@@ -72,14 +72,19 @@ class ToffoliGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the Toffoli gate."""
-        return numpy.array([[1, 0, 0, 0, 0, 0, 0, 0],
-                            [0, 1, 0, 0, 0, 0, 0, 0],
-                            [0, 0, 1, 0, 0, 0, 0, 0],
-                            [0, 0, 0, 0, 0, 0, 0, 1],
-                            [0, 0, 0, 0, 1, 0, 0, 0],
-                            [0, 0, 0, 0, 0, 1, 0, 0],
-                            [0, 0, 0, 0, 0, 0, 1, 0],
-                            [0, 0, 0, 1, 0, 0, 0, 0]], dtype=complex)
+        return numpy.array(
+            [
+                [1, 0, 0, 0, 0, 0, 0, 0],
+                [0, 1, 0, 0, 0, 0, 0, 0],
+                [0, 0, 1, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 1],
+                [0, 0, 0, 0, 1, 0, 0, 0],
+                [0, 0, 0, 0, 0, 1, 0, 0],
+                [0, 0, 0, 0, 0, 0, 1, 0],
+                [0, 0, 0, 1, 0, 0, 0, 0],
+            ],
+            dtype=complex,
+        )
 
 
 def ccx(self, ctl1, ctl2, tgt):

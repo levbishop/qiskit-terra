@@ -33,11 +33,13 @@ def requires_submit(func):
     Returns:
         callable: the decorated function.
     """
+
     @functools.wraps(func)
     def _wrapper(self, *args, **kwargs):
         if self._future is None:
             raise JobError("Job not submitted yet!. You have to .submit() first!")
         return func(self, *args, **kwargs)
+
     return _wrapper
 
 
@@ -48,7 +50,7 @@ class BasicAerJob(BaseJob):
         _executor (futures.Executor): executor to handle asynchronous jobs
     """
 
-    if sys.platform in ['darwin', 'win32']:
+    if sys.platform in ["darwin", "win32"]:
         _executor = futures.ThreadPoolExecutor()
     else:
         _executor = futures.ProcessPoolExecutor()
@@ -115,7 +117,9 @@ class BasicAerJob(BaseJob):
         elif self._future.cancelled():
             _status = JobStatus.CANCELLED
         elif self._future.done():
-            _status = JobStatus.DONE if self._future.exception() is None else JobStatus.ERROR
+            _status = (
+                JobStatus.DONE if self._future.exception() is None else JobStatus.ERROR
+            )
         else:
             # Note: There is an undocumented Future state: PENDING, that seems to show up when
             # the job is enqueued, waiting for someone to pick it up. We need to deal with this

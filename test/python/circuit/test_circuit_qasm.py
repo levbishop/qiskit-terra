@@ -35,9 +35,9 @@ class TestCircuitQasm(QiskitTestCase):
     def test_circuit_qasm(self):
         """Test circuit qasm() method.
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
-        cr = ClassicalRegister(3, 'cr')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
+        cr = ClassicalRegister(3, "cr")
         qc = QuantumCircuit(qr1, qr2, cr)
         qc.u1(0.3, qr1[0])
         qc.u2(0.2, 0.1, qr2[0])

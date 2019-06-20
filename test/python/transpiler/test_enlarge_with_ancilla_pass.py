@@ -27,7 +27,7 @@ class TestEnlargeWithAncilla(QiskitTestCase):
     """Tests the EnlargeWithAncilla pass."""
 
     def setUp(self):
-        self.qr3 = QuantumRegister(3, 'qr')
+        self.qr3 = QuantumRegister(3, "qr")
         circuit = QuantumCircuit(self.qr3)
         circuit.h(self.qr3)
         self.dag = circuit_to_dag(circuit)
@@ -45,11 +45,17 @@ class TestEnlargeWithAncilla(QiskitTestCase):
 
     def test_with_extension(self):
         """There are 2 virtual qubit to extend."""
-        ancilla = QuantumRegister(2, 'ancilla')
+        ancilla = QuantumRegister(2, "ancilla")
 
-        layout = Layout({0: self.qr3[0], 1: ancilla[0],
-                         2: self.qr3[1], 3: ancilla[1],
-                         4: self.qr3[2]})
+        layout = Layout(
+            {
+                0: self.qr3[0],
+                1: ancilla[0],
+                2: self.qr3[1],
+                3: ancilla[1],
+                4: self.qr3[2],
+            }
+        )
 
         pass_ = EnlargeWithAncilla(layout)
         after = pass_.run(self.dag)
@@ -60,5 +66,5 @@ class TestEnlargeWithAncilla(QiskitTestCase):
         self.assertEqual(ancilla, qregs[1])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

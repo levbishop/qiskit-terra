@@ -16,14 +16,18 @@
 
 from marshmallow.validate import Equal, OneOf
 
-from qiskit.qobj.models.base import QobjExperimentSchema, QobjConfigSchema, QobjHeaderSchema
+from qiskit.qobj.models.base import (
+    QobjExperimentSchema,
+    QobjConfigSchema,
+    QobjHeaderSchema,
+)
 from qiskit.qobj.models.pulse import PulseQobjExperimentSchema, PulseQobjConfigSchema
 from qiskit.qobj.models.qasm import QasmQobjExperimentSchema, QasmQobjConfigSchema
 from qiskit.validation.base import BaseModel, BaseSchema, bind_schema
 from qiskit.validation.fields import Nested, String
 from .utils import QobjType
 
-QOBJ_VERSION = '1.1.0'
+QOBJ_VERSION = "1.1.0"
 
 """Current version of the Qobj schema.
 
@@ -36,6 +40,7 @@ Qobj schema versions:
 
 class QobjSchema(BaseSchema):
     """Schema for Qobj."""
+
     # Required properties.
     qobj_id = String(required=True)
     schema_version = String(required=True, missing=QOBJ_VERSION)
@@ -44,7 +49,9 @@ class QobjSchema(BaseSchema):
     config = Nested(QobjConfigSchema, required=True)
     experiments = Nested(QobjExperimentSchema, required=True, many=True)
     header = Nested(QobjHeaderSchema, required=True)
-    type = String(required=True, validate=OneOf(choices=(QobjType.QASM, QobjType.PULSE)))
+    type = String(
+        required=True, validate=OneOf(choices=(QobjType.QASM, QobjType.PULSE))
+    )
 
 
 class QasmQobjSchema(QobjSchema):
@@ -54,8 +61,7 @@ class QasmQobjSchema(QobjSchema):
     config = Nested(QasmQobjConfigSchema, required=True)
     experiments = Nested(QasmQobjExperimentSchema, required=True, many=True)
 
-    type = String(required=True, validate=Equal(QobjType.QASM),
-                  missing=QobjType.QASM)
+    type = String(required=True, validate=Equal(QobjType.QASM), missing=QobjType.QASM)
 
 
 class PulseQobjSchema(QobjSchema):
@@ -65,8 +71,7 @@ class PulseQobjSchema(QobjSchema):
     config = Nested(PulseQobjConfigSchema, required=True)
     experiments = Nested(PulseQobjExperimentSchema, required=True, many=True)
 
-    type = String(required=True, validate=Equal(QobjType.PULSE),
-                  missing=QobjType.PULSE)
+    type = String(required=True, validate=Equal(QobjType.PULSE), missing=QobjType.PULSE)
 
 
 @bind_schema(QobjSchema)
@@ -83,6 +88,7 @@ class Qobj(BaseModel):
         header (QobjHeader): headers.
         type (str): Qobj type.
     """
+
     def __init__(self, qobj_id, config, experiments, header, type, **kwargs):
         # pylint: disable=redefined-builtin
         self.qobj_id = qobj_id
@@ -108,17 +114,20 @@ class QasmQobj(Qobj):
         experiments (list[QASMQobjExperiment]): list of experiments.
         header (QobjHeader): headers.
     """
+
     def __init__(self, qobj_id, config, experiments, header, **kwargs):
 
         # to avoid specifying 'type' here within from_dict()
-        kwargs.pop('type', None)
+        kwargs.pop("type", None)
 
-        super().__init__(qobj_id=qobj_id,
-                         config=config,
-                         experiments=experiments,
-                         header=header,
-                         type=QobjType.QASM.value,
-                         **kwargs)
+        super().__init__(
+            qobj_id=qobj_id,
+            config=config,
+            experiments=experiments,
+            header=header,
+            type=QobjType.QASM.value,
+            **kwargs,
+        )
 
 
 @bind_schema(PulseQobjSchema)
@@ -134,14 +143,17 @@ class PulseQobj(Qobj):
         experiments (list[PulseQobjExperiment]): list of experiments.
         header (QobjHeader): headers.
     """
+
     def __init__(self, qobj_id, config, experiments, header, **kwargs):
 
         # to avoid specifying 'type' here within from_dict()
-        kwargs.pop('type', None)
+        kwargs.pop("type", None)
 
-        super().__init__(qobj_id=qobj_id,
-                         config=config,
-                         experiments=experiments,
-                         header=header,
-                         type=QobjType.PULSE.value,
-                         **kwargs)
+        super().__init__(
+            qobj_id=qobj_id,
+            config=config,
+            experiments=experiments,
+            header=header,
+            type=QobjType.PULSE.value,
+            **kwargs,
+        )

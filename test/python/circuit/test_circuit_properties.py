@@ -28,15 +28,15 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_depth_empty(self):
         """Test depth of empty circuity
         """
-        q = QuantumRegister(5, 'q')
+        q = QuantumRegister(5, "q")
         qc = QuantumCircuit(q)
         self.assertEqual(qc.depth(), 0)
 
     def test_circuit_depth_meas_only(self):
         """Test depth of measurement only
         """
-        q = QuantumRegister(1, 'q')
-        c = ClassicalRegister(1, 'c')
+        q = QuantumRegister(1, "q")
+        c = ClassicalRegister(1, "c")
         qc = QuantumCircuit(q, c)
         qc.measure(q, c)
         self.assertEqual(qc.depth(), 1)
@@ -44,8 +44,8 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_depth_barrier(self):
         """Make sure barriers do not add to depth
         """
-        q = QuantumRegister(5, 'q')
-        c = ClassicalRegister(5, 'c')
+        q = QuantumRegister(5, "q")
+        c = ClassicalRegister(5, "c")
         qc = QuantumCircuit(q, c)
         qc.h(q[0])
         qc.h(q[1])
@@ -63,8 +63,8 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_depth_simple(self):
         """Test depth for simple circuit
         """
-        q = QuantumRegister(5, 'q')
-        c = ClassicalRegister(1, 'c')
+        q = QuantumRegister(5, "q")
+        c = ClassicalRegister(1, "c")
         qc = QuantumCircuit(q, c)
         qc.h(q[0])
         qc.cx(q[0], q[4])
@@ -79,9 +79,9 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_depth_multi_reg(self):
         """Test depth for multiple registers
         """
-        q1 = QuantumRegister(3, 'q1')
-        q2 = QuantumRegister(2, 'q2')
-        c = ClassicalRegister(5, 'c')
+        q1 = QuantumRegister(3, "q1")
+        q2 = QuantumRegister(2, "q2")
+        c = ClassicalRegister(5, "c")
         qc = QuantumCircuit(q1, q2, c)
         qc.h(q1[0])
         qc.h(q1[1])
@@ -97,9 +97,9 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_depth_3q_gate(self):
         """Test depth for 3q gate
         """
-        q1 = QuantumRegister(3, 'q1')
-        q2 = QuantumRegister(2, 'q2')
-        c = ClassicalRegister(5, 'c')
+        q1 = QuantumRegister(3, "q1")
+        q2 = QuantumRegister(2, "q2")
+        c = ClassicalRegister(5, "c")
         qc = QuantumCircuit(q1, q2, c)
         qc.h(q1[0])
         qc.h(q1[1])
@@ -117,8 +117,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test circuit depth for conditional gates #1.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -137,8 +137,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test circuit depth for conditional gates #2.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -157,8 +157,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test circuit depth for conditional gates #3.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -177,8 +177,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test circuit depth for measurements #1.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -195,8 +195,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test circuit depth for measurements #2.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -213,8 +213,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test circuit depth for measurements #3.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -230,8 +230,8 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_size_empty(self):
         """Circuit.size should return 0 for an empty circuit."""
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         self.assertEqual(qc.size(), 0)
@@ -239,8 +239,8 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_size_single_qubit_gates(self):
         """Circuit.size should increment for each added single qubit gate."""
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -251,8 +251,8 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_size_two_qubit_gates(self):
         """Circuit.size should increment for each added two qubit gate."""
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.cx(q[0], q[1])
@@ -266,8 +266,8 @@ class TestCircuitProperties(QiskitTestCase):
         import qiskit.extensions.simulator  # pylint: disable=unused-import
 
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
 
         qc.h(q[0])
@@ -275,20 +275,20 @@ class TestCircuitProperties(QiskitTestCase):
         self.assertEqual(qc.size(), 2)
         qc.barrier(q)
         self.assertEqual(qc.size(), 2)
-        qc.snapshot('snapshot_label')
+        qc.snapshot("snapshot_label")
         self.assertEqual(qc.size(), 2)
 
     def test_circuit_count_ops(self):
         """Tet circuit count ops
         """
         size = 6
-        q = QuantumRegister(size, 'q')
+        q = QuantumRegister(size, "q")
         qc = QuantumCircuit(q)
 
         ans = {}
         num_gates = np.random.randint(50)
         # h = 0, x = 1, y = 2, z = 3, cx = 4, ccx = 5
-        lookup = {0: 'h', 1: 'x', 2: 'y', 3: 'z', 4: 'cx', 5: 'ccx'}
+        lookup = {0: "h", 1: "x", 2: "y", 3: "z", 4: "cx", 5: "ccx"}
 
         for _ in range(num_gates):
             item = np.random.randint(6)
@@ -319,15 +319,15 @@ class TestCircuitProperties(QiskitTestCase):
         """Verify num_connected_components is width for empty
         """
         size = np.random.randint(1, 10)
-        q = QuantumRegister(size, 'q')
+        q = QuantumRegister(size, "q")
         qc = QuantumCircuit(q)
         self.assertEqual(size, qc.num_connected_components())
 
     def test_circuit_connected_components_multi_reg(self):
         """Test tensor factors works over multi registers
         """
-        q1 = QuantumRegister(3, 'q1')
-        q2 = QuantumRegister(2, 'q2')
+        q1 = QuantumRegister(3, "q1")
+        q2 = QuantumRegister(2, "q2")
         qc = QuantumCircuit(q1, q2)
         qc.h(q1[0])
         qc.h(q1[1])
@@ -343,8 +343,8 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_connected_components_multi_reg2(self):
         """Test tensor factors works over multi registers #2
         """
-        q1 = QuantumRegister(3, 'q1')
-        q2 = QuantumRegister(2, 'q2')
+        q1 = QuantumRegister(3, "q1")
+        q2 = QuantumRegister(2, "q2")
         qc = QuantumCircuit(q1, q2)
         qc.cx(q1[0], q2[1])
         qc.cx(q2[0], q1[2])
@@ -354,8 +354,8 @@ class TestCircuitProperties(QiskitTestCase):
     def test_circuit_connected_components_disconnected(self):
         """Test tensor factors works with 2q subspaces
         """
-        q1 = QuantumRegister(5, 'q1')
-        q2 = QuantumRegister(5, 'q2')
+        q1 = QuantumRegister(5, "q1")
+        q2 = QuantumRegister(5, "q2")
         qc = QuantumCircuit(q1, q2)
         qc.cx(q1[0], q2[4])
         qc.cx(q1[1], q2[3])
@@ -368,8 +368,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test tensor components with classical register.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
         qc.h(q[0])
         qc.h(q[1])
@@ -385,8 +385,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test tensor components with conditional gate.
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
         qc.h(q[0])
         qc.h(q[1])
@@ -403,8 +403,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test unitary factors empty circuit
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
         self.assertEqual(qc.num_unitary_factors(), 4)
 
@@ -412,9 +412,9 @@ class TestCircuitProperties(QiskitTestCase):
         """Test unitary factors multi qregs
         """
         size = 4
-        q1 = QuantumRegister(size//2, 'q1')
-        q2 = QuantumRegister(size//2, 'q2')
-        c = ClassicalRegister(size, 'c')
+        q1 = QuantumRegister(size // 2, "q1")
+        q2 = QuantumRegister(size // 2, "q2")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q1, q2, c)
         self.assertEqual(qc.num_unitary_factors(), 4)
 
@@ -422,8 +422,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test unitary factors measurements and conditionals
         """
         size = 4
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
         qc.h(q[0])
         qc.h(q[1])
@@ -445,8 +445,8 @@ class TestCircuitProperties(QiskitTestCase):
         """Test unitary factors measurements go to same cbit
         """
         size = 5
-        q = QuantumRegister(size, 'q')
-        c = ClassicalRegister(size, 'c')
+        q = QuantumRegister(size, "q")
+        c = ClassicalRegister(size, "c")
         qc = QuantumCircuit(q, c)
         qc.h(q[0])
         qc.h(q[1])
@@ -459,5 +459,5 @@ class TestCircuitProperties(QiskitTestCase):
         self.assertEqual(qc.num_unitary_factors(), 5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

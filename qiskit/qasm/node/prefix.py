@@ -28,7 +28,7 @@ class Prefix(Node):
 
     def __init__(self, children):
         """Create the prefix node."""
-        super().__init__('prefix', children, None)
+        super().__init__("prefix", children, None)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""

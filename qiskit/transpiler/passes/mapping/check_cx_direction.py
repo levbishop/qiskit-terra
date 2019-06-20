@@ -55,14 +55,16 @@ class CheckCXDirection(AnalysisPass):
             else:
                 self.layout = Layout.generate_trivial_layout(*dag.qregs.values())
 
-        self.property_set['is_direction_mapped'] = True
+        self.property_set["is_direction_mapped"] = True
         edges = self.coupling_map.get_edges()
 
         for gate in dag.twoQ_gates():
             physical_q0 = self.layout[gate.qargs[0]]
             physical_q1 = self.layout[gate.qargs[1]]
 
-            if isinstance(gate.op, (CXBase, CnotGate)) and (
-                    physical_q0, physical_q1) not in edges:
-                self.property_set['is_direction_mapped'] = False
+            if (
+                isinstance(gate.op, (CXBase, CnotGate))
+                and (physical_q0, physical_q1) not in edges
+            ):
+                self.property_set["is_direction_mapped"] = False
                 return

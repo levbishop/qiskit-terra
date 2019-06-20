@@ -60,11 +60,13 @@ class UCRot(Gate):
                 float(a)
             except TypeError:
                 raise QiskitError(
-                    "An angle cannot be converted to type float (real angles are expected).")
+                    "An angle cannot be converted to type float (real angles are expected)."
+                )
         num_contr = math.log2(len(angle_list))
         if num_contr < 0 or not num_contr.is_integer():
             raise QiskitError(
-                "The number of controlled rotation gates is not a non-negative power of 2.")
+                "The number of controlled rotation gates is not a non-negative power of 2."
+            )
         if rot_axis not in ("X", "Y", "Z"):
             raise QiskitError("Rotation axis is not supported.")
         # Create new gate.
@@ -126,7 +128,7 @@ class UCRot(Gate):
                 # to the number of trailing zeros in the binary representaiton of i+1
                 if not i == len(angles) - 1:
                     binary_rep = np.binary_repr(i + 1)
-                    q_contr_index = len(binary_rep) - len(binary_rep.rstrip('0'))
+                    q_contr_index = len(binary_rep) - len(binary_rep.rstrip("0"))
                 else:
                     # Handle special case:
                     q_contr_index = len(q_controls) - 1
@@ -151,11 +153,13 @@ def _dec_uc_rotations(angles, start_index, end_index, reversedDec):
     interval_len_half = (end_index - start_index) // 2
     for i in range(start_index, start_index + interval_len_half):
         if not reversedDec:
-            angles[i], angles[i + interval_len_half] = _update_angles(angles[i],
-                                                                      angles[i + interval_len_half])
+            angles[i], angles[i + interval_len_half] = _update_angles(
+                angles[i], angles[i + interval_len_half]
+            )
         else:
-            angles[i + interval_len_half], angles[i] = _update_angles(angles[i],
-                                                                      angles[i + interval_len_half])
+            angles[i + interval_len_half], angles[i] = _update_angles(
+                angles[i], angles[i + interval_len_half]
+            )
     if interval_len_half <= 1:
         return
     else:
@@ -164,6 +168,7 @@ def _dec_uc_rotations(angles, start_index, end_index, reversedDec):
 
 
 # Calculate the new rotation angles according to Shende's decomposition
+
 
 def _update_angles(a1, a2):
     return (a1 + a2) / 2.0, (a1 - a2) / 2.0

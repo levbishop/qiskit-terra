@@ -28,26 +28,27 @@ from qiskit.pulse.exceptions import PulseError
 class PulseExpression(ast.NodeTransformer):
     """Expression parser to evaluate parameter values.
     """
+
     # valid functions
     _math_ops = {
-        'acos': cmath.acos,
-        'acosh': cmath.acosh,
-        'asin': cmath.asin,
-        'asinh': cmath.asinh,
-        'atan': cmath.atan,
-        'atanh': cmath.atanh,
-        'cos': cmath.cos,
-        'cosh': cmath.cosh,
-        'exp': cmath.exp,
-        'log': cmath.log,
-        'log10': cmath.log10,
-        'sin': cmath.sin,
-        'sinh': cmath.sinh,
-        'sqrt': cmath.sqrt,
-        'tan': cmath.tan,
-        'tanh': cmath.tanh,
-        'pi': cmath.pi,
-        'e': cmath.e
+        "acos": cmath.acos,
+        "acosh": cmath.acosh,
+        "asin": cmath.asin,
+        "asinh": cmath.asinh,
+        "atan": cmath.atan,
+        "atanh": cmath.atanh,
+        "cos": cmath.cos,
+        "cosh": cmath.cosh,
+        "exp": cmath.exp,
+        "log": cmath.log,
+        "log10": cmath.log10,
+        "sin": cmath.sin,
+        "sinh": cmath.sinh,
+        "sqrt": cmath.sqrt,
+        "tan": cmath.tan,
+        "tanh": cmath.tanh,
+        "pi": cmath.pi,
+        "e": cmath.e,
     }
 
     # valid binary operations
@@ -56,14 +57,11 @@ class PulseExpression(ast.NodeTransformer):
         ast.Sub: operator.sub,
         ast.Mult: operator.mul,
         ast.Div: operator.truediv,
-        ast.Pow: operator.pow
+        ast.Pow: operator.pow,
     }
 
     # valid unary operations
-    _unary_ops = {
-        ast.UAdd: operator.pos,
-        ast.USub: operator.neg
-    }
+    _unary_ops = {ast.UAdd: operator.pos, ast.USub: operator.neg}
 
     def __init__(self, source, partial_binding=False):
         """Create new evaluator.
@@ -83,9 +81,9 @@ class PulseExpression(ast.NodeTransformer):
             self._tree = source
         else:
             try:
-                self._tree = ast.parse(source, mode='eval')
+                self._tree = ast.parse(source, mode="eval")
             except SyntaxError:
-                raise PulseError('%s is invalid expression.' % source)
+                raise PulseError("%s is invalid expression." % source)
 
         # parse parameters
         self.visit(self._tree)
@@ -121,11 +119,15 @@ class PulseExpression(ast.NodeTransformer):
                     if key not in self._locals_dict.keys():
                         self._locals_dict[key] = val
                     else:
-                        raise PulseError("%s got multiple values for argument '%s'"
-                                         % (self.__class__.__name__, key))
+                        raise PulseError(
+                            "%s got multiple values for argument '%s'"
+                            % (self.__class__.__name__, key)
+                        )
                 else:
-                    raise PulseError("%s got an unexpected keyword argument '%s'"
-                                     % (self.__class__.__name__, key))
+                    raise PulseError(
+                        "%s got an unexpected keyword argument '%s'"
+                        % (self.__class__.__name__, key)
+                    )
 
         expr = self.visit(self._tree)
 
@@ -133,7 +135,7 @@ class PulseExpression(ast.NodeTransformer):
             if self._partial_binding:
                 return PulseExpression(expr, self._partial_binding)
             else:
-                raise PulseError('Parameters %s are not all bound.' % self.params)
+                raise PulseError("Parameters %s are not all bound." % self.params)
         return expr.body.n
 
     @staticmethod
@@ -154,7 +156,7 @@ class PulseExpression(ast.NodeTransformer):
         for op_type, op_func in opr_dict.items():
             if isinstance(opr, op_type):
                 return op_func(*args)
-        raise PulseError('Operator %s is not supported.' % opr.__class__.__name__)
+        raise PulseError("Operator %s is not supported." % opr.__class__.__name__)
 
     def visit_Expression(self, node):
         """Evaluate children nodes of expression.
@@ -203,8 +205,10 @@ class PulseExpression(ast.NodeTransformer):
                 if not _val.imag:
                     _val = _val.real
             except ValueError:
-                raise PulseError('Invalid parameter value %s = %s is specified.'
-                                 % (node.id, self._locals_dict[node.id]))
+                raise PulseError(
+                    "Invalid parameter value %s = %s is specified."
+                    % (node.id, self._locals_dict[node.id])
+                )
             val = ast.Num(n=_val)
             return ast.copy_location(val, node)
         self._params.add(node.id)
@@ -221,8 +225,7 @@ class PulseExpression(ast.NodeTransformer):
         """
         node.operand = self.visit(node.operand)
         if isinstance(node.operand, ast.Num):
-            val = ast.Num(n=self._match_ops(node.op, self._unary_ops,
-                                            node.operand.n))
+            val = ast.Num(n=self._match_ops(node.op, self._unary_ops, node.operand.n))
             return ast.copy_location(val, node)
         return node
 
@@ -238,8 +241,9 @@ class PulseExpression(ast.NodeTransformer):
         node.left = self.visit(node.left)
         node.right = self.visit(node.right)
         if isinstance(node.left, ast.Num) and isinstance(node.right, ast.Num):
-            val = ast.Num(n=self._match_ops(node.op, self._binary_ops,
-                                            node.left.n, node.right.n))
+            val = ast.Num(
+                n=self._match_ops(node.op, self._binary_ops, node.left.n, node.right.n)
+            )
             return ast.copy_location(val, node)
         return node
 
@@ -256,11 +260,11 @@ class PulseExpression(ast.NodeTransformer):
             PulseError: When unsupported or unsafe function is specified.
         """
         if not isinstance(node.func, ast.Name):
-            raise PulseError('Unsafe expression is detected.')
+            raise PulseError("Unsafe expression is detected.")
         node.args = [self.visit(arg) for arg in node.args]
         if all(isinstance(arg, ast.Num) for arg in node.args):
             if node.func.id not in self._math_ops.keys():
-                raise PulseError('Function %s is not supported.' % node.func.id)
+                raise PulseError("Function %s is not supported." % node.func.id)
             _args = [arg.n for arg in node.args]
             _val = self._math_ops[node.func.id](*_args)
             if not _val.imag:
@@ -270,7 +274,7 @@ class PulseExpression(ast.NodeTransformer):
         return node
 
     def generic_visit(self, node):
-        raise PulseError('Unsupported node: %s' % node.__class__.__name__)
+        raise PulseError("Unsupported node: %s" % node.__class__.__name__)
 
 
 def parse_string_expr(source, partial_binding=False):
@@ -283,7 +287,7 @@ def parse_string_expr(source, partial_binding=False):
     Returns:
         PulseExpression: Returns a expression object.
     """
-    subs = [('numpy.', ''), ('np.', ''), ('math.', ''), ('cmath.', '')]
+    subs = [("numpy.", ""), ("np.", ""), ("math.", ""), ("cmath.", "")]
     for match, sub in subs:
         source = source.replace(match, sub)
 

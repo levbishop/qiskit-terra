@@ -34,8 +34,7 @@ class BaseOperator(ABC):
     def __init__(self, rep, data, input_dims, output_dims):
         """Initialize an operator object."""
         if not isinstance(rep, str):
-            raise QiskitError("rep must be a string not a {}".format(
-                rep.__class__))
+            raise QiskitError("rep must be a string not a {}".format(rep.__class__))
         self._rep = rep
         self._data = data
         # Shape lists the dimension of each subsystem starting from
@@ -48,16 +47,18 @@ class BaseOperator(ABC):
         self._output_dim = np.product(output_dims)
 
     def __eq__(self, other):
-        if (isinstance(other, self.__class__)
-                and self.input_dims() == other.input_dims()
-                and self.output_dims() == other.output_dims()):
-            return np.allclose(
-                self.data, other.data, rtol=self._rtol, atol=self._atol)
+        if (
+            isinstance(other, self.__class__)
+            and self.input_dims() == other.input_dims()
+            and self.output_dims() == other.output_dims()
+        ):
+            return np.allclose(self.data, other.data, rtol=self._rtol, atol=self._atol)
         return False
 
     def __repr__(self):
-        return '{}({}, input_dims={}, output_dims={})'.format(
-            self.rep, self.data, self._input_dims, self._output_dims)
+        return "{}({}, input_dims={}, output_dims={})".format(
+            self.rep, self.data, self._input_dims, self._output_dims
+        )
 
     @property
     def rep(self):
@@ -88,8 +89,7 @@ class BaseOperator(ABC):
         if atol < 0:
             raise QiskitError("Invalid atol: must be non-negative.")
         if atol > max_tol:
-            raise QiskitError(
-                "Invalid atol: must be less than {}.".format(max_tol))
+            raise QiskitError("Invalid atol: must be less than {}.".format(max_tol))
         self.__class__.ATOL = atol
 
     @property
@@ -106,8 +106,7 @@ class BaseOperator(ABC):
         if rtol < 0:
             raise QiskitError("Invalid rtol: must be non-negative.")
         if rtol > max_tol:
-            raise QiskitError(
-                "Invalid rtol: must be less than {}.".format(max_tol))
+            raise QiskitError("Invalid rtol: must be less than {}.".format(max_tol))
         self.__class__.RTOL = rtol
 
     def _reshape(self, input_dims=None, output_dims=None):
@@ -354,8 +353,7 @@ class BaseOperator(ABC):
         rank = tensor.ndim
         rank_mat = mat.ndim
         if rank_mat % 2 != 0:
-            raise QiskitError(
-                "Contracted matrix must have an even number of indices.")
+            raise QiskitError("Contracted matrix must have an even number of indices.")
         # Get einsum indices for tensor
         indices_tensor = list(range(rank))
         for j, index in enumerate(indices):

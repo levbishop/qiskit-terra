@@ -26,6 +26,7 @@ from qiskit.qobj import QobjMeasurementOption
 
 class ConversionMethodBinder:
     """Conversion method registrar."""
+
     def __init__(self):
         """Acts as method registration decorator and tracker for conversion methods."""
         self._bound_instructions = {}
@@ -54,7 +55,7 @@ class ConversionMethodBinder:
         try:
             return self._bound_instructions[bound]
         except KeyError:
-            raise PulseError('Bound method for %s is not found.' % bound)
+            raise PulseError("Bound method for %s is not found." % bound)
 
 
 class InstructionToQobjConverter:
@@ -86,6 +87,7 @@ class InstructionToQobjConverter:
             return self.qobj_model(**command_dict)
     ```
     """
+
     # class level tracking of conversion methods
     bind_instruction = ConversionMethodBinder()
 
@@ -114,40 +116,46 @@ class InstructionToQobjConverter:
         Returns:
             dict: Dictionary of required parameters.
         """
-        meas_level = self._run_config.get('meas_level', 2)
+        meas_level = self._run_config.get("meas_level", 2)
 
         command_dict = {
-            'name': 'acquire',
-            't0': shift+instruction.start_time,
-            'duration': instruction.duration,
-            'qubits': [q.index for q in instruction.acquires],
-            'memory_slot': [m.index for m in instruction.mem_slots]
+            "name": "acquire",
+            "t0": shift + instruction.start_time,
+            "duration": instruction.duration,
+            "qubits": [q.index for q in instruction.acquires],
+            "memory_slot": [m.index for m in instruction.mem_slots],
         }
         if meas_level == 2:
             # setup discriminators
             if instruction.command.discriminator:
-                command_dict.update({
-                    'discriminators': [
-                        QobjMeasurementOption(
-                            name=instruction.command.discriminator.name,
-                            params=instruction.command.discriminator.params)
-                    ]
-                })
+                command_dict.update(
+                    {
+                        "discriminators": [
+                            QobjMeasurementOption(
+                                name=instruction.command.discriminator.name,
+                                params=instruction.command.discriminator.params,
+                            )
+                        ]
+                    }
+                )
             # setup register_slots
             if instruction.reg_slots:
-                command_dict.update({
-                    'register_slot': [regs.index for regs in instruction.reg_slots]
-                })
+                command_dict.update(
+                    {"register_slot": [regs.index for regs in instruction.reg_slots]}
+                )
         if meas_level >= 1:
             # setup kernels
             if instruction.command.kernel:
-                command_dict.update({
-                    'kernels': [
-                        QobjMeasurementOption(
-                            name=instruction.command.kernel.name,
-                            params=instruction.command.kernel.params)
-                    ]
-                })
+                command_dict.update(
+                    {
+                        "kernels": [
+                            QobjMeasurementOption(
+                                name=instruction.command.kernel.name,
+                                params=instruction.command.kernel.params,
+                            )
+                        ]
+                    }
+                )
         return self._qobj_model(**command_dict)
 
     @bind_instruction(commands.FrameChangeInstruction)
@@ -161,10 +169,10 @@ class InstructionToQobjConverter:
             dict: Dictionary of required parameters.
         """
         command_dict = {
-            'name': 'fc',
-            't0': shift+instruction.start_time,
-            'ch': instruction.channels[0].name,
-            'phase': instruction.command.phase
+            "name": "fc",
+            "t0": shift + instruction.start_time,
+            "ch": instruction.channels[0].name,
+            "phase": instruction.command.phase,
         }
         return self._qobj_model(**command_dict)
 
@@ -179,10 +187,10 @@ class InstructionToQobjConverter:
             dict: Dictionary of required parameters.
         """
         command_dict = {
-            'name': 'pv',
-            't0': shift+instruction.start_time,
-            'ch': instruction.channels[0].name,
-            'val': instruction.command.value
+            "name": "pv",
+            "t0": shift + instruction.start_time,
+            "ch": instruction.channels[0].name,
+            "val": instruction.command.value,
         }
         return self._qobj_model(**command_dict)
 
@@ -197,9 +205,9 @@ class InstructionToQobjConverter:
             dict: Dictionary of required parameters.
         """
         command_dict = {
-            'name': instruction.command.name,
-            't0': shift+instruction.start_time,
-            'ch': instruction.channels[0].name
+            "name": instruction.command.name,
+            "t0": shift + instruction.start_time,
+            "ch": instruction.channels[0].name,
         }
         return self._qobj_model(**command_dict)
 
@@ -214,10 +222,10 @@ class InstructionToQobjConverter:
             dict: Dictionary of required parameters.
         """
         command_dict = {
-            'name': 'snapshot',
-            't0': shift+instruction.start_time,
-            'label': instruction.name,
-            'type': instruction.type
+            "name": "snapshot",
+            "t0": shift + instruction.start_time,
+            "label": instruction.name,
+            "type": instruction.type,
         }
         return self._qobj_model(**command_dict)
 
@@ -225,10 +233,11 @@ class InstructionToQobjConverter:
 class QobjToInstructionConverter:
     """Converts Qobj models to pulse Instructions
     """
+
     # pylint: disable=invalid-name,missing-return-type-doc
     # class level tracking of conversion methods
     bind_name = ConversionMethodBinder()
-    chan_regex = re.compile(r'([a-zA-Z]+)(\d+)')
+    chan_regex = re.compile(r"([a-zA-Z]+)(\d+)")
 
     def __init__(self, pulse_library, buffer=0, **run_config):
         """Create new converter.
@@ -273,9 +282,9 @@ class QobjToInstructionConverter:
             elif prefix == channels.ControlChannel.prefix:
                 return channels.ControlChannel(index, buffer=self.buffer)
 
-        raise PulseError('Channel %s is not valid' % channel)
+        raise PulseError("Channel %s is not valid" % channel)
 
-    @bind_name('acquire')
+    @bind_name("acquire")
     def convert_acquire(self, instruction):
         """Return converted `AcquireInstruction`.
 
@@ -287,47 +296,64 @@ class QobjToInstructionConverter:
         t0 = instruction.t0
         duration = instruction.duration
         qubits = instruction.qubits
-        qubit_channels = [channels.AcquireChannel(qubit, buffer=self.buffer) for qubit in qubits]
+        qubit_channels = [
+            channels.AcquireChannel(qubit, buffer=self.buffer) for qubit in qubits
+        ]
 
-        mem_slots = [channels.MemorySlot(instruction.memory_slot[i]) for i in range(len(qubits))]
+        mem_slots = [
+            channels.MemorySlot(instruction.memory_slot[i]) for i in range(len(qubits))
+        ]
 
-        if hasattr(instruction, 'register_slot'):
-            register_slots = [channels.RegisterSlot(instruction.register_slot[i])
-                              for i in range(len(qubits))]
+        if hasattr(instruction, "register_slot"):
+            register_slots = [
+                channels.RegisterSlot(instruction.register_slot[i])
+                for i in range(len(qubits))
+            ]
         else:
             register_slots = None
 
-        discriminators = (instruction.discriminators
-                          if hasattr(instruction, 'discriminators') else None)
+        discriminators = (
+            instruction.discriminators
+            if hasattr(instruction, "discriminators")
+            else None
+        )
         if not isinstance(discriminators, list):
             discriminators = [discriminators]
-        if any(discriminators[i] != discriminators[0] for i in range(len(discriminators))):
-            warnings.warn("Can currently only support one discriminator per acquire. Defaulting "
-                          "to first discriminator entry.")
+        if any(
+            discriminators[i] != discriminators[0] for i in range(len(discriminators))
+        ):
+            warnings.warn(
+                "Can currently only support one discriminator per acquire. Defaulting "
+                "to first discriminator entry."
+            )
         discriminator = discriminators[0]
         if discriminator:
-            discriminator = commands.Discriminator(name=discriminators[0].name,
-                                                   params=discriminators[0].params)
+            discriminator = commands.Discriminator(
+                name=discriminators[0].name, params=discriminators[0].params
+            )
 
-        kernels = (instruction.kernels
-                   if hasattr(instruction, 'kernels') else None)
+        kernels = instruction.kernels if hasattr(instruction, "kernels") else None
         if not isinstance(kernels, list):
             kernels = [kernels]
         if any(kernels[0] != kernels[i] for i in range(len(kernels))):
-            warnings.warn("Can currently only support one kernel per acquire. Defaulting to first "
-                          "kernel entry.")
+            warnings.warn(
+                "Can currently only support one kernel per acquire. Defaulting to first "
+                "kernel entry."
+            )
         kernel = kernels[0]
         if kernel:
             kernel = commands.Kernel(name=kernels[0].name, params=kernels[0].params)
 
         cmd = commands.Acquire(duration, discriminator=discriminator, kernel=kernel)
         schedule = Schedule()
-        schedule |= commands.AcquireInstruction(cmd, qubit_channels, mem_slots,
-                                                register_slots) << t0
+        schedule |= (
+            commands.AcquireInstruction(cmd, qubit_channels, mem_slots, register_slots)
+            << t0
+        )
 
         return schedule
 
-    @bind_name('fc')
+    @bind_name("fc")
     def convert_frame_change(self, instruction):
         """Return converted `FrameChangeInstruction`.
 
@@ -352,7 +378,7 @@ class QobjToInstructionConverter:
 
         return commands.FrameChange(phase)(channel) << t0
 
-    @bind_name('pv')
+    @bind_name("pv")
     def convert_persistent_value(self, instruction):
         """Return converted `PersistentValueInstruction`.
 
@@ -399,7 +425,7 @@ class QobjToInstructionConverter:
             channel = self.get_channel(instruction.ch)
             return pulse(channel) << t0
 
-    @bind_name('snapshot')
+    @bind_name("snapshot")
     def convert_snapshot(self, instruction):
         """Return converted `Snapshot`.
 

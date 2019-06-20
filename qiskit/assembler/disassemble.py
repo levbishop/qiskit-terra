@@ -34,13 +34,15 @@ def _experiments_to_circuits(qobj):
     if qobj.experiments:
         circuits = []
         for x in qobj.experiments:
-            quantum_registers = [QuantumRegister(i[1], name=i[0])
-                                 for i in x.header.qreg_sizes]
-            classical_registers = [ClassicalRegister(i[1], name=i[0])
-                                   for i in x.header.creg_sizes]
-            circuit = QuantumCircuit(*quantum_registers,
-                                     *classical_registers,
-                                     name=x.header.name)
+            quantum_registers = [
+                QuantumRegister(i[1], name=i[0]) for i in x.header.qreg_sizes
+            ]
+            classical_registers = [
+                ClassicalRegister(i[1], name=i[0]) for i in x.header.creg_sizes
+            ]
+            circuit = QuantumCircuit(
+                *quantum_registers, *classical_registers, name=x.header.name
+            )
             qreg_dict = collections.OrderedDict()
             creg_dict = collections.OrderedDict()
             for reg in quantum_registers:
@@ -50,39 +52,38 @@ def _experiments_to_circuits(qobj):
             conditional = {}
             for i in x.instructions:
                 name = i.name
-                if i.name == 'id':
-                    name = 'iden'
+                if i.name == "id":
+                    name = "iden"
                 qubits = []
-                params = getattr(i, 'params', [])
+                params = getattr(i, "params", [])
                 try:
                     for qubit in i.qubits:
                         qubit_label = x.header.qubit_labels[qubit]
-                        qubits.append(
-                            qreg_dict[qubit_label[0]][qubit_label[1]])
+                        qubits.append(qreg_dict[qubit_label[0]][qubit_label[1]])
                 except Exception:  # pylint: disable=broad-except
                     pass
                 clbits = []
                 try:
                     for clbit in i.memory:
                         clbit_label = x.header.clbit_labels[clbit]
-                        clbits.append(
-                            creg_dict[clbit_label[0]][clbit_label[1]])
+                        clbits.append(creg_dict[clbit_label[0]][clbit_label[1]])
                 except Exception:  # pylint: disable=broad-except
                     pass
                 if hasattr(circuit, name):
                     instr_method = getattr(circuit, name)
-                    if i.name in ['snapshot']:
+                    if i.name in ["snapshot"]:
                         _inst = instr_method(
                             i.label,
                             snapshot_type=i.snapshot_type,
                             qubits=qubits,
-                            params=params)
-                    elif i.name == 'initialize':
+                            params=params,
+                        )
+                    elif i.name == "initialize":
                         _inst = instr_method(params, qubits)
                     else:
                         _inst = instr_method(*params, *qubits, *clbits)
-                elif name == 'bfunc':
-                    conditional['value'] = int(i.val, 16)
+                elif name == "bfunc":
+                    conditional["value"] = int(i.val, 16)
                     full_bit_size = sum([creg_dict[x].size for x in creg_dict])
                     mask_map = {}
                     raw_map = {}
@@ -102,22 +103,25 @@ def _experiments_to_circuits(qobj):
                         raw_map[creg] = mask
                         mask_map[int("".join(str(x) for x in mask), 2)] = creg
                     creg = mask_map[int(i.mask, 16)]
-                    conditional['register'] = creg_dict[creg]
+                    conditional["register"] = creg_dict[creg]
                     val = int(i.val, 16)
                     mask = raw_map[creg]
                     for j in reversed(mask):
                         if j == 0:
                             val = val >> 1
                         else:
-                            conditional['value'] = val
+                            conditional["value"] = val
                             break
                 else:
                     _inst = temp_opaque_instruction = Instruction(
-                        name=name, num_qubits=len(qubits),
-                        num_clbits=len(clbits), params=params)
+                        name=name,
+                        num_qubits=len(qubits),
+                        num_clbits=len(clbits),
+                        params=params,
+                    )
                     circuit.append(temp_opaque_instruction, qubits, clbits)
-                if conditional and name != 'bfunc':
-                    _inst.c_if(conditional['register'], conditional['value'])
+                if conditional and name != "bfunc":
+                    _inst.c_if(conditional["register"], conditional["value"])
                     conditional = {}
             circuits.append(circuit)
         return circuits

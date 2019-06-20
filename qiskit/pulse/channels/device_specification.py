@@ -28,10 +28,12 @@ from .qubit import Qubit
 class DeviceSpecification:
     """Implement a device specification, which is usually constructed from backend info."""
 
-    def __init__(self,
-                 qubits: List[Qubit],
-                 registers: List[RegisterSlot],
-                 mem_slots: List[MemorySlot]):
+    def __init__(
+        self,
+        qubits: List[Qubit],
+        registers: List[RegisterSlot],
+        mem_slots: List[MemorySlot],
+    ):
         """
         Create device specification with specified `qubits`.
         Args:
@@ -55,7 +57,9 @@ class DeviceSpecification:
         backend_config = backend.configuration()
 
         if not backend_config.open_pulse:
-            raise PulseError(backend_config.backend_name + ' does not support OpenPulse.')
+            raise PulseError(
+                backend_config.backend_name + " does not support OpenPulse."
+            )
 
         # TODO : Remove usage of config.defaults when backend.defaults() is updated.
         try:
@@ -63,7 +67,7 @@ class DeviceSpecification:
             buffer = backend_default.buffer
         except ModelValidationError:
             try:
-                buffer = backend_config.defaults.get('buffer', 0)
+                buffer = backend_config.defaults.get("buffer", 0)
             except AttributeError:
                 buffer = 0
 
@@ -84,8 +88,13 @@ class DeviceSpecification:
         qubits = []
         for i in range(n_qubits):
             # TODO: get qubits <-> channels relationship from backend
-            qubit = Qubit(i, drives[i], measures[i], acquires[i],
-                          control_channels=[] if not controls else controls)
+            qubit = Qubit(
+                i,
+                drives[i],
+                measures[i],
+                acquires[i],
+                control_channels=[] if not controls else controls,
+            )
             qubits.append(qubit)
 
         registers = [RegisterSlot(i) for i in range(n_registers)]
@@ -103,8 +112,7 @@ class DeviceSpecification:
         Returns:
             bool: are self and other equal.
         """
-        if type(self) is type(other) and \
-                self._qubits == other._qubits:
+        if type(self) is type(other) and self._qubits == other._qubits:
             return True
         return False
 

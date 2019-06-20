@@ -22,22 +22,23 @@ from .channels import Channel
 
 class PulseChannel(Channel, metaclass=ABCMeta):
     """Base class of Channel supporting pulse output."""
+
     pass
 
 
 class DriveChannel(PulseChannel):
     """Drive Channel."""
 
-    prefix = 'd'
+    prefix = "d"
 
 
 class MeasureChannel(PulseChannel):
     """Measure Channel."""
 
-    prefix = 'm'
+    prefix = "m"
 
 
 class ControlChannel(PulseChannel):
     """Control Channel."""
 
-    prefix = 'u'
+    prefix = "u"

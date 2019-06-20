@@ -16,8 +16,9 @@ Parameter Class for variable parameters.
 """
 
 
-class Parameter():
+class Parameter:
     """Parameter Class for variable parameters"""
+
     def __init__(self, name):
         self._name = name
 
@@ -36,4 +37,4 @@ class Parameter():
         return self
 
     def __repr__(self):
-        return '{}({})'.format(self.__class__.__name__, self.name)
+        return "{}({})".format(self.__class__.__name__, self.name)

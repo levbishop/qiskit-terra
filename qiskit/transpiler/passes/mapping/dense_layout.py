@@ -62,7 +62,7 @@ class DenseLayout(AnalysisPass):
         """
         num_dag_qubits = sum([qreg.size for qreg in dag.qregs.values()])
         if num_dag_qubits > self.coupling_map.size():
-            raise TranspilerError('Number of qubits greater than device.')
+            raise TranspilerError("Number of qubits greater than device.")
         best_sub = self._best_subset(num_dag_qubits)
         layout = Layout()
         map_iter = 0
@@ -70,7 +70,7 @@ class DenseLayout(AnalysisPass):
             for i in range(qreg.size):
                 layout[qreg[i]] = int(best_sub[map_iter])
                 map_iter += 1
-        self.property_set['layout'] = layout
+        self.property_set["layout"] = layout
 
     def _best_subset(self, n_qubits):
         """Computes the qubit mapping with the best connectivity.
@@ -88,21 +88,22 @@ class DenseLayout(AnalysisPass):
 
         cmap = np.asarray(self.coupling_map.get_edges())
         data = np.ones_like(cmap[:, 0])
-        sp_cmap = sp.coo_matrix((data, (cmap[:, 0], cmap[:, 1])),
-                                shape=(device_qubits, device_qubits)).tocsr()
+        sp_cmap = sp.coo_matrix(
+            (data, (cmap[:, 0], cmap[:, 1])), shape=(device_qubits, device_qubits)
+        ).tocsr()
         best = 0
         best_map = None
         # do bfs with each node as starting point
         for k in range(sp_cmap.shape[0]):
-            bfs = cs.breadth_first_order(sp_cmap, i_start=k, directed=False,
-                                         return_predecessors=False)
+            bfs = cs.breadth_first_order(
+                sp_cmap, i_start=k, directed=False, return_predecessors=False
+            )
 
             connection_count = 0
             sub_graph = []
             for i in range(n_qubits):
                 node_idx = bfs[i]
-                for j in range(sp_cmap.indptr[node_idx],
-                               sp_cmap.indptr[node_idx + 1]):
+                for j in range(sp_cmap.indptr[node_idx], sp_cmap.indptr[node_idx + 1]):
                     node = sp_cmap.indices[j]
                     for counter in range(n_qubits):
                         if node == bfs[counter]:
@@ -120,9 +121,10 @@ class DenseLayout(AnalysisPass):
                 new_cmap = [[mapping[c[0]], mapping[c[1]]] for c in sub_graph]
                 rows = [edge[0] for edge in new_cmap]
                 cols = [edge[1] for edge in new_cmap]
-                data = [1]*len(rows)
-                sp_sub_graph = sp.coo_matrix((data, (rows, cols)),
-                                             shape=(n_qubits, n_qubits)).tocsr()
+                data = [1] * len(rows)
+                sp_sub_graph = sp.coo_matrix(
+                    (data, (rows, cols)), shape=(n_qubits, n_qubits)
+                ).tocsr()
                 perm = cs.reverse_cuthill_mckee(sp_sub_graph)
                 best_map = best_map[perm]
         return best_map

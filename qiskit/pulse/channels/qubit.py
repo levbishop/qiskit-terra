@@ -24,11 +24,14 @@ from .channels import AcquireChannel
 class Qubit:
     """Physical qubit."""
 
-    def __init__(self, index: int,
-                 drive_channel: DriveChannel,
-                 measure_channel: MeasureChannel,
-                 acquire_channel: AcquireChannel,
-                 control_channels: Tuple[ControlChannel] = None):
+    def __init__(
+        self,
+        index: int,
+        drive_channel: DriveChannel,
+        measure_channel: MeasureChannel,
+        acquire_channel: AcquireChannel,
+        control_channels: Tuple[ControlChannel] = None,
+    ):
         self._index = index
         self._drive = drive_channel
         self._controls = tuple(control_channels) if control_channels else tuple()
@@ -70,11 +73,13 @@ class Qubit:
             bool: are self and other equal.
         """
         # pylint: disable=too-many-boolean-expressions
-        if (type(self) is type(other) and
-                self.index == other.index and
-                self.drive == other.drive and
-                self.measure == other.measure and
-                self.acquire == other.acquire and
-                self.controls == other.controls):
+        if (
+            type(self) is type(other)
+            and self.index == other.index
+            and self.drive == other.drive
+            and self.measure == other.measure
+            and self.acquire == other.acquire
+            and self.controls == other.controls
+        ):
             return True
         return False

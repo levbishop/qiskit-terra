@@ -28,7 +28,7 @@ from qiskit.visualization.utils import _validate_input_state
 from qiskit.visualization.exceptions import VisualizationError
 
 
-if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
+if ("ipykernel" in sys.modules) and ("spyder" not in sys.modules):
     try:
         from IPython.core.display import display, HTML
     except ImportError:
@@ -47,16 +47,19 @@ def iplot_state_qsphere(rho, figsize=None):
     """
 
     # HTML
-    html_template = Template("""
+    html_template = Template(
+        """
     <p>
         <div id="content_$divNumber" style="position: absolute; z-index: 1;">
             <div id="qsphere_$divNumber"></div>
         </div>
     </p>
-    """)
+    """
+    )
 
     # JavaScript
-    javascript_template = Template("""
+    javascript_template = Template(
+        """
     <script>
         requirejs.config({
             paths: {
@@ -72,12 +75,13 @@ def iplot_state_qsphere(rho, figsize=None):
         });
     </script>
 
-    """)
+    """
+    )
     rho = _validate_input_state(rho)
     if figsize is None:
         options = {}
     else:
-        options = {'width': figsize[0], 'height': figsize[1]}
+        options = {"width": figsize[0], "height": figsize[1]}
 
     qspheres_data = []
     # Process data and execute
@@ -86,7 +90,7 @@ def iplot_state_qsphere(rho, figsize=None):
     # get the eigenvectors and eigenvalues
     weig, stateall = linalg.eigh(rho)
 
-    for _ in range(2**num):
+    for _ in range(2 ** num):
         # start with the max
         probmix = weig.max()
         prob_location = weig.argmax()
@@ -96,20 +100,19 @@ def iplot_state_qsphere(rho, figsize=None):
             state = stateall[:, prob_location]
             loc = np.absolute(state).argmax()
             # get the element location closes to lowest bin representation.
-            for j in range(2**num):
-                test = np.absolute(np.absolute(state[j]) -
-                                   np.absolute(state[loc]))
+            for j in range(2 ** num):
+                test = np.absolute(np.absolute(state[j]) - np.absolute(state[loc]))
                 if test < 0.001:
                     loc = j
                     break
             # remove the global phase
             angles = (np.angle(state[loc]) + 2 * np.pi) % (2 * np.pi)
-            angleset = np.exp(-1j*angles)
-            state = angleset*state
+            angleset = np.exp(-1j * angles)
+            state = angleset * state
             state.flatten()
 
             spherepoints = []
-            for i in range(2**num):
+            for i in range(2 ** num):
                 # get x,y,z points
 
                 element = bin(i)[2:].zfill(num)
@@ -121,43 +124,36 @@ def iplot_state_qsphere(rho, figsize=None):
                 angle = weight_order * 2 * np.pi / number_of_divisions
 
                 zvalue = -2 * weight / num + 1
-                xvalue = np.sqrt(1 - zvalue**2) * np.cos(angle)
-                yvalue = np.sqrt(1 - zvalue**2) * np.sin(angle)
+                xvalue = np.sqrt(1 - zvalue ** 2) * np.cos(angle)
+                yvalue = np.sqrt(1 - zvalue ** 2) * np.sin(angle)
 
                 # get prob and angle - prob will be shade and angle color
                 prob = np.real(np.dot(state[i], state[i].conj()))
                 angles = (np.angle(state[i]) + 2 * np.pi) % (2 * np.pi)
                 qpoint = {
-                    'x': xvalue,
-                    'y': yvalue,
-                    'z': zvalue,
-                    'prob': prob,
-                    'phase': angles
+                    "x": xvalue,
+                    "y": yvalue,
+                    "z": zvalue,
+                    "prob": prob,
+                    "phase": angles,
                 }
                 spherepoints.append(qpoint)
 
             # Associate all points to one sphere
-            sphere = {
-                'points': spherepoints,
-                'eigenvalue': probmix
-            }
+            sphere = {"points": spherepoints, "eigenvalue": probmix}
 
             # Add sphere to the spheres array
             qspheres_data.append(sphere)
             weig[prob_location] = 0
 
     div_number = str(time.time())
-    div_number = re.sub('[.]', '', div_number)
+    div_number = re.sub("[.]", "", div_number)
 
-    html = html_template.substitute({
-        'divNumber': div_number
-    })
+    html = html_template.substitute({"divNumber": div_number})
 
-    javascript = javascript_template.substitute({
-        'data': qspheres_data,
-        'divNumber': div_number,
-        'options': options
-    })
+    javascript = javascript_template.substitute(
+        {"data": qspheres_data, "divNumber": div_number, "options": options}
+    )
 
     display(HTML(html + javascript))
 
@@ -174,9 +170,9 @@ def n_choose_k(n, k):
     """
     if n == 0:
         return 0
-    return reduce(lambda x, y: x * y[0] / y[1],
-                  zip(range(n - k + 1, n + 1),
-                      range(1, k + 1)), 1)
+    return reduce(
+        lambda x, y: x * y[0] / y[1], zip(range(n - k + 1, n + 1), range(1, k + 1)), 1
+    )
 
 
 def bit_string_index(text):

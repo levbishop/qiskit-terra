@@ -24,6 +24,7 @@ from qiskit.test import QiskitTestCase
 
 class TestJobMonitor(QiskitTestCase):
     """Tools test case."""
+
     def test_job_monitor(self):
         """Test job_monitor"""
         qreg = QuantumRegister(2)
@@ -32,11 +33,11 @@ class TestJobMonitor(QiskitTestCase):
         qc.h(qreg[0])
         qc.cx(qreg[0], qreg[1])
         qc.measure(qreg, creg)
-        backend = BasicAer.get_backend('qasm_simulator')
-        job_sim = execute([qc]*10, backend)
+        backend = BasicAer.get_backend("qasm_simulator")
+        job_sim = execute([qc] * 10, backend)
         job_monitor(job_sim)
-        self.assertEqual(job_sim.status().name, 'DONE')
+        self.assertEqual(job_sim.status().name, "DONE")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

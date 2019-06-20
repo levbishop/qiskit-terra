@@ -36,9 +36,7 @@ class RZGate(Gate):
         """
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U1Gate(self.params[0]), [q[0]], [])
-        ]
+        rule = [(U1Gate(self.params[0]), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition

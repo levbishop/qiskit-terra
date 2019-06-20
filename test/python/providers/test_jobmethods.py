@@ -41,7 +41,9 @@ class TestSimulatorsJob(QiskitTestCase):
         backend = FakeRueschlikon()
         with mocked_executor() as (SimulatorJob, executor):
             for index in range(taskcount):
-                job = SimulatorJob(backend, job_id, target_tasks[index], new_fake_qobj())
+                job = SimulatorJob(
+                    backend, job_id, target_tasks[index], new_fake_qobj()
+                )
                 job.submit()
 
         self.assertEqual(executor.submit.call_count, taskcount)
@@ -71,9 +73,10 @@ class TestSimulatorsJob(QiskitTestCase):
         """Assert a mocked callable has been called once."""
         call_count = mocked_callable.call_count
         self.assertEqual(
-            call_count, 1,
-            'Callable object has been called more than once ({})'.format(
-                call_count))
+            call_count,
+            1,
+            "Callable object has been called more than once ({})".format(call_count),
+        )
 
 
 @contextmanager
@@ -88,9 +91,10 @@ def mocked_executor():
 
     executor = unittest.mock.MagicMock(spec=futures.Executor)
     executor.submit.return_value = unittest.mock.MagicMock(spec=futures.Future)
-    mock_options = {'return_value': executor, 'autospec': True}
-    with patch.object(futures, 'ProcessPoolExecutor', **mock_options),\
-            patch.object(futures, 'ThreadPoolExecutor', **mock_options):
+    mock_options = {"return_value": executor, "autospec": True}
+    with patch.object(futures, "ProcessPoolExecutor", **mock_options), patch.object(
+        futures, "ThreadPoolExecutor", **mock_options
+    ):
         importlib.reload(basicaerjob)
         yield basicaerjob.BasicAerJob, executor
 
@@ -99,10 +103,11 @@ def mocked_executor():
 def mocked_simulator_binaries():
     """Context to force binary-based simulators to think the simulators exist.
     """
-    with patch.object(path, 'exists', return_value=True, autospec=True),\
-            patch.object(path, 'getsize', return_value=1000, autospec=True):
+    with patch.object(path, "exists", return_value=True, autospec=True), patch.object(
+        path, "getsize", return_value=1000, autospec=True
+    ):
         yield
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -30,16 +30,16 @@ from .visualization import QiskitVisualizationTestCase, path_to_diagram_referenc
 class TestCircuitVisualizationImplementation(QiskitVisualizationTestCase):
     """Visual accuracy of visualization tools outputs tests."""
 
-    latex_reference = path_to_diagram_reference('circuit_latex_ref.png')
-    matplotlib_reference = path_to_diagram_reference('circuit_matplotlib_ref.png')
-    text_reference = path_to_diagram_reference('circuit_text_ref.txt')
+    latex_reference = path_to_diagram_reference("circuit_latex_ref.png")
+    matplotlib_reference = path_to_diagram_reference("circuit_matplotlib_ref.png")
+    text_reference = path_to_diagram_reference("circuit_text_ref.txt")
 
     def sample_circuit(self):
         """Generate a sample circuit that includes the most common elements of
         quantum circuits.
         """
-        qr = QuantumRegister(3, 'q')
-        cr = ClassicalRegister(3, 'c')
+        qr = QuantumRegister(3, "q")
+        cr = ClassicalRegister(3, "c")
         circuit = QuantumCircuit(qr, cr)
         circuit.x(qr[0])
         circuit.y(qr[0])
@@ -77,36 +77,38 @@ class TestCircuitVisualizationImplementation(QiskitVisualizationTestCase):
 
     # TODO: Enable for refactoring purposes and enable by default when we can
     # decide if the backend is available or not.
-    @unittest.skip('Useful for refactoring purposes, skipping by default.')
+    @unittest.skip("Useful for refactoring purposes, skipping by default.")
     def test_latex_drawer(self):
-        filename = self._get_resource_path('current_latex.png')
+        filename = self._get_resource_path("current_latex.png")
         qc = self.sample_circuit()
-        circuit_drawer(qc, filename=filename, output='latex')
+        circuit_drawer(qc, filename=filename, output="latex")
         self.assertImagesAreEqual(filename, self.latex_reference)
         os.remove(filename)
 
     # TODO: Enable for refactoring purposes and enable by default when we can
     # decide if the backend is available or not.
-    @unittest.skipIf(not HAS_MATPLOTLIB, 'matplotlib not available.')
-    @unittest.skip('Useful for refactoring purposes, skipping by default.')
+    @unittest.skipIf(not HAS_MATPLOTLIB, "matplotlib not available.")
+    @unittest.skip("Useful for refactoring purposes, skipping by default.")
     def test_matplotlib_drawer(self):
-        filename = self._get_resource_path('current_matplot.png')
+        filename = self._get_resource_path("current_matplot.png")
         qc = self.sample_circuit()
-        circuit_drawer(qc, filename=filename, output='mpl')
+        circuit_drawer(qc, filename=filename, output="mpl")
         self.assertImagesAreEqual(filename, self.matplotlib_reference)
         os.remove(filename)
 
     def test_text_drawer(self):
-        filename = self._get_resource_path('current_textplot.txt')
+        filename = self._get_resource_path("current_textplot.txt")
         qc = self.sample_circuit()
         output = circuit_drawer(qc, filename=filename, output="text", line_length=-1)
         self.assertFilesAreEqual(filename, self.text_reference)
         os.remove(filename)
         try:
-            encode(str(output), encoding='cp437')
+            encode(str(output), encoding="cp437")
         except UnicodeEncodeError:
-            self.fail("_text_circuit_drawer() should only use extended ascii (aka code page 437).")
+            self.fail(
+                "_text_circuit_drawer() should only use extended ascii (aka code page 437)."
+            )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

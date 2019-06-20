@@ -18,11 +18,27 @@ from marshmallow.validate import Range, Regexp, Length, OneOf
 
 from qiskit.qobj.utils import MeasReturnType
 from qiskit.validation import BaseSchema, bind_schema, BaseModel
-from qiskit.validation.fields import (Integer, String, Number, Float, Complex, List,
-                                      Nested, DictParameters, ByType)
-from .base import (QobjInstructionSchema, QobjExperimentConfigSchema, QobjExperimentSchema,
-                   QobjConfigSchema, QobjInstruction, QobjExperimentConfig,
-                   QobjExperiment, QobjConfig)
+from qiskit.validation.fields import (
+    Integer,
+    String,
+    Number,
+    Float,
+    Complex,
+    List,
+    Nested,
+    DictParameters,
+    ByType,
+)
+from .base import (
+    QobjInstructionSchema,
+    QobjExperimentConfigSchema,
+    QobjExperimentSchema,
+    QobjConfigSchema,
+    QobjInstruction,
+    QobjExperimentConfig,
+    QobjExperiment,
+    QobjConfig,
+)
 
 
 class QobjMeasurementOptionSchema(BaseSchema):
@@ -30,8 +46,9 @@ class QobjMeasurementOptionSchema(BaseSchema):
 
     # Required properties.
     name = String(required=True)
-    params = DictParameters(valid_value_types=(int, float, str, bool, type(None)),
-                            required=True)
+    params = DictParameters(
+        valid_value_types=(int, float, str, bool, type(None)), required=True
+    )
 
 
 class PulseLibraryItemSchema(BaseSchema):
@@ -44,13 +61,14 @@ class PulseLibraryItemSchema(BaseSchema):
 
 class PulseQobjInstructionSchema(QobjInstructionSchema):
     """Schema for PulseQobjInstruction."""
+
     # pylint: disable=invalid-name
 
     # Required properties
     t0 = Integer(required=True, validate=Range(min=0))
 
     # Optional properties.
-    ch = String(validate=Regexp('[dum]([0-9])+'))
+    ch = String(validate=Regexp("[dum]([0-9])+"))
     conditional = Integer(validate=Range(min=0))
     val = ByType([Complex(), String()])
     phase = ByType([Float(), String()])
@@ -76,8 +94,9 @@ class PulseQobjExperimentSchema(QobjExperimentSchema):
     """Schema for PulseQobjExperiment."""
 
     # Required properties.
-    instructions = Nested(PulseQobjInstructionSchema, required=True, many=True,
-                          validate=Length(min=1))
+    instructions = Nested(
+        PulseQobjInstructionSchema, required=True, many=True, validate=Length(min=1)
+    )
 
     # Optional properties.
     config = Nested(PulseQobjExperimentConfigSchema)
@@ -88,8 +107,10 @@ class PulseQobjConfigSchema(QobjConfigSchema):
 
     # Required properties.
     meas_level = Integer(required=True, validate=Range(min=0, max=2))
-    meas_return = String(required=True, validate=OneOf(choices=(MeasReturnType.AVERAGE,
-                                                                MeasReturnType.SINGLE)))
+    meas_return = String(
+        required=True,
+        validate=OneOf(choices=(MeasReturnType.AVERAGE, MeasReturnType.SINGLE)),
+    )
     pulse_library = Nested(PulseLibraryItemSchema, required=True, many=True)
     qubit_lo_freq = List(Number(validate=Range(min=0)), required=True)
     meas_lo_freq = List(Number(validate=Range(min=0)), required=True)
@@ -110,6 +131,7 @@ class QobjMeasurementOption(BaseModel):
         name (str): name of option specified in the backend
         params (dict): measurement parameter
     """
+
     def __init__(self, name, params, **kwargs):
         self.name = name
         self.params = params
@@ -147,13 +169,12 @@ class PulseQobjInstruction(QobjInstruction):
         name (str): name of the instruction
         t0 (int): timing of executing the instruction
     """
+
     def __init__(self, name, t0, **kwargs):
         # pylint: disable=invalid-name
         self.t0 = t0
 
-        super().__init__(name=name,
-                         t0=t0,
-                         **kwargs)
+        super().__init__(name=name, t0=t0, **kwargs)
 
 
 @bind_schema(PulseQobjExperimentConfigSchema)
@@ -163,6 +184,7 @@ class PulseQobjExperimentConfig(QobjExperimentConfig):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``PulseQobjExperimentConfigSchema``.
     """
+
     pass
 
 
@@ -176,10 +198,10 @@ class PulseQobjExperiment(QobjExperiment):
     Attributes:
         instructions (list[PulseQobjInstruction]): list of instructions.
     """
+
     def __init__(self, instructions, **kwargs):
 
-        super().__init__(instructions=instructions,
-                         **kwargs)
+        super().__init__(instructions=instructions, **kwargs)
 
 
 @bind_schema(PulseQobjConfigSchema)
@@ -196,17 +218,27 @@ class PulseQobjConfig(QobjConfig):
         pulse_library (list[qiskit.qobj.PulseLibraryItem]): a pulse library.
         qubit_lo_freq (list[float]): local oscillator frequency of driving pulse.
     """
-    def __init__(self, meas_level, meas_return, pulse_library,
-                 qubit_lo_freq, meas_lo_freq, **kwargs):
+
+    def __init__(
+        self,
+        meas_level,
+        meas_return,
+        pulse_library,
+        qubit_lo_freq,
+        meas_lo_freq,
+        **kwargs,
+    ):
         self.meas_level = meas_level
         self.meas_return = meas_return
         self.pulse_library = pulse_library
         self.qubit_lo_freq = qubit_lo_freq
         self.meas_lo_freq = meas_lo_freq
 
-        super().__init__(meas_level=meas_level,
-                         meas_return=meas_return,
-                         pulse_library=pulse_library,
-                         qubit_lo_freq=qubit_lo_freq,
-                         meas_lo_freq=meas_lo_freq,
-                         **kwargs)
+        super().__init__(
+            meas_level=meas_level,
+            meas_return=meas_return,
+            pulse_library=pulse_library,
+            qubit_lo_freq=qubit_lo_freq,
+            meas_lo_freq=meas_lo_freq,
+            **kwargs,
+        )

@@ -29,25 +29,26 @@ class TestParameters(QiskitTestCase):
 
     def test_gate(self):
         """Test instantiating gate with variable parameters"""
-        theta = Parameter('θ')
-        theta_gate = Gate('test', 1, params=[theta])
-        self.assertEqual(theta_gate.name, 'test')
+        theta = Parameter("θ")
+        theta_gate = Gate("test", 1, params=[theta])
+        self.assertEqual(theta_gate.name, "test")
         self.assertIsInstance(theta_gate.params[0], Parameter)
 
     def test_compile_quantum_circuit(self):
         """Test instantiating gate with variable parameters"""
-        theta = Parameter('θ')
+        theta = Parameter("θ")
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
         qc.rx(theta, qr)
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         qc_aer = transpile(qc, backend)
         self.assertIn(theta, qc_aer.parameters)
 
     def test_get_parameters(self):
         """Test instantiating gate with variable parameters"""
         from qiskit.extensions.standard.rx import RXGate
-        theta = Parameter('θ')
+
+        theta = Parameter("θ")
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
         rxg = RXGate(theta)
@@ -59,7 +60,7 @@ class TestParameters(QiskitTestCase):
 
     def test_fix_variable(self):
         """Test setting a variable to a constant value"""
-        theta = Parameter('θ')
+        theta = Parameter("θ")
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
         qc.rx(theta, qr)
@@ -73,8 +74,8 @@ class TestParameters(QiskitTestCase):
 
     def test_multiple_parameters(self):
         """Test setting multiple parameters"""
-        theta = Parameter('θ')
-        x = Parameter('x')
+        theta = Parameter("θ")
+        x = Parameter("x")
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
         qc.rx(theta, qr)
@@ -83,8 +84,8 @@ class TestParameters(QiskitTestCase):
 
     def test_partial_binding(self):
         """Test that binding a subset of circuit parameters returns a new parameterized circuit."""
-        theta = Parameter('θ')
-        x = Parameter('x')
+        theta = Parameter("θ")
+        x = Parameter("x")
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
         qc.rx(theta, qr)
@@ -99,8 +100,8 @@ class TestParameters(QiskitTestCase):
 
     def test_raise_if_assigning_params_not_in_circuit(self):
         """Verify binding parameters which are not present in the circuit raises an error."""
-        x = Parameter('x')
-        y = Parameter('y')
+        x = Parameter("x")
+        y = Parameter("y")
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
 
@@ -112,11 +113,11 @@ class TestParameters(QiskitTestCase):
 
     def test_circuit_generation(self):
         """Test creating a series of circuits parametrically"""
-        theta = Parameter('θ')
+        theta = Parameter("θ")
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
         qc.rx(theta, qr)
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         qc_aer = transpile(qc, backend)
 
         # generate list of circuits
@@ -126,18 +127,17 @@ class TestParameters(QiskitTestCase):
             circs.append(qc_aer.bind_parameters({theta: theta_i}))
         qobj = assemble(circs)
         for index, theta_i in enumerate(theta_list):
-            self.assertEqual(qobj.experiments[index].instructions[0].params[0],
-                             theta_i)
+            self.assertEqual(qobj.experiments[index].instructions[0].params[0], theta_i)
 
     def test_circuit_composition(self):
         """Test preservation of parameters when combining circuits."""
-        theta = Parameter('θ')
+        theta = Parameter("θ")
         qr = QuantumRegister(1)
         cr = ClassicalRegister(1)
         qc1 = QuantumCircuit(qr)
         qc1.rx(theta, qr)
 
-        phi = Parameter('phi')
+        phi = Parameter("phi")
         qc2 = QuantumCircuit(qr, cr)
         qc2.ry(phi, qr)
         qc2.h(qr)
@@ -148,17 +148,17 @@ class TestParameters(QiskitTestCase):
 
     def test_composite_instruction(self):
         """Test preservation of parameters when combining circuits."""
-        theta = Parameter('θ')
-        qr1 = QuantumRegister(1, name='qr1')
+        theta = Parameter("θ")
+        qr1 = QuantumRegister(1, name="qr1")
         qc1 = QuantumCircuit(qr1)
         qc1.rx(theta, qr1)
-        qc1.rz(numpy.pi/2, qr1)
+        qc1.rz(numpy.pi / 2, qr1)
         qc1.ry(theta, qr1)
         gate = qc1.to_instruction()
         self.assertEqual(gate.params, [theta])
 
-        phi = Parameter('phi')
-        qr2 = QuantumRegister(3, name='qr2')
+        phi = Parameter("phi")
+        qr2 = QuantumRegister(3, name="qr2")
         qc2 = QuantumCircuit(qr2)
         qc2.ry(phi, qr2[0])
         qc2.h(qr2)
@@ -167,8 +167,8 @@ class TestParameters(QiskitTestCase):
 
     def test_parameter_name_conflicts_raises(self):
         """Verify attempting to add different parameters with matching names raises an error."""
-        theta1 = Parameter('theta')
-        theta2 = Parameter('theta')
+        theta1 = Parameter("theta")
+        theta2 = Parameter("theta")
 
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)
@@ -181,36 +181,36 @@ class TestParameters(QiskitTestCase):
         """Test binding a list of floats to a ParamterVector"""
         qc = QuantumCircuit(4)
         depth = 4
-        theta = ParameterVector('θ', length=len(qc.qubits) * depth * 2)
+        theta = ParameterVector("θ", length=len(qc.qubits) * depth * 2)
         theta_iter = iter(theta)
         for _ in range(depth):
             for q in qc.qubits:
                 qc.ry(next(theta_iter), q)
                 qc.rz(next(theta_iter), q)
             for i, q in enumerate(qc.qubits[:-1]):
-                qc.cx(qc.qubits[i], qc.qubits[i+1])
+                qc.cx(qc.qubits[i], qc.qubits[i + 1])
             qc.barrier()
         theta_vals = numpy.linspace(0, 1, len(theta)) * numpy.pi
         self.assertEqual(set(qc.parameters), set(theta.params))
         bqc = qc.bind_parameters({theta: theta_vals})
         for gate_tuple in bqc.data:
-            if hasattr(gate_tuple[0], 'params') and gate_tuple[0].params:
+            if hasattr(gate_tuple[0], "params") and gate_tuple[0].params:
                 self.assertIn(gate_tuple[0].params[0], theta_vals)
 
     def test_compile_vector(self):
         """Test compiling a circuit with an unbound ParamterVector"""
         qc = QuantumCircuit(4)
         depth = 4
-        theta = ParameterVector('θ', length=len(qc.qubits)*depth*2)
+        theta = ParameterVector("θ", length=len(qc.qubits) * depth * 2)
         theta_iter = iter(theta)
         for _ in range(depth):
             for q in qc.qubits:
                 qc.ry(next(theta_iter), q)
                 qc.rz(next(theta_iter), q)
             for i, q in enumerate(qc.qubits[:-1]):
-                qc.cx(qc.qubits[i], qc.qubits[i+1])
+                qc.cx(qc.qubits[i], qc.qubits[i + 1])
             qc.barrier()
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         qc_aer = transpile(qc, backend)
         for param in theta:
             self.assertIn(param, qc_aer.parameters)
@@ -219,21 +219,21 @@ class TestParameters(QiskitTestCase):
         """Test constructing a circuit from instructions with remapped ParamterVectors"""
         qubits = 5
         depth = 4
-        ryrz = QuantumCircuit(qubits, name='ryrz')
-        theta = ParameterVector('θ0', length=len(ryrz.qubits) * 2)
+        ryrz = QuantumCircuit(qubits, name="ryrz")
+        theta = ParameterVector("θ0", length=len(ryrz.qubits) * 2)
         theta_iter = iter(theta)
         for q in ryrz.qubits:
             ryrz.ry(next(theta_iter), q)
             ryrz.rz(next(theta_iter), q)
 
-        cxs = QuantumCircuit(qubits-1, name='cxs')
+        cxs = QuantumCircuit(qubits - 1, name="cxs")
         for i, _ in enumerate(cxs.qubits[:-1:2]):
-            cxs.cx(cxs.qubits[2*i], cxs.qubits[2*i+1])
+            cxs.cx(cxs.qubits[2 * i], cxs.qubits[2 * i + 1])
 
         paramvecs = []
         qc = QuantumCircuit(qubits)
         for i in range(depth):
-            theta_l = ParameterVector('θ{}'.format(i+1), length=len(ryrz.qubits) * 2)
+            theta_l = ParameterVector("θ{}".format(i + 1), length=len(ryrz.qubits) * 2)
             ryrz_inst = ryrz.to_instruction(parameter_map={theta: theta_l})
             paramvecs += [theta_l]
             qc.append(ryrz_inst, qargs=qc.qubits)
@@ -241,7 +241,7 @@ class TestParameters(QiskitTestCase):
             qc.append(cxs, qargs=qc.qubits[:-1])
             qc.barrier()
 
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         qc_aer = transpile(qc, backend)
         for vec in paramvecs:
             for param in vec:

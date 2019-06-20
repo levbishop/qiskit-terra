@@ -16,12 +16,29 @@
 
 
 class SchedStyle:
-    def __init__(self, figsize=(10, 12), fig_unit_h_table=0.4,
-                 use_table=True, table_columns=2, table_font_size=10, axis_font_size=18,
-                 label_font_size=10, icon_font_size=18, label_ch_linestyle='--',
-                 label_ch_color=None, label_ch_alpha=0.3, d_ch_color=None, u_ch_color=None,
-                 m_ch_color=None, s_ch_color=None, s_ch_linestyle='-', table_color=None,
-                 bg_color=None, num_points=1000, dpi=150):
+    def __init__(
+        self,
+        figsize=(10, 12),
+        fig_unit_h_table=0.4,
+        use_table=True,
+        table_columns=2,
+        table_font_size=10,
+        axis_font_size=18,
+        label_font_size=10,
+        icon_font_size=18,
+        label_ch_linestyle="--",
+        label_ch_color=None,
+        label_ch_alpha=0.3,
+        d_ch_color=None,
+        u_ch_color=None,
+        m_ch_color=None,
+        s_ch_color=None,
+        s_ch_linestyle="-",
+        table_color=None,
+        bg_color=None,
+        num_points=1000,
+        dpi=150,
+    ):
         """Set style sheet for OpenPulse schedule drawer.
         Args:
             figsize (tuple): Size of figure.
@@ -53,24 +70,25 @@ class SchedStyle:
         self.axis_font_size = axis_font_size
         self.label_font_size = label_font_size
         self.icon_font_size = icon_font_size
-        self.d_ch_color = d_ch_color or ['#648fff', '#002999']
+        self.d_ch_color = d_ch_color or ["#648fff", "#002999"]
         self.label_ch_linestyle = label_ch_linestyle
-        self.label_ch_color = label_ch_color or '#222222'
+        self.label_ch_color = label_ch_color or "#222222"
         self.label_ch_alpha = label_ch_alpha
-        self.u_ch_color = u_ch_color or ['#ffb000', '#994A00']
-        self.m_ch_color = m_ch_color or ['#dc267f', '#760019']
-        self.a_ch_color = m_ch_color or ['#333333', '#666666']
-        self.s_ch_color = s_ch_color or '#7da781'
+        self.u_ch_color = u_ch_color or ["#ffb000", "#994A00"]
+        self.m_ch_color = m_ch_color or ["#dc267f", "#760019"]
+        self.a_ch_color = m_ch_color or ["#333333", "#666666"]
+        self.s_ch_color = s_ch_color or "#7da781"
         self.s_ch_linestyle = s_ch_linestyle
-        self.table_color = table_color or ['#e0e0e0', '#f6f6f6', '#f6f6f6']
-        self.bg_color = bg_color or '#f2f3f4'
+        self.table_color = table_color or ["#e0e0e0", "#f6f6f6", "#f6f6f6"]
+        self.bg_color = bg_color or "#f2f3f4"
         self.num_points = num_points
         self.dpi = dpi
 
 
 class PulseStyle:
-    def __init__(self, figsize=(7, 5), wave_color=None,
-                 bg_color=None, num_points=None, dpi=None):
+    def __init__(
+        self, figsize=(7, 5), wave_color=None, bg_color=None, num_points=None, dpi=None
+    ):
         """Set style sheet for OpenPulse sample pulse drawer.
         Args:
             figsize (tuple): Size of figure.
@@ -80,7 +98,7 @@ class PulseStyle:
             dpi (int): dpi to save image.
         """
         self.figsize = figsize
-        self.wave_color = wave_color or ['#ff0000', '#0000ff']
-        self.bg_color = bg_color or '#f2f3f4'
+        self.wave_color = wave_color or ["#ff0000", "#0000ff"]
+        self.bg_color = bg_color or "#f2f3f4"
         self.num_points = num_points or 1000
         self.dpi = dpi or 150

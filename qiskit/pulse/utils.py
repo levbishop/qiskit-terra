@@ -29,9 +29,13 @@ from .interfaces import ScheduleComponent
 from .schedule import Schedule
 
 
-def align_measures(schedules: List[ScheduleComponent], cmd_def: CmdDef, cal_gate: str = 'u3',
-                   max_calibration_duration: Optional[int] = None,
-                   align_time: Optional[int] = None) -> Schedule:
+def align_measures(
+    schedules: List[ScheduleComponent],
+    cmd_def: CmdDef,
+    cal_gate: str = "u3",
+    max_calibration_duration: Optional[int] = None,
+    align_time: Optional[int] = None,
+) -> Schedule:
     """Return new schedules where measurements occur at the same physical time. Minimum measurement
     wait time (to allow for calibration pulses) is enforced.
     This is only defined for schedules that are acquire-less or acquire-final per channel: a
@@ -65,8 +69,13 @@ def align_measures(schedules: List[ScheduleComponent], cmd_def: CmdDef, cal_gate
         # last acquire is scheduled, whichever comes later
         align_time = max_calibration_duration
         for schedule in schedules:
-            last_acquire = max([time for time, inst in schedule.instructions
-                                if isinstance(inst, AcquireInstruction)])
+            last_acquire = max(
+                [
+                    time
+                    for time, inst in schedule.instructions
+                    if isinstance(inst, AcquireInstruction)
+                ]
+            )
             align_time = max(align_time, last_acquire)
 
     # Shift acquires according to the new scheduled time
@@ -77,12 +86,16 @@ def align_measures(schedules: List[ScheduleComponent], cmd_def: CmdDef, cal_gate
         for time, inst in schedule.instructions:
             for chan in inst.channels:
                 if chan.index in acquired_channels:
-                    raise PulseError("Pulse encountered on channel {0} after acquire on "
-                                     "same channel.".format(chan.index))
+                    raise PulseError(
+                        "Pulse encountered on channel {0} after acquire on "
+                        "same channel.".format(chan.index)
+                    )
             if isinstance(inst, AcquireInstruction):
                 if time > align_time:
-                    warnings.warn("You provided an align_time which is scheduling an acquire "
-                                  "sooner than it was scheduled for in the original Schedule.")
+                    warnings.warn(
+                        "You provided an align_time which is scheduling an acquire "
+                        "sooner than it was scheduled for in the original Schedule."
+                    )
                 new_schedule |= inst << align_time
                 acquired_channels.update({a.index for a in inst.acquires})
             else:
@@ -93,7 +106,9 @@ def align_measures(schedules: List[ScheduleComponent], cmd_def: CmdDef, cal_gate
     return new_schedules
 
 
-def add_implicit_acquires(schedule: ScheduleComponent, meas_map: List[List[int]]) -> Schedule:
+def add_implicit_acquires(
+    schedule: ScheduleComponent, meas_map: List[List[int]]
+) -> Schedule:
     """Return a new schedule with implicit acquires from the measurement mapping replaced by
     explicit ones.
 
@@ -111,10 +126,19 @@ def add_implicit_acquires(schedule: ScheduleComponent, meas_map: List[List[int]]
 
     for time, inst in schedule.instructions:
         if isinstance(inst, AcquireInstruction):
-            if any([acq.index != mem.index for acq, mem in zip(inst.acquires, inst.mem_slots)]):
-                warnings.warn("One of your acquires was mapped to a memory slot which didn't match"
-                              " the qubit index. I'm relabeling them to match.")
-            cmd = Acquire(inst.duration, inst.command.discriminator, inst.command.kernel)
+            if any(
+                [
+                    acq.index != mem.index
+                    for acq, mem in zip(inst.acquires, inst.mem_slots)
+                ]
+            ):
+                warnings.warn(
+                    "One of your acquires was mapped to a memory slot which didn't match"
+                    " the qubit index. I'm relabeling them to match."
+                )
+            cmd = Acquire(
+                inst.duration, inst.command.discriminator, inst.command.kernel
+            )
             # Get the label of all qubits that are measured with the qubit(s) in this instruction
             existing_qubits = {chan.index for chan in inst.acquires}
             all_qubits = []
@@ -123,10 +147,14 @@ def add_implicit_acquires(schedule: ScheduleComponent, meas_map: List[List[int]]
                     all_qubits.extend(sublist)
             # Replace the old acquire instruction by a new one explicitly acquiring all qubits in
             # the measurement group.
-            new_schedule |= AcquireInstruction(
-                cmd,
-                [AcquireChannel(i) for i in all_qubits],
-                [MemorySlot(i) for i in all_qubits]) << time
+            new_schedule |= (
+                AcquireInstruction(
+                    cmd,
+                    [AcquireChannel(i) for i in all_qubits],
+                    [MemorySlot(i) for i in all_qubits],
+                )
+                << time
+            )
         else:
             new_schedule |= inst << time
 

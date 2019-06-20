@@ -22,7 +22,8 @@ import re
 import numpy as np
 from qiskit.quantum_info.operators.pauli import pauli_group
 from qiskit.visualization.utils import _validate_input_state
-if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
+
+if ("ipykernel" in sys.modules) and ("spyder" not in sys.modules):
     try:
         from IPython.core.display import display, HTML
     except ImportError:
@@ -35,8 +36,9 @@ def process_data(rho):
 
     num = int(np.log2(len(rho)))
     labels = list(map(lambda x: x.to_label(), pauli_group(num)))
-    values = list(map(lambda x: np.real(np.trace(np.dot(x.to_matrix(), rho))),
-                      pauli_group(num)))
+    values = list(
+        map(lambda x: np.real(np.trace(np.dot(x.to_matrix(), rho))), pauli_group(num))
+    )
 
     for position, label in enumerate(labels):
         result[label] = values[position]
@@ -56,14 +58,17 @@ def iplot_state_paulivec(rho, figsize=None, slider=False, show_legend=False):
     """
 
     # HTML
-    html_template = Template("""
+    html_template = Template(
+        """
     <p>
         <div id="paulivec_$divNumber"></div>
     </p>
-    """)
+    """
+    )
 
     # JavaScript
-    javascript_template = Template("""
+    javascript_template = Template(
+        """
     <script>
         requirejs.config({
             paths: {
@@ -78,33 +83,32 @@ def iplot_state_paulivec(rho, figsize=None, slider=False, show_legend=False):
                                       $options);
         });
     </script>
-    """)
+    """
+    )
     rho = _validate_input_state(rho)
     # set default figure size if none given
     if figsize is None:
         figsize = (7, 5)
 
-    options = {'width': figsize[0], 'height': figsize[1],
-               'slider': int(slider), 'show_legend': int(show_legend)}
+    options = {
+        "width": figsize[0],
+        "height": figsize[1],
+        "slider": int(slider),
+        "show_legend": int(show_legend),
+    }
 
     # Process data and execute
     div_number = str(time.time())
-    div_number = re.sub('[.]', '', div_number)
+    div_number = re.sub("[.]", "", div_number)
 
     data_to_plot = []
     rho_data = process_data(rho)
-    data_to_plot.append(dict(
-        data=rho_data
-    ))
+    data_to_plot.append(dict(data=rho_data))
 
-    html = html_template.substitute({
-        'divNumber': div_number
-    })
+    html = html_template.substitute({"divNumber": div_number})
 
-    javascript = javascript_template.substitute({
-        'divNumber': div_number,
-        'executions': data_to_plot,
-        'options': options
-    })
+    javascript = javascript_template.substitute(
+        {"divNumber": div_number, "executions": data_to_plot, "options": options}
+    )
 
     display(HTML(html + javascript))

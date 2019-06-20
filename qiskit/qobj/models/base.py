@@ -29,11 +29,13 @@ class QobjInstructionSchema(BaseSchema):
 
 class QobjExperimentHeaderSchema(BaseSchema):
     """Base Schema for QobjExperimentHeader."""
+
     pass
 
 
 class QobjExperimentConfigSchema(BaseSchema):
     """Base Schema for QobjExperimentConfig."""
+
     pass
 
 
@@ -76,6 +78,7 @@ class QobjInstruction(BaseModel):
     Attributes:
         name (str): name of the instruction
     """
+
     def __init__(self, name, **kwargs):
         self.name = name
 
@@ -89,6 +92,7 @@ class QobjExperimentHeader(BaseModel):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``QobjExperimentHeaderSchema``.
     """
+
     pass
 
 
@@ -99,6 +103,7 @@ class QobjExperimentConfig(BaseModel):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``QobjExperimentConfigSchema``.
     """
+
     pass
 
 
@@ -112,6 +117,7 @@ class QobjExperiment(BaseModel):
     Attributes:
         instructions (list[QobjInstruction]): list of instructions.
     """
+
     def __init__(self, instructions, **kwargs):
         self.instructions = instructions
 
@@ -125,6 +131,7 @@ class QobjConfig(BaseModel):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``QobjConfigSchema``.
     """
+
     pass
 
 
@@ -135,4 +142,5 @@ class QobjHeader(BaseModel):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``QobjHeaderSchema``.
     """
+
     pass

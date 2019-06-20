@@ -25,11 +25,9 @@ class BackendStatusSchema(BaseSchema):
 
     # Required properties.
     backend_name = String(required=True)
-    backend_version = String(required=True,
-                             validate=Regexp("[0-9]+.[0-9]+.[0-9]+$"))
+    backend_version = String(required=True, validate=Regexp("[0-9]+.[0-9]+.[0-9]+$"))
     operational = Boolean(required=True)
-    pending_jobs = Integer(required=True,
-                           validate=Range(min=0))
+    pending_jobs = Integer(required=True, validate=Range(min=0))
     status_msg = String(required=True)
 
 
@@ -48,8 +46,15 @@ class BackendStatus(BaseModel):
         status_msg (str): status message.
     """
 
-    def __init__(self, backend_name, backend_version, operational,
-                 pending_jobs, status_msg, **kwargs):
+    def __init__(
+        self,
+        backend_name,
+        backend_version,
+        operational,
+        pending_jobs,
+        status_msg,
+        **kwargs,
+    ):
         self.backend_name = backend_name
         self.backend_version = backend_version
         self.operational = operational

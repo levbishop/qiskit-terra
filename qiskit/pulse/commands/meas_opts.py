@@ -51,14 +51,16 @@ class MeasOpts:
         Returns:
             bool: are self and other equal.
         """
-        if type(self) is type(other) and \
-                self._name == other._name and \
-                self._params == other._params:
+        if (
+            type(self) is type(other)
+            and self._name == other._name
+            and self._params == other._params
+        ):
             return True
         return False
 
     def __repr__(self):
-        return '%s(%s)' % (self.__class__.__name__, self._name)
+        return "%s(%s)" % (self.__class__.__name__, self._name)
 
 
 class Discriminator(MeasOpts):

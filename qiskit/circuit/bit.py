@@ -28,15 +28,18 @@ class Bit:
         try:
             index = int(index)
         except Exception:
-            raise QiskitError("index needs to be castable to an int: type %s was provided" %
-                              type(index))
+            raise QiskitError(
+                "index needs to be castable to an int: type %s was provided"
+                % type(index)
+            )
 
         if index < 0:
             index += register.size
 
         if index >= register.size:
-            raise QiskitError("index must be under the size of the register: %s was provided" %
-                              index)
+            raise QiskitError(
+                "index must be under the size of the register: %s was provided" % index
+            )
 
         self.register = register
         self.index = index
@@ -46,8 +49,12 @@ class Bit:
         return "%s(%s, %s)" % (self.__class__.__name__, self.register, self.index)
 
     def __getitem__(self, item):
-        warn('Accessing a bit register by bit[0] or its index by bit[1] is deprecated. '
-             'Go for bit.register and bit.index.', DeprecationWarning, stacklevel=2)
+        warn(
+            "Accessing a bit register by bit[0] or its index by bit[1] is deprecated. "
+            "Go for bit.register and bit.index.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         if item == 0:
             return self.register
         elif item == 1:

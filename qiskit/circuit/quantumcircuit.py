@@ -37,21 +37,29 @@ def _is_bit(obj):
     """Determine if obj is a bit"""
     # If there is a bit type this could be replaced by isinstance.
     if isinstance(obj, tuple) and len(obj) == 2:
-        if isinstance(obj[0], Register) and isinstance(obj[1], int) and obj[1] < len(obj[0]):
-            warn('Referring to a bit as a tuple is being deprecated. '
-                 'Instead go of (qr, 0), use qr[0].', DeprecationWarning)
+        if (
+            isinstance(obj[0], Register)
+            and isinstance(obj[1], int)
+            and obj[1] < len(obj[0])
+        ):
+            warn(
+                "Referring to a bit as a tuple is being deprecated. "
+                "Instead go of (qr, 0), use qr[0].",
+                DeprecationWarning,
+            )
             return True
     return False
 
 
 class QuantumCircuit:
     """Quantum circuit."""
+
     instances = 0
-    prefix = 'circuit'
+    prefix = "circuit"
 
     # Class variable OPENQASM header
     header = "OPENQASM 2.0;"
-    extension_lib = "include \"qelib1.inc\";"
+    extension_lib = 'include "qelib1.inc";'
 
     def __init__(self, *regs, name=None):
         """Create a new circuit.
@@ -77,13 +85,17 @@ class QuantumCircuit:
             name = self.cls_prefix() + str(self.cls_instances())
             # pylint: disable=not-callable
             # (known pylint bug: https://github.com/PyCQA/pylint/issues/1699)
-            if sys.platform != "win32" and isinstance(mp.current_process(), mp.context.ForkProcess):
-                name += '-{}'.format(mp.current_process().pid)
+            if sys.platform != "win32" and isinstance(
+                mp.current_process(), mp.context.ForkProcess
+            ):
+                name += "-{}".format(mp.current_process().pid)
         self._increment_instances()
 
         if not isinstance(name, str):
-            raise QiskitError("The circuit name should be a string "
-                              "(or None to auto-generate a name).")
+            raise QiskitError(
+                "The circuit name should be a string "
+                "(or None to auto-generate a name)."
+            )
 
         self.name = name
 
@@ -100,11 +112,12 @@ class QuantumCircuit:
         self._parameter_table = ParameterTable()
 
     def __str__(self):
-        return str(self.draw(output='text'))
+        return str(self.draw(output="text"))
 
     def __eq__(self, other):
         # TODO: remove the DAG from this function
         from qiskit.converters import circuit_to_dag
+
         return circuit_to_dag(self) == circuit_to_dag(other)
 
     @classmethod
@@ -133,11 +146,9 @@ class QuantumCircuit:
             bool: True if the register is contained in this circuit.
         """
         has_reg = False
-        if (isinstance(register, QuantumRegister) and
-                register in self.qregs):
+        if isinstance(register, QuantumRegister) and register in self.qregs:
             has_reg = True
-        elif (isinstance(register, ClassicalRegister) and
-              register in self.cregs):
+        elif isinstance(register, ClassicalRegister) and register in self.cregs:
             has_reg = True
         return has_reg
 
@@ -150,7 +161,7 @@ class QuantumCircuit:
         Returns:
             QuantumCircuit: the mirrored circuit
         """
-        reverse_circ = self.copy(name=self.name + '_mirror')
+        reverse_circ = self.copy(name=self.name + "_mirror")
         reverse_circ.data = []
         for inst, qargs, cargs in reversed(self.data):
             reverse_circ.data.append((inst.mirror(), qargs, cargs))
@@ -167,7 +178,7 @@ class QuantumCircuit:
         Raises:
             QiskitError: if the circuit cannot be inverted.
         """
-        inverse_circ = self.copy(name=self.name + '_dg')
+        inverse_circ = self.copy(name=self.name + "_dg")
         inverse_circ.data = []
         for inst, qargs, cargs in reversed(self.data):
             inverse_circ.data.append((inst.inverse(), qargs, cargs))
@@ -286,25 +297,33 @@ class QuantumCircuit:
             elif _is_bit(bit_representation):
                 # circuit.h((qr, 0)) -> circuit.h([qr[0]])
                 ret = [bit_representation[0][bit_representation[1]]]
-            elif isinstance(bit_representation, list) and \
-                    all(_is_bit(bit) for bit in bit_representation):
+            elif isinstance(bit_representation, list) and all(
+                _is_bit(bit) for bit in bit_representation
+            ):
                 ret = [bit[0][bit[1]] for bit in bit_representation]
-            elif isinstance(bit_representation, list) and \
-                    all(isinstance(bit, Bit) for bit in bit_representation):
+            elif isinstance(bit_representation, list) and all(
+                isinstance(bit, Bit) for bit in bit_representation
+            ):
                 # circuit.h([qr[0], qr[1]]) -> circuit.h([qr[0], qr[1]])
                 ret = bit_representation
-            elif isinstance(QuantumCircuit.cast(bit_representation, list), (range, list)):
+            elif isinstance(
+                QuantumCircuit.cast(bit_representation, list), (range, list)
+            ):
                 # circuit.h([0, 1])     -> circuit.h([qr[0], qr[1]])
                 # circuit.h(range(0,2)) -> circuit.h([qr[0], qr[1]])
                 ret = [in_array[index] for index in bit_representation]
             else:
-                raise QiskitError('Not able to expand a %s (%s)' % (bit_representation,
-                                                                    type(bit_representation)))
+                raise QiskitError(
+                    "Not able to expand a %s (%s)"
+                    % (bit_representation, type(bit_representation))
+                )
         except IndexError:
-            raise QiskitError('Index out of range.')
+            raise QiskitError("Index out of range.")
         except TypeError:
-            raise QiskitError('Type error handling %s (%s)' % (bit_representation,
-                                                               type(bit_representation)))
+            raise QiskitError(
+                "Type error handling %s (%s)"
+                % (bit_representation, type(bit_representation))
+            )
         return ret
 
     def qbit_argument_conversion(self, qubit_representation):
@@ -318,7 +337,9 @@ class QuantumCircuit:
         Returns:
             List(tuple): Where each tuple is a qubit.
         """
-        return QuantumCircuit._bit_argument_conversion(qubit_representation, self.qubits)
+        return QuantumCircuit._bit_argument_conversion(
+            qubit_representation, self.qubits
+        )
 
     def cbit_argument_conversion(self, clbit_representation):
         """
@@ -331,7 +352,9 @@ class QuantumCircuit:
         Returns:
             List(tuple): Where each tuple is a classical bit.
         """
-        return QuantumCircuit._bit_argument_conversion(clbit_representation, self.clbits)
+        return QuantumCircuit._bit_argument_conversion(
+            clbit_representation, self.clbits
+        )
 
     def append(self, instruction, qargs=None, cargs=None):
         """Append one or more instructions to the end of the circuit, modifying
@@ -346,14 +369,18 @@ class QuantumCircuit:
             Instruction: a handle to the instruction that was just added
         """
         # Convert input to instruction
-        if not isinstance(instruction, Instruction) and hasattr(instruction, 'to_instruction'):
+        if not isinstance(instruction, Instruction) and hasattr(
+            instruction, "to_instruction"
+        ):
             instruction = instruction.to_instruction()
 
         expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
         expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]
 
         instructions = InstructionSet()
-        for (qarg, carg) in instruction.broadcast_arguments(expanded_qargs, expanded_cargs):
+        for (qarg, carg) in instruction.broadcast_arguments(
+            expanded_qargs, expanded_cargs
+        ):
             instructions.add(self._append(instruction, qarg, carg), qarg, carg)
         return instructions
 
@@ -374,7 +401,7 @@ class QuantumCircuit:
                 it is being attached to.
         """
         if not isinstance(instruction, Instruction):
-            raise QiskitError('object is not an Instruction.')
+            raise QiskitError("object is not an Instruction.")
 
         # do some compatibility checks
         self._check_dups(qargs)
@@ -395,7 +422,8 @@ class QuantumCircuit:
                 else:
                     if param.name in {p.name for p in current_symbols}:
                         raise QiskitError(
-                            'Name conflict on adding parameter: {}'.format(param.name))
+                            "Name conflict on adding parameter: {}".format(param.name)
+                        )
                     self._parameter_table[param] = [(instruction, param_index)]
 
         return instruction
@@ -409,19 +437,20 @@ class QuantumCircuit:
             # QuantumCircuit defined without registers
             if len(regs) == 1 and isinstance(regs[0], int):
                 # QuantumCircuit with anonymous quantum wires e.g. QuantumCircuit(2)
-                regs = (QuantumRegister(regs[0], 'q'),)
+                regs = (QuantumRegister(regs[0], "q"),)
             elif len(regs) == 2 and all([isinstance(reg, int) for reg in regs]):
                 # QuantumCircuit with anonymous wires e.g. QuantumCircuit(2, 3)
-                regs = (QuantumRegister(regs[0], 'q'), ClassicalRegister(regs[1], 'c'))
+                regs = (QuantumRegister(regs[0], "q"), ClassicalRegister(regs[1], "c"))
             else:
-                raise QiskitError("QuantumCircuit parameters can be Registers or Integers."
-                                  " If Integers, up to 2 arguments. QuantumCircuit was called"
-                                  " with %s." % (regs,))
+                raise QiskitError(
+                    "QuantumCircuit parameters can be Registers or Integers."
+                    " If Integers, up to 2 arguments. QuantumCircuit was called"
+                    " with %s." % (regs,)
+                )
 
         for register in regs:
             if register.name in [reg.name for reg in self.qregs + self.cregs]:
-                raise QiskitError("register name \"%s\" already exists"
-                                  % register.name)
+                raise QiskitError('register name "%s" already exists' % register.name)
             if isinstance(register, QuantumRegister):
                 self.qregs.append(register)
             elif isinstance(register, ClassicalRegister):
@@ -463,6 +492,7 @@ class QuantumCircuit:
                 (can be decomposed back)
         """
         from qiskit.converters.circuit_to_instruction import circuit_to_instruction
+
         return circuit_to_instruction(self, parameter_map)
 
     def decompose(self):
@@ -475,6 +505,7 @@ class QuantumCircuit:
         from qiskit.transpiler.passes.decompose import Decompose
         from qiskit.converters.circuit_to_dag import circuit_to_dag
         from qiskit.converters.dag_to_circuit import dag_to_circuit
+
         pass_ = Decompose()
         decomposed_dag = pass_.run(circuit_to_dag(self))
         return dag_to_circuit(decomposed_dag)
@@ -498,21 +529,38 @@ class QuantumCircuit:
         for register in self.cregs:
             string_temp += register.qasm() + "\n"
         for instruction, qargs, cargs in self.data:
-            if instruction.name == 'measure':
+            if instruction.name == "measure":
                 qubit = qargs[0]
                 clbit = cargs[0]
-                string_temp += "%s %s[%d] -> %s[%d];\n" % (instruction.qasm(),
-                                                           qubit.register.name, qubit.index,
-                                                           clbit.register.name, clbit.index)
+                string_temp += "%s %s[%d] -> %s[%d];\n" % (
+                    instruction.qasm(),
+                    qubit.register.name,
+                    qubit.index,
+                    clbit.register.name,
+                    clbit.index,
+                )
             else:
-                string_temp += "%s %s;\n" % (instruction.qasm(),
-                                             ",".join(["%s[%d]" % (j.register.name, j.index)
-                                                       for j in qargs + cargs]))
+                string_temp += "%s %s;\n" % (
+                    instruction.qasm(),
+                    ",".join(
+                        ["%s[%d]" % (j.register.name, j.index) for j in qargs + cargs]
+                    ),
+                )
         return string_temp
 
-    def draw(self, scale=0.7, filename=None, style=None, output=None,
-             interactive=False, line_length=None, plot_barriers=True,
-             reverse_bits=False, justify=None, vertical_compression='medium'):
+    def draw(
+        self,
+        scale=0.7,
+        filename=None,
+        style=None,
+        output=None,
+        interactive=False,
+        line_length=None,
+        plot_barriers=True,
+        reverse_bits=False,
+        justify=None,
+        vertical_compression="medium",
+    ):
         """Draw the quantum circuit
 
         Using the output parameter you can specify the format. The choices are:
@@ -567,15 +615,20 @@ class QuantumCircuit:
         """
         # pylint: disable=cyclic-import
         from qiskit.visualization import circuit_drawer
-        return circuit_drawer(self, scale=scale,
-                              filename=filename, style=style,
-                              output=output,
-                              interactive=interactive,
-                              line_length=line_length,
-                              plot_barriers=plot_barriers,
-                              reverse_bits=reverse_bits,
-                              justify=justify,
-                              vertical_compression=vertical_compression)
+
+        return circuit_drawer(
+            self,
+            scale=scale,
+            filename=filename,
+            style=style,
+            output=output,
+            interactive=interactive,
+            line_length=line_length,
+            plot_barriers=plot_barriers,
+            reverse_bits=reverse_bits,
+            justify=justify,
+            vertical_compression=vertical_compression,
+        )
 
     def size(self):
         """Returns total number of gate operations in circuit.
@@ -585,7 +638,7 @@ class QuantumCircuit:
         """
         gate_ops = 0
         for instr, _, _ in self.data:
-            if instr.name not in ['barrier', 'snapshot']:
+            if instr.name not in ["barrier", "snapshot"]:
                 gate_ops += 1
         return gate_ops
 
@@ -624,7 +677,7 @@ class QuantumCircuit:
         # They are transpiler and simulator directives.
         # The max stack height is the circuit depth.
         for instr, qargs, cargs in self.data:
-            if instr.name not in ['barrier', 'snapshot']:
+            if instr.name not in ["barrier", "snapshot"]:
                 levels = []
                 reg_ints = []
                 for ind, reg in enumerate(qargs + cargs):
@@ -705,7 +758,7 @@ class QuantumCircuit:
                 args = qargs + cargs
                 num_qargs = len(args) + (1 if instr.control else 0)
 
-            if num_qargs >= 2 and instr.name not in ['barrier', 'snapshot']:
+            if num_qargs >= 2 and instr.name not in ["barrier", "snapshot"]:
                 graphs_touched = []
                 num_touched = 0
                 # Controls necessarily join all the cbits in the
@@ -743,7 +796,7 @@ class QuantumCircuit:
                             _sub_graphs.append(sub_graphs[idx])
                     _sub_graphs.append(connections)
                     sub_graphs = _sub_graphs
-                    num_sub_graphs -= (num_touched - 1)
+                    num_sub_graphs -= num_touched - 1
             # Cannot go lower than one so break
             if num_sub_graphs == 1:
                 break
@@ -824,8 +877,11 @@ class QuantumCircuit:
         unrolled_value_dict = self._unroll_param_dict(value_dict)
 
         if unrolled_value_dict.keys() > self.parameters:
-            raise QiskitError('Cannot bind parameters ({}) not present in the circuit.'.format(
-                [str(p) for p in value_dict.keys() - self.parameters]))
+            raise QiskitError(
+                "Cannot bind parameters ({}) not present in the circuit.".format(
+                    [str(p) for p in value_dict.keys() - self.parameters]
+                )
+            )
 
         for parameter, value in unrolled_value_dict.items():
             new_circuit._bind_parameter(parameter, value)
@@ -841,9 +897,11 @@ class QuantumCircuit:
                 unrolled_value_dict[param] = value
             if isinstance(param, ParameterVector):
                 if not len(param) == len(value):
-                    raise QiskitError('ParameterVector {} has length {}, which '
-                                      'differs from value list {} of '
-                                      'len {}'.format(param, len(param), value, len(value)))
+                    raise QiskitError(
+                        "ParameterVector {} has length {}, which "
+                        "differs from value list {} of "
+                        "len {}".format(param, len(param), value, len(value))
+                    )
                 unrolled_value_dict.update(zip(param, value))
         return unrolled_value_dict
 
@@ -859,13 +917,16 @@ class QuantumCircuit:
         """
         for old_parameter, new_parameter in parameter_map.items():
             self._bind_parameter(old_parameter, new_parameter)
-            self._parameter_table[new_parameter] = self._parameter_table.pop(old_parameter)
+            self._parameter_table[new_parameter] = self._parameter_table.pop(
+                old_parameter
+            )
 
 
 def _circuit_from_qasm(qasm):
     # pylint: disable=cyclic-import
     from qiskit.converters import ast_to_dag
     from qiskit.converters import dag_to_circuit
+
     ast = qasm.parse()
     dag = ast_to_dag(ast)
     return dag_to_circuit(dag)

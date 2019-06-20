@@ -25,13 +25,14 @@ logger = logging.getLogger(__name__)
 
 
 _DEFAULT_SCHEMA_PATHS = {
-    'backend_configuration': 'schemas/backend_configuration_schema.json',
-    'backend_properties': 'schemas/backend_properties_schema.json',
-    'backend_status': 'schemas/backend_status_schema.json',
-    'default_pulse_configuration': 'schemas/default_pulse_configuration_schema.json',
-    'job_status': 'schemas/job_status_schema.json',
-    'qobj': 'schemas/qobj_schema.json',
-    'result': 'schemas/result_schema.json'}
+    "backend_configuration": "schemas/backend_configuration_schema.json",
+    "backend_properties": "schemas/backend_properties_schema.json",
+    "backend_status": "schemas/backend_status_schema.json",
+    "default_pulse_configuration": "schemas/default_pulse_configuration_schema.json",
+    "job_status": "schemas/job_status_schema.json",
+    "qobj": "schemas/qobj_schema.json",
+    "result": "schemas/result_schema.json",
+}
 # Schema and Validator storage
 _SCHEMAS = {}
 _VALIDATORS = {}
@@ -53,14 +54,15 @@ def _load_schema(file_path, name=None):
         # filename without extension
         name = os.path.splitext(os.path.basename(file_path))[0]
     if name not in _SCHEMAS:
-        with open(file_path, 'r') as schema_file:
+        with open(file_path, "r") as schema_file:
             _SCHEMAS[name] = json.load(schema_file)
 
     return _SCHEMAS[name]
 
 
-def _get_validator(name, schema=None, check_schema=True,
-                   validator_class=None, **validator_kwargs):
+def _get_validator(
+    name, schema=None, check_schema=True, validator_class=None, **validator_kwargs
+):
     """Generate validator for JSON schema.
 
     Args:
@@ -84,8 +86,9 @@ def _get_validator(name, schema=None, check_schema=True,
         try:
             schema = _SCHEMAS[name]
         except KeyError:
-            raise SchemaValidationError("Valid schema name or schema must "
-                                        "be provided.")
+            raise SchemaValidationError(
+                "Valid schema name or schema must " "be provided."
+            )
 
     if name not in _VALIDATORS:
         # Resolve JSON spec from schema if needed
@@ -103,7 +106,7 @@ def _get_validator(name, schema=None, check_schema=True,
 
 def _load_schemas_and_validators():
     """Load all default schemas into `_SCHEMAS`."""
-    schema_base_path = os.path.join(os.path.dirname(__file__), '../..')
+    schema_base_path = os.path.join(os.path.dirname(__file__), "../..")
     for name, path in _DEFAULT_SCHEMA_PATHS.items():
         _load_schema(os.path.join(schema_base_path, path), name)
         _get_validator(name)
@@ -113,8 +116,7 @@ def _load_schemas_and_validators():
 _load_schemas_and_validators()
 
 
-def validate_json_against_schema(json_dict, schema,
-                                 err_msg=None):
+def validate_json_against_schema(json_dict, schema, err_msg=None):
     """Validates JSON dict against a schema.
 
     Args:
@@ -141,11 +143,13 @@ def validate_json_against_schema(json_dict, schema,
             jsonschema.validate(json_dict, schema)
     except jsonschema.ValidationError as err:
         if err_msg is None:
-            err_msg = "JSON failed validation. Set Qiskit log level to DEBUG " \
-                      "for further information."
+            err_msg = (
+                "JSON failed validation. Set Qiskit log level to DEBUG "
+                "for further information."
+            )
         newerr = SchemaValidationError(err_msg)
         newerr.__cause__ = _SummaryValidationError(err)
-        logger.debug('%s', _format_causes(err))
+        logger.debug("%s", _format_causes(err))
         raise newerr
 
 
@@ -190,26 +194,29 @@ def _format_causes(err, level=0):
         lines.append(_pad(string, offset=offset))
 
     def _pad(string, offset=0):
-        padding = '  ' * (level + offset)
-        padded_lines = [padding + line for line in string.split('\n')]
-        return '\n'.join(padded_lines)
+        padding = "  " * (level + offset)
+        padded_lines = [padding + line for line in string.split("\n")]
+        return "\n".join(padded_lines)
 
     def _format_path(path):
         def _format(item):
             if isinstance(item, str):
-                return '.{}'.format(item)
+                return ".{}".format(item)
 
-            return '[{}]'.format(item)
+            return "[{}]".format(item)
 
-        return ''.join(['<root>'] + list(map(_format, path)))
+        return "".join(["<root>"] + list(map(_format, path)))
 
-    _print('\'{}\' failed @ \'{}\' because of:'.format(
-        err.validator, _format_path(err.absolute_path)))
+    _print(
+        "'{}' failed @ '{}' because of:".format(
+            err.validator, _format_path(err.absolute_path)
+        )
+    )
 
     if not err.context:
         _print(str(err.message), offset=1)
     else:
         for suberr in err.context:
-            lines.append(_format_causes(suberr, level+1))
+            lines.append(_format_causes(suberr, level + 1))
 
-    return '\n'.join(lines)
+    return "\n".join(lines)

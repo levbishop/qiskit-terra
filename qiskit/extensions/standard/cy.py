@@ -41,7 +41,7 @@ class CyGate(Gate):
         rule = [
             (SdgGate(), [q[1]], []),
             (CnotGate(), [q[0], q[1]], []),
-            (SGate(), [q[1]], [])
+            (SGate(), [q[1]], []),
         ]
         for inst in rule:
             definition.append(inst)

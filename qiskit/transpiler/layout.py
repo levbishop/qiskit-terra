@@ -25,7 +25,7 @@ from qiskit.circuit.quantumregister import Qubit
 from qiskit.transpiler.exceptions import LayoutError
 
 
-class Layout():
+class Layout:
     """Two-ways dict to represent a Layout."""
 
     def __init__(self, input_dict=None):
@@ -91,15 +91,20 @@ class Layout():
             physical = value2
             virtual = value1
         else:
-            raise LayoutError('The map (%s -> %s) has to be a (Bit -> integer)'
-                              ' or the other way around.' % (type(value1), type(value2)))
+            raise LayoutError(
+                "The map (%s -> %s) has to be a (Bit -> integer)"
+                " or the other way around." % (type(value1), type(value2))
+            )
         return virtual, physical
 
     @staticmethod
     def _cast_tuple_to_bit(value):
         if isinstance(value, tuple):
-            warn('Querying layout with a tuple (i.e. layout[(qr, 0)]) is deprecated. '
-                 'Go for layout[qr[0]].', DeprecationWarning)
+            warn(
+                "Querying layout with a tuple (i.e. layout[(qr, 0)]) is deprecated. "
+                "Go for layout[qr[0]].",
+                DeprecationWarning,
+            )
             value = value[0][value[1]]
         return value
 
@@ -109,7 +114,7 @@ class Layout():
             return self._p2v[item]
         if item in self._v2p:
             return self._v2p[item]
-        raise KeyError('The item %s does not exist in the Layout' % (item,))
+        raise KeyError("The item %s does not exist in the Layout" % (item,))
 
     def __setitem__(self, key, value):
         key = Layout._cast_tuple_to_bit(key)
@@ -135,8 +140,10 @@ class Layout():
             del self._v2p[key]
             del self._p2v[self._v2p[key]]
         else:
-            raise LayoutError('The key to remove should be of the form'
-                              ' Qubit or integer) and %s was provided' % (type(key),))
+            raise LayoutError(
+                "The key to remove should be of the form"
+                " Qubit or integer) and %s was provided" % (type(key),)
+            )
 
     def __len__(self):
         return len(self._p2v)
@@ -206,7 +213,9 @@ class Layout():
             LayoutError: If left and right have not the same type.
         """
         if type(left) is not type(right):
-            raise LayoutError('The method swap only works with elements of the same type.')
+            raise LayoutError(
+                "The method swap only works with elements of the same type."
+            )
         temp = self[left]
         self[left] = self[right]
         self[right] = temp
@@ -234,8 +243,10 @@ class Layout():
 
         for virtual, physical in self.get_virtual_bits().items():
             if physical not in another_layout._p2v:
-                raise LayoutError('The wire_map_from_layouts() method does not support when the'
-                                  ' other layout (another_layout) is smaller.')
+                raise LayoutError(
+                    "The wire_map_from_layouts() method does not support when the"
+                    " other layout (another_layout) is smaller."
+                )
             edge_map[virtual] = another_layout[physical]
 
         return edge_map
@@ -270,13 +281,13 @@ class Layout():
             LayoutError: Invalid input layout.
         """
         if not all(isinstance(i, int) for i in int_list):
-            raise LayoutError('Expected a list of ints')
+            raise LayoutError("Expected a list of ints")
         if len(int_list) != len(set(int_list)):
-            raise LayoutError('Duplicate values not permitted; Layout is bijective.')
+            raise LayoutError("Duplicate values not permitted; Layout is bijective.")
         n_qubits = sum(reg.size for reg in qregs)
         # Check if list is too short to cover all qubits
         if len(int_list) < n_qubits:
-            err_msg = 'Integer list length must equal number of qubits in circuit.'
+            err_msg = "Integer list length must equal number of qubits in circuit."
             raise LayoutError(err_msg)
         out = Layout()
         main_idx = 0
@@ -302,8 +313,11 @@ class Layout():
         Raises:
             LayoutError: If the elements are not (Register, integer) or None
         """
-        warn('Creating a layout with a list of tuples (eg. [(qr,0), None, (qr,2), (qr,3)]) '
-             'is deprecated. Go for [qr[0], None, qr[2], qr[3]].', DeprecationWarning)
+        warn(
+            "Creating a layout with a list of tuples (eg. [(qr,0), None, (qr,2), (qr,3)]) "
+            "is deprecated. Go for [qr[0], None, qr[2], qr[3]].",
+            DeprecationWarning,
+        )
         new_list = []
         for tuple_ in tuple_list:
             if tuple_ is None:
@@ -332,8 +346,12 @@ class Layout():
                 continue
             elif isinstance(virtual, Qubit):
                 if virtual in out._v2p:
-                    raise LayoutError('Duplicate values not permitted; Layout is bijective.')
+                    raise LayoutError(
+                        "Duplicate values not permitted; Layout is bijective."
+                    )
                 out[virtual] = physical
             else:
-                raise LayoutError("The list should contain elements of the Bits or NoneTypes")
+                raise LayoutError(
+                    "The list should contain elements of the Bits or NoneTypes"
+                )
         return out

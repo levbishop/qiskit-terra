@@ -30,7 +30,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
             q_0: |0>─░──░─   ->   q_0: |0>─░─
                      ░  ░                  ░
         """
-        qr = QuantumRegister(1, 'q')
+        qr = QuantumRegister(1, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr)
@@ -50,7 +50,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
         q_0: |0>─░──░──░──░──░──░─    ->     q_0: |0>─░─
                  ░  ░  ░  ░  ░  ░                     ░
         """
-        qr = QuantumRegister(1, 'q')
+        qr = QuantumRegister(1, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr)
@@ -79,7 +79,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
             q_1: |0>────░─           q_1: |0>─░─
                         ░                     ░
         """
-        qr = QuantumRegister(2, 'q')
+        qr = QuantumRegister(2, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr[0])
@@ -104,7 +104,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
             q_1: |0>─░─           q_1: |0>─░─
                      ░                     ░
         """
-        qr = QuantumRegister(2, 'q')
+        qr = QuantumRegister(2, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr[0])
@@ -127,7 +127,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
         q_1: |0>┤ H ├─░─           q_1: |0>┤ H ├─░─
                 └───┘ ░                    └───┘ ░
         """
-        qr = QuantumRegister(2, 'q')
+        qr = QuantumRegister(2, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr[0])
@@ -151,7 +151,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
         q_1: |0>─░─┤ H ├           q_1: |0>─░─┤ H ├
                  ░ └───┘                    ░ └───┘
         """
-        qr = QuantumRegister(2, 'q')
+        qr = QuantumRegister(2, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr)
@@ -174,7 +174,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
             q_0: |0>─░─┤ H ├─░─    ->     q_0: |0>─░─┤ H ├─░─
                      ░ └───┘ ░                     ░ └───┘ ░
         """
-        qr = QuantumRegister(1, 'q')
+        qr = QuantumRegister(1, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr)
@@ -200,7 +200,7 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
         q_1: |0>─────────░─           q_1: |0>─────────░─
                          ░                             ░
         """
-        qr = QuantumRegister(2, 'q')
+        qr = QuantumRegister(2, "q")
 
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr[0])
@@ -218,5 +218,5 @@ class TestMergeAdjacentBarriers(QiskitTestCase):
         self.assertEqual(result, circuit_to_dag(expected))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

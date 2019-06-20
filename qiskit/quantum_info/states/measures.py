@@ -64,7 +64,7 @@ def state_fidelity(state1, state2):
     # fidelity of two density matrices
     s1sq = _funm_svd(s1, np.sqrt)
     s2sq = _funm_svd(s2, np.sqrt)
-    return np.linalg.norm(s1sq.dot(s2sq), ord='nuc') ** 2
+    return np.linalg.norm(s1sq.dot(s2sq), ord="nuc") ** 2
 
 
 def _funm_svd(a, func):
@@ -78,6 +78,6 @@ def _funm_svd(a, func):
         ndarray: funm (N, N) Value of the matrix function specified by func
         evaluated at `A`.
     """
-    U, s, Vh = la.svd(a, lapack_driver='gesvd')
+    U, s, Vh = la.svd(a, lapack_driver="gesvd")
     S = np.diag(func(s))
     return U.dot(S).dot(Vh)

@@ -22,4 +22,4 @@ class Depth(AnalysisPass):
     """
 
     def run(self, dag):
-        self.property_set['depth'] = dag.depth()
+        self.property_set["depth"] = dag.depth()

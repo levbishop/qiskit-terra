@@ -19,8 +19,15 @@
 import unittest
 import numpy as np
 
-from qiskit.pulse import (Acquire, FrameChange, PersistentValue,
-                          Snapshot, Kernel, Discriminator, functional_pulse)
+from qiskit.pulse import (
+    Acquire,
+    FrameChange,
+    PersistentValue,
+    Snapshot,
+    Kernel,
+    Discriminator,
+    functional_pulse,
+)
 from qiskit.test import QiskitTestCase
 
 
@@ -30,27 +37,24 @@ class TestAcquire(QiskitTestCase):
     def test_can_construct_valid_acquire_command(self):
         """Test if valid acquire command can be constructed.
         """
-        kernel_opts = {
-            'start_window': 0,
-            'stop_window': 10
-        }
-        kernel = Kernel(name='boxcar', **kernel_opts)
+        kernel_opts = {"start_window": 0, "stop_window": 10}
+        kernel = Kernel(name="boxcar", **kernel_opts)
 
         discriminator_opts = {
-            'neighborhoods': [{'qubits': 1, 'channels': 1}],
-            'cal': 'coloring',
-            'resample': False
+            "neighborhoods": [{"qubits": 1, "channels": 1}],
+            "cal": "coloring",
+            "resample": False,
         }
-        discriminator = Discriminator(name='linear_discriminator', **discriminator_opts)
+        discriminator = Discriminator(name="linear_discriminator", **discriminator_opts)
 
         acq_command = Acquire(duration=10, kernel=kernel, discriminator=discriminator)
 
         self.assertEqual(acq_command.duration, 10)
-        self.assertEqual(acq_command.discriminator.name, 'linear_discriminator')
+        self.assertEqual(acq_command.discriminator.name, "linear_discriminator")
         self.assertEqual(acq_command.discriminator.params, discriminator_opts)
-        self.assertEqual(acq_command.kernel.name, 'boxcar')
+        self.assertEqual(acq_command.kernel.name, "boxcar")
         self.assertEqual(acq_command.kernel.params, kernel_opts)
-        self.assertTrue(acq_command.name.startswith('acq'))
+        self.assertTrue(acq_command.name.startswith("acq"))
 
     def test_can_construct_acquire_command_with_default_values(self):
         """Test if an acquire command can be constructed with default discriminator and kernel.
@@ -61,9 +65,11 @@ class TestAcquire(QiskitTestCase):
         self.assertEqual(acq_command_a.duration, 10)
         self.assertEqual(acq_command_a.discriminator, None)
         self.assertEqual(acq_command_a.kernel, None)
-        self.assertTrue(acq_command_a.name.startswith('acq'))
+        self.assertTrue(acq_command_a.name.startswith("acq"))
         self.assertNotEqual(acq_command_a.name, acq_command_b.name)
-        self.assertEqual(acq_command_b.name, 'acq' + str(int(acq_command_a.name[3:]) + 1))
+        self.assertEqual(
+            acq_command_b.name, "acq" + str(int(acq_command_a.name[3:]) + 1)
+        )
 
 
 class TestFrameChange(QiskitTestCase):
@@ -76,7 +82,7 @@ class TestFrameChange(QiskitTestCase):
 
         self.assertEqual(fc_command.phase, 1.57)
         self.assertEqual(fc_command.duration, 0)
-        self.assertTrue(fc_command.name.startswith('fc'))
+        self.assertTrue(fc_command.name.startswith("fc"))
 
 
 class TestFunctionalPulse(QiskitTestCase):
@@ -91,13 +97,13 @@ class TestFunctionalPulse(QiskitTestCase):
             x = np.linspace(0, duration - 1, duration)
             return amp * np.exp(-(x - t0) ** 2 / sig ** 2)
 
-        pulse_command = gaussian(duration=10, name='test_pulse', amp=1, t0=5, sig=1)
-        _y = 1 * np.exp(-(np.linspace(0, 9, 10) - 5)**2 / 1**2)
+        pulse_command = gaussian(duration=10, name="test_pulse", amp=1, t0=5, sig=1)
+        _y = 1 * np.exp(-(np.linspace(0, 9, 10) - 5) ** 2 / 1 ** 2)
 
         self.assertListEqual(list(pulse_command.samples), list(_y))
 
         # check name
-        self.assertEqual(pulse_command.name, 'test_pulse')
+        self.assertEqual(pulse_command.name, "test_pulse")
 
         # check duration
         self.assertEqual(pulse_command.duration, 10)
@@ -111,9 +117,9 @@ class TestPersistentValue(QiskitTestCase):
         """
         pv_command = PersistentValue(value=0.5 - 0.5j)
 
-        self.assertEqual(pv_command.value, 0.5-0.5j)
+        self.assertEqual(pv_command.value, 0.5 - 0.5j)
         self.assertEqual(pv_command.duration, 0)
-        self.assertTrue(pv_command.name.startswith('pv'))
+        self.assertTrue(pv_command.name.startswith("pv"))
 
 
 class TestSnapshot(QiskitTestCase):
@@ -122,7 +128,7 @@ class TestSnapshot(QiskitTestCase):
     def test_default(self):
         """Test default snapshot.
         """
-        snap_command = Snapshot(name='test_name', snap_type='state')
+        snap_command = Snapshot(name="test_name", snap_type="state")
 
         self.assertEqual(snap_command.name, "test_name")
         self.assertEqual(snap_command.type, "state")
@@ -141,5 +147,5 @@ class TestKernel(QiskitTestCase):
         self.assertEqual(kernel.params, {})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

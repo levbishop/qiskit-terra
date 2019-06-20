@@ -51,7 +51,9 @@ class SingleQubitUnitary(Gate):
             raise QiskitError("The decomposition mode is not known.")
         # Check if the matrix u has the right dimensions and if it is a unitary
         if not u.shape == (2, 2):
-            raise QiskitError("The dimension of the input matrix is not equal to (2,2).")
+            raise QiskitError(
+                "The dimension of the input matrix is not equal to (2,2)."
+            )
         if not is_unitary_matrix(u):
             raise QiskitError("The 2*2 matrix is not unitary.")
         self.mode = mode
@@ -79,7 +81,7 @@ class SingleQubitUnitary(Gate):
         Returns: QuantumCircuit: circuit for implementing u
                  (up to a diagonal if up_to_diagonal=True)
         """
-        diag = [1., 1.]
+        diag = [1.0, 1.0]
         q = QuantumRegister(self.num_qubits)
         circuit = QuantumCircuit(q)
         # First, we find the rotation angles (where we can ignore the global phase)
@@ -94,7 +96,7 @@ class SingleQubitUnitary(Gate):
             is_identity = False
         if abs(c) > _EPS:
             if self.up_to_diagonal:
-                diag = [np.exp(-1j * c / 2.), np.exp(1j * c / 2.)]
+                diag = [np.exp(-1j * c / 2.0), np.exp(1j * c / 2.0)]
             else:
                 circuit.rz(c, q[0])
                 is_identity = False
@@ -118,13 +120,13 @@ class SingleQubitUnitary(Gate):
             # Note that u10 can't be zero, since u is unitary (and u00 == 0)
             c = cmath.phase(-u01 / u10)
             d = cmath.phase(u01 * np.exp(-1j * c / 2))
-            return 0., -np.pi, -c, d
+            return 0.0, -np.pi, -c, d
         # Handle special case if the entry (0,1) of the unitary is equal to zero
         if np.abs(u01) < _EPS:
             # Note that u11 can't be zero, since u is unitary (and u01 == 0)
             c = cmath.phase(u00 / u11)
             d = cmath.phase(u00 * np.exp(-1j * c / 2))
-            return 0., 0., -c, d
+            return 0.0, 0.0, -c, d
         b = 2 * np.arccos(np.abs(u00))
         if np.sin(b / 2) - np.cos(b / 2) > 0:
             c = cmath.phase(-u00 / u10)
@@ -171,11 +173,15 @@ def squ(self, u, qubit, mode="ZYZ", up_to_diagonal=False):
         if len(qubit) == 1:
             qubit = qubit[0]
         else:
-            raise QiskitError("The target qubit is a QuantumRegister containing more than"
-                              " one qubits.")
+            raise QiskitError(
+                "The target qubit is a QuantumRegister containing more than"
+                " one qubits."
+            )
     # Check if there is one target qubit provided
     if not isinstance(qubit, Qubit):
-        raise QiskitError("The target qubit is not a single qubit from a QuantumRegister.")
+        raise QiskitError(
+            "The target qubit is not a single qubit from a QuantumRegister."
+        )
     return self.append(SingleQubitUnitary(u, mode, up_to_diagonal), [qubit], [])
 
 

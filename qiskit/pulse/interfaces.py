@@ -86,23 +86,25 @@ class ScheduleComponent(metaclass=ABCMeta):
 
     @property
     @abstractmethod
-    def _children(self) -> Tuple[Union[int, 'ScheduleComponent']]:
+    def _children(self) -> Tuple[Union[int, "ScheduleComponent"]]:
         """Child nodes of this schedule component. """
         pass
 
     @property
     @abstractmethod
-    def instructions(self) -> Tuple[Tuple[int, 'Instructions']]:
+    def instructions(self) -> Tuple[Tuple[int, "Instructions"]]:
         """Return iterable for all `Instruction`s in `Schedule` tree."""
         pass
 
     @abstractmethod
-    def flatten(self) -> 'ScheduleComponent':
+    def flatten(self) -> "ScheduleComponent":
         """Return a new schedule which is the flattened schedule contained all `instructions`."""
         pass
 
     @abstractmethod
-    def union(self, *schedules: List['ScheduleComponent'], name: str = None) -> 'ScheduleComponent':
+    def union(
+        self, *schedules: List["ScheduleComponent"], name: str = None
+    ) -> "ScheduleComponent":
         """Return a new schedule which is the union of the parent `Schedule` and `schedule`.
 
         Args:
@@ -112,7 +114,9 @@ class ScheduleComponent(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def shift(self: 'ScheduleComponent', time: int, name: str = None) -> 'ScheduleComponent':
+    def shift(
+        self: "ScheduleComponent", time: int, name: str = None
+    ) -> "ScheduleComponent":
         """Return a new schedule shifted forward by `time`.
         Args:
             time: Time to shift by
@@ -121,8 +125,13 @@ class ScheduleComponent(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def insert(self, start_time: int, schedule: 'ScheduleComponent', buffer: bool = False,
-               name: str = None) -> 'ScheduleComponent':
+    def insert(
+        self,
+        start_time: int,
+        schedule: "ScheduleComponent",
+        buffer: bool = False,
+        name: str = None,
+    ) -> "ScheduleComponent":
         """Return a new schedule with `schedule` inserted at `start_time` of `self`.
 
         Args:
@@ -134,8 +143,9 @@ class ScheduleComponent(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def append(self, schedule: 'ScheduleComponent', buffer: bool = True,
-               name: str = None) -> 'ScheduleComponent':
+    def append(
+        self, schedule: "ScheduleComponent", buffer: bool = True, name: str = None
+    ) -> "ScheduleComponent":
         """Return a new schedule with `schedule` inserted at the maximum time over
         all channels shared between `self` and `schedule`.
 
@@ -147,16 +157,16 @@ class ScheduleComponent(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def __add__(self, schedule: 'ScheduleComponent') -> 'ScheduleComponent':
+    def __add__(self, schedule: "ScheduleComponent") -> "ScheduleComponent":
         """Return a new schedule with `schedule` inserted within `self` at `start_time`."""
         pass
 
     @abstractmethod
-    def __or__(self, schedule: 'ScheduleComponent') -> 'ScheduleComponent':
+    def __or__(self, schedule: "ScheduleComponent") -> "ScheduleComponent":
         """Return a new schedule which is the union of `self` and `schedule`."""
         pass
 
     @abstractmethod
-    def __lshift__(self, time: int) -> 'ScheduleComponent':
+    def __lshift__(self, time: int) -> "ScheduleComponent":
         """Return a new schedule which is shifted forward by `time`."""
         pass

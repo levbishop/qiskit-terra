@@ -56,8 +56,13 @@ def zero(duration: int, name: str = None) -> SamplePulse:
 _sampled_square_pulse = samplers.left(continuous.square)
 
 
-def square(duration: int, amp: complex, period: float = None,
-           phase: float = 0, name: str = None) -> SamplePulse:
+def square(
+    duration: int,
+    amp: complex,
+    period: float = None,
+    phase: float = 0,
+    name: str = None,
+) -> SamplePulse:
     """Generates square wave `SamplePulse`.
 
     Applies `left` sampling strategy to generate discrete pulse from continuous function.
@@ -78,8 +83,13 @@ def square(duration: int, amp: complex, period: float = None,
 _sampled_sawtooth_pulse = samplers.left(continuous.sawtooth)
 
 
-def sawtooth(duration: int, amp: complex, period: float = None,
-             phase: float = 0, name: str = None) -> SamplePulse:
+def sawtooth(
+    duration: int,
+    amp: complex,
+    period: float = None,
+    phase: float = 0,
+    name: str = None,
+) -> SamplePulse:
     """Generates sawtooth wave `SamplePulse`.
 
     Args:
@@ -98,8 +108,13 @@ def sawtooth(duration: int, amp: complex, period: float = None,
 _sampled_triangle_pulse = samplers.left(continuous.triangle)
 
 
-def triangle(duration: int, amp: complex, period: float = None,
-             phase: float = 0, name: str = None) -> SamplePulse:
+def triangle(
+    duration: int,
+    amp: complex,
+    period: float = None,
+    phase: float = 0,
+    name: str = None,
+) -> SamplePulse:
     """Generates triangle wave `SamplePulse`.
 
     Applies `left` sampling strategy to generate discrete pulse from continuous function.
@@ -120,8 +135,9 @@ def triangle(duration: int, amp: complex, period: float = None,
 _sampled_cos_pulse = samplers.left(continuous.cos)
 
 
-def cos(duration: int, amp: complex, freq: float = None,
-        phase: float = 0, name: str = None) -> SamplePulse:
+def cos(
+    duration: int, amp: complex, freq: float = None, phase: float = 0, name: str = None
+) -> SamplePulse:
     """Generates cosine wave `SamplePulse`.
 
     Applies `left` sampling strategy to generate discrete pulse from continuous function.
@@ -134,7 +150,7 @@ def cos(duration: int, amp: complex, freq: float = None,
         name: Name of pulse.
     """
     if freq is None:
-        freq = 1/duration
+        freq = 1 / duration
 
     return _sampled_cos_pulse(duration, amp, freq, phase=phase, name=name)
 
@@ -142,8 +158,9 @@ def cos(duration: int, amp: complex, freq: float = None,
 _sampled_sin_pulse = samplers.left(continuous.sin)
 
 
-def sin(duration: int, amp: complex, freq: float = None,
-        phase: float = 0, name: str = None) -> SamplePulse:
+def sin(
+    duration: int, amp: complex, freq: float = None, phase: float = 0, name: str = None
+) -> SamplePulse:
     """Generates sine wave `SamplePulse`.
 
     Args:
@@ -154,7 +171,7 @@ def sin(duration: int, amp: complex, freq: float = None,
         name: Name of pulse.
     """
     if freq is None:
-        freq = 1/duration
+        freq = 1 / duration
 
     return _sampled_sin_pulse(duration, amp, freq, phase=phase, name=name)
 
@@ -162,7 +179,9 @@ def sin(duration: int, amp: complex, freq: float = None,
 _sampled_gaussian_pulse = samplers.left(continuous.gaussian)
 
 
-def gaussian(duration: int, amp: complex, sigma: float, name: str = None) -> SamplePulse:
+def gaussian(
+    duration: int, amp: complex, sigma: float, name: str = None
+) -> SamplePulse:
     r"""Generates unnormalized gaussian `SamplePulse`.
 
     Centered at `duration/2` and zeroed at `t=-1` to prevent large initial discontinuity.
@@ -177,16 +196,25 @@ def gaussian(duration: int, amp: complex, sigma: float, name: str = None) -> Sam
         sigma: Width (standard deviation) of pulse.
         name: Name of pulse.
     """
-    center = duration/2
+    center = duration / 2
     zeroed_width = duration + 2
-    return _sampled_gaussian_pulse(duration, amp, center, sigma,
-                                   zeroed_width=zeroed_width, rescale_amp=True, name=name)
+    return _sampled_gaussian_pulse(
+        duration,
+        amp,
+        center,
+        sigma,
+        zeroed_width=zeroed_width,
+        rescale_amp=True,
+        name=name,
+    )
 
 
 _sampled_gaussian_deriv_pulse = samplers.left(continuous.gaussian_deriv)
 
 
-def gaussian_deriv(duration: int, amp: complex, sigma: float, name: str = None) -> SamplePulse:
+def gaussian_deriv(
+    duration: int, amp: complex, sigma: float, name: str = None
+) -> SamplePulse:
     r"""Generates unnormalized gaussian derivative `SamplePulse`.
 
     Applies `left` sampling strategy to generate discrete pulse from continuous function.
@@ -197,15 +225,16 @@ def gaussian_deriv(duration: int, amp: complex, sigma: float, name: str = None) 
         sigma: Width (standard deviation) of pulse.
         name: Name of pulse.
     """
-    center = duration/2
+    center = duration / 2
     return _sampled_gaussian_deriv_pulse(duration, amp, center, sigma, name=name)
 
 
 _sampled_gaussian_square_pulse = samplers.left(continuous.gaussian_square)
 
 
-def gaussian_square(duration: int, amp: complex, sigma: float,
-                    risefall: int, name: str = None) -> SamplePulse:
+def gaussian_square(
+    duration: int, amp: complex, sigma: float, risefall: int, name: str = None
+) -> SamplePulse:
     """Generates gaussian square `SamplePulse`.
 
     Centered at `duration/2` and zeroed at `t=-1` and `t=duration+1` to prevent
@@ -221,17 +250,20 @@ def gaussian_square(duration: int, amp: complex, sigma: float,
             square portion of pulse will be `duration-2*risefall`.
         name: Name of pulse.
     """
-    center = duration/2
-    width = duration-2*risefall
+    center = duration / 2
+    width = duration - 2 * risefall
     zeroed_width = duration + 2
-    return _sampled_gaussian_square_pulse(duration, amp, center, width, sigma,
-                                          zeroed_width=zeroed_width, name=name)
+    return _sampled_gaussian_square_pulse(
+        duration, amp, center, width, sigma, zeroed_width=zeroed_width, name=name
+    )
 
 
 _sampled_drag_pulse = samplers.left(continuous.drag)
 
 
-def drag(duration: int, amp: complex, sigma: float, beta: float, name: str = None) -> SamplePulse:
+def drag(
+    duration: int, amp: complex, sigma: float, beta: float, name: str = None
+) -> SamplePulse:
     r"""Generates Y-only correction DRAG `SamplePulse` for standard nonlinear oscillator (SNO) [1].
 
     Centered at `duration/2` and zeroed at `t=-1` to prevent large initial discontinuity.
@@ -252,7 +284,15 @@ def drag(duration: int, amp: complex, sigma: float, beta: float, name: str = Non
             excited states and $\Delta_2$ is the detuning between the respective excited states.
         name: Name of pulse.
     """
-    center = duration/2
+    center = duration / 2
     zeroed_width = duration + 2
-    return _sampled_drag_pulse(duration, amp, center, sigma, beta,
-                               zeroed_width=zeroed_width, rescale_amp=True, name=name)
+    return _sampled_drag_pulse(
+        duration,
+        amp,
+        center,
+        sigma,
+        beta,
+        zeroed_width=zeroed_width,
+        rescale_amp=True,
+        name=name,
+    )

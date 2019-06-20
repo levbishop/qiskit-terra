@@ -26,15 +26,29 @@ from qiskit.validation.exceptions import ModelValidationError
 
 
 # TODO: parallelize over the experiments (serialize each separately, then add global header/config)
-def assemble(experiments,
-             backend=None,
-             qobj_id=None, qobj_header=None,  # common run options
-             shots=1024, memory=False, max_credits=None, seed_simulator=None,
-             qubit_lo_freq=None, meas_lo_freq=None,  # schedule run options
-             qubit_lo_range=None, meas_lo_range=None,
-             schedule_los=None, meas_level=2, meas_return='avg', meas_map=None,
-             memory_slots=None, memory_slot_size=100, rep_time=None, parameter_binds=None,
-             **run_config):
+def assemble(
+    experiments,
+    backend=None,
+    qobj_id=None,
+    qobj_header=None,  # common run options
+    shots=1024,
+    memory=False,
+    max_credits=None,
+    seed_simulator=None,
+    qubit_lo_freq=None,
+    meas_lo_freq=None,  # schedule run options
+    qubit_lo_range=None,
+    meas_lo_range=None,
+    schedule_los=None,
+    meas_level=2,
+    meas_return="avg",
+    meas_map=None,
+    memory_slots=None,
+    memory_slot_size=100,
+    rep_time=None,
+    parameter_binds=None,
+    **run_config,
+):
     """Assemble a list of circuits or pulse schedules into a Qobj.
 
     This function serializes the payloads, which could be either circuits or schedules,
@@ -133,41 +147,79 @@ def assemble(experiments,
     """
     # Get RunConfig(s) that will be inserted in Qobj to configure the run
     experiments = experiments if isinstance(experiments, list) else [experiments]
-    qobj_id, qobj_header, run_config = _parse_run_args(backend, qobj_id, qobj_header,
-                                                       shots, memory, max_credits, seed_simulator,
-                                                       qubit_lo_freq, meas_lo_freq,
-                                                       qubit_lo_range, meas_lo_range,
-                                                       schedule_los, meas_level, meas_return,
-                                                       meas_map, memory_slots,
-                                                       memory_slot_size, rep_time,
-                                                       parameter_binds, **run_config)
+    qobj_id, qobj_header, run_config = _parse_run_args(
+        backend,
+        qobj_id,
+        qobj_header,
+        shots,
+        memory,
+        max_credits,
+        seed_simulator,
+        qubit_lo_freq,
+        meas_lo_freq,
+        qubit_lo_range,
+        meas_lo_range,
+        schedule_los,
+        meas_level,
+        meas_return,
+        meas_map,
+        memory_slots,
+        memory_slot_size,
+        rep_time,
+        parameter_binds,
+        **run_config,
+    )
 
     # assemble either circuits or schedules
     if all(isinstance(exp, QuantumCircuit) for exp in experiments):
         # If circuits are parameterized, bind parameters and remove from run_config
-        bound_experiments, run_config = _expand_parameters(circuits=experiments,
-                                                           run_config=run_config)
-        return assemble_circuits(circuits=bound_experiments, qobj_id=qobj_id,
-                                 qobj_header=qobj_header, run_config=run_config)
+        bound_experiments, run_config = _expand_parameters(
+            circuits=experiments, run_config=run_config
+        )
+        return assemble_circuits(
+            circuits=bound_experiments,
+            qobj_id=qobj_id,
+            qobj_header=qobj_header,
+            run_config=run_config,
+        )
 
     elif all(isinstance(exp, ScheduleComponent) for exp in experiments):
-        return assemble_schedules(schedules=experiments, qobj_id=qobj_id,
-                                  qobj_header=qobj_header, run_config=run_config)
+        return assemble_schedules(
+            schedules=experiments,
+            qobj_id=qobj_id,
+            qobj_header=qobj_header,
+            run_config=run_config,
+        )
 
     else:
-        raise QiskitError("bad input to assemble() function; "
-                          "must be either circuits or schedules")
+        raise QiskitError(
+            "bad input to assemble() function; " "must be either circuits or schedules"
+        )
 
 
 # TODO: rework to return a list of RunConfigs (one for each experiments), and a global one
-def _parse_run_args(backend, qobj_id, qobj_header,
-                    shots, memory, max_credits, seed_simulator,
-                    qubit_lo_freq, meas_lo_freq,
-                    qubit_lo_range, meas_lo_range,
-                    schedule_los, meas_level, meas_return,
-                    meas_map, memory_slots,
-                    memory_slot_size, rep_time,
-                    parameter_binds, **run_config):
+def _parse_run_args(
+    backend,
+    qobj_id,
+    qobj_header,
+    shots,
+    memory,
+    max_credits,
+    seed_simulator,
+    qubit_lo_freq,
+    meas_lo_freq,
+    qubit_lo_range,
+    meas_lo_range,
+    schedule_los,
+    meas_level,
+    meas_return,
+    meas_map,
+    memory_slots,
+    memory_slot_size,
+    rep_time,
+    parameter_binds,
+    **run_config,
+):
     """Resolve the various types of args allowed to the assemble() function through
     duck typing, overriding args, etc. Refer to the assemble() docstring for details on
     what types of inputs are allowed.
@@ -190,16 +242,19 @@ def _parse_run_args(backend, qobj_id, qobj_header,
             backend_default = backend.defaults()
         except (ModelValidationError, AttributeError):
             from collections import namedtuple
-            backend_config_defaults = getattr(backend_config, 'defaults', {})
-            BackendDefault = namedtuple('BackendDefault', ('qubit_freq_est', 'meas_freq_est'))
+
+            backend_config_defaults = getattr(backend_config, "defaults", {})
+            BackendDefault = namedtuple(
+                "BackendDefault", ("qubit_freq_est", "meas_freq_est")
+            )
             backend_default = BackendDefault(
-                qubit_freq_est=backend_config_defaults.get('qubit_freq_est'),
-                meas_freq_est=backend_config_defaults.get('meas_freq_est')
+                qubit_freq_est=backend_config_defaults.get("qubit_freq_est"),
+                meas_freq_est=backend_config_defaults.get("meas_freq_est"),
             )
 
-    meas_map = meas_map or getattr(backend_config, 'meas_map', None)
-    memory_slots = memory_slots or getattr(backend_config, 'memory_slots', None)
-    rep_time = rep_time or getattr(backend_config, 'rep_times', None)
+    meas_map = meas_map or getattr(backend_config, "meas_map", None)
+    memory_slots = memory_slots or getattr(backend_config, "memory_slots", None)
+    rep_time = rep_time or getattr(backend_config, "rep_times", None)
     if isinstance(rep_time, list):
         rep_time = rep_time[-1]
 
@@ -211,14 +266,16 @@ def _parse_run_args(backend, qobj_id, qobj_header,
         schedule_los = [schedule_los]
 
     # Convert to LoConfig if lo configuration supplied as dictionary
-    schedule_los = [lo_config if isinstance(lo_config, LoConfig) else LoConfig(lo_config)
-                    for lo_config in schedule_los]
+    schedule_los = [
+        lo_config if isinstance(lo_config, LoConfig) else LoConfig(lo_config)
+        for lo_config in schedule_los
+    ]
 
-    qubit_lo_freq = qubit_lo_freq or getattr(backend_default, 'qubit_freq_est', [])
-    meas_lo_freq = meas_lo_freq or getattr(backend_default, 'meas_freq_est', [])
+    qubit_lo_freq = qubit_lo_freq or getattr(backend_default, "qubit_freq_est", [])
+    meas_lo_freq = meas_lo_freq or getattr(backend_default, "meas_freq_est", [])
 
-    qubit_lo_range = qubit_lo_range or getattr(backend_config, 'qubit_lo_range', [])
-    meas_lo_range = meas_lo_range or getattr(backend_config, 'meas_lo_range', [])
+    qubit_lo_range = qubit_lo_range or getattr(backend_config, "qubit_lo_range", [])
+    meas_lo_range = meas_lo_range or getattr(backend_config, "meas_lo_range", [])
     # an identifier for the Qobj
     qobj_id = qobj_id or str(uuid.uuid4())
 
@@ -227,31 +284,37 @@ def _parse_run_args(backend, qobj_id, qobj_header,
     qobj_header = qobj_header or {}
     if isinstance(qobj_header, QobjHeader):
         qobj_header = qobj_header.to_dict()
-    backend_name = getattr(backend_config, 'backend_name', None)
-    backend_version = getattr(backend_config, 'backend_version', None)
-    qobj_header = {**dict(backend_name=backend_name, backend_version=backend_version),
-                   **qobj_header}
+    backend_name = getattr(backend_config, "backend_name", None)
+    backend_version = getattr(backend_config, "backend_version", None)
+    qobj_header = {
+        **dict(backend_name=backend_name, backend_version=backend_version),
+        **qobj_header,
+    }
     qobj_header = QobjHeader(**{k: v for k, v in qobj_header.items() if v is not None})
 
     # create run configuration and populate
-    run_config_dict = dict(shots=shots,
-                           memory=memory,
-                           max_credits=max_credits,
-                           seed_simulator=seed_simulator,
-                           qubit_lo_freq=qubit_lo_freq,
-                           meas_lo_freq=meas_lo_freq,
-                           qubit_lo_range=qubit_lo_range,
-                           meas_lo_range=meas_lo_range,
-                           schedule_los=schedule_los,
-                           meas_level=meas_level,
-                           meas_return=meas_return,
-                           meas_map=meas_map,
-                           memory_slots=memory_slots,
-                           memory_slot_size=memory_slot_size,
-                           rep_time=rep_time,
-                           parameter_binds=parameter_binds,
-                           **run_config)
-    run_config = RunConfig(**{k: v for k, v in run_config_dict.items() if v is not None})
+    run_config_dict = dict(
+        shots=shots,
+        memory=memory,
+        max_credits=max_credits,
+        seed_simulator=seed_simulator,
+        qubit_lo_freq=qubit_lo_freq,
+        meas_lo_freq=meas_lo_freq,
+        qubit_lo_range=qubit_lo_range,
+        meas_lo_range=meas_lo_range,
+        schedule_los=schedule_los,
+        meas_level=meas_level,
+        meas_return=meas_return,
+        meas_map=meas_map,
+        memory_slots=memory_slots,
+        memory_slot_size=memory_slot_size,
+        rep_time=rep_time,
+        parameter_binds=parameter_binds,
+        **run_config,
+    )
+    run_config = RunConfig(
+        **{k: v for k, v in run_config_dict.items() if v is not None}
+    )
 
     return qobj_id, qobj_header, run_config
 
@@ -275,31 +338,42 @@ def _expand_parameters(circuits, run_config):
     """
 
     parameter_binds = run_config.parameter_binds
-    if parameter_binds or \
-       any(circuit.parameters for circuit in circuits):
+    if parameter_binds or any(circuit.parameters for circuit in circuits):
 
-        all_bind_parameters = [bind.keys()
-                               for bind in parameter_binds]
+        all_bind_parameters = [bind.keys() for bind in parameter_binds]
         all_circuit_parameters = [circuit.parameters for circuit in circuits]
 
         # Collect set of all unique parameters across all circuits and binds
-        unique_parameters = {param
-                             for param_list in all_bind_parameters + all_circuit_parameters
-                             for param in param_list}
+        unique_parameters = {
+            param
+            for param_list in all_bind_parameters + all_circuit_parameters
+            for param in param_list
+        }
 
         # Check that all parameters are common to all circuits and binds
-        if not all_bind_parameters \
-           or not all_circuit_parameters \
-           or any(unique_parameters != bind_params for bind_params in all_bind_parameters) \
-           or any(unique_parameters != parameters for parameters in all_circuit_parameters):
+        if (
+            not all_bind_parameters
+            or not all_circuit_parameters
+            or any(
+                unique_parameters != bind_params for bind_params in all_bind_parameters
+            )
+            or any(
+                unique_parameters != parameters for parameters in all_circuit_parameters
+            )
+        ):
             raise QiskitError(
-                ('Mismatch between run_config.parameter_binds and all circuit parameters. ' +
-                 'Parameter binds: {} ' +
-                 'Circuit parameters: {}').format(all_bind_parameters, all_circuit_parameters))
+                (
+                    "Mismatch between run_config.parameter_binds and all circuit parameters. "
+                    + "Parameter binds: {} "
+                    + "Circuit parameters: {}"
+                ).format(all_bind_parameters, all_circuit_parameters)
+            )
 
-        circuits = [circuit.bind_parameters(binds)
-                    for circuit in circuits
-                    for binds in parameter_binds]
+        circuits = [
+            circuit.bind_parameters(binds)
+            for circuit in circuits
+            for binds in parameter_binds
+        ]
 
         # All parameters have been expanded and bound, so remove from run_config
         run_config = copy.deepcopy(run_config)

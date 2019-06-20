@@ -48,12 +48,14 @@
 """Progress bars module"""
 
 import time
+
 try:
-    import ipywidgets as widgets           # pylint: disable=import-error
+    import ipywidgets as widgets  # pylint: disable=import-error
 except ImportError:
-    raise ImportError('These functions  need ipywidgets. '
-                      'Run "pip install ipywidgets" before.')
-from IPython.display import display         # pylint: disable=import-error
+    raise ImportError(
+        "These functions  need ipywidgets. " 'Run "pip install ipywidgets" before.'
+    )
+from IPython.display import display  # pylint: disable=import-error
 from qiskit.tools.events.progressbar import BaseProgressBar
 
 
@@ -61,6 +63,7 @@ class HTMLProgressBar(BaseProgressBar):
     """
     A simple HTML progress bar for using in IPython notebooks.
     """
+
     def __init__(self):
         super().__init__()
         self.progress_bar = None
@@ -77,6 +80,7 @@ class HTMLProgressBar(BaseProgressBar):
                 num_tasks: Number of compilation tasks the progress bar will track
             """
             self.start(num_tasks)
+
         self.subscribe("terra.parallel.start", _initialize_progress_bar)
 
         def _update_progress_bar(progress):
@@ -87,6 +91,7 @@ class HTMLProgressBar(BaseProgressBar):
                 progress: Number of tasks completed
             """
             self.update(progress)
+
         self.subscribe("terra.parallel.done", _update_progress_bar)
 
         def _finish_progress_bar():
@@ -97,6 +102,7 @@ class HTMLProgressBar(BaseProgressBar):
             self.unsubscribe("terra.parallel.done", _update_progress_bar)
             self.unsubscribe("terra.parallel.finish", _finish_progress_bar)
             self.finished()
+
         self.subscribe("terra.parallel.finish", _finish_progress_bar)
 
     def start(self, iterations):
@@ -104,7 +110,7 @@ class HTMLProgressBar(BaseProgressBar):
         self.iter = int(iterations)
         self.t_start = time.time()
         self.progress_bar = widgets.IntProgress(min=0, max=self.iter, value=0)
-        self.progress_bar.bar_style = 'info'
+        self.progress_bar.bar_style = "info"
         self.label = widgets.HTML()
         self.box = widgets.VBox(children=[self.label, self.progress_bar])
         display(self.box)
@@ -116,5 +122,5 @@ class HTMLProgressBar(BaseProgressBar):
 
     def finished(self):
         self.t_done = time.time()
-        self.progress_bar.bar_style = 'success'
+        self.progress_bar.bar_style = "success"
         self.label.value = "Elapsed time: %s" % self.time_elapsed()

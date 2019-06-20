@@ -27,7 +27,7 @@ class Creg(Node):
 
     def __init__(self, children):
         """Create the creg node."""
-        super().__init__('creg', children, None)
+        super().__init__("creg", children, None)
         # This is the indexed id, the full "id[n]" object
         self.id = children[0]
         # Name of the creg
@@ -41,8 +41,8 @@ class Creg(Node):
 
     def to_string(self, indent):
         """Print the node data, with indent."""
-        ind = indent * ' '
-        print(ind, 'creg')
+        ind = indent * " "
+        print(ind, "creg")
         self.children[0].to_string(indent + 3)
 
     def qasm(self, prec=15):

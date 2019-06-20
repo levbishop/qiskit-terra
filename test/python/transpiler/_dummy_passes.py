@@ -28,7 +28,7 @@ class DummyTP(TransformationPass):
     """ A dummy transformation pass."""
 
     def run(self, dag):
-        logging.getLogger(logger).info('run transformation pass %s', self.name())
+        logging.getLogger(logger).info("run transformation pass %s", self.name())
         return dag
 
 
@@ -36,7 +36,7 @@ class DummyAP(AnalysisPass):
     """ A dummy analysis pass."""
 
     def run(self, dag):
-        logging.getLogger(logger).info('run analysis pass %s', self.name())
+        logging.getLogger(logger).info("run analysis pass %s", self.name())
 
 
 class PassA_TP_NR_NP(DummyTP):
@@ -94,7 +94,7 @@ class PassD_TP_NR_NP(DummyTP):
 
     def run(self, dag):
         super().run(dag)
-        logging.getLogger(logger).info('argument %s', self.argument1)
+        logging.getLogger(logger).info("argument %s", self.argument1)
         return dag
 
 
@@ -111,8 +111,10 @@ class PassE_AP_NR_NP(DummyAP):
 
     def run(self, dag):
         super().run(dag)
-        self.property_set['property'] = self.argument1
-        logging.getLogger(logger).info('set property as %s', self.property_set['property'])
+        self.property_set["property"] = self.argument1
+        logging.getLogger(logger).info(
+            "set property as %s", self.property_set["property"]
+        )
 
 
 class PassF_reduce_dag_property(DummyTP):
@@ -124,10 +126,10 @@ class PassF_reduce_dag_property(DummyTP):
 
     def run(self, dag):
         super().run(dag)
-        if not hasattr(dag, 'property'):
+        if not hasattr(dag, "property"):
             dag.property = 8
         dag.property = round(dag.property * 0.8)
-        logging.getLogger(logger).info('dag property = %i', dag.property)
+        logging.getLogger(logger).info("dag property = %i", dag.property)
         return dag
 
 
@@ -140,12 +142,13 @@ class PassG_calculates_dag_property(DummyAP):
 
     def run(self, dag):
         super().run(dag)
-        if hasattr(dag, 'property'):
-            self.property_set['property'] = dag.property
+        if hasattr(dag, "property"):
+            self.property_set["property"] = dag.property
         else:
-            self.property_set['property'] = 8
-        logging.getLogger(logger).info('set property as %s (from dag.property)',
-                                       self.property_set['property'])
+            self.property_set["property"] = 8
+        logging.getLogger(logger).info(
+            "set property as %s (from dag.property)", self.property_set["property"]
+        )
 
 
 class PassH_Bad_TP(DummyTP):
@@ -156,8 +159,10 @@ class PassH_Bad_TP(DummyTP):
 
     def run(self, dag):
         super().run(dag)
-        self.property_set['property'] = "value"
-        logging.getLogger(logger).info('set property as %s', self.property_set['property'])
+        self.property_set["property"] = "value"
+        logging.getLogger(logger).info(
+            "set property as %s", self.property_set["property"]
+        )
         return dag
 
 
@@ -179,9 +184,9 @@ class PassI_Bad_AP(DummyAP):
                 curr.append(node._node_id)
             cx_runs_ids.add(tuple(curr))
 
-        logging.getLogger(logger).info('cx_runs: %s', cx_runs_ids)
+        logging.getLogger(logger).info("cx_runs: %s", cx_runs_ids)
         dag.remove_op_node(cx_runs.pop()[0])
-        logging.getLogger(logger).info('done removing')
+        logging.getLogger(logger).info("done removing")
 
 
 class PassJ_Bad_NoReturn(DummyTP):
@@ -203,7 +208,7 @@ class PassK_check_fixed_point_property(DummyAP, FixedPoint):
     """
 
     def __init__(self):
-        FixedPoint.__init__(self, 'property')
+        FixedPoint.__init__(self, "property")
         self.requires.append(PassG_calculates_dag_property())
 
     def run(self, dag):
@@ -225,4 +230,4 @@ class PassM_AP_NR_NP(DummyAP):
     def run(self, dag):
         super().run(dag)
         self.argument1 *= 2
-        logging.getLogger(logger).info('self.argument1 = %s', self.argument1)
+        logging.getLogger(logger).info("self.argument1 = %s", self.argument1)

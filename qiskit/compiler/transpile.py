@@ -25,12 +25,17 @@ from qiskit import user_config
 from qiskit.transpiler.exceptions import TranspilerError
 
 
-def transpile(circuits,
-              backend=None,
-              basis_gates=None, coupling_map=None, backend_properties=None,
-              initial_layout=None, seed_transpiler=None,
-              optimization_level=None,
-              pass_manager=None):
+def transpile(
+    circuits,
+    backend=None,
+    basis_gates=None,
+    coupling_map=None,
+    backend_properties=None,
+    initial_layout=None,
+    seed_transpiler=None,
+    optimization_level=None,
+    pass_manager=None,
+):
     """transpile one or more circuits, according to some desired
     transpilation targets.
 
@@ -129,20 +134,28 @@ def transpile(circuits,
     """
 
     # transpiling schedules is not supported yet.
-    if isinstance(circuits, Schedule) or \
-       (isinstance(circuits, list) and all(isinstance(c, Schedule) for c in circuits)):
+    if isinstance(circuits, Schedule) or (
+        isinstance(circuits, list) and all(isinstance(c, Schedule) for c in circuits)
+    ):
         return circuits
 
     if optimization_level is None:
         config = user_config.get_config()
-        optimization_level = config.get('transpile_optimization_level', None)
+        optimization_level = config.get("transpile_optimization_level", None)
 
     # Get TranspileConfig(s) to configure the circuit transpilation job(s)
     circuits = circuits if isinstance(circuits, list) else [circuits]
-    transpile_configs = _parse_transpile_args(circuits, backend, basis_gates, coupling_map,
-                                              backend_properties, initial_layout,
-                                              seed_transpiler, optimization_level,
-                                              pass_manager)
+    transpile_configs = _parse_transpile_args(
+        circuits,
+        backend,
+        basis_gates,
+        coupling_map,
+        backend_properties,
+        initial_layout,
+        seed_transpiler,
+        optimization_level,
+        pass_manager,
+    )
     # Check circuit width against number of qubits in coupling_map(s)
     coupling_maps_list = list(config.coupling_map for config in transpile_configs)
     for circuit, parsed_coupling_map in zip(circuits, coupling_maps_list):
@@ -151,10 +164,12 @@ def transpile(circuits,
             n_qubits = len(circuit.qubits)
             max_qubits = parsed_coupling_map.size()
             if n_qubits > max_qubits:
-                raise TranspilerError('Number of qubits ({}) '.format(n_qubits) +
-                                      'in {} '. format(circuit.name) +
-                                      'is greater than maximum ({}) '.format(max_qubits) +
-                                      'in the coupling_map')
+                raise TranspilerError(
+                    "Number of qubits ({}) ".format(n_qubits)
+                    + "in {} ".format(circuit.name)
+                    + "is greater than maximum ({}) ".format(max_qubits)
+                    + "in the coupling_map"
+                )
     # Transpile circuits in parallel
     circuits = parallel_map(_transpile_circuit, list(zip(circuits, transpile_configs)))
 
@@ -180,10 +195,17 @@ def _transpile_circuit(circuit_config_tuple):
     return transpile_circuit(circuit, transpile_config)
 
 
-def _parse_transpile_args(circuits, backend,
-                          basis_gates, coupling_map, backend_properties,
-                          initial_layout, seed_transpiler, optimization_level,
-                          pass_manager):
+def _parse_transpile_args(
+    circuits,
+    backend,
+    basis_gates,
+    coupling_map,
+    backend_properties,
+    initial_layout,
+    seed_transpiler,
+    optimization_level,
+    pass_manager,
+):
     """Resolve the various types of args allowed to the transpile() function through
     duck typing, overriding args, etc. Refer to the transpile() docstring for details on
     what types of inputs are allowed.
@@ -204,7 +226,9 @@ def _parse_transpile_args(circuits, backend,
 
     coupling_map = _parse_coupling_map(coupling_map, backend, num_circuits)
 
-    backend_properties = _parse_backend_properties(backend_properties, backend, num_circuits)
+    backend_properties = _parse_backend_properties(
+        backend_properties, backend, num_circuits
+    )
 
     initial_layout = _parse_initial_layout(initial_layout, circuits)
 
@@ -215,15 +239,24 @@ def _parse_transpile_args(circuits, backend,
     pass_manager = _parse_pass_manager(pass_manager, num_circuits)
 
     transpile_configs = []
-    for args in zip(basis_gates, coupling_map, backend_properties, initial_layout,
-                    seed_transpiler, optimization_level, pass_manager):
-        transpile_config = TranspileConfig(basis_gates=args[0],
-                                           coupling_map=args[1],
-                                           backend_properties=args[2],
-                                           initial_layout=args[3],
-                                           seed_transpiler=args[4],
-                                           optimization_level=args[5],
-                                           pass_manager=args[6])
+    for args in zip(
+        basis_gates,
+        coupling_map,
+        backend_properties,
+        initial_layout,
+        seed_transpiler,
+        optimization_level,
+        pass_manager,
+    ):
+        transpile_config = TranspileConfig(
+            basis_gates=args[0],
+            coupling_map=args[1],
+            backend_properties=args[2],
+            initial_layout=args[3],
+            seed_transpiler=args[4],
+            optimization_level=args[5],
+            pass_manager=args[6],
+        )
         transpile_configs.append(transpile_config)
 
     return transpile_configs
@@ -232,17 +265,22 @@ def _parse_transpile_args(circuits, backend,
 def _parse_basis_gates(basis_gates, backend, circuits):
     # try getting basis_gates from user, else backend
     if basis_gates is None:
-        if getattr(backend, 'configuration', None):
-            basis_gates = getattr(backend.configuration(), 'basis_gates', None)
+        if getattr(backend, "configuration", None):
+            basis_gates = getattr(backend.configuration(), "basis_gates", None)
     # basis_gates could be None, or a list of basis, e.g. ['u3', 'cx']
     if isinstance(basis_gates, str):
-        warnings.warn("The parameter basis_gates is now a list of strings. "
-                      "For example, this basis ['u1','u2','u3','cx'] should be used "
-                      "instead of 'u1,u2,u3,cx'. The string format will be "
-                      "removed after 0.9", DeprecationWarning, 2)
-        basis_gates = basis_gates.split(',')
-    if basis_gates is None or (isinstance(basis_gates, list) and
-                               all(isinstance(i, str) for i in basis_gates)):
+        warnings.warn(
+            "The parameter basis_gates is now a list of strings. "
+            "For example, this basis ['u1','u2','u3','cx'] should be used "
+            "instead of 'u1,u2,u3,cx'. The string format will be "
+            "removed after 0.9",
+            DeprecationWarning,
+            2,
+        )
+        basis_gates = basis_gates.split(",")
+    if basis_gates is None or (
+        isinstance(basis_gates, list) and all(isinstance(i, str) for i in basis_gates)
+    ):
         basis_gates = [basis_gates] * len(circuits)
 
     # no basis means don't unroll (all circuit gates are valid basis)
@@ -251,29 +289,32 @@ def _parse_basis_gates(basis_gates, backend, circuits):
         if basis is None:
             gates_in_circuit = {inst.name for inst, _, _ in circuit.data}
             # Other passes might add new gates that need to be supported
-            basis_gates[index] = list(gates_in_circuit.union(['u3', 'cx']))
+            basis_gates[index] = list(gates_in_circuit.union(["u3", "cx"]))
     return basis_gates
 
 
 def _parse_coupling_map(coupling_map, backend, num_circuits):
     # try getting coupling_map from user, else backend
     if coupling_map is None:
-        if getattr(backend, 'configuration', None):
-            coupling_map = getattr(backend.configuration(), 'coupling_map', None)
+        if getattr(backend, "configuration", None):
+            coupling_map = getattr(backend.configuration(), "coupling_map", None)
     # coupling_map could be None, or a list of lists, e.g. [[0, 1], [2, 1]]
     if coupling_map is None or isinstance(coupling_map, CouplingMap):
         coupling_map = [coupling_map] * num_circuits
-    elif isinstance(coupling_map, list) and all(isinstance(i, list) and len(i) == 2
-                                                for i in coupling_map):
+    elif isinstance(coupling_map, list) and all(
+        isinstance(i, list) and len(i) == 2 for i in coupling_map
+    ):
         coupling_map = [coupling_map] * num_circuits
-    coupling_map = [CouplingMap(cm) if isinstance(cm, list) else cm for cm in coupling_map]
+    coupling_map = [
+        CouplingMap(cm) if isinstance(cm, list) else cm for cm in coupling_map
+    ]
     return coupling_map
 
 
 def _parse_backend_properties(backend_properties, backend, num_circuits):
     # try getting backend_properties from user, else backend
     if backend_properties is None:
-        if getattr(backend, 'properties', None):
+        if getattr(backend, "properties", None):
             backend_properties = backend.properties()
     if not isinstance(backend_properties, list):
         backend_properties = [backend_properties] * num_circuits
@@ -287,16 +328,22 @@ def _parse_initial_layout(initial_layout, circuits):
         if isinstance(initial_layout, list):
             if all(isinstance(elem, int) for elem in initial_layout):
                 initial_layout = Layout.from_intlist(initial_layout, *circuit.qregs)
-            elif all(elem is None or isinstance(elem, Qubit) for elem in initial_layout):
+            elif all(
+                elem is None or isinstance(elem, Qubit) for elem in initial_layout
+            ):
                 initial_layout = Layout.from_qubit_list(initial_layout)
         elif isinstance(initial_layout, dict):
             initial_layout = Layout(initial_layout)
         return initial_layout
+
     # multiple layouts?
-    if isinstance(initial_layout, list) and \
-       any(isinstance(i, (list, dict)) for i in initial_layout):
-        initial_layout = [_layout_from_raw(lo, circ) if isinstance(lo, (list, dict)) else lo
-                          for lo, circ in zip(initial_layout, circuits)]
+    if isinstance(initial_layout, list) and any(
+        isinstance(i, (list, dict)) for i in initial_layout
+    ):
+        initial_layout = [
+            _layout_from_raw(lo, circ) if isinstance(lo, (list, dict)) else lo
+            for lo, circ in zip(initial_layout, circuits)
+        ]
     else:
         # even if one layout, but multiple circuits, the layout needs to be adapted for each
         initial_layout = [_layout_from_raw(initial_layout, circ) for circ in circuits]

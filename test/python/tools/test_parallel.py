@@ -41,7 +41,7 @@ class TestParallel(QiskitTestCase):
 
     def test_parallel_env_flag(self):
         """Verify parallel env flag is set """
-        self.assertEqual(os.getenv('QISKIT_IN_PARALLEL', None), 'FALSE')
+        self.assertEqual(os.getenv("QISKIT_IN_PARALLEL", None), "FALSE")
 
     def test_parallel(self):
         """Test parallel_map """

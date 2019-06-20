@@ -18,7 +18,7 @@ from marshmallow.validate import Length, Range
 
 from qiskit.validation import BaseModel, BaseSchema, bind_schema
 from qiskit.validation.base import ObjSchema
-from qiskit.validation.fields import (Integer, List, Nested, Number, String)
+from qiskit.validation.fields import Integer, List, Nested, Number, String
 from qiskit.qobj import PulseLibraryItemSchema, PulseQobjInstructionSchema
 from qiskit.pulse import CmdDef
 
@@ -46,8 +46,7 @@ class CommandSchema(BaseSchema):
     name = String(required=True)
 
     # Optional properties.
-    qubits = List(Integer(validate=Range(min=0)),
-                  validate=Length(min=1))
+    qubits = List(Integer(validate=Range(min=0)), validate=Length(min=1))
     sequence = Nested(PulseQobjInstructionSchema, many=True)
 
 
@@ -73,6 +72,7 @@ class MeasurementKernel(BaseModel):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``MeasurementKernelSchema``.
     """
+
     pass
 
 
@@ -83,6 +83,7 @@ class Discriminator(BaseModel):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``DiscriminatorSchema``.
     """
+
     pass
 
 
@@ -96,6 +97,7 @@ class Command(BaseModel):
     Attributes:
         name (str): Pulse command name.
     """
+
     def __init__(self, name, **kwargs):
         self.name = name
 
@@ -118,8 +120,9 @@ class PulseDefaults(BaseModel):
         cmd_def (list[Command]): Backend command definition.
     """
 
-    def __init__(self, qubit_freq_est, meas_freq_est, buffer,
-                 pulse_library, cmd_def, **kwargs):
+    def __init__(
+        self, qubit_freq_est, meas_freq_est, buffer, pulse_library, cmd_def, **kwargs
+    ):
         self.qubit_freq_est = qubit_freq_est
         self.meas_freq_est = meas_freq_est
         self.buffer = buffer

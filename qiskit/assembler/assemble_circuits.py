@@ -13,9 +13,14 @@
 # that they have been altered from the originals.
 
 """Assemble function for converting a list of circuits into a qobj"""
-from qiskit.qobj import (QasmQobj, QobjExperimentHeader,
-                         QasmQobjInstruction, QasmQobjExperimentConfig, QasmQobjExperiment,
-                         QasmQobjConfig)
+from qiskit.qobj import (
+    QasmQobj,
+    QobjExperimentHeader,
+    QasmQobjInstruction,
+    QasmQobjExperimentConfig,
+    QasmQobjExperiment,
+    QasmQobjConfig,
+)
 
 
 def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
@@ -60,13 +65,15 @@ def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
 
         # TODO: why do we need creq_sizes and qreg_sizes in header
         # TODO: we need to rethink memory_slots as they are tied to classical bit
-        header = QobjExperimentHeader(qubit_labels=qubit_labels,
-                                      n_qubits=n_qubits,
-                                      qreg_sizes=qreg_sizes,
-                                      clbit_labels=clbit_labels,
-                                      memory_slots=memory_slots,
-                                      creg_sizes=creg_sizes,
-                                      name=circuit.name)
+        header = QobjExperimentHeader(
+            qubit_labels=qubit_labels,
+            n_qubits=n_qubits,
+            qreg_sizes=qreg_sizes,
+            clbit_labels=clbit_labels,
+            memory_slots=memory_slots,
+            creg_sizes=creg_sizes,
+            name=circuit.name,
+        )
         # TODO: why do we need n_qubits and memory_slots in both the header and the config
         config = QasmQobjExperimentConfig(n_qubits=n_qubits, memory_slots=memory_slots)
 
@@ -76,7 +83,9 @@ def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
         # their clbit_index, create a new register slot for every conditional gate
         # and add a bfunc to map the creg=val mask onto the gating register bit.
 
-        is_conditional_experiment = any(op.control for (op, qargs, cargs) in circuit.data)
+        is_conditional_experiment = any(
+            op.control for (op, qargs, cargs) in circuit.data
+        )
         max_conditional_idx = 0
 
         instructions = []
@@ -87,12 +96,16 @@ def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
             qargs = op_context[1]
             cargs = op_context[2]
             if qargs:
-                qubit_indices = [qubit_labels.index([qubit.register.name, qubit.index])
-                                 for qubit in qargs]
+                qubit_indices = [
+                    qubit_labels.index([qubit.register.name, qubit.index])
+                    for qubit in qargs
+                ]
                 instruction.qubits = qubit_indices
             if cargs:
-                clbit_indices = [clbit_labels.index([clbit.register.name, clbit.index])
-                                 for clbit in cargs]
+                clbit_indices = [
+                    clbit_labels.index([clbit.register.name, clbit.index])
+                    for clbit in cargs
+                ]
                 instruction.memory = clbit_indices
                 # If the experiment has conditional instructions, assume every
                 # measurement result may be needed for a conditional gate.
@@ -102,21 +115,23 @@ def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
             # To convert to a qobj-style conditional, insert a bfunc prior
             # to the conditional instruction to map the creg ?= val condition
             # onto a gating register bit.
-            if hasattr(instruction, '_control'):
+            if hasattr(instruction, "_control"):
                 ctrl_reg, ctrl_val = instruction._control
                 mask = 0
                 val = 0
                 for clbit in clbit_labels:
                     if clbit[0] == ctrl_reg.name:
-                        mask |= (1 << clbit_labels.index(clbit))
-                        val |= (((ctrl_val >> clbit[1]) & 1) << clbit_labels.index(clbit))
+                        mask |= 1 << clbit_labels.index(clbit)
+                        val |= ((ctrl_val >> clbit[1]) & 1) << clbit_labels.index(clbit)
 
                 conditional_reg_idx = memory_slots + max_conditional_idx
-                conversion_bfunc = QasmQobjInstruction(name='bfunc',
-                                                       mask="0x%X" % mask,
-                                                       relation='==',
-                                                       val="0x%X" % val,
-                                                       register=conditional_reg_idx)
+                conversion_bfunc = QasmQobjInstruction(
+                    name="bfunc",
+                    mask="0x%X" % mask,
+                    relation="==",
+                    val="0x%X" % val,
+                    register=conditional_reg_idx,
+                )
                 instructions.append(conversion_bfunc)
                 instruction.conditional = conditional_reg_idx
                 max_conditional_idx += 1
@@ -126,8 +141,9 @@ def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
 
             instructions.append(instruction)
 
-        experiments.append(QasmQobjExperiment(instructions=instructions, header=header,
-                                              config=config))
+        experiments.append(
+            QasmQobjExperiment(instructions=instructions, header=header, config=config)
+        )
         if n_qubits > max_n_qubits:
             max_n_qubits = n_qubits
         if memory_slots > max_memory_slots:
@@ -136,7 +152,6 @@ def assemble_circuits(circuits, run_config, qobj_id, qobj_header):
     qobj_config.memory_slots = max_memory_slots
     qobj_config.n_qubits = max_n_qubits
 
-    return QasmQobj(qobj_id=qobj_id,
-                    config=qobj_config,
-                    experiments=experiments,
-                    header=qobj_header)
+    return QasmQobj(
+        qobj_id=qobj_id, config=qobj_config, experiments=experiments, header=qobj_header
+    )

@@ -26,6 +26,7 @@ from .instruction import Instruction
 
 class MetaCount(ABCMeta):
     """Meta class to count class instances."""
+
     def __new__(mcs, name, bases, namespace):
         new_cls = super(MetaCount, mcs).__new__(mcs, name, bases, namespace)
         new_cls.instances_counter = 0
@@ -36,7 +37,7 @@ class Command(metaclass=MetaCount):
     """Super abstract class of command group."""
 
     # Counter for the number of instances in this class
-    prefix = 'c'
+    prefix = "c"
 
     @abstractmethod
     def __init__(self, duration: int = None):
@@ -50,7 +51,7 @@ class Command(metaclass=MetaCount):
         if isinstance(duration, int):
             self._duration = duration
         else:
-            raise PulseError('Pulse duration should be integer.')
+            raise PulseError("Pulse duration should be integer.")
 
         self._name = Command.create_name()
 
@@ -59,16 +60,23 @@ class Command(metaclass=MetaCount):
         """Method to create names for pulse commands."""
         if name is None:
             try:
-                name = '%s%i' % (cls.prefix, cls.instances_counter)  # pylint: disable=E1101
+                name = "%s%i" % (
+                    cls.prefix,
+                    cls.instances_counter,
+                )  # pylint: disable=E1101
             except TypeError:
-                raise PulseError("prefix and counter must be non-None when name is None.")
+                raise PulseError(
+                    "prefix and counter must be non-None when name is None."
+                )
         else:
             try:
                 name = str(name)
             except Exception:
-                raise PulseError("The pulse command name should be castable to a string "
-                                 "(or None for autogenerate a name).")
-            name_format = re.compile('[a-z][a-zA-Z0-9_]*')
+                raise PulseError(
+                    "The pulse command name should be castable to a string "
+                    "(or None for autogenerate a name)."
+                )
+            name_format = re.compile("[a-z][a-zA-Z0-9_]*")
             if name_format.match(name) is None:
                 raise PulseError("%s is an invalid OpenPulse command name." % name)
 
@@ -87,7 +95,9 @@ class Command(metaclass=MetaCount):
         return self._name
 
     @abstractmethod
-    def to_instruction(self, command, *channels, timeslots=None, name=None) -> Instruction:
+    def to_instruction(
+        self, command, *channels, timeslots=None, name=None
+    ) -> Instruction:
         """Create an instruction from command."""
         pass
 
@@ -105,9 +115,11 @@ class Command(metaclass=MetaCount):
         Returns:
             bool: are self and other equal.
         """
-        if type(self) is type(other) and \
-                self._duration == other._duration and \
-                self._name == other._name:
+        if (
+            type(self) is type(other)
+            and self._duration == other._duration
+            and self._name == other._name
+        ):
             return True
         return False
 
@@ -115,5 +127,8 @@ class Command(metaclass=MetaCount):
         return hash((type(self), self._duration, self._name))
 
     def __repr__(self):
-        return '%s(name=%s, duration=%d)' % (self.__class__.__name__,
-                                             self._name, self._duration)
+        return "%s(name=%s, duration=%d)" % (
+            self.__class__.__name__,
+            self._name,
+            self._duration,
+        )

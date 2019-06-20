@@ -52,8 +52,7 @@ class Initialize(Instruction):
             raise QiskitError("Desired statevector length not a positive power of 2.")
 
         # Check if probabilities (amplitudes squared) sum to 1
-        if not math.isclose(sum(np.absolute(params) ** 2), 1.0,
-                            abs_tol=_EPS):
+        if not math.isclose(sum(np.absolute(params) ** 2), 1.0, abs_tol=_EPS):
             raise QiskitError("Sum of amplitudes-squared does not equal one.")
 
         num_qubits = int(num_qubits)
@@ -77,8 +76,8 @@ class Initialize(Instruction):
         # the qubits are in the zero state)
         initialize_instr = disentangling_circuit.to_instruction().inverse()
 
-        q = QuantumRegister(self.num_qubits, 'q')
-        initialize_circuit = QuantumCircuit(q, name='init_def')
+        q = QuantumRegister(self.num_qubits, "q")
+        initialize_circuit = QuantumCircuit(q, name="init_def")
         for qubit in q:
             initialize_circuit.append(Reset(), [qubit])
         initialize_circuit.append(initialize_instr, q[:])
@@ -94,7 +93,7 @@ class Initialize(Instruction):
             QuantumCircuit: circuit to take self.params vector to |00..0>
         """
         q = QuantumRegister(self.num_qubits)
-        circuit = QuantumCircuit(q, name='disentangler')
+        circuit = QuantumCircuit(q, name="disentangler")
 
         # kick start the peeling loop, and disentangle one-by-one from LSB to MSB
         remaining_param = self.params
@@ -102,16 +101,16 @@ class Initialize(Instruction):
         for i in range(self.num_qubits):
             # work out which rotations must be done to disentangle the LSB
             # qubit (we peel away one qubit at a time)
-            (remaining_param,
-             thetas,
-             phis) = Initialize._rotations_to_disentangle(remaining_param)
+            (remaining_param, thetas, phis) = Initialize._rotations_to_disentangle(
+                remaining_param
+            )
 
             # perform the required rotations to decouple the LSB qubit (so that
             # it can be "factored" out, leaving a shorter amplitude vector to peel away)
             rz_mult = self._multiplex(RZGate, phis)
             ry_mult = self._multiplex(RYGate, thetas)
-            circuit.append(rz_mult.to_instruction(), q[i:self.num_qubits])
-            circuit.append(ry_mult.to_instruction(), q[i:self.num_qubits])
+            circuit.append(rz_mult.to_instruction(), q[i : self.num_qubits])
+            circuit.append(ry_mult.to_instruction(), q[i : self.num_qubits])
         return circuit
 
     @staticmethod
@@ -140,9 +139,9 @@ class Initialize(Instruction):
             # (imagine a qubit state signified by the amplitudes at index 2*i
             # and 2*(i+1), corresponding to the select qubits of the
             # multiplexor being in state |i>)
-            (remains,
-             add_theta,
-             add_phi) = Initialize._bloch_angles(local_param[2 * i: 2 * (i + 1)])
+            (remains, add_theta, add_phi) = Initialize._bloch_angles(
+                local_param[2 * i : 2 * (i + 1)]
+            )
 
             remaining_vector.append(remains)
 
@@ -177,7 +176,7 @@ class Initialize(Instruction):
             final_t = a_arg + b_arg
             phi = b_arg - a_arg
 
-        return final_r * np.exp(1.J * final_t / 2), theta, phi
+        return final_r * np.exp(1.0j * final_t / 2), theta, phi
 
     def _multiplex(self, target_gate, list_of_angles):
         """
@@ -211,14 +210,15 @@ class Initialize(Instruction):
 
         # calc angle weights, assuming recursion (that is the lower-level
         # requested angles have been correctly implemented by recursion
-        angle_weight = scipy.kron([[0.5, 0.5], [0.5, -0.5]],
-                                  np.identity(2 ** (local_num_qubits - 2)))
+        angle_weight = scipy.kron(
+            [[0.5, 0.5], [0.5, -0.5]], np.identity(2 ** (local_num_qubits - 2))
+        )
 
         # calc the combo angles
         list_of_angles = angle_weight.dot(np.array(list_of_angles)).tolist()
 
         # recursive step on half the angles fulfilling the above assumption
-        multiplex_1 = self._multiplex(target_gate, list_of_angles[0:(list_len // 2)])
+        multiplex_1 = self._multiplex(target_gate, list_of_angles[0 : (list_len // 2)])
         circuit.append(multiplex_1.to_instruction(), q[0:-1])
 
         # attach CNOT as follows, thereby flipping the LSB qubit
@@ -227,7 +227,7 @@ class Initialize(Instruction):
         # implement extra efficiency from the paper of cancelling adjacent
         # CNOTs (by leaving out last CNOT and reversing (NOT inverting) the
         # second lower-level multiplex)
-        multiplex_2 = self._multiplex(target_gate, list_of_angles[(list_len // 2):])
+        multiplex_2 = self._multiplex(target_gate, list_of_angles[(list_len // 2) :])
         if list_len > 1:
             circuit.append(multiplex_2.to_instruction().mirror(), q[0:-1])
         else:
@@ -242,9 +242,11 @@ class Initialize(Instruction):
         flat_qargs = [qarg for sublist in qargs for qarg in sublist]
 
         if self.num_qubits != len(flat_qargs):
-            raise QiskitError("Initialize parameter vector has %d elements, therefore expects %s "
-                              "qubits. However, %s were provided." %
-                              (2**self.num_qubits, self.num_qubits, len(flat_qargs)))
+            raise QiskitError(
+                "Initialize parameter vector has %d elements, therefore expects %s "
+                "qubits. However, %s were provided."
+                % (2 ** self.num_qubits, self.num_qubits, len(flat_qargs))
+            )
         yield flat_qargs, []
 
 

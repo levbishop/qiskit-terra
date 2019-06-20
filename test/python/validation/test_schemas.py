@@ -23,6 +23,7 @@ class TestSchemas(QiskitTestCase):
 
     def test_double_binding(self):
         """Trying to bind a schema twice must raise."""
+
         class _DummySchema(BaseSchema):
             pass
 
@@ -31,12 +32,14 @@ class TestSchemas(QiskitTestCase):
             pass
 
         with self.assertRaises(ValueError):
+
             @bind_schema(_DummySchema)
             class _AnotherModel(BaseModel):
                 pass
 
     def test_schema_reusing(self):
         """Reusing a schema is possible if subclassing."""
+
         class _DummySchema(BaseSchema):
             pass
 
@@ -48,8 +51,10 @@ class TestSchemas(QiskitTestCase):
             pass
 
         try:
+
             @bind_schema(_SchemaCopy)
             class _AnotherModel(BaseModel):
                 pass
+
         except ValueError:
-            self.fail('`bind_schema` raised while binding.')
+            self.fail("`bind_schema` raised while binding.")

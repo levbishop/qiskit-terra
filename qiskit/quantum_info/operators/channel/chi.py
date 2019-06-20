@@ -79,7 +79,7 @@ class Chi(QuantumChannel):
             # Determine input and output dimensions
             dim_l, dim_r = chi_mat.shape
             if dim_l != dim_r:
-                raise QiskitError('Invalid Chi-matrix input.')
+                raise QiskitError("Invalid Chi-matrix input.")
             if input_dims:
                 input_dim = np.product(input_dims)
             if output_dims:
@@ -114,18 +114,17 @@ class Chi(QuantumChannel):
                 output_dims = data.output_dims()
         # Check input is N-qubit channel
         n_qubits = int(np.log2(input_dim))
-        if 2**n_qubits != input_dim:
+        if 2 ** n_qubits != input_dim:
             raise QiskitError("Input is not an n-qubit Chi matrix.")
         # Check and format input and output dimensions
         input_dims = self._automatic_dims(input_dims, input_dim)
         output_dims = self._automatic_dims(output_dims, output_dim)
-        super().__init__('Chi', chi_mat, input_dims, output_dims)
+        super().__init__("Chi", chi_mat, input_dims, output_dims)
 
     @property
     def _bipartite_shape(self):
         """Return the shape for bipartite matrix"""
-        return (self._input_dim, self._output_dim, self._input_dim,
-                self._output_dim)
+        return (self._input_dim, self._output_dim, self._input_dim, self._output_dim)
 
     def conjugate(self):
         """Return the conjugate of the QuantumChannel."""
@@ -159,19 +158,16 @@ class Chi(QuantumChannel):
             has incompatible dimensions.
         """
         if qargs is not None:
-            return Chi(
-                SuperOp(self).compose(other, qargs=qargs, front=front))
+            return Chi(SuperOp(self).compose(other, qargs=qargs, front=front))
 
         # Convert other to Choi since we convert via Choi
         if not isinstance(other, Choi):
             other = Choi(other)
         # Check dimensions match up
         if front and self._input_dim != other._output_dim:
-            raise QiskitError(
-                'input_dim of self must match output_dim of other')
+            raise QiskitError("input_dim of self must match output_dim of other")
         if not front and self._output_dim != other._input_dim:
-            raise QiskitError(
-                'input_dim of other must match output_dim of self')
+            raise QiskitError("input_dim of other must match output_dim of self")
         # Since we cannot directly add two channels in the Chi
         # representation we convert to the Choi representation
         return Chi(Choi(self).compose(other, front=front))
@@ -238,8 +234,7 @@ class Chi(QuantumChannel):
             other = Chi(other)
         if self.dim != other.dim:
             raise QiskitError("other QuantumChannel dimensions are not equal")
-        return Chi(self._data + other.data, self._input_dims,
-                   self._output_dims)
+        return Chi(self._data + other.data, self._input_dims, self._output_dims)
 
     def subtract(self, other):
         """Return the QuantumChannel self - other.
@@ -258,8 +253,7 @@ class Chi(QuantumChannel):
             other = Chi(other)
         if self.dim != other.dim:
             raise QiskitError("other QuantumChannel dimensions are not equal")
-        return Chi(self._data - other.data, self._input_dims,
-                   self._output_dims)
+        return Chi(self._data - other.data, self._input_dims, self._output_dims)
 
     def multiply(self, other):
         """Return the QuantumChannel self + other.

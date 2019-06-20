@@ -52,12 +52,12 @@ class CheckMap(AnalysisPass):
             else:
                 self.layout = Layout.generate_trivial_layout(*dag.qregs.values())
 
-        self.property_set['is_swap_mapped'] = True
+        self.property_set["is_swap_mapped"] = True
 
         for gate in dag.twoQ_gates():
             physical_q0 = self.layout[gate.qargs[0]]
             physical_q1 = self.layout[gate.qargs[1]]
 
             if self.coupling_map.distance(physical_q0, physical_q1) != 1:
-                self.property_set['is_swap_mapped'] = False
+                self.property_set["is_swap_mapped"] = False
                 return

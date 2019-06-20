@@ -36,5 +36,5 @@ class SetLayout(AnalysisPass):
         self.layout = layout
 
     def run(self, dag):
-        self.property_set['layout'] = self.layout
+        self.property_set["layout"] = self.layout
         return dag

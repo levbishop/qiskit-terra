@@ -20,6 +20,7 @@ from qiskit.visualization.exceptions import VisualizationError
 
 try:
     import PIL
+
     HAS_PIL = True
 except ImportError:
     HAS_PIL = False
@@ -52,9 +53,11 @@ def _validate_input_state(quantum_state):
 def _trim(image):
     """Trim a PIL image and remove white space."""
     if not HAS_PIL:
-        raise ImportError('The latex drawer needs pillow installed. '
-                          'Run "pip install pillow" before using the '
-                          'latex drawer.')
+        raise ImportError(
+            "The latex drawer needs pillow installed. "
+            'Run "pip install pillow" before using the '
+            "latex drawer."
+        )
     background = PIL.Image.new(image.mode, image.size, image.getpixel((0, 0)))
     diff = PIL.ImageChops.difference(image, background)
     diff = PIL.ImageChops.add(diff, diff, 2.0, -100)
@@ -83,7 +86,7 @@ def _get_layered_instructions(circuit, reverse_bits=False, justify=None):
         justify = justify.lower()
 
     # default to left
-    justify = justify if justify in ('right', 'none') else 'left'
+    justify = justify if justify in ("right", "none") else "left"
 
     dag = circuit_to_dag(circuit)
     ops = []
@@ -96,16 +99,16 @@ def _get_layered_instructions(circuit, reverse_bits=False, justify=None):
     for creg in dag.cregs.values():
         cregs += [(creg, bitno) for bitno in range(creg.size)]
 
-    if justify == 'none':
+    if justify == "none":
         for node in dag.topological_op_nodes():
             ops.append([node])
 
-    if justify == 'left':
+    if justify == "left":
         for dag_layer in dag.layers():
             layers = []
             current_layer = []
 
-            dag_nodes = dag_layer['graph'].op_nodes()
+            dag_nodes = dag_layer["graph"].op_nodes()
             dag_nodes.sort(key=lambda nd: nd._node_id)
 
             for node in dag_nodes:
@@ -133,7 +136,7 @@ def _get_layered_instructions(circuit, reverse_bits=False, justify=None):
                 layers.append(current_layer)
             ops += layers
 
-    if justify == 'right':
+    if justify == "right":
         dag_layers = []
 
         for dag_layer in dag.layers():
@@ -147,7 +150,7 @@ def _get_layered_instructions(circuit, reverse_bits=False, justify=None):
 
         for dag_layer in dag_layers:
 
-            dag_instructions = dag_layer['graph'].op_nodes()
+            dag_instructions = dag_layer["graph"].op_nodes()
 
             # sort into the order they were input
             dag_instructions.sort(key=lambda nd: nd._node_id)
@@ -207,4 +210,4 @@ def _get_gate_span(qregs, instruction):
     if instruction.cargs:
         return qregs[min_index:]
 
-    return qregs[min_index:max_index + 1]
+    return qregs[min_index : max_index + 1]

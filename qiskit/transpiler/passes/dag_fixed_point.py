@@ -25,10 +25,12 @@ class DAGFixedPoint(AnalysisPass):
     """
 
     def run(self, dag):
-        if self.property_set['_dag_fixed_point_previous_dag'] is None:
-            self.property_set['dag_fixed_point'] = False
+        if self.property_set["_dag_fixed_point_previous_dag"] is None:
+            self.property_set["dag_fixed_point"] = False
         else:
-            fixed_point_reached = self.property_set['_dag_fixed_point_previous_dag'] == dag
-            self.property_set['dag_fixed_point'] = fixed_point_reached
+            fixed_point_reached = (
+                self.property_set["_dag_fixed_point_previous_dag"] == dag
+            )
+            self.property_set["dag_fixed_point"] = fixed_point_reached
 
-        self.property_set['_dag_fixed_point_previous_dag'] = deepcopy(dag)
+        self.property_set["_dag_fixed_point_previous_dag"] = deepcopy(dag)

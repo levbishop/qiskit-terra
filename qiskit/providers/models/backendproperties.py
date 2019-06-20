@@ -34,11 +34,9 @@ class GateSchema(BaseSchema):
     """Schema for Gate."""
 
     # Required properties.
-    qubits = List(Integer(), required=True,
-                  validate=Length(min=1))
+    qubits = List(Integer(), required=True, validate=Length(min=1))
     gate = String(required=True)
-    parameters = Nested(NduvSchema, required=True, many=True,
-                        validate=Length(min=1))
+    parameters = Nested(NduvSchema, required=True, many=True, validate=Length(min=1))
 
 
 class BackendPropertiesSchema(BaseSchema):
@@ -46,14 +44,14 @@ class BackendPropertiesSchema(BaseSchema):
 
     # Required properties.
     backend_name = String(required=True)
-    backend_version = String(required=True,
-                             validate=Regexp("[0-9]+.[0-9]+.[0-9]+$"))
+    backend_version = String(required=True, validate=Regexp("[0-9]+.[0-9]+.[0-9]+$"))
     last_update_date = DateTime(required=True)
-    qubits = List(Nested(NduvSchema, many=True,
-                         validate=Length(min=1)), required=True,
-                  validate=Length(min=1))
-    gates = Nested(GateSchema, required=True, many=True,
-                   validate=Length(min=1))
+    qubits = List(
+        Nested(NduvSchema, many=True, validate=Length(min=1)),
+        required=True,
+        validate=Length(min=1),
+    )
+    gates = Nested(GateSchema, required=True, many=True, validate=Length(min=1))
     general = Nested(NduvSchema, required=True, many=True)
 
 
@@ -117,8 +115,16 @@ class BackendProperties(BaseModel):
         general (list[Nduv]): general parameters.
     """
 
-    def __init__(self, backend_name, backend_version, last_update_date,
-                 qubits, gates, general, **kwargs):
+    def __init__(
+        self,
+        backend_name,
+        backend_version,
+        last_update_date,
+        qubits,
+        gates,
+        general,
+        **kwargs,
+    ):
         self.backend_name = backend_name
         self.backend_version = backend_version
         self.last_update_date = last_update_date

@@ -32,7 +32,7 @@ class TestLookaheadSwap(QiskitTestCase):
         coupling map, and can be applied repeatedly without modifying the circuit.
         """
 
-        qr = QuantumRegister(3, name='q')
+        qr = QuantumRegister(3, name="q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[2])
         circuit.cx(qr[0], qr[1])
@@ -65,8 +65,10 @@ class TestLookaheadSwap(QiskitTestCase):
 
         mapped_dag = LookaheadSwap(coupling_map).run(dag_circuit)
 
-        self.assertEqual(mapped_dag.count_ops().get('swap', 0),
-                         dag_circuit.count_ops().get('swap', 0) + 1)
+        self.assertEqual(
+            mapped_dag.count_ops().get("swap", 0),
+            dag_circuit.count_ops().get("swap", 0) + 1,
+        )
 
     def test_lookahead_swap_finds_minimal_swap_solution(self):
         """Of many valid SWAPs, test that LookaheadSwap finds the cheapest path.
@@ -91,8 +93,10 @@ class TestLookaheadSwap(QiskitTestCase):
 
         mapped_dag = LookaheadSwap(coupling_map).run(dag_circuit)
 
-        self.assertEqual(mapped_dag.count_ops().get('swap', 0),
-                         dag_circuit.count_ops().get('swap', 0) + 1)
+        self.assertEqual(
+            mapped_dag.count_ops().get("swap", 0),
+            dag_circuit.count_ops().get("swap", 0) + 1,
+        )
 
     def test_lookahead_swap_maps_measurements(self):
         """Verify measurement nodes are updated to map correct cregs to re-mapped qregs.
@@ -118,13 +122,17 @@ class TestLookaheadSwap(QiskitTestCase):
 
         mapped_dag = LookaheadSwap(coupling_map).run(dag_circuit)
 
-        mapped_measure_qargs = set(op.qargs[0]
+        mapped_measure_qargs = set(
+            op.qargs[0] for op in mapped_dag.named_nodes("measure")
+        )
 
-                                   for op in mapped_dag.named_nodes('measure'))
-
-        self.assertIn(mapped_measure_qargs,
-                      [set(((QuantumRegister(3, 'q'), 0), (QuantumRegister(3, 'q'), 1))),
-                       set(((QuantumRegister(3, 'q'), 1), (QuantumRegister(3, 'q'), 2)))])
+        self.assertIn(
+            mapped_measure_qargs,
+            [
+                set(((QuantumRegister(3, "q"), 0), (QuantumRegister(3, "q"), 1))),
+                set(((QuantumRegister(3, "q"), 1), (QuantumRegister(3, "q"), 2))),
+            ],
+        )
 
     def test_lookahead_swap_maps_barriers(self):
         """Verify barrier nodes are updated to re-mapped qregs.
@@ -149,14 +157,18 @@ class TestLookaheadSwap(QiskitTestCase):
 
         mapped_dag = LookaheadSwap(coupling_map).run(dag_circuit)
 
-        mapped_barrier_qargs = [set(op.qargs)
+        mapped_barrier_qargs = [
+            set(op.qargs) for op in mapped_dag.named_nodes("barrier")
+        ][0]
 
-                                for op in mapped_dag.named_nodes('barrier')][0]
+        self.assertIn(
+            mapped_barrier_qargs,
+            [
+                set(((QuantumRegister(3, "q"), 0), (QuantumRegister(3, "q"), 1))),
+                set(((QuantumRegister(3, "q"), 1), (QuantumRegister(3, "q"), 2))),
+            ],
+        )
 
-        self.assertIn(mapped_barrier_qargs,
-                      [set(((QuantumRegister(3, 'q'), 0), (QuantumRegister(3, 'q'), 1))),
-                       set(((QuantumRegister(3, 'q'), 1), (QuantumRegister(3, 'q'), 2)))])
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

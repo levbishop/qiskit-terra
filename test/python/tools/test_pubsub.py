@@ -20,6 +20,7 @@ from qiskit.test import QiskitTestCase
 
 class DummySubscriber(Subscriber):
     """ Simulates a component behaving like a Subscriber """
+
     def __del__(self):
         self.clear()
 
@@ -51,6 +52,7 @@ class TestPubSub(QiskitTestCase):
 
     def test_double_subscribe(self):
         """ Testing that we cannot subscribe the same callback to the same event """
+
         def callback():
             """ This should be ever called """
             pass

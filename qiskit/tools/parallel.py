@@ -58,14 +58,15 @@ from qiskit.util import local_hardware_info
 from qiskit.tools.events.pubsub import Publisher
 
 # Set parallel flag
-os.environ['QISKIT_IN_PARALLEL'] = 'FALSE'
+os.environ["QISKIT_IN_PARALLEL"] = "FALSE"
 
 # Number of local physical cpus
-CPU_COUNT = local_hardware_info()['cpus']
+CPU_COUNT = local_hardware_info()["cpus"]
 
 
 def parallel_map(  # pylint: disable=dangerous-default-value
-        task, values, task_args=tuple(), task_kwargs={}, num_processes=CPU_COUNT):
+    task, values, task_args=tuple(), task_kwargs={}, num_processes=CPU_COUNT
+):
     """
     Parallel execution of a mapping of `values` to the function `task`. This
     is functionally equivalent to::
@@ -107,14 +108,19 @@ def parallel_map(  # pylint: disable=dangerous-default-value
         Publisher().publish("terra.parallel.done", nfinished[0])
 
     # Run in parallel if not Win and not in parallel already
-    if platform.system() != 'Windows' and num_processes > 1 \
-       and os.getenv('QISKIT_IN_PARALLEL') == 'FALSE':
-        os.environ['QISKIT_IN_PARALLEL'] = 'TRUE'
+    if (
+        platform.system() != "Windows"
+        and num_processes > 1
+        and os.getenv("QISKIT_IN_PARALLEL") == "FALSE"
+    ):
+        os.environ["QISKIT_IN_PARALLEL"] = "TRUE"
         try:
             pool = Pool(processes=num_processes)
 
-            async_res = [pool.apply_async(task, (value,) + task_args, task_kwargs,
-                                          _callback) for value in values]
+            async_res = [
+                pool.apply_async(task, (value,) + task_args, task_kwargs, _callback)
+                for value in values
+            ]
 
             while not all([item.ready() for item in async_res]):
                 for item in async_res:
@@ -127,10 +133,10 @@ def parallel_map(  # pylint: disable=dangerous-default-value
             pool.terminate()
             pool.join()
             Publisher().publish("terra.parallel.finish")
-            raise QiskitError('Keyboard interrupt in parallel_map.')
+            raise QiskitError("Keyboard interrupt in parallel_map.")
 
         Publisher().publish("terra.parallel.finish")
-        os.environ['QISKIT_IN_PARALLEL'] = 'FALSE'
+        os.environ["QISKIT_IN_PARALLEL"] = "FALSE"
         return [ar.get() for ar in async_res]
 
     # Cannot do parallel on Windows , if another parallel_map is running in parallel,

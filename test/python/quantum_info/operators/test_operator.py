@@ -74,19 +74,14 @@ class OperatorTestCase(QiskitTestCase):
         circ.measure(qr, cr)
         return circ
 
-    def assertAllClose(self,
-                       obj1,
-                       obj2,
-                       rtol=1e-5,
-                       atol=1e-6,
-                       equal_nan=False,
-                       msg=None):
+    def assertAllClose(
+        self, obj1, obj2, rtol=1e-5, atol=1e-6, equal_nan=False, msg=None
+    ):
         """Assert two objects are equal using Numpy.allclose."""
-        comparison = np.allclose(
-            obj1, obj2, rtol=rtol, atol=atol, equal_nan=equal_nan)
+        comparison = np.allclose(obj1, obj2, rtol=rtol, atol=atol, equal_nan=equal_nan)
         if msg is None:
-            msg = ''
-        msg += '({} != {})'.format(obj1, obj2)
+            msg = ""
+        msg += "({} != {})".format(obj1, obj2)
         self.assertTrue(comparison, msg=msg)
 
 
@@ -156,8 +151,7 @@ class TestOperator(OperatorTestCase):
         gate = CHGate()
         op = Operator(gate).data
         had = HGate().to_matrix()
-        target = np.kron(had, np.diag([0, 1])) + np.kron(
-            np.eye(2), np.diag([1, 0]))
+        target = np.kron(had, np.diag([0, 1])) + np.kron(np.eye(2), np.diag([1, 0]))
         global_phase_equivalent = matrix_equal(op, target, ignore_phase=True)
         self.assertTrue(global_phase_equivalent)
 
@@ -169,16 +163,14 @@ class TestOperator(OperatorTestCase):
     def test_equal(self):
         """Test __eq__ method"""
         mat = self.rand_matrix(2, 2, real=True)
-        self.assertEqual(Operator(np.array(mat, dtype=complex)),
-                         Operator(mat))
+        self.assertEqual(Operator(np.array(mat, dtype=complex)), Operator(mat))
         mat = self.rand_matrix(4, 4)
-        self.assertEqual(Operator(mat.tolist()),
-                         Operator(mat))
+        self.assertEqual(Operator(mat.tolist()), Operator(mat))
 
     def test_rep(self):
         """Test Operator representation string property."""
         op = Operator(self.rand_matrix(2, 2))
-        self.assertEqual(op.rep, 'Operator')
+        self.assertEqual(op.rep, "Operator")
 
     def test_data(self):
         """Test Operator representation string property."""
@@ -191,12 +183,15 @@ class TestOperator(OperatorTestCase):
         mat = self.rand_matrix(4, 4)
         self.assertEqual(Operator(mat).dim, (4, 4))
         self.assertEqual(Operator(mat, input_dims=[4], output_dims=[4]).dim, (4, 4))
-        self.assertEqual(Operator(mat, input_dims=[2, 2], output_dims=[2, 2]).dim, (4, 4))
+        self.assertEqual(
+            Operator(mat, input_dims=[2, 2], output_dims=[2, 2]).dim, (4, 4)
+        )
 
     def test_input_dims(self):
         """Test Operator input_dims method."""
-        op = Operator(self.rand_matrix(2 * 3 * 4, 4 * 5),
-                      input_dims=[4, 5], output_dims=[2, 3, 4])
+        op = Operator(
+            self.rand_matrix(2 * 3 * 4, 4 * 5), input_dims=[4, 5], output_dims=[2, 3, 4]
+        )
         self.assertEqual(op.input_dims(), (4, 5))
         self.assertEqual(op.input_dims(qargs=[0, 1]), (4, 5))
         self.assertEqual(op.input_dims(qargs=[1, 0]), (5, 4))
@@ -205,8 +200,9 @@ class TestOperator(OperatorTestCase):
 
     def test_output_dims(self):
         """Test Operator output_dims method."""
-        op = Operator(self.rand_matrix(2 * 3 * 4, 4 * 5),
-                      input_dims=[4, 5], output_dims=[2, 3, 4])
+        op = Operator(
+            self.rand_matrix(2 * 3 * 4, 4 * 5), input_dims=[4, 5], output_dims=[2, 3, 4]
+        )
         self.assertEqual(op.output_dims(), (2, 3, 4))
         self.assertEqual(op.output_dims(qargs=[0, 1, 2]), (2, 3, 4))
         self.assertEqual(op.output_dims(qargs=[2, 1, 0]), (4, 3, 2))
@@ -264,8 +260,7 @@ class TestOperator(OperatorTestCase):
         # Test list density matrix evolve
         self.assertAllClose(op._evolve([[1, 0], [0, 0]]), target_rho)
         # Test np.array density matrix evolve
-        self.assertAllClose(
-            op._evolve(np.array([[1, 0], [0, 0]])), target_rho)
+        self.assertAllClose(op._evolve(np.array([[1, 0], [0, 0]])), target_rho)
 
     def test_evolve_subsystem(self):
         """Test subsystem _evolve method."""
@@ -373,9 +368,7 @@ class TestOperator(OperatorTestCase):
 
     def test_compose_except(self):
         """Test compose different dimension exception"""
-        self.assertRaises(QiskitError,
-                          Operator(np.eye(2)).compose,
-                          Operator(np.eye(3)))
+        self.assertRaises(QiskitError, Operator(np.eye(2)).compose, Operator(np.eye(3)))
         self.assertRaises(QiskitError, Operator(np.eye(2)).compose, 2)
 
     def test_compose(self):
@@ -564,7 +557,7 @@ class TestOperator(OperatorTestCase):
     def test_multiply_except(self):
         """Test multiply method raises exceptions."""
         op = Operator(self.rand_matrix(2, 2))
-        self.assertRaises(QiskitError, op.multiply, 's')
+        self.assertRaises(QiskitError, op.multiply, "s")
         self.assertRaises(QiskitError, op.multiply, op)
 
     def test_negate(self):
@@ -574,5 +567,5 @@ class TestOperator(OperatorTestCase):
         self.assertEqual(-op, Operator(-1 * mat))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

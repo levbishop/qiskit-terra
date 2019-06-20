@@ -34,12 +34,13 @@ def parse(file_path, prec=15):
 
 class TestParser(QiskitTestCase):
     """QasmParser"""
+
     def setUp(self):
-        self.qasm_file_path = self._get_resource_path('example.qasm', Path.QASMS)
+        self.qasm_file_path = self._get_resource_path("example.qasm", Path.QASMS)
         self.qasm_file_path_fail = self._get_resource_path(
-            'example_fail.qasm', Path.QASMS)
-        self.qasm_file_path_if = self._get_resource_path(
-            'example_if.qasm', Path.QASMS)
+            "example_fail.qasm", Path.QASMS
+        )
+        self.qasm_file_path_if = self._get_resource_path("example_if.qasm", Path.QASMS)
 
     def test_parser(self):
         """should return a correct response for a valid circuit."""
@@ -55,11 +56,16 @@ class TestParser(QiskitTestCase):
     def test_parser_fail(self):
         """should fail a for a  not valid circuit."""
 
-        self.assertRaisesRegex(QasmError, "Perhaps there is a missing",
-                               parse, file_path=self.qasm_file_path_fail)
+        self.assertRaisesRegex(
+            QasmError,
+            "Perhaps there is a missing",
+            parse,
+            file_path=self.qasm_file_path_fail,
+        )
 
     def test_all_valid_nodes(self):
         """Test that the tree contains only Node subclasses."""
+
         def inspect(node):
             """Inspect node children."""
             for child in node.children:
@@ -83,5 +89,5 @@ class TestParser(QiskitTestCase):
             self.assertTrue(isinstance(token, ply.lex.LexToken))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

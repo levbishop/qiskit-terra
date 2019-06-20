@@ -70,6 +70,7 @@ class PTM(QuantumChannel):
         automatically determined from the input data. The PTM
         representation is only valid for N-qubit channels.
         """
+
     def __init__(self, data, input_dims=None, output_dims=None):
         """Initialize a PTM quantum channel operator."""
         # If the input is a raw list or matrix we assume that it is
@@ -87,7 +88,11 @@ class PTM(QuantumChannel):
                 output_dim = np.product(input_dims)
             else:
                 output_dim = int(np.sqrt(dout))
-            if output_dim**2 != dout or input_dim**2 != din or input_dim != output_dim:
+            if (
+                output_dim ** 2 != dout
+                or input_dim ** 2 != din
+                or input_dim != output_dim
+            ):
                 raise QiskitError("Invalid shape for PTM matrix.")
         else:
             # Otherwise we initialize by conversion from another Qiskit
@@ -109,18 +114,17 @@ class PTM(QuantumChannel):
                 output_dims = data.output_dims()
         # Check input is N-qubit channel
         n_qubits = int(np.log2(input_dim))
-        if 2**n_qubits != input_dim:
+        if 2 ** n_qubits != input_dim:
             raise QiskitError("Input is not an n-qubit Pauli transfer matrix.")
         # Check and format input and output dimensions
         input_dims = self._automatic_dims(input_dims, input_dim)
         output_dims = self._automatic_dims(output_dims, output_dim)
-        super().__init__('PTM', ptm, input_dims, output_dims)
+        super().__init__("PTM", ptm, input_dims, output_dims)
 
     @property
     def _bipartite_shape(self):
         """Return the shape for bipartite matrix"""
-        return (self._output_dim, self._output_dim, self._input_dim,
-                self._input_dim)
+        return (self._output_dim, self._output_dim, self._input_dim, self._input_dim)
 
     def conjugate(self):
         """Return the conjugate of the QuantumChannel."""
@@ -154,19 +158,16 @@ class PTM(QuantumChannel):
             has incompatible dimensions.
         """
         if qargs is not None:
-            return PTM(
-                SuperOp(self).compose(other, qargs=qargs, front=front))
+            return PTM(SuperOp(self).compose(other, qargs=qargs, front=front))
 
         # Convert other to PTM
         if not isinstance(other, PTM):
             other = PTM(other)
         # Check dimensions match up
         if front and self._input_dim != other._output_dim:
-            raise QiskitError(
-                'input_dim of self must match output_dim of other')
+            raise QiskitError("input_dim of self must match output_dim of other")
         if not front and self._output_dim != other._input_dim:
-            raise QiskitError(
-                'input_dim of other must match output_dim of self')
+            raise QiskitError("input_dim of other must match output_dim of self")
         if front:
             # Composition A(B(input))
             input_dim = other._input_dim
@@ -239,8 +240,7 @@ class PTM(QuantumChannel):
             other = PTM(other)
         if self.dim != other.dim:
             raise QiskitError("other QuantumChannel dimensions are not equal")
-        return PTM(self._data + other.data, self._input_dims,
-                   self._output_dims)
+        return PTM(self._data + other.data, self._input_dims, self._output_dims)
 
     def subtract(self, other):
         """Return the QuantumChannel self - other.
@@ -259,8 +259,7 @@ class PTM(QuantumChannel):
             other = PTM(other)
         if self.dim != other.dim:
             raise QiskitError("other QuantumChannel dimensions are not equal")
-        return PTM(self._data - other.data, self._input_dims,
-                   self._output_dims)
+        return PTM(self._data - other.data, self._input_dims, self._output_dims)
 
     def multiply(self, other):
         """Return the QuantumChannel self + other.

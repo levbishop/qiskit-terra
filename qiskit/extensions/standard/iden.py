@@ -37,8 +37,7 @@ class IdGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the Id gate."""
-        return numpy.array([[1, 0],
-                            [0, 1]], dtype=complex)
+        return numpy.array([[1, 0], [0, 1]], dtype=complex)
 
 
 def iden(self, q):

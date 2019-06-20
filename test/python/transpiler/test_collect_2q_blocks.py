@@ -52,8 +52,8 @@ class TestCollect2qBlocks(QiskitTestCase):
 
         pass_ = Collect2qBlocks()
         pass_.run(dag)
-        self.assertTrue(pass_.property_set['block_list'], [block_1, block_2])
+        self.assertTrue(pass_.property_set["block_list"], [block_1, block_2])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

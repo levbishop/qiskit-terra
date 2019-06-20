@@ -37,7 +37,8 @@ class QuantumChannel(BaseOperator):
         """Return True if completely-positive trace-preserving (CPTP)."""
         choi = _to_choi(self.rep, self._data, *self.dim)
         return self._is_cp_helper(choi, atol, rtol) and self._is_tp_helper(
-            choi, atol, rtol)
+            choi, atol, rtol
+        )
 
     def is_tp(self, atol=None, rtol=None):
         """Test if a channel is completely-positive (CP)"""
@@ -75,15 +76,16 @@ class QuantumChannel(BaseOperator):
             QiskitError: if input data is not an N-qubit CPTP quantum channel.
         """
         from qiskit.circuit.instruction import Instruction
+
         # Check if input is an N-qubit CPTP channel.
         n_qubits = int(np.log2(self._input_dim))
-        if self._input_dim != self._output_dim or 2**n_qubits != self._input_dim:
+        if self._input_dim != self._output_dim or 2 ** n_qubits != self._input_dim:
             raise QiskitError(
-                'Cannot convert QuantumChannel to Instruction: channel is not an N-qubit channel.'
+                "Cannot convert QuantumChannel to Instruction: channel is not an N-qubit channel."
             )
         if not self.is_cptp():
             raise QiskitError(
-                'Cannot convert QuantumChannel to Instruction: channel is not CPTP.'
+                "Cannot convert QuantumChannel to Instruction: channel is not CPTP."
             )
         # Next we convert to the Kraus representation. Since channel is CPTP we know
         # that there is only a single set of Kraus operators
@@ -93,7 +95,7 @@ class QuantumChannel(BaseOperator):
         # converting to an Operator and using its to_instruction method
         if len(kraus) == 1:
             return Operator(kraus[0]).to_instruction()
-        return Instruction('kraus', n_qubits, 0, kraus)
+        return Instruction("kraus", n_qubits, 0, kraus)
 
     def _is_cp_helper(self, choi, atol, rtol):
         """Test if a channel is completely-positive (CP)"""
@@ -111,8 +113,7 @@ class QuantumChannel(BaseOperator):
             rtol = self._rtol
         # Check if the partial trace is the identity matrix
         d_in, d_out = self.dim
-        mat = np.trace(
-            np.reshape(choi, (d_in, d_out, d_in, d_out)), axis1=1, axis2=3)
+        mat = np.trace(np.reshape(choi, (d_in, d_out, d_in, d_out)), axis1=1, axis2=3)
         return is_identity_matrix(mat, rtol=rtol, atol=atol)
 
     def _format_state(self, state, density_matrix=False):
@@ -121,11 +122,11 @@ class QuantumChannel(BaseOperator):
         shape = state.shape
         ndim = state.ndim
         if ndim > 2:
-            raise QiskitError('Input state is not a vector or matrix.')
+            raise QiskitError("Input state is not a vector or matrix.")
         # Flatten column-vector to vector
         if ndim == 2:
             if shape[1] != 1 and shape[1] != shape[0]:
-                raise QiskitError('Input state is not a vector or matrix.')
+                raise QiskitError("Input state is not a vector or matrix.")
             if shape[1] == 1:
                 # flatten column-vector to vector
                 state = np.reshape(state, shape[0])
@@ -142,13 +143,13 @@ class QuantumChannel(BaseOperator):
         # the original object
         if isinstance(data, QuantumChannel):
             return data
-        if hasattr(data, 'to_quantumchannel'):
+        if hasattr(data, "to_quantumchannel"):
             # If the data object is not a QuantumChannel it will give
             # preference to a 'to_quantumchannel' attribute that allows
             # an arbitrary object to define its own conversion to any
             # quantum channel subclass.
             return data.to_quantumchannel()
-        if hasattr(data, 'to_channel'):
+        if hasattr(data, "to_channel"):
             # TODO: this 'to_channel' method is the same case as the above
             # but is used by current version of Aer. It should be removed
             # once Aer is nupdated to use `to_quantumchannel`

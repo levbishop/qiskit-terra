@@ -17,14 +17,16 @@ flow controller, and coloured based on the type of pass.
 """
 import inspect
 from qiskit.transpiler.basepasses import AnalysisPass, TransformationPass
-DEFAULT_STYLE = {AnalysisPass: 'red',
-                 TransformationPass: 'blue'}
+
+DEFAULT_STYLE = {AnalysisPass: "red", TransformationPass: "blue"}
 
 
 try:
     import subprocess
-    _PROC = subprocess.Popen(['dot', '-V'], stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE)
+
+    _PROC = subprocess.Popen(
+        ["dot", "-V"], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
     _PROC.communicate()
     if _PROC.returncode != 0:
         HAS_GRAPHVIZ = False
@@ -60,13 +62,16 @@ def pass_manager_drawer(pass_manager, filename, style=None, raw=False):
 
     try:
         import pydot
+
         if not HAS_GRAPHVIZ:
             raise ImportError
     except ImportError:
-        raise ImportError("pass_manager_drawer requires pydot and graphviz. "
-                          "Run 'pip install pydot'. "
-                          "Graphviz can be installed using 'brew install graphviz' on Mac"
-                          " or by downloading it from the website.")
+        raise ImportError(
+            "pass_manager_drawer requires pydot and graphviz. "
+            "Run 'pip install pydot'. "
+            "Graphviz can be installed using 'brew install graphviz' on Mac"
+            " or by downloading it from the website."
+        )
 
     passes = pass_manager.passes()
 
@@ -86,20 +91,22 @@ def pass_manager_drawer(pass_manager, filename, style=None, raw=False):
     for controller_group in passes:
 
         # label is the name of the flow controller (without the word controller)
-        label = controller_group['type'].__name__.replace('Controller', '')
+        label = controller_group["type"].__name__.replace("Controller", "")
 
         # create the subgraph for this controller
-        subgraph = pydot.Cluster(str(component_id), label=label, fontname='helvetica')
+        subgraph = pydot.Cluster(str(component_id), label=label, fontname="helvetica")
         component_id += 1
 
-        for pass_ in controller_group['passes']:
+        for pass_ in controller_group["passes"]:
 
             # label is the name of the pass
-            node = pydot.Node(str(component_id),
-                              label=str(type(pass_).__name__),
-                              color=_get_node_color(pass_, style),
-                              shape="rectangle",
-                              fontname='helvetica')
+            node = pydot.Node(
+                str(component_id),
+                label=str(type(pass_).__name__),
+                color=_get_node_color(pass_, style),
+                shape="rectangle",
+                fontname="helvetica",
+            )
 
             subgraph.add_node(node)
             component_id += 1
@@ -113,18 +120,21 @@ def pass_manager_drawer(pass_manager, filename, style=None, raw=False):
 
             # add in the inputs to the pass
             for arg_index, arg in enumerate(args):
-                nd_style = 'solid'
+                nd_style = "solid"
                 # any optional args are dashed
                 # the num of optional counts from the end towards the start of the list
                 if arg_index >= (len(args) - num_optional):
-                    nd_style = 'dashed'
+                    nd_style = "dashed"
 
-                input_node = pydot.Node(component_id, label=arg,
-                                        color="black",
-                                        shape="ellipse",
-                                        fontsize=10,
-                                        style=nd_style,
-                                        fontname='helvetica')
+                input_node = pydot.Node(
+                    component_id,
+                    label=arg,
+                    color="black",
+                    shape="ellipse",
+                    fontsize=10,
+                    style=nd_style,
+                    fontname="helvetica",
+                )
                 subgraph.add_node(input_node)
                 component_id += 1
                 subgraph.add_edge(pydot.Edge(input_node, node))
@@ -142,7 +152,7 @@ def pass_manager_drawer(pass_manager, filename, style=None, raw=False):
             # linter says this isn't a method - it is
             graph.write_png(filename)  # pylint: disable=no-member
         else:
-            graph.write(filename, format='raw')
+            graph.write(filename, format="raw")
 
 
 def _get_node_color(pss, style):

@@ -33,8 +33,8 @@ class Int(Node):
 
     def to_string(self, indent):
         """Print with indent."""
-        ind = indent * ' '
-        print(ind, 'int', self.value)
+        ind = indent * " "
+        print(ind, "int", self.value)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""

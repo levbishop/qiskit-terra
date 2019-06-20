@@ -79,12 +79,18 @@ from qiskit import execute
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, BasicAer
 from qiskit.transpiler import PassManager
 from qiskit.compiler import transpile
-from qiskit.transpiler.passes import BasicSwap, LookaheadSwap, StochasticSwap, LegacySwap, SetLayout
+from qiskit.transpiler.passes import (
+    BasicSwap,
+    LookaheadSwap,
+    StochasticSwap,
+    LegacySwap,
+    SetLayout,
+)
 from qiskit.transpiler import CouplingMap, Layout
 
 from qiskit.test import QiskitTestCase
 
-DIRNAME = QiskitTestCase._get_resource_path('pickles')
+DIRNAME = QiskitTestCase._get_resource_path("pickles")
 
 
 class CommonUtilitiesMixin:
@@ -110,12 +116,14 @@ class CommonUtilitiesMixin:
             passmanager.append(SetLayout(Layout(initial_layout)))
 
         # pylint: disable=not-callable
-        passmanager.append(self.pass_class(CouplingMap(coupling_map), **self.additional_args))
+        passmanager.append(
+            self.pass_class(CouplingMap(coupling_map), **self.additional_args)
+        )
         return passmanager
 
     def create_backend(self):
         """Returns a Backend."""
-        return BasicAer.get_backend('qasm_simulator')
+        return BasicAer.get_backend("qasm_simulator")
 
     def generate_ground_truth(self, transpiled_result, filename):
         """Generates the expected result into a file.
@@ -128,16 +136,23 @@ class CommonUtilitiesMixin:
             filename (string): Where the pickle is saved.
         """
         sim_backend = self.create_backend()
-        job = execute(transpiled_result, sim_backend, seed_simulator=self.seed_simulator,
-                      seed_transpiler=self.seed_transpiler, shots=self.shots)
-        self.assertDictAlmostEqual(self.counts, job.result().get_counts(), delta=self.delta)
+        job = execute(
+            transpiled_result,
+            sim_backend,
+            seed_simulator=self.seed_simulator,
+            seed_transpiler=self.seed_transpiler,
+            shots=self.shots,
+        )
+        self.assertDictAlmostEqual(
+            self.counts, job.result().get_counts(), delta=self.delta
+        )
 
         with open(filename, "wb") as output_file:
             pickle.dump(transpiled_result, output_file)
 
     def assertResult(self, result, circuit):
         """Fetches the pickle in circuit.name file and compares it with result."""
-        picklename = '%s_%s.pickle' % (type(self).__name__, circuit.name)
+        picklename = "%s_%s.pickle" % (type(self).__name__, circuit.name)
         filename = os.path.join(DIRNAME, picklename)
 
         if self.regenerate_expected:
@@ -182,21 +197,25 @@ class SwapperCommonTestCases(CommonUtilitiesMixin):
         expected count: '000': 50%
                         '110': 50%
         """
-        self.counts = {'000': 512, '110': 512}
+        self.counts = {"000": 512, "110": 512}
         self.shots = 1024
         self.delta = 5
         coupling_map = [[0, 1], [0, 2]]
 
-        qr = QuantumRegister(3, 'q')
-        cr = ClassicalRegister(3, 'c')
-        circuit = QuantumCircuit(qr, cr, name='a_cx_to_map')
+        qr = QuantumRegister(3, "q")
+        cr = ClassicalRegister(3, "c")
+        circuit = QuantumCircuit(qr, cr, name="a_cx_to_map")
         circuit.h(qr[1])
         circuit.cx(qr[1], qr[2])
         circuit.measure(qr, cr)
 
-        result = transpile(circuit, self.create_backend(), coupling_map=coupling_map,
-                           seed_transpiler=self.seed_transpiler,
-                           pass_manager=self.create_passmanager(coupling_map))
+        result = transpile(
+            circuit,
+            self.create_backend(),
+            coupling_map=coupling_map,
+            seed_transpiler=self.seed_transpiler,
+            pass_manager=self.create_passmanager(coupling_map),
+        )
         self.assertResult(result, circuit)
 
     def test_initial_layout(self):
@@ -218,23 +237,27 @@ class SwapperCommonTestCases(CommonUtilitiesMixin):
         expected count: '000': 50%
                         '110': 50%
         """
-        self.counts = {'0000': 512, '0110': 512}
+        self.counts = {"0000": 512, "0110": 512}
         self.shots = 1024
         self.delta = 5
         coupling_map = [[0, 1], [0, 2], [2, 3]]
 
-        qr = QuantumRegister(4, 'q')
-        cr = ClassicalRegister(4, 'c')
-        circuit = QuantumCircuit(qr, cr, name='initial_layout')
+        qr = QuantumRegister(4, "q")
+        cr = ClassicalRegister(4, "c")
+        circuit = QuantumCircuit(qr, cr, name="initial_layout")
         circuit.h(qr[1])
         circuit.cx(qr[1], qr[2])
         circuit.measure(qr, cr)
 
         layout = {qr[3]: 0, qr[0]: 1, qr[1]: 2, qr[2]: 3}
 
-        result = transpile(circuit, self.create_backend(), coupling_map=coupling_map,
-                           seed_transpiler=self.seed_transpiler,
-                           pass_manager=self.create_passmanager(coupling_map, layout))
+        result = transpile(
+            circuit,
+            self.create_backend(),
+            coupling_map=coupling_map,
+            seed_transpiler=self.seed_transpiler,
+            pass_manager=self.create_passmanager(coupling_map, layout),
+        )
         self.assertResult(result, circuit)
 
     def test_handle_measurement(self):
@@ -258,50 +281,58 @@ class SwapperCommonTestCases(CommonUtilitiesMixin):
         expected count: '0000': 50%
                         '1011': 50%
         """
-        self.counts = {'1011': 512, '0000': 512}
+        self.counts = {"1011": 512, "0000": 512}
         self.shots = 1024
         self.delta = 5
         coupling_map = [[0, 1], [1, 2], [2, 3]]
 
-        qr = QuantumRegister(4, 'q')
-        cr = ClassicalRegister(4, 'c')
-        circuit = QuantumCircuit(qr, cr, name='handle_measurement')
+        qr = QuantumRegister(4, "q")
+        cr = ClassicalRegister(4, "c")
+        circuit = QuantumCircuit(qr, cr, name="handle_measurement")
         circuit.h(qr[3])
         circuit.cx(qr[0], qr[1])
         circuit.cx(qr[3], qr[1])
         circuit.cx(qr[3], qr[0])
         circuit.measure(qr, cr)
 
-        result = transpile(circuit, self.create_backend(), coupling_map=coupling_map,
-                           seed_transpiler=self.seed_transpiler,
-                           pass_manager=self.create_passmanager(coupling_map))
+        result = transpile(
+            circuit,
+            self.create_backend(),
+            coupling_map=coupling_map,
+            seed_transpiler=self.seed_transpiler,
+            pass_manager=self.create_passmanager(coupling_map),
+        )
         self.assertResult(result, circuit)
 
 
 class TestsBasicSwap(SwapperCommonTestCases, QiskitTestCase):
     """Test SwapperCommonTestCases using BasicSwap."""
+
     pass_class = BasicSwap
 
 
 class TestsLookaheadSwap(SwapperCommonTestCases, QiskitTestCase):
     """Test SwapperCommonTestCases using LookaheadSwap."""
+
     pass_class = LookaheadSwap
 
 
 class TestsStochasticSwap(SwapperCommonTestCases, QiskitTestCase):
     """Test SwapperCommonTestCases using StochasticSwap."""
+
     pass_class = StochasticSwap
-    additional_args = {'seed': 0}
+    additional_args = {"seed": 0}
 
 
 class TestsLegacySwap(SwapperCommonTestCases, QiskitTestCase):
     """Test SwapperCommonTestCases using LegacySwap."""
+
     pass_class = LegacySwap
-    additional_args = {'seed': 0, 'trials': 20}
+    additional_args = {"seed": 0, "trials": 20}
 
 
-if __name__ == '__main__':
-    if len(sys.argv) >= 2 and sys.argv[1] == 'regenerate':
+if __name__ == "__main__":
+    if len(sys.argv) >= 2 and sys.argv[1] == "regenerate":
         CommonUtilitiesMixin.regenerate_expected = True
 
         for picklefilename in os.listdir(DIRNAME):

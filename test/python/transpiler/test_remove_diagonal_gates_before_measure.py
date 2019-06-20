@@ -36,8 +36,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                      |               |
             cr0:-----.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.rz(0.1, qr[0])
         circuit.measure(qr[0], cr[0])
@@ -59,8 +59,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                      |               |
             cr0:-----.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.z(qr[0])
         circuit.measure(qr[0], cr[0])
@@ -82,8 +82,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                      |               |
             cr0:-----.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.t(qr[0])
         circuit.measure(qr[0], cr[0])
@@ -105,8 +105,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                      |               |
             cr0:-----.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.s(qr[0])
         circuit.measure(qr[0], cr[0])
@@ -128,8 +128,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                      |               |
             cr0:-----.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.tdg(qr[0])
         circuit.measure(qr[0], cr[0])
@@ -151,8 +151,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                       |               |
             cr0:------.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.sdg(qr[0])
         circuit.measure(qr[0], cr[0])
@@ -174,8 +174,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                      |               |
             cr0:-----.--       cr0:--.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.u1(0.1, qr[0])
         circuit.measure(qr[0], cr[0])
@@ -197,8 +197,8 @@ class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):
                      |                 |
             cr0:-----.--       cr0:----.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.rz(0.1, qr[0])
         circuit.z(qr[1])
@@ -226,8 +226,8 @@ class TesRemoveDiagonalControlGatesBeforeMeasure(QiskitTestCase):
                      | |              | |
             cr0:-----.-.-       cr0:--.-.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.cz(qr[0], qr[1])
         circuit.measure(qr[0], cr[0])
@@ -251,8 +251,8 @@ class TesRemoveDiagonalControlGatesBeforeMeasure(QiskitTestCase):
                      | |              | |
             cr0:-----.-.-       cr0:--.-.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.crz(0.1, qr[0], qr[1])
         circuit.measure(qr[0], cr[0])
@@ -276,8 +276,8 @@ class TesRemoveDiagonalControlGatesBeforeMeasure(QiskitTestCase):
                      | |              | |
             cr0:-----.-.-       cr0:--.-.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.cu1(0.1, qr[0], qr[1])
         circuit.measure(qr[0], cr[0])
@@ -301,8 +301,8 @@ class TesRemoveDiagonalControlGatesBeforeMeasure(QiskitTestCase):
                        | |              | |
             cr0:-------.-.-       cr0:--.-.-
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.rzz(0.1, qr[0], qr[1])
         circuit.measure(qr[0], cr[0])
@@ -332,8 +332,8 @@ class TestRemoveDiagonalGatesBeforeMeasureOveroptimizations(QiskitTestCase):
                      |
             cr0:-----.---
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.cz(qr[0], qr[1])
         circuit.measure(qr[0], cr[0])
@@ -357,8 +357,8 @@ class TestRemoveDiagonalGatesBeforeMeasureOveroptimizations(QiskitTestCase):
              cr_0: 0 ══╡ = 1 ╞═══════════╩═
                        └─────┘
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.rz(0.1, qr[1]).c_if(cr, 1)
         circuit.barrier()
@@ -384,8 +384,8 @@ class TestRemoveDiagonalGatesBeforeMeasureFixedPoint(QiskitTestCase):
                         |               |
             cr0:--------.--       cr0:--.--
         """
-        qr = QuantumRegister(1, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(1, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.rz(0.1, qr[0])
         circuit.z(qr[0])
@@ -397,11 +397,12 @@ class TestRemoveDiagonalGatesBeforeMeasureFixedPoint(QiskitTestCase):
         pass_manager = PassManager()
         pass_manager.append(
             [RemoveDiagonalGatesBeforeMeasure(), DAGFixedPoint()],
-            do_while=lambda property_set: not property_set['dag_fixed_point'])
+            do_while=lambda property_set: not property_set["dag_fixed_point"],
+        )
         after = transpile(circuit, pass_manager=pass_manager)
 
         self.assertEqual(expected, after)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

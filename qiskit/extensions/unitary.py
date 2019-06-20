@@ -42,11 +42,11 @@ class UnitaryGate(Gate):
         Raises:
             ExtensionError: if input data is not an N-qubit unitary operator.
         """
-        if hasattr(data, 'to_matrix'):
+        if hasattr(data, "to_matrix"):
             # If input is Gate subclass or some other class object that has
             # a to_matrix method this will call that method.
             data = data.to_matrix()
-        elif hasattr(data, 'to_operator'):
+        elif hasattr(data, "to_operator"):
             # If input is a BaseOperator subclass this attempts to convert
             # the object to an Operator so that we can extract the underlying
             # numpy matrix from `Operator.data`.
@@ -59,11 +59,10 @@ class UnitaryGate(Gate):
         # Check input is N-qubit matrix
         input_dim, output_dim = data.shape
         n_qubits = int(numpy.log2(input_dim))
-        if input_dim != output_dim or 2**n_qubits != input_dim:
-            raise ExtensionError(
-                "Input matrix is not an N-qubit operator.")
+        if input_dim != output_dim or 2 ** n_qubits != input_dim:
+            raise ExtensionError("Input matrix is not an N-qubit operator.")
         # Store instruction params
-        super().__init__('unitary', n_qubits, [data], label=label)
+        super().__init__("unitary", n_qubits, [data], label=label)
 
     def __eq__(self, other):
         if not isinstance(other, UnitaryGate):
@@ -103,8 +102,10 @@ class UnitaryGate(Gate):
         elif self.num_qubits == 2:
             self.definition = two_qubit_cnot_decompose(self.to_matrix())
         else:
-            raise NotImplementedError("Not able to generate a subcircuit for "
-                                      "a {}-qubit unitary".format(self.num_qubits))
+            raise NotImplementedError(
+                "Not able to generate a subcircuit for "
+                "a {}-qubit unitary".format(self.num_qubits)
+            )
 
 
 def unitary(self, obj, qubits, label=None):

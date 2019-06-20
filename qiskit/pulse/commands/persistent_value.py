@@ -25,7 +25,7 @@ from .command import Command
 class PersistentValue(Command):
     """Persistent value."""
 
-    prefix = 'pv'
+    prefix = "pv"
 
     def __init__(self, value, name=None):
         """create new persistent value command.
@@ -60,17 +60,19 @@ class PersistentValue(Command):
         Returns:
             bool: are self and other equal.
         """
-        if type(self) is type(other) and \
-                self.value == other.value:
+        if type(self) is type(other) and self.value == other.value:
             return True
         return False
 
     def __repr__(self):
-        return '%s(%s, value=%s)' % (self.__class__.__name__, self.name, self.value)
+        return "%s(%s, value=%s)" % (self.__class__.__name__, self.name, self.value)
 
     # pylint: disable=arguments-differ
-    def to_instruction(self, channel: PulseChannel, name=None) -> 'PersistentValueInstruction':
+    def to_instruction(
+        self, channel: PulseChannel, name=None
+    ) -> "PersistentValueInstruction":
         return PersistentValueInstruction(self, channel, name=name)
+
     # pylint: enable=arguments-differ
 
 

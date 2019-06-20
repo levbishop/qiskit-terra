@@ -26,12 +26,14 @@ from qiskit.extensions.exceptions import ExtensionError
 class Snapshot(Instruction):
     """Simulator snapshot instruction."""
 
-    def __init__(self,
-                 label,
-                 snapshot_type='statevector',
-                 num_qubits=0,
-                 num_clbits=0,
-                 params=None):
+    def __init__(
+        self,
+        label,
+        snapshot_type="statevector",
+        num_qubits=0,
+        num_clbits=0,
+        params=None,
+    ):
         """Create new snapshot instruction.
 
         Args:
@@ -45,12 +47,12 @@ class Snapshot(Instruction):
             ExtensionError: if snapshot label is invalid.
         """
         if not isinstance(label, str):
-            raise ExtensionError('Snapshot label must be a string.')
+            raise ExtensionError("Snapshot label must be a string.")
         self._label = label
         self._snapshot_type = snapshot_type
         if params is None:
             params = []
-        super().__init__('snapshot', num_qubits, num_clbits, params)
+        super().__init__("snapshot", num_qubits, num_clbits, params)
 
     def assemble(self):
         """Assemble a QasmQobjInstruction"""
@@ -61,8 +63,9 @@ class Snapshot(Instruction):
 
     def inverse(self):
         """Special case. Return self."""
-        return Snapshot(self.num_qubits, self.num_clbits, self.params[0],
-                        self.params[1])
+        return Snapshot(
+            self.num_qubits, self.num_clbits, self.params[0], self.params[1]
+        )
 
     @property
     def snapshot_type(self):
@@ -87,14 +90,10 @@ class Snapshot(Instruction):
         if isinstance(name, str):
             self._label = name
         else:
-            raise TypeError('label expects a string')
+            raise TypeError("label expects a string")
 
 
-def snapshot(self,
-             label,
-             snapshot_type='statevector',
-             qubits=None,
-             params=None):
+def snapshot(self, label, snapshot_type="statevector", qubits=None, params=None):
     """Take a statevector snapshot of the internal simulator representation.
     Works on all qubits, and prevents reordering (like barrier).
 
@@ -115,8 +114,9 @@ def snapshot(self,
     # Convert label to string for backwards compatibility
     if not isinstance(label, str):
         warnings.warn(
-            "Snapshot label should be a string, "
-            "implicit conversion is depreciated.", DeprecationWarning)
+            "Snapshot label should be a string, " "implicit conversion is depreciated.",
+            DeprecationWarning,
+        )
         label = str(label)
     # If no qubits are specified we add all qubits so it acts as a barrier
     # This is needed for full register snapshots like statevector
@@ -128,7 +128,7 @@ def snapshot(self,
             for register in self.qregs:
                 tuples.append(register)
         if not tuples:
-            raise ExtensionError('no qubits for snapshot')
+            raise ExtensionError("no qubits for snapshot")
         qubits = []
         for tuple_element in tuples:
             if isinstance(tuple_element, QuantumRegister):
@@ -138,10 +138,10 @@ def snapshot(self,
                 qubits.append(tuple_element)
     return self.append(
         Snapshot(
-            label,
-            snapshot_type=snapshot_type,
-            num_qubits=len(qubits),
-            params=params), qubits)
+            label, snapshot_type=snapshot_type, num_qubits=len(qubits), params=params
+        ),
+        qubits,
+    )
 
 
 # Add to QuantumCircuit class

@@ -33,7 +33,7 @@ class TestSizePass(QiskitTestCase):
         pass_ = Size()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['size'], 0)
+        self.assertEqual(pass_.property_set["size"], 0)
 
     def test_just_qubits(self):
         """ A dag with 8 operations and no classic bits"""
@@ -52,7 +52,7 @@ class TestSizePass(QiskitTestCase):
         pass_ = Size()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['size'], 8)
+        self.assertEqual(pass_.property_set["size"], 8)
 
     def test_depth_one(self):
         """ A dag with operations in parallel and size 2"""
@@ -65,8 +65,8 @@ class TestSizePass(QiskitTestCase):
         pass_ = Size()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['size'], 2)
+        self.assertEqual(pass_.property_set["size"], 2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -41,7 +41,7 @@ def qft(circ, q, n):
     """n-qubit QFT on q in circ."""
     for j in range(n):
         for k in range(j):
-            circ.cu1(math.pi / float(2**(j - k)), q[j], q[k])
+            circ.cu1(math.pi / float(2 ** (j - k)), q[j], q[k])
         circ.h(q[j])
 
 
@@ -79,8 +79,9 @@ def partial_trace(state, trace_systems, dimensions=None, reverse=True):
         num_qubits = int(np.log2(len(state)))
         dimensions = [2 for _ in range(num_qubits)]
         if len(state) != 2 ** num_qubits:
-            raise Exception("Input is not a multi-qubit state, "
-                            "specify input state dims")
+            raise Exception(
+                "Input is not a multi-qubit state, " "specify input state dims"
+            )
     else:
         dimensions = list(dimensions)
 
@@ -154,12 +155,12 @@ def __partial_trace_mat(mat, trace_systems, dimensions, reverse=True):
         # Partition subsystem dimensions
         dimension_trace = int(dimensions[j])  # traced out system
         if reverse:
-            left_dimensions = dimensions[j + 1:]
+            left_dimensions = dimensions[j + 1 :]
             right_dimensions = dimensions[:j]
             dimensions = right_dimensions + left_dimensions
         else:
             left_dimensions = dimensions[:j]
-            right_dimensions = dimensions[j + 1:]
+            right_dimensions = dimensions[j + 1 :]
             dimensions = left_dimensions + right_dimensions
         # Contract remaining dimensions
         dimension_left = int(np.prod(left_dimensions))
@@ -167,16 +168,24 @@ def __partial_trace_mat(mat, trace_systems, dimensions, reverse=True):
 
         # Reshape input array into tri-partite system with system to be
         # traced as the middle index
-        mat = mat.reshape([dimension_left, dimension_trace, dimension_right,
-                           dimension_left, dimension_trace, dimension_right])
+        mat = mat.reshape(
+            [
+                dimension_left,
+                dimension_trace,
+                dimension_right,
+                dimension_left,
+                dimension_trace,
+                dimension_right,
+            ]
+        )
         # trace out the middle system and reshape back to a matrix
         mat = mat.trace(axis1=1, axis2=4).reshape(
-            dimension_left * dimension_right,
-            dimension_left * dimension_right)
+            dimension_left * dimension_right, dimension_left * dimension_right
+        )
     return mat
 
 
-def vectorize(density_matrix, method='col'):
+def vectorize(density_matrix, method="col"):
     """Flatten an operator to a vector in a specified basis.
 
     Args:
@@ -194,25 +203,24 @@ def vectorize(density_matrix, method='col'):
         Exception: if input state is not a n-qubit state
     """
     density_matrix = np.array(density_matrix)
-    if method == 'col':
-        return density_matrix.flatten(order='F')
-    elif method == 'row':
-        return density_matrix.flatten(order='C')
-    elif method in ['pauli', 'pauli_weights']:
+    if method == "col":
+        return density_matrix.flatten(order="F")
+    elif method == "row":
+        return density_matrix.flatten(order="C")
+    elif method in ["pauli", "pauli_weights"]:
         num = int(np.log2(len(density_matrix)))  # number of qubits
-        if len(density_matrix) != 2**num:
-            raise Exception('Input state must be n-qubit state')
-        if method == 'pauli_weights':
-            pgroup = pauli_group(num, case='weight')
+        if len(density_matrix) != 2 ** num:
+            raise Exception("Input state must be n-qubit state")
+        if method == "pauli_weights":
+            pgroup = pauli_group(num, case="weight")
         else:
-            pgroup = pauli_group(num, case='tensor')
-        vals = [np.trace(np.dot(p.to_matrix(), density_matrix))
-                for p in pgroup]
+            pgroup = pauli_group(num, case="tensor")
+        vals = [np.trace(np.dot(p.to_matrix(), density_matrix)) for p in pgroup]
         return np.array(vals)
     return None
 
 
-def devectorize(vectorized_mat, method='col'):
+def devectorize(vectorized_mat, method="col"):
     """Devectorize a vectorized square matrix.
 
     Args:
@@ -232,20 +240,20 @@ def devectorize(vectorized_mat, method='col'):
     vectorized_mat = np.array(vectorized_mat)
     dimension = int(np.sqrt(vectorized_mat.size))
     if len(vectorized_mat) != dimension * dimension:
-        raise Exception('Input is not a vectorized square matrix')
+        raise Exception("Input is not a vectorized square matrix")
 
-    if method == 'col':
-        return vectorized_mat.reshape(dimension, dimension, order='F')
-    elif method == 'row':
-        return vectorized_mat.reshape(dimension, dimension, order='C')
-    elif method in ['pauli', 'pauli_weights']:
+    if method == "col":
+        return vectorized_mat.reshape(dimension, dimension, order="F")
+    elif method == "row":
+        return vectorized_mat.reshape(dimension, dimension, order="C")
+    elif method in ["pauli", "pauli_weights"]:
         num_qubits = int(np.log2(dimension))  # number of qubits
         if dimension != 2 ** num_qubits:
-            raise Exception('Input state must be n-qubit state')
-        if method == 'pauli_weights':
-            pgroup = pauli_group(num_qubits, case='weight')
+            raise Exception("Input state must be n-qubit state")
+        if method == "pauli_weights":
+            pgroup = pauli_group(num_qubits, case="weight")
         else:
-            pgroup = pauli_group(num_qubits, case='tensor')
+            pgroup = pauli_group(num_qubits, case="tensor")
         pbasis = np.array([p.to_matrix() for p in pgroup]) / 2 ** num_qubits
         return np.tensordot(vectorized_mat, pbasis, axes=1)
     return None
@@ -277,9 +285,9 @@ def choi_to_rauli(choi, order=1):
         np.array: A superoperator in the Pauli basis.
     """
     if order == 0:
-        order = 'weight'
+        order = "weight"
     elif order == 1:
-        order = 'tensor'
+        order = "tensor"
 
     # get number of qubits'
     num_qubits = int(np.log2(np.sqrt(len(choi))))
@@ -339,23 +347,28 @@ def outer(vector1, vector2=None):
 # Random Matrices.
 ###############################################################
 
+
 def random_unitary_matrix(dim, seed=None):
     """Deprecated in 0.8+
     """
-    warnings.warn('The random_unitary_matrix() function in qiskit.tools.qi has been '
-                  'deprecated and will be removed in the future. Instead use '
-                  'the function in qiskit.quantum_info.random',
-                  DeprecationWarning)
+    warnings.warn(
+        "The random_unitary_matrix() function in qiskit.tools.qi has been "
+        "deprecated and will be removed in the future. Instead use "
+        "the function in qiskit.quantum_info.random",
+        DeprecationWarning,
+    )
     return random.random_unitary(dim, seed).data
 
 
-def random_density_matrix(length, rank=None, method='Hilbert-Schmidt', seed=None):
+def random_density_matrix(length, rank=None, method="Hilbert-Schmidt", seed=None):
     """Deprecated in 0.8+
     """
-    warnings.warn('The random_density_matrix() function in qiskit.tools.qi has been '
-                  'deprecated and will be removed in the future. Instead use '
-                  'the function in qiskit.quantum_info.random',
-                  DeprecationWarning)
+    warnings.warn(
+        "The random_density_matrix() function in qiskit.tools.qi has been "
+        "deprecated and will be removed in the future. Instead use "
+        "the function in qiskit.quantum_info.random",
+        DeprecationWarning,
+    )
     return random.random_density_matrix(length, rank, method, seed)
 
 
@@ -372,10 +385,12 @@ def purity(state):
     Returns:
         float: purity.
     """
-    warnings.warn('The purity() function in qiskit.tools.qi has been '
-                  'deprecated and will be removed in the future. Instead use '
-                  'the purity() function in qiskit.quantum_info',
-                  DeprecationWarning)
+    warnings.warn(
+        "The purity() function in qiskit.tools.qi has been "
+        "deprecated and will be removed in the future. Instead use "
+        "the purity() function in qiskit.quantum_info",
+        DeprecationWarning,
+    )
     return new_purity(state)
 
 
@@ -418,16 +433,21 @@ def shannon_entropy(pvec, base=2):
         float: The Shannon entropy H(pvec).
     """
     if base == 2:
+
         def logfn(x):
-            return - x * np.log2(x)
+            return -x * np.log2(x)
+
     elif base == np.e:
+
         def logfn(x):
-            return - x * np.log(x)
+            return -x * np.log(x)
+
     else:
+
         def logfn(x):
             return -x * np.log(x) / np.log(base)
 
-    h = 0.
+    h = 0.0
     for x in pvec:
         if 0 < x < 1:
             h += logfn(x)
@@ -449,7 +469,7 @@ def entropy(state):
     rho = np.array(state)
     if rho.ndim == 1:
         return 0
-    evals = np.maximum(np.linalg.eigvalsh(state), 0.)
+    evals = np.maximum(np.linalg.eigvalsh(state), 0.0)
     return shannon_entropy(evals, base=np.e)
 
 
@@ -505,7 +525,7 @@ def entanglement_of_formation(state, d0, d1=None):
         state = partial_trace(state, tr, dimensions=[d0, d1])
         return entropy(state)
     else:
-        print('Input must be a state-vector or 2-qubit density matrix.')
+        print("Input must be a state-vector or 2-qubit density matrix.")
     return None
 
 

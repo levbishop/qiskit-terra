@@ -38,7 +38,7 @@ class Measure(Instruction):
             for each_carg in carg:
                 yield qarg, [each_carg]
         else:
-            raise QiskitError('register size error')
+            raise QiskitError("register size error")
 
 
 def measure(self, qubit, cbit):

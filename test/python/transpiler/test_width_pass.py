@@ -33,7 +33,7 @@ class TestWidthPass(QiskitTestCase):
         pass_ = Width()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['width'], 0)
+        self.assertEqual(pass_.property_set["width"], 0)
 
     def test_just_qubits(self):
         """ A dag with 8 operations and no classic bits"""
@@ -52,8 +52,8 @@ class TestWidthPass(QiskitTestCase):
         pass_ = Width()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['width'], 2)
+        self.assertEqual(pass_.property_set["width"], 2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

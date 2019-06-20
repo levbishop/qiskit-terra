@@ -29,8 +29,13 @@ from qiskit.pulse.exceptions import PulseError
 class Instruction(ScheduleComponent):
     """An abstract class for leaf nodes of schedule."""
 
-    def __init__(self, command, *channels: List[Channel],
-                 timeslots: TimeslotCollection = None, name=None):
+    def __init__(
+        self,
+        command,
+        *channels: List[Channel],
+        timeslots: TimeslotCollection = None,
+        name=None,
+    ):
         """
         command (Command): Pulse command to schedule
         *channels: List of pulse channels to schedule with command
@@ -42,12 +47,13 @@ class Instruction(ScheduleComponent):
         self._name = name if name else self._command.name
 
         if timeslots and channels:
-            raise PulseError('Channels and timeslots may not both be supplied.')
+            raise PulseError("Channels and timeslots may not both be supplied.")
 
         if not timeslots:
             duration = command.duration
-            self._timeslots = TimeslotCollection(*(Timeslot(Interval(0, duration), channel)
-                                                   for channel in channels))
+            self._timeslots = TimeslotCollection(
+                *(Timeslot(Interval(0, duration), channel) for channel in channels)
+            )
         else:
             self._timeslots = timeslots
 
@@ -104,7 +110,7 @@ class Instruction(ScheduleComponent):
         return ()
 
     @property
-    def instructions(self) -> Tuple[Tuple[int, 'Instruction']]:
+    def instructions(self) -> Tuple[Tuple[int, "Instruction"]]:
         """Iterable for getting instructions from Schedule tree."""
         return tuple(self._instructions())
 
@@ -132,7 +138,7 @@ class Instruction(ScheduleComponent):
         """
         return self.timeslots.ch_stop_time(*channels)
 
-    def _instructions(self, time: int = 0) -> Iterable[Tuple[int, 'Instruction']]:
+    def _instructions(self, time: int = 0) -> Iterable[Tuple[int, "Instruction"]]:
         """Iterable for flattening Schedule tree.
 
         Args:
@@ -144,11 +150,13 @@ class Instruction(ScheduleComponent):
         """
         yield (time, self)
 
-    def flatten(self) -> 'Instruction':
+    def flatten(self) -> "Instruction":
         """Return itself as already single instruction."""
         return self
 
-    def union(self, *schedules: List[ScheduleComponent], name: str = None) -> 'ScheduleComponent':
+    def union(
+        self, *schedules: List[ScheduleComponent], name: str = None
+    ) -> "ScheduleComponent":
         """Return a new schedule which is the union of `self` and `schedule`.
 
         Args:
@@ -157,7 +165,9 @@ class Instruction(ScheduleComponent):
         """
         return ops.union(self, *schedules, name=name)
 
-    def shift(self: ScheduleComponent, time: int, name: str = None) -> 'ScheduleComponent':
+    def shift(
+        self: ScheduleComponent, time: int, name: str = None
+    ) -> "ScheduleComponent":
         """Return a new schedule shifted forward by `time`.
 
         Args:
@@ -166,8 +176,13 @@ class Instruction(ScheduleComponent):
         """
         return ops.shift(self, time, name=name)
 
-    def insert(self, start_time: int, schedule: ScheduleComponent, buffer: bool = False,
-               name: str = None) -> 'ScheduleComponent':
+    def insert(
+        self,
+        start_time: int,
+        schedule: ScheduleComponent,
+        buffer: bool = False,
+        name: str = None,
+    ) -> "ScheduleComponent":
         """Return a new schedule with `schedule` inserted within `self` at `start_time`.
 
         Args:
@@ -178,8 +193,9 @@ class Instruction(ScheduleComponent):
         """
         return ops.insert(self, start_time, schedule, buffer=buffer, name=name)
 
-    def append(self, schedule: ScheduleComponent, buffer: bool = True,
-               name: str = None) -> 'ScheduleComponent':
+    def append(
+        self, schedule: ScheduleComponent, buffer: bool = True, name: str = None
+    ) -> "ScheduleComponent":
         """Return a new schedule with `schedule` inserted at the maximum time over
         all channels shared between `self` and `schedule`.
 
@@ -190,12 +206,21 @@ class Instruction(ScheduleComponent):
         """
         return ops.append(self, schedule, buffer=buffer, name=name)
 
-    def draw(self, dt: float = 1, style=None,
-             filename: str = None, interp_method: Callable = None, scaling: float = 1,
-             channels_to_plot: List[Channel] = None, plot_all: bool = False,
-             plot_range: Tuple[float] = None, interactive: bool = False,
-             table: bool = True, label: bool = False,
-             framechange: bool = True):
+    def draw(
+        self,
+        dt: float = 1,
+        style=None,
+        filename: str = None,
+        interp_method: Callable = None,
+        scaling: float = 1,
+        channels_to_plot: List[Channel] = None,
+        plot_all: bool = False,
+        plot_range: Tuple[float] = None,
+        interactive: bool = False,
+        table: bool = True,
+        label: bool = False,
+        framechange: bool = True,
+    ):
         """Plot the instruction.
 
         Args:
@@ -221,22 +246,31 @@ class Instruction(ScheduleComponent):
 
         from qiskit import visualization
 
-        return visualization.pulse_drawer(self, dt=dt, style=style,
-                                          filename=filename, interp_method=interp_method,
-                                          scaling=scaling, channels_to_plot=channels_to_plot,
-                                          plot_all=plot_all, plot_range=plot_range,
-                                          interactive=interactive, table=table,
-                                          label=label, framechange=framechange)
+        return visualization.pulse_drawer(
+            self,
+            dt=dt,
+            style=style,
+            filename=filename,
+            interp_method=interp_method,
+            scaling=scaling,
+            channels_to_plot=channels_to_plot,
+            plot_all=plot_all,
+            plot_range=plot_range,
+            interactive=interactive,
+            table=table,
+            label=label,
+            framechange=framechange,
+        )
 
-    def __add__(self, schedule: ScheduleComponent) -> 'ScheduleComponent':
+    def __add__(self, schedule: ScheduleComponent) -> "ScheduleComponent":
         """Return a new schedule with `schedule` inserted within `self` at `start_time`."""
         return self.append(schedule)
 
-    def __or__(self, schedule: ScheduleComponent) -> 'ScheduleComponent':
+    def __or__(self, schedule: ScheduleComponent) -> "ScheduleComponent":
         """Return a new schedule which is the union of `self` and `schedule`."""
         return self.union(schedule)
 
-    def __lshift__(self, time: int) -> 'ScheduleComponent':
+    def __lshift__(self, time: int) -> "ScheduleComponent":
         """Return a new schedule which is shifted forward by `time`."""
         return self.shift(time)
 

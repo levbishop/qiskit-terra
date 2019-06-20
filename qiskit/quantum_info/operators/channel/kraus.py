@@ -97,23 +97,20 @@ class Kraus(QuantumChannel):
                 for i in data[1:]:
                     op = np.array(i, dtype=complex)
                     if op.shape != shape:
-                        raise QiskitError(
-                            "Kraus operators are different dimensions.")
+                        raise QiskitError("Kraus operators are different dimensions.")
                     kraus.append(op)
                 # Convert single Kraus set to general Kraus pair
                 kraus = (kraus, None)
 
             # Check if generalized Kraus set ([A_i], [B_i]) for channel:
             # E(rho) = sum_i A_i * rho * B_i^dagger
-            elif isinstance(data,
-                            tuple) and len(data) == 2 and len(data[0]) > 0:
+            elif isinstance(data, tuple) and len(data) == 2 and len(data[0]) > 0:
                 kraus_left = [np.array(data[0][0], dtype=complex)]
                 shape = kraus_left[0].shape
                 for i in data[0][1:]:
                     op = np.array(i, dtype=complex)
                     if op.shape != shape:
-                        raise QiskitError(
-                            "Kraus operators are different dimensions.")
+                        raise QiskitError("Kraus operators are different dimensions.")
                     kraus_left.append(op)
                 if data[1] is None:
                     kraus = (kraus_left, None)
@@ -123,7 +120,8 @@ class Kraus(QuantumChannel):
                         op = np.array(i, dtype=complex)
                         if op.shape != shape:
                             raise QiskitError(
-                                "Kraus operators are different dimensions.")
+                                "Kraus operators are different dimensions."
+                            )
                         kraus_right.append(op)
                     kraus = (kraus_left, kraus_right)
             else:
@@ -154,11 +152,10 @@ class Kraus(QuantumChannel):
         # Initialize either single or general Kraus
         if kraus[1] is None or np.allclose(kraus[0], kraus[1]):
             # Standard Kraus map
-            super().__init__('Kraus', (kraus[0], None), input_dims,
-                             output_dims)
+            super().__init__("Kraus", (kraus[0], None), input_dims, output_dims)
         else:
             # General (non-CPTP) Kraus map
-            super().__init__('Kraus', kraus, input_dims, output_dims)
+            super().__init__("Kraus", kraus, input_dims, output_dims)
 
     @property
     def data(self):
@@ -198,9 +195,11 @@ class Kraus(QuantumChannel):
         kraus_l = [k.T for k in kraus_l]
         if kraus_r is not None:
             kraus_r = [k.T for k in kraus_r]
-        return Kraus((kraus_l, kraus_r),
-                     input_dims=self.output_dims(),
-                     output_dims=self.input_dims())
+        return Kraus(
+            (kraus_l, kraus_r),
+            input_dims=self.output_dims(),
+            output_dims=self.input_dims(),
+        )
 
     def compose(self, other, qargs=None, front=False):
         """Return the composition channel self∘other.
@@ -220,18 +219,15 @@ class Kraus(QuantumChannel):
             has incompatible dimensions.
         """
         if qargs is not None:
-            return Kraus(
-                SuperOp(self).compose(other, qargs=qargs, front=front))
+            return Kraus(SuperOp(self).compose(other, qargs=qargs, front=front))
 
         if not isinstance(other, Kraus):
             other = Kraus(other)
         # Check dimensions match up
         if front and self._input_dim != other._output_dim:
-            raise QiskitError(
-                'input_dim of self must match output_dim of other')
+            raise QiskitError("input_dim of self must match output_dim of other")
         if not front and self._output_dim != other._input_dim:
-            raise QiskitError(
-                'input_dim of other must match output_dim of self')
+            raise QiskitError("input_dim of other must match output_dim of self")
 
         if front:
             ka_l, ka_r = self._data
@@ -391,8 +387,7 @@ class Kraus(QuantumChannel):
             raise QiskitError(
                 "QuantumChannel input dimension is not equal to state dimension."
             )
-        if state.ndim == 1 and self._data[1] is None and len(
-                self._data[0]) == 1:
+        if state.ndim == 1 and self._data[1] is None and len(self._data[0]) == 1:
             # If we only have a single Kraus operator we can implement unitary-type
             # evolution of a state vector psi -> K[0].psi
             return np.dot(self._data[0][0], state)
@@ -401,8 +396,7 @@ class Kraus(QuantumChannel):
         kraus_l, kraus_r = self._data
         if kraus_r is None:
             kraus_r = kraus_l
-        return np.einsum('AiB,BC,AjC->ij', kraus_l, state,
-                         np.conjugate(kraus_r))
+        return np.einsum("AiB,BC,AjC->ij", kraus_l, state, np.conjugate(kraus_r))
 
     def _tensor_product(self, other, reverse=False):
         """Return the tensor product channel.

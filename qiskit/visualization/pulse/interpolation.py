@@ -23,7 +23,7 @@ from scipy import interpolate
 import numpy as np
 
 
-def interp1d(time, samples, nop, kind='linear'):
+def interp1d(time, samples, nop, kind="linear"):
     """Scipy interpolation wrapper.
 
     Args:
@@ -49,8 +49,8 @@ def interp1d(time, samples, nop, kind='linear'):
     return time_, cs_ry(time_), cs_iy(time_)
 
 
-linear = partial(interp1d, kind='linear')
+linear = partial(interp1d, kind="linear")
 
-cubic_spline = partial(interp1d, kind='cubic')
+cubic_spline = partial(interp1d, kind="cubic")
 
-step_wise = partial(interp1d, kind='nearest')
+step_wise = partial(interp1d, kind="nearest")

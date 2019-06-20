@@ -66,5 +66,5 @@ class TestLoConfig(QiskitTestCase):
         self.assertEqual(3.4, user_lo_config.qubit_los[channel])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

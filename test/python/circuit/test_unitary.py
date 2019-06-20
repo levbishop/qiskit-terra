@@ -41,7 +41,7 @@ class TestUnitaryGate(QiskitTestCase):
             UnitaryGate([[0, 1], [1, 0]])
         # pylint: disable=broad-except
         except Exception as err:
-            self.fail('unexpected exception in init of Unitary: {0}'.format(err))
+            self.fail("unexpected exception in init of Unitary: {0}".format(err))
 
     def test_set_matrix_raises(self):
         """test non-unitary"""
@@ -51,7 +51,7 @@ class TestUnitaryGate(QiskitTestCase):
         except Exception:
             pass
         else:
-            self.fail('setting Unitary with non-unitary did not raise')
+            self.fail("setting Unitary with non-unitary did not raise")
 
     def test_set_init_with_unitary(self):
         """test instantiation of new unitary with another one (copy)"""
@@ -69,8 +69,7 @@ class TestUnitaryGate(QiskitTestCase):
     def test_adjoint(self):
         """test adjoint operation"""
         uni = UnitaryGate([[0, 1j], [-1j, 0]])
-        self.assertTrue(numpy.array_equal(uni.adjoint().to_matrix(),
-                                          uni.to_matrix()))
+        self.assertTrue(numpy.array_equal(uni.adjoint().to_matrix(), uni.to_matrix()))
 
 
 class TestUnitaryCircuit(QiskitTestCase):
@@ -89,7 +88,7 @@ class TestUnitaryCircuit(QiskitTestCase):
         # test of text drawer
         self.log.info(qc)
         dag = circuit_to_dag(qc)
-        dag_nodes = dag.named_nodes('unitary')
+        dag_nodes = dag.named_nodes("unitary")
         self.assertTrue(len(dag_nodes) == 1)
         dnode = dag_nodes[0]
         self.assertIsInstance(dnode.op, UnitaryGate)
@@ -99,7 +98,7 @@ class TestUnitaryCircuit(QiskitTestCase):
 
     def test_2q_unitary(self):
         """test 2 qubit unitary matrix"""
-        backend = BasicAer.get_backend('qasm_simulator')
+        backend = BasicAer.get_backend("qasm_simulator")
         qr = QuantumRegister(2)
         cr = ClassicalRegister(2)
         qc = QuantumCircuit(qr, cr)
@@ -123,8 +122,7 @@ class TestUnitaryCircuit(QiskitTestCase):
         self.assertIsInstance(dnode.op, UnitaryGate)
         for qubit in dnode.qargs:
             self.assertTrue(qubit.index in [0, 1])
-        self.assertTrue(numpy.allclose(dnode.op.to_matrix(),
-                                       matrix))
+        self.assertTrue(numpy.allclose(dnode.op.to_matrix(), matrix))
         qc3 = dag_to_circuit(dag)
         self.assertEqual(qc2, qc3)
 
@@ -148,8 +146,7 @@ class TestUnitaryCircuit(QiskitTestCase):
         self.assertIsInstance(dnode.op, UnitaryGate)
         for qubit in dnode.qargs:
             self.assertTrue(qubit.index in [0, 1, 3])
-        self.assertTrue(numpy.allclose(dnode.op.to_matrix(),
-                                       matrix))
+        self.assertTrue(numpy.allclose(dnode.op.to_matrix(), matrix))
 
     def test_qobj_with_unitary_matrix(self):
         """test qobj output with unitary matrix"""
@@ -158,16 +155,16 @@ class TestUnitaryCircuit(QiskitTestCase):
         sigmax = numpy.array([[0, 1], [1, 0]])
         sigmay = numpy.array([[0, -1j], [1j, 0]])
         matrix = numpy.kron(sigmay, numpy.kron(sigmax, sigmay))
-        qc.rx(numpy.pi/4, qr[0])
+        qc.rx(numpy.pi / 4, qr[0])
         uni = UnitaryGate(matrix)
         qc.append(uni, [qr[0], qr[1], qr[3]])
         qc.cx(qr[3], qr[2])
         qobj = qiskit.compiler.assemble(qc)
         instr = qobj.experiments[0].instructions[1]
-        self.assertEqual(instr.name, 'unitary')
-        self.assertTrue(numpy.allclose(
-            numpy.array(instr.params).astype(numpy.complex64),
-            matrix))
+        self.assertEqual(instr.name, "unitary")
+        self.assertTrue(
+            numpy.allclose(numpy.array(instr.params).astype(numpy.complex64), matrix)
+        )
         # check conversion to dict
         qobj_dict = qobj.to_dict()
         # check json serialization
@@ -180,9 +177,9 @@ class TestUnitaryCircuit(QiskitTestCase):
         sigmax = numpy.array([[0, 1], [1, 0]])
         sigmay = numpy.array([[0, -1j], [1j, 0]])
         matrix = numpy.kron(sigmax, sigmay)
-        uni = UnitaryGate(matrix, label='xy')
+        uni = UnitaryGate(matrix, label="xy")
         qc.append(uni, [qr[0], qr[1]])
         qobj = qiskit.compiler.assemble(qc)
         instr = qobj.experiments[0].instructions[0]
-        self.assertEqual(instr.name, 'unitary')
-        self.assertEqual(instr.label, 'xy')
+        self.assertEqual(instr.name, "unitary")
+        self.assertEqual(instr.label, "xy")

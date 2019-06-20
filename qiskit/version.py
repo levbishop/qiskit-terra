@@ -27,17 +27,21 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 def _minimal_ext_cmd(cmd):
     # construct minimal environment
     env = {}
-    for k in ['SYSTEMROOT', 'PATH']:
+    for k in ["SYSTEMROOT", "PATH"]:
         v = os.environ.get(k)
         if v is not None:
             env[k] = v
     # LANGUAGE is used on win32
-    env['LANGUAGE'] = 'C'
-    env['LANG'] = 'C'
-    env['LC_ALL'] = 'C'
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
-                            stderr=subprocess.PIPE, env=env,
-                            cwd=os.path.join(os.path.dirname(ROOT_DIR)))
+    env["LANGUAGE"] = "C"
+    env["LANG"] = "C"
+    env["LC_ALL"] = "C"
+    proc = subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        env=env,
+        cwd=os.path.join(os.path.dirname(ROOT_DIR)),
+    )
     out = proc.communicate()[0]
     if proc.returncode > 0:
         raise OSError
@@ -48,8 +52,8 @@ def git_version():
     """Get the current git head sha1."""
     # Determine if we're at master
     try:
-        out = _minimal_ext_cmd(['git', 'rev-parse', 'HEAD'])
-        git_revision = out.strip().decode('ascii')
+        out = _minimal_ext_cmd(["git", "rev-parse", "HEAD"])
+        git_revision = out.strip().decode("ascii")
     except OSError:
         git_revision = "Unknown"
 
@@ -67,15 +71,15 @@ def get_version_info():
     # up the build under Python 3.
     full_version = VERSION
 
-    if not os.path.exists(os.path.join(os.path.dirname(ROOT_DIR), '.git')):
+    if not os.path.exists(os.path.join(os.path.dirname(ROOT_DIR), ".git")):
         return full_version
     try:
-        release = _minimal_ext_cmd(['git', 'tag', '-l', '--points-at', 'HEAD'])
+        release = _minimal_ext_cmd(["git", "tag", "-l", "--points-at", "HEAD"])
     except Exception:  # pylint: disable=broad-except
         return full_version
     git_revision = git_version()
     if not release:
-        full_version += '.dev0+' + git_revision[:7]
+        full_version += ".dev0+" + git_revision[:7]
 
     return full_version
 
@@ -85,55 +89,70 @@ __version__ = get_version_info()
 
 def _get_qiskit_versions():
     out_dict = {}
-    out_dict['qiskit-terra'] = __version__
+    out_dict["qiskit-terra"] = __version__
     try:
         from qiskit.providers import aer
-        out_dict['qiskit-aer'] = aer.__version__
+
+        out_dict["qiskit-aer"] = aer.__version__
     except Exception:
         pass
     try:
         from qiskit import ignis
-        out_dict['qiskit-ignis'] = ignis.__version__
+
+        out_dict["qiskit-ignis"] = ignis.__version__
     except Exception:
         pass
     try:
         from qiskit.providers import ibmq
-        out_dict['qiskit-ibmq-provider'] = ibmq.__version__
+
+        out_dict["qiskit-ibmq-provider"] = ibmq.__version__
     except Exception:
         pass
     try:
         from qiskit import aqua
-        out_dict['qiskit-aqua'] = aqua.__version__
+
+        out_dict["qiskit-aqua"] = aqua.__version__
     except Exception:
         pass
 
-    cmd = [sys.executable, '-m', 'pip', 'freeze']
+    cmd = [sys.executable, "-m", "pip", "freeze"]
     try:
         reqs = _minimal_ext_cmd(cmd)
     except Exception:
         return out_dict
     reqs_dict = {}
     for req in reqs.split():
-        req_parts = req.decode().split('==')
-        if len(req_parts) == 1 and req_parts[0].startswith('git'):
-            if 'qiskit' in req_parts[0]:
-                package = req_parts[0].split('#egg=')[1]
-                sha = req_parts[0].split('@')[-1].split('#')[0]
-                reqs_dict[package] = 'dev-' + sha
+        req_parts = req.decode().split("==")
+        if len(req_parts) == 1 and req_parts[0].startswith("git"):
+            if "qiskit" in req_parts[0]:
+                package = req_parts[0].split("#egg=")[1]
+                sha = req_parts[0].split("@")[-1].split("#")[0]
+                reqs_dict[package] = "dev-" + sha
             continue
         elif len(req_parts) == 1:
             continue
         reqs_dict[req_parts[0]] = req_parts[1]
     # Dev/Egg _ to - conversion
-    for package in ['qiskit_terra', 'qiskit_ignis', 'qiskit_aer',
-                    'qiskit_ibmq_provider', 'qiskit_aqua']:
+    for package in [
+        "qiskit_terra",
+        "qiskit_ignis",
+        "qiskit_aer",
+        "qiskit_ibmq_provider",
+        "qiskit_aqua",
+    ]:
         if package in reqs_dict:
-            if package.replace('_', '-') in out_dict:
+            if package.replace("_", "-") in out_dict:
                 continue
-            out_dict[package.replace('_', '-')] = reqs_dict[package]
+            out_dict[package.replace("_", "-")] = reqs_dict[package]
 
-    for package in ['qiskit', 'qiskit-terra', 'qiskit-ignis', 'qiskit-aer',
-                    'qiskit-ibmq-provider', 'qiskit-aqua']:
+    for package in [
+        "qiskit",
+        "qiskit-terra",
+        "qiskit-ignis",
+        "qiskit-aer",
+        "qiskit-ibmq-provider",
+        "qiskit-aqua",
+    ]:
         if package in out_dict:
             continue
         if package in reqs_dict:

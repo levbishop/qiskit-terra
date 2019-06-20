@@ -49,7 +49,7 @@ class Unroller(TransformationPass):
         """
         # Walk through the DAG and expand each non-basis node
         for node in dag.op_nodes():
-            basic_insts = ['measure', 'reset', 'barrier', 'snapshot']
+            basic_insts = ["measure", "reset", "barrier", "snapshot"]
             if node.name in basic_insts:
                 # TODO: this is legacy behavior.Basis_insts should be removed that these
                 #  instructions should be part of the device-reported basis. Currently, no
@@ -63,14 +63,20 @@ class Unroller(TransformationPass):
                 rule = node.op.definition
             except TypeError as err:
                 if any(isinstance(p, Parameter) for p in node.op.params):
-                    raise QiskitError('Unrolling gates parameterized by expressions '
-                                      'is currently unsupported.')
-                raise QiskitError('Error decomposing node {}: {}'.format(node.name, err))
+                    raise QiskitError(
+                        "Unrolling gates parameterized by expressions "
+                        "is currently unsupported."
+                    )
+                raise QiskitError(
+                    "Error decomposing node {}: {}".format(node.name, err)
+                )
 
             if not rule:
-                raise QiskitError("Cannot unroll the circuit to the given basis, %s. "
-                                  "No rule to expand instruction %s." %
-                                  (str(self.basis), node.op.name))
+                raise QiskitError(
+                    "Cannot unroll the circuit to the given basis, %s. "
+                    "No rule to expand instruction %s."
+                    % (str(self.basis), node.op.name)
+                )
 
             # hacky way to build a dag on the same register as the rule is defined
             # TODO: need anonymous rules to address wires by index

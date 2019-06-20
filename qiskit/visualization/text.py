@@ -24,7 +24,7 @@ from numpy import ndarray
 from .exceptions import VisualizationError
 
 
-class DrawElement():
+class DrawElement:
     """ An element is an instruction or an operation that need to be drawn."""
 
     def __init__(self, label=None):
@@ -42,8 +42,7 @@ class DrawElement():
     @property
     def top(self):
         """ Constructs the top line of the element"""
-        ret = self.top_format % self.top_connect.center(
-            self.width, self.top_pad)
+        ret = self.top_format % self.top_connect.center(self.width, self.top_pad)
         if self.right_fill:
             ret = ret.ljust(self.right_fill, self.top_pad)
         if self.left_fill:
@@ -54,8 +53,7 @@ class DrawElement():
     @property
     def mid(self):
         """ Constructs the middle line of the element"""
-        ret = self.mid_format % self.mid_content.center(
-            self.width, self._mid_padding)
+        ret = self.mid_format % self.mid_content.center(self.width, self._mid_padding)
         if self.right_fill:
             ret = ret.ljust(self.right_fill, self._mid_padding)
         if self.left_fill:
@@ -66,8 +64,7 @@ class DrawElement():
     @property
     def bot(self):
         """ Constructs the bottom line of the element"""
-        ret = self.bot_format % self.bot_connect.center(
-            self.width, self.bot_pad)
+        ret = self.bot_format % self.bot_connect.center(self.width, self.bot_pad)
         if self.right_fill:
             ret = ret.ljust(self.right_fill, self.bot_pad)
         if self.left_fill:
@@ -100,10 +97,10 @@ class DrawElement():
             label (string): Some connectors have a label (see cu1, for example).
         """
 
-        if 'top' in where and self.top_connector:
+        if "top" in where and self.top_connector:
             self.top_connect = self.top_connector[wire_char]
 
-        if 'bot' in where and self.bot_connector:
+        if "bot" in where and self.bot_connector:
             self.bot_connect = self.bot_connector[wire_char]
 
         if label:
@@ -117,13 +114,13 @@ class BoxOnClWire(DrawElement):
         bot: └───┘   └───┘
     """
 
-    def __init__(self, label="", top_connect='─', bot_connect='─'):
+    def __init__(self, label="", top_connect="─", bot_connect="─"):
         super().__init__(label)
         self.top_format = "┌─%s─┐"
         self.mid_format = "╡ %s ╞"
         self.bot_format = "└─%s─┘"
-        self.top_pad = self.bot_pad = '─'
-        self.mid_bck = '═'
+        self.top_pad = self.bot_pad = "─"
+        self.mid_bck = "═"
         self.top_connect = top_connect
         self.bot_connect = bot_connect
         self.mid_content = label
@@ -136,17 +133,17 @@ class BoxOnQuWire(DrawElement):
         bot: └───┘   └───┘
     """
 
-    def __init__(self, label="", top_connect='─', conditional=False):
+    def __init__(self, label="", top_connect="─", conditional=False):
         super().__init__(label)
         self.top_format = "┌─%s─┐"
         self.mid_format = "┤ %s ├"
         self.bot_format = "└─%s─┘"
-        self.top_pad = self.bot_pad = self.mid_bck = '─'
+        self.top_pad = self.bot_pad = self.mid_bck = "─"
         self.top_connect = top_connect
-        self.bot_connect = '┬' if conditional else '─'
+        self.bot_connect = "┬" if conditional else "─"
         self.mid_content = label
-        self.top_connector = {"│": '┴'}
-        self.bot_connector = {"│": '┬'}
+        self.top_connector = {"│": "┴"}
+        self.bot_connector = {"│": "┬"}
 
 
 class MeasureTo(DrawElement):
@@ -179,7 +176,7 @@ class MeasureFrom(BoxOnQuWire):
         self.bot_connect = "└╥┘"
 
         self.top_pad = self.bot_pad = " "
-        self._mid_padding = '─'
+        self._mid_padding = "─"
 
 
 class MultiBox(DrawElement):
@@ -192,7 +189,7 @@ class MultiBox(DrawElement):
             input_length (int): Rhe amount of wires affected.
             order (int): Which middle element is this one?
         """
-        location_in_the_box = '*'.center(input_length * 2 - 1).index('*') + 1
+        location_in_the_box = "*".center(input_length * 2 - 1).index("*") + 1
         top_limit = order * 2 + 2
         bot_limit = top_limit + 2
         if top_limit <= location_in_the_box < bot_limit:
@@ -214,7 +211,7 @@ class MultiBox(DrawElement):
 class BoxOnQuWireTop(MultiBox, BoxOnQuWire):
     """ Draws the top part of a box that affects more than one quantum wire"""
 
-    def __init__(self, label="", top_connect=None, wire_label=''):
+    def __init__(self, label="", top_connect=None, wire_label=""):
         super().__init__(label)
         self.wire_label = wire_label
         self.bot_connect = self.bot_pad = " "
@@ -223,13 +220,13 @@ class BoxOnQuWireTop(MultiBox, BoxOnQuWire):
         self.top_format = "┌{}─%s─┐".format(self.top_pad * self.left_fill)
         self.mid_format = "┤{} %s ├".format(self.wire_label)
         self.bot_format = "│{} %s │".format(self.bot_pad * self.left_fill)
-        self.top_connect = top_connect if top_connect else '─'
+        self.top_connect = top_connect if top_connect else "─"
 
 
 class BoxOnQuWireMid(MultiBox, BoxOnQuWire):
     """ Draws the middle part of a box that affects more than one quantum wire"""
 
-    def __init__(self, label, input_length, order, wire_label=''):
+    def __init__(self, label, input_length, order, wire_label=""):
         super().__init__(label)
         self.top_pad = self.bot_pad = self.top_connect = self.bot_connect = " "
         self.wire_label = wire_label
@@ -237,14 +234,16 @@ class BoxOnQuWireMid(MultiBox, BoxOnQuWire):
         self.top_format = "│{} %s │".format(self.top_pad * self.left_fill)
         self.mid_format = "┤{} %s ├".format(self.wire_label)
         self.bot_format = "│{} %s │".format(self.bot_pad * self.left_fill)
-        self.top_connect = self.bot_connect = self.mid_content = ''
+        self.top_connect = self.bot_connect = self.mid_content = ""
         self.center_label(input_length, order)
 
 
 class BoxOnQuWireBot(MultiBox, BoxOnQuWire):
     """ Draws the bottom part of a box that affects more than one quantum wire"""
 
-    def __init__(self, label, input_length, bot_connect='─', wire_label='', conditional=False):
+    def __init__(
+        self, label, input_length, bot_connect="─", wire_label="", conditional=False
+    ):
         super().__init__(label)
         self.wire_label = wire_label
         self.top_pad = " "
@@ -252,7 +251,7 @@ class BoxOnQuWireBot(MultiBox, BoxOnQuWire):
         self.top_format = "│{} %s │".format(self.top_pad * self.left_fill)
         self.mid_format = "┤{} %s ├".format(self.wire_label)
         self.bot_format = "└{}%s──┘".format(self.bot_pad * self.left_fill)
-        self.bot_connect = '┬' if conditional else bot_connect
+        self.bot_connect = "┬" if conditional else bot_connect
 
         self.mid_content = self.top_connect = ""
         if input_length <= 2:
@@ -262,32 +261,32 @@ class BoxOnQuWireBot(MultiBox, BoxOnQuWire):
 class BoxOnClWireTop(MultiBox, BoxOnClWire):
     """ Draws the top part of a conditional box that affects more than one classical wire"""
 
-    def __init__(self, label="", top_connect=None, wire_label=''):
+    def __init__(self, label="", top_connect=None, wire_label=""):
         super().__init__(label)
         self.wire_label = wire_label
         self.mid_content = ""  # The label will be put by some other part of the box.
         self.bot_format = "│ %s │"
-        self.top_connect = top_connect if top_connect else '─'
+        self.top_connect = top_connect if top_connect else "─"
         self.bot_connect = self.bot_pad = " "
 
 
 class BoxOnClWireMid(MultiBox, BoxOnClWire):
     """ Draws the middle part of a conditional box that affects more than one classical wire"""
 
-    def __init__(self, label, input_length, order, wire_label=''):
+    def __init__(self, label, input_length, order, wire_label=""):
         super().__init__(label)
         self.wire_label = wire_label
         self.top_format = "│ %s │"
         self.bot_format = "│ %s │"
-        self.top_pad = self.bot_pad = ' '
-        self.top_connect = self.bot_connect = self.mid_content = ''
+        self.top_pad = self.bot_pad = " "
+        self.top_connect = self.bot_connect = self.mid_content = ""
         self.center_label(input_length, order)
 
 
 class BoxOnClWireBot(MultiBox, BoxOnClWire):
     """ Draws the bottom part of a conditional box that affects more than one classical wire"""
 
-    def __init__(self, label, input_length, bot_connect='─', wire_label='', **_):
+    def __init__(self, label, input_length, bot_connect="─", wire_label="", **_):
         super().__init__(label)
         self.wire_label = wire_label
         self.top_format = "│ %s │"
@@ -306,12 +305,12 @@ class DirectOnQuWire(DrawElement):
 
     def __init__(self, label=""):
         super().__init__(label)
-        self.top_format = ' %s '
-        self.mid_format = '─%s─'
-        self.bot_format = ' %s '
-        self._mid_padding = self.mid_bck = '─'
-        self.top_connector = {"│": '│'}
-        self.bot_connector = {"│": '│'}
+        self.top_format = " %s "
+        self.mid_format = "─%s─"
+        self.bot_format = " %s "
+        self._mid_padding = self.mid_bck = "─"
+        self.top_connector = {"│": "│"}
+        self.bot_connector = {"│": "│"}
 
 
 class Barrier(DirectOnQuWire):
@@ -359,10 +358,10 @@ class Bullet(DirectOnQuWire):
     """
 
     def __init__(self, top_connect="", bot_connect="", conditional=False):
-        super().__init__('■')
+        super().__init__("■")
         self.top_connect = top_connect
-        self.bot_connect = '│' if conditional else bot_connect
-        self.mid_bck = '─'
+        self.bot_connect = "│" if conditional else bot_connect
+        self.mid_bck = "─"
 
 
 class EmptyWire(DrawElement):
@@ -384,7 +383,7 @@ class EmptyWire(DrawElement):
             list: The new layer, with no Nones.
         """
         for nones in [i for i, x in enumerate(layer) if x is None]:
-            layer[nones] = EmptyWire('═') if nones >= first_clbit else EmptyWire('─')
+            layer[nones] = EmptyWire("═") if nones >= first_clbit else EmptyWire("─")
         return layer
 
 
@@ -438,28 +437,39 @@ class InputWire(DrawElement):
         return inputs_wires
 
 
-class TextDrawing():
+class TextDrawing:
     """ The text drawing"""
 
-    def __init__(self, qregs, cregs, instructions, plotbarriers=True,
-                 line_length=None, vertical_compression='high'):
+    def __init__(
+        self,
+        qregs,
+        cregs,
+        instructions,
+        plotbarriers=True,
+        line_length=None,
+        vertical_compression="high",
+    ):
         self.qregs = qregs
         self.cregs = cregs
         self.instructions = instructions
 
         self.plotbarriers = plotbarriers
         self.line_length = line_length
-        if vertical_compression not in ['high', 'medium', 'low']:
-            raise ValueError("Vertical compression can only be 'high', 'medium', or 'low'")
+        if vertical_compression not in ["high", "medium", "low"]:
+            raise ValueError(
+                "Vertical compression can only be 'high', 'medium', or 'low'"
+            )
         self.vertical_compression = vertical_compression
 
     def __str__(self):
         return self.single_string()
 
     def _repr_html_(self):
-        return '<pre style="word-wrap: normal;' \
-               'white-space: pre;' \
-               'line-height: 15px;">%s</pre>' % self.single_string()
+        return (
+            '<pre style="word-wrap: normal;'
+            "white-space: pre;"
+            'line-height: 15px;">%s</pre>' % self.single_string()
+        )
 
     def _get_qubit_labels(self):
         qubits = []
@@ -488,7 +498,7 @@ class TextDrawing():
             filename (str): File to dump the ascii art.
             encoding (str): Optional. Default "utf-8".
         """
-        with open(filename, mode='w', encoding=encoding) as text_file:
+        with open(filename, mode="w", encoding=encoding) as text_file:
             text_file.write(self.single_string())
 
     def lines(self, line_length=None):
@@ -507,7 +517,7 @@ class TextDrawing():
         if line_length is None:
             line_length = self.line_length
         if not line_length:
-            if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
+            if ("ipykernel" in sys.modules) and ("spyder" not in sys.modules):
                 line_length = 80
             else:
                 line_length, _ = get_terminal_size()
@@ -536,14 +546,15 @@ class TextDrawing():
                 layer_groups[-1].append(layer)
                 rest_of_the_line -= layer_length
             else:
-                layer_groups[-1].append(BreakWire.fillup_layer(len(layer), '»'))
+                layer_groups[-1].append(BreakWire.fillup_layer(len(layer), "»"))
 
                 # New group
-                layer_groups.append([BreakWire.fillup_layer(len(layer), '«')])
+                layer_groups.append([BreakWire.fillup_layer(len(layer), "«")])
                 rest_of_the_line = line_length - layer_groups[-1][-1][0].length
 
                 layer_groups[-1].append(
-                    InputWire.fillup_layer(self.wire_names(with_initial_value=False)))
+                    InputWire.fillup_layer(self.wire_names(with_initial_value=False))
+                )
                 rest_of_the_line -= layer_groups[-1][-1][0].length
 
                 layer_groups[-1].append(layer)
@@ -570,23 +581,23 @@ class TextDrawing():
         clbit_labels = self._get_clbit_labels()
 
         if with_initial_value:
-            qubit_labels = ['%s: |0>' % qubit for qubit in qubit_labels]
-            clbit_labels = ['%s: 0 ' % clbit for clbit in clbit_labels]
+            qubit_labels = ["%s: |0>" % qubit for qubit in qubit_labels]
+            clbit_labels = ["%s: 0 " % clbit for clbit in clbit_labels]
         else:
-            qubit_labels = ['%s: ' % qubit for qubit in qubit_labels]
-            clbit_labels = ['%s: ' % clbit for clbit in clbit_labels]
+            qubit_labels = ["%s: " % qubit for qubit in qubit_labels]
+            clbit_labels = ["%s: " % clbit for clbit in clbit_labels]
 
         return qubit_labels + clbit_labels
 
     def should_compress(self, top_line, bot_line):
         """Decides if the top_line and bot_line should be merged,
         based on `self.vertical_compression`."""
-        if self.vertical_compression == 'high':
+        if self.vertical_compression == "high":
             return True
-        if self.vertical_compression == 'low':
+        if self.vertical_compression == "low":
             return False
         for top, bot in zip(top_line, bot_line):
-            if top == '┴' and bot == '┬':
+            if top == "┴" and bot == "┬":
                 return False
         return True
 
@@ -602,7 +613,7 @@ class TextDrawing():
         bot_line = None
         for wire in wires:
             # TOP
-            top_line = ''
+            top_line = ""
             for instruction in wire:
                 top_line += instruction.top
 
@@ -612,16 +623,18 @@ class TextDrawing():
                 if self.should_compress(top_line, bot_line):
                     lines.append(TextDrawing.merge_lines(lines.pop(), top_line))
                 else:
-                    lines.append(TextDrawing.merge_lines(lines[-1], top_line, icod="bot"))
+                    lines.append(
+                        TextDrawing.merge_lines(lines[-1], top_line, icod="bot")
+                    )
 
             # MID
-            mid_line = ''
+            mid_line = ""
             for instruction in wire:
                 mid_line += instruction.mid
             lines.append(TextDrawing.merge_lines(lines[-1], mid_line, icod="bot"))
 
             # BOT
-            bot_line = ''
+            bot_line = ""
             for instruction in wire:
                 bot_line += instruction.bot
             lines.append(TextDrawing.merge_lines(lines[-1], bot_line, icod="bot"))
@@ -638,7 +651,7 @@ class TextDrawing():
         """Get the params and format them to add them to a label. None if there
          are no params of if the params are numpy.ndarrays."""
 
-        if not hasattr(instruction.op, 'params'):
+        if not hasattr(instruction.op, "params"):
             return None
         if all([isinstance(param, ndarray) for param in instruction.op.params]):
             return None
@@ -646,9 +659,9 @@ class TextDrawing():
         ret = []
         for param in instruction.op.params:
             if isinstance(param, (sympy.Number, float)):
-                ret.append('%.5g' % param)
+                ret.append("%.5g" % param)
             else:
-                ret.append('%s' % param)
+                ret.append("%s" % param)
         return ret
 
     @staticmethod
@@ -657,7 +670,7 @@ class TextDrawing():
         label = instruction.name.capitalize()
         params = TextDrawing.params_for_label(instruction)
         if params:
-            label += "(%s)" % ','.join(params)
+            label += "(%s)" % ",".join(params)
         return label
 
     @staticmethod
@@ -675,39 +688,39 @@ class TextDrawing():
         for topc, botc in zip(top, bot):
             if topc == botc:
                 ret += topc
-            elif topc in '┼╪' and botc == " ":
+            elif topc in "┼╪" and botc == " ":
                 ret += "│"
             elif topc == " ":
                 ret += botc
-            elif topc in '┬╥' and botc in " ║│" and icod == "top":
+            elif topc in "┬╥" and botc in " ║│" and icod == "top":
                 ret += topc
-            elif topc in '┬' and botc == " " and icod == "bot":
-                ret += '│'
-            elif topc in '╥' and botc == " " and icod == "bot":
-                ret += '║'
-            elif topc in '┬│' and botc == "═":
-                ret += '╪'
-            elif topc in '┬│' and botc == "─":
-                ret += '┼'
-            elif topc in '└┘║│░' and botc == " " and icod == "top":
+            elif topc in "┬" and botc == " " and icod == "bot":
+                ret += "│"
+            elif topc in "╥" and botc == " " and icod == "bot":
+                ret += "║"
+            elif topc in "┬│" and botc == "═":
+                ret += "╪"
+            elif topc in "┬│" and botc == "─":
+                ret += "┼"
+            elif topc in "└┘║│░" and botc == " " and icod == "top":
                 ret += topc
-            elif topc in '─═' and botc == " " and icod == "top":
+            elif topc in "─═" and botc == " " and icod == "top":
                 ret += topc
-            elif topc in '─═' and botc == " " and icod == "bot":
+            elif topc in "─═" and botc == " " and icod == "bot":
                 ret += botc
             elif topc in "║╥" and botc in "═":
                 ret += "╬"
             elif topc in "║╥" and botc in "─":
                 ret += "╫"
-            elif topc in '╫╬' and botc in " ":
+            elif topc in "╫╬" and botc in " ":
                 ret += "║"
-            elif topc == '└' and botc == "┌":
+            elif topc == "└" and botc == "┌":
                 ret += "├"
-            elif topc == '┘' and botc == "┐":
+            elif topc == "┘" and botc == "┐":
                 ret += "┤"
-            elif botc in "┐┌" and icod == 'top':
+            elif botc in "┐┌" and icod == "top":
                 ret += "┬"
-            elif topc in "┘└" and botc in "─" and icod == 'top':
+            elif topc in "┘└" and botc in "─" and icod == "top":
                 ret += "┴"
             else:
                 ret += botc
@@ -720,7 +733,9 @@ class TextDrawing():
         Args:
             layer (list): A list of elements.
         """
-        instructions = [instruction for instruction in filter(lambda x: x is not None, layer)]
+        instructions = [
+            instruction for instruction in filter(lambda x: x is not None, layer)
+        ]
         longest = max([instruction.length for instruction in instructions])
         for instruction in instructions:
             instruction.layer_width = longest
@@ -736,7 +751,7 @@ class TextDrawing():
         if instruction.condition is not None:
             # conditional
             cllabel = TextDrawing.label_for_conditional(instruction)
-            layer.set_cl_multibox(instruction.condition[0], cllabel, top_connect='┴')
+            layer.set_cl_multibox(instruction.condition[0], cllabel, top_connect="┴")
             conditional = True
 
         # add in a gate that operates over multiple qubits
@@ -746,13 +761,12 @@ class TextDrawing():
                 actual_index = self.qregs.index(instruction.qargs[i])
                 current_cons.append((actual_index, gate))
 
-        if instruction.name == 'measure':
+        if instruction.name == "measure":
             gate = MeasureFrom()
             layer.set_qubit(instruction.qargs[0], gate)
             layer.set_clbit(instruction.cargs[0], MeasureTo())
 
-        elif instruction.name in ['barrier', 'snapshot', 'save', 'load',
-                                  'noise']:
+        elif instruction.name in ["barrier", "snapshot", "save", "load", "noise"]:
             # barrier
             if not self.plotbarriers:
                 return layer, current_cons, connection_label
@@ -760,84 +774,99 @@ class TextDrawing():
             for qubit in instruction.qargs:
                 layer.set_qubit(qubit, Barrier())
 
-        elif instruction.name == 'swap':
+        elif instruction.name == "swap":
             # swap
             gates = [Ex(conditional=conditional) for _ in range(len(instruction.qargs))]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'cswap':
+        elif instruction.name == "cswap":
             # cswap
-            gates = [Bullet(conditional=conditional),
-                     Ex(conditional=conditional),
-                     Ex(conditional=conditional)]
+            gates = [
+                Bullet(conditional=conditional),
+                Ex(conditional=conditional),
+                Ex(conditional=conditional),
+            ]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'reset':
+        elif instruction.name == "reset":
             layer.set_qubit(instruction.qargs[0], Reset(conditional=conditional))
 
-        elif instruction.name in ['cx', 'CX', 'ccx']:
+        elif instruction.name in ["cx", "CX", "ccx"]:
             # cx/ccx
-            gates = [Bullet(conditional=conditional) for _ in range(len(instruction.qargs) - 1)]
-            gates.append(BoxOnQuWire('X', conditional=conditional))
+            gates = [
+                Bullet(conditional=conditional)
+                for _ in range(len(instruction.qargs) - 1)
+            ]
+            gates.append(BoxOnQuWire("X", conditional=conditional))
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'cy':
+        elif instruction.name == "cy":
             # cy
-            gates = [Bullet(conditional=conditional), BoxOnQuWire('Y')]
+            gates = [Bullet(conditional=conditional), BoxOnQuWire("Y")]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'cz':
+        elif instruction.name == "cz":
             # cz
             gates = [Bullet(conditional=conditional), Bullet(conditional=conditional)]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'ch':
+        elif instruction.name == "ch":
             # ch
-            gates = [Bullet(conditional=conditional), BoxOnQuWire('H')]
+            gates = [Bullet(conditional=conditional), BoxOnQuWire("H")]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'cu1':
+        elif instruction.name == "cu1":
             # cu1
             connection_label = TextDrawing.params_for_label(instruction)[0]
             gates = [Bullet(conditional=conditional), Bullet(conditional=conditional)]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'rzz':
+        elif instruction.name == "rzz":
             # rzz
             connection_label = "zz(%s)" % TextDrawing.params_for_label(instruction)[0]
             gates = [Bullet(conditional=conditional), Bullet(conditional=conditional)]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'cu3':
+        elif instruction.name == "cu3":
             # cu3
             params = TextDrawing.params_for_label(instruction)
-            gates = [Bullet(conditional=conditional),
-                     BoxOnQuWire("U3(%s)" % ','.join(params), conditional=conditional)]
+            gates = [
+                Bullet(conditional=conditional),
+                BoxOnQuWire("U3(%s)" % ",".join(params), conditional=conditional),
+            ]
             add_connected_gate(instruction, gates, layer, current_cons)
 
-        elif instruction.name == 'crz':
+        elif instruction.name == "crz":
             # crz
             label = "Rz(%s)" % TextDrawing.params_for_label(instruction)[0]
-            gates = [Bullet(conditional=conditional), BoxOnQuWire(label, conditional=conditional)]
+            gates = [
+                Bullet(conditional=conditional),
+                BoxOnQuWire(label, conditional=conditional),
+            ]
             add_connected_gate(instruction, gates, layer, current_cons)
 
         elif len(instruction.qargs) == 1 and not instruction.cargs:
             # unitary gate
-            layer.set_qubit(instruction.qargs[0],
-                            BoxOnQuWire(TextDrawing.label_for_box(instruction),
-                                        conditional=conditional))
+            layer.set_qubit(
+                instruction.qargs[0],
+                BoxOnQuWire(
+                    TextDrawing.label_for_box(instruction), conditional=conditional
+                ),
+            )
 
         elif len(instruction.qargs) >= 2 and not instruction.cargs:
             # multiple qubit gate
             label = instruction.name
             params = TextDrawing.params_for_label(instruction)
             if params:
-                label += "(%s)" % ','.join(params)
+                label += "(%s)" % ",".join(params)
             layer.set_qu_multibox(instruction.qargs, label, conditional=conditional)
 
         else:
             raise VisualizationError(
-                "Text visualizer does not know how to handle this instruction", instruction)
+                "Text visualizer does not know how to handle this instruction",
+                instruction,
+            )
 
         # sort into the order they were declared in
         # this ensures that connected boxes have lines in the right direction
@@ -864,8 +893,9 @@ class TextDrawing():
             layer = Layer(self.qregs, self.cregs)
 
             for instruction in instruction_layer:
-                layer, current_connections, connection_label = \
-                    self._instruction_to_gate(instruction, layer)
+                layer, current_connections, connection_label = self._instruction_to_gate(
+                    instruction, layer
+                )
 
                 layer.connections.append((connection_label, current_connections))
                 layer.connect_with("│")
@@ -911,12 +941,14 @@ class Layer:
         """
         self.clbit_layer[self.cregs.index(clbit)] = element
 
-    def _set_multibox(self, wire_type, bits, label, top_connect=None, conditional=False):
+    def _set_multibox(
+        self, wire_type, bits, label, top_connect=None, conditional=False
+    ):
         bits = list(bits)
         if wire_type == "cl":
             bit_index = sorted([i for i, x in enumerate(self.cregs) if x in bits])
             bits.sort(key=self.cregs.index)
-            qargs = [''] * len(bits)
+            qargs = [""] * len(bits)
             set_bit = self.set_clbit
             BoxOnWire = BoxOnClWire
             BoxOnWireTop = BoxOnClWireTop
@@ -932,26 +964,37 @@ class Layer:
             BoxOnWireMid = BoxOnQuWireMid
             BoxOnWireBot = BoxOnQuWireBot
         else:
-            raise VisualizationError("_set_multibox only supports 'cl' and 'qu' as wire types.")
+            raise VisualizationError(
+                "_set_multibox only supports 'cl' and 'qu' as wire types."
+            )
 
         if len(bit_index) == 1:
             set_bit(bits[0], BoxOnWire(label, top_connect=top_connect))
         else:
             box_height = max(bit_index) - min(bit_index) + 1
-            set_bit(bits.pop(0),
-                    BoxOnWireTop(label, top_connect=top_connect, wire_label=qargs.pop(0)))
+            set_bit(
+                bits.pop(0),
+                BoxOnWireTop(label, top_connect=top_connect, wire_label=qargs.pop(0)),
+            )
             for order, bit_i in enumerate(range(min(bit_index) + 1, max(bit_index))):
                 if bit_i in bit_index:
                     named_bit = bits.pop(0)
                     wire_label = qargs.pop(0)
                 else:
                     named_bit = (self.qregs + self.cregs)[bit_i]
-                    wire_label = ' ' * len(qargs[0])
-                set_bit(named_bit, BoxOnWireMid(label, box_height, order, wire_label=wire_label))
-            set_bit(bits.pop(0), BoxOnWireBot(label, box_height, wire_label=qargs.pop(0),
-                                              conditional=conditional))
+                    wire_label = " " * len(qargs[0])
+                set_bit(
+                    named_bit,
+                    BoxOnWireMid(label, box_height, order, wire_label=wire_label),
+                )
+            set_bit(
+                bits.pop(0),
+                BoxOnWireBot(
+                    label, box_height, wire_label=qargs.pop(0), conditional=conditional
+                ),
+            )
 
-    def set_cl_multibox(self, creg, label, top_connect='┴'):
+    def set_cl_multibox(self, creg, label, top_connect="┴"):
         """
         Sets the multi clbit box.
         Args:
@@ -988,11 +1031,11 @@ class Layer:
             if not affected_bits:
                 continue
 
-            affected_bits[0].connect(wire_char, ['bot'])
+            affected_bits[0].connect(wire_char, ["bot"])
             for affected_bit in affected_bits[1:-1]:
-                affected_bit.connect(wire_char, ['bot', 'top'])
+                affected_bit.connect(wire_char, ["bot", "top"])
 
-            affected_bits[-1].connect(wire_char, ['top'], label)
+            affected_bits[-1].connect(wire_char, ["top"], label)
 
             if label:
                 for affected_bit in affected_bits:

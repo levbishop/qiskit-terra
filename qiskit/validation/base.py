@@ -45,7 +45,7 @@ from .exceptions import ModelValidationError
 class ModelTypeValidator(_fields.Field):
     """A field able to validate the correct type of a value."""
 
-    valid_types = (object, )
+    valid_types = (object,)
 
     def _expected_types(self):
         return self.valid_types
@@ -72,7 +72,8 @@ class ModelTypeValidator(_fields.Field):
         expected_types = self._expected_types()
         if not isinstance(value, expected_types):
             raise self._not_expected_type(
-                value, expected_types, fields=[self], field_names=attr, data=data)
+                value, expected_types, fields=[self], field_names=attr, data=data
+            )
         return value
 
     @staticmethod
@@ -81,11 +82,11 @@ class ModelTypeValidator(_fields.Field):
             type_ = type_[0]
 
         if is_collection(type_):
-            body = 'is none of the expected types {}'.format(type_)
+            body = "is none of the expected types {}".format(type_)
         else:
-            body = 'is not the expected type {}'.format(type_)
+            body = "is not the expected type {}".format(type_)
 
-        message = 'Value \'{}\' {}: {}'.format(value, type(value), body)
+        message = "Value '{}' {}: {}".format(value, type(value), body)
         return ValidationError(message, **kwargs)
 
 
@@ -104,6 +105,7 @@ class BaseSchema(Schema):
 
     class Meta:
         """In marshmallow3, all schemas are strict."""
+
         # TODO: remove when upgrading to marshmallow3
         strict = True
 
@@ -186,11 +188,12 @@ class _SchemaBinder:
         See the docs for ``bind_schema`` for further information.
         """
         # Check for double binding of schemas.
-        if self._schema_cls.__dict__.get('model_cls', None) is not None:
+        if self._schema_cls.__dict__.get("model_cls", None) is not None:
             raise ValueError(
-                'The schema {} can not be bound twice. It is already bound to '
-                '{}. If you want to reuse the schema, use '
-                'subclassing'.format(self._schema_cls, self._schema_cls.model_cls))
+                "The schema {} can not be bound twice. It is already bound to "
+                "{}. If you want to reuse the schema, use "
+                "subclassing".format(self._schema_cls, self._schema_cls.model_cls)
+            )
 
         # Set a reference to the Model in the Schema, and vice versa.
         self._schema_cls.model_cls = model_cls
@@ -238,7 +241,8 @@ class _SchemaBinder:
             _ = instance.schema.validate(instance.to_dict())
         except ValidationError as ex:
             raise ModelValidationError(
-                ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs)
+                ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs
+            )
 
     @staticmethod
     def _validate_after_init(init_method):
@@ -250,7 +254,8 @@ class _SchemaBinder:
                 _ = self.shallow_schema.validate(kwargs)
             except ValidationError as ex:
                 raise ModelValidationError(
-                    ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs) from None
+                    ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs
+                ) from None
 
             init_method(self, **kwargs)
 
@@ -306,6 +311,7 @@ def _base_model_from_kwargs(cls, kwargs):
 
 class BaseModel(SimpleNamespace):
     """Base class for Models for validated Qiskit classes."""
+
     def __reduce__(self):
         """Custom __reduce__ for allowing pickling and unpickling.
 
@@ -335,7 +341,8 @@ class BaseModel(SimpleNamespace):
             data, _ = self.schema.dump(self)
         except ValidationError as ex:
             raise ModelValidationError(
-                ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs) from None
+                ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs
+            ) from None
 
         return data
 
@@ -350,23 +357,29 @@ class BaseModel(SimpleNamespace):
             data, _ = cls.schema.load(dict_)
         except ValidationError as ex:
             raise ModelValidationError(
-                ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs) from None
+                ex.messages, ex.field_names, ex.fields, ex.data, **ex.kwargs
+            ) from None
 
         return data
 
     def as_dict(self):
         """Serialize the model into a Python dict of simple types."""
-        warnings.warn('The as_dict() method is deprecated, use to_dict().',
-                      DeprecationWarning, stacklevel=2)
+        warnings.warn(
+            "The as_dict() method is deprecated, use to_dict().",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         return self.to_dict()
 
 
 class ObjSchema(BaseSchema):
     """Generic object schema."""
+
     pass
 
 
 @bind_schema(ObjSchema)
 class Obj(BaseModel):
     """Generic object in a Model."""
+
     pass

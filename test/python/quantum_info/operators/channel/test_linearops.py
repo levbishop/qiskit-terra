@@ -227,5 +227,5 @@ class TestEquivalence(ChannelTestCase):
         self._check_subtract_other_reps(chan)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

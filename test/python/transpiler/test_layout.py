@@ -28,12 +28,12 @@ class LayoutTest(QiskitTestCase):
     """Test the methods in the layout object."""
 
     def setUp(self):
-        self.qr = QuantumRegister(3, 'qr')
+        self.qr = QuantumRegister(3, "qr")
 
     def test_default_layout(self):
         """Static method generate_trivial_layout creates a Layout"""
-        qr0 = QuantumRegister(3, 'q0')
-        qr1 = QuantumRegister(2, 'qr1')
+        qr0 = QuantumRegister(3, "q0")
+        qr1 = QuantumRegister(2, "qr1")
         layout = Layout.generate_trivial_layout(qr0, qr1)
 
         self.assertEqual(layout[qr0[0]], 0)
@@ -44,9 +44,7 @@ class LayoutTest(QiskitTestCase):
 
     def test_layout_from_dict(self):
         """Constructor from a dict"""
-        layout = Layout({self.qr[0]: 0,
-                         self.qr[1]: 1,
-                         self.qr[2]: 2})
+        layout = Layout({self.qr[0]: 0, self.qr[1]: 1, self.qr[2]: 2})
 
         self.assertEqual(layout[self.qr[0]], 0)
         self.assertEqual(layout[self.qr[1]], 1)
@@ -60,10 +58,7 @@ class LayoutTest(QiskitTestCase):
         qr0 = QuantumRegister(2)
         qr1 = QuantumRegister(2)
 
-        layout = Layout({qr0[0]: 0,
-                         qr1[0]: 1,
-                         qr1[1]: 3,
-                         qr0[1]: 4})
+        layout = Layout({qr0[0]: 0, qr1[0]: 1, qr1[1]: 3, qr0[1]: 4})
 
         self.assertEqual(layout[qr0[0]], 0)
         self.assertEqual(layout[qr1[0]], 1)
@@ -120,18 +115,16 @@ class LayoutTest(QiskitTestCase):
 
     def test_layout_get_bits(self):
         """Get the map from the (qu)bits view"""
-        layout_dict = {self.qr[0]: 0,
-                       self.qr[1]: 1,
-                       self.qr[2]: 2}
+        layout_dict = {self.qr[0]: 0, self.qr[1]: 1, self.qr[2]: 2}
         layout = Layout(layout_dict)
         self.assertDictEqual(layout_dict, layout.get_virtual_bits())
 
     def test_layout_get_physical_bits(self):
         """Get the map from the physical bits view"""
         layout = Layout({self.qr[0]: 0, self.qr[1]: 1, self.qr[2]: 2})
-        self.assertDictEqual(layout.get_physical_bits(), {0: self.qr[0],
-                                                          1: self.qr[1],
-                                                          2: self.qr[2]})
+        self.assertDictEqual(
+            layout.get_physical_bits(), {0: self.qr[0], 1: self.qr[1], 2: self.qr[2]}
+        )
 
     def test_layout_add(self):
         """add() method"""
@@ -144,8 +137,8 @@ class LayoutTest(QiskitTestCase):
     def test_layout_add_register(self):
         """add_register() method"""
         layout = Layout()
-        qr0 = QuantumRegister(2, 'q0')
-        qr1 = QuantumRegister(1, 'qr1')
+        qr0 = QuantumRegister(2, "q0")
+        qr1 = QuantumRegister(1, "qr1")
         layout.add_register(qr0)
         layout.add_register(qr1)
 
@@ -175,7 +168,9 @@ class LayoutTest(QiskitTestCase):
         layout.add(self.qr[0])
         layout.add(self.qr[1])
         layout.swap(0, 1)
-        self.assertDictEqual(layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 0})
+        self.assertDictEqual(
+            layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 0}
+        )
 
     def test_layout_swap_error(self):
         """swap() method error"""
@@ -195,7 +190,9 @@ class LayoutTest(QiskitTestCase):
         another_layout.add(self.qr[0])
 
         edge_map = layout.combine_into_edge_map(another_layout)
-        self.assertDictEqual(edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)})
+        self.assertDictEqual(
+            edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)}
+        )
 
     def test_layout_combine_bigger(self):
         """combine_into_edge_map() method with another_layout is bigger"""
@@ -208,7 +205,9 @@ class LayoutTest(QiskitTestCase):
         another_layout.add(self.qr[2])
 
         edge_map = layout.combine_into_edge_map(another_layout)
-        self.assertDictEqual(edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)})
+        self.assertDictEqual(
+            edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)}
+        )
 
     def test_set_virtual_without_physical(self):
         """When adding a virtual without care in which physical is going"""
@@ -216,7 +215,9 @@ class LayoutTest(QiskitTestCase):
         layout.add(self.qr[1], 2)
         layout.add(self.qr[0])
 
-        self.assertDictEqual(layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 2})
+        self.assertDictEqual(
+            layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 2}
+        )
 
     def test_layout_combine_smaller(self):
         """combine_into_edge_map() method with another_layout is smaller and raises an Error"""
@@ -239,28 +240,40 @@ class LayoutTest(QiskitTestCase):
 
         layout_dict_copy = layout.copy()
         self.assertTrue(isinstance(layout_dict_copy, Layout))
-        self.assertDictEqual(layout.get_physical_bits(), layout_dict_copy.get_physical_bits())
-        self.assertDictEqual(layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits())
+        self.assertDictEqual(
+            layout.get_physical_bits(), layout_dict_copy.get_physical_bits()
+        )
+        self.assertDictEqual(
+            layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits()
+        )
 
         layout_copy_copy = copy.copy(layout)
         self.assertTrue(isinstance(layout_copy_copy, Layout))
-        self.assertDictEqual(layout.get_physical_bits(), layout_dict_copy.get_physical_bits())
-        self.assertDictEqual(layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits())
+        self.assertDictEqual(
+            layout.get_physical_bits(), layout_dict_copy.get_physical_bits()
+        )
+        self.assertDictEqual(
+            layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits()
+        )
 
         layout_copy_deepcopy = copy.deepcopy(layout)
         self.assertTrue(isinstance(layout_copy_deepcopy, Layout))
-        self.assertDictEqual(layout.get_physical_bits(), layout_dict_copy.get_physical_bits())
-        self.assertDictEqual(layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits())
+        self.assertDictEqual(
+            layout.get_physical_bits(), layout_dict_copy.get_physical_bits()
+        )
+        self.assertDictEqual(
+            layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits()
+        )
 
     def test_layout_error_str_key(self):
         """Layout does not work with strings"""
         layout = Layout()
 
         with self.assertRaises(LayoutError):
-            layout['a_string'] = 3
+            layout["a_string"] = 3
 
         with self.assertRaises(LayoutError):
-            layout[2] = 'a_string'
+            layout[2] = "a_string"
 
     def test_layout_error_when_same_type(self):
         """Layout does not work when key and value are the same type"""
@@ -274,28 +287,33 @@ class LayoutTest(QiskitTestCase):
 
     def test_layout_repr(self):
         """Layout repr reproduces layout"""
-        qr = QuantumRegister(5, 'qr')
-        layout = Layout({qr[0]: 2,
-                         qr[1]: 4,
-                         qr[2]: 3,
-                         qr[3]: 0,
-                         qr[4]: 1,
-                         })
+        qr = QuantumRegister(5, "qr")
+        layout = Layout({qr[0]: 2, qr[1]: 4, qr[2]: 3, qr[3]: 0, qr[4]: 1})
 
-        repr_layout = eval(layout.__repr__(), {'Qubit': Qubit,  # pylint: disable=eval-used
-                                               'QuantumRegister': QuantumRegister,
-                                               'Layout': Layout})
+        repr_layout = eval(
+            layout.__repr__(),
+            {
+                "Qubit": Qubit,  # pylint: disable=eval-used
+                "QuantumRegister": QuantumRegister,
+                "Layout": Layout,
+            },
+        )
         self.assertDictEqual(layout._p2v, repr_layout._p2v)
         self.assertDictEqual(layout._v2p, repr_layout._v2p)
 
     def test_layout_repr_with_holes(self):
         """A non-bijective Layout repr reproduces layout"""
-        qr = QuantumRegister(5, 'qr')
+        qr = QuantumRegister(5, "qr")
         layout = Layout({qr[0]: 0, qr[1]: 3, qr[2]: 4, qr[3]: 5, qr[4]: 6})
 
-        repr_layout = eval(layout.__repr__(), {'Qubit': Qubit,  # pylint: disable=eval-used
-                                               'QuantumRegister': QuantumRegister,
-                                               'Layout': Layout})
+        repr_layout = eval(
+            layout.__repr__(),
+            {
+                "Qubit": Qubit,  # pylint: disable=eval-used
+                "QuantumRegister": QuantumRegister,
+                "Layout": Layout,
+            },
+        )
         self.assertDictEqual(layout._p2v, repr_layout._p2v)
         self.assertDictEqual(layout._v2p, repr_layout._v2p)
 
@@ -309,19 +327,15 @@ class LayoutTest(QiskitTestCase):
          q3_1  ->  9
          q3_2  ->  10
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
-        qr3 = QuantumRegister(3, 'qr3')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
+        qr3 = QuantumRegister(3, "qr3")
         intlist_layout = [4, 5, 6, 8, 9, 10]
         layout = Layout.from_intlist(intlist_layout, qr1, qr2, qr3)
 
-        expected = Layout({4: qr1[0],
-                           5: qr2[0],
-                           6: qr2[1],
-                           8: qr3[0],
-                           9: qr3[1],
-                           10: qr3[2]
-                           })
+        expected = Layout(
+            {4: qr1[0], 5: qr2[0], 6: qr2[1], 8: qr3[0], 9: qr3[1], 10: qr3[2]}
+        )
         self.assertDictEqual(layout._p2v, expected._p2v)
         self.assertDictEqual(layout._v2p, expected._v2p)
 
@@ -335,19 +349,13 @@ class LayoutTest(QiskitTestCase):
          None  ->  9
          None  ->  10
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
 
         intlist_layout = [4, 5, 6, 8, 9, 10]
         layout = Layout.from_intlist(intlist_layout, qr1, qr2)
 
-        expected = Layout({4: qr1[0],
-                           5: qr2[0],
-                           6: qr2[1],
-                           8: None,
-                           9: None,
-                           10: None
-                           })
+        expected = Layout({4: qr1[0], 5: qr2[0], 6: qr2[1], 8: None, 9: None, 10: None})
         self.assertDictEqual(layout._p2v, expected._p2v)
         self.assertDictEqual(layout._v2p, expected._v2p)
 
@@ -361,9 +369,9 @@ class LayoutTest(QiskitTestCase):
          q3_1  ->  ?
          q3_2  ->  ?
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
-        qr3 = QuantumRegister(3, 'qr3')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
+        qr3 = QuantumRegister(3, "qr3")
         intlist_layout = [4, 5, 6, 8]
 
         with self.assertRaises(LayoutError):
@@ -376,8 +384,8 @@ class LayoutTest(QiskitTestCase):
          q2_0  ->  6 -- This is
          q2_1  ->  6 -- not allowed
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
         intlist_layout = [4, 6, 6]
 
         with self.assertRaises(LayoutError):
@@ -390,16 +398,13 @@ class LayoutTest(QiskitTestCase):
          q2_0  ->  5
          q2_1  ->  7
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
         tuplelist_layout = [None, None, None, qr1[0], None, qr2[0], None, qr2[1]]
 
         layout = Layout.from_qubit_list(tuplelist_layout)
 
-        expected = Layout({3: qr1[0],
-                           5: qr2[0],
-                           7: qr2[1],
-                           })
+        expected = Layout({3: qr1[0], 5: qr2[0], 7: qr2[1]})
         self.assertDictEqual(layout._p2v, expected._p2v)
         self.assertDictEqual(layout._v2p, expected._v2p)
 
@@ -409,16 +414,17 @@ class LayoutDeprecatedTest(QiskitTestCase):
     (to be removed when _cast_tuple_to_bit gets removed)"""
 
     def setUp(self):
-        self.qr = QuantumRegister(3, 'qr')
+        self.qr = QuantumRegister(3, "qr")
 
         # Disable specific DeprecationWarning from this TestCase.
-        warnings.filterwarnings('ignore', category=DeprecationWarning,
-                                module='qiskit.transpiler.layout')
+        warnings.filterwarnings(
+            "ignore", category=DeprecationWarning, module="qiskit.transpiler.layout"
+        )
 
     def test_default_layout(self):
         """Static method generate_trivial_layout creates a Layout"""
-        qr0 = QuantumRegister(3, 'q0')
-        qr1 = QuantumRegister(2, 'qr1')
+        qr0 = QuantumRegister(3, "q0")
+        qr1 = QuantumRegister(2, "qr1")
         layout = Layout.generate_trivial_layout(qr0, qr1)
 
         self.assertEqual(layout[(qr0, 0)], 0)
@@ -429,9 +435,7 @@ class LayoutDeprecatedTest(QiskitTestCase):
 
     def test_layout_from_dict(self):
         """Constructor from a dict"""
-        layout = Layout({(self.qr, 0): 0,
-                         (self.qr, 1): 1,
-                         (self.qr, 2): 2})
+        layout = Layout({(self.qr, 0): 0, (self.qr, 1): 1, (self.qr, 2): 2})
 
         self.assertEqual(layout[(self.qr, 0)], 0)
         self.assertEqual(layout[(self.qr, 1)], 1)
@@ -445,10 +449,7 @@ class LayoutDeprecatedTest(QiskitTestCase):
         qr0 = QuantumRegister(2)
         qr1 = QuantumRegister(2)
 
-        layout = Layout({qr0[0]: 0,
-                         qr1[0]: 1,
-                         qr1[1]: 3,
-                         qr0[1]: 4})
+        layout = Layout({qr0[0]: 0, qr1[0]: 1, qr1[1]: 3, qr0[1]: 4})
 
         self.assertEqual(layout[qr0[0]], 0)
         self.assertEqual(layout[qr1[0]], 1)
@@ -505,18 +506,17 @@ class LayoutDeprecatedTest(QiskitTestCase):
 
     def test_layout_get_bits(self):
         """Get the map from the (qu)bits view"""
-        layout_dict = {(self.qr, 0): 0,
-                       (self.qr, 1): 1,
-                       (self.qr, 2): 2}
+        layout_dict = {(self.qr, 0): 0, (self.qr, 1): 1, (self.qr, 2): 2}
         layout = Layout(layout_dict)
         self.assertDictEqual(layout_dict, layout.get_virtual_bits())
 
     def test_layout_get_physical_bits(self):
         """Get the map from the physical bits view"""
         layout = Layout({(self.qr, 0): 0, (self.qr, 1): 1, (self.qr, 2): 2})
-        self.assertDictEqual(layout.get_physical_bits(), {0: (self.qr, 0),
-                                                          1: (self.qr, 1),
-                                                          2: (self.qr, 2)})
+        self.assertDictEqual(
+            layout.get_physical_bits(),
+            {0: (self.qr, 0), 1: (self.qr, 1), 2: (self.qr, 2)},
+        )
 
     def test_layout_add(self):
         """add() method"""
@@ -530,12 +530,12 @@ class LayoutDeprecatedTest(QiskitTestCase):
     def test_layout_add_register(self):
         """add_register() method"""
         layout = Layout()
-        layout.add_register(QuantumRegister(2, 'q0'))
-        layout.add_register(QuantumRegister(1, 'qr1'))
+        layout.add_register(QuantumRegister(2, "q0"))
+        layout.add_register(QuantumRegister(1, "qr1"))
 
-        self.assertEqual(layout[(QuantumRegister(2, 'q0'), 0)], 0)
-        self.assertEqual(layout[(QuantumRegister(2, 'q0'), 1)], 1)
-        self.assertEqual(layout[(QuantumRegister(1, 'qr1'), 0)], 2)
+        self.assertEqual(layout[(QuantumRegister(2, "q0"), 0)], 0)
+        self.assertEqual(layout[(QuantumRegister(2, "q0"), 1)], 1)
+        self.assertEqual(layout[(QuantumRegister(1, "qr1"), 0)], 2)
 
     def test_physical_keyerror(self):
         """When asking for an unexistant physical qubit, KeyError"""
@@ -559,7 +559,9 @@ class LayoutDeprecatedTest(QiskitTestCase):
         layout.add((self.qr, 0))
         layout.add((self.qr, 1))
         layout.swap(0, 1)
-        self.assertDictEqual(layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 0})
+        self.assertDictEqual(
+            layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 0}
+        )
 
     def test_layout_swap_error(self):
         """swap() method error"""
@@ -579,7 +581,9 @@ class LayoutDeprecatedTest(QiskitTestCase):
         another_layout.add((self.qr, 0))
 
         edge_map = layout.combine_into_edge_map(another_layout)
-        self.assertDictEqual(edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)})
+        self.assertDictEqual(
+            edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)}
+        )
 
     def test_layout_combine_bigger(self):
         """combine_into_edge_map() method with another_layout is bigger"""
@@ -592,7 +596,9 @@ class LayoutDeprecatedTest(QiskitTestCase):
         another_layout.add((self.qr, 2))
 
         edge_map = layout.combine_into_edge_map(another_layout)
-        self.assertDictEqual(edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)})
+        self.assertDictEqual(
+            edge_map, {(self.qr, 0): (self.qr, 1), (self.qr, 1): (self.qr, 0)}
+        )
 
     def test_set_virtual_without_physical(self):
         """When adding a virtual without care in which physical is going"""
@@ -600,7 +606,9 @@ class LayoutDeprecatedTest(QiskitTestCase):
         layout.add((self.qr, 1), 2)
         layout.add((self.qr, 0))
 
-        self.assertDictEqual(layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 2})
+        self.assertDictEqual(
+            layout.get_virtual_bits(), {(self.qr, 0): 1, (self.qr, 1): 2}
+        )
 
     def test_layout_combine_smaller(self):
         """combine_into_edge_map() method with another_layout is smaller and raises an Error"""
@@ -623,28 +631,40 @@ class LayoutDeprecatedTest(QiskitTestCase):
 
         layout_dict_copy = layout.copy()
         self.assertTrue(isinstance(layout_dict_copy, Layout))
-        self.assertDictEqual(layout.get_physical_bits(), layout_dict_copy.get_physical_bits())
-        self.assertDictEqual(layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits())
+        self.assertDictEqual(
+            layout.get_physical_bits(), layout_dict_copy.get_physical_bits()
+        )
+        self.assertDictEqual(
+            layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits()
+        )
 
         layout_copy_copy = copy.copy(layout)
         self.assertTrue(isinstance(layout_copy_copy, Layout))
-        self.assertDictEqual(layout.get_physical_bits(), layout_dict_copy.get_physical_bits())
-        self.assertDictEqual(layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits())
+        self.assertDictEqual(
+            layout.get_physical_bits(), layout_dict_copy.get_physical_bits()
+        )
+        self.assertDictEqual(
+            layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits()
+        )
 
         layout_copy_deepcopy = copy.deepcopy(layout)
         self.assertTrue(isinstance(layout_copy_deepcopy, Layout))
-        self.assertDictEqual(layout.get_physical_bits(), layout_dict_copy.get_physical_bits())
-        self.assertDictEqual(layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits())
+        self.assertDictEqual(
+            layout.get_physical_bits(), layout_dict_copy.get_physical_bits()
+        )
+        self.assertDictEqual(
+            layout.get_virtual_bits(), layout_dict_copy.get_virtual_bits()
+        )
 
     def test_layout_error_str_key(self):
         """Layout does not work with strings"""
         layout = Layout()
 
         with self.assertRaises(LayoutError):
-            layout['a_string'] = 3
+            layout["a_string"] = 3
 
         with self.assertRaises(LayoutError):
-            layout[2] = 'a_string'
+            layout[2] = "a_string"
 
     def test_layout_error_when_same_type(self):
         """Layout does not work when key and value are the same type"""
@@ -658,13 +678,8 @@ class LayoutDeprecatedTest(QiskitTestCase):
 
     def test_layout_repr(self):
         """Layout repr reproduces layout"""
-        qr = QuantumRegister(5, 'qr')
-        layout = Layout({(qr, 0): 2,
-                         (qr, 1): 4,
-                         (qr, 2): 3,
-                         (qr, 3): 0,
-                         (qr, 4): 1,
-                         })
+        qr = QuantumRegister(5, "qr")
+        layout = Layout({(qr, 0): 2, (qr, 1): 4, (qr, 2): 3, (qr, 3): 0, (qr, 4): 1})
 
         repr_layout = eval(layout.__repr__())  # pylint: disable=eval-used
         self.assertDictEqual(layout._p2v, repr_layout._p2v)
@@ -672,7 +687,7 @@ class LayoutDeprecatedTest(QiskitTestCase):
 
     def test_layout_repr_with_holes(self):
         """A non-bijective Layout repr reproduces layout"""
-        qr = QuantumRegister(5, 'qr')
+        qr = QuantumRegister(5, "qr")
         layout = Layout({qr[0]: 0, qr[1]: 3, qr[2]: 4, qr[3]: 5, qr[4]: 6})
 
         repr_layout = eval(layout.__repr__())  # pylint: disable=eval-used
@@ -689,19 +704,15 @@ class LayoutDeprecatedTest(QiskitTestCase):
          q3_1  ->  9
          q3_2  ->  10
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
-        qr3 = QuantumRegister(3, 'qr3')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
+        qr3 = QuantumRegister(3, "qr3")
         intlist_layout = [4, 5, 6, 8, 9, 10]
         layout = Layout.from_intlist(intlist_layout, qr1, qr2, qr3)
 
-        expected = Layout({4: qr1[0],
-                           5: qr2[0],
-                           6: qr2[1],
-                           8: qr3[0],
-                           9: qr3[1],
-                           10: qr3[2]
-                           })
+        expected = Layout(
+            {4: qr1[0], 5: qr2[0], 6: qr2[1], 8: qr3[0], 9: qr3[1], 10: qr3[2]}
+        )
         self.assertDictEqual(layout._p2v, expected._p2v)
         self.assertDictEqual(layout._v2p, expected._v2p)
 
@@ -715,19 +726,13 @@ class LayoutDeprecatedTest(QiskitTestCase):
          None  ->  9
          None  ->  10
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
 
         intlist_layout = [4, 5, 6, 8, 9, 10]
         layout = Layout.from_intlist(intlist_layout, qr1, qr2)
 
-        expected = Layout({4: qr1[0],
-                           5: qr2[0],
-                           6: qr2[1],
-                           8: None,
-                           9: None,
-                           10: None
-                           })
+        expected = Layout({4: qr1[0], 5: qr2[0], 6: qr2[1], 8: None, 9: None, 10: None})
         self.assertDictEqual(layout._p2v, expected._p2v)
         self.assertDictEqual(layout._v2p, expected._v2p)
 
@@ -741,9 +746,9 @@ class LayoutDeprecatedTest(QiskitTestCase):
          q3_1  ->  ?
          q3_2  ->  ?
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
-        qr3 = QuantumRegister(3, 'qr3')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
+        qr3 = QuantumRegister(3, "qr3")
         intlist_layout = [4, 5, 6, 8]
 
         with self.assertRaises(LayoutError):
@@ -756,8 +761,8 @@ class LayoutDeprecatedTest(QiskitTestCase):
          q2_0  ->  6 -- This is
          q2_1  ->  6 -- not allowed
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
         intlist_layout = [4, 6, 6]
 
         with self.assertRaises(LayoutError):
@@ -770,19 +775,16 @@ class LayoutDeprecatedTest(QiskitTestCase):
          q2_0  ->  5
          q2_1  ->  7
         """
-        qr1 = QuantumRegister(1, 'qr1')
-        qr2 = QuantumRegister(2, 'qr2')
+        qr1 = QuantumRegister(1, "qr1")
+        qr2 = QuantumRegister(2, "qr2")
         tuplelist_layout = [None, None, None, qr1[0], None, qr2[0], None, qr2[1]]
 
         layout = Layout.from_tuplelist(tuplelist_layout)
 
-        expected = Layout({3: qr1[0],
-                           5: qr2[0],
-                           7: qr2[1],
-                           })
+        expected = Layout({3: qr1[0], 5: qr2[0], 7: qr2[1]})
         self.assertDictEqual(layout._p2v, expected._p2v)
         self.assertDictEqual(layout._v2p, expected._v2p)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

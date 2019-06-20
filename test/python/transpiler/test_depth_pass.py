@@ -33,7 +33,7 @@ class TestDepthPass(QiskitTestCase):
         pass_ = Depth()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['depth'], 0)
+        self.assertEqual(pass_.property_set["depth"], 0)
 
     def test_just_qubits(self):
         """ A dag with 8 operations and no classic bits"""
@@ -52,7 +52,7 @@ class TestDepthPass(QiskitTestCase):
         pass_ = Depth()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['depth'], 7)
+        self.assertEqual(pass_.property_set["depth"], 7)
 
     def test_depth_one(self):
         """ A dag with operations in parallel and depth 1"""
@@ -65,8 +65,8 @@ class TestDepthPass(QiskitTestCase):
         pass_ = Depth()
         _ = pass_.run(dag)
 
-        self.assertEqual(pass_.property_set['depth'], 1)
+        self.assertEqual(pass_.property_set["depth"], 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

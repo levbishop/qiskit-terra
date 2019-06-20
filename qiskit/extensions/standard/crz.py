@@ -42,7 +42,7 @@ class CrzGate(Gate):
             (U1Gate(self.params[0] / 2), [q[1]], []),
             (CnotGate(), [q[0], q[1]], []),
             (U1Gate(-self.params[0] / 2), [q[1]], []),
-            (CnotGate(), [q[0], q[1]], [])
+            (CnotGate(), [q[0], q[1]], []),
         ]
         for inst in rule:
             definition.append(inst)

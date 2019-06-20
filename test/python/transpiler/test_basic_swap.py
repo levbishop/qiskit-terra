@@ -37,7 +37,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [0, 2]])
 
-        qr = QuantumRegister(3, 'q')
+        qr = QuantumRegister(3, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         circuit.h(qr[0])
@@ -63,7 +63,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'q')
+        qr = QuantumRegister(4, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[2], qr[3])
         circuit.cx(qr[0], qr[1])
@@ -93,7 +93,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [0, 2]])
 
-        qr = QuantumRegister(3, 'q')
+        qr = QuantumRegister(3, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[1], qr[2])
         dag = circuit_to_dag(circuit)
@@ -125,7 +125,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[1, 0], [1, 2]])
 
-        qr = QuantumRegister(3, 'q')
+        qr = QuantumRegister(3, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[2])
         circuit.h(qr[0])
@@ -164,7 +164,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'q')
+        qr = QuantumRegister(4, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[3])
         circuit.cx(qr[3], qr[0])
@@ -204,7 +204,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'qr')
+        qr = QuantumRegister(4, "qr")
         circuit = QuantumCircuit(qr)
         circuit.h(qr[3])
         circuit.cx(qr[3], qr[0])
@@ -244,7 +244,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'qr')
+        qr = QuantumRegister(4, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[3], qr[0])
         circuit.h(qr[3])
@@ -284,7 +284,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2], [2, 3]])
 
-        qr = QuantumRegister(4, 'qr')
+        qr = QuantumRegister(4, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[3], qr[0])
         circuit.h(qr[3])
@@ -324,8 +324,8 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [0, 2]])
 
-        qr0 = QuantumRegister(1, 'qr0')
-        qr1 = QuantumRegister(2, 'qr1')
+        qr0 = QuantumRegister(1, "qr0")
+        qr1 = QuantumRegister(2, "qr1")
 
         circuit = QuantumCircuit(qr0, qr1)
         circuit.cx(qr1[0], qr1[1])
@@ -359,7 +359,7 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2]])
 
-        qr = QuantumRegister(3, 'q')
+        qr = QuantumRegister(3, "q")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[1], qr[2])
         dag = circuit_to_dag(circuit)
@@ -392,9 +392,9 @@ class TestBasicSwap(QiskitTestCase):
         """
         coupling = CouplingMap([[0, 1], [1, 2]])
 
-        qr0 = QuantumRegister(1, 'q0')
-        qr1 = QuantumRegister(1, 'q1')
-        qr2 = QuantumRegister(1, 'q2')
+        qr0 = QuantumRegister(1, "q0")
+        qr1 = QuantumRegister(1, "q1")
+        qr2 = QuantumRegister(1, "q2")
         circuit = QuantumCircuit(qr0, qr1, qr2)
         circuit.cx(qr1[0], qr2[0])
         dag = circuit_to_dag(circuit)
@@ -410,5 +410,5 @@ class TestBasicSwap(QiskitTestCase):
         self.assertEqual(circuit_to_dag(expected), after)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

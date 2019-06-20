@@ -24,11 +24,12 @@ class TestBasicAerBackends(providers.ProviderTestCase):
     """Qiskit BasicAer Backends (Object) Tests."""
 
     provider_cls = BasicAerProvider
-    backend_name = 'qasm_simulator'
+    backend_name = "qasm_simulator"
 
     def test_deprecated(self):
         """Test that deprecated names map the same backends as the new names.
         """
+
         def _get_first_available_backend(provider, backend_names):
             """Gets the first available backend."""
             if isinstance(backend_names, str):
@@ -54,7 +55,7 @@ class TestBasicAerBackends(providers.ProviderTestCase):
 
     def test_aliases_fail(self):
         """Test a failing backend lookup."""
-        self.assertRaises(QiskitBackendNotFoundError, BasicAer.get_backend, 'bad_name')
+        self.assertRaises(QiskitBackendNotFoundError, BasicAer.get_backend, "bad_name")
 
     def test_aliases_return_empty_list(self):
         """Test backends() return an empty list if name is unknown."""

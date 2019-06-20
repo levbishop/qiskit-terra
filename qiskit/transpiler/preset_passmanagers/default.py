@@ -55,14 +55,18 @@ def default_pass_manager(transpile_config):
     pass_manager.append(Unroller(basis_gates))
 
     # Use the trivial layout if no layout is found
-    pass_manager.append(TrivialLayout(coupling_map),
-                        condition=lambda property_set: not property_set['layout'])
+    pass_manager.append(
+        TrivialLayout(coupling_map),
+        condition=lambda property_set: not property_set["layout"],
+    )
 
     # if the circuit and layout already satisfy the coupling_constraints, use that layout
     # otherwise layout on the most densely connected physical qubit subset
     pass_manager.append(CheckMap(coupling_map))
-    pass_manager.append(DenseLayout(coupling_map),
-                        condition=lambda property_set: not property_set['is_swap_mapped'])
+    pass_manager.append(
+        DenseLayout(coupling_map),
+        condition=lambda property_set: not property_set["is_swap_mapped"],
+    )
 
     # Extend the the dag/layout with ancillas using the full coupling map
     pass_manager.append(FullAncillaAllocation(coupling_map))
@@ -79,15 +83,24 @@ def default_pass_manager(transpile_config):
     pass_manager.append(Decompose(SwapGate))
 
     # Change CX directions
-    pass_manager.append(CXDirection(coupling_map),
-                        condition=lambda property_set: (not coupling_map.is_symmetric and
-                                                        not property_set['is_direction_mapped']))
+    pass_manager.append(
+        CXDirection(coupling_map),
+        condition=lambda property_set: (
+            not coupling_map.is_symmetric and not property_set["is_direction_mapped"]
+        ),
+    )
 
     # Simplify single qubit gates and CXs
-    simplification_passes = [Optimize1qGates(), CXCancellation(), RemoveResetInZeroState()]
+    simplification_passes = [
+        Optimize1qGates(),
+        CXCancellation(),
+        RemoveResetInZeroState(),
+    ]
 
-    pass_manager.append(simplification_passes + [Depth(), FixedPoint('depth')],
-                        do_while=lambda property_set: not property_set['depth_fixed_point'])
+    pass_manager.append(
+        simplification_passes + [Depth(), FixedPoint("depth")],
+        do_while=lambda property_set: not property_set["depth_fixed_point"],
+    )
 
     return pass_manager
 
@@ -106,7 +119,9 @@ def default_pass_manager_simulator(transpile_config):
 
     pass_manager = PassManager()
     pass_manager.append(Unroller(basis_gates))
-    pass_manager.append([RemoveResetInZeroState(), Depth(), FixedPoint('depth')],
-                        do_while=lambda property_set: not property_set['depth_fixed_point'])
+    pass_manager.append(
+        [RemoveResetInZeroState(), Depth(), FixedPoint("depth")],
+        do_while=lambda property_set: not property_set["depth_fixed_point"],
+    )
 
     return pass_manager

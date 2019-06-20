@@ -27,8 +27,8 @@ class TestUnroll3qOrMore(QiskitTestCase):
     def test_ccx(self):
         """Test decompose CCX.
         """
-        qr1 = QuantumRegister(2, 'qr1')
-        qr2 = QuantumRegister(1, 'qr2')
+        qr1 = QuantumRegister(2, "qr1")
+        qr2 = QuantumRegister(1, "qr2")
         circuit = QuantumCircuit(qr1, qr2)
         circuit.ccx(qr1[0], qr1[1], qr2[0])
         dag = circuit_to_dag(circuit)
@@ -37,13 +37,13 @@ class TestUnroll3qOrMore(QiskitTestCase):
         op_nodes = after_dag.op_nodes()
         self.assertEqual(len(op_nodes), 15)
         for node in op_nodes:
-            self.assertIn(node.name, ['h', 't', 'tdg', 'cx'])
+            self.assertIn(node.name, ["h", "t", "tdg", "cx"])
 
     def test_cswap(self):
         """Test decompose CSwap (recursively).
         """
-        qr1 = QuantumRegister(2, 'qr1')
-        qr2 = QuantumRegister(1, 'qr2')
+        qr1 = QuantumRegister(2, "qr1")
+        qr2 = QuantumRegister(1, "qr2")
         circuit = QuantumCircuit(qr1, qr2)
         circuit.cswap(qr1[0], qr1[1], qr2[0])
         dag = circuit_to_dag(circuit)
@@ -52,13 +52,13 @@ class TestUnroll3qOrMore(QiskitTestCase):
         op_nodes = after_dag.op_nodes()
         self.assertEqual(len(op_nodes), 17)
         for node in op_nodes:
-            self.assertIn(node.name, ['h', 't', 'tdg', 'cx'])
+            self.assertIn(node.name, ["h", "t", "tdg", "cx"])
 
     def test_decompose_conditional(self):
         """Test decompose a 3-qubit gate with a conditional.
         """
-        qr = QuantumRegister(3, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(3, "qr")
+        cr = ClassicalRegister(1, "cr")
         circuit = QuantumCircuit(qr, cr)
         circuit.ccx(qr[0], qr[1], qr[2]).c_if(cr, 0)
         dag = circuit_to_dag(circuit)
@@ -67,5 +67,5 @@ class TestUnroll3qOrMore(QiskitTestCase):
         op_nodes = after_dag.op_nodes()
         self.assertEqual(len(op_nodes), 15)
         for node in op_nodes:
-            self.assertIn(node.name, ['h', 't', 'tdg', 'cx'])
+            self.assertIn(node.name, ["h", "t", "tdg", "cx"])
             self.assertEqual(node.condition, (cr, 0))

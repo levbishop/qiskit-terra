@@ -33,9 +33,7 @@ class YGate(Gate):
     def _define(self):
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U3Gate(pi, pi/2, pi/2), [q[0]], [])
-        ]
+        rule = [(U3Gate(pi, pi / 2, pi / 2), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition
@@ -46,8 +44,7 @@ class YGate(Gate):
 
     def to_matrix(self):
         """Return a Numpy.array for the Y gate."""
-        return numpy.array([[0, -1j],
-                            [1j, 0]], dtype=complex)
+        return numpy.array([[0, -1j], [1j, 0]], dtype=complex)
 
 
 def y(self, q):

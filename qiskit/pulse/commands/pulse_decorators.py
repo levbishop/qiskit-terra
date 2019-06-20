@@ -32,6 +32,7 @@ def functional_pulse(func):
     Raises:
         PulseError: when invalid function is specified.
     """
+
     @functools.wraps(func)
     def to_pulse(duration, *args, name=None, **kwargs):
         """Return SamplePulse."""
@@ -39,6 +40,8 @@ def functional_pulse(func):
             samples = func(duration, *args, **kwargs)
             samples = np.asarray(samples, dtype=np.complex128)
             return SamplePulse(samples=samples, name=name)
-        raise PulseError('The first argument must be an integer value representing duration.')
+        raise PulseError(
+            "The first argument must be an integer value representing duration."
+        )
 
     return to_pulse

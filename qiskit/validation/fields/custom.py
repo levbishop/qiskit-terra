@@ -32,27 +32,27 @@ class Complex(ModelTypeValidator):
     * serializes to a tuple of 2 decimals `(real, imaginary)`
     """
 
-    valid_types = (complex, )
+    valid_types = (complex,)
 
     default_error_messages = {
-        'invalid': '{input} cannot be parsed as a complex number.',
-        'format': '"{input}" cannot be formatted as complex number.',
+        "invalid": "{input} cannot be parsed as a complex number.",
+        "format": '"{input}" cannot be formatted as complex number.',
     }
 
     def _serialize(self, value, attr, obj):
         try:
             return [value.real, value.imag]
         except AttributeError:
-            self.fail('format', input=value)
+            self.fail("format", input=value)
 
     def _deserialize(self, value, attr, data):
         if not is_collection(value) or len(value) != 2:
-            self.fail('invalid', input=value)
+            self.fail("invalid", input=value)
 
         try:
             return complex(*value)
         except (ValueError, TypeError):
-            self.fail('invalid', input=value)
+            self.fail("invalid", input=value)
 
 
 class InstructionParameter(ModelTypeValidator):
@@ -70,13 +70,22 @@ class InstructionParameter(ModelTypeValidator):
     recommended that more specific and defined fields are used instead.
     """
 
-    valid_types = (complex, int, float, str,
-                   numpy.integer, numpy.float, sympy.Basic, sympy.Symbol,
-                   list, numpy.ndarray)
+    valid_types = (
+        complex,
+        int,
+        float,
+        str,
+        numpy.integer,
+        numpy.float,
+        sympy.Basic,
+        sympy.Symbol,
+        list,
+        numpy.ndarray,
+    )
 
     default_error_messages = {
-        'invalid': '{input} cannot be parsed as a parameter.',
-        'format': '"{input}" cannot be formatted as a parameter.'
+        "invalid": "{input} cannot be parsed as a parameter.",
+        "format": '"{input}" cannot be formatted as a parameter.',
     }
 
     def _serialize(self, value, attr, obj):
@@ -103,10 +112,10 @@ class InstructionParameter(ModelTypeValidator):
                 return float(value.evalf())
 
         # Fallback for attempting serialization.
-        if hasattr(value, 'to_dict'):
+        if hasattr(value, "to_dict"):
             return value.to_dict()
 
-        return self.fail('format', input=value)
+        return self.fail("format", input=value)
 
     def _deserialize(self, value, attr, data):
         if is_collection(value):
@@ -115,18 +124,19 @@ class InstructionParameter(ModelTypeValidator):
         if isinstance(value, (float, int, str)):
             return value
 
-        return self.fail('invalid', input=value)
+        return self.fail("invalid", input=value)
 
     def check_type(self, value, attr, data):
         """Customize check_type for handling containers."""
         # Check the type in the standard way first, in order to fail quickly
         # in case of invalid values.
-        root_value = super().check_type(
-            value, attr, data)
+        root_value = super().check_type(value, attr, data)
 
         if is_collection(value):
-            _ = [super(InstructionParameter, self).check_type(item, attr, data)
-                 for item in value]
+            _ = [
+                super(InstructionParameter, self).check_type(item, attr, data)
+                for item in value
+            ]
 
         return root_value
 
@@ -134,9 +144,10 @@ class InstructionParameter(ModelTypeValidator):
 class DictParameters(ModelTypeValidator):
     """Field for objects used in measurement kernel and discriminator parameters.
     """
+
     default_error_messages = {
-        'invalid_mapping': 'Not a valid mapping type.',
-        'invalid': '{input} cannot be parsed as a parameter.'
+        "invalid_mapping": "Not a valid mapping type.",
+        "invalid": "{input} cannot be parsed as a parameter.",
     }
 
     def __init__(self, valid_value_types, **kwargs):
@@ -161,7 +172,7 @@ class DictParameters(ModelTypeValidator):
 
         errors = []
         if not isinstance(data[attr], Mapping):
-            self.fail('invalid_mapping')
+            self.fail("invalid_mapping")
 
         try:
             if isinstance(value, Mapping):
@@ -190,7 +201,7 @@ class DictParameters(ModelTypeValidator):
         if isinstance(value, Mapping):
             return {str(k): self._validate_values(v) for k, v in value.items()}
 
-        return self.fail('invalid', input=value)
+        return self.fail("invalid", input=value)
 
     def _serialize(self, value, attr, obj):
         if value is None:
@@ -198,7 +209,7 @@ class DictParameters(ModelTypeValidator):
         if isinstance(value, Mapping):
             return {str(k): self._validate_values(v) for k, v in value.items()}
 
-        return self.fail('invalid_mapping')
+        return self.fail("invalid_mapping")
 
     def _deserialize(self, value, attr, data):
         if value is None:
@@ -206,4 +217,4 @@ class DictParameters(ModelTypeValidator):
         if isinstance(value, Mapping):
             return value
 
-        return self.fail('invalid_mapping')
+        return self.fail("invalid_mapping")

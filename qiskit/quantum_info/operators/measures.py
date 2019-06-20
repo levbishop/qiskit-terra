@@ -73,19 +73,21 @@ def process_fidelity(channel1, channel2, require_cptp=True):
         if is_cptp1 is None:
             is_cptp1 = s1.is_cptp()
         if not is_cptp1:
-            raise QiskitError('channel1 is not CPTP')
+            raise QiskitError("channel1 is not CPTP")
         if is_cptp2 is None:
             is_cptp2 = s2.is_cptp()
         if not is_cptp2:
-            raise QiskitError('channel2 is not CPTP')
+            raise QiskitError("channel2 is not CPTP")
 
     # Check dimensions match
     input_dim1, output_dim1 = s1.dim
     input_dim2, output_dim2 = s2.dim
     if input_dim1 != output_dim1 or input_dim2 != output_dim2:
-        raise QiskitError('Input channels must have same size input and output dimensions.')
+        raise QiskitError(
+            "Input channels must have same size input and output dimensions."
+        )
     if input_dim1 != input_dim2:
-        raise QiskitError('Input channels have different dimensions.')
+        raise QiskitError("Input channels have different dimensions.")
 
     # Compute process fidelity
     fidelity = np.trace(s1.compose(s2.adjoint()).data) / (input_dim1 ** 2)

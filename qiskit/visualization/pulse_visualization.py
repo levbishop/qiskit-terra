@@ -23,10 +23,21 @@ from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.pulse import matplotlib as _matplotlib
 
 
-def pulse_drawer(data, dt=1, style=None, filename=None,
-                 interp_method=None, scaling=None, channels_to_plot=None,
-                 plot_all=False, plot_range=None, interactive=False,
-                 table=True, label=False, framechange=True):
+def pulse_drawer(
+    data,
+    dt=1,
+    style=None,
+    filename=None,
+    interp_method=None,
+    scaling=None,
+    channels_to_plot=None,
+    plot_all=False,
+    plot_range=None,
+    interactive=False,
+    table=True,
+    label=False,
+    framechange=True,
+):
     """Plot the interpolated envelope of pulse
 
     Args:
@@ -56,15 +67,23 @@ def pulse_drawer(data, dt=1, style=None, filename=None,
         image = drawer.draw(data, dt=dt, interp_method=interp_method, scaling=scaling)
     elif isinstance(data, (Schedule, Instruction)):
         drawer = _matplotlib.ScheduleDrawer(style=style)
-        image = drawer.draw(data, dt=dt, interp_method=interp_method, scaling=scaling,
-                            plot_range=plot_range, channels_to_plot=channels_to_plot,
-                            plot_all=plot_all, table=table, label=label,
-                            framechange=framechange)
+        image = drawer.draw(
+            data,
+            dt=dt,
+            interp_method=interp_method,
+            scaling=scaling,
+            plot_range=plot_range,
+            channels_to_plot=channels_to_plot,
+            plot_all=plot_all,
+            table=table,
+            label=label,
+            framechange=framechange,
+        )
     else:
-        raise VisualizationError('This data cannot be visualized.')
+        raise VisualizationError("This data cannot be visualized.")
 
     if filename:
-        image.savefig(filename, dpi=drawer.style.dpi, bbox_inches='tight')
+        image.savefig(filename, dpi=drawer.style.dpi, bbox_inches="tight")
 
     _matplotlib.plt.close(image)
     if image and interactive:

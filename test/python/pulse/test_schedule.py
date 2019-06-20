@@ -17,11 +17,27 @@ import unittest
 
 import numpy as np
 
-from qiskit.pulse.channels import (DeviceSpecification, Qubit, RegisterSlot, MemorySlot,
-                                   DriveChannel, AcquireChannel, ControlChannel, MeasureChannel)
-from qiskit.pulse.commands import (FrameChange, Acquire, PersistentValue, Snapshot,
-                                   functional_pulse, Instruction, AcquireInstruction,
-                                   PulseInstruction, FrameChangeInstruction)
+from qiskit.pulse.channels import (
+    DeviceSpecification,
+    Qubit,
+    RegisterSlot,
+    MemorySlot,
+    DriveChannel,
+    AcquireChannel,
+    ControlChannel,
+    MeasureChannel,
+)
+from qiskit.pulse.commands import (
+    FrameChange,
+    Acquire,
+    PersistentValue,
+    Snapshot,
+    functional_pulse,
+    Instruction,
+    AcquireInstruction,
+    PulseInstruction,
+    FrameChangeInstruction,
+)
 from qiskit.pulse import pulse_lib
 from qiskit.pulse.timeslots import TimeslotCollection, Interval
 from qiskit.pulse.exceptions import PulseError
@@ -40,9 +56,16 @@ class TestSchedule(QiskitTestCase):
 
         self.linear = linear
 
-        qubits = [Qubit(0, DriveChannel(0), AcquireChannel(0), MeasureChannel(0),
-                        control_channels=[ControlChannel(0)]),
-                  Qubit(1, DriveChannel(1), MeasureChannel(0), AcquireChannel(1))]
+        qubits = [
+            Qubit(
+                0,
+                DriveChannel(0),
+                AcquireChannel(0),
+                MeasureChannel(0),
+                control_channels=[ControlChannel(0)],
+            ),
+            Qubit(1, DriveChannel(1), MeasureChannel(0), AcquireChannel(1)),
+        ]
         registers = [RegisterSlot(i) for i in range(2)]
         mem_slots = [MemorySlot(i) for i in range(2)]
         self.two_qubit_device = DeviceSpecification(qubits, registers, mem_slots)
@@ -112,7 +135,9 @@ class TestSchedule(QiskitTestCase):
 
         sched = Schedule()
         sched = sched.append(gp0(device.q[0].drive))
-        sched = sched.insert(0, PersistentValue(value=0.2 + 0.4j)(device.q[0].controls[0]))
+        sched = sched.insert(
+            0, PersistentValue(value=0.2 + 0.4j)(device.q[0].controls[0])
+        )
         sched = sched.insert(60, FrameChange(phase=-1.57)(device.q[0].drive))
         sched = sched.insert(30, gp1(device.q[1].drive))
         sched = sched.insert(60, gp0(device.q[0].controls[0]))
@@ -199,10 +224,10 @@ class TestSchedule(QiskitTestCase):
         # normal schedule
         subsched = Schedule()
         subsched = subsched.insert(20, lp0(device.q[0].drive))  # grand child 1
-        subsched = subsched.append(lp0(device.q[0].drive))      # grand child 2
+        subsched = subsched.append(lp0(device.q[0].drive))  # grand child 2
 
         sched = Schedule()
-        sched = sched.append(lp0(device.q[0].drive))   # child
+        sched = sched.append(lp0(device.q[0].drive))  # child
         sched = sched.append(subsched)
         for _, instr in sched.instructions:
             self.assertIsInstance(instr, Instruction)
@@ -214,13 +239,15 @@ class TestSchedule(QiskitTestCase):
 
         subsched = Schedule()
         subsched = subsched.insert(20, lp0(device.q[0].drive))  # grand child 1
-        subsched = subsched.append(lp0(device.q[0].drive))      # grand child 2
+        subsched = subsched.append(lp0(device.q[0].drive))  # grand child 2
 
         sched = Schedule()
-        sched = sched.append(lp0(device.q[0].drive))   # child
+        sched = sched.append(lp0(device.q[0].drive))  # child
         sched = sched.append(subsched)
 
-        start_times = sorted([shft+instr.start_time for shft, instr in sched.instructions])
+        start_times = sorted(
+            [shft + instr.start_time for shft, instr in sched.instructions]
+        )
         self.assertEqual([0, 30, 40], start_times)
 
     def test_shift_schedule(self):
@@ -230,15 +257,17 @@ class TestSchedule(QiskitTestCase):
 
         subsched = Schedule()
         subsched = subsched.insert(20, lp0(device.q[0].drive))  # grand child 1
-        subsched = subsched.append(lp0(device.q[0].drive))      # grand child 2
+        subsched = subsched.append(lp0(device.q[0].drive))  # grand child 2
 
         sched = Schedule()
-        sched = sched.append(lp0(device.q[0].drive))   # child
+        sched = sched.append(lp0(device.q[0].drive))  # child
         sched = sched.append(subsched)
 
         shift = sched.shift(100)
 
-        start_times = sorted([shft+instr.start_time for shft, instr in shift.instructions])
+        start_times = sorted(
+            [shft + instr.start_time for shft, instr in shift.instructions]
+        )
 
         self.assertEqual([100, 130, 140], start_times)
 
@@ -247,8 +276,9 @@ class TestSchedule(QiskitTestCase):
         device = self.two_qubit_device
 
         acquire = Acquire(10)
-        _children = (acquire(device.q[1], device.mem[1]).shift(20) +
-                     acquire(device.q[1], device.mem[1]))
+        _children = acquire(device.q[1], device.mem[1]).shift(20) + acquire(
+            device.q[1], device.mem[1]
+        )
         self.assertEqual(2, len(list(_children.instructions)))
 
         sched = acquire(device.q[1], device.mem[1]).append(_children)
@@ -266,37 +296,37 @@ class TestSchedule(QiskitTestCase):
         device = self.two_qubit_device
 
         acquire = Acquire(10)
-        gp0 = pulse_lib.gaussian(duration=100, amp=0.7, sigma=3, name='pulse_name')
+        gp0 = pulse_lib.gaussian(duration=100, amp=0.7, sigma=3, name="pulse_name")
         pv0 = PersistentValue(0.1)
         fc0 = FrameChange(0.1)
-        snapshot = Snapshot('snapshot_label', 'state')
+        snapshot = Snapshot("snapshot_label", "state")
 
-        sched1 = Schedule(name='test_name')
+        sched1 = Schedule(name="test_name")
         sched2 = Schedule(name=None)
         sched3 = sched1 | sched2
-        self.assertEqual(sched3.name, 'test_name')
+        self.assertEqual(sched3.name, "test_name")
 
-        sched_acq = acquire(device.q[1], device.mem[1], name='acq_name') | sched1
-        self.assertEqual(sched_acq.name, 'acq_name')
+        sched_acq = acquire(device.q[1], device.mem[1], name="acq_name") | sched1
+        self.assertEqual(sched_acq.name, "acq_name")
 
         sched_pulse = gp0(device.q[0].drive) | sched1
-        self.assertEqual(sched_pulse.name, 'pulse_name')
+        self.assertEqual(sched_pulse.name, "pulse_name")
 
-        sched_pv = pv0(device.q[0].drive, name='pv_name') | sched1
-        self.assertEqual(sched_pv.name, 'pv_name')
+        sched_pv = pv0(device.q[0].drive, name="pv_name") | sched1
+        self.assertEqual(sched_pv.name, "pv_name")
 
-        sched_fc = fc0(device.q[0].drive, name='fc_name') | sched1
-        self.assertEqual(sched_fc.name, 'fc_name')
+        sched_fc = fc0(device.q[0].drive, name="fc_name") | sched1
+        self.assertEqual(sched_fc.name, "fc_name")
 
         sched_snapshot = snapshot | sched1
-        self.assertEqual(sched_snapshot.name, 'snapshot_label')
+        self.assertEqual(sched_snapshot.name, "snapshot_label")
 
     def test_flatten(self):
         """Test schedule flattening."""
 
         device = self.two_qubit_device
         chan = device.q[0].drive
-        gp0 = pulse_lib.gaussian(duration=100, amp=0.7, sigma=3, name='pulse_name')
+        gp0 = pulse_lib.gaussian(duration=100, amp=0.7, sigma=3, name="pulse_name")
 
         sched = Schedule()
         for _ in range(10):
@@ -313,14 +343,16 @@ class TestSchedule(QiskitTestCase):
         device = self.two_qubit_device
         lp0 = self.linear(duration=3, slope=0.2, intercept=0.1)
         acquire = Acquire(5)
-        sched = Schedule(name='fake_experiment')
+        sched = Schedule(name="fake_experiment")
         sched = sched.insert(0, lp0(device.q[0].drive))
         sched = sched.insert(10, lp0(device.q[1].drive))
         sched = sched.insert(30, FrameChange(phase=-1.57)(device.q[0].drive))
         sched = sched.insert(60, acquire(device.q, device.mem))
         sched = sched.insert(90, lp0(device.q[0].drive))
 
-        self.assertEqual(len(sched.filter(channels=[AcquireChannel(1)]).instructions), 1)
+        self.assertEqual(
+            len(sched.filter(channels=[AcquireChannel(1)]).instructions), 1
+        )
         channels = [AcquireChannel(1), DriveChannel(1)]
         has_chan_1 = sched.filter(channels=channels)
         for _, inst in has_chan_1.instructions:
@@ -331,7 +363,7 @@ class TestSchedule(QiskitTestCase):
         device = self.two_qubit_device
         lp0 = self.linear(duration=3, slope=0.2, intercept=0.1)
         acquire = Acquire(5)
-        sched = Schedule(name='fake_experiment')
+        sched = Schedule(name="fake_experiment")
         sched = sched.insert(0, lp0(device.q[0].drive))
         sched = sched.insert(10, lp0(device.q[1].drive))
         sched = sched.insert(30, FrameChange(phase=-1.57)(device.q[0].drive))
@@ -341,8 +373,9 @@ class TestSchedule(QiskitTestCase):
         only_acquires = sched.filter(instruction_types=[AcquireInstruction])
         for _, inst in only_acquires.instructions:
             self.assertIsInstance(inst, AcquireInstruction)
-        only_pulse_and_fc = sched.filter(instruction_types=[PulseInstruction,
-                                                            FrameChangeInstruction])
+        only_pulse_and_fc = sched.filter(
+            instruction_types=[PulseInstruction, FrameChangeInstruction]
+        )
         for _, inst in only_pulse_and_fc.instructions:
             self.assertIsInstance(inst, (PulseInstruction, FrameChangeInstruction))
         self.assertEqual(len(only_pulse_and_fc.instructions), 4)
@@ -354,7 +387,7 @@ class TestSchedule(QiskitTestCase):
         device = self.two_qubit_device
         lp0 = self.linear(duration=3, slope=0.2, intercept=0.1)
         acquire = Acquire(5)
-        sched = Schedule(name='fake_experiment')
+        sched = Schedule(name="fake_experiment")
         sched = sched.insert(0, lp0(device.q[0].drive))
         sched = sched.insert(10, lp0(device.q[1].drive))
         sched = sched.insert(30, FrameChange(phase=-1.57)(device.q[0].drive))
@@ -386,22 +419,25 @@ class TestSchedule(QiskitTestCase):
         device = self.two_qubit_device
         lp0 = self.linear(duration=3, slope=0.2, intercept=0.1)
         acquire = Acquire(5)
-        sched = Schedule(name='fake_experiment')
+        sched = Schedule(name="fake_experiment")
         sched = sched.insert(0, lp0(device.q[0].drive))
         sched = sched.insert(10, lp0(device.q[1].drive))
         sched = sched.insert(30, FrameChange(phase=-1.57)(device.q[0].drive))
         sched = sched.insert(60, acquire(device.q, device.mem))
         sched = sched.insert(90, lp0(device.q[0].drive))
 
-        filtered = sched.filter(channels={0}, instruction_types=[PulseInstruction],
-                                time_ranges=[(25, 100)])
+        filtered = sched.filter(
+            channels={0}, instruction_types=[PulseInstruction], time_ranges=[(25, 100)]
+        )
         for time, inst in filtered.instructions:
             self.assertIsInstance(inst, PulseInstruction)
             self.assertTrue(any([chan.index == 0 for chan in inst.channels]))
             self.assertTrue(25 <= time <= 100)
 
-        filtered_b = sched.filter(instruction_types=[PulseInstruction, FrameChangeInstruction],
-                                  time_ranges=[(25, 100), (0, 30)])
+        filtered_b = sched.filter(
+            instruction_types=[PulseInstruction, FrameChangeInstruction],
+            time_ranges=[(25, 100), (0, 30)],
+        )
         for time, inst in filtered_b.instructions:
             self.assertIsInstance(inst, (FrameChangeInstruction, PulseInstruction))
         self.assertTrue(len(filtered_b.instructions), 4)
@@ -410,15 +446,14 @@ class TestSchedule(QiskitTestCase):
         """Test _filter method."""
         device = self.two_qubit_device
         lp0 = self.linear(duration=3, slope=0.2, intercept=0.1)
-        sched = Schedule(name='fake_experiment')
+        sched = Schedule(name="fake_experiment")
         sched = sched.insert(0, lp0(device.q[0].drive))
         sched = sched.insert(10, lp0(device.q[1].drive))
         sched = sched.insert(30, FrameChange(phase=-1.57)(device.q[0].drive))
         for i in sched._filter([lambda x: True]).instructions:
             self.assertTrue(i in sched.instructions)
         self.assertEqual(len(sched._filter([lambda x: False]).instructions), 0)
-        self.assertEqual(len(sched._filter([lambda x: x[0] < 30]).instructions),
-                         2)
+        self.assertEqual(len(sched._filter([lambda x: x[0] < 30]).instructions), 2)
 
     def test_buffering(self):
         """Test channel buffering."""
@@ -457,5 +492,5 @@ class TestSchedule(QiskitTestCase):
         self.assertEqual(sched.duration, 10)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

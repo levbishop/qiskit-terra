@@ -55,8 +55,7 @@ class TestKraus(ChannelTestCase):
         self.assertEqual(chan.dim, (2, 4))
 
         # Wrong input or output dims should raise exception
-        self.assertRaises(
-            QiskitError, Kraus, kraus, input_dims=4, output_dims=4)
+        self.assertRaises(QiskitError, Kraus, kraus, input_dims=4, output_dims=4)
 
     def test_circuit_init(self):
         """Test initialization from a circuit."""
@@ -132,8 +131,9 @@ class TestKraus(ChannelTestCase):
         self.assertEqual(chan, targ)
         self.assertEqual(chan.dim, (2, 4))
         # Double Kraus list
-        targ = Kraus(([np.conjugate(k) for k in kraus_l],
-                      [np.conjugate(k) for k in kraus_r]))
+        targ = Kraus(
+            ([np.conjugate(k) for k in kraus_l], [np.conjugate(k) for k in kraus_r])
+        )
         chan1 = Kraus((kraus_l, kraus_r))
         chan = chan1.conjugate()
         self.assertEqual(chan, targ)
@@ -149,8 +149,9 @@ class TestKraus(ChannelTestCase):
         self.assertEqual(chan, targ)
         self.assertEqual(chan.dim, (4, 2))
         # Double Kraus list
-        targ = Kraus(([np.transpose(k) for k in kraus_l],
-                      [np.transpose(k) for k in kraus_r]))
+        targ = Kraus(
+            ([np.transpose(k) for k in kraus_l], [np.transpose(k) for k in kraus_r])
+        )
         chan1 = Kraus((kraus_l, kraus_r))
         chan = chan1.transpose()
         self.assertEqual(chan, targ)
@@ -166,8 +167,12 @@ class TestKraus(ChannelTestCase):
         self.assertEqual(chan, targ)
         self.assertEqual(chan.dim, (4, 2))
         # Double Kraus list
-        targ = Kraus(([np.transpose(k).conj() for k in kraus_l],
-                      [np.transpose(k).conj() for k in kraus_r]))
+        targ = Kraus(
+            (
+                [np.transpose(k).conj() for k in kraus_l],
+                [np.transpose(k).conj() for k in kraus_r],
+            )
+        )
         chan1 = Kraus((kraus_l, kraus_r))
         chan = chan1.adjoint()
         self.assertEqual(chan, targ)
@@ -175,8 +180,7 @@ class TestKraus(ChannelTestCase):
 
     def test_compose_except(self):
         """Test compose different dimension exception"""
-        self.assertRaises(QiskitError,
-                          Kraus(np.eye(2)).compose, Kraus(np.eye(4)))
+        self.assertRaises(QiskitError, Kraus(np.eye(2)).compose, Kraus(np.eye(4)))
         self.assertRaises(QiskitError, Kraus(np.eye(2)).compose, 2)
 
     def test_compose(self):
@@ -296,7 +300,7 @@ class TestKraus(ChannelTestCase):
         chan = Kraus(self.depol_kraus(1 - p_id))
 
         # Compose 3 times
-        p_id3 = p_id**3
+        p_id3 = p_id ** 3
         chan3 = chan.power(3)
         targ3a = chan._evolve(chan._evolve(chan._evolve(rho)))
         self.assertAllClose(chan3._evolve(rho), targ3a)
@@ -381,7 +385,7 @@ class TestKraus(ChannelTestCase):
     def test_multiply_except(self):
         """Test multiply method raises exceptions."""
         chan = Kraus(self.depol_kraus(1))
-        self.assertRaises(QiskitError, chan.multiply, 's')
+        self.assertRaises(QiskitError, chan.multiply, "s")
         self.assertRaises(QiskitError, chan.multiply, chan)
 
     def test_negate(self):
@@ -392,5 +396,5 @@ class TestKraus(ChannelTestCase):
         self.assertAllClose(chan._evolve(rho), targ)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -18,7 +18,15 @@ from marshmallow.validate import Length, OneOf, Regexp, Range
 
 from qiskit.validation.base import BaseModel, BaseSchema, ObjSchema, bind_schema
 from qiskit.validation.fields import Complex, ByType
-from qiskit.validation.fields import Boolean, DateTime, Integer, List, Nested, Raw, String
+from qiskit.validation.fields import (
+    Boolean,
+    DateTime,
+    Integer,
+    List,
+    Nested,
+    Raw,
+    String,
+)
 from qiskit.validation.validate import PatternProperties
 from qiskit.qobj.utils import MeasReturnType
 
@@ -26,26 +34,23 @@ from qiskit.qobj.utils import MeasReturnType
 class ExperimentResultDataSchema(BaseSchema):
     """Schema for ExperimentResultData."""
 
-    counts = Nested(ObjSchema,
-                    validate=PatternProperties(
-                        {Regexp('^0x([0-9A-Fa-f])+$'): Integer()}))
+    counts = Nested(
+        ObjSchema, validate=PatternProperties({Regexp("^0x([0-9A-Fa-f])+$"): Integer()})
+    )
     snapshots = Nested(ObjSchema)
-    memory = List(Raw(),
-                  validate=Length(min=1))
-    statevector = List(Complex(),
-                       validate=Length(min=1))
-    unitary = List(List(Complex(),
-                        validate=Length(min=1)),
-                   validate=Length(min=1))
+    memory = List(Raw(), validate=Length(min=1))
+    statevector = List(Complex(), validate=Length(min=1))
+    unitary = List(List(Complex(), validate=Length(min=1)), validate=Length(min=1))
 
 
 class ExperimentResultSchema(BaseSchema):
     """Schema for ExperimentResult."""
 
     # Required fields.
-    shots = ByType([Integer(), List(Integer(validate=Range(min=1)),
-                                    validate=Length(equal=2))],
-                   required=True)
+    shots = ByType(
+        [Integer(), List(Integer(validate=Range(min=1)), validate=Length(equal=2))],
+        required=True,
+    )
     success = Boolean(required=True)
     data = Nested(ExperimentResultDataSchema, required=True)
 
@@ -53,8 +58,9 @@ class ExperimentResultSchema(BaseSchema):
     status = String()
     seed = Integer()
     meas_level = Integer(validate=Range(min=0, max=2))
-    meas_return = String(validate=OneOf(choices=(MeasReturnType.AVERAGE,
-                                                 MeasReturnType.SINGLE)))
+    meas_return = String(
+        validate=OneOf(choices=(MeasReturnType.AVERAGE, MeasReturnType.SINGLE))
+    )
     header = Nested(ObjSchema)
 
 
@@ -63,8 +69,7 @@ class ResultSchema(BaseSchema):
 
     # Required fields.
     backend_name = String(required=True)
-    backend_version = String(required=True,
-                             validate=Regexp('[0-9]+.[0-9]+.[0-9]+$'))
+    backend_version = String(required=True, validate=Regexp("[0-9]+.[0-9]+.[0-9]+$"))
     qobj_id = String(required=True)
     job_id = String(required=True)
     success = Boolean(required=True)
@@ -84,6 +89,7 @@ class ExperimentResultData(BaseModel):
     full description of the model, please check
     ``ExperimentResultDataSchema``.
     """
+
     pass
 
 

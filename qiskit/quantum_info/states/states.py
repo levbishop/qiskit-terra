@@ -39,7 +39,7 @@ def basis_state(str_state, num):
         state[n] = 1
         return state
     else:
-        raise QiskitError('size of bitstring is greater than num.')
+        raise QiskitError("size of bitstring is greater than num.")
 
 
 def projector(state, flatten=False):
@@ -55,7 +55,7 @@ def projector(state, flatten=False):
     """
     density_matrix = np.outer(state.conjugate(), state)
     if flatten:
-        return density_matrix.flatten(order='F')
+        return density_matrix.flatten(order="F")
     return density_matrix
 
 

@@ -18,20 +18,25 @@ from marshmallow.validate import Range, Length
 
 from qiskit.validation import bind_schema
 from qiskit.validation.fields import List, Integer, InstructionParameter, Nested
-from .base import (QobjInstructionSchema, QobjExperimentConfigSchema, QobjExperimentSchema,
-                   QobjConfigSchema, QobjInstruction, QobjExperimentConfig,
-                   QobjExperiment, QobjConfig)
+from .base import (
+    QobjInstructionSchema,
+    QobjExperimentConfigSchema,
+    QobjExperimentSchema,
+    QobjConfigSchema,
+    QobjInstruction,
+    QobjExperimentConfig,
+    QobjExperiment,
+    QobjConfig,
+)
 
 
 class QasmQobjInstructionSchema(QobjInstructionSchema):
     """Schema for QasmQobjInstruction."""
 
     # Optional properties.
-    qubits = List(Integer(validate=Range(min=0)),
-                  validate=Length(min=1))
+    qubits = List(Integer(validate=Range(min=0)), validate=Length(min=1))
     params = List(InstructionParameter())
-    memory = List(Integer(validate=Range(min=0)),
-                  validate=Length(min=1))
+    memory = List(Integer(validate=Range(min=0)), validate=Length(min=1))
     conditional = Integer(validate=Range(min=0))
 
 
@@ -70,9 +75,9 @@ class QasmQobjInstruction(QobjInstruction):
     Attributes:
         name (str): name of the instruction
     """
+
     def __init__(self, name, **kwargs):
-        super().__init__(name=name,
-                         **kwargs)
+        super().__init__(name=name, **kwargs)
 
 
 @bind_schema(QasmQobjExperimentConfigSchema)
@@ -82,6 +87,7 @@ class QasmQobjExperimentConfig(QobjExperimentConfig):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``QasmQobjExperimentConfigSchema``.
     """
+
     pass
 
 
@@ -95,9 +101,9 @@ class QasmQobjExperiment(QobjExperiment):
     Attributes:
         instructions (list[QasmQobjInstruction]): list of instructions.
     """
+
     def __init__(self, instructions, **kwargs):
-        super().__init__(instructions=instructions,
-                         **kwargs)
+        super().__init__(instructions=instructions, **kwargs)
 
 
 @bind_schema(QasmQobjConfigSchema)
@@ -107,4 +113,5 @@ class QasmQobjConfig(QobjConfig):
     Please note that this class only describes the required fields. For the
     full description of the model, please check ``QasmQobjConfigSchema``.
     """
+
     pass

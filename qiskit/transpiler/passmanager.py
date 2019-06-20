@@ -26,11 +26,10 @@ from .fencedobjs import FencedPropertySet, FencedDAGCircuit
 from .exceptions import TranspilerError
 
 
-class PassManager():
+class PassManager:
     """A PassManager schedules the passes"""
 
-    def __init__(self, passes=None,
-                 max_iteration=None):
+    def __init__(self, passes=None, max_iteration=None):
         """
         Initialize an empty PassManager object (with no passes scheduled).
 
@@ -54,7 +53,7 @@ class PassManager():
         self.valid_passes = set()
 
         # pass manager's overriding options for the passes it runs (for debugging)
-        self.passmanager_options = {'max_iteration': max_iteration}
+        self.passmanager_options = {"max_iteration": max_iteration}
 
         # The property log_passes allows to log and time the passes as they run in the pass manager
         self.log_passes = False
@@ -68,9 +67,11 @@ class PassManager():
         passmanager options (set via ``PassManager.__init__()``), which override Default.
         .
         """
-        default = {'max_iteration': 1000}  # Maximum allowed iteration on this pass
+        default = {"max_iteration": 1000}  # Maximum allowed iteration on this pass
 
-        passmanager_level = {k: v for k, v in self.passmanager_options.items() if v is not None}
+        passmanager_level = {
+            k: v for k, v in self.passmanager_options.items() if v is not None
+        }
         passset_level = {k: v for k, v in passset_options.items() if v is not None}
         return {**default, **passmanager_level, **passset_level}
 
@@ -94,7 +95,7 @@ class PassManager():
             TranspilerError: if a pass in passes is not a proper pass.
         """
 
-        passset_options = {'max_iteration': max_iteration}
+        passset_options = {"max_iteration": max_iteration}
 
         options = self._join_options(passset_options)
 
@@ -103,16 +104,23 @@ class PassManager():
 
         for pass_ in passes:
             if not isinstance(pass_, BasePass):
-                raise TranspilerError('%s is not a pass instance' % pass_.__class__)
+                raise TranspilerError("%s is not a pass instance" % pass_.__class__)
 
         for name, param in flow_controller_conditions.items():
             if callable(param):
-                flow_controller_conditions[name] = partial(param, self.fenced_property_set)
+                flow_controller_conditions[name] = partial(
+                    param, self.fenced_property_set
+                )
             else:
-                raise TranspilerError('The flow controller parameter %s is not callable' % name)
+                raise TranspilerError(
+                    "The flow controller parameter %s is not callable" % name
+                )
 
         self.working_list.append(
-            FlowController.controller_factory(passes, options, **flow_controller_conditions))
+            FlowController.controller_factory(
+                passes, options, **flow_controller_conditions
+            )
+        )
 
     def reset(self):
         """ "Resets the pass manager instance """
@@ -178,9 +186,11 @@ class PassManager():
             with PassManagerContext(self, pass_):
                 new_dag = pass_.run(dag)
             if not isinstance(new_dag, DAGCircuit):
-                raise TranspilerError("Transformation passes should return a transformed dag."
-                                      "The pass %s is returning a %s" % (type(pass_).__name__,
-                                                                         type(new_dag)))
+                raise TranspilerError(
+                    "Transformation passes should return a transformed dag."
+                    "The pass %s is returning a %s"
+                    % (type(pass_).__name__, type(new_dag))
+                )
             dag = new_dag
         elif pass_.is_analysis_pass:
             pass_.property_set = self.property_set
@@ -223,22 +233,24 @@ class PassManagerContext:
         if self.pm_instance.log_passes:
             end_time = time()
             raw_log_dict = {
-                'name': self.pass_instance.name(),
-                'start_time': self.start_time,
-                'end_time': end_time,
-                'running_time': end_time - self.start_time
+                "name": self.pass_instance.name(),
+                "start_time": self.start_time,
+                "end_time": end_time,
+                "running_time": end_time - self.start_time,
             }
-            log_dict = "%s: %.5f (ms)" % (self.pass_instance.name(),
-                                          (end_time - self.start_time) * 1000)
-            if self.pm_instance.property_set['pass_raw_log'] is None:
-                self.pm_instance.property_set['pass_raw_log'] = []
-            if self.pm_instance.property_set['pass_log'] is None:
-                self.pm_instance.property_set['pass_log'] = []
-            self.pm_instance.property_set['pass_raw_log'].append(raw_log_dict)
-            self.pm_instance.property_set['pass_log'].append(log_dict)
+            log_dict = "%s: %.5f (ms)" % (
+                self.pass_instance.name(),
+                (end_time - self.start_time) * 1000,
+            )
+            if self.pm_instance.property_set["pass_raw_log"] is None:
+                self.pm_instance.property_set["pass_raw_log"] = []
+            if self.pm_instance.property_set["pass_log"] is None:
+                self.pm_instance.property_set["pass_log"] = []
+            self.pm_instance.property_set["pass_raw_log"].append(raw_log_dict)
+            self.pm_instance.property_set["pass_log"].append(log_dict)
 
 
-class FlowController():
+class FlowController:
     """This class is a base class for multiple types of working list. When you iterate on it, it
     returns the next pass to run. """
 
@@ -246,7 +258,9 @@ class FlowController():
 
     def __init__(self, passes, options, **partial_controller):
         self._passes = passes
-        self.passes = FlowController.controller_factory(passes, options, **partial_controller)
+        self.passes = FlowController.controller_factory(
+            passes, options, **partial_controller
+        )
         self.options = options
 
     def __iter__(self):
@@ -259,12 +273,12 @@ class FlowController():
 
         Returns (dict): {'options': self.options, 'passes': [passes], 'type': type(self)}
         """
-        ret = {'options': self.options, 'passes': [], 'type': type(self)}
+        ret = {"options": self.options, "passes": [], "type": type(self)}
         for pass_ in self._passes:
             if isinstance(pass_, FlowController):
-                ret['passes'].append(pass_.dump_passes())
+                ret["passes"].append(pass_.dump_passes())
             else:
-                ret['passes'].append(pass_)
+                ret["passes"].append(pass_)
         return ret
 
     @classmethod
@@ -308,14 +322,17 @@ class FlowController():
             FlowController: A FlowController instance.
         """
         if None in partial_controller.values():
-            raise TranspilerError('The controller needs a condition.')
+            raise TranspilerError("The controller needs a condition.")
 
         if partial_controller:
             for registered_controller in cls.registered_controllers.keys():
                 if registered_controller in partial_controller:
-                    return cls.registered_controllers[registered_controller](passes, options,
-                                                                             **partial_controller)
-            raise TranspilerError("The controllers for %s are not registered" % partial_controller)
+                    return cls.registered_controllers[registered_controller](
+                        passes, options, **partial_controller
+                    )
+            raise TranspilerError(
+                "The controllers for %s are not registered" % partial_controller
+            )
 
         return FlowControllerLinear(passes, options)
 
@@ -331,10 +348,9 @@ class FlowControllerLinear(FlowController):
 class DoWhileController(FlowController):
     """Implements a set of passes in a do-while loop."""
 
-    def __init__(self, passes, options, do_while=None,
-                 **partial_controller):
+    def __init__(self, passes, options, do_while=None, **partial_controller):
         self.do_while = do_while
-        self.max_iteration = options['max_iteration']
+        self.max_iteration = options["max_iteration"]
         super().__init__(passes, options, **partial_controller)
 
     def __iter__(self):
@@ -345,14 +361,15 @@ class DoWhileController(FlowController):
             if not self.do_while():
                 return
 
-        raise TranspilerError("Maximum iteration reached. max_iteration=%i" % self.max_iteration)
+        raise TranspilerError(
+            "Maximum iteration reached. max_iteration=%i" % self.max_iteration
+        )
 
 
 class ConditionalController(FlowController):
     """Implements a set of passes under a certain condition."""
 
-    def __init__(self, passes, options, condition=None,
-                 **partial_controller):
+    def __init__(self, passes, options, condition=None, **partial_controller):
         self.condition = condition
         super().__init__(passes, options, **partial_controller)
 
@@ -363,5 +380,5 @@ class ConditionalController(FlowController):
 
 
 # Default controllers
-FlowController.add_flow_controller('condition', ConditionalController)
-FlowController.add_flow_controller('do_while', DoWhileController)
+FlowController.add_flow_controller("condition", ConditionalController)
+FlowController.add_flow_controller("do_while", DoWhileController)

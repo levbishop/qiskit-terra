@@ -36,14 +36,14 @@ class TestCheckCNotDirection(QiskitTestCase):
 
          CouplingMap map: None
         """
-        qr = QuantumRegister(3, 'qr')
+        qr = QuantumRegister(3, "qr")
         circuit = QuantumCircuit(qr)
         circuit.h(qr)
         coupling = CouplingMap()
         dag = circuit_to_dag(circuit)
         pass_ = CheckCXDirection(coupling)
         pass_.run(dag)
-        self.assertTrue(pass_.property_set['is_direction_mapped'])
+        self.assertTrue(pass_.property_set["is_direction_mapped"])
 
     def test_true_direction(self):
         """ Mapped is easy to check
@@ -55,7 +55,7 @@ class TestCheckCNotDirection(QiskitTestCase):
 
          CouplingMap map: [1]<-[0]->[2]
         """
-        qr = QuantumRegister(3, 'qr')
+        qr = QuantumRegister(3, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         circuit.h(qr[0])
@@ -66,7 +66,7 @@ class TestCheckCNotDirection(QiskitTestCase):
         pass_ = CheckCXDirection(coupling)
         pass_.run(dag)
 
-        self.assertTrue(pass_.property_set['is_direction_mapped'])
+        self.assertTrue(pass_.property_set["is_direction_mapped"])
 
     def test_true_direction_in_same_layer(self):
         """ Two CXs distance_qubits 1 to each other, in the same layer
@@ -80,7 +80,7 @@ class TestCheckCNotDirection(QiskitTestCase):
 
          CouplingMap map: [0]->[1]->[2]->[3]
         """
-        qr = QuantumRegister(4, 'qr')
+        qr = QuantumRegister(4, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         circuit.cx(qr[2], qr[3])
@@ -90,7 +90,7 @@ class TestCheckCNotDirection(QiskitTestCase):
         pass_ = CheckCXDirection(coupling)
         pass_.run(dag)
 
-        self.assertTrue(pass_.property_set['is_direction_mapped'])
+        self.assertTrue(pass_.property_set["is_direction_mapped"])
 
     def test_wrongly_mapped(self):
         """ Needs [0]-[1] in a [0]--[2]--[1]
@@ -100,7 +100,7 @@ class TestCheckCNotDirection(QiskitTestCase):
 
          CouplingMap map: [0]->[2]->[1]
         """
-        qr = QuantumRegister(2, 'qr')
+        qr = QuantumRegister(2, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         coupling = CouplingMap([[0, 2], [2, 1]])
@@ -109,7 +109,7 @@ class TestCheckCNotDirection(QiskitTestCase):
         pass_ = CheckCXDirection(coupling)
         pass_.run(dag)
 
-        self.assertFalse(pass_.property_set['is_direction_mapped'])
+        self.assertFalse(pass_.property_set["is_direction_mapped"])
 
     def test_true_direction_undirected(self):
         """ Mapped but with wrong direction
@@ -121,7 +121,7 @@ class TestCheckCNotDirection(QiskitTestCase):
 
          CouplingMap map: [1]<-[0]->[2]
         """
-        qr = QuantumRegister(3, 'qr')
+        qr = QuantumRegister(3, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         circuit.h(qr[0])
@@ -132,7 +132,7 @@ class TestCheckCNotDirection(QiskitTestCase):
         pass_ = CheckCXDirection(coupling)
         pass_.run(dag)
 
-        self.assertFalse(pass_.property_set['is_direction_mapped'])
+        self.assertFalse(pass_.property_set["is_direction_mapped"])
 
     def test_false_direction_in_same_layer_undirected(self):
         """ Two CXs in the same layer, but one is wrongly directed
@@ -146,7 +146,7 @@ class TestCheckCNotDirection(QiskitTestCase):
 
          CouplingMap map: [0]->[1]->[2]->[3]
         """
-        qr = QuantumRegister(4, 'qr')
+        qr = QuantumRegister(4, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         circuit.cx(qr[3], qr[2])
@@ -156,7 +156,7 @@ class TestCheckCNotDirection(QiskitTestCase):
         pass_ = CheckCXDirection(coupling)
         pass_.run(dag)
 
-        self.assertFalse(pass_.property_set['is_direction_mapped'])
+        self.assertFalse(pass_.property_set["is_direction_mapped"])
 
 
 class TestCheckCNotDirectionBarrier(QiskitTestCase):
@@ -170,7 +170,7 @@ class TestCheckCNotDirectionBarrier(QiskitTestCase):
 
          CouplingMap map: None
         """
-        qr = QuantumRegister(2, 'qr')
+        qr = QuantumRegister(2, "qr")
         circuit = QuantumCircuit(qr)
         circuit.barrier(qr[0], qr[1])
         coupling = CouplingMap()
@@ -179,8 +179,8 @@ class TestCheckCNotDirectionBarrier(QiskitTestCase):
         pass_ = CheckCXDirection(coupling)
         pass_.run(dag)
 
-        self.assertTrue(pass_.property_set['is_direction_mapped'])
+        self.assertTrue(pass_.property_set["is_direction_mapped"])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

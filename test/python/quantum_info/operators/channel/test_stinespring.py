@@ -50,7 +50,8 @@ class TestStinespring(ChannelTestCase):
 
         # Wrong input or output dims should raise exception
         self.assertRaises(
-            QiskitError, Stinespring, stine_l, input_dims=4, output_dims=4)
+            QiskitError, Stinespring, stine_l, input_dims=4, output_dims=4
+        )
 
     def test_circuit_init(self):
         """Test initialization from a circuit."""
@@ -168,9 +169,9 @@ class TestStinespring(ChannelTestCase):
 
     def test_compose_except(self):
         """Test compose different dimension exception"""
-        self.assertRaises(QiskitError,
-                          Stinespring(np.eye(2)).compose, Stinespring(
-                              np.eye(4)))
+        self.assertRaises(
+            QiskitError, Stinespring(np.eye(2)).compose, Stinespring(np.eye(4))
+        )
         self.assertRaises(QiskitError, Stinespring(np.eye(2)).compose, 2)
 
     def test_compose(self):
@@ -290,7 +291,7 @@ class TestStinespring(ChannelTestCase):
         chan = Stinespring(self.depol_stine(1 - p_id))
 
         # Compose 3 times
-        p_id3 = p_id**3
+        p_id3 = p_id ** 3
         chan3 = chan.power(3)
         targ3a = chan._evolve(chan._evolve(chan._evolve(rho)))
         self.assertAllClose(chan3._evolve(rho), targ3a)
@@ -375,7 +376,7 @@ class TestStinespring(ChannelTestCase):
     def test_multiply_except(self):
         """Test multiply method raises exceptions."""
         chan = Stinespring(self.depol_stine(1))
-        self.assertRaises(QiskitError, chan.multiply, 's')
+        self.assertRaises(QiskitError, chan.multiply, "s")
         self.assertRaises(QiskitError, chan.multiply, chan)
 
     def test_negate(self):
@@ -386,5 +387,5 @@ class TestStinespring(ChannelTestCase):
         self.assertAllClose(chan._evolve(rho), targ)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

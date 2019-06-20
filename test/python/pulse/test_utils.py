@@ -35,15 +35,17 @@ class TestAutoMerge(QiskitTestCase):
         self.device = pulse.DeviceSpecification.create_from(self.backend)
         self.config = self.backend.configuration()
         self.defaults = self.backend.defaults()
-        self.cmd_def = CmdDef.from_defaults(self.defaults.cmd_def,
-                                            self.defaults.pulse_library)
-        self.short_pulse = pulse.SamplePulse(samples=np.array([0.02739068], dtype=np.complex128),
-                                             name='p0')
+        self.cmd_def = CmdDef.from_defaults(
+            self.defaults.cmd_def, self.defaults.pulse_library
+        )
+        self.short_pulse = pulse.SamplePulse(
+            samples=np.array([0.02739068], dtype=np.complex128), name="p0"
+        )
 
     def test_align_measures(self):
         """Test that one acquire is delayed to match the time of the later acquire."""
         acquire = pulse.Acquire(5)
-        sched = pulse.Schedule(name='fake_experiment')
+        sched = pulse.Schedule(name="fake_experiment")
         sched = sched.insert(0, self.short_pulse(self.device.q[0].drive))
         sched = sched.insert(1, acquire(self.device.q[0], self.device.mem[0]))
         sched = sched.insert(10, acquire(self.device.q[1], self.device.mem[1]))
@@ -60,7 +62,7 @@ class TestAutoMerge(QiskitTestCase):
         """Test that acquires are scheduled no sooner than the duration of the longest X gate.
         """
         acquire = pulse.Acquire(5)
-        sched = pulse.Schedule(name='fake_experiment')
+        sched = pulse.Schedule(name="fake_experiment")
         sched = sched.insert(0, self.short_pulse(self.device.q[0].drive))
         sched = sched.insert(1, acquire(self.device.q[0], self.device.mem[0]))
         sched = align_measures([sched], self.cmd_def)[0]
@@ -75,7 +77,7 @@ class TestAutoMerge(QiskitTestCase):
     def test_error_multi_acquire(self):
         """Test that an error is raised if multiple acquires occur on the same channel."""
         acquire = pulse.Acquire(5)
-        sched = pulse.Schedule(name='fake_experiment')
+        sched = pulse.Schedule(name="fake_experiment")
         sched = sched.insert(0, self.short_pulse(self.device.q[0].drive))
         sched = sched.insert(4, acquire(self.device.q[0], self.device.mem[0]))
         sched = sched.insert(10, acquire(self.device.q[0], self.device.mem[0]))
@@ -85,7 +87,7 @@ class TestAutoMerge(QiskitTestCase):
     def test_error_post_acquire_pulse(self):
         """Test that an error is raised if a pulse occurs on a channel after an acquire."""
         acquire = pulse.Acquire(5)
-        sched = pulse.Schedule(name='fake_experiment')
+        sched = pulse.Schedule(name="fake_experiment")
         sched = sched.insert(0, self.short_pulse(self.device.q[0].drive))
         sched = sched.insert(4, acquire(self.device.q[0], self.device.mem[0]))
         # No error with separate channel
@@ -98,10 +100,10 @@ class TestAutoMerge(QiskitTestCase):
     def test_align_across_schedules(self):
         """Test that acquires are aligned together across multiple schedules."""
         acquire = pulse.Acquire(5)
-        sched1 = pulse.Schedule(name='fake_experiment')
+        sched1 = pulse.Schedule(name="fake_experiment")
         sched1 = sched1.insert(0, self.short_pulse(self.device.q[0].drive))
         sched1 = sched1.insert(10, acquire(self.device.q[0], self.device.mem[0]))
-        sched2 = pulse.Schedule(name='fake_experiment')
+        sched2 = pulse.Schedule(name="fake_experiment")
         sched2 = sched2.insert(3, self.short_pulse(self.device.q[0].drive))
         sched2 = sched2.insert(25, acquire(self.device.q[0], self.device.mem[0]))
         schedules = align_measures([sched1, sched2], self.cmd_def)
@@ -121,12 +123,14 @@ class TestAddImplicitAcquires(QiskitTestCase):
         self.device = pulse.DeviceSpecification.create_from(self.backend)
         self.config = self.backend.configuration()
         self.defaults = self.backend.defaults()
-        self.cmd_def = CmdDef.from_defaults(self.defaults.cmd_def,
-                                            self.defaults.pulse_library)
-        self.short_pulse = pulse.SamplePulse(samples=np.array([0.02739068], dtype=np.complex128),
-                                             name='p0')
+        self.cmd_def = CmdDef.from_defaults(
+            self.defaults.cmd_def, self.defaults.pulse_library
+        )
+        self.short_pulse = pulse.SamplePulse(
+            samples=np.array([0.02739068], dtype=np.complex128), name="p0"
+        )
         acquire = pulse.Acquire(5)
-        sched = pulse.Schedule(name='fake_experiment')
+        sched = pulse.Schedule(name="fake_experiment")
         sched = sched.insert(0, self.short_pulse(self.device.q[0].drive))
         self.sched = sched.insert(5, acquire(self.device.q, self.device.mem))
 
@@ -158,5 +162,5 @@ class TestAddImplicitAcquires(QiskitTestCase):
         self.assertEqual(acquired_qubits, {0, 1, 2, 3})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

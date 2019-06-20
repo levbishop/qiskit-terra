@@ -37,7 +37,7 @@ class TestCXDirection(QiskitTestCase):
 
          CouplingMap map: None
         """
-        qr = QuantumRegister(3, 'qr')
+        qr = QuantumRegister(3, "qr")
         circuit = QuantumCircuit(qr)
         circuit.h(qr)
         coupling = CouplingMap()
@@ -58,7 +58,7 @@ class TestCXDirection(QiskitTestCase):
 
          CouplingMap map: [2] <- [0] -> [1]
         """
-        qr = QuantumRegister(3, 'qr')
+        qr = QuantumRegister(3, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[1], qr[2])
         coupling = CouplingMap([[0, 1], [0, 2]])
@@ -77,7 +77,7 @@ class TestCXDirection(QiskitTestCase):
 
          CouplingMap map: [0] -> [1]
         """
-        qr = QuantumRegister(2, 'qr')
+        qr = QuantumRegister(2, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[0], qr[1])
         coupling = CouplingMap([[0, 1]])
@@ -100,7 +100,7 @@ class TestCXDirection(QiskitTestCase):
                    |
          qr1:-[H]--.--[H]--
         """
-        qr = QuantumRegister(2, 'qr')
+        qr = QuantumRegister(2, "qr")
         circuit = QuantumCircuit(qr)
         circuit.cx(qr[1], qr[0])
         coupling = CouplingMap([[0, 1]])
@@ -134,8 +134,8 @@ class TestCXDirection(QiskitTestCase):
                             |
          cr0: --------------.--
         """
-        qr = QuantumRegister(2, 'qr')
-        cr = ClassicalRegister(1, 'cr')
+        qr = QuantumRegister(2, "qr")
+        cr = ClassicalRegister(1, "cr")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.cx(qr[1], qr[0])
@@ -157,5 +157,5 @@ class TestCXDirection(QiskitTestCase):
         self.assertEqual(circuit_to_dag(expected), after)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

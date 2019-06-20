@@ -25,7 +25,7 @@ class Program(Node):
 
     def __init__(self, children):
         """Create the program node."""
-        super().__init__('program', children, None)
+        super().__init__("program", children, None)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""

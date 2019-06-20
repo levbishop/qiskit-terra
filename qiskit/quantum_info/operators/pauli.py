@@ -100,16 +100,18 @@ class Pauli:
         z = np.zeros(len(label), dtype=np.bool)
         x = np.zeros(len(label), dtype=np.bool)
         for i, char in enumerate(label):
-            if char == 'X':
+            if char == "X":
                 x[-i - 1] = True
-            elif char == 'Z':
+            elif char == "Z":
                 z[-i - 1] = True
-            elif char == 'Y':
+            elif char == "Y":
                 z[-i - 1] = True
                 x[-i - 1] = True
-            elif char != 'I':
-                raise QiskitError("Pauli string must be only consisted of 'I', 'X', "
-                                  "'Y' or 'Z' but you have {}.".format(char))
+            elif char != "I":
+                raise QiskitError(
+                    "Pauli string must be only consisted of 'I', 'X', "
+                    "'Y' or 'Z' but you have {}.".format(char)
+                )
         return cls(z=z, x=x)
 
     def _init_from_bool(self, z, x):
@@ -130,8 +132,10 @@ class Pauli:
         if x is None:
             raise QiskitError("x vector must not be None.")
         if len(z) != len(x):
-            raise QiskitError("length of z and x vectors must be "
-                              "the same. (z: {} vs x: {})".format(len(z), len(x)))
+            raise QiskitError(
+                "length of z and x vectors must be "
+                "the same. (z: {} vs x: {})".format(len(z), len(x))
+            )
 
         z = _make_np_bool(z)
         x = _make_np_bool(x)
@@ -154,16 +158,16 @@ class Pauli:
 
     def __str__(self):
         """Output the Pauli label."""
-        label = ''
+        label = ""
         for z, x in zip(self._z[::-1], self._x[::-1]):
             if not z and not x:
-                label = ''.join([label, 'I'])
+                label = "".join([label, "I"])
             elif not z and x:
-                label = ''.join([label, 'X'])
+                label = "".join([label, "X"])
             elif z and not x:
-                label = ''.join([label, 'Z'])
+                label = "".join([label, "Z"])
             else:
-                label = ''.join([label, 'Y'])
+                label = "".join([label, "Y"])
         return label
 
     def __eq__(self, other):
@@ -191,8 +195,10 @@ class Pauli:
             QiskitError: if the number of qubits of two paulis are different.
         """
         if len(self) != len(other):
-            raise QiskitError("These Paulis cannot be multiplied - different "
-                              "number of qubits. ({} vs {})".format(len(self), len(other)))
+            raise QiskitError(
+                "These Paulis cannot be multiplied - different "
+                "number of qubits. ({} vs {})".format(len(self), len(other))
+            )
         z_new = np.logical_xor(self._z, other.z)
         x_new = np.logical_xor(self._x, other.x)
         return Pauli(z_new, x_new)
@@ -207,8 +213,10 @@ class Pauli:
             QiskitError: if the number of qubits of two paulis are different.
         """
         if len(self) != len(other):
-            raise QiskitError("These Paulis cannot be multiplied - different "
-                              "number of qubits. ({} vs {})".format(len(self), len(other)))
+            raise QiskitError(
+                "These Paulis cannot be multiplied - different "
+                "number of qubits. ({} vs {})".format(len(self), len(other))
+            )
         self._z = np.logical_xor(self._z, other.z)
         self._x = np.logical_xor(self._x, other.x)
         return self
@@ -286,14 +294,14 @@ class Pauli:
         mat = sparse.coo_matrix(1)
         for z, x in zip(self._z, self._x):
             if not z and not x:  # I
-                mat = sparse.bmat([[mat, None], [None, mat]], format='coo')
+                mat = sparse.bmat([[mat, None], [None, mat]], format="coo")
             elif z and not x:  # Z
-                mat = sparse.bmat([[mat, None], [None, -mat]], format='coo')
+                mat = sparse.bmat([[mat, None], [None, -mat]], format="coo")
             elif not z and x:  # X
-                mat = sparse.bmat([[None, mat], [mat, None]], format='coo')
+                mat = sparse.bmat([[None, mat], [mat, None]], format="coo")
             else:  # Y
                 mat = mat * 1j
-                mat = sparse.bmat([[None, -mat], [mat, None]], format='coo')
+                mat = sparse.bmat([[None, -mat], [mat, None]], format="coo")
 
         return mat.tocsr()
 
@@ -301,17 +309,19 @@ class Pauli:
         """Convert to Operator object."""
         # Place import here to avoid cyclic import from circuit visualization
         from qiskit.quantum_info.operators.operator import Operator
+
         return Operator(self.to_matrix())
 
     def to_instruction(self):
         """Convert to Pauli circuit instruction."""
         from qiskit.circuit import QuantumCircuit, QuantumRegister
         from qiskit.extensions.standard import IdGate, XGate, YGate, ZGate
-        gates = {'I': IdGate(), 'X': XGate(), 'Y': YGate(), 'Z': ZGate()}
+
+        gates = {"I": IdGate(), "X": XGate(), "Y": YGate(), "Z": ZGate()}
         label = self.to_label()
         n_qubits = self.numberofqubits
         qreg = QuantumRegister(n_qubits)
-        circuit = QuantumCircuit(qreg, name='Pauli:{}'.format(label))
+        circuit = QuantumCircuit(qreg, name="Pauli:{}".format(label))
         for i, pauli in enumerate(reversed(label)):
             circuit.append(gates[pauli], [qreg[i]])
         return circuit.to_instruction()
@@ -333,8 +343,10 @@ class Pauli:
         z = _make_np_bool(z)
         if indices is None:
             if len(self._z) != len(z):
-                raise QiskitError("During updating whole z, you can not "
-                                  "change the number of qubits.")
+                raise QiskitError(
+                    "During updating whole z, you can not "
+                    "change the number of qubits."
+                )
             self._z = z
         else:
             if not isinstance(indices, list) and not isinstance(indices, np.ndarray):
@@ -361,8 +373,10 @@ class Pauli:
         x = _make_np_bool(x)
         if indices is None:
             if len(self._x) != len(x):
-                raise QiskitError("During updating whole x, you can not change "
-                                  "the number of qubits.")
+                raise QiskitError(
+                    "During updating whole x, you can not change "
+                    "the number of qubits."
+                )
             self._x = x
         else:
             if not isinstance(indices, list) and not isinstance(indices, np.ndarray):
@@ -397,7 +411,9 @@ class Pauli:
         """
         if pauli_labels is not None:
             if paulis is not None:
-                raise QiskitError("Please only provide either `paulis` or `pauli_labels`")
+                raise QiskitError(
+                    "Please only provide either `paulis` or `pauli_labels`"
+                )
             if isinstance(pauli_labels, str):
                 pauli_labels = list(pauli_labels)
             # since pauli label is in reversed order.
@@ -517,7 +533,7 @@ class Pauli:
         return phase
 
 
-def pauli_group(number_of_qubits, case='weight'):
+def pauli_group(number_of_qubits, case="weight"):
     """Return the Pauli group with 4^n elements.
 
     The phases have been removed.
@@ -538,12 +554,14 @@ def pauli_group(number_of_qubits, case='weight'):
     if number_of_qubits < 5:
         temp_set = []
 
-        if case == 'weight':
-            tmp = pauli_group(number_of_qubits, case='tensor')
+        if case == "weight":
+            tmp = pauli_group(number_of_qubits, case="tensor")
             # sort on the weight of the Pauli operator
-            return sorted(tmp, key=lambda x: -np.count_nonzero(
-                np.array(x.to_label(), 'c') == b'I'))
-        elif case == 'tensor':
+            return sorted(
+                tmp,
+                key=lambda x: -np.count_nonzero(np.array(x.to_label(), "c") == b"I"),
+            )
+        elif case == "tensor":
             # the Pauli set is in tensor order II IX IY IZ XI ...
             for k in range(4 ** number_of_qubits):
                 z = np.zeros(number_of_qubits, dtype=np.bool)
@@ -563,7 +581,9 @@ def pauli_group(number_of_qubits, case='weight'):
                 temp_set.append(Pauli(z, x))
             return temp_set
         else:
-            raise QiskitError("Only support 'weight' or 'tensor' cases "
-                              "but you have {}.".format(case))
+            raise QiskitError(
+                "Only support 'weight' or 'tensor' cases "
+                "but you have {}.".format(case)
+            )
 
     raise QiskitError("Only support number of qubits is less than 5")

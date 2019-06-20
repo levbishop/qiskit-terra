@@ -65,11 +65,11 @@ class TestLatexSourceGenerator(QiskitTestCase):
                 operands = remaining_qubits[:num_operands]
                 remaining_qubits = [q for q in remaining_qubits if q not in operands]
                 if num_operands == 1:
-                    operation = rng.choice(one_q_ops.split(','))
+                    operation = rng.choice(one_q_ops.split(","))
                 elif num_operands == 2:
-                    operation = rng.choice(two_q_ops.split(','))
+                    operation = rng.choice(two_q_ops.split(","))
                 elif num_operands == 3:
-                    operation = rng.choice(three_q_ops.split(','))
+                    operation = rng.choice(three_q_ops.split(","))
                 # every gate is defined as a method of the QuantumCircuit class
                 # the code below is so we can call a gate by its name
                 gate = getattr(QuantumCircuit, operation)
@@ -83,10 +83,10 @@ class TestLatexSourceGenerator(QiskitTestCase):
 
     def test_tiny_circuit(self):
         """Test draw tiny circuit."""
-        filename = self._get_resource_path('test_tiny.tex')
+        filename = self._get_resource_path("test_tiny.tex")
         qc = self.random_circuit(1, 1, 1)
         try:
-            circuit_drawer(qc, filename=filename, output='latex_source')
+            circuit_drawer(qc, filename=filename, output="latex_source")
             self.assertNotEqual(os.path.exists(filename), False)
         finally:
             if os.path.exists(filename):
@@ -94,10 +94,10 @@ class TestLatexSourceGenerator(QiskitTestCase):
 
     def test_normal_circuit(self):
         """Test draw normal size circuit."""
-        filename = self._get_resource_path('test_normal.tex')
+        filename = self._get_resource_path("test_normal.tex")
         qc = self.random_circuit(5, 5, 3)
         try:
-            circuit_drawer(qc, filename=filename, output='latex_source')
+            circuit_drawer(qc, filename=filename, output="latex_source")
             self.assertNotEqual(os.path.exists(filename), False)
         finally:
             if os.path.exists(filename):
@@ -105,10 +105,10 @@ class TestLatexSourceGenerator(QiskitTestCase):
 
     def test_wide_circuit(self):
         """Test draw wide circuit."""
-        filename = self._get_resource_path('test_wide.tex')
+        filename = self._get_resource_path("test_wide.tex")
         qc = self.random_circuit(100, 1, 1)
         try:
-            circuit_drawer(qc, filename=filename, output='latex_source')
+            circuit_drawer(qc, filename=filename, output="latex_source")
             self.assertNotEqual(os.path.exists(filename), False)
         finally:
             if os.path.exists(filename):
@@ -116,10 +116,10 @@ class TestLatexSourceGenerator(QiskitTestCase):
 
     def test_deep_circuit(self):
         """Test draw deep circuit."""
-        filename = self._get_resource_path('test_deep.tex')
+        filename = self._get_resource_path("test_deep.tex")
         qc = self.random_circuit(1, 100, 1)
         try:
-            circuit_drawer(qc, filename=filename, output='latex_source')
+            circuit_drawer(qc, filename=filename, output="latex_source")
             self.assertNotEqual(os.path.exists(filename), False)
         finally:
             if os.path.exists(filename):
@@ -127,10 +127,10 @@ class TestLatexSourceGenerator(QiskitTestCase):
 
     def test_huge_circuit(self):
         """Test draw huge circuit."""
-        filename = self._get_resource_path('test_huge.tex')
+        filename = self._get_resource_path("test_huge.tex")
         qc = self.random_circuit(40, 40, 1)
         try:
-            circuit_drawer(qc, filename=filename, output='latex_source')
+            circuit_drawer(qc, filename=filename, output="latex_source")
             self.assertNotEqual(os.path.exists(filename), False)
         finally:
             if os.path.exists(filename):
@@ -138,9 +138,9 @@ class TestLatexSourceGenerator(QiskitTestCase):
 
     def test_teleport(self):
         """Test draw teleport circuit."""
-        filename = self._get_resource_path('test_teleport.tex')
-        qr = QuantumRegister(3, 'q')
-        cr = ClassicalRegister(3, 'c')
+        filename = self._get_resource_path("test_teleport.tex")
+        qr = QuantumRegister(3, "q")
+        cr = ClassicalRegister(3, "c")
         qc = QuantumCircuit(qr, cr)
         # Prepare an initial state
         qc.u3(0.3, 0.2, 0.1, qr[0])
@@ -159,7 +159,7 @@ class TestLatexSourceGenerator(QiskitTestCase):
         qc.x(qr[2]).c_if(cr, 2)
         qc.measure(qr[2], cr[2])
         try:
-            circuit_drawer(qc, filename=filename, output='latex_source')
+            circuit_drawer(qc, filename=filename, output="latex_source")
             self.assertNotEqual(os.path.exists(filename), False)
         finally:
             if os.path.exists(filename):
@@ -172,10 +172,10 @@ class TestVisualizationUtils(QiskitTestCase):
     the need to be check if the interface or their result changes."""
 
     def setUp(self):
-        self.qr1 = QuantumRegister(2, 'qr1')
-        self.qr2 = QuantumRegister(2, 'qr2')
-        self.cr1 = ClassicalRegister(2, 'cr1')
-        self.cr2 = ClassicalRegister(2, 'cr2')
+        self.qr1 = QuantumRegister(2, "qr1")
+        self.qr2 = QuantumRegister(2, "qr2")
+        self.cr1 = ClassicalRegister(2, "cr1")
+        self.cr2 = ClassicalRegister(2, "cr2")
 
         self.circuit = QuantumCircuit(self.qr1, self.qr2, self.cr1, self.cr2)
         self.circuit.cx(self.qr2[0], self.qr2[1])
@@ -191,39 +191,142 @@ class TestVisualizationUtils(QiskitTestCase):
         """ _get_layered_instructions without reverse_bits """
         (qregs, cregs, layered_ops) = utils._get_layered_instructions(self.circuit)
 
-        exp = [[('cx', [(QuantumRegister(2, 'qr2'), 0), (QuantumRegister(2, 'qr2'), 1)], []),
-                ('cx', [(QuantumRegister(2, 'qr1'), 0), (QuantumRegister(2, 'qr1'), 1)], [])],
-               [('measure', [(QuantumRegister(2, 'qr2'), 0)], [(ClassicalRegister(2, 'cr2'), 0)])],
-               [('measure', [(QuantumRegister(2, 'qr1'), 0)], [(ClassicalRegister(2, 'cr1'), 0)])],
-               [('cx', [(QuantumRegister(2, 'qr2'), 1), (QuantumRegister(2, 'qr2'), 0)], []),
-                ('cx', [(QuantumRegister(2, 'qr1'), 1), (QuantumRegister(2, 'qr1'), 0)], [])],
-               [('measure', [(QuantumRegister(2, 'qr2'), 1)], [(ClassicalRegister(2, 'cr2'), 1)])],
-               [('measure', [(QuantumRegister(2, 'qr1'), 1)], [(ClassicalRegister(2, 'cr1'), 1)])]
-               ]
+        exp = [
+            [
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr2"), 0), (QuantumRegister(2, "qr2"), 1)],
+                    [],
+                ),
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr1"), 0), (QuantumRegister(2, "qr1"), 1)],
+                    [],
+                ),
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr2"), 0)],
+                    [(ClassicalRegister(2, "cr2"), 0)],
+                )
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr1"), 0)],
+                    [(ClassicalRegister(2, "cr1"), 0)],
+                )
+            ],
+            [
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr2"), 1), (QuantumRegister(2, "qr2"), 0)],
+                    [],
+                ),
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr1"), 1), (QuantumRegister(2, "qr1"), 0)],
+                    [],
+                ),
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr2"), 1)],
+                    [(ClassicalRegister(2, "cr2"), 1)],
+                )
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr1"), 1)],
+                    [(ClassicalRegister(2, "cr1"), 1)],
+                )
+            ],
+        ]
 
-        self.assertEqual([(self.qr1, 0), (self.qr1, 1), (self.qr2, 0), (self.qr2, 1)], qregs)
-        self.assertEqual([(self.cr1, 0), (self.cr1, 1), (self.cr2, 0), (self.cr2, 1)], cregs)
-        self.assertEqual(exp, [[(op.name, op.qargs, op.cargs) for op in ops]for ops in layered_ops])
+        self.assertEqual(
+            [(self.qr1, 0), (self.qr1, 1), (self.qr2, 0), (self.qr2, 1)], qregs
+        )
+        self.assertEqual(
+            [(self.cr1, 0), (self.cr1, 1), (self.cr2, 0), (self.cr2, 1)], cregs
+        )
+        self.assertEqual(
+            exp, [[(op.name, op.qargs, op.cargs) for op in ops] for ops in layered_ops]
+        )
 
     def test_get_layered_instructions_reverse_bits(self):
         """ _get_layered_instructions with reverse_bits=True """
-        (qregs, cregs, layered_ops) = utils._get_layered_instructions(self.circuit,
-                                                                      reverse_bits=True)
+        (qregs, cregs, layered_ops) = utils._get_layered_instructions(
+            self.circuit, reverse_bits=True
+        )
 
-        exp = [[('cx', [(QuantumRegister(2, 'qr2'), 0), (QuantumRegister(2, 'qr2'), 1)], []),
-                ('cx', [(QuantumRegister(2, 'qr1'), 0), (QuantumRegister(2, 'qr1'), 1)], [])],
-               [('measure', [(QuantumRegister(2, 'qr2'), 0)], [(ClassicalRegister(2, 'cr2'), 0)])],
-               [('measure', [(QuantumRegister(2, 'qr1'), 0)], [(ClassicalRegister(2, 'cr1'), 0)])],
-               [('cx', [(QuantumRegister(2, 'qr2'), 1), (QuantumRegister(2, 'qr2'), 0)], []),
-                ('cx', [(QuantumRegister(2, 'qr1'), 1), (QuantumRegister(2, 'qr1'), 0)], [])],
-               [('measure', [(QuantumRegister(2, 'qr2'), 1)], [(ClassicalRegister(2, 'cr2'), 1)])],
-               [('measure', [(QuantumRegister(2, 'qr1'), 1)], [(ClassicalRegister(2, 'cr1'), 1)])]
-               ]
+        exp = [
+            [
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr2"), 0), (QuantumRegister(2, "qr2"), 1)],
+                    [],
+                ),
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr1"), 0), (QuantumRegister(2, "qr1"), 1)],
+                    [],
+                ),
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr2"), 0)],
+                    [(ClassicalRegister(2, "cr2"), 0)],
+                )
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr1"), 0)],
+                    [(ClassicalRegister(2, "cr1"), 0)],
+                )
+            ],
+            [
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr2"), 1), (QuantumRegister(2, "qr2"), 0)],
+                    [],
+                ),
+                (
+                    "cx",
+                    [(QuantumRegister(2, "qr1"), 1), (QuantumRegister(2, "qr1"), 0)],
+                    [],
+                ),
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr2"), 1)],
+                    [(ClassicalRegister(2, "cr2"), 1)],
+                )
+            ],
+            [
+                (
+                    "measure",
+                    [(QuantumRegister(2, "qr1"), 1)],
+                    [(ClassicalRegister(2, "cr1"), 1)],
+                )
+            ],
+        ]
 
-        self.assertEqual([(self.qr2, 1), (self.qr2, 0), (self.qr1, 1), (self.qr1, 0)], qregs)
-        self.assertEqual([(self.cr2, 1), (self.cr2, 0), (self.cr1, 1), (self.cr1, 0)], cregs)
-        self.assertEqual(exp, [[(op.name, op.qargs, op.cargs) for op in ops]for ops in layered_ops])
+        self.assertEqual(
+            [(self.qr2, 1), (self.qr2, 0), (self.qr1, 1), (self.qr1, 0)], qregs
+        )
+        self.assertEqual(
+            [(self.cr2, 1), (self.cr2, 0), (self.cr1, 1), (self.cr1, 0)], cregs
+        )
+        self.assertEqual(
+            exp, [[(op.name, op.qargs, op.cargs) for op in ops] for ops in layered_ops]
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

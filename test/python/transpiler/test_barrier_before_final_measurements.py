@@ -31,8 +31,8 @@ class TestBarrierBeforeFinalMeasurements(QiskitTestCase):
               |    ->      |  |
          c:---.---     c:-----.---
         """
-        qr = QuantumRegister(1, 'q')
-        cr = ClassicalRegister(1, 'c')
+        qr = QuantumRegister(1, "q")
+        cr = ClassicalRegister(1, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.measure(qr, cr)
@@ -52,8 +52,8 @@ class TestBarrierBeforeFinalMeasurements(QiskitTestCase):
               |        ->       |
          c:---.------      c:---.------
         """
-        qr = QuantumRegister(1, 'q')
-        cr = ClassicalRegister(1, 'c')
+        qr = QuantumRegister(1, "q")
+        cr = ClassicalRegister(1, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.measure(qr, cr)
@@ -75,8 +75,8 @@ class TestBarrierBeforeFinalMeasurements(QiskitTestCase):
                |         |    ->        |        |  |
           c:---.---------.---      c:---.-----------.---
         """
-        qr = QuantumRegister(1, 'q')
-        cr = ClassicalRegister(1, 'c')
+        qr = QuantumRegister(1, "q")
+        cr = ClassicalRegister(1, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.measure(qr, cr)
@@ -105,10 +105,10 @@ class TestBarrierBeforeFinalMeasurements(QiskitTestCase):
                         |                          |
          c1:------------.---      c0:--------------.---
         """
-        qr0 = QuantumRegister(1, 'q0')
-        qr1 = QuantumRegister(1, 'q1')
-        cr0 = ClassicalRegister(1, 'c0')
-        cr1 = ClassicalRegister(1, 'c1')
+        qr0 = QuantumRegister(1, "q0")
+        qr1 = QuantumRegister(1, "q1")
+        cr0 = ClassicalRegister(1, "c0")
+        cr1 = ClassicalRegister(1, "c1")
 
         circuit = QuantumCircuit(qr0, qr1, cr0, cr1)
         circuit.h(qr0)
@@ -136,9 +136,9 @@ class TestBarrierBeforeFinalMeasurements(QiskitTestCase):
          c0:--------.---|---     c0:-----------.---|---
             ------------.---        ---------------.---
         """
-        qr0 = QuantumRegister(1, 'q0')
-        qr1 = QuantumRegister(1, 'q1')
-        cr0 = ClassicalRegister(2, 'c0')
+        qr0 = QuantumRegister(1, "q0")
+        qr1 = QuantumRegister(1, "q1")
+        cr0 = ClassicalRegister(2, "c0")
 
         circuit = QuantumCircuit(qr0, qr1, cr0)
         circuit.h(qr0)
@@ -167,10 +167,10 @@ class TestBarrierBeforeFinalMeasurements(QiskitTestCase):
                               |                                |
          c1:------------------.---     c1:---------------------.---
         """
-        qr0 = QuantumRegister(1, 'q0')
-        qr1 = QuantumRegister(1, 'q1')
-        cr0 = ClassicalRegister(1, 'c0')
-        cr1 = ClassicalRegister(1, 'c1')
+        qr0 = QuantumRegister(1, "q0")
+        qr1 = QuantumRegister(1, "q1")
+        cr0 = ClassicalRegister(1, "c0")
+        cr1 = ClassicalRegister(1, "c1")
         circuit = QuantumCircuit(qr0, qr1, cr0, cr1)
 
         circuit.h(qr0)
@@ -201,8 +201,8 @@ class TestBarrierBeforeMeasuremetsWhenABarrierIsAlreadyThere(QiskitTestCase):
              |  |     ->      |  |
          c:-----.---      c:-----.---
         """
-        qr = QuantumRegister(1, 'q')
-        cr = ClassicalRegister(1, 'c')
+        qr = QuantumRegister(1, "q")
+        cr = ClassicalRegister(1, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.barrier(qr)
@@ -227,9 +227,9 @@ class TestBarrierBeforeMeasuremetsWhenABarrierIsAlreadyThere(QiskitTestCase):
          c0:------.---|---     c0:-------.---|---
             ----------.---        -----------.---
         """
-        qr0 = QuantumRegister(1, 'q0')
-        qr1 = QuantumRegister(1, 'q1')
-        cr0 = ClassicalRegister(2, 'c0')
+        qr0 = QuantumRegister(1, "q0")
+        qr1 = QuantumRegister(1, "q1")
+        cr0 = ClassicalRegister(2, "c0")
 
         circuit = QuantumCircuit(qr0, qr1, cr0)
         circuit.barrier(qr0)
@@ -257,8 +257,8 @@ class TestBarrierBeforeMeasuremetsWhenABarrierIsAlreadyThere(QiskitTestCase):
          c:----.-------|---     c:-------.-------|---
            ------------.---       ---------------.---
         """
-        qr = QuantumRegister(2, 'q')
-        cr = ClassicalRegister(2, 'c')
+        qr = QuantumRegister(2, "q")
+        cr = ClassicalRegister(2, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.measure(qr[0], cr[0])
@@ -286,8 +286,8 @@ class TestBarrierBeforeMeasuremetsWhenABarrierIsAlreadyThere(QiskitTestCase):
          c:------------.-------|---     c:------------.------|---
            --------------------.---       -------------------.---
         """
-        qr = QuantumRegister(2, 'q')
-        cr = ClassicalRegister(2, 'c')
+        qr = QuantumRegister(2, "q")
+        cr = ClassicalRegister(2, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.h(qr)
@@ -320,8 +320,8 @@ class TestBarrierBeforeMeasuremetsWhenABarrierIsAlreadyThere(QiskitTestCase):
            ------------.----|----       ------------.----|----
            -----------------.----       -----------------.----
         """
-        qr = QuantumRegister(3, 'q')
-        cr = ClassicalRegister(3, 'c')
+        qr = QuantumRegister(3, "q")
+        cr = ClassicalRegister(3, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.barrier(qr[0], qr[1])
@@ -348,8 +348,8 @@ class TestBarrierBeforeMeasuremetsWhenABarrierIsAlreadyThere(QiskitTestCase):
            ---------------.---       --------------.---
            -------------------       ------------------
         """
-        qr = QuantumRegister(3, 'q')
-        cr = ClassicalRegister(3, 'c')
+        qr = QuantumRegister(3, "q")
+        cr = ClassicalRegister(3, "c")
 
         circuit = QuantumCircuit(qr, cr)
         circuit.barrier(qr)
@@ -403,5 +403,5 @@ class TestBarrierBeforeMeasuremetsWhenABarrierIsAlreadyThere(QiskitTestCase):
         self.assertEqual(result, circuit_to_dag(expected))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

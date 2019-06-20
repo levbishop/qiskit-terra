@@ -29,33 +29,37 @@ class TestBackendOverview(QiskitTestCase):
     def test_backend_overview(self, qe_token, qe_url):
         """Test backend_overview"""
         from qiskit import IBMQ  # pylint: disable: import-error
+
         IBMQ.enable_account(qe_token, qe_url)
 
-        with patch('sys.stdout', new=StringIO()) as fake_stout:
+        with patch("sys.stdout", new=StringIO()) as fake_stout:
             backend_overview()
         stdout = fake_stout.getvalue()
-        self.assertIn('Operational:', stdout)
-        self.assertIn('Avg. T1:', stdout)
-        self.assertIn('Num. Qubits:', stdout)
+        self.assertIn("Operational:", stdout)
+        self.assertIn("Avg. T1:", stdout)
+        self.assertIn("Num. Qubits:", stdout)
 
     @online_test
     def test_backend_monitor(self, qe_token, qe_url):
         """Test backend_monitor"""
         from qiskit import IBMQ  # pylint: disable: import-error
+
         IBMQ.enable_account(qe_token, qe_url)
         for back in IBMQ.backends():
             if not back.configuration().simulator:
                 backend = back
                 break
-        with patch('sys.stdout', new=StringIO()) as fake_stout:
+        with patch("sys.stdout", new=StringIO()) as fake_stout:
             backend_monitor(backend)
 
         stdout = fake_stout.getvalue()
-        self.assertIn('Configuration', stdout)
-        self.assertIn('Qubits [Name / Freq / T1 / T2 / U1 err / U2 err / U3 err / Readout err]',
-                      stdout)
-        self.assertIn('Multi-Qubit Gates [Name / Type / Gate Error]', stdout)
+        self.assertIn("Configuration", stdout)
+        self.assertIn(
+            "Qubits [Name / Freq / T1 / T2 / U1 err / U2 err / U3 err / Readout err]",
+            stdout,
+        )
+        self.assertIn("Multi-Qubit Gates [Name / Type / Gate Error]", stdout)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

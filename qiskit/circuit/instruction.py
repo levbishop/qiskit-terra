@@ -43,7 +43,7 @@ from qiskit.circuit.classicalregister import ClassicalRegister
 from qiskit.circuit.parameter import Parameter
 from qiskit.qobj.models.qasm import QasmQobjInstruction
 
-_CUTOFF_PRECISION = 1E-10
+_CUTOFF_PRECISION = 1e-10
 
 
 class Instruction:
@@ -63,8 +63,9 @@ class Instruction:
             raise QiskitError("num_qubits and num_clbits must be integer.")
         if num_qubits < 0 or num_clbits < 0:
             raise QiskitError(
-                "bad instruction dimensions: %d qubits, %d clbits." %
-                num_qubits, num_clbits)
+                "bad instruction dimensions: %d qubits, %d clbits." % num_qubits,
+                num_clbits,
+            )
         self.name = name
         self.num_qubits = num_qubits
         self.num_clbits = num_clbits
@@ -88,11 +89,13 @@ class Instruction:
         Returns:
             bool: are self and other equal.
         """
-        if type(self) is not type(other) or \
-                self.name != other.name or \
-                self.num_qubits != other.num_qubits or \
-                self.num_clbits != other.num_clbits or \
-                self.definition != other.definition:
+        if (
+            type(self) is not type(other)
+            or self.name != other.name
+            or self.num_qubits != other.num_qubits
+            or self.num_clbits != other.num_clbits
+            or self.definition != other.definition
+        ):
             return False
 
         for self_param, other_param in zip_longest(self.params, other.params):
@@ -100,8 +103,9 @@ class Instruction:
                 continue
 
             try:
-                if numpy.isclose(float(self_param), float(other_param),
-                                 atol=_CUTOFF_PRECISION):
+                if numpy.isclose(
+                    float(self_param), float(other_param), atol=_CUTOFF_PRECISION
+                ):
                     continue
             except TypeError:
                 pass
@@ -134,8 +138,7 @@ class Instruction:
                 self._params.append(sympy.Number(single_param))
             # example: Initialize([complex(0,1), complex(0,0)])
             elif isinstance(single_param, complex):
-                self._params.append(single_param.real +
-                                    single_param.imag * sympy.I)
+                self._params.append(single_param.real + single_param.imag * sympy.I)
             # example: snapshot('label')
             elif isinstance(single_param, str):
                 self._params.append(sympy.Symbol(single_param))
@@ -150,8 +153,10 @@ class Instruction:
             elif isinstance(single_param, numpy.number):
                 self._params.append(sympy.Number(single_param.item()))
             else:
-                raise QiskitError("invalid param type {0} in instruction "
-                                  "{1}".format(type(single_param), self.name))
+                raise QiskitError(
+                    "invalid param type {0} in instruction "
+                    "{1}".format(type(single_param), self.name)
+                )
 
     @property
     def definition(self):
@@ -170,12 +175,12 @@ class Instruction:
         instruction = QasmQobjInstruction(name=self.name)
         # Evaluate parameters
         if self.params:
+            params = [x.evalf() if hasattr(x, "evalf") else x for x in self.params]
             params = [
-                x.evalf() if hasattr(x, 'evalf') else x for x in self.params
-            ]
-            params = [
-                sympy.matrix2numpy(x, dtype=complex) if isinstance(
-                    x, sympy.Matrix) else x for x in params
+                sympy.matrix2numpy(x, dtype=complex)
+                if isinstance(x, sympy.Matrix)
+                else x
+                for x in params
             ]
             instruction.params = params
         # Add placeholder for qarg and carg params
@@ -202,7 +207,7 @@ class Instruction:
         if not self._definition:
             return self.copy()
 
-        reverse_inst = self.copy(name=self.name + '_mirror')
+        reverse_inst = self.copy(name=self.name + "_mirror")
         reverse_inst.definition = []
         for inst, qargs, cargs in reversed(self._definition):
             reverse_inst._definition.append((inst.mirror(), qargs, cargs))
@@ -226,7 +231,7 @@ class Instruction:
         """
         if not self.definition:
             raise QiskitError("inverse() not implemented for %s." % self.name)
-        inverse_gate = self.copy(name=self.name + '_dg')
+        inverse_gate = self.copy(name=self.name + "_dg")
         inverse_gate._definition = []
         for inst, qargs, cargs in reversed(self._definition):
             inverse_gate._definition.append((inst.inverse(), qargs, cargs))
@@ -272,8 +277,10 @@ class Instruction:
         """
         name_param = self.name
         if self.params:
-            name_param = "%s(%s)" % (name_param, ",".join(
-                [str(i) for i in self.params]))
+            name_param = "%s(%s)" % (
+                name_param,
+                ",".join([str(i) for i in self.params]),
+            )
 
         return self._qasmif(name_param)
 
@@ -299,11 +306,13 @@ class Instruction:
         """
         if len(qargs) != self.num_qubits:
             raise QiskitError(
-                'The amount of qubit arguments does not match the instruction expectation.')
+                "The amount of qubit arguments does not match the instruction expectation."
+            )
 
         if len(cargs) != self.num_clbits:
             raise QiskitError(
-                'The amount of clbit arguments does not match the instruction expectation.')
+                "The amount of clbit arguments does not match the instruction expectation."
+            )
 
         if len(cargs) == len(qargs):
             #  [[q[0], q[1]], [c[0], c[1]]] -> [q[0]], [r[0]]

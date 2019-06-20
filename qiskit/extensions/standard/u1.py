@@ -34,9 +34,7 @@ class U1Gate(Gate):
     def _define(self):
         definition = []
         q = QuantumRegister(1, "q")
-        rule = [
-            (U3Gate(0, 0, self.params[0]), [q[0]], [])
-        ]
+        rule = [(U3Gate(0, 0, self.params[0]), [q[0]], [])]
         for inst in rule:
             definition.append(inst)
         self.definition = definition

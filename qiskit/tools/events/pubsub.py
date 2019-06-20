@@ -53,8 +53,10 @@ class _Broker:
         def __eq__(self, other):
             """Overrides the default implementation"""
             if isinstance(other, self.__class__):
-                return self.event == other.event and \
-                       self.callback.__name__ == other.callback.__name__
+                return (
+                    self.event == other.event
+                    and self.callback.__name__ == other.callback.__name__
+                )
             return False
 
     def subscribe(self, event, callback):
@@ -126,6 +128,7 @@ class Publisher:
     send events by inheriting this class. Functions can call this class like:
     Publisher().publish("event", args, ... )
     """
+
     def __init__(self):
         self._broker = _Broker()
 
@@ -139,6 +142,7 @@ class Subscriber:
     """ Represents a Subscriber, every component (class) can become a Subscriber and
     subscribe to events, that will call callback functions when they are emitted.
     """
+
     def __init__(self):
         self._broker = _Broker()
 

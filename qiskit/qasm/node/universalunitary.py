@@ -26,9 +26,14 @@ class UniversalUnitary(Node):
 
     def __init__(self, children):
         """Create the U node."""
-        super().__init__('universal_unitary', children, None)
+        super().__init__("universal_unitary", children, None)
 
     def qasm(self, prec=15):
         """Return the corresponding OPENQASM string."""
-        return "U(" + self.children[0].qasm(prec) + ") " + \
-               self.children[1].qasm(prec) + ";"
+        return (
+            "U("
+            + self.children[0].qasm(prec)
+            + ") "
+            + self.children[1].qasm(prec)
+            + ";"
+        )

@@ -21,9 +21,9 @@ import threading
 from qiskit.exceptions import QiskitError
 
 _NOTEBOOK_ENV = False
-if ('ipykernel' in sys.modules) and ('spyder' not in sys.modules):
+if ("ipykernel" in sys.modules) and ("spyder" not in sys.modules):
     _NOTEBOOK_ENV = True
-    from IPython.display import display    # pylint: disable=import-error
+    from IPython.display import display  # pylint: disable=import-error
 
 
 def _text_checker(job, interval, _interval_set=False, quiet=False, output=sys.stdout):
@@ -44,14 +44,14 @@ def _text_checker(job, interval, _interval_set=False, quiet=False, output=sys.st
     msg_len = len(msg)
 
     if not quiet:
-        print('\r%s: %s' % ('Job Status', msg), end='', file=output)
-    while status.name not in ['DONE', 'CANCELLED', 'ERROR']:
+        print("\r%s: %s" % ("Job Status", msg), end="", file=output)
+    while status.name not in ["DONE", "CANCELLED", "ERROR"]:
         time.sleep(interval)
         status = job.status()
         msg = status.value
 
-        if status.name == 'QUEUED':
-            msg += ' (%s)' % job.queue_position()
+        if status.name == "QUEUED":
+            msg += " (%s)" % job.queue_position()
             if not _interval_set:
                 interval = max(job.queue_position(), 2)
         else:
@@ -60,18 +60,20 @@ def _text_checker(job, interval, _interval_set=False, quiet=False, output=sys.st
 
         # Adjust length of message so there are no artifacts
         if len(msg) < msg_len:
-            msg += ' ' * (msg_len - len(msg))
+            msg += " " * (msg_len - len(msg))
         elif len(msg) > msg_len:
             msg_len = len(msg)
 
         if msg != prev_msg and not quiet:
-            print('\r%s: %s' % ('Job Status', msg), end='', file=output)
+            print("\r%s: %s" % ("Job Status", msg), end="", file=output)
             prev_msg = msg
     if not quiet:
-        print('', file=output)
+        print("", file=output)
 
 
-def job_monitor(job, interval=None, monitor_async=False, quiet=False, output=sys.stdout):
+def job_monitor(
+    job, interval=None, monitor_async=False, quiet=False, output=sys.stdout
+):
     """Monitor the status of a IBMQJob instance.
 
     Args:
@@ -96,25 +98,25 @@ def job_monitor(job, interval=None, monitor_async=False, quiet=False, output=sys
             try:
                 import ipywidgets as widgets  # pylint: disable=import-error
             except ImportError:
-                raise ImportError('These functions  need ipywidgets. '
-                                  'Run "pip install ipywidgets" before.')
+                raise ImportError(
+                    "These functions  need ipywidgets. "
+                    'Run "pip install ipywidgets" before.'
+                )
             from qiskit.tools.jupyter.jupyter_magics import _html_checker
 
             style = "font-size:16px;"
-            header = "<p style='{style}'>Job Status: %s </p>".format(
-                style=style)
+            header = "<p style='{style}'>Job Status: %s </p>".format(style=style)
             status = widgets.HTML(value=header % job.status().value)
             display(status)
 
-            thread = threading.Thread(target=_html_checker, args=(job, interval,
-                                                                  status, header))
+            thread = threading.Thread(
+                target=_html_checker, args=(job, interval, status, header)
+            )
             thread.start()
         else:
-            _text_checker(job, interval, _interval_set,
-                          quiet=quiet, output=output)
+            _text_checker(job, interval, _interval_set, quiet=quiet, output=output)
 
     else:
         if monitor_async:
-            raise QiskitError(
-                'monitor_async only available in Jupyter notebooks.')
+            raise QiskitError("monitor_async only available in Jupyter notebooks.")
         _text_checker(job, interval, _interval_set, quiet=quiet, output=output)

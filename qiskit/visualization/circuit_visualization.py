@@ -30,6 +30,7 @@ import tempfile
 
 try:
     from PIL import Image
+
     HAS_PIL = True
 except ImportError:
     HAS_PIL = False
@@ -44,17 +45,19 @@ from qiskit.visualization import matplotlib as _matplotlib
 logger = logging.getLogger(__name__)
 
 
-def circuit_drawer(circuit,
-                   scale=0.7,
-                   filename=None,
-                   style=None,
-                   output=None,
-                   interactive=False,
-                   line_length=None,
-                   plot_barriers=True,
-                   reverse_bits=False,
-                   justify=None,
-                   vertical_compression='medium'):
+def circuit_drawer(
+    circuit,
+    scale=0.7,
+    filename=None,
+    style=None,
+    output=None,
+    interactive=False,
+    line_length=None,
+    plot_barriers=True,
+    reverse_bits=False,
+    justify=None,
+    vertical_compression="medium",
+):
     """Draw a quantum circuit to different formats (set by output parameter):
     0. text: ASCII art TextDrawing that can be printed in the console.
     1. latex: high-quality images, but heavy external software dependencies
@@ -185,47 +188,62 @@ def circuit_drawer(circuit,
     image = None
     config = user_config.get_config()
     # Get default from config file else use text
-    default_output = 'text'
+    default_output = "text"
     if config:
-        default_output = config.get('circuit_drawer', 'text')
-        if default_output == 'auto':
+        default_output = config.get("circuit_drawer", "text")
+        if default_output == "auto":
             if _matplotlib.HAS_MATPLOTLIB:
-                default_output = 'mpl'
+                default_output = "mpl"
             else:
-                default_output = 'text'
+                default_output = "text"
     if output is None:
         output = default_output
 
-    if output == 'text':
-        return _text_circuit_drawer(circuit, filename=filename,
-                                    line_length=line_length,
-                                    reverse_bits=reverse_bits,
-                                    plotbarriers=plot_barriers,
-                                    justify=justify,
-                                    vertical_compression=vertical_compression)
-    elif output == 'latex':
-        image = _latex_circuit_drawer(circuit, scale=scale,
-                                      filename=filename, style=style,
-                                      plot_barriers=plot_barriers,
-                                      reverse_bits=reverse_bits,
-                                      justify=justify)
-    elif output == 'latex_source':
-        return _generate_latex_source(circuit,
-                                      filename=filename, scale=scale,
-                                      style=style,
-                                      plot_barriers=plot_barriers,
-                                      reverse_bits=reverse_bits,
-                                      justify=justify)
-    elif output == 'mpl':
-        image = _matplotlib_circuit_drawer(circuit, scale=scale,
-                                           filename=filename, style=style,
-                                           plot_barriers=plot_barriers,
-                                           reverse_bits=reverse_bits,
-                                           justify=justify)
+    if output == "text":
+        return _text_circuit_drawer(
+            circuit,
+            filename=filename,
+            line_length=line_length,
+            reverse_bits=reverse_bits,
+            plotbarriers=plot_barriers,
+            justify=justify,
+            vertical_compression=vertical_compression,
+        )
+    elif output == "latex":
+        image = _latex_circuit_drawer(
+            circuit,
+            scale=scale,
+            filename=filename,
+            style=style,
+            plot_barriers=plot_barriers,
+            reverse_bits=reverse_bits,
+            justify=justify,
+        )
+    elif output == "latex_source":
+        return _generate_latex_source(
+            circuit,
+            filename=filename,
+            scale=scale,
+            style=style,
+            plot_barriers=plot_barriers,
+            reverse_bits=reverse_bits,
+            justify=justify,
+        )
+    elif output == "mpl":
+        image = _matplotlib_circuit_drawer(
+            circuit,
+            scale=scale,
+            filename=filename,
+            style=style,
+            plot_barriers=plot_barriers,
+            reverse_bits=reverse_bits,
+            justify=justify,
+        )
     else:
         raise exceptions.VisualizationError(
-            'Invalid output type %s selected. The only valid choices '
-            'are latex, latex_source, text, and mpl' % output)
+            "Invalid output type %s selected. The only valid choices "
+            "are latex, latex_source, text, and mpl" % output
+        )
     if image and interactive:
         image.show()
     return image
@@ -268,7 +286,7 @@ def qx_color_scheme():
             "rx": "R_x",
             "ry": "R_y",
             "rz": "R_z",
-            "reset": "\\left|0\\right\\rangle"
+            "reset": "\\left|0\\right\\rangle",
         },
         "displaycolor": {
             "id": "#ffca64",
@@ -289,7 +307,7 @@ def qx_color_scheme():
             "rz": "#ffca64",
             "reset": "#d7ddda",
             "target": "#00bff2",
-            "meas": "#f070aa"
+            "meas": "#f070aa",
         },
         "latexdrawerstyle": True,
         "usepiformat": False,
@@ -299,7 +317,7 @@ def qx_color_scheme():
         "compress": True,
         "margin": [2.0, 0.0, 0.0, 0.3],
         "creglinestyle": "solid",
-        "reversebits": False
+        "reversebits": False,
     }
 
 
@@ -308,8 +326,15 @@ def qx_color_scheme():
 # -----------------------------------------------------------------------------
 
 
-def _text_circuit_drawer(circuit, filename=None, line_length=None, reverse_bits=False,
-                         plotbarriers=True, justify=None, vertical_compression='high'):
+def _text_circuit_drawer(
+    circuit,
+    filename=None,
+    line_length=None,
+    reverse_bits=False,
+    plotbarriers=True,
+    justify=None,
+    vertical_compression="high",
+):
     """
     Draws a circuit using ascii art.
     Args:
@@ -329,9 +354,9 @@ def _text_circuit_drawer(circuit, filename=None, line_length=None, reverse_bits=
     Returns:
         TextDrawing: An instances that, when printed, draws the circuit in ascii art.
     """
-    qregs, cregs, ops = utils._get_layered_instructions(circuit,
-                                                        reverse_bits=reverse_bits,
-                                                        justify=justify)
+    qregs, cregs, ops = utils._get_layered_instructions(
+        circuit, reverse_bits=reverse_bits, justify=justify
+    )
     text_drawing = _text.TextDrawing(qregs, cregs, ops)
     text_drawing.plotbarriers = plotbarriers
     text_drawing.line_length = line_length
@@ -347,13 +372,15 @@ def _text_circuit_drawer(circuit, filename=None, line_length=None, reverse_bits=
 # -----------------------------------------------------------------------------
 
 
-def _latex_circuit_drawer(circuit,
-                          scale=0.7,
-                          filename=None,
-                          style=None,
-                          plot_barriers=True,
-                          reverse_bits=False,
-                          justify=None):
+def _latex_circuit_drawer(
+    circuit,
+    scale=0.7,
+    filename=None,
+    style=None,
+    plot_barriers=True,
+    reverse_bits=False,
+    justify=None,
+):
     """Draw a quantum circuit based on latex (Qcircuit package)
 
     Requires version >=2.6.0 of the qcircuit LaTeX package.
@@ -379,60 +406,86 @@ def _latex_circuit_drawer(circuit,
         CalledProcessError: usually points errors during diagram creation.
         ImportError: if pillow is not installed
     """
-    tmpfilename = 'circuit'
+    tmpfilename = "circuit"
     with tempfile.TemporaryDirectory() as tmpdirname:
-        tmppath = os.path.join(tmpdirname, tmpfilename + '.tex')
-        _generate_latex_source(circuit, filename=tmppath,
-                               scale=scale, style=style,
-                               plot_barriers=plot_barriers,
-                               reverse_bits=reverse_bits, justify=justify)
+        tmppath = os.path.join(tmpdirname, tmpfilename + ".tex")
+        _generate_latex_source(
+            circuit,
+            filename=tmppath,
+            scale=scale,
+            style=style,
+            plot_barriers=plot_barriers,
+            reverse_bits=reverse_bits,
+            justify=justify,
+        )
         image = None
         try:
 
-            subprocess.run(["pdflatex", "-halt-on-error",
-                            "-output-directory={}".format(tmpdirname),
-                            "{}".format(tmpfilename + '.tex')],
-                           stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
-                           check=True)
+            subprocess.run(
+                [
+                    "pdflatex",
+                    "-halt-on-error",
+                    "-output-directory={}".format(tmpdirname),
+                    "{}".format(tmpfilename + ".tex"),
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,
+                check=True,
+            )
         except OSError as ex:
             if ex.errno == errno.ENOENT:
-                logger.warning('WARNING: Unable to compile latex. '
-                               'Is `pdflatex` installed? '
-                               'Skipping latex circuit drawing...')
+                logger.warning(
+                    "WARNING: Unable to compile latex. "
+                    "Is `pdflatex` installed? "
+                    "Skipping latex circuit drawing..."
+                )
             raise
         except subprocess.CalledProcessError as ex:
-            with open('latex_error.log', 'wb') as error_file:
+            with open("latex_error.log", "wb") as error_file:
                 error_file.write(ex.stdout)
-            logger.warning('WARNING Unable to compile latex. '
-                           'The output from the pdflatex command can '
-                           'be found in latex_error.log')
+            logger.warning(
+                "WARNING Unable to compile latex. "
+                "The output from the pdflatex command can "
+                "be found in latex_error.log"
+            )
             raise
         else:
             if not HAS_PIL:
-                raise ImportError('The latex drawer needs pillow installed. '
-                                  'Run "pip install pillow" before using the '
-                                  'latex drawer.')
+                raise ImportError(
+                    "The latex drawer needs pillow installed. "
+                    'Run "pip install pillow" before using the '
+                    "latex drawer."
+                )
             try:
                 base = os.path.join(tmpdirname, tmpfilename)
-                subprocess.run(["pdftocairo", "-singlefile", "-png", "-q",
-                                base + '.pdf', base])
-                image = Image.open(base + '.png')
+                subprocess.run(
+                    ["pdftocairo", "-singlefile", "-png", "-q", base + ".pdf", base]
+                )
+                image = Image.open(base + ".png")
                 image = utils._trim(image)
-                os.remove(base + '.png')
+                os.remove(base + ".png")
                 if filename:
-                    image.save(filename, 'PNG')
+                    image.save(filename, "PNG")
             except OSError as ex:
                 if ex.errno == errno.ENOENT:
-                    logger.warning('WARNING: Unable to convert pdf to image. '
-                                   'Is `poppler` installed? '
-                                   'Skipping circuit drawing...')
+                    logger.warning(
+                        "WARNING: Unable to convert pdf to image. "
+                        "Is `poppler` installed? "
+                        "Skipping circuit drawing..."
+                    )
                 raise
         return image
 
 
-def _generate_latex_source(circuit, filename=None,
-                           scale=0.7, style=None, reverse_bits=False,
-                           plot_barriers=True, justify=None):
+def _generate_latex_source(
+    circuit,
+    filename=None,
+    scale=0.7,
+    style=None,
+    reverse_bits=False,
+    plot_barriers=True,
+    justify=None,
+):
     """Convert QuantumCircuit to LaTeX string.
 
     Args:
@@ -450,16 +503,22 @@ def _generate_latex_source(circuit, filename=None,
     Returns:
         str: Latex string appropriate for writing to file.
     """
-    qregs, cregs, ops = utils._get_layered_instructions(circuit,
-                                                        reverse_bits=reverse_bits,
-                                                        justify=justify)
+    qregs, cregs, ops = utils._get_layered_instructions(
+        circuit, reverse_bits=reverse_bits, justify=justify
+    )
 
-    qcimg = _latex.QCircuitImage(qregs, cregs, ops, scale, style=style,
-                                 plot_barriers=plot_barriers,
-                                 reverse_bits=reverse_bits)
+    qcimg = _latex.QCircuitImage(
+        qregs,
+        cregs,
+        ops,
+        scale,
+        style=style,
+        plot_barriers=plot_barriers,
+        reverse_bits=reverse_bits,
+    )
     latex = qcimg.latex()
     if filename:
-        with open(filename, 'w') as latex_file:
+        with open(filename, "w") as latex_file:
             latex_file.write(latex)
 
     return latex
@@ -470,13 +529,15 @@ def _generate_latex_source(circuit, filename=None,
 # -----------------------------------------------------------------------------
 
 
-def _matplotlib_circuit_drawer(circuit,
-                               scale=0.7,
-                               filename=None,
-                               style=None,
-                               plot_barriers=True,
-                               reverse_bits=False,
-                               justify=None):
+def _matplotlib_circuit_drawer(
+    circuit,
+    scale=0.7,
+    filename=None,
+    style=None,
+    plot_barriers=True,
+    reverse_bits=False,
+    justify=None,
+):
     """Draw a quantum circuit based on matplotlib.
     If `%matplotlib inline` is invoked in a Jupyter notebook, it visualizes a circuit inline.
     We recommend `%config InlineBackend.figure_format = 'svg'` for the inline visualization.
@@ -498,10 +559,16 @@ def _matplotlib_circuit_drawer(circuit,
         matplotlib.figure: a matplotlib figure object for the circuit diagram
     """
 
-    qregs, cregs, ops = utils._get_layered_instructions(circuit,
-                                                        reverse_bits=reverse_bits,
-                                                        justify=justify)
-    qcd = _matplotlib.MatplotlibDrawer(qregs, cregs, ops, scale=scale, style=style,
-                                       plot_barriers=plot_barriers,
-                                       reverse_bits=reverse_bits)
+    qregs, cregs, ops = utils._get_layered_instructions(
+        circuit, reverse_bits=reverse_bits, justify=justify
+    )
+    qcd = _matplotlib.MatplotlibDrawer(
+        qregs,
+        cregs,
+        ops,
+        scale=scale,
+        style=style,
+        plot_barriers=plot_barriers,
+        reverse_bits=reverse_bits,
+    )
     return qcd.draw(filename)

@@ -36,12 +36,12 @@ class Channel(metaclass=ABCMeta):
             PulseError: If integer index or buffer not supplied
         """
         if not isinstance(index, int):
-            raise PulseError('Channel index must be integer')
+            raise PulseError("Channel index must be integer")
 
         self._index = index
 
         if not isinstance(buffer, int):
-            raise PulseError('Channel buffer must be integer')
+            raise PulseError("Channel buffer must be integer")
 
         self._buffer = buffer
 
@@ -58,10 +58,10 @@ class Channel(metaclass=ABCMeta):
     @property
     def name(self) -> str:
         """Return the name of this channel."""
-        return '%s%d' % (self.__class__.prefix, self._index)
+        return "%s%d" % (self.__class__.prefix, self._index)
 
     def __repr__(self):
-        return '%s(%s)' % (self.__class__.__name__, self._index)
+        return "%s(%s)" % (self.__class__.__name__, self._index)
 
     def __eq__(self, other):
         """Two channels are the same if they are of the same type, and have the same index.
@@ -72,8 +72,7 @@ class Channel(metaclass=ABCMeta):
         Returns:
             bool: are self and other equal.
         """
-        if type(self) is type(other) and \
-                self._index == other._index:
+        if type(self) is type(other) and self._index == other._index:
             return True
         return False
 
@@ -84,13 +83,13 @@ class Channel(metaclass=ABCMeta):
 class AcquireChannel(Channel):
     """Acquire channel."""
 
-    prefix = 'a'
+    prefix = "a"
 
 
 class SnapshotChannel(Channel):
     """Snapshot channel."""
 
-    prefix = 's'
+    prefix = "s"
 
     def __init__(self):
         """Create new snapshot channel."""
@@ -100,10 +99,10 @@ class SnapshotChannel(Channel):
 class MemorySlot(Channel):
     """Memory slot channel."""
 
-    prefix = 'm'
+    prefix = "m"
 
 
 class RegisterSlot(Channel):
     """Classical resister slot channel."""
 
-    prefix = 'c'
+    prefix = "c"

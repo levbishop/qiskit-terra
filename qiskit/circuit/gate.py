@@ -70,7 +70,7 @@ class Gate(Instruction):
         if isinstance(name, (str, type(None))):
             self._label = name
         else:
-            raise TypeError('label expects a string or None')
+            raise TypeError("label expects a string or None")
 
     @staticmethod
     def _broadcast_single_argument(qarg):
@@ -99,8 +99,10 @@ class Gate(Instruction):
             for arg0 in qarg0:
                 yield [arg0, qarg1[0]], []
         else:
-            raise QiskitError('Not sure how to combine these two qubit arguments:\n %s\n %s' %
-                              (qarg0, qarg1))
+            raise QiskitError(
+                "Not sure how to combine these two qubit arguments:\n %s\n %s"
+                % (qarg0, qarg1)
+            )
 
     @staticmethod
     def _broadcast_3_or_more_args(qargs):
@@ -109,7 +111,8 @@ class Gate(Instruction):
                 yield list(arg), []
         else:
             raise QiskitError(
-                'Not sure how to combine these qubit arguments:\n %s\n' % qargs)
+                "Not sure how to combine these qubit arguments:\n %s\n" % qargs
+            )
 
     def broadcast_arguments(self, qargs, cargs):
         """
@@ -142,10 +145,11 @@ class Gate(Instruction):
         """
         if len(qargs) != self.num_qubits or cargs:
             raise QiskitError(
-                'The amount of qubit/clbit arguments does not match the gate expectation.')
+                "The amount of qubit/clbit arguments does not match the gate expectation."
+            )
 
         if any([not qarg for qarg in qargs]):
-            raise QiskitError('One or more of the arguments are empty')
+            raise QiskitError("One or more of the arguments are empty")
 
         if len(qargs) == 1:
             return Gate._broadcast_single_argument(qargs[0])
@@ -154,4 +158,4 @@ class Gate(Instruction):
         elif len(qargs) >= 3:
             return Gate._broadcast_3_or_more_args(qargs)
         else:
-            raise QiskitError('This gate cannot handle %i arguments' % len(qargs))
+            raise QiskitError("This gate cannot handle %i arguments" % len(qargs))

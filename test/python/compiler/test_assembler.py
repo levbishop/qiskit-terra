@@ -34,9 +34,9 @@ class TestCircuitAssembler(QiskitTestCase):
     def test_assemble_single_circuit(self):
         """Test assembling a single circuit.
         """
-        qr = QuantumRegister(2, name='q')
-        cr = ClassicalRegister(2, name='c')
-        circ = QuantumCircuit(qr, cr, name='circ')
+        qr = QuantumRegister(2, name="q")
+        cr = ClassicalRegister(2, name="c")
+        circ = QuantumCircuit(qr, cr, name="circ")
         circ.h(qr[0])
         circ.cx(qr[0], qr[1])
         circ.measure(qr, cr)
@@ -46,21 +46,21 @@ class TestCircuitAssembler(QiskitTestCase):
         self.assertEqual(qobj.config.shots, 2000)
         self.assertEqual(qobj.config.memory, True)
         self.assertEqual(len(qobj.experiments), 1)
-        self.assertEqual(qobj.experiments[0].instructions[1].name, 'cx')
+        self.assertEqual(qobj.experiments[0].instructions[1].name, "cx")
 
     def test_assemble_multiple_circuits(self):
         """Test assembling multiple circuits, all should have the same config.
         """
-        qr0 = QuantumRegister(2, name='q0')
-        qc0 = ClassicalRegister(2, name='c0')
-        circ0 = QuantumCircuit(qr0, qc0, name='circ0')
+        qr0 = QuantumRegister(2, name="q0")
+        qc0 = ClassicalRegister(2, name="c0")
+        circ0 = QuantumCircuit(qr0, qc0, name="circ0")
         circ0.h(qr0[0])
         circ0.cx(qr0[0], qr0[1])
         circ0.measure(qr0, qc0)
 
-        qr1 = QuantumRegister(3, name='q1')
-        qc1 = ClassicalRegister(3, name='c1')
-        circ1 = QuantumCircuit(qr1, qc1, name='circ0')
+        qr1 = QuantumRegister(3, name="q1")
+        qc1 = ClassicalRegister(3, name="c1")
+        circ1 = QuantumCircuit(qr1, qc1, name="circ0")
         circ1.h(qr1[0])
         circ1.cx(qr1[0], qr1[1])
         circ1.cx(qr1[0], qr1[2])
@@ -77,9 +77,9 @@ class TestCircuitAssembler(QiskitTestCase):
     def test_assemble_no_run_config(self):
         """Test assembling with no run_config, relying on default.
         """
-        qr = QuantumRegister(2, name='q')
-        qc = ClassicalRegister(2, name='c')
-        circ = QuantumCircuit(qr, qc, name='circ')
+        qr = QuantumRegister(2, name="q")
+        qc = ClassicalRegister(2, name="c")
+        circ = QuantumCircuit(qr, qc, name="circ")
         circ.h(qr[0])
         circ.cx(qr[0], qr[1])
         circ.measure(qr, qc)
@@ -91,28 +91,31 @@ class TestCircuitAssembler(QiskitTestCase):
     def test_assemble_initialize(self):
         """Test assembling a circuit with an initialize.
         """
-        q = QuantumRegister(2, name='q')
-        circ = QuantumCircuit(q, name='circ')
-        circ.initialize([1/np.sqrt(2), 0, 0, 1/np.sqrt(2)], q[:])
+        q = QuantumRegister(2, name="q")
+        circ = QuantumCircuit(q, name="circ")
+        circ.initialize([1 / np.sqrt(2), 0, 0, 1 / np.sqrt(2)], q[:])
 
         qobj = assemble(circ)
         self.assertIsInstance(qobj, QasmQobj)
-        self.assertEqual(qobj.experiments[0].instructions[0].name, 'initialize')
-        np.testing.assert_almost_equal(qobj.experiments[0].instructions[0].params,
-                                       [0.7071067811865, 0, 0, 0.707106781186])
+        self.assertEqual(qobj.experiments[0].instructions[0].name, "initialize")
+        np.testing.assert_almost_equal(
+            qobj.experiments[0].instructions[0].params,
+            [0.7071067811865, 0, 0, 0.707106781186],
+        )
 
     def test_assemble_opaque_inst(self):
         """Test opaque instruction is assembled as-is"""
-        opaque_inst = Instruction(name='my_inst', num_qubits=4,
-                                  num_clbits=2, params=[0.5, 0.4])
-        q = QuantumRegister(6, name='q')
-        c = ClassicalRegister(4, name='c')
-        circ = QuantumCircuit(q, c, name='circ')
+        opaque_inst = Instruction(
+            name="my_inst", num_qubits=4, num_clbits=2, params=[0.5, 0.4]
+        )
+        q = QuantumRegister(6, name="q")
+        c = ClassicalRegister(4, name="c")
+        circ = QuantumCircuit(q, c, name="circ")
         circ.append(opaque_inst, [q[0], q[2], q[5], q[3]], [c[3], c[0]])
         qobj = assemble(circ)
         self.assertIsInstance(qobj, QasmQobj)
         self.assertEqual(len(qobj.experiments[0].instructions), 1)
-        self.assertEqual(qobj.experiments[0].instructions[0].name, 'my_inst')
+        self.assertEqual(qobj.experiments[0].instructions[0].name, "my_inst")
         self.assertEqual(qobj.experiments[0].instructions[0].qubits, [0, 2, 5, 3])
         self.assertEqual(qobj.experiments[0].instructions[0].memory, [3, 0])
         self.assertEqual(qobj.experiments[0].instructions[0].params, [0.5, 0.4])
@@ -131,12 +134,13 @@ class TestCircuitAssembler(QiskitTestCase):
 
         qobj = assemble(qc)
 
-        first_measure, second_measure = [op for op in qobj.experiments[0].instructions
-                                         if op.name == 'measure']
+        first_measure, second_measure = [
+            op for op in qobj.experiments[0].instructions if op.name == "measure"
+        ]
 
-        self.assertTrue(hasattr(first_measure, 'register'))
+        self.assertTrue(hasattr(first_measure, "register"))
         self.assertEqual(first_measure.register, first_measure.memory)
-        self.assertTrue(hasattr(second_measure, 'register'))
+        self.assertTrue(hasattr(second_measure, "register"))
         self.assertEqual(second_measure.register, second_measure.memory)
 
     def test_convert_to_bfunc_plus_conditional(self):
@@ -151,12 +155,12 @@ class TestCircuitAssembler(QiskitTestCase):
 
         bfunc_op, h_op = qobj.experiments[0].instructions
 
-        self.assertEqual(bfunc_op.name, 'bfunc')
-        self.assertEqual(bfunc_op.mask, '0x1')
-        self.assertEqual(bfunc_op.val, '0x1')
-        self.assertEqual(bfunc_op.relation, '==')
+        self.assertEqual(bfunc_op.name, "bfunc")
+        self.assertEqual(bfunc_op.mask, "0x1")
+        self.assertEqual(bfunc_op.val, "0x1")
+        self.assertEqual(bfunc_op.relation, "==")
 
-        self.assertTrue(hasattr(h_op, 'conditional'))
+        self.assertTrue(hasattr(h_op, "conditional"))
         self.assertEqual(bfunc_op.register, h_op.conditional)
 
     def test_resize_value_to_register(self):
@@ -174,20 +178,20 @@ class TestCircuitAssembler(QiskitTestCase):
 
         bfunc_op, h_op = qobj.experiments[0].instructions
 
-        self.assertEqual(bfunc_op.name, 'bfunc')
-        self.assertEqual(bfunc_op.mask, '0xC')
-        self.assertEqual(bfunc_op.val, '0x8')
-        self.assertEqual(bfunc_op.relation, '==')
+        self.assertEqual(bfunc_op.name, "bfunc")
+        self.assertEqual(bfunc_op.mask, "0xC")
+        self.assertEqual(bfunc_op.val, "0x8")
+        self.assertEqual(bfunc_op.relation, "==")
 
-        self.assertTrue(hasattr(h_op, 'conditional'))
+        self.assertTrue(hasattr(h_op, "conditional"))
         self.assertEqual(bfunc_op.register, h_op.conditional)
 
     def test_assemble_circuits_raises_for_bind_circuit_mismatch(self):
         """Verify assemble_circuits raises error for parameterized circuits without matching
         binds."""
         qr = QuantumRegister(2)
-        x = Parameter('x')
-        y = Parameter('y')
+        x = Parameter("x")
+        y = Parameter("y")
 
         full_bound_circ = QuantumCircuit(qr)
         full_param_circ = QuantumCircuit(qr)
@@ -198,29 +202,32 @@ class TestCircuitAssembler(QiskitTestCase):
         full_param_circ.u1(x, qr[0])
         full_param_circ.u1(y, qr[1])
 
-        partial_bind_args = {'parameter_binds': [{x: 1}, {x: 0}]}
-        full_bind_args = {'parameter_binds': [{x: 1, y: 1}, {x: 0, y: 0}]}
-        inconsistent_bind_args = {'parameter_binds': [{x: 1}, {x: 0, y: 0}]}
+        partial_bind_args = {"parameter_binds": [{x: 1}, {x: 0}]}
+        full_bind_args = {"parameter_binds": [{x: 1, y: 1}, {x: 0, y: 0}]}
+        inconsistent_bind_args = {"parameter_binds": [{x: 1}, {x: 0, y: 0}]}
 
         # Raise when parameters passed for non-parametric circuit
-        self.assertRaises(QiskitError, assemble,
-                          full_bound_circ, **partial_bind_args)
+        self.assertRaises(QiskitError, assemble, full_bound_circ, **partial_bind_args)
 
         # Raise when no parameters passed for parametric circuit
         self.assertRaises(QiskitError, assemble, partial_param_circ)
         self.assertRaises(QiskitError, assemble, full_param_circ)
 
         # Raise when circuit has more parameters than run_config
-        self.assertRaises(QiskitError, assemble,
-                          full_param_circ, **partial_bind_args)
+        self.assertRaises(QiskitError, assemble, full_param_circ, **partial_bind_args)
 
         # Raise when not all circuits have all parameters
-        self.assertRaises(QiskitError, assemble,
-                          [full_param_circ, partial_param_circ], **full_bind_args)
+        self.assertRaises(
+            QiskitError,
+            assemble,
+            [full_param_circ, partial_param_circ],
+            **full_bind_args,
+        )
 
         # Raise when not all binds have all circuit params
-        self.assertRaises(QiskitError, assemble,
-                          full_param_circ, **inconsistent_bind_args)
+        self.assertRaises(
+            QiskitError, assemble, full_param_circ, **inconsistent_bind_args
+        )
 
     def test_assemble_circuits_binds_parameters(self):
         """Verify assemble_circuits applies parameter bindings and output circuits are bound."""
@@ -228,23 +235,22 @@ class TestCircuitAssembler(QiskitTestCase):
         qc1 = QuantumCircuit(qr)
         qc2 = QuantumCircuit(qr)
 
-        x = Parameter('x')
-        y = Parameter('y')
+        x = Parameter("x")
+        y = Parameter("y")
 
         qc1.u2(x, y, qr[0])
 
         qc2.rz(x, qr[0])
         qc2.rz(y, qr[0])
 
-        bind_args = {'parameter_binds': [{x: 0, y: 0},
-                                         {x: 1, y: 0},
-                                         {x: 1, y: 1}]}
+        bind_args = {"parameter_binds": [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}]}
 
         qobj = assemble([qc1, qc2], **bind_args)
 
         self.assertEqual(len(qobj.experiments), 6)
-        self.assertEqual([len(expt.instructions) for expt in qobj.experiments],
-                         [1, 1, 1, 2, 2, 2])
+        self.assertEqual(
+            [len(expt.instructions) for expt in qobj.experiments], [1, 1, 1, 2, 2, 2]
+        )
 
         self.assertEqual(qobj.experiments[0].instructions[0].params, [0, 0])
         self.assertEqual(qobj.experiments[1].instructions[0].params, [1, 0])
@@ -265,12 +271,14 @@ class TestPulseAssembler(QiskitTestCase):
         self.device = pulse.DeviceSpecification.create_from(FakeOpenPulse2Q())
 
         test_pulse = pulse.SamplePulse(
-            samples=np.array([0.02739068, 0.05, 0.05, 0.05, 0.02739068], dtype=np.complex128),
-            name='pulse0'
+            samples=np.array(
+                [0.02739068, 0.05, 0.05, 0.05, 0.02739068], dtype=np.complex128
+            ),
+            name="pulse0",
         )
         acquire = pulse.Acquire(5)
 
-        self.schedule = pulse.Schedule(name='fake_experiment')
+        self.schedule = pulse.Schedule(name="fake_experiment")
         self.schedule = self.schedule.insert(0, test_pulse(self.device.q[0].drive))
         self.schedule = self.schedule.insert(5, acquire(self.device.q, self.device.mem))
 
@@ -281,114 +289,127 @@ class TestPulseAssembler(QiskitTestCase):
         self.default_meas_lo_freq = [6.5, 6.6]
 
         self.config = {
-            'meas_level': 1,
-            'memory_slots': 2,
-            'memory_slot_size': 100,
-            'meas_return': 'avg',
-            'rep_time': 100
+            "meas_level": 1,
+            "memory_slots": 2,
+            "memory_slot_size": 100,
+            "meas_return": "avg",
+            "rep_time": 100,
         }
 
-        self.header = {
-            'backend_name': 'FakeOpenPulse2Q',
-            'backend_version': '0.0.0'
-        }
+        self.header = {"backend_name": "FakeOpenPulse2Q", "backend_version": "0.0.0"}
 
     def test_assemble_single_schedule_without_lo_config(self):
         """Test assembling a single schedule, no lo config."""
-        qobj = assemble(self.schedule,
-                        qobj_header=self.header,
-                        qubit_lo_freq=self.default_qubit_lo_freq,
-                        meas_lo_freq=self.default_meas_lo_freq,
-                        schedule_los=[],
-                        **self.config)
+        qobj = assemble(
+            self.schedule,
+            qobj_header=self.header,
+            qubit_lo_freq=self.default_qubit_lo_freq,
+            meas_lo_freq=self.default_meas_lo_freq,
+            schedule_los=[],
+            **self.config,
+        )
         test_dict = qobj.to_dict()
 
-        self.assertListEqual(test_dict['config']['qubit_lo_freq'], [4.9, 5.0])
-        self.assertEqual(len(test_dict['experiments']), 1)
-        self.assertEqual(len(test_dict['experiments'][0]['instructions']), 2)
+        self.assertListEqual(test_dict["config"]["qubit_lo_freq"], [4.9, 5.0])
+        self.assertEqual(len(test_dict["experiments"]), 1)
+        self.assertEqual(len(test_dict["experiments"][0]["instructions"]), 2)
 
     def test_assemble_multi_schedules_without_lo_config(self):
         """Test assembling schedules, no lo config."""
-        qobj = assemble([self.schedule, self.schedule],
-                        qobj_header=self.header,
-                        qubit_lo_freq=self.default_qubit_lo_freq,
-                        meas_lo_freq=self.default_meas_lo_freq,
-                        **self.config)
+        qobj = assemble(
+            [self.schedule, self.schedule],
+            qobj_header=self.header,
+            qubit_lo_freq=self.default_qubit_lo_freq,
+            meas_lo_freq=self.default_meas_lo_freq,
+            **self.config,
+        )
         test_dict = qobj.to_dict()
 
-        self.assertListEqual(test_dict['config']['qubit_lo_freq'], [4.9, 5.0])
-        self.assertEqual(len(test_dict['experiments']), 2)
-        self.assertEqual(len(test_dict['experiments'][0]['instructions']), 2)
+        self.assertListEqual(test_dict["config"]["qubit_lo_freq"], [4.9, 5.0])
+        self.assertEqual(len(test_dict["experiments"]), 2)
+        self.assertEqual(len(test_dict["experiments"][0]["instructions"]), 2)
 
     def test_assemble_single_schedule_with_lo_config(self):
         """Test assembling a single schedule, with a single lo config."""
-        qobj = assemble(self.schedule,
-                        qobj_header=self.header,
-                        qubit_lo_freq=self.default_qubit_lo_freq,
-                        meas_lo_freq=self.default_meas_lo_freq,
-                        schedule_los=self.user_lo_config,
-                        **self.config)
+        qobj = assemble(
+            self.schedule,
+            qobj_header=self.header,
+            qubit_lo_freq=self.default_qubit_lo_freq,
+            meas_lo_freq=self.default_meas_lo_freq,
+            schedule_los=self.user_lo_config,
+            **self.config,
+        )
         test_dict = qobj.to_dict()
 
-        self.assertListEqual(test_dict['config']['qubit_lo_freq'], [4.91, 5.0])
-        self.assertEqual(len(test_dict['experiments']), 1)
-        self.assertEqual(len(test_dict['experiments'][0]['instructions']), 2)
+        self.assertListEqual(test_dict["config"]["qubit_lo_freq"], [4.91, 5.0])
+        self.assertEqual(len(test_dict["experiments"]), 1)
+        self.assertEqual(len(test_dict["experiments"][0]["instructions"]), 2)
 
     def test_assemble_single_schedule_with_lo_config_dict(self):
         """Test assembling a single schedule, with a single lo config supplied as dictionary."""
-        qobj = assemble(self.schedule,
-                        qobj_header=self.header,
-                        qubit_lo_freq=self.default_qubit_lo_freq,
-                        meas_lo_freq=self.default_meas_lo_freq,
-                        schedule_los=self.user_lo_config_dict,
-                        **self.config)
+        qobj = assemble(
+            self.schedule,
+            qobj_header=self.header,
+            qubit_lo_freq=self.default_qubit_lo_freq,
+            meas_lo_freq=self.default_meas_lo_freq,
+            schedule_los=self.user_lo_config_dict,
+            **self.config,
+        )
         test_dict = qobj.to_dict()
 
-        self.assertListEqual(test_dict['config']['qubit_lo_freq'], [4.91, 5.0])
-        self.assertEqual(len(test_dict['experiments']), 1)
-        self.assertEqual(len(test_dict['experiments'][0]['instructions']), 2)
+        self.assertListEqual(test_dict["config"]["qubit_lo_freq"], [4.91, 5.0])
+        self.assertEqual(len(test_dict["experiments"]), 1)
+        self.assertEqual(len(test_dict["experiments"][0]["instructions"]), 2)
 
     def test_assemble_single_schedule_with_multi_lo_configs(self):
         """Test assembling a single schedule, with lo configs (frequency sweep)."""
-        qobj = assemble(self.schedule,
-                        qobj_header=self.header,
-                        qubit_lo_freq=self.default_qubit_lo_freq,
-                        meas_lo_freq=self.default_meas_lo_freq,
-                        schedule_los=[self.user_lo_config, self.user_lo_config],
-                        **self.config)
+        qobj = assemble(
+            self.schedule,
+            qobj_header=self.header,
+            qubit_lo_freq=self.default_qubit_lo_freq,
+            meas_lo_freq=self.default_meas_lo_freq,
+            schedule_los=[self.user_lo_config, self.user_lo_config],
+            **self.config,
+        )
         test_dict = qobj.to_dict()
 
-        self.assertListEqual(test_dict['config']['qubit_lo_freq'], [4.9, 5.0])
-        self.assertEqual(len(test_dict['experiments']), 2)
-        self.assertEqual(len(test_dict['experiments'][0]['instructions']), 2)
-        self.assertDictEqual(test_dict['experiments'][0]['config'],
-                             {'qubit_lo_freq': [4.91, 5.0]})
+        self.assertListEqual(test_dict["config"]["qubit_lo_freq"], [4.9, 5.0])
+        self.assertEqual(len(test_dict["experiments"]), 2)
+        self.assertEqual(len(test_dict["experiments"][0]["instructions"]), 2)
+        self.assertDictEqual(
+            test_dict["experiments"][0]["config"], {"qubit_lo_freq": [4.91, 5.0]}
+        )
 
     def test_assemble_multi_schedules_with_multi_lo_configs(self):
         """Test assembling schedules, with the same number of lo configs (n:n setup)."""
-        qobj = assemble([self.schedule, self.schedule],
-                        qobj_header=self.header,
-                        qubit_lo_freq=self.default_qubit_lo_freq,
-                        meas_lo_freq=self.default_meas_lo_freq,
-                        schedule_los=[self.user_lo_config, self.user_lo_config],
-                        **self.config)
+        qobj = assemble(
+            [self.schedule, self.schedule],
+            qobj_header=self.header,
+            qubit_lo_freq=self.default_qubit_lo_freq,
+            meas_lo_freq=self.default_meas_lo_freq,
+            schedule_los=[self.user_lo_config, self.user_lo_config],
+            **self.config,
+        )
         test_dict = qobj.to_dict()
 
-        self.assertListEqual(test_dict['config']['qubit_lo_freq'], [4.9, 5.0])
-        self.assertEqual(len(test_dict['experiments']), 2)
-        self.assertEqual(len(test_dict['experiments'][0]['instructions']), 2)
-        self.assertDictEqual(test_dict['experiments'][0]['config'],
-                             {'qubit_lo_freq': [4.91, 5.0]})
+        self.assertListEqual(test_dict["config"]["qubit_lo_freq"], [4.9, 5.0])
+        self.assertEqual(len(test_dict["experiments"]), 2)
+        self.assertEqual(len(test_dict["experiments"][0]["instructions"]), 2)
+        self.assertDictEqual(
+            test_dict["experiments"][0]["config"], {"qubit_lo_freq": [4.91, 5.0]}
+        )
 
     def test_assemble_multi_schedules_with_wrong_number_of_multi_lo_configs(self):
         """Test assembling schedules, with a different number of lo configs (n:m setup)."""
         with self.assertRaises(QiskitError):
-            assemble([self.schedule, self.schedule, self.schedule],
-                     qobj_header=self.header,
-                     qubit_lo_freq=self.default_qubit_lo_freq,
-                     meas_lo_freq=self.default_meas_lo_freq,
-                     schedule_los=[self.user_lo_config, self.user_lo_config],
-                     **self.config)
+            assemble(
+                [self.schedule, self.schedule, self.schedule],
+                qobj_header=self.header,
+                qubit_lo_freq=self.default_qubit_lo_freq,
+                meas_lo_freq=self.default_meas_lo_freq,
+                schedule_los=[self.user_lo_config, self.user_lo_config],
+                **self.config,
+            )
 
     def test_assemble_meas_map(self):
         """Test assembling a single schedule, no lo config."""
@@ -403,20 +424,24 @@ class TestPulseAssembler(QiskitTestCase):
         """Test that pulse name conflicts can be resolved."""
         name_conflict_pulse = pulse.SamplePulse(
             samples=np.array([0.02, 0.05, 0.05, 0.05, 0.02], dtype=np.complex128),
-            name='pulse0'
+            name="pulse0",
         )
-        self.schedule = self.schedule.insert(1, name_conflict_pulse(self.device.q[1].drive))
-        qobj = assemble(self.schedule,
-                        qobj_header=self.header,
-                        qubit_lo_freq=self.default_qubit_lo_freq,
-                        meas_lo_freq=self.default_meas_lo_freq,
-                        schedule_los=[],
-                        **self.config)
+        self.schedule = self.schedule.insert(
+            1, name_conflict_pulse(self.device.q[1].drive)
+        )
+        qobj = assemble(
+            self.schedule,
+            qobj_header=self.header,
+            qubit_lo_freq=self.default_qubit_lo_freq,
+            meas_lo_freq=self.default_meas_lo_freq,
+            schedule_los=[],
+            **self.config,
+        )
 
-        self.assertNotEqual(qobj.config.pulse_library[1], 'pulse0')
-        self.assertEqual(qobj.experiments[0].instructions[0].name, 'pulse0')
-        self.assertNotEqual(qobj.experiments[0].instructions[1].name, 'pulse0')
+        self.assertNotEqual(qobj.config.pulse_library[1], "pulse0")
+        self.assertEqual(qobj.experiments[0].instructions[0].name, "pulse0")
+        self.assertNotEqual(qobj.experiments[0].instructions[1].name, "pulse0")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

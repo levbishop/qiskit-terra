@@ -89,31 +89,39 @@ class NoiseAdaptiveLayout(AnalysisPass):
         """
         backend_prop = self.backend_prop
         for ginfo in backend_prop.gates:
-            if ginfo.gate == 'cx':
+            if ginfo.gate == "cx":
                 for item in ginfo.parameters:
-                    if item.name == 'gate_error':
+                    if item.name == "gate_error":
                         g_reliab = 1.0 - item.value
                         break
                     else:
                         g_reliab = 1.0
                 swap_reliab = pow(g_reliab, 3)
                 swap_reliab = -math.log(swap_reliab) if swap_reliab != 0 else -math.inf
-                self.swap_graph.add_edge(ginfo.qubits[0], ginfo.qubits[1], weight=swap_reliab)
-                self.swap_graph.add_edge(ginfo.qubits[1], ginfo.qubits[0], weight=swap_reliab)
+                self.swap_graph.add_edge(
+                    ginfo.qubits[0], ginfo.qubits[1], weight=swap_reliab
+                )
+                self.swap_graph.add_edge(
+                    ginfo.qubits[1], ginfo.qubits[0], weight=swap_reliab
+                )
                 self.cx_errors[(ginfo.qubits[0], ginfo.qubits[1])] = g_reliab
                 self.gate_list.append((ginfo.qubits[0], ginfo.qubits[1]))
         idx = 0
         for q in backend_prop.qubits:
             for nduv in q:
-                if nduv.name == 'readout_error':
+                if nduv.name == "readout_error":
                     self.readout_errors[idx] = 1.0 - nduv.value
                     self.available_hw_qubits.append(idx)
             idx += 1
         for edge in self.cx_errors:
-            self.gate_cost[edge] = self.cx_errors[edge] * self.readout_errors[edge[0]] *\
-                self.readout_errors[edge[1]]
-        self.swap_paths, swap_costs_temp = nx.algorithms.shortest_paths.dense.\
-            floyd_warshall_predecessor_and_distance(self.swap_graph, weight='weight')
+            self.gate_cost[edge] = (
+                self.cx_errors[edge]
+                * self.readout_errors[edge[0]]
+                * self.readout_errors[edge[1]]
+            )
+        self.swap_paths, swap_costs_temp = nx.algorithms.shortest_paths.dense.floyd_warshall_predecessor_and_distance(
+            self.swap_graph, weight="weight"
+        )
         for i in swap_costs_temp:
             self.swap_costs[i] = {}
             for j in swap_costs_temp[i]:
@@ -125,9 +133,15 @@ class NoiseAdaptiveLayout(AnalysisPass):
                     best_reliab = 0.0
                     for n in self.swap_graph.neighbors(j):
                         if (n, j) in self.cx_errors:
-                            reliab = math.exp(-swap_costs_temp[i][n])*self.cx_errors[(n, j)]
+                            reliab = (
+                                math.exp(-swap_costs_temp[i][n])
+                                * self.cx_errors[(n, j)]
+                            )
                         else:
-                            reliab = math.exp(-swap_costs_temp[i][n])*self.cx_errors[(j, n)]
+                            reliab = (
+                                math.exp(-swap_costs_temp[i][n])
+                                * self.cx_errors[(j, n)]
+                            )
                         if reliab > best_reliab:
                             best_reliab = reliab
                     self.swap_costs[i][j] = best_reliab
@@ -156,7 +170,7 @@ class NoiseAdaptiveLayout(AnalysisPass):
             max_q = max(qid1, qid2)
             edge_weight = 1
             if self.prog_graph.has_edge(min_q, max_q):
-                edge_weight = self.prog_graph[min_q][max_q]['weight'] + 1
+                edge_weight = self.prog_graph[min_q][max_q]["weight"] + 1
             self.prog_graph.add_edge(min_q, max_q, weight=edge_weight)
         return idx
 
@@ -216,9 +230,10 @@ class NoiseAdaptiveLayout(AnalysisPass):
         self._initialize_backend_prop()
         num_qubits = self._create_program_graph(dag)
         if num_qubits > len(self.swap_graph):
-            raise TranspilerError('Number of qubits greater than device.')
-        for end1, end2, _ in sorted(self.prog_graph.edges(data=True),
-                                    key=lambda x: x[2]['weight'], reverse=True):
+            raise TranspilerError("Number of qubits greater than device.")
+        for end1, end2, _ in sorted(
+            self.prog_graph.edges(data=True), key=lambda x: x[2]["weight"], reverse=True
+        ):
             self.pending_program_edges.append((end1, end2))
         while self.pending_program_edges:
             edge = self._select_next_edge()
@@ -238,8 +253,11 @@ class NoiseAdaptiveLayout(AnalysisPass):
                 best_hw_qubit = self._select_best_remaining_qubit(edge[1])
                 self.prog2hw[edge[1]] = best_hw_qubit
                 self.available_hw_qubits.remove(best_hw_qubit)
-            new_edges = [x for x in self.pending_program_edges
-                         if not (x[0] in self.prog2hw and x[1] in self.prog2hw)]
+            new_edges = [
+                x
+                for x in self.pending_program_edges
+                if not (x[0] in self.prog2hw and x[1] in self.prog2hw)
+            ]
             self.pending_program_edges = new_edges
         for qid in self.qarg_to_id.values():
             if qid not in self.prog2hw:
@@ -250,4 +268,4 @@ class NoiseAdaptiveLayout(AnalysisPass):
             pid = self._qarg_to_id(q)
             hwid = self.prog2hw[pid]
             layout[q] = hwid
-        self.property_set['layout'] = layout
+        self.property_set["layout"] = layout
