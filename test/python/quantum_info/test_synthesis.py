@@ -113,8 +113,7 @@ class TestTwoQubitWeylDecomposition(QiskitTestCase):
     """Test TwoQubitWeylDecomposition()
     """
     # pylint: disable=invalid-name
-    # FIXME: should be possible to set this tolerance tighter after improving the function
-    def check_two_qubit_weyl_decomposition(self, target_unitary, tolerance=1.e-7):
+    def check_two_qubit_weyl_decomposition(self, target_unitary, tolerance=1.e-15):
         """Check TwoQubitWeylDecomposition() works for a given operator"""
         with self.subTest(unitary=target_unitary):
             decomp = TwoQubitWeylDecomposition(target_unitary)
@@ -260,7 +259,7 @@ class TestTwoQubitWeylDecomposition(QiskitTestCase):
                     self.check_two_qubit_weyl_decomposition(k1 @ a @ k2)
 
     def test_two_qubit_weyl_decomposition_abc(self, smallest=1e-18, factor=9.8, steps=11):
-        """Verify Weyl KAK decomposition for U~Ud(a,a,b)"""
+        """Verify Weyl KAK decomposition for U~Ud(a,b,c)"""
         for aaa in ([smallest * factor**i for i in range(steps)] +
                     [np.pi/4 - smallest * factor**i for i in range(steps)] +
                     [np.pi/8, 0.113*np.pi, 0.1972*np.pi]):
@@ -269,7 +268,7 @@ class TestTwoQubitWeylDecomposition(QiskitTestCase):
                     for k1l, k1r, k2l, k2r in K1K2S:
                         k1 = np.kron(k1l.data, k1r.data)
                         k2 = np.kron(k2l.data, k2r.data)
-                        a = Ud(aaa, aaa, ccc)
+                        a = Ud(aaa, bbb, ccc)
                         self.check_two_qubit_weyl_decomposition(k1 @ a @ k2)
 
 
@@ -277,7 +276,7 @@ class TestTwoQubitDecomposeExact(QiskitTestCase):
     """Test TwoQubitBasisDecomposer() for exact decompositions
     """
     # pylint: disable=invalid-name
-    def check_exact_decomposition(self, target_unitary, decomposer, tolerance=1.e-7):
+    def check_exact_decomposition(self, target_unitary, decomposer, tolerance=1.e-13):
         """Check exact decomposition for a particular target"""
         with self.subTest(unitary=target_unitary, decomposer=decomposer):
             decomp_circuit = decomposer(target_unitary)
