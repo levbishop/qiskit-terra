@@ -387,7 +387,7 @@ class InstructionToQobjConverter:
 class QobjToInstructionConverter:
     """Converts Qobj models to pulse Instructions
     """
-    # pylint: disable=invalid-name,missing-return-type-doc
+    # pylint: disable=missing-return-type-doc
     # class level tracking of conversion methods
     bind_name = ConversionMethodBinder()
     chan_regex = re.compile(r'([a-zA-Z]+)(\d+)')

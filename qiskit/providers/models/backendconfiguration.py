@@ -639,7 +639,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
         if self.rep_times:
             out_dict['rep_times'] = [_rt * 1e6 for _rt in self.rep_times]
 
-        out_dict['dt'] = out_dict['dt'] * 1e9  # pylint: disable=invalid-name
+        out_dict['dt'] = out_dict['dt'] * 1e9
         out_dict['dtm'] = out_dict['dtm'] * 1e9
 
         if hasattr(self, 'channel_bandwidth'):

@@ -791,7 +791,6 @@ class TestAquaApplications(QiskitTestCase):
         time_to_maturity = 40 / 365  # 40 days to maturity
 
         # resulting parameters for log-normal distribution
-        # pylint: disable=invalid-name
         mu = ((interest_rate - 0.5 * volatility**2) * time_to_maturity + np.log(spot_price))
         sigma = volatility * np.sqrt(time_to_maturity)
         mean = np.exp(mu + sigma**2/2)

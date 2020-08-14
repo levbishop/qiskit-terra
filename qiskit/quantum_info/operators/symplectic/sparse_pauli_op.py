@@ -207,7 +207,6 @@ class SparsePauliOp(BaseOperator):
             QiskitError: if other cannot be converted to an Operator or has
             incompatible dimensions.
         """
-        # pylint: disable=invalid-name
         if qargs is None:
             qargs = getattr(other, 'qargs', None)
 

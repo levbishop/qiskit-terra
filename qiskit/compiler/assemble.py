@@ -300,7 +300,7 @@ def _parse_pulse_args(backend, qubit_lo_freq, meas_lo_freq, qubit_lo_range,
             rep_delay_range = getattr(backend_config, "rep_delay_range", None)
             # check that rep_delay is in rep_delay_range
             if rep_delay_range is not None and isinstance(rep_delay_range, list):
-                #  pylint: disable=E1136
+                #  pylint: disable=unsubscriptable-object
                 if len(rep_delay_range) != 2:
                     raise SchemaValidationError(
                         "Backend rep_delay_range {} must be a list with two entries.".format(

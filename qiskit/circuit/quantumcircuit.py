@@ -1974,7 +1974,7 @@ class QuantumCircuit:
                            [control_qubit, target_qubit], [])
 
     @deprecate_arguments({'q': 'qubit'})
-    def r(self, theta, phi, qubit, *, q=None):  # pylint: disable=invalid-name,unused-argument
+    def r(self, theta, phi, qubit, *, q=None):  # pylint: disable=unused-argument
         """Apply :class:`~qiskit.circuit.library.RGate`."""
         from .library.standard_gates.r import RGate
         return self.append(RGate(theta, phi), [qubit], [])

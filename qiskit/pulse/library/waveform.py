@@ -112,7 +112,7 @@ class Waveform(Pulse):
         Returns:
             matplotlib.figure: A matplotlib figure object of the pulse envelope
         """
-        # pylint: disable=invalid-name, cyclic-import
+        # pylint: disable=cyclic-import
         from qiskit import visualization
 
         return visualization.pulse_drawer(self, dt=dt, style=style, filename=filename,

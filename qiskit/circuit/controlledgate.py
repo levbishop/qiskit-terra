@@ -20,8 +20,6 @@ from .quantumcircuit import QuantumCircuit
 from .gate import Gate
 from .quantumregister import QuantumRegister
 
-# pylint: disable=missing-return-doc
-
 
 class ControlledGate(Gate):
     """Controlled unitary gate."""

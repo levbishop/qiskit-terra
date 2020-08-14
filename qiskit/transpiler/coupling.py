@@ -310,7 +310,7 @@ class CouplingMap:
             for j in range(num_columns):
                 node = i * num_columns + j
 
-                up = (node-num_columns) if i > 0 else None  # pylint: disable=invalid-name
+                up = (node-num_columns) if i > 0 else None
                 down = (node+num_columns) if i < num_rows-1 else None
                 left = (node-1) if j > 0 else None
                 right = (node+1) if j < num_columns-1 else None

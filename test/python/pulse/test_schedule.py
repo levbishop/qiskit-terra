@@ -965,7 +965,6 @@ class TestTimingUtils(QiskitTestCase):
 
     def test_overlaps(self):
         """Test the `_overlaps` function."""
-        # pylint: disable=invalid-name
         a = (0, 1)
         b = (1, 4)
         c = (2, 3)
@@ -980,7 +979,6 @@ class TestTimingUtils(QiskitTestCase):
 
     def test_overlaps_zero_duration(self):
         """Test the `_overlaps` function for intervals with duration zero."""
-        # pylint: disable=invalid-name
         a = 0
         b = 1
         self.assertFalse(_overlaps((a, a), (a, a)))

@@ -24,8 +24,6 @@ from qiskit.test.mock import FakeOpenPulse2Q
 from qiskit.test.mock.utils import ConfigurableFakeBackend as ConfigurableBackend
 from qiskit.pulse import library, instructions
 
-# pylint: disable=invalid-name
-
 
 class TestBuilder(QiskitTestCase):
     """Test the pulse builder context."""

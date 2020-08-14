@@ -12,7 +12,7 @@
 """
 Symplectic Stabilizer Table Class
 """
-# pylint: disable=invalid-name, abstract-method
+# pylint: disable=abstract-method
 
 import numpy as np
 

@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-#  pylint: disable=E1101
+#  pylint: disable=no-member
 
 """Decorator for using with Qiskit unit tests."""
 
