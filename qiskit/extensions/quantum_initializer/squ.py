@@ -43,7 +43,7 @@ class SingleQubitUnitary(Gate):
     """
 
     @deprecate_arguments({'u': 'unitary_matrix'})
-    def __init__(self, unitary_matrix, mode='ZYZ', up_to_diagonal=False, u=None):
+    def __init__(self, unitary_matrix, mode='ZYZ', up_to_diagonal=False):
         """Create a new single qubit gate based on the unitary ``u``."""
         if mode not in ['ZYZ']:
             raise QiskitError("The decomposition mode is not known.")
@@ -161,9 +161,9 @@ class SingleQubitUnitary(Gate):
                                "{1}".format(type(parameter), self.name))
 
 
-# pylint: disable=unused-argument, invalid-name, missing-type-doc, missing-param-doc
-@deprecate_arguments({'u': 'unitary'})
-def squ(self, unitary_matrix, qubit, mode='ZYZ', up_to_diagonal=False, *, u=None):
+# pylint: disable=invalid-name, missing-type-doc, missing-param-doc
+@deprecate_arguments({'u': 'unitary_matrix'})
+def squ(self, unitary_matrix, qubit, mode='ZYZ', up_to_diagonal=False):
     """Decompose an arbitrary 2*2 unitary into three rotation gates.
 
     Note that the decomposition is up to a global phase shift.
@@ -178,7 +178,6 @@ def squ(self, unitary_matrix, qubit, mode='ZYZ', up_to_diagonal=False, *, u=None
         up_to_diagonal (bool):  if set to True, the single-qubit unitary is decomposed up to
             a diagonal matrix, i.e. a unitary u' is implemented such that there exists a 2*2
             diagonal gate d with u = d.dot(u')
-        u (ndarray): Deprecated, use ``unitary_matrix`` instead.
 
     Returns:
         InstructionSet: The single-qubit unitary instruction attached to the circuit.
