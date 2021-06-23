@@ -63,7 +63,8 @@ def deprecate_arguments(kwarg_map):
                 _rename_kwargs(func.__qualname__, kwargs, kwarg_map)
             return func(*args, **kwargs)
 
-        if wrapper.__doc__:  # pylint: disable=no-member
+        # pylint: disable=no-member
+        if wrapper.__doc__:
             wrapper.__doc__ += f"\n\nDeprecated arguments:\n"
             wrapper.__doc__ += "\n".join(
                 f"\t{kwarg}: replaced by {kwarg_map[kwarg]}" for kwarg in kwarg_map
