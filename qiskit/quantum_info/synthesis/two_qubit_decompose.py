@@ -1083,7 +1083,8 @@ class TwoQubitBasisDecomposer:
 
         You can force a particular approximation by passing _num_basis_uses.
         """
-        basis_fidelity = basis_fidelity or self.basis_fidelity
+        if basis_fidelity is None:
+            basis_fidelity = self.basis_fidelity
         target = np.asarray(target, dtype=complex)
 
         target_decomposed = TwoQubitWeylDecomposition(target)
