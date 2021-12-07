@@ -20,7 +20,6 @@ from qiskit.test import QiskitTestCase
 from qiskit.circuit import Clbit, ClassicalRegister, Instruction, Parameter, QuantumCircuit
 from qiskit.circuit.library import XGate, RXGate
 from qiskit.circuit.exceptions import CircuitError
-
 from qiskit.circuit.controlflow import (
     ControlFlowOp,
     WhileLoopOp,

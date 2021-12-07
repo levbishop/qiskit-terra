@@ -15,7 +15,9 @@ Base class for readout error mitigation.
 
 from abc import ABC, abstractmethod
 from typing import Optional, List, Iterable, Tuple, Union, Callable
+
 import numpy as np
+
 from ..distributions.quasi import QuasiDistribution
 from ..counts import Counts
 

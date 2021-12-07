@@ -26,8 +26,8 @@ from typing import List
 from copy import deepcopy
 
 import numpy as np
-from scipy.optimize import minimize
 import scipy.linalg as la
+from scipy.optimize import minimize
 
 import qiskit
 from qiskit import QiskitError

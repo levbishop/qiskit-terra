@@ -16,6 +16,7 @@ Tests for the CrosstalkAdaptiveSchedule transpiler pass.
 
 import unittest
 from datetime import datetime
+
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.transpiler import Layout
 from qiskit.transpiler.passes.optimization import CrosstalkAdaptiveSchedule

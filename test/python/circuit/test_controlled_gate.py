@@ -15,10 +15,13 @@
 
 import unittest
 from test import combine
+
 import numpy as np
 from numpy import pi
 from ddt import ddt, data, unpack
 
+import qiskit.circuit.add_control as ac
+import qiskit.circuit.library.standard_gates as allGates
 from qiskit import QuantumRegister, QuantumCircuit, execute, BasicAer, QiskitError
 from qiskit.test import QiskitTestCase
 from qiskit.circuit import ControlledGate, Parameter
@@ -26,7 +29,6 @@ from qiskit.circuit.exceptions import CircuitError
 from qiskit.quantum_info.operators.predicates import matrix_equal, is_unitary_matrix
 from qiskit.quantum_info.random import random_unitary
 from qiskit.quantum_info.states import Statevector
-import qiskit.circuit.add_control as ac
 from qiskit.transpiler.passes import Unroller
 from qiskit.converters.circuit_to_dag import circuit_to_dag
 from qiskit.converters.dag_to_circuit import dag_to_circuit
@@ -74,7 +76,6 @@ from qiskit.circuit.library import (
     MCPhaseGate,
 )
 from qiskit.circuit._utils import _compute_control_matrix
-import qiskit.circuit.library.standard_gates as allGates
 from qiskit.extensions import UnitaryGate
 
 from .gate_utils import _get_free_params

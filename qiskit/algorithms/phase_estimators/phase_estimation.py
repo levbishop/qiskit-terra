@@ -16,14 +16,17 @@
 
 import warnings
 from typing import Optional, Union
+
 import numpy
-from qiskit.circuit import QuantumCircuit
+
 import qiskit
+from qiskit.circuit import QuantumCircuit
 from qiskit import circuit
 from qiskit.circuit.classicalregister import ClassicalRegister
 from qiskit.providers import BaseBackend, Backend
 from qiskit.utils import QuantumInstance
 from qiskit.result import Result
+
 from .phase_estimation_result import PhaseEstimationResult, _sort_phases
 from .phase_estimator import PhaseEstimator
 

@@ -20,6 +20,7 @@ from enum import Enum
 from typing import NamedTuple, Union, List, Optional, NewType, Dict, Any, Tuple
 
 import numpy as np
+
 from qiskit import pulse
 
 

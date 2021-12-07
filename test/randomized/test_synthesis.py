@@ -13,8 +13,9 @@
 """Randomized tests of quantum synthesis."""
 import unittest
 from test.python.quantum_info.test_synthesis import CheckDecompositions
-from hypothesis import given, strategies, settings
+
 import numpy as np
+from hypothesis import given, strategies, settings
 
 from qiskit import execute
 from qiskit.circuit import QuantumCircuit, QuantumRegister

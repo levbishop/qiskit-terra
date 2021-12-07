@@ -15,13 +15,12 @@
 import os
 import unittest
 import io
-from logging import StreamHandler, getLogger
 import sys
+from logging import StreamHandler, getLogger
 
 import numpy as np
 
-from qiskit import execute
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import execute, ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.compiler import transpile, assemble
 from qiskit.providers.basicaer import QasmSimulatorPy
 from qiskit.test import providers

@@ -13,9 +13,10 @@
 """Gate cancellation pass testing"""
 
 import unittest
-import numpy as np
-from qiskit.test import QiskitTestCase
 
+import numpy as np
+
+from qiskit.test import QiskitTestCase
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.circuit.library import U1Gate, RZGate
 from qiskit.transpiler import PassManager, PropertySet

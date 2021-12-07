@@ -15,6 +15,7 @@ Tools to create LaTeX arrays.
 
 import math
 from fractions import Fraction
+
 import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError

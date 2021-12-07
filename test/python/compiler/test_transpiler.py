@@ -16,18 +16,15 @@ import io
 import os
 import sys
 import math
-
 from logging import StreamHandler, getLogger
 from unittest.mock import patch
-
-from ddt import ddt, data, unpack
 from test import combine  # pylint: disable=wrong-import-order
 
 import numpy as np
+from ddt import ddt, data, unpack
 
 from qiskit.exceptions import QiskitError
-from qiskit import BasicAer
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, pulse
+from qiskit import BasicAer, QuantumRegister, ClassicalRegister, QuantumCircuit, pulse
 from qiskit.circuit import Parameter, Gate, Qubit, Clbit
 from qiskit.compiler import transpile
 from qiskit.dagcircuit import DAGOutNode
@@ -35,8 +32,7 @@ from qiskit.converters import circuit_to_dag
 from qiskit.circuit.library import CXGate, U3Gate, U2Gate, U1Gate, RXGate, RYGate, RZGate
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeMelbourne, FakeRueschlikon, FakeAlmaden
-from qiskit.transpiler import Layout, CouplingMap
-from qiskit.transpiler import PassManager
+from qiskit.transpiler import Layout, CouplingMap, PassManager
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements, GateDirection
 from qiskit.quantum_info import Operator, random_unitary

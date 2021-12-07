@@ -13,7 +13,9 @@
 """Sqrt(X) and C-Sqrt(X) gates."""
 
 from typing import Optional, Union
+
 import numpy
+
 from qiskit.qasm import pi
 from qiskit.circuit.controlledgate import ControlledGate
 from qiskit.circuit.gate import Gate
@@ -65,6 +67,7 @@ class SXGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .s import SdgGate
         from .h import HGate
 
@@ -144,6 +147,7 @@ class SXdgGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .s import SGate
         from .h import HGate
 
@@ -244,6 +248,7 @@ class CSXGate(ControlledGate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .h import HGate
         from .u1 import CU1Gate
 

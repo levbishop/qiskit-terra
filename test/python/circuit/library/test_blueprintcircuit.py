@@ -13,6 +13,7 @@
 """Test the blueprint circuit."""
 
 import unittest
+
 from ddt import ddt, data
 
 from qiskit.test.base import QiskitTestCase

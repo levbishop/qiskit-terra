@@ -19,7 +19,6 @@ import numpy as np
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import RXGate, RYGate, RZGate
 
-
 reflection_options = {
     "no reflection": ([1, 1, 1], 1, []),
     "reflect XX, YY": ([-1, -1, 1], 1, [RZGate]),

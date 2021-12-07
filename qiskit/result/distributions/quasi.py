@@ -11,11 +11,10 @@
 # that they have been altered from the originals.
 """Quasidistribution class"""
 
-from math import sqrt
 import re
+from math import sqrt
 
 from .probability import ProbDistribution
-
 
 # NOTE: A dict subclass should not overload any dunder methods like __getitem__
 # this can cause unexpected behavior and issues as the cPython dict

@@ -24,13 +24,8 @@ from qiskit.test.mock import FakeVigo
 from qiskit.circuit import QuantumCircuit, QuantumRegister
 from qiskit.circuit.library import QuantumVolume
 from qiskit.converters import circuit_to_dag
-from qiskit.transpiler.passes import UnitarySynthesis
-from qiskit.quantum_info.operators import Operator
-from qiskit.quantum_info.random import random_unitary
-from qiskit.transpiler import PassManager, CouplingMap
-from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.exceptions import QiskitError
 from qiskit.transpiler.passes import (
+    UnitarySynthesis,
     Collect2qBlocks,
     ConsolidateBlocks,
     Optimize1qGates,
@@ -46,6 +41,11 @@ from qiskit.transpiler.passes import (
     SabreSwap,
     TrivialLayout,
 )
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info.random import random_unitary
+from qiskit.transpiler import PassManager, CouplingMap
+from qiskit.transpiler.exceptions import TranspilerError
+from qiskit.exceptions import QiskitError
 
 
 @ddt

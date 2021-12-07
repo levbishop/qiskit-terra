@@ -15,11 +15,13 @@
 import time
 import threading
 import types
+
+import matplotlib.pyplot as plt
+import ipywidgets as widgets
 from IPython.display import display
 from IPython.core.magic import line_magic, Magics, magics_class
 from IPython.core import magic_arguments
-import matplotlib.pyplot as plt
-import ipywidgets as widgets
+
 from qiskit.tools.monitor.overview import get_unique_backends
 from qiskit.visualization.gate_map import plot_gate_map
 

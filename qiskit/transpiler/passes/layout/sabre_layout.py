@@ -14,6 +14,7 @@
 """
 
 import logging
+
 import numpy as np
 
 from qiskit.converters import dag_to_circuit

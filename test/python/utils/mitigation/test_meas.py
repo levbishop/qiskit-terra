@@ -28,6 +28,7 @@ expected (equally distributed) result
 """
 
 import unittest
+
 import numpy as np
 
 import qiskit

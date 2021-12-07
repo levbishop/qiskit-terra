@@ -14,10 +14,10 @@
 """Diagonal gate tests."""
 
 import unittest
+
 import numpy as np
 
 from qiskit import QuantumCircuit, QuantumRegister, BasicAer, execute
-
 from qiskit.test import QiskitTestCase
 from qiskit.compiler import transpile
 from qiskit.quantum_info.operators.predicates import matrix_equal

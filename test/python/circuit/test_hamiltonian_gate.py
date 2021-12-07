@@ -16,7 +16,6 @@
 import numpy as np
 from numpy.testing import assert_allclose
 
-
 import qiskit
 from qiskit.extensions.hamiltonian_gate import HamiltonianGate, UnitaryGate
 from qiskit.extensions.exceptions import ExtensionError

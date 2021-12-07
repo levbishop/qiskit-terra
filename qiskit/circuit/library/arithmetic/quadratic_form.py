@@ -17,6 +17,7 @@ from typing import Union, Optional, List
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, ParameterExpression
+
 from ..basis_change import QFT
 
 

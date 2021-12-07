@@ -16,6 +16,7 @@ from typing import Optional, Tuple, Union
 
 from qiskit.circuit import Clbit, ClassicalRegister, QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
+
 from .condition import validate_condition, condition_bits
 from .control_flow import ControlFlowOp
 

@@ -16,6 +16,7 @@ A collection of useful quantum information functions for operators.
 
 import logging
 import warnings
+
 import numpy as np
 from scipy import sparse
 

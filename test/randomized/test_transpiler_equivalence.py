@@ -15,14 +15,18 @@
 
 from math import pi
 
-from hypothesis import assume, settings, HealthCheck
-from hypothesis.stateful import multiple, rule, precondition, invariant
-from hypothesis.stateful import Bundle, RuleBasedStateMachine
-
 import hypothesis.strategies as st
+from hypothesis import assume, settings, HealthCheck
+from hypothesis.stateful import (
+    multiple,
+    rule,
+    precondition,
+    invariant,
+    Bundle,
+    RuleBasedStateMachine,
+)
 
-from qiskit import execute, transpile, Aer
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit import execute, transpile, Aer, QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit.circuit import Measure, Reset, Gate, Barrier
 from qiskit.test.mock import (
     FakeYorktown,
@@ -39,7 +43,6 @@ from qiskit.test.mock import (
     FakeBoeblingen,
 )
 from qiskit.test.base import dicts_almost_equal
-
 
 # pylint: disable=wildcard-import,unused-wildcard-import
 from qiskit.circuit.library.standard_gates import *

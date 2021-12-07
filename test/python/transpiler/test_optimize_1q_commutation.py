@@ -12,9 +12,8 @@
 
 """Test the Optimize1qGatesSimpleCommutation pass"""
 
-from collections import Counter
-
 import unittest
+from collections import Counter
 
 import ddt
 import numpy as np

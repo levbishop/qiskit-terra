@@ -16,12 +16,10 @@ import unittest
 
 import numpy as np
 
-from qiskit import execute
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import execute, ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.providers.basicaer import UnitarySimulatorPy
 from qiskit.quantum_info.operators.predicates import matrix_equal
-from qiskit.test import ReferenceCircuits
-from qiskit.test import providers
+from qiskit.test import ReferenceCircuits, providers
 from qiskit.quantum_info.random import random_unitary
 from qiskit.quantum_info import process_fidelity, Operator
 

@@ -17,8 +17,7 @@ import os
 
 from numpy import pi
 
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
-from qiskit import transpile
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, transpile
 from qiskit.test import QiskitTestCase
 from qiskit.circuit import Gate, Parameter, EquivalenceLibrary
 from qiskit.circuit.library import (
@@ -39,8 +38,6 @@ from qiskit.quantum_info import Operator
 from qiskit.transpiler.target import Target, InstructionProperties
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.passes.basis import BasisTranslator, UnrollCustomDefinitions
-
-
 from qiskit.circuit.library.standard_gates.equivalence_library import (
     StandardEquivalenceLibrary as std_eqlib,
 )

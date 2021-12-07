@@ -15,6 +15,7 @@
 import logging
 from math import inf
 from collections import OrderedDict
+
 import numpy as np
 
 from qiskit.circuit.quantumregister import QuantumRegister
@@ -29,7 +30,6 @@ from .cython.stochastic_swap.utils import nlayout_from_layout
 
 # pylint: disable=no-name-in-module
 from .cython.stochastic_swap.swap_trial import swap_trial
-
 
 logger = logging.getLogger(__name__)
 

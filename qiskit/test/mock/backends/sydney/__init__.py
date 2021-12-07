@@ -12,5 +12,4 @@
 
 """Mock sydney backend"""
 
-from .fake_sydney import FakeSydney
-from .fake_sydney import FakeLegacySydney
+from .fake_sydney import FakeSydney, FakeLegacySydney

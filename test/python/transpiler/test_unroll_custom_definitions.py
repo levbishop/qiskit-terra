@@ -13,10 +13,8 @@
 """Test the BasisTranslator pass"""
 
 from qiskit.transpiler.passes.basis import UnrollCustomDefinitions
-
 from qiskit.test import QiskitTestCase
-from qiskit.circuit import EquivalenceLibrary, Gate
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import EquivalenceLibrary, Gate, QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.exceptions import QiskitError
 

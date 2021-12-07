@@ -13,8 +13,8 @@
 """ Test Validation """
 
 import unittest
-
 from test.python.algorithms import QiskitAlgorithmsTestCase
+
 from qiskit.utils.validation import (
     validate_in_set,
     validate_min,

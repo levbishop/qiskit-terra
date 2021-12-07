@@ -49,8 +49,8 @@ from the multiprocessing library.
 """
 
 import os
-from concurrent.futures import ProcessPoolExecutor
 import sys
+from concurrent.futures import ProcessPoolExecutor
 
 from qiskit.exceptions import QiskitError
 from qiskit.utils.multiprocessing import local_hardware_info

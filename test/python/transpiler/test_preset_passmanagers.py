@@ -13,17 +13,16 @@
 """Tests preset pass manager API"""
 
 import unittest
-
 from test import combine
-from ddt import ddt, data
 
 import numpy as np
+from ddt import ddt, data
 
 from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
 from qiskit.circuit import Qubit
 from qiskit.compiler import transpile, assemble
 from qiskit.transpiler import CouplingMap, Layout
-from qiskit.circuit.library import U2Gate, U3Gate
+from qiskit.circuit.library import U2Gate, U3Gate, GraphState
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import (
     FakeTenerife,
@@ -34,7 +33,6 @@ from qiskit.test.mock import (
     FakePoughkeepsie,
 )
 from qiskit.converters import circuit_to_dag
-from qiskit.circuit.library import GraphState
 from qiskit.quantum_info import random_unitary
 
 

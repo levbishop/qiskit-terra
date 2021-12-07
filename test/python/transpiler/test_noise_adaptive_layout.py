@@ -12,8 +12,9 @@
 
 """Test the NoiseAdaptiveLayout pass"""
 
-from datetime import datetime
 import unittest
+from datetime import datetime
+
 from qiskit.transpiler.passes import NoiseAdaptiveLayout
 from qiskit.converters import circuit_to_dag
 from qiskit import QuantumRegister, QuantumCircuit

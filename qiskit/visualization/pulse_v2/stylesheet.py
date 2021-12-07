@@ -33,6 +33,7 @@ the appearance of the output image.
 
 import warnings
 from typing import Dict, Any, Mapping
+
 from qiskit.visualization.pulse_v2 import generators, layouts
 
 

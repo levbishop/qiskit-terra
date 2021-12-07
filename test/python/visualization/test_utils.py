@@ -13,6 +13,7 @@
 """Tests for visualization tools."""
 
 import unittest
+
 import numpy as np
 
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit

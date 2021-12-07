@@ -13,6 +13,7 @@
 """The matrix functional of the vector solution to the linear systems."""
 
 from typing import Union, List
+
 import numpy as np
 from scipy.sparse import diags
 

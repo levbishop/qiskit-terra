@@ -12,13 +12,15 @@
 
 """The module to compute Hessians."""
 
-from typing import Union, List, Tuple, Optional
 import functools
+from typing import Union, List, Tuple, Optional
+
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.circuit import ParameterVector, ParameterExpression
+
 from ..operator_globals import Zero, One
 from ..state_fns.circuit_state_fn import CircuitStateFn
 from ..state_fns.state_fn import StateFn

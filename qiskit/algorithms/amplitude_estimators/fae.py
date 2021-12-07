@@ -13,6 +13,7 @@
 """Faster Amplitude Estimation."""
 
 from typing import Optional, Union, List, Tuple
+
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, ClassicalRegister

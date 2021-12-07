@@ -16,13 +16,18 @@ Initialize test.
 
 import math
 import unittest
+
 import numpy as np
 
-from qiskit import QuantumCircuit
-from qiskit import QuantumRegister
-from qiskit import ClassicalRegister
-from qiskit import transpile
-from qiskit import execute, assemble, BasicAer
+from qiskit import (
+    QuantumCircuit,
+    QuantumRegister,
+    ClassicalRegister,
+    transpile,
+    execute,
+    assemble,
+    BasicAer,
+)
 from qiskit.quantum_info import state_fidelity, Statevector, Operator
 from qiskit.exceptions import QiskitError
 from qiskit.test import QiskitTestCase

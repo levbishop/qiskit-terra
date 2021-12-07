@@ -14,6 +14,7 @@
 
 import copy
 import unittest
+
 import numpy
 
 from qiskit.circuit import QuantumRegister, Qubit

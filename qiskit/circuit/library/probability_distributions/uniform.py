@@ -13,6 +13,7 @@
 """The uniform probability distribution circuit."""
 
 import warnings
+
 from qiskit.circuit import QuantumCircuit
 
 

@@ -72,13 +72,9 @@ import unittest
 import os
 import sys
 
-from qiskit import execute
-from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, BasicAer
-from qiskit.transpiler import PassManager
-from qiskit.transpiler.passes import BasicSwap, LookaheadSwap, StochasticSwap, SabreSwap
-from qiskit.transpiler.passes import SetLayout
-from qiskit.transpiler import CouplingMap, Layout
-
+from qiskit import execute, ClassicalRegister, QuantumRegister, QuantumCircuit, BasicAer
+from qiskit.transpiler import PassManager, CouplingMap, Layout
+from qiskit.transpiler.passes import BasicSwap, LookaheadSwap, StochasticSwap, SabreSwap, SetLayout
 from qiskit.test import QiskitTestCase
 
 

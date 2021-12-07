@@ -13,6 +13,7 @@
 """ UnitaryGate tests """
 
 import json
+
 import numpy
 from numpy.testing import assert_allclose
 

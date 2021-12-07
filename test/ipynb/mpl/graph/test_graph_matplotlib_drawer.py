@@ -13,15 +13,13 @@
 """ Tests for graph MPL drawer"""
 
 import unittest
-
 import json
 import os
 from contextlib import contextmanager
 
 from qiskit.visualization.state_visualization import state_drawer
-from qiskit import BasicAer, execute
+from qiskit import BasicAer, execute, QuantumCircuit
 from qiskit.test import QiskitTestCase
-from qiskit import QuantumCircuit
 from qiskit.tools.visualization import HAS_MATPLOTLIB
 from qiskit.visualization.counts_visualization import plot_histogram
 from qiskit.visualization.gate_map import plot_gate_map, plot_coupling_map

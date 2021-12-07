@@ -12,10 +12,9 @@
 """
 ParameterExpression Class to enable creating simple expressions of Parameters.
 """
-from typing import Callable, Dict, Set, Union
-
 import numbers
 import operator
+from typing import Callable, Dict, Set, Union
 
 import numpy
 

@@ -14,8 +14,7 @@
 
 import numpy as np
 
-from qiskit.circuit import QuantumRegister, ClassicalRegister, QuantumCircuit
-from qiskit.circuit import Reset
+from qiskit.circuit import QuantumRegister, ClassicalRegister, QuantumCircuit, Reset
 from qiskit.circuit.library.standard_gates import (
     IGate,
     U1Gate,

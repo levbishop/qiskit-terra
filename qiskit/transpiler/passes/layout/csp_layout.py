@@ -17,6 +17,7 @@ found, no ``property_set['layout']`` is set.
 """
 import random
 from time import time
+
 from constraint import Problem, RecursiveBacktrackingSolver, AllDifferentConstraint
 
 from qiskit.transpiler.layout import Layout

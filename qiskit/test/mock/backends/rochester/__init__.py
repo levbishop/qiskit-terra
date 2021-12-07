@@ -12,5 +12,4 @@
 
 """Mock rochester backend"""
 
-from .fake_rochester import FakeRochester
-from .fake_rochester import FakeLegacyRochester
+from .fake_rochester import FakeRochester, FakeLegacyRochester

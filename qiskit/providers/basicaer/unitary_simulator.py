@@ -29,8 +29,8 @@ circuit's unitary matrix.
 import logging
 import uuid
 import time
-from math import log2, sqrt
 import warnings
+from math import log2, sqrt
 
 import numpy as np
 
@@ -41,11 +41,14 @@ from qiskit.providers.backend import BackendV1
 from qiskit.providers.options import Options
 from qiskit.providers.basicaer.basicaerjob import BasicAerJob
 from qiskit.result import Result
+
 from .exceptions import BasicAerError
-from .basicaertools import single_gate_matrix
-from .basicaertools import SINGLE_QUBIT_GATES
-from .basicaertools import cx_gate_matrix
-from .basicaertools import einsum_matmul_index
+from .basicaertools import (
+    single_gate_matrix,
+    SINGLE_QUBIT_GATES,
+    cx_gate_matrix,
+    einsum_matmul_index,
+)
 
 logger = logging.getLogger(__name__)
 

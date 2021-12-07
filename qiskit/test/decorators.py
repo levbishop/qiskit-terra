@@ -18,8 +18,8 @@ import inspect
 import os
 import socket
 import sys
-from typing import Union, Callable, Type, Iterable
 import unittest
+from typing import Union, Callable, Type, Iterable
 from warnings import warn
 
 from .testing_options import get_test_options

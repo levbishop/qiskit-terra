@@ -45,7 +45,6 @@ from qiskit.visualization import text as _text
 from qiskit.visualization import utils
 from qiskit.visualization import matplotlib as _matplotlib
 
-
 logger = logging.getLogger(__name__)
 
 

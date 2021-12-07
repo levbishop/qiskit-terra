@@ -14,6 +14,7 @@
 """A module for the job watcher"""
 
 from IPython.core.magic import line_magic, Magics, magics_class
+
 from qiskit.tools.events.pubsub import Subscriber
 from qiskit.exceptions import MissingOptionalLibraryError
 

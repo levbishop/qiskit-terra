@@ -80,6 +80,7 @@ from collections import defaultdict
 from typing import List, Dict, Any, Tuple, Iterator, Optional, Union
 
 import numpy as np
+
 from qiskit import pulse
 from qiskit.visualization.pulse_v2 import types
 from qiskit.visualization.pulse_v2.device_info import DrawerBackendInfo

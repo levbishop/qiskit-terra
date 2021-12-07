@@ -19,6 +19,7 @@ from qiskit.quantum_info.operators.predicates import matrix_equal
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.standard_gates import CZGate, CU1Gate, MCU1Gate
+
 from . import _gate_extension  # pylint: disable=unused-import
 
 try:

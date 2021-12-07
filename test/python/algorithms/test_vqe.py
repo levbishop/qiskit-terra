@@ -15,23 +15,14 @@
 import logging
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
-
 from functools import partial
+
 import numpy as np
 from ddt import data, ddt, unpack
 
 from qiskit import BasicAer, QuantumCircuit
 from qiskit.algorithms import VQE, AlgorithmError
-from qiskit.algorithms.optimizers import (
-    CG,
-    COBYLA,
-    L_BFGS_B,
-    P_BFGS,
-    QNSPSA,
-    SLSQP,
-    SPSA,
-    TNC,
-)
+from qiskit.algorithms.optimizers import CG, COBYLA, L_BFGS_B, P_BFGS, QNSPSA, SLSQP, SPSA, TNC
 from qiskit.circuit.library import EfficientSU2, RealAmplitudes, TwoLocal
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.opflow import (
@@ -49,6 +40,7 @@ from qiskit.opflow import (
 from qiskit.transpiler import PassManager, PassManagerConfig
 from qiskit.transpiler.preset_passmanagers import level_1_pass_manager
 from qiskit.utils import QuantumInstance, algorithm_globals, has_aer
+
 from ..transpiler._dummy_passes import DummyAP
 
 if has_aer():

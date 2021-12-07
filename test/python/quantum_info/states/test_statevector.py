@@ -16,17 +16,15 @@
 import unittest
 import logging
 from itertools import permutations
-from ddt import ddt, data
+
 import numpy as np
+from ddt import ddt, data
 from numpy.testing import assert_allclose
 
 from qiskit.test import QiskitTestCase
-from qiskit import QiskitError
-from qiskit import QuantumRegister, QuantumCircuit
-from qiskit import transpile
+from qiskit import QiskitError, QuantumRegister, QuantumCircuit, transpile
 from qiskit.circuit.library import HGate, QFT
 from qiskit.providers.basicaer import QasmSimulatorPy
-
 from qiskit.quantum_info.random import random_unitary, random_statevector, random_pauli
 from qiskit.quantum_info.states import Statevector
 from qiskit.quantum_info.operators.operator import Operator

@@ -16,8 +16,10 @@ from typing import List, Union
 
 import numpy as np
 from scipy.linalg import block_diag
+
 from qiskit.circuit import Parameter, ParameterVector, ParameterExpression
 from qiskit.utils.arithmetic import triu_to_dense
+
 from ...list_ops.list_op import ListOp
 from ...primitive_ops.circuit_op import CircuitOp
 from ...expectations.pauli_expectation import PauliExpectation
@@ -25,7 +27,6 @@ from ...operator_globals import Zero
 from ...state_fns.state_fn import StateFn
 from ...state_fns.circuit_state_fn import CircuitStateFn
 from ...exceptions import OpflowError
-
 from .circuit_qfi import CircuitQFI
 from ..derivative_base import _coeff_derivative
 from .overlap_diag import _get_generators, _partition_circuit

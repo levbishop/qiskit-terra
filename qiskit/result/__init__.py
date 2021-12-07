@@ -49,7 +49,6 @@ from .result import Result
 from .exceptions import ResultError
 from .utils import marginal_counts
 from .counts import Counts
-
 from .distributions.probability import ProbDistribution
 from .distributions.quasi import QuasiDistribution
 from .mitigation.base_readout_mitigator import BaseReadoutMitigator

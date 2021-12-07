@@ -127,9 +127,9 @@ still seeing the signature for the continuous pulse function and all of its argu
 """
 
 import functools
-from typing import Callable
 import textwrap
 import pydoc
+from typing import Callable
 
 import numpy as np
 

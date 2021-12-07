@@ -24,10 +24,27 @@ try:
     HAS_Z3 = True
 except ImportError:
     HAS_Z3 = False
-from qiskit.circuit.library.standard_gates import IGate, XGate, YGate, ZGate
-from qiskit.circuit.library.standard_gates import CXGate, CCXGate, CYGate, CZGate
-from qiskit.circuit.library.standard_gates import TGate, TdgGate, SGate, SdgGate, RZGate, U1Gate
-from qiskit.circuit.library.standard_gates import SwapGate, CSwapGate, CRZGate, CU1Gate, MCU1Gate
+from qiskit.circuit.library.standard_gates import (
+    IGate,
+    XGate,
+    YGate,
+    ZGate,
+    CXGate,
+    CCXGate,
+    CYGate,
+    CZGate,
+    TGate,
+    TdgGate,
+    SGate,
+    SdgGate,
+    RZGate,
+    U1Gate,
+    SwapGate,
+    CSwapGate,
+    CRZGate,
+    CU1Gate,
+    MCU1Gate,
+)
 
 if HAS_Z3:
     # FLIP GATES #

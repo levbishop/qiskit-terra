@@ -20,16 +20,7 @@ from test.python.opflow import QiskitOpflowTestCase
 import numpy as np
 
 from qiskit import QuantumCircuit
-from qiskit.opflow import (
-    ComposedOp,
-    I,
-    OperatorStateFn,
-    PauliSumOp,
-    SummedOp,
-    X,
-    Y,
-    Z,
-)
+from qiskit.opflow import ComposedOp, I, OperatorStateFn, PauliSumOp, SummedOp, X, Y, Z
 from qiskit.opflow.converters import PauliBasisChange
 from qiskit.quantum_info import Pauli, SparsePauliOp
 

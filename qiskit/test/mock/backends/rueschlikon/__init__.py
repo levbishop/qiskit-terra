@@ -12,5 +12,4 @@
 
 """Mock rueschlikon backend"""
 
-from .fake_rueschlikon import FakeRueschlikon
-from .fake_rueschlikon import FakeLegacyRueschlikon
+from .fake_rueschlikon import FakeRueschlikon, FakeLegacyRueschlikon

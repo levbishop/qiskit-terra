@@ -13,6 +13,7 @@
 """Test the Sabre Swap pass"""
 
 import unittest
+
 from qiskit.transpiler.passes import SabreSwap
 from qiskit.transpiler import CouplingMap, PassManager
 from qiskit import QuantumRegister, QuantumCircuit

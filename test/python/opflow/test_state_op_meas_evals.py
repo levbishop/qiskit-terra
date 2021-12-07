@@ -17,8 +17,9 @@
 
 import unittest
 from test.python.opflow import QiskitOpflowTestCase
-from ddt import ddt, data
+
 import numpy
+from ddt import ddt, data
 
 from qiskit.circuit import QuantumCircuit, Parameter
 from qiskit.utils import QuantumInstance

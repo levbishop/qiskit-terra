@@ -14,6 +14,7 @@
 """
 
 import math
+
 from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
 
 

@@ -14,14 +14,22 @@
 
 import unittest
 import io
-from logging import StreamHandler, getLogger
 import sys
 import copy
+from logging import StreamHandler, getLogger
 
 import numpy as np
+
 from qiskit import pulse
-from qiskit.circuit import Instruction, Gate, Parameter, ParameterVector
-from qiskit.circuit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit.circuit import (
+    Instruction,
+    Gate,
+    Parameter,
+    ParameterVector,
+    QuantumRegister,
+    ClassicalRegister,
+    QuantumCircuit,
+)
 from qiskit.compiler.assembler import assemble
 from qiskit.exceptions import QiskitError
 from qiskit.pulse import Schedule, Acquire, Play

@@ -58,18 +58,14 @@ backend etc.
 """
 
 from .quantum_instance import QuantumInstance
-from .deprecation import deprecate_arguments
-from .deprecation import deprecate_function
-from .multiprocessing import local_hardware_info
-from .multiprocessing import is_main_process
+from .deprecation import deprecate_arguments, deprecate_function
+from .multiprocessing import local_hardware_info, is_main_process
 from .units import apply_prefix, detach_prefix
-
 from .circuit_utils import summarize_circuits
 from .entangler_map import get_entangler_map, validate_entangler_map
 from .backend_utils import has_ibmq, has_aer
 from .name_unnamed_args import name_args
 from .algorithm_globals import algorithm_globals
-
 
 __all__ = [
     "QuantumInstance",

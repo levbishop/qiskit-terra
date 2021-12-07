@@ -14,6 +14,7 @@
 
 import warnings
 from typing import Optional, List, Callable, Union
+
 import numpy
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister

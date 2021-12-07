@@ -13,6 +13,7 @@
 """Test the RemoveBarriers pass"""
 
 import unittest
+
 from qiskit.transpiler.passes import RemoveBarriers
 from qiskit.converters import circuit_to_dag
 from qiskit import QuantumCircuit

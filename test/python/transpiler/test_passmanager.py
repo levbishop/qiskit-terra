@@ -20,8 +20,7 @@ from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.circuit.library import U2Gate
 from qiskit.converters import circuit_to_dag
 from qiskit.transpiler import PassManager, PropertySet
-from qiskit.transpiler.passes import CommutativeCancellation
-from qiskit.transpiler.passes import Optimize1qGates, Unroller
+from qiskit.transpiler.passes import CommutativeCancellation, Optimize1qGates, Unroller
 from qiskit.test import QiskitTestCase
 
 

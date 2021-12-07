@@ -12,5 +12,4 @@
 
 """Mock melbourne backend"""
 
-from .fake_melbourne import FakeMelbourne
-from .fake_melbourne import FakeLegacyMelbourne
+from .fake_melbourne import FakeMelbourne, FakeLegacyMelbourne

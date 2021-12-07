@@ -21,8 +21,8 @@ from qiskit.pulse import (
     MemorySlot,
     GaussianSquare,
     Play,
+    macros,
 )
-from qiskit.pulse import macros
 from qiskit.pulse.exceptions import PulseError
 from qiskit.test.mock import FakeOpenPulse2Q
 from qiskit.test import QiskitTestCase

@@ -24,8 +24,7 @@ from qiskit.circuit import QuantumCircuit, Qubit, Parameter
 from qiskit.exceptions import QiskitError
 from qiskit.providers import BaseBackend
 from qiskit.providers.backend import Backend
-from qiskit.pulse import LoConfig, Instruction
-from qiskit.pulse import Schedule, ScheduleBlock
+from qiskit.pulse import LoConfig, Instruction, Schedule, ScheduleBlock
 from qiskit.pulse.channels import PulseChannel
 from qiskit.qobj import QobjHeader, Qobj
 from qiskit.qobj.utils import MeasLevel, MeasReturnType

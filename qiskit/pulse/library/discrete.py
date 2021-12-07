@@ -20,9 +20,7 @@ from typing import Optional
 
 from ..exceptions import PulseError
 from .waveform import Waveform
-from . import continuous
-from . import samplers
-
+from . import continuous, samplers
 
 _sampled_constant_pulse = samplers.midpoint(continuous.constant)
 

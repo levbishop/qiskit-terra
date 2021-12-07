@@ -15,7 +15,9 @@
 from typing import Any, Dict, Tuple, List, Callable, Optional
 
 import numpy as np
+
 from qiskit.exceptions import MissingOptionalLibraryError
+
 from .optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
 
 try:

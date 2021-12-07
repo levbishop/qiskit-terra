@@ -13,6 +13,7 @@
 """Rotation around the Z axis."""
 
 from typing import Optional, Union
+
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.controlledgate import ControlledGate
 from qiskit.circuit.quantumregister import QuantumRegister
@@ -66,6 +67,7 @@ class RZGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .u1 import U1Gate
 
         q = QuantumRegister(1, "q")
@@ -202,6 +204,7 @@ class CRZGate(ControlledGate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .x import CXGate
 
         q = QuantumRegister(2, "q")

@@ -15,7 +15,9 @@ Circuit synthesis for the Clifford class.
 # pylint: disable=invalid-name
 
 from itertools import product
+
 import numpy as np
+
 from qiskit.exceptions import QiskitError
 from qiskit.circuit import QuantumCircuit
 from qiskit.quantum_info.operators.symplectic.pauli import Pauli

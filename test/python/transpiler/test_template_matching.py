@@ -14,7 +14,9 @@
 """Test the TemplateOptimization pass."""
 
 import unittest
+
 import numpy as np
+
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.circuit import Parameter, Gate
 from qiskit.extensions import UnitaryGate

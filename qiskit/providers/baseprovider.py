@@ -12,8 +12,8 @@
 
 """Base class for a backend provider."""
 
-from abc import ABC, abstractmethod
 import warnings
+from abc import ABC, abstractmethod
 
 from .exceptions import QiskitBackendNotFoundError
 

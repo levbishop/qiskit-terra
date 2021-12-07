@@ -49,6 +49,7 @@
 __all__ = ["Bloch"]
 
 import os
+
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt

@@ -13,20 +13,17 @@
 """ Test QAOA """
 
 import unittest
+import math
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
-import math
 import numpy as np
 import retworkx as rx
 from ddt import ddt, idata, unpack
 
 from qiskit.algorithms import QAOA
 from qiskit.algorithms.optimizers import COBYLA, NELDER_MEAD
-
 from qiskit.opflow import I, X, Z, PauliSumOp
-
 from qiskit import BasicAer, QuantumCircuit, QuantumRegister
-
 from qiskit.circuit import Parameter
 from qiskit.quantum_info import Pauli
 from qiskit.utils import QuantumInstance, algorithm_globals

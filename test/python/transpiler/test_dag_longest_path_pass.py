@@ -13,6 +13,7 @@
 """DAGFixedPoint pass testing"""
 
 import unittest
+
 from qiskit.transpiler.passes import DAGLongestPath
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.converters import circuit_to_dag

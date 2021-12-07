@@ -14,6 +14,7 @@
 """Test Qiskit's repeat instruction operation."""
 
 import unittest
+
 from numpy import pi
 
 from qiskit.transpiler import PassManager

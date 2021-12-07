@@ -12,5 +12,4 @@
 
 """Mock essex backend"""
 
-from .fake_essex import FakeEssex
-from .fake_essex import FakeLegacyEssex
+from .fake_essex import FakeEssex, FakeLegacyEssex

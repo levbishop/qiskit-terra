@@ -19,7 +19,6 @@ from typing import NamedTuple, List, Union, NewType, Tuple, Dict
 
 from qiskit import circuit
 
-
 ScheduledGate = NamedTuple(
     "ScheduledGate",
     [

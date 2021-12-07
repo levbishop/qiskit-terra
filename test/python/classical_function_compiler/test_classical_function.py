@@ -12,9 +12,7 @@
 
 """Tests ClassicalFunction as a gate."""
 from qiskit.test import QiskitTestCase
-
 from qiskit.circuit.classicalfunction import classical_function as compile_classical_function
-
 from qiskit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import XGate
 

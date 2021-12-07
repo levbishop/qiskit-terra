@@ -15,6 +15,7 @@ Fake Valencia device (5 qubit).
 """
 
 import os
+
 from qiskit.test.mock import fake_pulse_backend
 
 

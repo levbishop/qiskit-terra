@@ -14,6 +14,7 @@
 
 import unittest
 from copy import deepcopy
+
 import numpy as np
 
 from qiskit.quantum_info.operators import Pauli

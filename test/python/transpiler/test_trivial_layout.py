@@ -15,9 +15,8 @@
 import unittest
 
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
-from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import CouplingMap, TranspilerError
 from qiskit.transpiler.passes import TrivialLayout
-from qiskit.transpiler import TranspilerError
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeTenerife, FakeRueschlikon

@@ -13,7 +13,9 @@
 """Y and CY gates."""
 
 from typing import Optional, Union
+
 import numpy
+
 from qiskit.qasm import pi
 
 # pylint: disable=cyclic-import
@@ -72,6 +74,7 @@ class YGate(Gate):
     def _define(self):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .u3 import U3Gate
 
         q = QuantumRegister(1, "q")
@@ -184,6 +187,7 @@ class CYGate(ControlledGate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .s import SGate, SdgGate
         from .x import CXGate
 

@@ -13,12 +13,14 @@
 
 """Integer Comparator."""
 
-from typing import List, Optional
 import warnings
+from typing import List, Optional
+
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister
 from qiskit.circuit.exceptions import CircuitError
+
 from ..boolean_logic import OR
 from ..blueprintcircuit import BlueprintCircuit
 

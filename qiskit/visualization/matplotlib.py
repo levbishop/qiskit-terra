@@ -19,7 +19,6 @@ from warnings import warn
 
 import numpy as np
 
-
 try:
     from pylatexenc.latex2text import LatexNodes2Text
 
@@ -27,16 +26,8 @@ try:
 except ImportError:
     HAS_PYLATEX = False
 
-from qiskit.circuit import ControlledGate
-from qiskit.circuit import Measure
-from qiskit.circuit.library.standard_gates import (
-    SwapGate,
-    RZZGate,
-    U1Gate,
-    PhaseGate,
-    XGate,
-    ZGate,
-)
+from qiskit.circuit import ControlledGate, Measure
+from qiskit.circuit.library.standard_gates import SwapGate, RZZGate, U1Gate, PhaseGate, XGate, ZGate
 from qiskit.extensions import Initialize
 from qiskit.visualization.qcstyle import load_style
 from qiskit.visualization.utils import (
@@ -1426,8 +1417,7 @@ class HasMatplotlibWrapper:
     def __bool__(self):
         if not self.has_matplotlib:
             try:
-                from matplotlib import get_backend
-                from matplotlib import patches
+                from matplotlib import get_backend, patches
                 from matplotlib import pyplot as plt
 
                 self.has_matplotlib = True

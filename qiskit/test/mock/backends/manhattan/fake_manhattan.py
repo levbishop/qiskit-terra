@@ -15,6 +15,7 @@ Fake Manhattan device (65 qubit).
 """
 
 import os
+
 from qiskit.test.mock import fake_pulse_backend
 
 

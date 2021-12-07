@@ -18,10 +18,7 @@ import numpy as np
 from ddt import ddt, data
 
 from qiskit.quantum_info.random import random_unitary
-from qiskit import BasicAer
-from qiskit import QuantumCircuit
-from qiskit import QuantumRegister
-from qiskit import execute
+from qiskit import BasicAer, QuantumCircuit, QuantumRegister, execute
 from qiskit.test import QiskitTestCase
 from qiskit.compiler import transpile
 from qiskit.quantum_info.operators.predicates import matrix_equal

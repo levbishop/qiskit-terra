@@ -12,5 +12,4 @@
 
 """Mock vigo backend"""
 
-from .fake_vigo import FakeVigo
-from .fake_vigo import FakeLegacyVigo
+from .fake_vigo import FakeVigo, FakeLegacyVigo

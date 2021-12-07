@@ -24,13 +24,13 @@ import numpy as np
 from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.circuit import Gate, Instruction, ParameterVector
 from qiskit.circuit.library import QFT
-from qiskit.providers import Backend
-from qiskit.providers import BaseBackend
+from qiskit.providers import Backend, BaseBackend
 from qiskit.quantum_info import partial_trace
 from qiskit.utils import summarize_circuits
 from qiskit.utils.arithmetic import is_power
 from qiskit.utils.quantum_instance import QuantumInstance
 from qiskit.utils.validation import validate_min
+
 from ..algorithm_result import AlgorithmResult
 from ..exceptions import AlgorithmError
 

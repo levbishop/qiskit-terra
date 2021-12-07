@@ -22,6 +22,7 @@ import numpy as np
 
 from qiskit import QuantumCircuit
 from qiskit.circuit import Parameter, ParameterExpression, ParameterVector
+
 from .circuit_gradient import CircuitGradient
 from ...operator_base import OperatorBase
 from ...state_fns.state_fn import StateFn

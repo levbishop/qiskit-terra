@@ -16,7 +16,9 @@
 
 cimport cython
 from libcpp.unordered_set cimport unordered_set as cset
+
 from .utils cimport NLayout, EdgeCollection
+
 
 @cython.boundscheck(False)
 @cython.wraparound(False)

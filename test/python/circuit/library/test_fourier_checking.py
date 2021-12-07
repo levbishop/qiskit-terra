@@ -13,8 +13,9 @@
 """Test library of quantum circuits."""
 
 import unittest
-from ddt import ddt, data, unpack
+
 import numpy as np
+from ddt import ddt, data, unpack
 
 from qiskit.test.base import QiskitTestCase
 from qiskit.circuit.library import FourierChecking

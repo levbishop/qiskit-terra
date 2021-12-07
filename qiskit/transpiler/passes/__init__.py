@@ -149,92 +149,97 @@ Additional Passes
 """
 
 # layout selection (placement)
-from .layout import SetLayout
-from .layout import TrivialLayout
-from .layout import DenseLayout
-from .layout import NoiseAdaptiveLayout
-from .layout import SabreLayout
-from .layout import CSPLayout
-from .layout import VF2Layout
-from .layout import ApplyLayout
-from .layout import Layout2qDistance
-from .layout import EnlargeWithAncilla
-from .layout import FullAncillaAllocation
+from .layout import (
+    SetLayout,
+    TrivialLayout,
+    DenseLayout,
+    NoiseAdaptiveLayout,
+    SabreLayout,
+    CSPLayout,
+    VF2Layout,
+    ApplyLayout,
+    Layout2qDistance,
+    EnlargeWithAncilla,
+    FullAncillaAllocation,
+)
 
 # routing
-from .routing import BasicSwap
-from .routing import LayoutTransformation
-from .routing import LookaheadSwap
-from .routing import StochasticSwap
-from .routing import SabreSwap
-from .routing import BIPMapping
+from .routing import (
+    BasicSwap,
+    LayoutTransformation,
+    LookaheadSwap,
+    StochasticSwap,
+    SabreSwap,
+    BIPMapping,
+)
 
 # basis change
-from .basis import Decompose
-from .basis import Unroller
-from .basis import UnrollCustomDefinitions
-from .basis import Unroll3qOrMore
-from .basis import BasisTranslator
+from .basis import Decompose, Unroller, UnrollCustomDefinitions, Unroll3qOrMore, BasisTranslator
 
 # optimization
-from .optimization import Optimize1qGates
-from .optimization import Optimize1qGatesDecomposition
-from .optimization import Collect2qBlocks
-from .optimization import Collect1qRuns
-from .optimization import CollectMultiQBlocks
-from .optimization import ConsolidateBlocks
-from .optimization import CommutationAnalysis
-from .optimization import CommutativeCancellation
-from .optimization import CXCancellation
-from .optimization import Optimize1qGatesSimpleCommutation
-from .optimization import OptimizeSwapBeforeMeasure
-from .optimization import RemoveResetInZeroState
-from .optimization import RemoveDiagonalGatesBeforeMeasure
-from .optimization import CrosstalkAdaptiveSchedule
-from .optimization import HoareOptimizer
-from .optimization import TemplateOptimization
-from .optimization import InverseCancellation
-from .optimization import EchoRZXWeylDecomposition
+from .optimization import (
+    Optimize1qGates,
+    Optimize1qGatesDecomposition,
+    Collect2qBlocks,
+    Collect1qRuns,
+    CollectMultiQBlocks,
+    ConsolidateBlocks,
+    CommutationAnalysis,
+    CommutativeCancellation,
+    CXCancellation,
+    Optimize1qGatesSimpleCommutation,
+    OptimizeSwapBeforeMeasure,
+    RemoveResetInZeroState,
+    RemoveDiagonalGatesBeforeMeasure,
+    CrosstalkAdaptiveSchedule,
+    HoareOptimizer,
+    TemplateOptimization,
+    InverseCancellation,
+    EchoRZXWeylDecomposition,
+)
 
 # circuit analysis
-from .analysis import ResourceEstimation
-from .analysis import Depth
-from .analysis import Size
-from .analysis import Width
-from .analysis import CountOps
-from .analysis import CountOpsLongestPath
-from .analysis import NumTensorFactors
-from .analysis import DAGLongestPath
+from .analysis import (
+    ResourceEstimation,
+    Depth,
+    Size,
+    Width,
+    CountOps,
+    CountOpsLongestPath,
+    NumTensorFactors,
+    DAGLongestPath,
+)
 
 # synthesis
-from .synthesis import UnitarySynthesis
-from .synthesis import unitary_synthesis_plugin_names
+from .synthesis import UnitarySynthesis, unitary_synthesis_plugin_names
 
 # calibration
-from .calibration import PulseGates
-from .calibration import RZXCalibrationBuilder
-from .calibration import RZXCalibrationBuilderNoEcho
+from .calibration import PulseGates, RZXCalibrationBuilder, RZXCalibrationBuilderNoEcho
 
 # circuit scheduling
-from .scheduling import TimeUnitConversion
-from .scheduling import ALAPSchedule
-from .scheduling import ASAPSchedule
-from .scheduling import DynamicalDecoupling
-from .scheduling import AlignMeasures
-from .scheduling import ValidatePulseGates
+from .scheduling import (
+    TimeUnitConversion,
+    ALAPSchedule,
+    ASAPSchedule,
+    DynamicalDecoupling,
+    AlignMeasures,
+    ValidatePulseGates,
+)
 
 # additional utility passes
-from .utils import CheckMap
 from .utils import CheckCXDirection  # Deprecated
 from .utils import CXDirection  # Deprecated
-from .utils import CheckGateDirection
-from .utils import GateDirection
-from .utils import BarrierBeforeFinalMeasurements
-from .utils import RemoveFinalMeasurements
-from .utils import MergeAdjacentBarriers
-from .utils import DAGFixedPoint
-from .utils import FixedPoint
-from .utils import Error
-from .utils import RemoveBarriers
-from .utils import ContainsInstruction
-from .utils import GatesInBasis
+from .utils import (
+    CheckMap,
+    CheckGateDirection,
+    GateDirection,
+    BarrierBeforeFinalMeasurements,
+    RemoveFinalMeasurements,
+    MergeAdjacentBarriers,
+    DAGFixedPoint,
+    FixedPoint,
+    Error,
+    RemoveBarriers,
+    ContainsInstruction,
+    GatesInBasis,
+)

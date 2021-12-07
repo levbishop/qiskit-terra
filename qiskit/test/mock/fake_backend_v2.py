@@ -20,12 +20,7 @@ import numpy as np
 
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.measure import Measure
-from qiskit.circuit.library.standard_gates import (
-    CXGate,
-    UGate,
-    ECRGate,
-    RXGate,
-)
+from qiskit.circuit.library.standard_gates import CXGate, UGate, ECRGate, RXGate
 from qiskit.providers.backend import BackendV2, QubitProperties
 from qiskit.providers.options import Options
 from qiskit.transpiler import Target, InstructionProperties

@@ -16,12 +16,11 @@
 
 import itertools
 import unittest
+
 import numpy as np
+
 from qiskit.quantum_info.random import random_unitary
-from qiskit import BasicAer
-from qiskit import QuantumCircuit
-from qiskit import QuantumRegister
-from qiskit import execute
+from qiskit import BasicAer, QuantumCircuit, QuantumRegister, execute
 from qiskit.test import QiskitTestCase
 from qiskit.extensions.quantum_initializer.squ import SingleQubitUnitary
 from qiskit.compiler import transpile

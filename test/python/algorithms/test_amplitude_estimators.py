@@ -14,8 +14,10 @@
 
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+
 import numpy as np
 from ddt import ddt, idata, data, unpack
+
 from qiskit import QuantumRegister, QuantumCircuit, BasicAer
 from qiskit.circuit.library import QFT, GroverOperator
 from qiskit.utils import QuantumInstance

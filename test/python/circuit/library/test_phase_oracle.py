@@ -13,6 +13,7 @@
 """Test the phase oracle circuits."""
 
 import unittest
+
 from ddt import ddt, data, unpack
 from numpy import sqrt, isclose
 

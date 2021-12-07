@@ -15,9 +15,9 @@
 
 import unittest
 from test import combine
-from ddt import ddt
 
 import numpy as np
+from ddt import ddt
 
 from qiskit.test import QiskitTestCase
 from qiskit.exceptions import QiskitError

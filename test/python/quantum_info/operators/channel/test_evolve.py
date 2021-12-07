@@ -13,6 +13,7 @@
 """Tests for quantum channel representation transformations."""
 
 import unittest
+
 from numpy.testing import assert_allclose
 
 from qiskit.quantum_info.states.densitymatrix import DensityMatrix
@@ -23,6 +24,7 @@ from qiskit.quantum_info.operators.channel.kraus import Kraus
 from qiskit.quantum_info.operators.channel.stinespring import Stinespring
 from qiskit.quantum_info.operators.channel.ptm import PTM
 from qiskit.quantum_info.operators.channel.chi import Chi
+
 from .channel_test_case import ChannelTestCase
 
 

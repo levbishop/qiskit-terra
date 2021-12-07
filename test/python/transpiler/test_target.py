@@ -35,8 +35,7 @@ from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
 from qiskit.transpiler.coupling import CouplingMap
 from qiskit.transpiler.instruction_durations import InstructionDurations
 from qiskit.transpiler.timing_constraints import TimingConstraints
-from qiskit.transpiler import Target
-from qiskit.transpiler import InstructionProperties
+from qiskit.transpiler import Target, InstructionProperties
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock.fake_backend_v2 import FakeBackendV2
 

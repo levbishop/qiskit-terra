@@ -17,7 +17,6 @@ import math
 import copy
 import pickle
 from operator import add, mul, sub, truediv
-
 from test import combine
 
 import numpy
@@ -25,13 +24,12 @@ from ddt import data, ddt
 
 import qiskit
 import qiskit.circuit.library as circlib
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, pulse
 from qiskit.circuit import Gate, Instruction, Parameter, ParameterExpression, ParameterVector
 from qiskit.circuit.parametertable import ParameterView
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.compiler import assemble, transpile
 from qiskit.execute_function import execute
-from qiskit import pulse
 from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeOurense

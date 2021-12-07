@@ -13,6 +13,7 @@
 """FixedPoint pass testing"""
 
 import unittest
+
 from qiskit.transpiler.passes import FixedPoint
 from qiskit.test import QiskitTestCase
 

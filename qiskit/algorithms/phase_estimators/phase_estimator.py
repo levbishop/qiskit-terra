@@ -14,6 +14,7 @@
 
 from typing import Optional
 from abc import ABC, abstractmethod
+
 from qiskit.circuit import QuantumCircuit
 from qiskit.algorithms.algorithm_result import AlgorithmResult
 

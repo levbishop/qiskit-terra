@@ -14,6 +14,7 @@ This module contains utility functions for circuits.
 """
 
 import numpy
+
 from qiskit.exceptions import QiskitError
 from qiskit.circuit.exceptions import CircuitError
 

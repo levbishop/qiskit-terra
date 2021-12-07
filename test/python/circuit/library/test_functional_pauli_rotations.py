@@ -14,6 +14,7 @@
 
 import unittest
 from collections import defaultdict
+
 import numpy as np
 from ddt import ddt, data, unpack
 

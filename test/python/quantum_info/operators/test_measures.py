@@ -13,15 +13,18 @@
 
 import unittest
 from test import combine
-from ddt import ddt
 
 import numpy as np
+from ddt import ddt
 
-from qiskit.quantum_info import Operator, Choi
-from qiskit.quantum_info import process_fidelity
-from qiskit.quantum_info import average_gate_fidelity
-from qiskit.quantum_info import gate_error
-from qiskit.quantum_info import diamond_norm
+from qiskit.quantum_info import (
+    Operator,
+    Choi,
+    process_fidelity,
+    average_gate_fidelity,
+    gate_error,
+    diamond_norm,
+)
 from qiskit.test import QiskitTestCase
 
 

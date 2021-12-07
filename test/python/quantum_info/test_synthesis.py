@@ -17,8 +17,8 @@ import contextlib
 import logging
 from test import combine
 
-from ddt import ddt
 import numpy as np
+from ddt import ddt
 
 from qiskit import execute, QiskitError
 from qiskit.circuit import QuantumCircuit, QuantumRegister
@@ -70,7 +70,6 @@ from qiskit.quantum_info.synthesis.two_qubit_decompose import (
     Ud,
     decompose_two_qubit_product_gate,
 )
-
 from qiskit.quantum_info.synthesis.ion_decompose import cnot_rxx_decompose
 from qiskit.test import QiskitTestCase
 

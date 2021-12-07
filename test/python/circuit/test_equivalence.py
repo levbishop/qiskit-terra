@@ -16,13 +16,10 @@
 import numpy as np
 
 from qiskit.test import QiskitTestCase
-
-from qiskit.circuit import QuantumCircuit, Parameter, Gate
+from qiskit.circuit import QuantumCircuit, Parameter, Gate, EquivalenceLibrary
 from qiskit.circuit.library import U2Gate
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.converters import circuit_to_instruction, circuit_to_gate
-
-from qiskit.circuit import EquivalenceLibrary
 
 
 class OneQubitZeroParamGate(Gate):

@@ -15,6 +15,7 @@
 import unittest
 import math
 from test.python.algorithms import QiskitAlgorithmsTestCase
+
 from ddt import ddt, data, idata, unpack
 
 from qiskit import Aer, ClassicalRegister

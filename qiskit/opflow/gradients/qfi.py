@@ -12,11 +12,12 @@
 
 """The module for Quantum the Fisher Information."""
 
-from typing import List, Union, Optional
 import functools
+from typing import List, Union, Optional
 
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.circuit import ParameterExpression, ParameterVector
+
 from ..list_ops.list_op import ListOp
 from ..expectations.pauli_expectation import PauliExpectation
 from ..state_fns.circuit_state_fn import CircuitStateFn

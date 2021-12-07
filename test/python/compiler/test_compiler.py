@@ -15,10 +15,8 @@
 import os
 import unittest
 
-from qiskit import BasicAer
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit import BasicAer, QuantumRegister, ClassicalRegister, QuantumCircuit, execute
 from qiskit.transpiler import PassManager
-from qiskit import execute
 from qiskit.circuit.library import U1Gate, U2Gate
 from qiskit.compiler import transpile, assemble
 from qiskit.test import QiskitTestCase

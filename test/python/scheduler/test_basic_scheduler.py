@@ -26,9 +26,11 @@ from qiskit.pulse import (
     Gaussian,
     Play,
     transforms,
+    build,
+    macros,
+    play,
+    InstructionScheduleMap,
 )
-from qiskit.pulse import build, macros, play, InstructionScheduleMap
-
 from qiskit.test.mock import FakeBackend, FakeOpenPulse2Q, FakeOpenPulse3Q
 from qiskit.test import QiskitTestCase
 

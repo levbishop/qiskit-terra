@@ -13,6 +13,7 @@
 """Rotation around an arbitrary axis on the Bloch sphere."""
 
 import numpy
+
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.exceptions import CircuitError
 

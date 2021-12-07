@@ -16,6 +16,7 @@ Kraus representation of a Quantum Channel.
 
 import copy
 from numbers import Number
+
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit

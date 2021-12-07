@@ -15,12 +15,11 @@ Initialize qubit registers to desired arbitrary state.
 """
 
 import math
+
 import numpy as np
 
 from qiskit.exceptions import QiskitError
-from qiskit.circuit import QuantumCircuit
-from qiskit.circuit import QuantumRegister
-from qiskit.circuit import Instruction
+from qiskit.circuit import QuantumCircuit, QuantumRegister, Instruction
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.standard_gates.x import CXGate, XGate
 from qiskit.circuit.library.standard_gates.h import HGate

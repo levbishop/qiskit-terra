@@ -13,7 +13,9 @@
 """Scaling for Hamiltonian and eigenvalues to avoid phase wrapping"""
 
 from typing import Union, Dict, List
+
 import numpy
+
 from qiskit.opflow import SummedOp
 
 

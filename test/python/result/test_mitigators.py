@@ -14,14 +14,14 @@
 """Tests for error mitigation routines."""
 
 import unittest
+
 import numpy as np
 from numpy import array
 from ddt import ddt, data, unpack
+
 from qiskit import QiskitError
 from qiskit.test import QiskitTestCase
-from qiskit.result import Counts
-from qiskit.result import CorrelatedReadoutMitigator
-from qiskit.result import LocalReadoutMitigator
+from qiskit.result import Counts, CorrelatedReadoutMitigator, LocalReadoutMitigator
 from qiskit.result.mitigation.utils import (
     z_diagonal,
     counts_probability_vector,

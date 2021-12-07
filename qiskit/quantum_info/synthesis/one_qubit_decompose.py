@@ -16,6 +16,7 @@ Decompose a single-qubit unitary via Euler angles.
 
 import math
 import cmath
+
 import numpy as np
 import scipy.linalg as la
 

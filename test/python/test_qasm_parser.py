@@ -14,6 +14,7 @@
 
 import os
 import unittest
+
 import ply
 
 from qiskit.qasm import Qasm, QasmError

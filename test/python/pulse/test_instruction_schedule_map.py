@@ -16,11 +16,8 @@ import pickle
 
 import numpy as np
 
-from qiskit.pulse import library
-from qiskit.circuit.library.standard_gates import U1Gate, U3Gate, CXGate, XGate
-from qiskit.circuit.parameter import Parameter
-from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse import (
+    library,
     InstructionScheduleMap,
     Play,
     PulseError,
@@ -30,6 +27,9 @@ from qiskit.pulse import (
     ShiftPhase,
     Constant,
 )
+from qiskit.circuit.library.standard_gates import U1Gate, U3Gate, CXGate, XGate
+from qiskit.circuit.parameter import Parameter
+from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse.instruction_schedule_map import CalibrationPublisher
 from qiskit.pulse.channels import DriveChannel
 from qiskit.qobj import PulseQobjInstruction

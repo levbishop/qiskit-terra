@@ -13,9 +13,9 @@
 """Tests for the SPSA optimizer."""
 
 from test.python.algorithms import QiskitAlgorithmsTestCase
-from ddt import ddt, data
 
 import numpy as np
+from ddt import ddt, data
 
 from qiskit.algorithms.optimizers import SPSA, QNSPSA
 from qiskit.circuit.library import PauliTwoDesign

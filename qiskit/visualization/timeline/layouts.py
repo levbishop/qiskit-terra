@@ -50,8 +50,8 @@ Arbitrary layout function satisfying the above format can be accepted.
 """
 
 import warnings
-
 from typing import List, Tuple
+
 import numpy as np
 
 from qiskit import circuit

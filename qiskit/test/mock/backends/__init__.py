@@ -24,8 +24,7 @@ from .boeblingen import FakeBoeblingen
 from .bogota import FakeBogota
 from .brooklyn import FakeBrooklyn
 from .burlington import FakeBurlington
-from .cambridge import FakeCambridge
-from .cambridge import FakeCambridgeAlternativeBasis
+from .cambridge import FakeCambridge, FakeCambridgeAlternativeBasis
 from .casablanca import FakeCasablanca
 from .essex import FakeEssex
 from .guadalupe import FakeGuadalupe
@@ -64,8 +63,7 @@ from .belem import FakeLegacyBelem
 from .boeblingen import FakeLegacyBoeblingen
 from .bogota import FakeLegacyBogota
 from .burlington import FakeLegacyBurlington
-from .cambridge import FakeLegacyCambridge
-from .cambridge import FakeLegacyCambridgeAlternativeBasis
+from .cambridge import FakeLegacyCambridge, FakeLegacyCambridgeAlternativeBasis
 from .casablanca import FakeLegacyCasablanca
 from .essex import FakeLegacyEssex
 from .johannesburg import FakeLegacyJohannesburg

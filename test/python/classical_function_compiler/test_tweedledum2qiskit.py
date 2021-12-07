@@ -15,7 +15,6 @@ from tweedledum.ir import Circuit
 from tweedledum.operators import X
 
 from qiskit.test import QiskitTestCase
-
 from qiskit.circuit.classicalfunction.utils import tweedledum2qiskit
 from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.circuit.library.standard_gates import XGate

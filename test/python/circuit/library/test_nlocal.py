@@ -15,7 +15,6 @@
 import unittest
 
 import numpy as np
-
 from ddt import ddt, data, unpack
 
 from qiskit.test.base import QiskitTestCase

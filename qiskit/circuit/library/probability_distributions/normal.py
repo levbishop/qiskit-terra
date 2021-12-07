@@ -12,9 +12,11 @@
 
 """A circuit that encodes a discretized normal probability distribution in qubit amplitudes."""
 
-from typing import Tuple, Union, List, Optional
 import warnings
+from typing import Tuple, Union, List, Optional
+
 import numpy as np
+
 from qiskit.circuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
 

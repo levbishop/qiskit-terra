@@ -12,8 +12,7 @@
 
 """Test executing multiple-register circuits on BasicAer."""
 
-from qiskit import BasicAer, execute
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import BasicAer, execute, ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.quantum_info import Operator, Statevector, process_fidelity, state_fidelity
 from qiskit.test import QiskitTestCase
 

@@ -13,6 +13,7 @@
 """Test the VF2Layout pass"""
 
 import unittest
+
 import numpy
 import retworkx
 

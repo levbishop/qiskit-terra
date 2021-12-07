@@ -15,6 +15,7 @@
 import unittest
 
 from ddt import ddt, data
+
 from qiskit import QuantumCircuit
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler.instruction_durations import InstructionDurations

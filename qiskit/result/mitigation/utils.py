@@ -15,9 +15,11 @@ Readout mitigation data handling utils
 
 import logging
 from typing import Optional, List, Tuple, Dict
+
 import numpy as np
 
 from qiskit.exceptions import QiskitError
+
 from ..utils import marginal_counts
 from ..counts import Counts
 

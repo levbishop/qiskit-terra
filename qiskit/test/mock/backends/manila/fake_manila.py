@@ -15,6 +15,7 @@ Fake Manila device (5 qubit).
 """
 
 import os
+
 from qiskit.test.mock import fake_qasm_backend
 
 

@@ -12,8 +12,9 @@
 
 """Compute the weighted sum of qubit states."""
 
-from typing import List, Optional
 import warnings
+from typing import List, Optional
+
 import numpy as np
 
 from qiskit.circuit import QuantumRegister, AncillaRegister, QuantumCircuit

@@ -18,7 +18,6 @@ from qiskit.circuit.library.standard_gates.i import IGate
 from qiskit.circuit.library.standard_gates.x import XGate
 from qiskit.circuit.library.standard_gates.y import YGate
 from qiskit.circuit.library.standard_gates.z import ZGate
-
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.exceptions import CircuitError
 

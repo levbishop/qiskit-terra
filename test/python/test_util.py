@@ -13,6 +13,7 @@
 """Tests for qiskit/utils"""
 
 from unittest import mock
+
 import numpy as np
 
 from qiskit.utils.multiprocessing import local_hardware_info

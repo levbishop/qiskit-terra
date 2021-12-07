@@ -19,6 +19,7 @@ import os
 import unittest
 from filecmp import cmp as cmpfile
 from shutil import copyfile
+
 import matplotlib
 
 from qiskit.test import QiskitTestCase

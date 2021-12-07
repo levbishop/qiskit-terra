@@ -18,10 +18,10 @@ from typing import Optional, Tuple, Union
 from qiskit.circuit import ClassicalRegister, Clbit, QuantumCircuit, Qubit
 from qiskit.circuit.instructionset import InstructionSet
 from qiskit.circuit.exceptions import CircuitError
+
 from .builder import ControlFlowBuilderBlock, InstructionPlaceholder
 from .condition import validate_condition, condition_bits
 from .control_flow import ControlFlowOp
-
 
 # This is just an indication of what's actually meant to be the public API.
 __all__ = ("IfElseOp",)

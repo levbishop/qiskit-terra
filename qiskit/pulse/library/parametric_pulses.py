@@ -36,10 +36,10 @@ by following the existing pattern:
         ...
         new_supported_pulse_name = library.YourPulseWaveformClass
 """
+import math
 from abc import abstractmethod
 from typing import Any, Dict, Optional, Union
 
-import math
 import numpy as np
 
 from qiskit.circuit.parameterexpression import ParameterExpression

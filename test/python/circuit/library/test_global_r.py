@@ -13,6 +13,7 @@
 """Test the global rotation circuit."""
 
 import unittest
+
 import numpy as np
 
 from qiskit.test.base import QiskitTestCase

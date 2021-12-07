@@ -12,12 +12,12 @@
 
 """ Quantum Instance module """
 
-from typing import Optional, List, Union, Dict, Callable, Tuple
-from enum import Enum
 import copy
 import logging
 import time
 import warnings
+from typing import Optional, List, Union, Dict, Callable, Tuple
+from enum import Enum
 
 import numpy as np
 
@@ -33,10 +33,7 @@ from qiskit.utils.backend_utils import (
     is_basicaer_provider,
     support_backend_options,
 )
-from qiskit.utils.mitigation import (
-    CompleteMeasFitter,
-    TensoredMeasFitter,
-)
+from qiskit.utils.mitigation import CompleteMeasFitter, TensoredMeasFitter
 
 logger = logging.getLogger(__name__)
 
@@ -59,6 +56,8 @@ class _MeasFitterType(Enum):
         try:
             from qiskit.ignis.mitigation.measurement import (
                 CompleteMeasFitter as CompleteMeasFitter_IG,
+            )
+            from qiskit.ignis.mitigation.measurement import (
                 TensoredMeasFitter as TensoredMeasFitter_IG,
             )
         except ImportError:
@@ -96,6 +95,8 @@ class _MeasFitterType(Enum):
         try:
             from qiskit.ignis.mitigation.measurement import (
                 CompleteMeasFitter as CompleteMeasFitter_IG,
+            )
+            from qiskit.ignis.mitigation.measurement import (
                 TensoredMeasFitter as TensoredMeasFitter_IG,
             )
         except ImportError:

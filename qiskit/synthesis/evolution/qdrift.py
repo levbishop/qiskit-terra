@@ -13,7 +13,9 @@
 """QDrift Class"""
 
 from typing import Union, Optional, Callable
+
 import numpy as np
+
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.quantum_info.operators import SparsePauliOp, Pauli
 from qiskit.utils import algorithm_globals

@@ -14,17 +14,14 @@
 
 import sys
 import unittest
-from unittest.mock import patch
-from unittest.mock import MagicMock
+from unittest.mock import patch, MagicMock
 from io import StringIO
 
 import qiskit
 from qiskit import providers
 from qiskit.tools.monitor import backend_overview, backend_monitor
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeProviderFactory
-from qiskit.test.mock import FakeBackend
-from qiskit.test.mock import FakeVigo
+from qiskit.test.mock import FakeProviderFactory, FakeBackend, FakeVigo
 
 
 class TestBackendOverview(QiskitTestCase):

@@ -14,14 +14,11 @@
 A module for drawing circuits in ascii art or some other text representation
 """
 
+import sys
 from warnings import warn
 from shutil import get_terminal_size
-import sys
 
-from qiskit.circuit import Clbit
-from qiskit.circuit import ControlledGate
-from qiskit.circuit import Reset
-from qiskit.circuit import Measure
+from qiskit.circuit import Clbit, ControlledGate, Reset, Measure
 from qiskit.circuit.library.standard_gates import IGate, RZZGate, SwapGate, SXGate, SXdgGate
 from qiskit.circuit.tools.pi_check import pi_check
 from qiskit.visualization.utils import (
@@ -30,6 +27,7 @@ from qiskit.visualization.utils import (
     get_bit_label,
     get_condition_label,
 )
+
 from .exceptions import VisualizationError
 
 

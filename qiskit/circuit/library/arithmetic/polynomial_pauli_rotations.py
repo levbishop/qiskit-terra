@@ -15,7 +15,6 @@
 
 import warnings
 from typing import List, Optional, Dict, Sequence
-
 from itertools import product
 
 from qiskit.circuit import QuantumRegister, QuantumCircuit

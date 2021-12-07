@@ -14,10 +14,12 @@
 
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
-from scipy.linalg import expm
+
 import numpy as np
+from scipy.linalg import expm
 from ddt import ddt, idata, unpack
-from qiskit import BasicAer, QuantumCircuit
+
+from qiskit import BasicAer, QuantumCircuit, quantum_info
 from qiskit.algorithms.linear_solvers.hhl import HHL
 from qiskit.algorithms.linear_solvers.matrices.tridiagonal_toeplitz import TridiagonalToeplitz
 from qiskit.algorithms.linear_solvers.matrices.numpy_matrix import NumPyMatrix
@@ -27,7 +29,6 @@ from qiskit.circuit.library.arithmetic.exact_reciprocal import ExactReciprocal
 from qiskit.quantum_info import Operator, partial_trace
 from qiskit.opflow import I, Z, StateFn
 from qiskit.utils import QuantumInstance
-from qiskit import quantum_info
 
 
 @ddt

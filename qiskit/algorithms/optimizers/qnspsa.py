@@ -15,6 +15,7 @@
 from typing import Any, Iterator, Optional, Union, Callable, Dict
 
 import numpy as np
+
 from qiskit.providers import Backend
 from qiskit.circuit import ParameterVector, QuantumCircuit
 from qiskit.opflow import StateFn, CircuitSampler, ExpectationBase

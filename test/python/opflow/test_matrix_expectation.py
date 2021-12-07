@@ -13,8 +13,9 @@
 " Test MatrixExpectation"
 
 import unittest
-from test.python.opflow import QiskitOpflowTestCase
 import itertools
+from test.python.opflow import QiskitOpflowTestCase
+
 import numpy as np
 
 from qiskit.utils import QuantumInstance

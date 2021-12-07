@@ -21,9 +21,7 @@ from typing import Union, List
 
 import numpy
 
-from qiskit.qobj.common import QobjDictField
-from qiskit.qobj.common import QobjHeader
-from qiskit.qobj.common import QobjExperimentHeader
+from qiskit.qobj.common import QobjDictField, QobjHeader, QobjExperimentHeader
 
 
 class QobjMeasurementOption:

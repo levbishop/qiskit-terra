@@ -17,11 +17,13 @@
 Visualization functions for quantum states.
 """
 
+import colorsys
 from typing import Optional, List, Union
 from functools import reduce
-import colorsys
+
 import numpy as np
 from scipy import linalg
+
 from qiskit import user_config
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.quantum_info.states.statevector import Statevector
@@ -748,6 +750,7 @@ def plot_state_qsphere(
     from matplotlib import gridspec
     from matplotlib import pyplot as plt
     from matplotlib.patches import Circle
+
     from qiskit.visualization.bloch import Arrow3D
 
     try:
@@ -1113,8 +1116,8 @@ def _shade_colors(color, normals, lightsource=None):
             pip_install="pip install matplotlib",
         )
 
-    from matplotlib.colors import Normalize, LightSource
     import matplotlib.colors as mcolors
+    from matplotlib.colors import Normalize, LightSource
 
     if lightsource is None:
         # chosen for backwards-compatibility

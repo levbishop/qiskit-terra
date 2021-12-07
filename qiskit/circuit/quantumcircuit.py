@@ -20,6 +20,7 @@ import functools
 import multiprocessing as mp
 import string
 import re
+import typing
 from collections import OrderedDict, defaultdict, namedtuple
 from typing import (
     Union,
@@ -35,8 +36,9 @@ from typing import (
     Set,
     Iterable,
 )
-import typing
+
 import numpy as np
+
 from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
 from qiskit.utils.multiprocessing import is_main_process
 from qiskit.circuit.instruction import Instruction
@@ -46,6 +48,7 @@ from qiskit.qasm.qasm import Qasm
 from qiskit.qasm.exceptions import QasmError
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.utils.deprecation import deprecate_function
+
 from .parameterexpression import ParameterExpression, ParameterValueType
 from .quantumregister import QuantumRegister, Qubit, AncillaRegister, AncillaQubit
 from .classicalregister import ClassicalRegister, Clbit
@@ -62,6 +65,7 @@ from .reset import Reset
 try:
     import pygments
     from pygments.formatters import Terminal256Formatter  # pylint: disable=no-name-in-module
+
     from qiskit.qasm.pygments import OpenQASMLexer  # pylint: disable=ungrouped-imports
     from qiskit.qasm.pygments import QasmTerminalStyle  # pylint: disable=ungrouped-imports
 
@@ -4677,8 +4681,7 @@ class QuantumCircuit:
 
 def _circuit_from_qasm(qasm: Qasm) -> "QuantumCircuit":
     # pylint: disable=cyclic-import
-    from qiskit.converters import ast_to_dag
-    from qiskit.converters import dag_to_circuit
+    from qiskit.converters import ast_to_dag, dag_to_circuit
 
     ast = qasm.parse()
     dag = ast_to_dag(ast)

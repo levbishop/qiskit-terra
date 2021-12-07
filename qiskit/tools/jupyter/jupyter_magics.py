@@ -14,6 +14,7 @@
 
 import time
 import threading
+
 from IPython import get_ipython
 from IPython.display import display
 from IPython.core import magic_arguments
@@ -32,6 +33,7 @@ except ImportError as ex:
 import qiskit
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.tools.events.progressbar import TextProgressBar
+
 from .progressbar import HTMLProgressBar
 from .library import circuit_library_widget
 

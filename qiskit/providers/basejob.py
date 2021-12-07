@@ -16,10 +16,10 @@ When creating a new backend module it is also necessary to implement this
 job interface.
 """
 
-from abc import ABC, abstractmethod
-from typing import Callable, Optional
 import time
 import warnings
+from abc import ABC, abstractmethod
+from typing import Callable, Optional
 
 from .jobstatus import JobStatus, JOB_FINAL_STATES
 from .exceptions import JobTimeoutError

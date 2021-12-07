@@ -13,7 +13,9 @@
 """The Lie-Trotter product formula."""
 
 from typing import Callable, Optional, Union
+
 import numpy as np
+
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.quantum_info.operators import SparsePauliOp, Pauli
 

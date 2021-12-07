@@ -12,6 +12,7 @@
 
 """Test the Unroll3qOrMore pass"""
 import numpy as np
+
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
 from qiskit.transpiler.passes import Unroll3qOrMore
 from qiskit.converters import circuit_to_dag, dag_to_circuit

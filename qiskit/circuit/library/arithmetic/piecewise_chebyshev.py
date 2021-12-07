@@ -12,6 +12,7 @@
 
 """Piecewise polynomial Chebyshev approximation to a given f(x)."""
 from typing import Callable, List, Optional, Union
+
 import numpy as np
 from numpy.polynomial.chebyshev import Chebyshev
 

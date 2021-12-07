@@ -15,7 +15,6 @@ Test the BackendStatus.
 
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeLondon
-
 from qiskit.providers.models import BackendStatus
 
 

@@ -15,7 +15,9 @@
 # that they have been altered from the originals.
 
 cimport cython
+
 import numpy as np
+
 
 cdef unsigned long long m1 = 0x5555555555555555
 cdef unsigned long long m2 = 0x3333333333333333

@@ -15,8 +15,9 @@
 import unittest
 from functools import partial
 from collections import defaultdict
-from ddt import ddt, data, unpack
+
 import numpy as np
+from ddt import ddt, data, unpack
 
 from qiskit import BasicAer, execute
 from qiskit.test.base import QiskitTestCase

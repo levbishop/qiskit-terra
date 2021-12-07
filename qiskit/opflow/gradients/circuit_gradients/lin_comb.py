@@ -21,8 +21,9 @@ from typing import List, Optional, Tuple, Union
 import scipy
 import numpy as np
 
-from qiskit.circuit import Gate, Instruction
 from qiskit.circuit import (
+    Gate,
+    Instruction,
     QuantumCircuit,
     QuantumRegister,
     ParameterVector,
@@ -49,6 +50,7 @@ from qiskit.circuit.library.standard_gates import (
     ZGate,
 )
 from qiskit.quantum_info import partial_trace
+
 from ...operator_base import OperatorBase
 from ...list_ops.list_op import ListOp
 from ...list_ops.composed_op import ComposedOp

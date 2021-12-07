@@ -20,7 +20,6 @@ from qiskit.qobj import PulseQobj
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock.utils import ConfigurableFakeBackend
 from qiskit.test.mock import FakeAthens
-
 from qiskit.test.mock.fake_backend import HAS_AER
 
 

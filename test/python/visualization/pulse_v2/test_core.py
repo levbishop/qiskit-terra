@@ -15,6 +15,7 @@
 """Tests for core modules of pulse drawer."""
 
 import numpy as np
+
 from qiskit import pulse
 from qiskit.test import QiskitTestCase
 from qiskit.visualization.exceptions import VisualizationError

@@ -15,10 +15,12 @@
 import types
 import math
 import datetime
-from IPython.display import display
+
 import matplotlib.pyplot as plt
-from matplotlib.patches import Circle
 import ipywidgets as widgets
+from IPython.display import display
+from matplotlib.patches import Circle
+
 from qiskit.exceptions import QiskitError
 from qiskit.visualization.gate_map import plot_gate_map, plot_error_map
 from qiskit.test.mock import FakeBackend

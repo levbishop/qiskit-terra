@@ -16,6 +16,7 @@ Pauli Transfer Matrix (PTM) representation of a Quantum Channel.
 """
 
 import copy
+
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit

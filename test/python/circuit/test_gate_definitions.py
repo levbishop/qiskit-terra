@@ -22,9 +22,8 @@ from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
 from qiskit.circuit import ParameterVector, Gate, ControlledGate
-
-from qiskit.circuit.library import standard_gates
 from qiskit.circuit.library import (
+    standard_gates,
     HGate,
     CHGate,
     IGate,
@@ -63,7 +62,6 @@ from qiskit.circuit.library import (
     CSXGate,
     RVGate,
 )
-
 from qiskit.circuit.library.standard_gates.equivalence_library import (
     StandardEquivalenceLibrary as std_eqlib,
 )

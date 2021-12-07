@@ -14,7 +14,9 @@
 
 import math
 from typing import Optional, Union
+
 import numpy
+
 from qiskit.qasm import pi
 from qiskit.circuit.controlledgate import ControlledGate
 from qiskit.circuit.gate import Gate
@@ -56,6 +58,7 @@ class RYGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .r import RGate
 
         q = QuantumRegister(1, "q")
@@ -184,6 +187,7 @@ class CRYGate(ControlledGate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .x import CXGate
 
         q = QuantumRegister(2, "q")

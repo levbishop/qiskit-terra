@@ -19,9 +19,9 @@ import warnings
 from typing import Callable, Optional, Tuple, Union
 
 from qiskit.circuit.exceptions import CircuitError
+
 from .instruction import Instruction
 from .classicalregister import Clbit, ClassicalRegister
-
 
 # ClassicalRegister is hashable, and generally the registers in a circuit are completely fixed after
 # its creation, so caching this allows us to only pay the register-unrolling penalty once.  The

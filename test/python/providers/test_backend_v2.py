@@ -14,7 +14,6 @@
 # pylint: disable=missing-module-docstring
 
 import math
-
 from test import combine
 
 from ddt import ddt, data

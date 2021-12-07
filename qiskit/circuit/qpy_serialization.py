@@ -385,12 +385,12 @@ Finally, if type is ``i`` it represents an integer which is an ``int64_t``.
 .. [#f2] https://numpy.org/doc/stable/reference/generated/numpy.lib.format.html
 .. [#f3] https://docs.python.org/3/c-api/complex.html#c.Py_complex
 """
-from collections import namedtuple
 import io
 import json
 import struct
 import uuid
 import warnings
+from collections import namedtuple
 
 import numpy as np
 

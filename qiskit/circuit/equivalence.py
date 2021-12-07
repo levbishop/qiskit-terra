@@ -18,9 +18,9 @@ from collections import namedtuple
 import retworkx as rx
 
 from qiskit.exceptions import MissingOptionalLibraryError
+
 from .exceptions import CircuitError
 from .parameterexpression import ParameterExpression
-
 
 Key = namedtuple("Key", ["name", "num_qubits"])
 

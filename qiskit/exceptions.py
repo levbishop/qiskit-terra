@@ -12,8 +12,8 @@
 
 """Exceptions for errors raised by Qiskit."""
 
-from typing import Optional
 import warnings
+from typing import Optional
 
 
 class QiskitError(Exception):

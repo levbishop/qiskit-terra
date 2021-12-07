@@ -13,17 +13,16 @@
 # pylint: disable=missing-function-docstring, missing-module-docstring
 
 import unittest
-from inspect import signature
 import warnings
+from inspect import signature
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, execute
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, execute, BasicAer
 from qiskit.qasm import pi
 from qiskit.exceptions import QiskitError
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.test import QiskitTestCase
 from qiskit.circuit import Gate, ControlledGate
 from qiskit.circuit.library import U1Gate, U2Gate, U3Gate, CU1Gate, CU3Gate
-from qiskit import BasicAer
 from qiskit.quantum_info import Pauli
 from qiskit.quantum_info.operators.predicates import matrix_equal, is_unitary_matrix
 

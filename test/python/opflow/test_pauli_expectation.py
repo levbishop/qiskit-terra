@@ -39,7 +39,6 @@ from qiskit.opflow import (
 )
 from qiskit.utils import QuantumInstance, algorithm_globals
 
-
 # pylint: disable=invalid-name
 
 

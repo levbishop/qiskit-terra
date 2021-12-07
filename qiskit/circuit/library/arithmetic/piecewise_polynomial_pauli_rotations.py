@@ -13,6 +13,7 @@
 """Piecewise-polynomially-controlled Pauli rotations."""
 
 from typing import List, Optional
+
 import numpy as np
 
 from qiskit.circuit import QuantumRegister, AncillaRegister, QuantumCircuit

@@ -16,14 +16,12 @@ Tests for uniformly controlled single-qubit unitaries.
 """
 
 import unittest
-
 import itertools
 
 import numpy as np
 from scipy.linalg import block_diag
 
 from qiskit.extensions.quantum_initializer.uc import UCGate
-
 from qiskit import QuantumCircuit, QuantumRegister, BasicAer, execute
 from qiskit.test import QiskitTestCase
 from qiskit.quantum_info.random import random_unitary

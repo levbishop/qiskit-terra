@@ -22,10 +22,7 @@ import warnings
 from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
 
 # The main qiskit operators
-from qiskit.circuit import ClassicalRegister
-from qiskit.circuit import QuantumRegister
-from qiskit.circuit import AncillaRegister
-from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import ClassicalRegister, QuantumRegister, AncillaRegister, QuantumCircuit
 
 # user config
 from qiskit import user_config as _user_config
@@ -53,7 +50,6 @@ from qiskit.compiler import transpile, assemble, schedule, sequence  # noqa
 
 from .version import __version__  # noqa
 from .version import QiskitVersion  # noqa
-
 
 __qiskit_version__ = QiskitVersion()
 

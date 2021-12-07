@@ -15,6 +15,7 @@
 import itertools
 
 import numpy as np
+
 from qiskit.circuit.delay import Delay
 from qiskit.circuit.reset import Reset
 from qiskit.circuit.library.standard_gates import IGate, UGate, U3Gate

@@ -16,6 +16,7 @@
 import unittest
 from test.python.opflow import QiskitOpflowTestCase
 from itertools import product
+
 import numpy as np
 from ddt import ddt, data, idata, unpack
 
@@ -28,9 +29,8 @@ except ImportError:
 
 from qiskit import QuantumCircuit, QuantumRegister, BasicAer
 from qiskit.test import slow_test
-from qiskit.utils import QuantumInstance
+from qiskit.utils import QuantumInstance, algorithm_globals
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.utils import algorithm_globals
 from qiskit.algorithms import VQE
 from qiskit.algorithms.optimizers import CG
 from qiskit.opflow import (
@@ -48,8 +48,7 @@ from qiskit.opflow import (
 from qiskit.opflow.gradients import Gradient, NaturalGradient, Hessian
 from qiskit.opflow.gradients.qfi import QFI
 from qiskit.opflow.gradients.circuit_qfis import LinCombFull, OverlapBlockDiag, OverlapDiag
-from qiskit.circuit import Parameter
-from qiskit.circuit import ParameterVector
+from qiskit.circuit import Parameter, ParameterVector
 from qiskit.circuit.library import RealAmplitudes, EfficientSU2
 
 

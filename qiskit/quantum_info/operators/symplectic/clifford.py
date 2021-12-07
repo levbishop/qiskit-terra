@@ -13,6 +13,7 @@
 Clifford operator class.
 """
 import re
+
 import numpy as np
 
 from qiskit.exceptions import QiskitError
@@ -23,6 +24,7 @@ from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.scalar_op import ScalarOp
 from qiskit.quantum_info.synthesis.clifford_decompose import decompose_clifford
 from qiskit.quantum_info.operators.mixins import generate_apidocs, AdjointMixin
+
 from .stabilizer_table import StabilizerTable
 from .clifford_circuits import _append_circuit
 

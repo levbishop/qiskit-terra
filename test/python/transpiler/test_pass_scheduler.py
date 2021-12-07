@@ -13,9 +13,9 @@
 """Transpiler testing"""
 
 import io
-from logging import StreamHandler, getLogger
 import unittest.mock
 import sys
+from logging import StreamHandler, getLogger
 
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.transpiler import PassManager, TranspilerError
@@ -25,6 +25,7 @@ from qiskit.transpiler.runningpassmanager import (
     FlowController,
 )
 from qiskit.test import QiskitTestCase
+
 from ._dummy_passes import (
     PassA_TP_NR_NP,
     PassB_TP_RA_PA,

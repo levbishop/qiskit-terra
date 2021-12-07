@@ -27,8 +27,9 @@ from qiskit.pulse import (
     Gaussian,
     GaussianSquare,
     Constant,
+    transforms,
+    instructions,
 )
-from qiskit.pulse import transforms, instructions
 from qiskit.pulse.channels import MemorySlot, DriveChannel, AcquireChannel
 from qiskit.pulse.instructions import directives
 from qiskit.test import QiskitTestCase

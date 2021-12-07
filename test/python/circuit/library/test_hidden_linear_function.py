@@ -13,6 +13,7 @@
 """Test library of Hidden Linear Function circuits."""
 
 import unittest
+
 import numpy as np
 
 from qiskit.test.base import QiskitTestCase

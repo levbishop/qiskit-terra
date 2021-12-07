@@ -13,6 +13,7 @@
 """Test library of permutation logic quantum circuits."""
 
 import unittest
+
 import numpy as np
 from ddt import ddt, data
 

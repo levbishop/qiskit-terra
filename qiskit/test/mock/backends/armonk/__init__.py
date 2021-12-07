@@ -12,5 +12,4 @@
 
 """Mock armonk backend"""
 
-from .fake_armonk import FakeArmonk
-from .fake_armonk import FakeLegacyArmonk
+from .fake_armonk import FakeArmonk, FakeLegacyArmonk

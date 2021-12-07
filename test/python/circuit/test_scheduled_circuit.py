@@ -14,13 +14,12 @@
 
 """Test scheduled circuit (quantum circuit with duration)."""
 from ddt import ddt, data
-from qiskit import QuantumCircuit, QiskitError
-from qiskit import transpile, assemble, BasicAer
+
+from qiskit import QuantumCircuit, QiskitError, transpile, assemble, BasicAer
 from qiskit.circuit import Parameter
 from qiskit.test.mock.backends import FakeParis
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.instruction_durations import InstructionDurations
-
 from qiskit.test.base import QiskitTestCase
 
 

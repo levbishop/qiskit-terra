@@ -465,16 +465,8 @@ import numpy as np
 from qiskit import circuit
 from qiskit.circuit.library import standard_gates as gates
 from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
-from qiskit.pulse import (
-    channels as chans,
-    configuration,
-    exceptions,
-    instructions,
-    macros,
-    library,
-    transforms,
-    utils,
-)
+from qiskit.pulse import channels as chans
+from qiskit.pulse import configuration, exceptions, instructions, macros, library, transforms, utils
 from qiskit.pulse.instructions import directives
 from qiskit.pulse.schedule import Schedule, ScheduleBlock
 from qiskit.pulse.transforms.alignments import AlignmentKind

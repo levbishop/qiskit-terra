@@ -12,8 +12,8 @@
 
 """Reduce 1Q gate complexity by commuting through 2Q gates and resynthesizing."""
 
-from copy import copy
 import logging
+from copy import copy
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import CXGate, RZXGate

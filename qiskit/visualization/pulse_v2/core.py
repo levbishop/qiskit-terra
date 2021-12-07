@@ -72,6 +72,7 @@ from itertools import chain
 from typing import Union, List, Tuple, Iterator, Optional
 
 import numpy as np
+
 from qiskit import pulse
 from qiskit.pulse.transforms import target_qobj_transform
 from qiskit.visualization.exceptions import VisualizationError

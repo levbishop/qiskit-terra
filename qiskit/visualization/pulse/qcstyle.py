@@ -16,11 +16,9 @@ Deprecated.
 Style sheets for pulse visualization.
 """
 import warnings
-
+import logging
 from collections import namedtuple
 from typing import Optional, Tuple
-
-import logging
 
 logger = logging.getLogger(__name__)
 ComplexColors = namedtuple("ComplexColors", ["real", "imaginary"])

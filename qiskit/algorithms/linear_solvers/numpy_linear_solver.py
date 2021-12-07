@@ -12,6 +12,7 @@
 """The Numpy LinearSolver algorithm (classical)."""
 
 from typing import List, Union, Optional, Callable
+
 import numpy as np
 
 from qiskit import QuantumCircuit

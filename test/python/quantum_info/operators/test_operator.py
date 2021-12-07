@@ -17,12 +17,12 @@
 import unittest
 import logging
 import copy
-import numpy as np
-from numpy.testing import assert_allclose
-import scipy.linalg as la
 
-from qiskit import QiskitError
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+import numpy as np
+import scipy.linalg as la
+from numpy.testing import assert_allclose
+
+from qiskit import QiskitError, QuantumRegister, ClassicalRegister, QuantumCircuit
 from qiskit.circuit.library import HGate, CHGate, CXGate, QFT
 from qiskit.test import QiskitTestCase
 from qiskit.quantum_info.operators.operator import Operator

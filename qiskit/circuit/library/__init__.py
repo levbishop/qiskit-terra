@@ -363,7 +363,6 @@ from .templates import *
 from ..barrier import Barrier
 from ..measure import Measure
 from ..reset import Reset
-
 from .blueprintcircuit import BlueprintCircuit
 from .generalized_gates import (
     Diagonal,
@@ -379,12 +378,7 @@ from .generalized_gates import (
     PauliGate,
 )
 from .pauli_evolution import PauliEvolutionGate
-from .boolean_logic import (
-    AND,
-    OR,
-    XOR,
-    InnerProduct,
-)
+from .boolean_logic import AND, OR, XOR, InnerProduct
 from .basis_change import QFT
 from .arithmetic import (
     FunctionalPauliRotations,
@@ -404,7 +398,6 @@ from .arithmetic import (
     RGQFTMultiplier,
     ExactReciprocal,
 )
-
 from .n_local import (
     NLocal,
     TwoLocal,

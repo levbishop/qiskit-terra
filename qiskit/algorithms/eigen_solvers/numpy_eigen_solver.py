@@ -20,6 +20,7 @@ from scipy import sparse as scisparse
 
 from qiskit.opflow import I, ListOp, OperatorBase, StateFn
 from qiskit.utils.validation import validate_min
+
 from ..exceptions import AlgorithmError
 from .eigen_solver import Eigensolver, EigensolverResult, ListOrDict
 

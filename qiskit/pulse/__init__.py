@@ -86,12 +86,7 @@ from qiskit.pulse.builder import (
 )
 
 # Channels:
-from qiskit.pulse.builder import (
-    acquire_channel,
-    control_channels,
-    drive_channel,
-    measure_channel,
-)
+from qiskit.pulse.builder import acquire_channel, control_channels, drive_channel, measure_channel
 
 # Contexts:
 from qiskit.pulse.builder import (
@@ -109,21 +104,10 @@ from qiskit.pulse.builder import (
 )
 
 # Macros:
-from qiskit.pulse.builder import (
-    macro,
-    measure,
-    measure_all,
-    delay_qubits,
-)
+from qiskit.pulse.builder import macro, measure, measure_all, delay_qubits
 
 # Circuit instructions:
-from qiskit.pulse.builder import (
-    cx,
-    u1,
-    u2,
-    u3,
-    x,
-)
+from qiskit.pulse.builder import cx, u1, u2, u3, x
 from qiskit.pulse.channels import (
     AcquireChannel,
     ControlChannel,
@@ -133,12 +117,7 @@ from qiskit.pulse.channels import (
     RegisterSlot,
     SnapshotChannel,
 )
-from qiskit.pulse.configuration import (
-    Discriminator,
-    Kernel,
-    LoConfig,
-    LoRange,
-)
+from qiskit.pulse.configuration import Discriminator, Kernel, LoConfig, LoRange
 from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
 from qiskit.pulse.instructions import (
@@ -153,13 +132,6 @@ from qiskit.pulse.instructions import (
     ShiftPhase,
     Snapshot,
 )
-from qiskit.pulse.library import (
-    Constant,
-    Drag,
-    Gaussian,
-    GaussianSquare,
-    ParametricPulse,
-    Waveform,
-)
+from qiskit.pulse.library import Constant, Drag, Gaussian, GaussianSquare, ParametricPulse, Waveform
 from qiskit.pulse.library.samplers.decorators import functional_pulse
 from qiskit.pulse.schedule import Schedule, ScheduleBlock

@@ -16,10 +16,11 @@ To create add-on backend modules subclass the Backend class in this module.
 Doing so requires that the required backend interface is implemented.
 """
 
-from abc import ABC, abstractmethod
 import warnings
+from abc import ABC, abstractmethod
 
 from qiskit.version import VERSION as __version__
+
 from .models import BackendStatus
 
 

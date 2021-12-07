@@ -14,10 +14,11 @@ SpecialPolynomial class.
 """
 
 import itertools
-from itertools import combinations
 import copy
+from itertools import combinations
 from functools import reduce
 from operator import mul
+
 import numpy as np
 
 from qiskit.exceptions import QiskitError

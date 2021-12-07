@@ -15,10 +15,9 @@
 """Backend abstract interface for providers."""
 
 
-from abc import ABC
-from abc import abstractmethod
 import datetime
 import logging
+from abc import ABC, abstractmethod
 from typing import List, Union, Iterable, Tuple
 
 from qiskit.providers.provider import Provider

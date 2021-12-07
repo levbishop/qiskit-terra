@@ -15,6 +15,7 @@ Fake Rochester device (53 qubit).
 """
 
 import os
+
 from qiskit.test.mock import fake_qasm_backend
 
 

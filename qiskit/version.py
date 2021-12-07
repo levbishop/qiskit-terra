@@ -14,9 +14,10 @@
 
 """Contains the terra version."""
 
-from collections.abc import Mapping
 import os
 import subprocess
+from collections.abc import Mapping
+
 import pkg_resources
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))

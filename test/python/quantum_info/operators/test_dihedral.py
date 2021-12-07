@@ -15,9 +15,10 @@ Tests for CNOTDihedral functions.
 """
 
 import unittest
-from ddt import ddt
 
 import numpy as np
+from ddt import ddt
+
 from qiskit.circuit import QuantumCircuit, Gate
 from qiskit.circuit.library import (
     IGate,
@@ -32,8 +33,7 @@ from qiskit.circuit.library import (
     CZGate,
     SwapGate,
 )
-from qiskit.quantum_info.operators import Operator
-from qiskit.quantum_info.operators import random
+from qiskit.quantum_info.operators import Operator, random
 from qiskit.quantum_info.operators.dihedral import CNOTDihedral
 from qiskit.quantum_info.random import random_cnotdihedral
 

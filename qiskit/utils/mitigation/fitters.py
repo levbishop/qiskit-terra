@@ -18,9 +18,9 @@
 """
 Measurement correction fitters.
 """
-from typing import List
 import copy
 import re
+from typing import List
 
 import numpy as np
 

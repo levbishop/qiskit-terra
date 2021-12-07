@@ -13,13 +13,11 @@
 """Tests for all BasicAer  simulators."""
 
 import io
-from logging import StreamHandler, getLogger
 import sys
+from logging import StreamHandler, getLogger
 
-from qiskit import BasicAer
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.compiler import transpile
-from qiskit.compiler import assemble
+from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit.compiler import transpile, assemble
 from qiskit.qobj import QobjHeader
 from qiskit.test import QiskitTestCase
 

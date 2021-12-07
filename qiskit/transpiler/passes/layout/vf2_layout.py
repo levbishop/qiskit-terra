@@ -11,17 +11,16 @@
 # that they have been altered from the originals.
 
 """VF2Layout pass to find a layout using subgraph isomorphism"""
-from enum import Enum
 import logging
 import random
 import time
+from enum import Enum
 
 from retworkx import PyGraph, PyDiGraph, vf2_mapping
 
 from qiskit.transpiler.layout import Layout
 from qiskit.transpiler.basepasses import AnalysisPass
 from qiskit.providers.exceptions import BackendPropertyError
-
 
 logger = logging.getLogger(__name__)
 

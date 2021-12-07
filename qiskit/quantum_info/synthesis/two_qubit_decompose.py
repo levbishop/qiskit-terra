@@ -28,9 +28,8 @@ import math
 import io
 import base64
 import warnings
-from typing import ClassVar, Optional, Type
-
 import logging
+from typing import ClassVar, Optional, Type
 
 import numpy as np
 import scipy.linalg as la
@@ -41,10 +40,7 @@ from qiskit.circuit.library.standard_gates import CXGate, RXGate, RYGate, RZGate
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.synthesis.weyl import weyl_coordinates, transform_to_magic_basis
-from qiskit.quantum_info.synthesis.one_qubit_decompose import (
-    OneQubitEulerDecomposer,
-    DEFAULT_ATOL,
-)
+from qiskit.quantum_info.synthesis.one_qubit_decompose import OneQubitEulerDecomposer, DEFAULT_ATOL
 
 logger = logging.getLogger(__name__)
 

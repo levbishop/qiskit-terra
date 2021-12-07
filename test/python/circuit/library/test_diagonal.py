@@ -13,8 +13,9 @@
 """Test the digonal circuit."""
 
 import unittest
-from ddt import ddt, data
+
 import numpy as np
+from ddt import ddt, data
 
 from qiskit.test.base import QiskitTestCase
 from qiskit.circuit.library import Diagonal

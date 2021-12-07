@@ -15,6 +15,7 @@
 from typing import List, Union
 
 import numpy as np
+
 from qiskit.circuit import QuantumCircuit, QuantumRegister, ParameterVector, ParameterExpression
 from qiskit.utils.arithmetic import triu_to_dense
 

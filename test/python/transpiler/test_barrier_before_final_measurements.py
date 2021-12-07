@@ -13,6 +13,7 @@
 """Test the BarrierBeforeFinalMeasurements pass"""
 
 import unittest
+
 from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
 from qiskit.converters import circuit_to_dag
 from qiskit import QuantumRegister, QuantumCircuit, ClassicalRegister

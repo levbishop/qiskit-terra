@@ -14,8 +14,7 @@
 import warnings
 from typing import Optional, List, Tuple, Union, Iterable, Set
 
-from qiskit.circuit import Barrier, Delay
-from qiskit.circuit import Instruction, Qubit, ParameterExpression
+from qiskit.circuit import Barrier, Delay, Instruction, Qubit, ParameterExpression
 from qiskit.circuit.duration import duration_in_dt
 from qiskit.providers import BaseBackend
 from qiskit.transpiler.exceptions import TranspilerError

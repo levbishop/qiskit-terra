@@ -15,18 +15,16 @@ Arbitrary unitary circuit instruction.
 """
 
 from collections import OrderedDict
+
 import numpy
 
-from qiskit.circuit import Gate, ControlledGate
-from qiskit.circuit import QuantumCircuit
-from qiskit.circuit import QuantumRegister, Qubit
+from qiskit.circuit import Gate, ControlledGate, QuantumCircuit, QuantumRegister, Qubit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit._utils import _compute_control_matrix
 from qiskit.circuit.quantumcircuit import _qasm_escape_gate_name
 from qiskit.circuit.library.standard_gates import U3Gate
 from qiskit.extensions.quantum_initializer import isometry
-from qiskit.quantum_info.operators.predicates import matrix_equal
-from qiskit.quantum_info.operators.predicates import is_unitary_matrix
+from qiskit.quantum_info.operators.predicates import matrix_equal, is_unitary_matrix
 from qiskit.quantum_info.synthesis.one_qubit_decompose import OneQubitEulerDecomposer
 from qiskit.quantum_info.synthesis.two_qubit_decompose import two_qubit_cnot_decompose
 from qiskit.extensions.exceptions import ExtensionError

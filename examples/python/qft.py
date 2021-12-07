@@ -15,9 +15,8 @@ Quantum Fourier Transform examples.
 """
 
 import math
-from qiskit import QuantumCircuit
-from qiskit import execute, BasicAer
 
+from qiskit import QuantumCircuit, execute, BasicAer
 
 ###############################################################
 # make the qft

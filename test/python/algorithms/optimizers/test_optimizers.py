@@ -14,10 +14,10 @@
 
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
-
 from typing import Optional, List, Tuple
-from ddt import ddt, data, unpack
+
 import numpy as np
+from ddt import ddt, data, unpack
 from scipy.optimize import rosen, rosen_der
 
 from qiskit.algorithms.optimizers import (

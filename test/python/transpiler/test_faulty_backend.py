@@ -21,6 +21,7 @@ from qiskit.converters import circuit_to_dag
 from qiskit.circuit.library import CXGate
 from qiskit.dagcircuit import DAGOpNode
 from qiskit.transpiler import TranspilerError
+
 from ..providers.faulty_backends import (
     FakeOurenseFaultyQ1,
     FakeOurenseFaultyCX13,

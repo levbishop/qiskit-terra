@@ -15,6 +15,7 @@ Fake Johannesburg device (20 qubit).
 """
 
 import os
+
 from qiskit.test.mock import fake_pulse_backend
 
 

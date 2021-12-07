@@ -19,10 +19,9 @@ Base class for dummy backends.
 import uuid
 import warnings
 
-from qiskit import circuit
+from qiskit import circuit, pulse
 from qiskit.providers.models import BackendProperties
 from qiskit.providers import BackendV1, BaseBackend
-from qiskit import pulse
 from qiskit.exceptions import QiskitError
 from qiskit.test.mock import fake_job
 

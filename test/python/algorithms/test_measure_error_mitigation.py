@@ -13,11 +13,12 @@
 """ Test Measurement Error Mitigation """
 
 import unittest
-
 from test.python.algorithms import QiskitAlgorithmsTestCase
-from ddt import ddt, data
+
 import numpy as np
 import retworkx as rx
+from ddt import ddt, data
+
 from qiskit import QuantumCircuit
 from qiskit.quantum_info import Pauli
 from qiskit.exceptions import QiskitError
@@ -37,10 +38,8 @@ except ImportError:
     HAS_AER = False
 
 try:
-    from qiskit.ignis.mitigation.measurement import (
-        CompleteMeasFitter as CompleteMeasFitter_IG,
-        TensoredMeasFitter as TensoredMeasFitter_IG,
-    )
+    from qiskit.ignis.mitigation.measurement import CompleteMeasFitter as CompleteMeasFitter_IG
+    from qiskit.ignis.mitigation.measurement import TensoredMeasFitter as TensoredMeasFitter_IG
 
     HAS_IGNIS = True
 except ImportError:

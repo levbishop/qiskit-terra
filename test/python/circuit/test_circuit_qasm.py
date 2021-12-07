@@ -12,8 +12,8 @@
 
 """Test Qiskit's QuantumCircuit class."""
 
-from math import pi
 import re
+from math import pi
 
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
 from qiskit.test import QiskitTestCase

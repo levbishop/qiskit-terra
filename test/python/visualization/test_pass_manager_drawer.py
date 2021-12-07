@@ -18,15 +18,17 @@ import os
 from qiskit.transpiler import CouplingMap, Layout
 from qiskit.transpiler.passmanager import PassManager
 from qiskit import QuantumRegister
-from qiskit.transpiler.passes import Unroller
-from qiskit.transpiler.passes import CheckMap
-from qiskit.transpiler.passes import CXDirection
-from qiskit.transpiler.passes import SetLayout
-from qiskit.transpiler.passes import TrivialLayout
-from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
-from qiskit.transpiler.passes import FullAncillaAllocation
-from qiskit.transpiler.passes import EnlargeWithAncilla
-from qiskit.transpiler.passes import RemoveResetInZeroState
+from qiskit.transpiler.passes import (
+    Unroller,
+    CheckMap,
+    CXDirection,
+    SetLayout,
+    TrivialLayout,
+    BarrierBeforeFinalMeasurements,
+    FullAncillaAllocation,
+    EnlargeWithAncilla,
+    RemoveResetInZeroState,
+)
 
 from .visualization import QiskitVisualizationTestCase, path_to_diagram_reference
 

@@ -15,6 +15,7 @@ Quantum Fourier Transform examples.
 """
 
 import math
+
 from qiskit import QuantumCircuit, execute
 from qiskit.providers.ibmq import least_busy, IBMQ
 

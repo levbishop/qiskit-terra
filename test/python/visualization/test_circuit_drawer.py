@@ -15,11 +15,11 @@
 import unittest
 import os
 from unittest.mock import patch
+
 from PIL import Image
 
-from qiskit import QuantumCircuit
+from qiskit import QuantumCircuit, visualization
 from qiskit.test import QiskitTestCase
-from qiskit import visualization
 from qiskit.visualization import text
 from qiskit.visualization.exceptions import VisualizationError
 

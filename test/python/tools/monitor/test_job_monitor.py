@@ -14,9 +14,8 @@
 
 import io
 import unittest
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
-from qiskit import BasicAer
-from qiskit import execute
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, BasicAer, execute
 from qiskit.tools.monitor import job_monitor
 from qiskit.test import QiskitTestCase
 

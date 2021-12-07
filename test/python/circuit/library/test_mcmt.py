@@ -13,8 +13,9 @@
 """Test library of multi-controlled multi-target circuits."""
 
 import unittest
-from ddt import ddt, data, unpack
+
 import numpy as np
+from ddt import ddt, data, unpack
 
 from qiskit.test.base import QiskitTestCase
 from qiskit.exceptions import QiskitError

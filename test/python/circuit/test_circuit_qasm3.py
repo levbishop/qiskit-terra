@@ -15,8 +15,8 @@
 # We can't really help how long the lines output by the exporter are in some cases.
 # pylint: disable=line-too-long
 
-from io import StringIO
 import unittest
+from io import StringIO
 
 import ddt
 
@@ -27,7 +27,6 @@ from qiskit.qasm3 import Exporter, dumps, dump, QASM3ExporterError
 from qiskit.qasm3.exporter import QASM3Builder
 from qiskit.qasm3.printer import BasicPrinter
 from qiskit.qasm import pi
-
 
 # Tests marked with this decorator should be restored after gate definition with parameters is fixed
 # properly, and the dummy tests after them should be deleted.  See gh-7335.

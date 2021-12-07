@@ -13,9 +13,9 @@
 """Tests for PauliList class."""
 
 import unittest
+import itertools
 from test import combine
 
-import itertools
 import numpy as np
 from ddt import ddt
 from scipy.sparse import csr_matrix

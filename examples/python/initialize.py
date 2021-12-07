@@ -15,8 +15,8 @@ Example use of the initialize gate to prepare arbitrary pure states.
 """
 
 import math
-from qiskit import QuantumCircuit, execute, BasicAer
 
+from qiskit import QuantumCircuit, execute, BasicAer
 
 ###############################################################
 # Make a quantum circuit for state initialization.

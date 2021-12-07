@@ -12,9 +12,9 @@
 
 """Job abstract interface."""
 
+import time
 from abc import ABC, abstractmethod
 from typing import Callable, Optional
-import time
 
 from qiskit.providers.jobstatus import JobStatus, JOB_FINAL_STATES
 from qiskit.providers.exceptions import JobTimeoutError

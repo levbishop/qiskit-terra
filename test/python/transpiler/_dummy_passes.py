@@ -15,8 +15,8 @@
 """Dummy passes used by Transpiler testing"""
 
 import logging
-from qiskit.transpiler.passes import FixedPoint
 
+from qiskit.transpiler.passes import FixedPoint
 from qiskit.transpiler import TransformationPass, AnalysisPass
 
 logger = "LocalLogger"

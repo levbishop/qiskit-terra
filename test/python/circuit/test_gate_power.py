@@ -14,6 +14,7 @@
 """Test Qiskit's power instruction operation."""
 
 import unittest
+
 from ddt import ddt, data
 from numpy import array, eye
 

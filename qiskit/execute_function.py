@@ -21,6 +21,7 @@ Executing Experiments (:mod:`qiskit.execute_function`)
 """
 import logging
 from time import time
+
 from qiskit.compiler import transpile, assemble, schedule
 from qiskit.providers import BaseBackend
 from qiskit.providers.backend import Backend

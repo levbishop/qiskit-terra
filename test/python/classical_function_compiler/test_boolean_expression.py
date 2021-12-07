@@ -14,6 +14,7 @@
 
 import unittest
 from os import path
+
 from ddt import ddt, unpack, data
 
 from qiskit.test.base import QiskitTestCase

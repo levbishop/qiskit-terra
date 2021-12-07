@@ -20,12 +20,7 @@ import numpy as np
 from ddt import ddt
 
 from qiskit import QiskitError
-from qiskit.quantum_info.operators import (
-    Operator,
-    PauliList,
-    PauliTable,
-    SparsePauliOp,
-)
+from qiskit.quantum_info.operators import Operator, PauliList, PauliTable, SparsePauliOp
 from qiskit.test import QiskitTestCase
 
 

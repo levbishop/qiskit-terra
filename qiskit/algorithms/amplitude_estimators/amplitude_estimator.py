@@ -14,6 +14,7 @@
 
 from abc import abstractmethod
 from typing import Union, Optional, Dict, Callable, Tuple
+
 import numpy as np
 
 from .estimation_problem import EstimationProblem

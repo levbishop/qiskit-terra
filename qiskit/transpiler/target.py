@@ -15,10 +15,10 @@ A target object represents the minimum set of information the transpiler needs
 from a backend
 """
 
-from collections.abc import Mapping
-from collections import defaultdict
 import io
 import logging
+from collections.abc import Mapping
+from collections import defaultdict
 
 import retworkx as rx
 

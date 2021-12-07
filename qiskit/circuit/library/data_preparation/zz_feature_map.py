@@ -13,7 +13,9 @@
 """Second-order Pauli-Z expansion circuit."""
 
 from typing import Callable, List, Union, Optional
+
 import numpy as np
+
 from .pauli_feature_map import PauliFeatureMap
 
 

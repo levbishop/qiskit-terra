@@ -13,7 +13,9 @@
 """Test Qiskit's inverse gate operation."""
 
 import unittest
+
 import numpy as np
+
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, pulse
 from qiskit.circuit import Clbit
 from qiskit.circuit.library import RXGate, RYGate

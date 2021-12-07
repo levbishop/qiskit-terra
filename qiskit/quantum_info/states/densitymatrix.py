@@ -16,6 +16,7 @@ DensityMatrix quantum state class.
 
 import copy
 from numbers import Number
+
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
@@ -27,8 +28,10 @@ from qiskit.quantum_info.operators.op_shape import OpShape
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.symplectic import Pauli, SparsePauliOp
 from qiskit.quantum_info.operators.scalar_op import ScalarOp
-from qiskit.quantum_info.operators.predicates import is_hermitian_matrix
-from qiskit.quantum_info.operators.predicates import is_positive_semidefinite_matrix
+from qiskit.quantum_info.operators.predicates import (
+    is_hermitian_matrix,
+    is_positive_semidefinite_matrix,
+)
 from qiskit.quantum_info.operators.channel.quantum_channel import QuantumChannel
 from qiskit.quantum_info.operators.channel.superop import SuperOp
 

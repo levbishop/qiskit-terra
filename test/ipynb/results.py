@@ -15,6 +15,7 @@
 import os
 import json
 import zipfile
+
 from PIL import Image, ImageChops, ImageDraw
 
 SWD = os.path.dirname(os.path.abspath(__file__))

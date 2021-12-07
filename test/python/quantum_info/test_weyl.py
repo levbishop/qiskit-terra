@@ -14,6 +14,7 @@
 """Tests for Weyl coordinate routines."""
 
 import unittest
+
 import numpy as np
 from numpy.testing import assert_allclose
 

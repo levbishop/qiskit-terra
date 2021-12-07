@@ -22,8 +22,8 @@ Output:
  `a XX + b YY + c ZZ`) using the native operations and local gates.
 """
 
-from functools import reduce
 import math
+from functools import reduce
 from operator import itemgetter
 
 import numpy as np
@@ -41,7 +41,6 @@ from .weyl import (
     reflection_options,
     shift_options,
 )
-
 
 # pylint:disable=invalid-name
 def decompose_xxyy_into_xxyy_xx(a_target, b_target, a_source, b_source, interaction):

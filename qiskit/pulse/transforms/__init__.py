@@ -89,9 +89,7 @@ from qiskit.pulse.transforms.alignments import (
     AlignSequential,
     AlignmentKind,
 )
-
 from qiskit.pulse.transforms.base_transforms import target_qobj_transform
-
 from qiskit.pulse.transforms.canonicalization import (
     add_implicit_acquires,
     align_measures,
@@ -103,5 +101,4 @@ from qiskit.pulse.transforms.canonicalization import (
     remove_directives,
     remove_trivial_barriers,
 )
-
 from qiskit.pulse.transforms.dag import block_to_dag

@@ -12,8 +12,9 @@
 
 """Global Mølmer–Sørensen gate."""
 
-from typing import Optional
 import warnings
+from typing import Optional
+
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.parameterexpression import ParameterValueType
@@ -47,6 +48,7 @@ class MSGate(Gate):
     def _define(self):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .rxx import RXXGate
 
         theta = self.params[0]

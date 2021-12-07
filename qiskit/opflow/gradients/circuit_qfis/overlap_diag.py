@@ -15,17 +15,17 @@ import copy
 from typing import List, Union
 
 import numpy as np
+
 from qiskit.circuit import ParameterVector, ParameterExpression
 from qiskit.circuit.library import RZGate, RXGate, RYGate
 from qiskit.converters import dag_to_circuit, circuit_to_dag
+
 from ...list_ops.list_op import ListOp
 from ...primitive_ops.circuit_op import CircuitOp
 from ...expectations.pauli_expectation import PauliExpectation
 from ...operator_globals import I, Z, Y, X, Zero
 from ...state_fns.state_fn import StateFn
 from ...state_fns.circuit_state_fn import CircuitStateFn
-
-
 from .circuit_qfi import CircuitQFI
 from ..derivative_base import _coeff_derivative
 

@@ -15,6 +15,7 @@
 from typing import Any, Dict, Callable, Optional, List, Tuple
 
 from qiskit.exceptions import MissingOptionalLibraryError
+
 from .optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
 
 try:

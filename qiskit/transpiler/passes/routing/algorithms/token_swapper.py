@@ -36,7 +36,6 @@ import retworkx as rx
 from .types import Swap, Permutation
 from .util import PermutationCircuit, permutation_circuit
 
-
 logger = logging.getLogger(__name__)
 
 

@@ -13,6 +13,7 @@
 """Converter Test."""
 
 import hashlib
+
 import numpy as np
 
 from qiskit.pulse import LoConfig, Kernel, Discriminator

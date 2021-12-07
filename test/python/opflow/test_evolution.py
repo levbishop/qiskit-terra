@@ -14,6 +14,7 @@
 
 import unittest
 from test.python.opflow import QiskitOpflowTestCase
+
 import numpy as np
 import scipy.linalg
 

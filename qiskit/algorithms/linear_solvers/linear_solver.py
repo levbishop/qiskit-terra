@@ -14,6 +14,7 @@
 
 from abc import ABC, abstractmethod
 from typing import Union, Optional, List, Callable
+
 import numpy as np
 
 from qiskit import QuantumCircuit

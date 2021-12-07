@@ -17,6 +17,7 @@ from abc import abstractmethod
 from typing import Callable, Iterable, List, Optional, Tuple, Union
 
 import numpy as np
+
 from qiskit.utils.quantum_instance import QuantumInstance
 from qiskit.circuit import ParameterExpression, ParameterVector
 from qiskit.providers import BaseBackend, Backend

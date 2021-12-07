@@ -14,7 +14,6 @@
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, Parameter
 from qiskit.circuit.library import HGate, XGate, CXGate, RXGate
-
 from qiskit.test import QiskitTestCase
 from qiskit.circuit.exceptions import CircuitError
 

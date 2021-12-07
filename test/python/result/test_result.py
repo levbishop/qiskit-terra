@@ -14,9 +14,7 @@
 
 import numpy as np
 
-from qiskit.result import models
-from qiskit.result import marginal_counts
-from qiskit.result import Result
+from qiskit.result import models, marginal_counts, Result
 from qiskit.qobj import QobjExperimentHeader
 from qiskit.test import QiskitTestCase
 

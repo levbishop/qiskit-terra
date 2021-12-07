@@ -13,12 +13,11 @@
 # pylint: disable=invalid-name
 
 """Parser for mathematical string expressions returned by backends."""
-from typing import Dict, List, Union
 import ast
 import copy
 import operator
-
 import cmath
+from typing import Dict, List, Union
 
 from qiskit.pulse.exceptions import PulseError
 from qiskit.circuit import ParameterExpression

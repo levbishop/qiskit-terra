@@ -15,19 +15,18 @@ Tests for the ConsolidateBlocks transpiler pass.
 """
 
 import unittest
+
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister
 from qiskit.circuit.library import U2Gate
 from qiskit.extensions import UnitaryGate
 from qiskit.converters import circuit_to_dag
-from qiskit.transpiler.passes import ConsolidateBlocks
+from qiskit.transpiler.passes import ConsolidateBlocks, Collect1qRuns, Collect2qBlocks
 from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.operators.measures import process_fidelity
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
-from qiskit.transpiler.passes import Collect1qRuns
-from qiskit.transpiler.passes import Collect2qBlocks
 
 
 class TestConsolidateBlocks(QiskitTestCase):

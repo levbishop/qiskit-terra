@@ -15,6 +15,7 @@ Fake Montreal device (27 qubit).
 """
 
 import os
+
 from qiskit.test.mock import fake_pulse_backend
 
 

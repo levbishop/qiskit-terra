@@ -13,6 +13,7 @@
 """Test the Stochastic Swap pass"""
 
 import unittest
+
 from qiskit.transpiler.passes import StochasticSwap
 from qiskit.transpiler import CouplingMap, PassManager
 from qiskit.transpiler.exceptions import TranspilerError

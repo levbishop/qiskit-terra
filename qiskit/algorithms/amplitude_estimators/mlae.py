@@ -13,12 +13,12 @@
 """The Maximum Likelihood Amplitude Estimation algorithm."""
 
 from typing import Optional, List, Union, Tuple, Dict, Callable
+
 import numpy as np
 from scipy.optimize import brute
 from scipy.stats import norm, chi2
 
-from qiskit.providers import BaseBackend
-from qiskit.providers import Backend
+from qiskit.providers import BaseBackend, Backend
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
 from qiskit.utils import QuantumInstance
 

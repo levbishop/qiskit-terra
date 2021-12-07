@@ -13,6 +13,7 @@
 """The HHL algorithm."""
 
 from typing import Optional, Union, List, Callable, Tuple
+
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister

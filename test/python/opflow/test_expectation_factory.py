@@ -18,7 +18,6 @@ from test.python.opflow import QiskitOpflowTestCase
 from qiskit.opflow import PauliExpectation, AerPauliExpectation, ExpectationFactory, Z, I, X
 from qiskit.utils import has_aer
 
-
 if has_aer():
     from qiskit import Aer
 

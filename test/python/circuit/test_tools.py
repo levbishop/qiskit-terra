@@ -12,10 +12,11 @@
 
 """A test for circuit tools"""
 import unittest
-
 from test import combine
+
 from ddt import ddt
 from numpy import pi
+
 from qiskit.test import QiskitTestCase
 from qiskit.circuit.tools.pi_check import pi_check
 from qiskit.circuit import Parameter

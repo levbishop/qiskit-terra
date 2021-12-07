@@ -14,13 +14,13 @@
 
 import unittest
 from test import combine
-from ddt import ddt
+
 import numpy as np
+from ddt import ddt
 
 from qiskit.test import QiskitTestCase
 from qiskit.quantum_info import Statevector, DensityMatrix
-from qiskit.quantum_info.random import random_statevector
-from qiskit.quantum_info.random import random_density_matrix
+from qiskit.quantum_info.random import random_statevector, random_density_matrix
 
 
 @ddt

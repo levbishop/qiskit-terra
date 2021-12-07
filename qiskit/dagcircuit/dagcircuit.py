@@ -20,10 +20,10 @@ to the input of B. The object's methods allow circuits to be constructed,
 composed, and modified. Some natural properties like depth can be computed
 directly from the graph.
 """
-from collections import OrderedDict, defaultdict
 import copy
 import itertools
 import math
+from collections import OrderedDict, defaultdict
 
 import numpy as np
 import retworkx as rx

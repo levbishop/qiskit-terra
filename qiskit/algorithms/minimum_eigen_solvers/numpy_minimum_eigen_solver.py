@@ -12,11 +12,13 @@
 
 """The Numpy Minimum Eigensolver algorithm."""
 
-from typing import List, Optional, Union, Callable
 import logging
+from typing import List, Optional, Union, Callable
+
 import numpy as np
 
 from qiskit.opflow import OperatorBase
+
 from ..eigen_solvers.numpy_eigen_solver import NumPyEigensolver
 from .minimum_eigen_solver import MinimumEigensolver, MinimumEigensolverResult, ListOrDict
 

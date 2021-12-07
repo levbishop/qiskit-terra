@@ -13,6 +13,7 @@
 """Testing naming functionality of transpiled circuits"""
 
 import unittest
+
 from qiskit.circuit import QuantumCircuit
 from qiskit.compiler import transpile
 from qiskit import BasicAer

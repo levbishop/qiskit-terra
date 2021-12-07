@@ -19,17 +19,8 @@ import numpy as np
 from qiskit import circuit, schedule
 from qiskit.transpiler import PassManager
 from qiskit.test import QiskitTestCase
-from qiskit.pulse import (
-    Play,
-    Delay,
-    ShiftPhase,
-    ControlChannel,
-    DriveChannel,
-    GaussianSquare,
-)
-from qiskit.transpiler.passes.calibration.builders import (
-    RZXCalibrationBuilderNoEcho,
-)
+from qiskit.pulse import Play, Delay, ShiftPhase, ControlChannel, DriveChannel, GaussianSquare
+from qiskit.transpiler.passes.calibration.builders import RZXCalibrationBuilderNoEcho
 from qiskit.test.mock import FakeAthens
 
 

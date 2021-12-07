@@ -13,6 +13,7 @@
 """Exact synthesis of operator evolution via (exponentially expensive) matrix exponentiation."""
 
 from scipy.linalg import expm
+
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
 from .evolution_synthesis import EvolutionSynthesis

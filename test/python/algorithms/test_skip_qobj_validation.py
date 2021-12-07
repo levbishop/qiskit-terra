@@ -13,10 +13,9 @@
 """ Test Skip Qobj Validation """
 
 import unittest
-
 from test.python.algorithms import QiskitAlgorithmsTestCase
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-from qiskit import BasicAer
+
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, BasicAer
 from qiskit.utils import QuantumInstance
 from qiskit.exceptions import QiskitError
 

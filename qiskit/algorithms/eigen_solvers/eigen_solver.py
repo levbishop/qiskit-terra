@@ -16,7 +16,9 @@ from abc import ABC, abstractmethod
 from typing import Dict, Optional, List, Union, Tuple, TypeVar
 
 import numpy as np
+
 from qiskit.opflow import OperatorBase
+
 from ..algorithm_result import AlgorithmResult
 
 # Introduced new type to maintain readability.

@@ -18,6 +18,7 @@ import functools
 from typing import Union, Tuple, Optional
 
 import numpy as np
+
 from qiskit.pulse.exceptions import PulseError
 
 

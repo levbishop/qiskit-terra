@@ -13,6 +13,7 @@
 """The absolute value of the average of a linear system of equations solution."""
 
 from typing import Union, List
+
 import numpy as np
 
 from qiskit import QuantumCircuit

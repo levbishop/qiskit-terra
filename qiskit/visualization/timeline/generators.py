@@ -91,7 +91,6 @@ the plotter API.
 """
 
 import warnings
-
 from typing import List, Union, Dict, Any
 
 from qiskit.circuit.exceptions import CircuitError

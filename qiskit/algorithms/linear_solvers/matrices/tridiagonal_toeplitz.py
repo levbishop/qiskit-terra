@@ -13,6 +13,7 @@
 """Hamiltonian simulation of tridiagonal Toeplitz symmetric matrices."""
 
 from typing import Tuple
+
 import numpy as np
 from scipy.sparse import diags
 

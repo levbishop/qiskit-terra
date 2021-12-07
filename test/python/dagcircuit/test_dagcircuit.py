@@ -12,28 +12,31 @@
 
 """Test for the DAGCircuit object"""
 
-from collections import Counter
 import unittest
-
-from ddt import ddt, data
+from collections import Counter
 
 import retworkx as rx
+from ddt import ddt, data
 from numpy import pi
 
 from qiskit.dagcircuit import DAGCircuit, DAGOpNode, DAGInNode, DAGOutNode
-from qiskit.circuit import QuantumRegister
-from qiskit.circuit import ClassicalRegister, Clbit
-from qiskit.circuit import QuantumCircuit, Qubit
-from qiskit.circuit import Measure
-from qiskit.circuit import Reset
-from qiskit.circuit import Delay
-from qiskit.circuit import Gate, Instruction
-from qiskit.circuit import Parameter
+from qiskit.circuit import (
+    QuantumRegister,
+    ClassicalRegister,
+    Clbit,
+    QuantumCircuit,
+    Qubit,
+    Measure,
+    Reset,
+    Delay,
+    Gate,
+    Instruction,
+    Parameter,
+)
 from qiskit.circuit.library.standard_gates.i import IGate
 from qiskit.circuit.library.standard_gates.h import HGate
-from qiskit.circuit.library.standard_gates.x import CXGate
+from qiskit.circuit.library.standard_gates.x import CXGate, XGate
 from qiskit.circuit.library.standard_gates.z import CZGate
-from qiskit.circuit.library.standard_gates.x import XGate
 from qiskit.circuit.library.standard_gates.y import YGate
 from qiskit.circuit.library.standard_gates.u1 import U1Gate
 from qiskit.circuit.barrier import Barrier

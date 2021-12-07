@@ -14,12 +14,12 @@
 
 import unittest
 from test.python.opflow import QiskitOpflowTestCase
+
 import numpy as np
 
 from qiskit import QuantumCircuit, BasicAer, execute
 from qiskit.circuit import ParameterVector
 from qiskit.quantum_info import Statevector
-
 from qiskit.opflow import (
     StateFn,
     Zero,

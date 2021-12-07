@@ -14,6 +14,7 @@
 
 """Test cases for the pulse schedule block."""
 import unittest
+
 from qiskit import pulse, circuit
 from qiskit.pulse import transforms
 from qiskit.pulse.exceptions import PulseError

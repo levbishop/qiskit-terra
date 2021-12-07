@@ -13,7 +13,9 @@
 """Two-qubit YY-rotation gate."""
 
 from typing import Optional
+
 import numpy as np
+
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.parameterexpression import ParameterValueType
@@ -77,6 +79,7 @@ class RYYGate(Gate):
         """Calculate a subcircuit that implements this unitary."""
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
+
         from .x import CXGate
         from .rx import RXGate
         from .rz import RZGate

@@ -13,7 +13,9 @@
 """Test the LookaheadSwap pass"""
 
 import unittest
+
 from numpy import pi
+
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.passes import LookaheadSwap
 from qiskit.transpiler import CouplingMap

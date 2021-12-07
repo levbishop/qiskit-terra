@@ -14,6 +14,7 @@
 CNOTDihedral operator class.
 """
 import itertools
+
 import numpy as np
 
 from qiskit.exceptions import QiskitError
@@ -24,6 +25,7 @@ from qiskit.quantum_info.operators.scalar_op import ScalarOp
 from qiskit.quantum_info.synthesis.cnotdihedral_decompose import decompose_cnotdihedral
 from qiskit.quantum_info.operators.mixins import generate_apidocs, AdjointMixin
 from qiskit.circuit import QuantumCircuit, Instruction
+
 from .dihedral_circuits import _append_circuit
 from .polynomial import SpecialPolynomial
 

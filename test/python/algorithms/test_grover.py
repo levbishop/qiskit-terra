@@ -13,8 +13,9 @@
 """Test Grover's algorithm."""
 
 import unittest
-from test.python.algorithms import QiskitAlgorithmsTestCase
 import itertools
+from test.python.algorithms import QiskitAlgorithmsTestCase
+
 import numpy as np
 from ddt import ddt, data
 

@@ -41,6 +41,7 @@ from fractions import Fraction
 from typing import Dict, Any, List, Tuple
 
 import numpy as np
+
 from qiskit.pulse import instructions
 from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.pulse_v2 import drawings, types, device_info

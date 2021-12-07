@@ -12,13 +12,15 @@
 
 """The base interface for Opflow's gradient."""
 
-from typing import Union, List, Optional
 import functools
+from typing import Union, List, Optional
+
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.circuit import ParameterExpression, ParameterVector
+
 from ..expectations.pauli_expectation import PauliExpectation
 from .gradient_base import GradientBase
 from .derivative_base import _coeff_derivative

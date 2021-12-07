@@ -12,5 +12,4 @@
 
 """Mock lima backend"""
 
-from .fake_lima import FakeLima
-from .fake_lima import FakeLegacyLima
+from .fake_lima import FakeLima, FakeLegacyLima

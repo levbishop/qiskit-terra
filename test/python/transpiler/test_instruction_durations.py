@@ -18,7 +18,6 @@ from qiskit.circuit import Delay, Parameter
 from qiskit.test.mock.backends import FakeParis, FakeTokyo
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.instruction_durations import InstructionDurations
-
 from qiskit.test.base import QiskitTestCase
 
 

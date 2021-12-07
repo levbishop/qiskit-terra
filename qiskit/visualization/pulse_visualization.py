@@ -14,7 +14,6 @@
 matplotlib pulse visualization.
 """
 import warnings
-
 from typing import Union, Callable, List, Dict, Tuple
 
 from qiskit.exceptions import MissingOptionalLibraryError

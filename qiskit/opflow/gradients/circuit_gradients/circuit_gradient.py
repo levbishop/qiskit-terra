@@ -17,6 +17,7 @@ from typing import List, Union, Optional, Tuple, Set
 
 from qiskit import QuantumCircuit, QiskitError, transpile
 from qiskit.circuit import ParameterExpression, ParameterVector
+
 from ...converters.converter_base import ConverterBase
 from ...operator_base import OperatorBase
 

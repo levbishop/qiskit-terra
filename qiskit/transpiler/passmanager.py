@@ -19,6 +19,7 @@ import dill
 from qiskit.visualization import pass_manager_drawer
 from qiskit.tools.parallel import parallel_map
 from qiskit.circuit import QuantumCircuit
+
 from .basepasses import BasePass
 from .exceptions import TranspilerError
 from .runningpassmanager import RunningPassManager, FlowController

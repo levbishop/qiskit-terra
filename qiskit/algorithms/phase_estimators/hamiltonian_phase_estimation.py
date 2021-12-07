@@ -13,6 +13,7 @@
 """Phase estimation for the spectrum of a Hamiltonian"""
 
 from typing import Optional, Union
+
 from qiskit import QuantumCircuit
 from qiskit.utils import QuantumInstance
 from qiskit.opflow import (
@@ -26,6 +27,7 @@ from qiskit.opflow import (
     StateFn,
 )
 from qiskit.providers import BaseBackend
+
 from .phase_estimation import PhaseEstimation
 from .hamiltonian_phase_estimation_result import HamiltonianPhaseEstimationResult
 from .phase_estimation_scale import PhaseEstimationScale

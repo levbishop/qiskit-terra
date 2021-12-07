@@ -13,9 +13,9 @@
 """Test library of probability distribution circuits."""
 
 import unittest
-from ddt import ddt, data, unpack
 
 import numpy as np
+from ddt import ddt, data, unpack
 from scipy.stats import multivariate_normal
 
 from qiskit.test.base import QiskitTestCase

@@ -12,5 +12,4 @@
 
 """Mock valencia backend"""
 
-from .fake_valencia import FakeValencia
-from .fake_valencia import FakeLegacyValencia
+from .fake_valencia import FakeValencia, FakeLegacyValencia

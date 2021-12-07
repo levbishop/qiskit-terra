@@ -163,6 +163,8 @@ def build_measurement_error_mitigation_circuits(
         try:
             from qiskit.ignis.mitigation.measurement import (
                 CompleteMeasFitter as CompleteMeasFitter_IG,
+            )
+            from qiskit.ignis.mitigation.measurement import (
                 TensoredMeasFitter as TensoredMeasFitter_IG,
             )
         except ImportError as ex:

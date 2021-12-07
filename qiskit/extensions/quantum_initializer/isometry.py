@@ -21,6 +21,7 @@ Generic isometries from m to n qubits.
 """
 
 import itertools
+
 import numpy as np
 
 from qiskit.circuit.exceptions import CircuitError

@@ -14,6 +14,7 @@
 
 from typing import Optional, Union, List, Tuple, Dict
 from collections import OrderedDict
+
 import numpy as np
 from scipy.stats import chi2, norm
 from scipy.optimize import bisect
@@ -21,6 +22,7 @@ from scipy.optimize import bisect
 from qiskit import QuantumCircuit, ClassicalRegister
 from qiskit.providers import BaseBackend, Backend
 from qiskit.utils import QuantumInstance
+
 from .amplitude_estimator import AmplitudeEstimator, AmplitudeEstimatorResult
 from .ae_utils import pdf_a, derivative_log_pdf_a, bisect_max
 from .estimation_problem import EstimationProblem

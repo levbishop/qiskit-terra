@@ -13,6 +13,7 @@
 """Test the MergeAdjacentBarriers pass"""
 
 import unittest
+
 from qiskit.transpiler.passes import MergeAdjacentBarriers
 from qiskit.converters import circuit_to_dag
 from qiskit import QuantumRegister, QuantumCircuit

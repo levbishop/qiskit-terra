@@ -12,13 +12,15 @@
 
 """The Adam and AMSGRAD optimizers."""
 
-from typing import Any, Optional, Callable, Dict, Tuple, List
 import os
-
 import csv
+from typing import Any, Optional, Callable, Dict, Tuple, List
+
 import numpy as np
+
 from qiskit.utils import algorithm_globals
 from qiskit.utils.deprecation import deprecate_arguments
+
 from .optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
 
 # pylint: disable=invalid-name

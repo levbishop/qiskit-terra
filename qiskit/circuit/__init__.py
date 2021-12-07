@@ -245,7 +245,6 @@ from .equivalence import EquivalenceLibrary
 # These must be last to avoid cyclic import problems?
 from .classicalfunction.types import Int1, Int2
 from .classicalfunction import classical_function, BooleanExpression
-
 from .controlflow import (
     ControlFlowOp,
     WhileLoopOp,

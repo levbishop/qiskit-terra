@@ -13,6 +13,7 @@
 """Quantum Fourier Transform Circuit."""
 
 from typing import Optional
+
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister

@@ -16,8 +16,7 @@ import unittest
 
 from qiskit.converters import circuit_to_instruction
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
-from qiskit.circuit import Qubit, Clbit
-from qiskit.circuit import Parameter
+from qiskit.circuit import Qubit, Clbit, Parameter
 from qiskit.test import QiskitTestCase
 from qiskit.exceptions import QiskitError
 

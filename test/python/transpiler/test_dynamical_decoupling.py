@@ -13,6 +13,7 @@
 """Test dynamical decoupling insertion pass."""
 
 import unittest
+
 import numpy as np
 from numpy import pi
 
@@ -23,7 +24,6 @@ from qiskit.transpiler.instruction_durations import InstructionDurations
 from qiskit.transpiler.passes import ASAPSchedule, ALAPSchedule, DynamicalDecoupling
 from qiskit.transpiler.passmanager import PassManager
 from qiskit.transpiler.exceptions import TranspilerError
-
 from qiskit.test import QiskitTestCase
 
 

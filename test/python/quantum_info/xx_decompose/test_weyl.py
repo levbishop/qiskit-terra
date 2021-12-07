@@ -14,8 +14,8 @@
 Tests for qiskit-terra/qiskit/quantum_info/synthesis/xx_decompose/weyl.py .
 """
 
-from itertools import permutations
 import unittest
+from itertools import permutations
 
 import ddt
 import numpy as np

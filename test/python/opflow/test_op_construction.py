@@ -24,13 +24,7 @@ from ddt import data, ddt
 from scipy.stats import unitary_group
 
 from qiskit import QiskitError
-from qiskit.circuit import (
-    Instruction,
-    Parameter,
-    ParameterVector,
-    QuantumCircuit,
-    QuantumRegister,
-)
+from qiskit.circuit import Instruction, Parameter, ParameterVector, QuantumCircuit, QuantumRegister
 from qiskit.circuit.library import CZGate, ZGate
 from qiskit.extensions.exceptions import ExtensionError
 from qiskit.opflow import (

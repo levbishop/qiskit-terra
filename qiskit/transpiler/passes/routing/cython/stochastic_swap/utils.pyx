@@ -15,12 +15,15 @@
 # that they have been altered from the originals.
 
 cimport cython
+
 import numpy as np
+
 from libc.stdlib cimport calloc, free
 from libcpp.vector cimport vector
 
 from qiskit.transpiler.layout import Layout
 from qiskit.circuit import Qubit
+
 
 cdef class EdgeCollection:
     """ A simple contain that contains a C++ vector

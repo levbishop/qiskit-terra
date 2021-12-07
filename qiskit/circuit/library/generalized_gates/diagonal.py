@@ -15,8 +15,9 @@
 
 """Diagonal matrix circuit."""
 
-from typing import Union, List
 import cmath
+from typing import Union, List
+
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit

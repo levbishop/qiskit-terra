@@ -15,12 +15,12 @@
 This implementation allows both, standard first-order as well as second-order SPSA.
 """
 
-from typing import Iterator, Optional, Union, Callable, Tuple, Dict, List, Any
 import logging
 import warnings
+from typing import Iterator, Optional, Union, Callable, Tuple, Dict, List, Any
 from time import time
-
 from collections import deque
+
 import scipy
 import numpy as np
 

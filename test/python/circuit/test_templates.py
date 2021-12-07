@@ -15,14 +15,14 @@
 import unittest
 from test import combine
 from inspect import getmembers, isfunction
-from ddt import ddt
 
 import numpy as np
+from ddt import ddt
 
+import qiskit.circuit.library.templates as templib
 from qiskit import QuantumCircuit
 from qiskit.test import QiskitTestCase
 from qiskit.quantum_info.operators import Operator
-import qiskit.circuit.library.templates as templib
 
 
 @ddt

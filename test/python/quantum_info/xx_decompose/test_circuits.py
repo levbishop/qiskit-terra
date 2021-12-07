@@ -14,15 +14,15 @@
 Tests for qiskit-terra/qiskit/quantum_info/synthesis/xx_decompose/circuits.py .
 """
 
-from operator import itemgetter
 import unittest
+from operator import itemgetter
 
 import ddt
 import numpy as np
 
+import qiskit.quantum_info.operators
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import RZGate
-import qiskit.quantum_info.operators
 from qiskit.quantum_info.synthesis.weyl import weyl_coordinates
 from qiskit.quantum_info.synthesis.xx_decompose.circuits import (
     decompose_xxyy_into_xxyy_xx,

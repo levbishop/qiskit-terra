@@ -16,6 +16,7 @@ ScalarOp class
 
 import copy
 from numbers import Number
+
 import numpy as np
 
 from qiskit.exceptions import QiskitError

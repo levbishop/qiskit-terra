@@ -13,6 +13,7 @@
 """Test the BasicSwap pass"""
 
 import unittest
+
 from qiskit.transpiler.passes import BasicSwap
 from qiskit.transpiler import CouplingMap
 from qiskit.converters import circuit_to_dag

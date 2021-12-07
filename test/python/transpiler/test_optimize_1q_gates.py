@@ -13,6 +13,7 @@
 """Test the optimize-1q-gate pass"""
 
 import unittest
+
 import numpy as np
 
 from qiskit import QuantumRegister, QuantumCircuit, ClassicalRegister
