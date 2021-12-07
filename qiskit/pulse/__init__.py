@@ -58,8 +58,9 @@ Exceptions
 """
 
 # Builder imports.
+
+# Construction methods:
 from qiskit.pulse.builder import (
-    # Construction methods.
     active_backend,
     active_transpiler_settings,
     active_circuit_scheduler_settings,
@@ -68,7 +69,10 @@ from qiskit.pulse.builder import (
     qubit_channels,
     samples_to_seconds,
     seconds_to_samples,
-    # Instructions.
+)
+
+# Instructions:
+from qiskit.pulse.builder import (
     acquire,
     barrier,
     call,
@@ -79,12 +83,18 @@ from qiskit.pulse.builder import (
     shift_frequency,
     shift_phase,
     snapshot,
-    # Channels.
+)
+
+# Channels:
+from qiskit.pulse.builder import (
     acquire_channel,
     control_channels,
     drive_channel,
     measure_channel,
-    # Contexts.
+)
+
+# Contexts:
+from qiskit.pulse.builder import (
     align_equispaced,
     align_func,
     align_left,
@@ -96,12 +106,18 @@ from qiskit.pulse.builder import (
     pad,
     phase_offset,
     transpiler_settings,
-    # Macros.
+)
+
+# Macros:
+from qiskit.pulse.builder import (
     macro,
     measure,
     measure_all,
     delay_qubits,
-    # Circuit instructions.
+)
+
+# Circuit instructions:
+from qiskit.pulse.builder import (
     cx,
     u1,
     u2,

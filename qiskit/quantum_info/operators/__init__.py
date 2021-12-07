@@ -13,6 +13,8 @@
 """Quantum Operators."""
 
 from .operator import Operator
+
+# These must come after to avoid cyclic import problems?
 from .scalar_op import ScalarOp
 from .channel import Choi, SuperOp, Kraus, Stinespring, Chi, PTM
 from .measures import process_fidelity, average_gate_fidelity, gate_error, diamond_norm

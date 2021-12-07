@@ -13,6 +13,8 @@
 """Quantum States."""
 
 from .statevector import Statevector
+
+# These must come later to avoid cyclic import problems?
 from .stabilizerstate import StabilizerState
 from .densitymatrix import DensityMatrix
 from .utils import partial_trace, shannon_entropy
