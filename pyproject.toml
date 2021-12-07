@@ -9,4 +9,7 @@ target-version = ['py36', 'py37', 'py38', 'py39']
 profile = "black"
 line_length = 100
 treat_all_comments_as_code = "True"
+add_imports = ["from __future__ import annotations"]
+blocked_extensions = ['pex', 'pyx', 'pxd']
+supported_extensions = ["py"]
 only_sections = "True"
