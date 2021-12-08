@@ -21,7 +21,6 @@ use the fitters to produce a filter.
 from __future__ import annotations
 
 
-
 def count_keys(num_qubits: int) -> list[str]:
     """Return ordered count keys.
 

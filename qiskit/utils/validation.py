@@ -17,7 +17,6 @@ Validation module
 from __future__ import annotations
 
 
-
 def validate_in_set(name: str, value: object, values: set[object]) -> None:
     """
     Args:
