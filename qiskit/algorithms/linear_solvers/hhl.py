@@ -231,9 +231,7 @@ class HHL(LinearSolver):
         solution: QuantumCircuit,
         observable: LinearSystemObservable | BaseOperator | None = None,
         observable_circuit: QuantumCircuit | None = None,
-        post_processing: None | (
-            Callable[[float | list[float]], float | list[float]]
-        ) = None,
+        post_processing: None | (Callable[[float | list[float]], float | list[float]]) = None,
     ) -> tuple[float | list[float], float | list[float]]:
         """Calculates the value of the observable(s) given.
 
@@ -485,16 +483,15 @@ class HHL(LinearSolver):
         self,
         matrix: list | np.ndarray | QuantumCircuit,
         vector: list | np.ndarray | QuantumCircuit,
-        observable: None | (
-                LinearSystemObservable |
-                BaseOperator |
-                list[LinearSystemObservable] |
-                list[BaseOperator]
+        observable: None
+        | (
+            LinearSystemObservable
+            | BaseOperator
+            | list[LinearSystemObservable]
+            | list[BaseOperator]
         ) = None,
         observable_circuit: QuantumCircuit | list[QuantumCircuit] | None = None,
-        post_processing: None | (
-            Callable[[float | list[float]], float | list[float]]
-        ) = None,
+        post_processing: None | (Callable[[float | list[float]], float | list[float]]) = None,
     ) -> LinearSolverResult:
         """Tries to solve the given linear system of equations.
 

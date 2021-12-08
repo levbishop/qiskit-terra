@@ -699,9 +699,7 @@ class ScheduleDrawer:
         return color
 
     @staticmethod
-    def _prev_label_at_time(
-        prev_labels: list[dict[int, Waveform | Acquire]], time: int
-    ) -> bool:
+    def _prev_label_at_time(prev_labels: list[dict[int, Waveform | Acquire]], time: int) -> bool:
         """Check overlap of pulses with previous channels.
 
         Args:

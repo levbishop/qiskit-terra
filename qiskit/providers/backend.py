@@ -461,9 +461,7 @@ class BackendV2(Backend, ABC):
         instructions defined in this backend's target."""
         return self.target.instruction_schedule_map()
 
-    def qubit_properties(
-        self, qubit: int | list[int]
-    ) -> QubitProperties | list[QubitProperties]:
+    def qubit_properties(self, qubit: int | list[int]) -> QubitProperties | list[QubitProperties]:
         """Return QubitProperties for a given qubit.
 
         If there are no defined or the backend doesn't support querying these

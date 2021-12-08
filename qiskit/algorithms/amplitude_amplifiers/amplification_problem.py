@@ -36,9 +36,7 @@ class AmplificationProblem:
         grover_operator: QuantumCircuit | None = None,
         post_processing: Callable[[str], Any] | None = None,
         objective_qubits: int | list[int] | None = None,
-        is_good_state: None | (
-            Callable[[str], bool] | list[int] | list[str] | Statevector
-        ) = None,
+        is_good_state: None | (Callable[[str], bool] | list[int] | list[str] | Statevector) = None,
     ) -> None:
         r"""
         Args:

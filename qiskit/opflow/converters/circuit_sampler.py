@@ -131,9 +131,7 @@ class CircuitSampler(ConverterBase):
         return self._quantum_instance
 
     @quantum_instance.setter
-    def quantum_instance(
-        self, quantum_instance: QuantumInstance | Backend | BaseBackend
-    ) -> None:
+    def quantum_instance(self, quantum_instance: QuantumInstance | Backend | BaseBackend) -> None:
         """Sets the QuantumInstance.
 
         Raises:

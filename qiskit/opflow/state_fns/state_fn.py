@@ -54,15 +54,15 @@ class StateFn(OperatorBase):
     def __new__(
         cls,
         primitive: (
-            str |
-            dict |
-            Result |
-            list |
-            np.ndarray |
-            Statevector |
-            QuantumCircuit |
-            Instruction |
-            OperatorBase
+            str
+            | dict
+            | Result
+            | list
+            | np.ndarray
+            | Statevector
+            | QuantumCircuit
+            | Instruction
+            | OperatorBase
         ) = None,
         coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
@@ -117,15 +117,15 @@ class StateFn(OperatorBase):
     def __init__(
         self,
         primitive: (
-            str |
-            dict |
-            Result |
-            list |
-            np.ndarray |
-            Statevector |
-            QuantumCircuit |
-            Instruction |
-            OperatorBase
+            str
+            | dict
+            | Result
+            | list
+            | np.ndarray
+            | Statevector
+            | QuantumCircuit
+            | Instruction
+            | OperatorBase
         ) = None,
         coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
@@ -358,9 +358,7 @@ class StateFn(OperatorBase):
 
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         raise NotImplementedError
 

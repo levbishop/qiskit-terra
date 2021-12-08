@@ -207,9 +207,7 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         return self._quantum_instance
 
     @quantum_instance.setter
-    def quantum_instance(
-        self, quantum_instance: QuantumInstance | BaseBackend | Backend
-    ) -> None:
+    def quantum_instance(self, quantum_instance: QuantumInstance | BaseBackend | Backend) -> None:
         """Sets quantum_instance"""
         if not isinstance(quantum_instance, QuantumInstance):
             quantum_instance = QuantumInstance(quantum_instance)

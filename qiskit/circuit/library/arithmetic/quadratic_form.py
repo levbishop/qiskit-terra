@@ -64,9 +64,7 @@ class QuadraticForm(QuantumCircuit):
     def __init__(
         self,
         num_result_qubits: int | None = None,
-        quadratic: None | (
-            np.ndarray | list[list[float | ParameterExpression]]
-        ) = None,
+        quadratic: None | (np.ndarray | list[list[float | ParameterExpression]]) = None,
         linear: np.ndarray | list[float | ParameterExpression] | None = None,
         offset: float | ParameterExpression | None = None,
         little_endian: bool = True,

@@ -71,9 +71,7 @@ class Shor:
         return self._quantum_instance
 
     @quantum_instance.setter
-    def quantum_instance(
-        self, quantum_instance: QuantumInstance | BaseBackend | Backend
-    ) -> None:
+    def quantum_instance(self, quantum_instance: QuantumInstance | BaseBackend | Backend) -> None:
         """Sets quantum instance."""
         if isinstance(quantum_instance, (BaseBackend, Backend)):
             quantum_instance = QuantumInstance(quantum_instance)

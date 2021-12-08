@@ -1280,9 +1280,7 @@ def align_equispaced(duration: int | ParameterExpression) -> AlignmentKind:
 
 
 @contextmanager
-def align_func(
-    duration: int | ParameterExpression, func: Callable[[int], float]
-) -> AlignmentKind:
+def align_func(duration: int | ParameterExpression, func: Callable[[int], float]) -> AlignmentKind:
     """Callback defined alignment pulse scheduling context.
 
     Pulse instructions within this context are scheduled at the location specified by
@@ -1691,9 +1689,7 @@ def delay(duration: int, channel: chans.Channel, name: str | None = None):
     append_instruction(instructions.Delay(duration, channel, name=name))
 
 
-def play(
-    pulse: library.Pulse | np.ndarray, channel: chans.PulseChannel, name: str | None = None
-):
+def play(pulse: library.Pulse | np.ndarray, channel: chans.PulseChannel, name: str | None = None):
     """Play a ``pulse`` on a ``channel``.
 
     Examples:

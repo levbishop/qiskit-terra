@@ -244,9 +244,7 @@ class DictStateFn(StateFn):
     # pylint: disable=too-many-return-statements
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         if front is None:
             sparse_vector_state_fn = self.to_spmatrix_op().eval()

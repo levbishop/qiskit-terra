@@ -41,9 +41,7 @@ class QFI(QFIBase):
     def convert(
         self,
         operator: CircuitStateFn,
-        params: None | (
-            ParameterExpression | ParameterVector | list[ParameterExpression]
-        ) = None,
+        params: None | (ParameterExpression | ParameterVector | list[ParameterExpression]) = None,
     ) -> ListOp:
         r"""
         Args:

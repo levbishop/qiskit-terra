@@ -102,9 +102,7 @@ class AmplitudeEstimation(AmplitudeEstimator):
         return self._quantum_instance
 
     @quantum_instance.setter
-    def quantum_instance(
-        self, quantum_instance: QuantumInstance | BaseBackend | Backend
-    ) -> None:
+    def quantum_instance(self, quantum_instance: QuantumInstance | BaseBackend | Backend) -> None:
         """Set quantum instance.
 
         Args:

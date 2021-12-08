@@ -56,11 +56,7 @@ class WhileLoopOp(ControlFlowOp):
 
     def __init__(
         self,
-        condition: (
-            tuple[ClassicalRegister, int] |
-            tuple[Clbit, int] |
-            tuple[Clbit, bool]
-        ),
+        condition: (tuple[ClassicalRegister, int] | tuple[Clbit, int] | tuple[Clbit, bool]),
         body: QuantumCircuit,
         label: str | None = None,
     ):
@@ -135,11 +131,7 @@ class WhileLoopContext:
     def __init__(
         self,
         circuit: QuantumCircuit,
-        condition: (
-            tuple[ClassicalRegister, int] |
-            tuple[Clbit, int] |
-            tuple[Clbit, bool]
-        ),
+        condition: (tuple[ClassicalRegister, int] | tuple[Clbit, int] | tuple[Clbit, bool]),
         *,
         label: str | None = None,
     ):

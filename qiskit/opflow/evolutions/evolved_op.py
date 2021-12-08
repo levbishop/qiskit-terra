@@ -41,9 +41,7 @@ class EvolvedOp(PrimitiveOp):
     but would have ended up copying and pasting a lot of code from PrimitiveOp."""
     primitive: PrimitiveOp
 
-    def __init__(
-        self, primitive: OperatorBase, coeff: complex | ParameterExpression = 1.0
-    ) -> None:
+    def __init__(self, primitive: OperatorBase, coeff: complex | ParameterExpression = 1.0) -> None:
         """
         Args:
             primitive: The operator being wrapped to signify evolution later.

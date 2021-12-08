@@ -182,9 +182,7 @@ class VectorStateFn(StateFn):
     # pylint: disable=too-many-return-statements
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | Statevector | OperatorBase
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | Statevector | OperatorBase) = None,
     ) -> OperatorBase | complex:
         if front is None:  # this object is already a VectorStateFn
             return self

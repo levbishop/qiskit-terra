@@ -64,9 +64,7 @@ class U2Gate(Gate):
         using two X90 pulses.
     """
 
-    def __init__(
-        self, phi: ParameterValueType, lam: ParameterValueType, label: str | None = None
-    ):
+    def __init__(self, phi: ParameterValueType, lam: ParameterValueType, label: str | None = None):
         """Create new U2 gate."""
         super().__init__("u2", 1, [phi, lam], label=label)
 

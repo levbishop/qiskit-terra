@@ -81,12 +81,13 @@ class EfficientSU2(TwoLocal):
     def __init__(
         self,
         num_qubits: int | None = None,
-        su2_gates: None | (
-                str |
-                type |
-                Instruction |
-                QuantumCircuit |
-                list[str | type | Instruction | QuantumCircuit]
+        su2_gates: None
+        | (
+            str
+            | type
+            | Instruction
+            | QuantumCircuit
+            | list[str | type | Instruction | QuantumCircuit]
         ) = None,
         entanglement: str | list[list[int]] | Callable[[int], list[int]] = "full",
         reps: int = 3,

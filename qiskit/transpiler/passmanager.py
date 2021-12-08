@@ -162,9 +162,7 @@ class PassManager:
                 ) from ex
 
     @staticmethod
-    def _normalize_passes(
-        passes: BasePass | list[BasePass] | FlowController
-    ) -> list[BasePass]:
+    def _normalize_passes(passes: BasePass | list[BasePass] | FlowController) -> list[BasePass]:
         if isinstance(passes, FlowController):
             return passes
         if isinstance(passes, BasePass):

@@ -56,9 +56,7 @@ class DerivativeBase(ConverterBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: None | (
-            ParameterVector | ParameterExpression | list[ParameterExpression]
-        ) = None,
+        params: None | (ParameterVector | ParameterExpression | list[ParameterExpression]) = None,
     ) -> OperatorBase:
         r"""
         Args:
@@ -77,12 +75,13 @@ class DerivativeBase(ConverterBase):
         self,
         operator: OperatorBase,
         bind_params: ParameterExpression | ParameterVector | list[ParameterExpression],
-        grad_params: None | (
-                ParameterExpression |
-                ParameterVector |
-                list[ParameterExpression] |
-                tuple[ParameterExpression, ParameterExpression] |
-                list[tuple[ParameterExpression, ParameterExpression]]
+        grad_params: None
+        | (
+            ParameterExpression
+            | ParameterVector
+            | list[ParameterExpression]
+            | tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
         ) = None,
         backend: BaseBackend | Backend | QuantumInstance | None = None,
         expectation: ExpectationBase | None = None,

@@ -1511,9 +1511,7 @@ class QuantumCircuit:
 
     def decompose(
         self,
-        gates_to_decompose: None | (
-            type[Gate] | Sequence[type[Gate]] | Sequence[str] | str
-        ) = None,
+        gates_to_decompose: None | (type[Gate] | Sequence[type[Gate]] | Sequence[str] | str) = None,
     ) -> QuantumCircuit:
         """Call a decomposition pass on this circuit,
         to decompose one level (shallow decompose).
@@ -2238,9 +2236,7 @@ class QuantumCircuit:
         else:
             return None
 
-    def measure_all(
-        self, inplace: bool = True, add_bits: bool = True
-    ) -> QuantumCircuit | None:
+    def measure_all(self, inplace: bool = True, add_bits: bool = True) -> QuantumCircuit | None:
         """Adds measurement to all qubits.
 
         By default, adds new classical bits in a :obj:`.ClassicalRegister` to store these
@@ -4441,11 +4437,7 @@ class QuantumCircuit:
 
     def if_else(
         self,
-        condition: (
-            tuple[ClassicalRegister, int] |
-            tuple[Clbit, int] |
-            tuple[Clbit, bool]
-        ),
+        condition: (tuple[ClassicalRegister, int] | tuple[Clbit, int] | tuple[Clbit, bool]),
         true_body: QuantumCircuit,
         false_body: QuantumCircuit,
         qubits: Sequence[QubitSpecifier],

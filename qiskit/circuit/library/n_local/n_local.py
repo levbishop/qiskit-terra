@@ -70,12 +70,10 @@ class NLocal(BlueprintCircuit):
     def __init__(
         self,
         num_qubits: int | None = None,
-        rotation_blocks: None | (
-            QuantumCircuit | list[QuantumCircuit] | Instruction | list[Instruction]
-        ) = None,
-        entanglement_blocks: None | (
-            QuantumCircuit | list[QuantumCircuit] | Instruction | list[Instruction]
-        ) = None,
+        rotation_blocks: None
+        | (QuantumCircuit | list[QuantumCircuit] | Instruction | list[Instruction]) = None,
+        entanglement_blocks: None
+        | (QuantumCircuit | list[QuantumCircuit] | Instruction | list[Instruction]) = None,
         entanglement: list[int] | list[list[int]] | None = None,
         reps: int = 1,
         insert_barriers: bool = False,
@@ -265,15 +263,15 @@ class NLocal(BlueprintCircuit):
     def entanglement(
         self,
     ) -> (
-        str |
-        list[str] |
-        list[list[str]] |
-        list[int] |
-        list[list[int]] |
-        list[list[list[int]]] |
-        list[list[list[list[int]]]] |
-        Callable[[int], str] |
-        Callable[[int], list[list[int]]]
+        str
+        | list[str]
+        | list[list[str]]
+        | list[int]
+        | list[list[int]]
+        | list[list[list[int]]]
+        | list[list[list[list[int]]]]
+        | Callable[[int], str]
+        | Callable[[int], list[list[int]]]
     ):
         """Get the entanglement strategy.
 
@@ -286,16 +284,17 @@ class NLocal(BlueprintCircuit):
     @entanglement.setter
     def entanglement(
         self,
-        entanglement: None | (
-                str |
-                list[str] |
-                list[list[str]] |
-                list[int] |
-                list[list[int]] |
-                list[list[list[int]]] |
-                list[list[list[list[int]]]] |
-                Callable[[int], str] |
-                Callable[[int], list[list[int]]]
+        entanglement: None
+        | (
+            str
+            | list[str]
+            | list[list[str]]
+            | list[int]
+            | list[list[int]]
+            | list[list[list[int]]]
+            | list[list[list[list[int]]]]
+            | Callable[[int], str]
+            | Callable[[int], list[list[int]]]
         ),
     ) -> None:
         """Set the entanglement strategy.

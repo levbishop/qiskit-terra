@@ -54,13 +54,9 @@ class NumPyLinearSolver(LinearSolver):
         self,
         matrix: np.ndarray | QuantumCircuit,
         vector: np.ndarray | QuantumCircuit,
-        observable: None | (
-            LinearSystemObservable | BaseOperator | list[BaseOperator]
-        ) = None,
+        observable: None | (LinearSystemObservable | BaseOperator | list[BaseOperator]) = None,
         observable_circuit: QuantumCircuit | list[QuantumCircuit] | None = None,
-        post_processing: None | (
-            Callable[[float | list[float]], float | list[float]]
-        ) = None,
+        post_processing: None | (Callable[[float | list[float]], float | list[float]]) = None,
     ) -> LinearSolverResult:
         """Solve classically the linear system and compute the observable(s)
 

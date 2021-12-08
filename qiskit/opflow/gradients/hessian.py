@@ -52,11 +52,12 @@ class Hessian(HessianBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: None | (
-                tuple[ParameterExpression, ParameterExpression] |
-                list[tuple[ParameterExpression, ParameterExpression]] |
-                list[ParameterExpression] |
-                ParameterVector
+        params: None
+        | (
+            tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
+            | list[ParameterExpression]
+            | ParameterVector
         ) = None,
     ) -> OperatorBase:
         """
@@ -81,11 +82,12 @@ class Hessian(HessianBase):
     def get_hessian(
         self,
         operator: OperatorBase,
-        params: None | (
-                tuple[ParameterExpression, ParameterExpression] |
-                list[tuple[ParameterExpression, ParameterExpression]] |
-                list[ParameterExpression] |
-                ParameterVector
+        params: None
+        | (
+            tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
+            | list[ParameterExpression]
+            | ParameterVector
         ) = None,
     ) -> OperatorBase:
         """Get the Hessian for the given operator w.r.t. the given parameters

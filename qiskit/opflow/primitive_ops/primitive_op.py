@@ -50,7 +50,14 @@ class PrimitiveOp(OperatorBase):
     def __new__(
         cls,
         primitive: (
-            Instruction | QuantumCircuit | list | np.ndarray | spmatrix | Operator | Pauli | SparsePauliOp
+            Instruction
+            | QuantumCircuit
+            | list
+            | np.ndarray
+            | spmatrix
+            | Operator
+            | Pauli
+            | SparsePauliOp
         ),
         coeff: complex | ParameterExpression = 1.0,
     ) -> PrimitiveOp:
@@ -222,9 +229,7 @@ class PrimitiveOp(OperatorBase):
 
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         raise NotImplementedError
 

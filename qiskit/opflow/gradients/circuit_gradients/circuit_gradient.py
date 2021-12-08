@@ -43,12 +43,13 @@ class CircuitGradient(ConverterBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: None | (
-                ParameterExpression |
-                ParameterVector |
-                list[ParameterExpression] |
-                tuple[ParameterExpression, ParameterExpression] |
-                list[tuple[ParameterExpression, ParameterExpression]]
+        params: None
+        | (
+            ParameterExpression
+            | ParameterVector
+            | list[ParameterExpression]
+            | tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
         ) = None,
     ) -> OperatorBase:
         r"""

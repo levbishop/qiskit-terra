@@ -110,9 +110,7 @@ class IterativeAmplitudeEstimation(AmplitudeEstimator):
         return self._quantum_instance
 
     @quantum_instance.setter
-    def quantum_instance(
-        self, quantum_instance: QuantumInstance | BaseBackend | Backend
-    ) -> None:
+    def quantum_instance(self, quantum_instance: QuantumInstance | BaseBackend | Backend) -> None:
         """Set quantum instance.
 
         Args:
@@ -281,9 +279,7 @@ class IterativeAmplitudeEstimation(AmplitudeEstimator):
 
             return prob
 
-    def estimate(
-        self, estimation_problem: EstimationProblem
-    ) -> IterativeAmplitudeEstimationResult:
+    def estimate(self, estimation_problem: EstimationProblem) -> IterativeAmplitudeEstimationResult:
         # initialize memory variables
         powers = [0]  # list of powers k: Q^k, (called 'k' in paper)
         ratios = []  # list of multiplication factors (called 'q' in paper)

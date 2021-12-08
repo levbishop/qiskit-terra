@@ -123,9 +123,7 @@ The VariationalAlgorithm is reduced to an interface. Thus, the
 quantum_instance property is deprecated as of Qiskit Terra 0.18.0
 and will be removed no sooner than 3 months after the releasedate."""
     )
-    def quantum_instance(
-        self, quantum_instance: QuantumInstance | BaseBackend | Backend
-    ) -> None:
+    def quantum_instance(self, quantum_instance: QuantumInstance | BaseBackend | Backend) -> None:
         """Sets quantum instance."""
         if isinstance(quantum_instance, (BaseBackend, Backend)):
             quantum_instance = QuantumInstance(quantum_instance)

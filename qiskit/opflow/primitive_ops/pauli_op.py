@@ -201,9 +201,7 @@ class PauliOp(PrimitiveOp):
 
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         if front is None:
             return self.to_matrix_op()

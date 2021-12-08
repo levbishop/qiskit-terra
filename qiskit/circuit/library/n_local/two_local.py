@@ -153,12 +153,10 @@ class TwoLocal(NLocal):
     def __init__(
         self,
         num_qubits: int | None = None,
-        rotation_blocks: None | (
-            str | list[str] | type | list[type] | QuantumCircuit | list[QuantumCircuit]
-        ) = None,
-        entanglement_blocks: None | (
-            str | list[str] | type | list[type] | QuantumCircuit | list[QuantumCircuit]
-        ) = None,
+        rotation_blocks: None
+        | (str | list[str] | type | list[type] | QuantumCircuit | list[QuantumCircuit]) = None,
+        entanglement_blocks: None
+        | (str | list[str] | type | list[type] | QuantumCircuit | list[QuantumCircuit]) = None,
         entanglement: str | list[list[int]] | Callable[[int], list[int]] = "full",
         reps: int = 3,
         skip_unentangled_qubits: bool = False,

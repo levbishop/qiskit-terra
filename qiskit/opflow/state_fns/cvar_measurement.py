@@ -147,9 +147,7 @@ class CVaRMeasurement(OperatorStateFn):
     def __str__(self) -> str:
         return f"CVaRMeasurement({str(self.primitive)}) * {self.coeff}"
 
-    def eval(
-        self, front: str | dict | np.ndarray | OperatorBase | Statevector = None
-    ) -> complex:
+    def eval(self, front: str | dict | np.ndarray | OperatorBase | Statevector = None) -> complex:
         r"""
         Given the energies of each sampled measurement outcome (H_i) as well as the
         sampling probability of each measurement outcome (p_i, we can compute the
@@ -177,9 +175,7 @@ class CVaRMeasurement(OperatorStateFn):
         energies, probabilities = self.get_outcome_energies_probabilities(front)
         return self.compute_cvar(energies, probabilities)
 
-    def eval_variance(
-        self, front: str | dict | np.ndarray | OperatorBase | None = None
-    ) -> complex:
+    def eval_variance(self, front: str | dict | np.ndarray | OperatorBase | None = None) -> complex:
         r"""
         Given the energies of each sampled measurement outcome (H_i) as well as the
         sampling probability of each measurement outcome (p_i, we can compute the

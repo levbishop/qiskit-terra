@@ -386,9 +386,7 @@ class ListOp(OperatorBase):
 
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         """
         Evaluate the Operator's underlying function, either on a binary string or another Operator.

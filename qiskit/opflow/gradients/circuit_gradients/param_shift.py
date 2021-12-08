@@ -89,11 +89,11 @@ class ParamShift(CircuitGradient):
         self,
         operator: OperatorBase,
         params: (
-            ParameterExpression |
-            ParameterVector |
-            list[ParameterExpression] |
-            tuple[ParameterExpression, ParameterExpression] |
-            list[tuple[ParameterExpression, ParameterExpression]]
+            ParameterExpression
+            | ParameterVector
+            | list[ParameterExpression]
+            | tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
         ),
     ) -> OperatorBase:
         """
@@ -268,10 +268,10 @@ class ParamShift(CircuitGradient):
     @staticmethod
     def _prob_combo_fn(
         x: (
-            DictStateFn |
-            VectorStateFn |
-            SparseVectorStateFn |
-            list[DictStateFn | VectorStateFn | SparseVectorStateFn]
+            DictStateFn
+            | VectorStateFn
+            | SparseVectorStateFn
+            | list[DictStateFn | VectorStateFn | SparseVectorStateFn]
         ),
         shift_constant: float,
     ) -> dict | np.ndarray:

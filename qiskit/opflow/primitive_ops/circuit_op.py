@@ -187,9 +187,7 @@ class CircuitOp(PrimitiveOp):
 
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         from ..state_fns import CircuitStateFn
         from ..list_ops import ListOp

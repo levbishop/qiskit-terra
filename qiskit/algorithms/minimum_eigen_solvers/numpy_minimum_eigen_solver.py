@@ -60,9 +60,8 @@ class NumPyMinimumEigensolver(MinimumEigensolver):
     @filter_criterion.setter
     def filter_criterion(
         self,
-        filter_criterion: None | (
-            Callable[[list | np.ndarray, float, ListOrDict[float] | None], bool]
-        ),
+        filter_criterion: None
+        | (Callable[[list | np.ndarray, float, ListOrDict[float] | None], bool]),
     ) -> None:
         """set the filter criterion"""
         self._ces.filter_criterion = filter_criterion

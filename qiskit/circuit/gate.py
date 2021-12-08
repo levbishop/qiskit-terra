@@ -29,9 +29,7 @@ from .instruction import Instruction
 class Gate(Instruction):
     """Unitary gate."""
 
-    def __init__(
-        self, name: str, num_qubits: int, params: list, label: str | None = None
-    ) -> None:
+    def __init__(self, name: str, num_qubits: int, params: list, label: str | None = None) -> None:
         """Create a new gate.
 
         Args:

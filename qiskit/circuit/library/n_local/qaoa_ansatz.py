@@ -136,9 +136,7 @@ class QAOAAnsatz(EvolvedOperatorAnsatz):
         return bounds
 
     @parameter_bounds.setter
-    def parameter_bounds(
-        self, bounds: list[tuple[float | None, float | None]] | None
-    ) -> None:
+    def parameter_bounds(self, bounds: list[tuple[float | None, float | None]] | None) -> None:
         """Set the parameter bounds.
 
         Args:

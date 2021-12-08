@@ -106,11 +106,11 @@ class LinComb(CircuitGradient):
         self,
         operator: OperatorBase,
         params: (
-            ParameterExpression |
-            ParameterVector |
-            list[ParameterExpression] |
-            tuple[ParameterExpression, ParameterExpression] |
-            list[tuple[ParameterExpression, ParameterExpression]]
+            ParameterExpression
+            | ParameterVector
+            | list[ParameterExpression]
+            | tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
         ),
     ) -> OperatorBase:
         """Convert ``operator`` into an operator that represents the gradient w.r.t. ``params``.
@@ -136,11 +136,11 @@ class LinComb(CircuitGradient):
         self,
         operator: OperatorBase,
         params: (
-            ParameterExpression |
-            ParameterVector |
-            list[ParameterExpression] |
-            tuple[ParameterExpression, ParameterExpression] |
-            list[tuple[ParameterExpression, ParameterExpression]]
+            ParameterExpression
+            | ParameterVector
+            | list[ParameterExpression]
+            | tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
         ),
     ) -> OperatorBase:
         """Traverse ``operator`` to get back the adapted operator representing the gradient.
@@ -689,9 +689,10 @@ class LinComb(CircuitGradient):
         self,
         state_op: StateFn,
         meas_op: OperatorBase | None = None,
-        target_params: None | (
-                tuple[ParameterExpression, ParameterExpression] |
-                list[tuple[ParameterExpression, ParameterExpression]]
+        target_params: None
+        | (
+            tuple[ParameterExpression, ParameterExpression]
+            | list[tuple[ParameterExpression, ParameterExpression]]
         ) = None,
     ) -> OperatorBase:
         """Generate the operator states whose evaluation returns the Hessian (items).

@@ -189,9 +189,7 @@ class MatrixOp(PrimitiveOp):
 
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         # For other ops' eval we return self.to_matrix_op() here, but that's unnecessary here.
         if front is None:

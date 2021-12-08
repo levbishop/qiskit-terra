@@ -80,9 +80,7 @@ class NaturalGradient(GradientBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: None | (
-            ParameterVector | ParameterExpression | list[ParameterExpression]
-        ) = None,
+        params: None | (ParameterVector | ParameterExpression | list[ParameterExpression]) = None,
     ) -> OperatorBase:
         r"""
         Args:

@@ -288,9 +288,7 @@ def gaussian(
 _sampled_gaussian_deriv_pulse = samplers.midpoint(continuous.gaussian_deriv)
 
 
-def gaussian_deriv(
-    duration: int, amp: complex, sigma: float, name: str | None = None
-) -> Waveform:
+def gaussian_deriv(duration: int, amp: complex, sigma: float, name: str | None = None) -> Waveform:
     r"""Generates unnormalized gaussian derivative :class:`~qiskit.pulse.library.Waveform`.
 
     For :math:`A=` ``amp`` and :math:`\sigma=` ``sigma`` applies the `midpoint` sampling strategy

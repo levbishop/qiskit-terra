@@ -95,9 +95,7 @@ class PhaseEstimationScale:
         else:
             return (phi - 1) * w + id_coefficient
 
-    def scale_phases(
-        self, phases: list | dict, id_coefficient: float = 0.0
-    ) -> dict | list:
+    def scale_phases(self, phases: list | dict, id_coefficient: float = 0.0) -> dict | list:
         """Convert a list or dict of phases to eigenvalues.
 
         The values in the list, or keys in the dict, are values of ``phi` and

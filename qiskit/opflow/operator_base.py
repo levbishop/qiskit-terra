@@ -95,9 +95,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     @abstractmethod
     def eval(
         self,
-        front: None | (
-            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
-        ) = None,
+        front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
         r"""
         Evaluate the Operator's underlying function, either on a binary string or another Operator.

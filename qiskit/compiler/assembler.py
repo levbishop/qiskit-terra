@@ -42,12 +42,12 @@ def _log_assembly_time(start_time, end_time):
 # TODO: parallelize over the experiments (serialize each separately, then add global header/config)
 def assemble(
     experiments: (
-        QuantumCircuit |
-        list[QuantumCircuit] |
-        Schedule |
-        list[Schedule] |
-        ScheduleBlock |
-        list[ScheduleBlock]
+        QuantumCircuit
+        | list[QuantumCircuit]
+        | Schedule
+        | list[Schedule]
+        | ScheduleBlock
+        | list[ScheduleBlock]
     ),
     backend: Backend | BaseBackend | None = None,
     qobj_id: str | None = None,
@@ -60,10 +60,8 @@ def assemble(
     meas_lo_freq: list[float] | None = None,
     qubit_lo_range: list[float] | None = None,
     meas_lo_range: list[float] | None = None,
-    schedule_los: None | (
-            list[dict[PulseChannel, float] | LoConfig] |
-            dict[PulseChannel, float] | LoConfig
-    ) = None,
+    schedule_los: None
+    | (list[dict[PulseChannel, float] | LoConfig] | dict[PulseChannel, float] | LoConfig) = None,
     meas_level: int | MeasLevel = MeasLevel.CLASSIFIED,
     meas_return: str | MeasReturnType = MeasReturnType.AVERAGE,
     meas_map: list[list[Qubit]] | None = None,
