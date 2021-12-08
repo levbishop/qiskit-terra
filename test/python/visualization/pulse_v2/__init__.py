@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Test for pulse visualization modules."""
+
+from __future__ import annotations

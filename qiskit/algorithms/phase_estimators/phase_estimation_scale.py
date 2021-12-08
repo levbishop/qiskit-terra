@@ -12,6 +12,8 @@
 
 """Scaling for Hamiltonian and eigenvalues to avoid phase wrapping"""
 
+from __future__ import annotations
+
 from typing import Union, Dict, List
 
 import numpy

@@ -12,6 +12,8 @@
 
 """Collect sequences of uninterrupted gates acting on 1 qubit."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

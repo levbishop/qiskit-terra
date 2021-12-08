@@ -12,4 +12,6 @@
 
 """Mock brooklyn backend"""
 
+from __future__ import annotations
+
 from .fake_brooklyn import FakeBrooklyn

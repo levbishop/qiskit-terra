@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """A pulse that is described by complex-valued sample points."""
+from __future__ import annotations
+
 from typing import Dict, List, Optional, Union, Any
 
 import numpy as np

@@ -97,6 +97,8 @@ Monospaced output
     %monospaced_output
 
 """
+from __future__ import annotations
+
 import warnings
 
 from IPython import get_ipython

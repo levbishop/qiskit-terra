@@ -14,6 +14,8 @@
 
 """Tests for Operator matrix linear operator class."""
 
+from __future__ import annotations
+
 import unittest
 import logging
 import copy

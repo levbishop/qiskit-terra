@@ -12,6 +12,8 @@
 
 """Rotation around the Z axis."""
 
+from __future__ import annotations
+
 from typing import Optional, Union
 
 from qiskit.circuit.gate import Gate

@@ -15,6 +15,8 @@
 Tests for uniformly controlled single-qubit unitaries.
 """
 
+from __future__ import annotations
+
 import unittest
 import itertools
 

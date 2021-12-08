@@ -14,6 +14,8 @@
 Fake Toronto device (27 qubit).
 """
 
+from __future__ import annotations
+
 import os
 
 from qiskit.test.mock import fake_pulse_backend

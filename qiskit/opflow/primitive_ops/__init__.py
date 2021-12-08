@@ -55,6 +55,8 @@ Symmetries
    Z2Symmetries
 """
 
+from __future__ import annotations
+
 from .primitive_op import PrimitiveOp
 from .pauli_op import PauliOp
 from .matrix_op import MatrixOp

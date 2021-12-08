@@ -56,6 +56,8 @@ Pulse
    PulseLibraryItem
 """
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.qobj.common import QobjExperimentHeader, QobjHeader

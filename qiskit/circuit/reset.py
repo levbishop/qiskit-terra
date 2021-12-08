@@ -13,6 +13,8 @@
 """
 Qubit reset to computational zero.
 """
+from __future__ import annotations
+
 from qiskit.circuit.instruction import Instruction
 
 

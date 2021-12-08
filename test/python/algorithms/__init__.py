@@ -12,6 +12,8 @@
 
 """Algorithms test module"""
 
+from __future__ import annotations
+
 from .algorithms_test_case import QiskitAlgorithmsTestCase
 
 __all__ = ["QiskitAlgorithmsTestCase"]

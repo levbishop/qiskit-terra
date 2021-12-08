@@ -690,6 +690,8 @@ Exceptions
    JobTimeoutError
 """
 
+from __future__ import annotations
+
 import pkgutil
 
 # Providers interface

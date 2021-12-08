@@ -12,6 +12,8 @@
 
 """ OperatorBase Class """
 
+from __future__ import annotations
+
 import itertools
 from abc import ABC, abstractmethod
 from copy import deepcopy

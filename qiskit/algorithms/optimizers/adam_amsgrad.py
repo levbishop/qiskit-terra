@@ -12,6 +12,8 @@
 
 """The Adam and AMSGRAD optimizers."""
 
+from __future__ import annotations
+
 import os
 import csv
 from typing import Any, Optional, Callable, Dict, Tuple, List

@@ -14,6 +14,8 @@
 
 """A circuit library widget module"""
 
+from __future__ import annotations
+
 import ipywidgets as wid
 from IPython.display import display
 

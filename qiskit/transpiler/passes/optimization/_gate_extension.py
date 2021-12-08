@@ -18,6 +18,8 @@ then the gate is trivial.
 If a gate has no `_trivial_if`, then is assumed to be non-trivial.
 If a gate has no `_postconditions`, then is assumed to have unknown post-conditions.
 """
+from __future__ import annotations
+
 try:
     from z3 import Not, And
 

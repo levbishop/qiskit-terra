@@ -30,6 +30,8 @@ Instructions are identified by the following:
 Instructions do not have any context about where they are in a circuit (which qubits/clbits).
 The circuit itself keeps this context.
 """
+from __future__ import annotations
+
 import warnings
 import copy
 from itertools import zip_longest

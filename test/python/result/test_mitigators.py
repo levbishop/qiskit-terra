@@ -13,6 +13,8 @@
 
 """Tests for error mitigation routines."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

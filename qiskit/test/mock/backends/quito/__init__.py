@@ -12,4 +12,6 @@
 
 """Mock quito backend"""
 
+from __future__ import annotations
+
 from .fake_quito import FakeQuito, FakeLegacyQuito

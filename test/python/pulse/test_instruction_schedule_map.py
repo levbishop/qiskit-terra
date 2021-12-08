@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Test the InstructionScheduleMap."""
+from __future__ import annotations
+
 import copy
 import pickle
 

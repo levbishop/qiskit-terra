@@ -90,6 +90,8 @@ Returned `ElementaryData` can be arbitrary subclasses that are implemented in
 the plotter API.
 """
 
+from __future__ import annotations
+
 import warnings
 from typing import List, Union, Dict, Any
 

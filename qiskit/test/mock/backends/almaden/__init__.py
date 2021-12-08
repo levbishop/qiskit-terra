@@ -12,4 +12,6 @@
 
 """Mock almaden backend"""
 
+from __future__ import annotations
+
 from .fake_almaden import FakeAlmaden, FakeLegacyAlmaden

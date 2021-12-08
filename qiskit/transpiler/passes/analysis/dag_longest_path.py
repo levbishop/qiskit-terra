@@ -12,6 +12,8 @@
 
 """Return the longest path in a DAGcircuit as a list of DAGNodes."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

@@ -12,6 +12,8 @@
 
 """Test the optimize-1q-gate pass"""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

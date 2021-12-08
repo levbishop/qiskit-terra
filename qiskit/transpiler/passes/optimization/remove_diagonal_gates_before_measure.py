@@ -12,6 +12,8 @@
 
 """Remove diagonal gates (including diagonal 2Q gates) before a measurement."""
 
+from __future__ import annotations
+
 from qiskit.circuit import Measure
 from qiskit.circuit.library.standard_gates import (
     RZGate,

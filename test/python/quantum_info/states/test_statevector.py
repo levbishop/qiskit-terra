@@ -13,6 +13,8 @@
 
 """Tests for Statevector quantum state class."""
 
+from __future__ import annotations
+
 import unittest
 import logging
 from itertools import permutations

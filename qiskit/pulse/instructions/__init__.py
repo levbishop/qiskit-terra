@@ -54,6 +54,8 @@ These are all instances of the same base class:
 
 .. autoclass:: Instruction
 """
+from __future__ import annotations
+
 from .acquire import Acquire
 from .delay import Delay
 from .directives import Directive, RelativeBarrier

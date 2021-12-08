@@ -14,6 +14,8 @@
 Exception for errors raised while parsing OPENQASM.
 """
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

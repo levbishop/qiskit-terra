@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Test conversion to probability distribution"""
+from __future__ import annotations
+
 from math import sqrt
 
 from qiskit.test import QiskitTestCase

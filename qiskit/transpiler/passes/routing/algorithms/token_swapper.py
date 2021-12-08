@@ -26,6 +26,8 @@
 
 """Permutation algorithms for general graphs."""
 
+from __future__ import annotations
+
 import copy
 import logging
 from typing import Iterator, Mapping, MutableMapping, MutableSet, List, Iterable, Union

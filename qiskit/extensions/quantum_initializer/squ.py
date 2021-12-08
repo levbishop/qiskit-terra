@@ -17,6 +17,8 @@ Note that the decomposition is up to a global phase shift.
 "Quantum computation and quantum information".)
 """
 
+from __future__ import annotations
+
 import cmath
 
 import numpy as np

@@ -12,6 +12,8 @@
 
 """Node for an OPENQASM CNOT statement."""
 
+from __future__ import annotations
+
 from .node import Node
 
 

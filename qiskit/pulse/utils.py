@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Module for common pulse programming utilities."""
+from __future__ import annotations
+
 import functools
 import warnings
 from typing import List, Dict, Union

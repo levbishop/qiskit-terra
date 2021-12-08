@@ -12,6 +12,8 @@
 
 """ The Quantum Approximate Optimization Algorithm. """
 
+from __future__ import annotations
+
 from typing import List, Callable, Optional, Union
 
 import numpy as np

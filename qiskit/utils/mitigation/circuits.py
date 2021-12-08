@@ -18,6 +18,8 @@
 Measurement calibration circuits. To apply the measurement mitigation
 use the fitters to produce a filter.
 """
+from __future__ import annotations
+
 from typing import List, Tuple, Union
 
 

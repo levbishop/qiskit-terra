@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Assemble function for converting a list of circuits into a qobj."""
+from __future__ import annotations
+
 import copy
 from collections import defaultdict
 from typing import Dict, List, Optional, Tuple

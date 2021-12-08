@@ -14,6 +14,8 @@
 ScalarOp class
 """
 
+from __future__ import annotations
+
 import copy
 from numbers import Number
 

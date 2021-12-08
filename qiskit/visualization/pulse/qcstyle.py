@@ -15,6 +15,8 @@ Deprecated.
 
 Style sheets for pulse visualization.
 """
+from __future__ import annotations
+
 import warnings
 import logging
 from collections import namedtuple

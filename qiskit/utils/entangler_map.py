@@ -16,6 +16,9 @@ based on the number of qubits.
 """
 
 
+from __future__ import annotations
+
+
 def get_entangler_map(map_type, num_qubits, offset=0):
     """Utility method to get an entangler map among qubits.
 

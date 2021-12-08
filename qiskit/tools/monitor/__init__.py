@@ -13,5 +13,7 @@
 """A module for monitoring jobs, backends, etc.
 """
 
+from __future__ import annotations
+
 from .job_monitor import job_monitor
 from .overview import backend_monitor, backend_overview

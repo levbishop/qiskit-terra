@@ -12,6 +12,8 @@
 
 """The Amplitude Estimators package."""
 
+from __future__ import annotations
+
 from .amplitude_estimator import AmplitudeEstimator, AmplitudeEstimatorResult
 from .ae import AmplitudeEstimation, AmplitudeEstimationResult
 from .fae import FasterAmplitudeEstimation, FasterAmplitudeEstimationResult

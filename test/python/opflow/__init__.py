@@ -12,6 +12,8 @@
 
 """Opflow test module"""
 
+from __future__ import annotations
+
 from .opflow_test_case import QiskitOpflowTestCase
 
 __all__ = ["QiskitOpflowTestCase"]

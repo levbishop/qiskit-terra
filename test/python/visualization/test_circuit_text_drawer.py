@@ -12,6 +12,8 @@
 
 """ `_text_circuit_drawer` "draws" a circuit in "ascii art" """
 
+from __future__ import annotations
+
 import os
 import unittest
 from codecs import encode

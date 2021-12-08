@@ -13,6 +13,8 @@
 
 """Test Qiskit's repeat instruction operation."""
 
+from __future__ import annotations
+
 import unittest
 
 from numpy import pi

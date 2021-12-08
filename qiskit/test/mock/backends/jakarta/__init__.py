@@ -12,4 +12,6 @@
 
 """Mock jakarta backend"""
 
+from __future__ import annotations
+
 from .fake_jakarta import FakeJakarta

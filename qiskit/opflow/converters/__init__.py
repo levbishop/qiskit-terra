@@ -61,6 +61,8 @@ frequently around the Operator flow.
    TwoQubitReduction
 """
 
+from __future__ import annotations
+
 from .converter_base import ConverterBase
 from .circuit_sampler import CircuitSampler
 from .pauli_basis_change import PauliBasisChange

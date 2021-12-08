@@ -12,4 +12,6 @@
 
 """The basis change circuits."""
 
+from __future__ import annotations
+
 from .qft import QFT

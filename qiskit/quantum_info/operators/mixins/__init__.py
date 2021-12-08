@@ -14,6 +14,8 @@
 Operator Mixins
 """
 
+from __future__ import annotations
+
 from inspect import getdoc
 
 from .group import GroupMixin

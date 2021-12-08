@@ -14,6 +14,8 @@
 Fake Reuschlikon device (16 qubit).
 """
 
+from __future__ import annotations
+
 from qiskit.providers.models import GateConfig, QasmBackendConfiguration
 from qiskit.test.mock.fake_backend import FakeBackend, FakeLegacyBackend
 

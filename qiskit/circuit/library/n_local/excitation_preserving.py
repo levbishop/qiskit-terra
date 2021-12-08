@@ -12,6 +12,8 @@
 
 """The ExcitationPreserving 2-local circuit."""
 
+from __future__ import annotations
+
 from typing import Union, Optional, List, Tuple, Callable, Any
 
 from numpy import pi

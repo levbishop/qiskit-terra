@@ -50,6 +50,8 @@ RunConfig
    RunConfig
 """
 
+from __future__ import annotations
+
 from qiskit.assembler.assemble_circuits import assemble_circuits
 from qiskit.assembler.assemble_schedules import assemble_schedules
 from qiskit.assembler.disassemble import disassemble

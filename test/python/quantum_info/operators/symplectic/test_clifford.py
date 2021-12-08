@@ -13,6 +13,8 @@
 # pylint: disable=invalid-name
 """Tests for Clifford class."""
 
+from __future__ import annotations
+
 import unittest
 from test import combine
 

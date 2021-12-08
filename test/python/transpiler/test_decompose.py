@@ -12,6 +12,8 @@
 
 """Test the decompose pass"""
 
+from __future__ import annotations
+
 from numpy import pi
 
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit

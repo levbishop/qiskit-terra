@@ -14,6 +14,8 @@
 
 """Matplotlib plotter API."""
 
+from __future__ import annotations
+
 from typing import Optional
 
 import matplotlib

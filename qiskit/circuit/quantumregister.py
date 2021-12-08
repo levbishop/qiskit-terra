@@ -13,6 +13,8 @@
 """
 Quantum register reference object.
 """
+from __future__ import annotations
+
 import itertools
 
 from qiskit.circuit.exceptions import CircuitError

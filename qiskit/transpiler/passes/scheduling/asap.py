@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """ASAP Scheduling."""
+from __future__ import annotations
+
 import itertools
 from collections import defaultdict
 from typing import List

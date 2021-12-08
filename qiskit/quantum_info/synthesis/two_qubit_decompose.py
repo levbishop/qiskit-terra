@@ -23,6 +23,8 @@ Method is described in Appendix B of Cross, A. W., Bishop, L. S., Sheldon, S., N
 Gambetta, J. M. Validating quantum computers using randomized model circuits.
 arXiv:1811.12926 [quant-ph] (2018).
 """
+from __future__ import annotations
+
 import cmath
 import math
 import io

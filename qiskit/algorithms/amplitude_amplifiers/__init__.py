@@ -12,6 +12,8 @@
 
 """ Amplitude Amplifiers Package """
 
+from __future__ import annotations
+
 from .amplitude_amplifier import AmplitudeAmplifier, AmplitudeAmplifierResult
 from .amplification_problem import AmplificationProblem
 from .grover import Grover, GroverResult

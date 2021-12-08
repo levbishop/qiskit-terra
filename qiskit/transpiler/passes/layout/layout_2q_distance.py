@@ -18,6 +18,8 @@ The lower the number, the better the selection.
 Therefore, 0 is a perfect layout selection.
 """
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

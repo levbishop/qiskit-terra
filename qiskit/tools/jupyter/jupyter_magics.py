@@ -12,6 +12,8 @@
 
 """A module of magic functions"""
 
+from __future__ import annotations
+
 import time
 import threading
 

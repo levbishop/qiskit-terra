@@ -20,6 +20,8 @@
 Decomposes a diagonal matrix into elementary gates using the method described in Theorem 7 in
 "Synthesis of Quantum Logic Circuits" by Shende et al. (https://arxiv.org/pdf/quant-ph/0406176.pdf).
 """
+from __future__ import annotations
+
 import cmath
 import math
 

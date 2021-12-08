@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Align measurement instructions."""
+from __future__ import annotations
+
 import itertools
 import warnings
 from collections import defaultdict

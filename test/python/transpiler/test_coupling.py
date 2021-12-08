@@ -12,6 +12,8 @@
 
 # pylint: disable=missing-docstring
 
+from __future__ import annotations
+
 from qiskit.transpiler import CouplingMap
 from qiskit.transpiler.exceptions import CouplingError
 from qiskit.test.mock import FakeRueschlikon

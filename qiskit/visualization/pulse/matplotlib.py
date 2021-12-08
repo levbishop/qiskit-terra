@@ -14,6 +14,8 @@
 
 """Matplotlib classes for pulse visualization."""
 
+from __future__ import annotations
+
 import collections
 from typing import Dict, List, Tuple, Callable, Union, Any
 

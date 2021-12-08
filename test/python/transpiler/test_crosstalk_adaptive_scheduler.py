@@ -14,6 +14,8 @@
 Tests for the CrosstalkAdaptiveSchedule transpiler pass.
 """
 
+from __future__ import annotations
+
 import unittest
 from datetime import datetime
 

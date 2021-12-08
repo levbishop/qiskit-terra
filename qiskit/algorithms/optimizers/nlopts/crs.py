@@ -12,6 +12,8 @@
 
 """Controlled Random Search (CRS) with local mutation optimizer."""
 
+from __future__ import annotations
+
 from .nloptimizer import NLoptOptimizer, NLoptOptimizerType
 
 

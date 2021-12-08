@@ -12,6 +12,8 @@
 
 """Exceptions for ClassicalFunction compiler"""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

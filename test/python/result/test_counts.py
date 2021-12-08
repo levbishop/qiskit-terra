@@ -14,6 +14,8 @@
 
 """Test Counts class."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.result import counts, utils

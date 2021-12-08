@@ -12,6 +12,8 @@
 
 """Tests for quantum channel representation class."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.quantum_info.operators.channel import SuperOp

@@ -13,6 +13,8 @@
 Multiple-Controlled U3 gate. Not using ancillary qubits.
 """
 
+from __future__ import annotations
+
 from math import pi
 from typing import Optional, Union, Tuple, List
 

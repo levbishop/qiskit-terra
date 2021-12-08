@@ -12,6 +12,8 @@
 
 """Test dynamical decoupling insertion pass."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

@@ -12,4 +12,6 @@
 
 """Module for methods which sample continuous functions."""
 
+from __future__ import annotations
+
 from .decorators import left, right, midpoint

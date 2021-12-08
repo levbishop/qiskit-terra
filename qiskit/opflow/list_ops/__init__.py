@@ -81,6 +81,8 @@ List Operators
 
 """
 
+from __future__ import annotations
+
 from .list_op import ListOp
 from .summed_op import SummedOp
 from .composed_op import ComposedOp

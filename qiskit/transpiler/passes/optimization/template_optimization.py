@@ -20,6 +20,8 @@ all compatible maximal matches that reduces the size of the circuit.
 Exact and practical pattern matching for quantum circuit optimization.
 `arXiv:1909.05270 <https://arxiv.org/abs/1909.05270>`_
 """
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit

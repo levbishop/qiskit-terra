@@ -18,6 +18,8 @@
 
 """Script to convert subunit stream returned by stestr to junitxml for processing by azure-pipelines."""
 
+from __future__ import annotations
+
 import argparse
 import sys
 

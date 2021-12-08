@@ -12,6 +12,8 @@
 
 """ Utility functions for OperatorFlow """
 
+from __future__ import annotations
+
 from qiskit.opflow.operator_base import OperatorBase
 
 

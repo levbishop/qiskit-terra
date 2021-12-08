@@ -12,6 +12,8 @@
 
 """ Test PauliSumOp """
 
+from __future__ import annotations
+
 import unittest
 from itertools import product
 from test.python.opflow import QiskitOpflowTestCase

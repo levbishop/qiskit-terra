@@ -13,6 +13,8 @@
 
 """A module for monitoring various qiskit functionality"""
 
+from __future__ import annotations
+
 import sys
 import time
 

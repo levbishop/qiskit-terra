@@ -12,6 +12,8 @@
 
 """Barrier instruction."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 from .instruction import Instruction

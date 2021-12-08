@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Module providing definitions of common Qobj classes."""
+from __future__ import annotations
+
 from types import SimpleNamespace
 
 

@@ -13,6 +13,8 @@
 """
 Template circuits over Clifford gates.
 """
+from __future__ import annotations
+
 from .clifford_2_1 import clifford_2_1
 from .clifford_2_2 import clifford_2_2
 from .clifford_2_3 import clifford_2_3

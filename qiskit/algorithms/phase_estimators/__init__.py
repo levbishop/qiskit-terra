@@ -12,6 +12,8 @@
 
 """Phase Estimators."""
 
+from __future__ import annotations
+
 from .phase_estimator import PhaseEstimator
 from .phase_estimation import PhaseEstimation
 from .phase_estimation_result import PhaseEstimationResult

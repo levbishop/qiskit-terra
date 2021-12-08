@@ -12,6 +12,8 @@
 
 """Map a DAGCircuit onto a `coupling_map` adding swap gates."""
 
+from __future__ import annotations
+
 import logging
 from math import inf
 from collections import OrderedDict

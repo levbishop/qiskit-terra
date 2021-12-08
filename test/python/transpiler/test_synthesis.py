@@ -12,6 +12,8 @@
 
 """Test synthesis algorithms"""
 
+from __future__ import annotations
+
 from qiskit.circuit import QuantumCircuit, QuantumRegister
 from qiskit.quantum_info.operators import Operator
 from qiskit.extensions.unitary import UnitaryGate

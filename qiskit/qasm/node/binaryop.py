@@ -12,6 +12,8 @@
 
 """Node for an OPENQASM binary operation expression."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import MissingOptionalLibraryError
 
 from .node import Node

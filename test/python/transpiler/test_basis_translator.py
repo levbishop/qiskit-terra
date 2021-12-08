@@ -13,6 +13,8 @@
 
 """Test the BasisTranslator pass"""
 
+from __future__ import annotations
+
 import os
 
 from numpy import pi

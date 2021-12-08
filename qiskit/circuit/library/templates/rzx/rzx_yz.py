@@ -20,6 +20,8 @@ q_1: ┤ X ├──────────┤ X ├─────────
      └───┘          └───┘           └─────────┘
 """
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit import Parameter, QuantumCircuit

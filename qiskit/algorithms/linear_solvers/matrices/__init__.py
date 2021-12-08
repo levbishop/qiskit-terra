@@ -12,6 +12,8 @@
 
 """System matrices for Qiskit's linear solvers."""
 
+from __future__ import annotations
+
 from .linear_system_matrix import LinearSystemMatrix
 from .numpy_matrix import NumPyMatrix
 from .tridiagonal_toeplitz import TridiagonalToeplitz

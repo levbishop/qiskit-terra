@@ -12,6 +12,8 @@
 
 """ Trotter Class """
 
+from __future__ import annotations
+
 from qiskit.opflow.evolutions.trotterizations.suzuki import Suzuki
 
 

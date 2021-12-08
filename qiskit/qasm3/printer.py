@@ -12,6 +12,8 @@
 
 """Printers for QASM 3 AST nodes."""
 
+from __future__ import annotations
+
 import io
 from typing import Sequence
 

@@ -14,6 +14,8 @@
 Decompose a single-qubit unitary via Euler angles.
 """
 
+from __future__ import annotations
+
 import math
 import cmath
 

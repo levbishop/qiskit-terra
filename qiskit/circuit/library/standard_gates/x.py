@@ -12,6 +12,8 @@
 
 """X, CX, CCX and multi-controlled X gates."""
 
+from __future__ import annotations
+
 import warnings
 from typing import Optional, Union
 from math import ceil

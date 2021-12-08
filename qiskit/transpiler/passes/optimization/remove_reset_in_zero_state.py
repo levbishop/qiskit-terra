@@ -12,6 +12,8 @@
 
 """Remove reset gate when the qubit is in zero state."""
 
+from __future__ import annotations
+
 from qiskit.circuit import Reset
 from qiskit.dagcircuit import DAGInNode
 from qiskit.transpiler.basepasses import TransformationPass

@@ -12,6 +12,8 @@
 
 """Convert a circuit in ``U3, CX`` to ``Rx, Ry, Rxx`` without unrolling or simplification."""
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.transpiler.basepasses import TransformationPass

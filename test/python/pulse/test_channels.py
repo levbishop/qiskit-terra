@@ -12,6 +12,8 @@
 
 """Test cases for the pulse channel group."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.pulse.channels import (

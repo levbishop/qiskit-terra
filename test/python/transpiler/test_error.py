@@ -12,6 +12,8 @@
 
 """Test the Error pass"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.transpiler.passes import Error

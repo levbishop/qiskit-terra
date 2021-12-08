@@ -12,6 +12,8 @@
 
 """Sequential Least SQuares Programming optimizer"""
 
+from __future__ import annotations
+
 from typing import Optional
 
 from .scipy_optimizer import SciPyOptimizer

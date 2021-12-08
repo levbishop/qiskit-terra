@@ -12,6 +12,8 @@
 
 
 """Helper function for converting a circuit to a gate"""
+from __future__ import annotations
+
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.exceptions import QiskitError

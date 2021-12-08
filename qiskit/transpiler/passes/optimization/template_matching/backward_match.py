@@ -24,6 +24,8 @@ Exact and practical pattern matching for quantum circuit optimization.
 `arXiv:1909.05270 <https://arxiv.org/abs/1909.05270>`_
 
 """
+from __future__ import annotations
+
 import heapq
 
 from qiskit.circuit.controlledgate import ControlledGate

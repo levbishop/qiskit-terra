@@ -14,6 +14,8 @@
 
 """Non-string identifiers for circuit and record identifiers test"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.circuit import ClassicalRegister, QuantumCircuit, QuantumRegister

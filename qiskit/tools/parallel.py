@@ -48,6 +48,8 @@ Routines for running Python functions in parallel using process pools
 from the multiprocessing library.
 """
 
+from __future__ import annotations
+
 import os
 import sys
 from concurrent.futures import ProcessPoolExecutor

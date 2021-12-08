@@ -12,6 +12,8 @@
 
 """Transpiler pulse gate pass testing."""
 
+from __future__ import annotations
+
 from qiskit import pulse, circuit, transpile
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeAthens

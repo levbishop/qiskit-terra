@@ -13,6 +13,8 @@
 """
 Simulator command to perform multiple pauli gates in a single pass
 """
+from __future__ import annotations
+
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.library.standard_gates.i import IGate
 from qiskit.circuit.library.standard_gates.x import XGate

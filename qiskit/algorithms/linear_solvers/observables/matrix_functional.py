@@ -12,6 +12,8 @@
 
 """The matrix functional of the vector solution to the linear systems."""
 
+from __future__ import annotations
+
 from typing import Union, List
 
 import numpy as np

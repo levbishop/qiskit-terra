@@ -12,6 +12,8 @@
 
 """ Measurement error mitigation """
 
+from __future__ import annotations
+
 import copy
 from typing import List, Optional, Tuple, Dict, Callable
 

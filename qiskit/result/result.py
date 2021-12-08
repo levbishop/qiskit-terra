@@ -12,6 +12,8 @@
 
 """Model for schema-conformant Results."""
 
+from __future__ import annotations
+
 import copy
 import warnings
 

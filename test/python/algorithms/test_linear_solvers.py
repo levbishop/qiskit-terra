@@ -12,6 +12,8 @@
 
 """Test the quantum linear system solver algorithm."""
 
+from __future__ import annotations
+
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 

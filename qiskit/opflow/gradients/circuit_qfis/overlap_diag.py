@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """The module for Quantum the Fisher Information."""
+from __future__ import annotations
+
 import copy
 from typing import List, Union
 

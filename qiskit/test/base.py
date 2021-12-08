@@ -22,6 +22,8 @@ the environment variables for customizing different options), and the
 decorators in the ``decorators`` package.
 """
 
+from __future__ import annotations
+
 import inspect
 import logging
 import os

@@ -16,6 +16,8 @@ Level 2 pass manager: medium optimization by noise adaptive qubit mapping and
 gate cancellation using commutativity rules.
 """
 
+from __future__ import annotations
+
 from qiskit.transpiler.passmanager_config import PassManagerConfig
 from qiskit.transpiler.timing_constraints import TimingConstraints
 from qiskit.transpiler.passmanager import PassManager

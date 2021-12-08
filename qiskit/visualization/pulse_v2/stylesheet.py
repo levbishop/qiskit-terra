@@ -31,6 +31,8 @@ given program and device data. The layout is a callback function that determines
 the appearance of the output image.
 """
 
+from __future__ import annotations
+
 import warnings
 from typing import Dict, Any, Mapping
 

@@ -12,6 +12,8 @@
 
 """Tests for plot_histogram."""
 
+from __future__ import annotations
+
 import unittest
 
 import matplotlib as mpl

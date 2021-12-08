@@ -31,6 +31,8 @@ Circuit Converters (:mod:`qiskit.converters`)
    dagdependency_to_dag
 """
 
+from __future__ import annotations
+
 from .circuit_to_dag import circuit_to_dag
 from .dag_to_circuit import dag_to_circuit
 from .circuit_to_instruction import circuit_to_instruction

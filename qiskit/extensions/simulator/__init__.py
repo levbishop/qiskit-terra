@@ -12,4 +12,6 @@
 
 """Instructions usable by simulator backends."""
 
+from __future__ import annotations
+
 from .snapshot import Snapshot

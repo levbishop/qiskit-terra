@@ -12,6 +12,8 @@
 
 """QASM3 Exporter"""
 
+from __future__ import annotations
+
 import collections
 import io
 import itertools

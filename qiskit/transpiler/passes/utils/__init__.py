@@ -12,6 +12,8 @@
 
 """Utility passes used for other main passes."""
 
+from __future__ import annotations
+
 from .check_map import CheckMap
 from .check_cx_direction import CheckCXDirection  # Deprecated
 from .cx_direction import CXDirection  # Deprecated

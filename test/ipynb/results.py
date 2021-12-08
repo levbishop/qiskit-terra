@@ -12,6 +12,8 @@
 
 """Result object to analyse image comparisons"""
 
+from __future__ import annotations
+
 import os
 import json
 import zipfile

@@ -12,6 +12,8 @@
 
 """Module containing transpiler layout passes."""
 
+from __future__ import annotations
+
 from .set_layout import SetLayout
 from .trivial_layout import TrivialLayout
 from .dense_layout import DenseLayout

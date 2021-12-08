@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Piecewise polynomial Chebyshev approximation to a given f(x)."""
+from __future__ import annotations
+
 from typing import Callable, List, Optional, Union
 
 import numpy as np

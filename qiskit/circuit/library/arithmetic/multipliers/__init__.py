@@ -12,5 +12,7 @@
 
 """The multiplier circuit library."""
 
+from __future__ import annotations
+
 from .hrs_cumulative_multiplier import HRSCumulativeMultiplier
 from .rg_qft_multiplier import RGQFTMultiplier

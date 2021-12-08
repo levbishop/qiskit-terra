@@ -37,6 +37,8 @@ Backend Objects
    JobStatus
 """
 
+from __future__ import annotations
+
 from .backendconfiguration import (
     BackendConfiguration,
     PulseBackendConfiguration,

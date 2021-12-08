@@ -13,6 +13,8 @@
 Base class for readout error mitigation.
 """
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import Optional, List, Iterable, Tuple, Union, Callable
 

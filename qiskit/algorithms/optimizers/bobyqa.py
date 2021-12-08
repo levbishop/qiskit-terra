@@ -12,6 +12,8 @@
 
 """Bound Optimization BY Quadratic Approximation (BOBYQA) optimizer."""
 
+from __future__ import annotations
+
 from typing import Any, Dict, Tuple, List, Callable, Optional
 
 import numpy as np

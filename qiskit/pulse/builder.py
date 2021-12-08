@@ -438,6 +438,8 @@ how the program is built.
     samples_to_seconds
     seconds_to_samples
 """
+from __future__ import annotations
+
 import collections
 import contextvars
 import functools

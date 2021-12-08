@@ -12,6 +12,8 @@
 
 """Manager for a set of Passes and their scheduling during transpilation."""
 
+from __future__ import annotations
+
 from typing import Union, List, Callable, Dict, Any
 
 import dill

@@ -60,6 +60,8 @@ Exceptions
 # Builder imports.
 
 # Construction methods:
+from __future__ import annotations
+
 from qiskit.pulse.builder import (
     active_backend,
     active_transpiler_settings,

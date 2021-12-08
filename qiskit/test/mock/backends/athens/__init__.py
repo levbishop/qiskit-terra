@@ -12,4 +12,6 @@
 
 """Mock athens backend"""
 
+from __future__ import annotations
+
 from .fake_athens import FakeAthens, FakeLegacyAthens

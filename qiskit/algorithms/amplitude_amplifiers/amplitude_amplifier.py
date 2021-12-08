@@ -12,6 +12,8 @@
 
 """The interface for amplification algorithms and results."""
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import Optional, Any, Union, Dict, List
 

@@ -12,6 +12,8 @@
 
 """An abstract class for matrices input to the linear systems solvers in Qiskit."""
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import Tuple
 

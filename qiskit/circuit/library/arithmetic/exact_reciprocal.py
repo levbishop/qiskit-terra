@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Exact reciprocal rotation."""
 
+from __future__ import annotations
+
 from math import isclose
 
 import numpy as np

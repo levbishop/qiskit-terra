@@ -13,6 +13,8 @@
 This module contains utility functions for circuits.
 """
 
+from __future__ import annotations
+
 import numpy
 
 from qiskit.exceptions import QiskitError

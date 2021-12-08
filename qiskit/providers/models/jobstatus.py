@@ -13,6 +13,9 @@
 """Class for job status."""
 
 
+from __future__ import annotations
+
+
 class JobStatus:
     """Model for JobStatus.
 

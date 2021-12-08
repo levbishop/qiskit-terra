@@ -12,6 +12,8 @@
 
 """Helper function for converting a circuit to an instruction."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.quantumregister import QuantumRegister

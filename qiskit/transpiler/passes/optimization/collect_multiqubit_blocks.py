@@ -12,6 +12,8 @@
 
 """Collect sequences of uninterrupted gates acting on a number of qubits."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 from qiskit.circuit import Gate
 from qiskit.dagcircuit import DAGOpNode, DAGInNode

@@ -12,6 +12,8 @@
 
 """Test cases for Pulse Macro functions."""
 
+from __future__ import annotations
+
 from qiskit.pulse import (
     Schedule,
     AcquireChannel,

@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Node for an OPENQASM idlist."""
+from __future__ import annotations
+
 from .node import Node
 
 

@@ -28,6 +28,8 @@ The sampler will call the `continuous_pulse` function with a set of times it wil
 according to the sampling strategy it implements along with the passed `args` and `kwargs`.
 """
 
+from __future__ import annotations
+
 from typing import Callable
 
 import numpy as np

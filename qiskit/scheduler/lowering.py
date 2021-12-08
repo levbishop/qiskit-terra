@@ -13,6 +13,8 @@
 """Lower gates to schedules. The relative timing within gates is respected. This
 module handles the translation, but does not handle timing.
 """
+from __future__ import annotations
+
 from collections import namedtuple
 from typing import Dict, List
 

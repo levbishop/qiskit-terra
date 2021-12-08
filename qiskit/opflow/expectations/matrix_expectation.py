@@ -12,6 +12,8 @@
 
 """ MatrixExpectation Class """
 
+from __future__ import annotations
+
 from typing import Union
 
 from qiskit.opflow.expectations.expectation_base import ExpectationBase

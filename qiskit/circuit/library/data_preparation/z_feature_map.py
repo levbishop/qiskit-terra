@@ -12,6 +12,8 @@
 
 """Create a new first-order Pauli-Z expansion circuit."""
 
+from __future__ import annotations
+
 from typing import Callable, Optional
 
 import numpy as np

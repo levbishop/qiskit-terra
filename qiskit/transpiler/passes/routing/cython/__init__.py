@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Module containing transpiler Cython code."""
+
+from __future__ import annotations

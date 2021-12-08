@@ -12,6 +12,8 @@
 
 """Test the quantum amplitude estimation algorithm."""
 
+from __future__ import annotations
+
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 

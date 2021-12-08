@@ -12,6 +12,8 @@
 
 """ TaperedPauliSumOp Class and Z2Symmetries"""
 
+from __future__ import annotations
+
 import itertools
 import logging
 from copy import deepcopy

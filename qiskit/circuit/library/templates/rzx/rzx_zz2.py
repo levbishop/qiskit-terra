@@ -25,6 +25,8 @@ q_1: ┤ X ├┤ P(ϴ) ├┤ X ├┤ P(-ϴ) ├┤ RZ(π/2) ├┤ RX(π/2) �
 «     └──────────┘└─────────┘└─────────┘└─────────┘
 """
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit import Parameter, QuantumCircuit

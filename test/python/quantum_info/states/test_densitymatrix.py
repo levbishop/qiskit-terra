@@ -12,6 +12,8 @@
 
 """Tests for DensityMatrix quantum state class."""
 
+from __future__ import annotations
+
 import unittest
 import logging
 

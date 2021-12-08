@@ -14,6 +14,8 @@
 Instruction collection.
 """
 
+from __future__ import annotations
+
 import functools
 import warnings
 from typing import Callable, Optional, Tuple, Union

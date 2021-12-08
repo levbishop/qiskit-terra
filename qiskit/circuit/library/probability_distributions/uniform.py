@@ -12,6 +12,8 @@
 
 """The uniform probability distribution circuit."""
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.circuit import QuantumCircuit

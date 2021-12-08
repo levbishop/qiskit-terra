@@ -13,6 +13,8 @@
 These are a number of elementary functions that are required for the AQC routines to work.
 """
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit.library import RXGate, RZGate, RYGate

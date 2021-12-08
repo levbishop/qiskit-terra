@@ -13,4 +13,6 @@
 """Events
 """
 
+from __future__ import annotations
+
 from .progressbar import TextProgressBar

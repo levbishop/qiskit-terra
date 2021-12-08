@@ -12,6 +12,8 @@
 
 """SI unit utilities"""
 
+from __future__ import annotations
+
 from typing import Tuple, Optional, Union
 
 import numpy as np

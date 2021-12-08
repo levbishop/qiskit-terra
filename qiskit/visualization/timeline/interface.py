@@ -21,6 +21,8 @@ The drawer canvas object is internally initialized from the input data and
 the configured canvas is passed to one of the plotter APIs to generate a visualization data.
 """
 
+from __future__ import annotations
+
 from typing import Optional, Dict, Any, List, Tuple
 
 from qiskit import circuit

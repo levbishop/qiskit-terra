@@ -26,6 +26,8 @@ overridden to opt-out of this infrastructure but still meet the interface requir
     (``qiskit.utils.algorithm_globals.random_seed = seed``).
 """
 
+from __future__ import annotations
+
 import warnings
 import time
 import logging

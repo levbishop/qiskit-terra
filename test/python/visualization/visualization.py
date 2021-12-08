@@ -15,6 +15,8 @@
 """Tests class with methods for comparing the outputs of visualization tools with expected ones.
 Useful for refactoring purposes."""
 
+from __future__ import annotations
+
 import os
 import unittest
 from filecmp import cmp as cmpfile

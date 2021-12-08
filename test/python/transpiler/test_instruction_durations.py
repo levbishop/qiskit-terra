@@ -14,6 +14,8 @@
 
 """Test InstructionDurations class."""
 
+from __future__ import annotations
+
 from qiskit.circuit import Delay, Parameter
 from qiskit.test.mock.backends import FakeParis, FakeTokyo
 from qiskit.transpiler.exceptions import TranspilerError

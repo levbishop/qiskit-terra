@@ -14,6 +14,8 @@
 Exception for errors when there's an error in the Result
 """
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

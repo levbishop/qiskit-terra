@@ -12,6 +12,8 @@
 
 """Test operations on the builder interfaces for control flow in dynamic QuantumCircuits."""
 
+from __future__ import annotations
+
 import math
 
 import ddt

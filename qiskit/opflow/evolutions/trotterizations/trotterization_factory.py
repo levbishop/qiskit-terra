@@ -12,6 +12,8 @@
 
 """TrotterizationFactory Class """
 
+from __future__ import annotations
+
 from qiskit.opflow.evolutions.trotterizations.qdrift import QDrift
 from qiskit.opflow.evolutions.trotterizations.suzuki import Suzuki
 from qiskit.opflow.evolutions.trotterizations.trotter import Trotter

@@ -12,4 +12,6 @@
 
 """Method for generating random circuits."""
 
+from __future__ import annotations
+
 from .utils import random_circuit

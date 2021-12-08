@@ -13,6 +13,8 @@
 
 """A module for monitoring backends."""
 
+from __future__ import annotations
+
 import time
 
 from IPython.display import HTML, display

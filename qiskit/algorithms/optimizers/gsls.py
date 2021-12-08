@@ -12,6 +12,8 @@
 
 """Line search with Gaussian-smoothed samples on a sphere."""
 
+from __future__ import annotations
+
 from typing import Dict, Optional, Tuple, List, Callable, Any
 
 import numpy as np

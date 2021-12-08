@@ -12,6 +12,8 @@
 
 """DIviding RECTangles Locally-biased Randomized optimizer. """
 
+from __future__ import annotations
+
 from .nloptimizer import NLoptOptimizer, NLoptOptimizerType
 
 

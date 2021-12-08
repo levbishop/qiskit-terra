@@ -13,6 +13,8 @@
 """Frequency instructions module. These instructions allow the user to manipulate
 the frequency of a channel.
 """
+from __future__ import annotations
+
 from typing import Optional, Union, Tuple
 
 from qiskit.circuit.parameterexpression import ParameterExpression

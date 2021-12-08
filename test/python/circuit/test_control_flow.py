@@ -12,6 +12,8 @@
 
 """Test operations on control flow for dynamic QuantumCircuits."""
 
+from __future__ import annotations
+
 import math
 
 from ddt import ddt, data

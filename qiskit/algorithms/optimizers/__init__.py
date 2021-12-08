@@ -102,6 +102,8 @@ The global optimizers are as follows:
 
 """
 
+from __future__ import annotations
+
 from .adam_amsgrad import ADAM
 from .aqgd import AQGD
 from .bobyqa import BOBYQA

@@ -12,6 +12,8 @@
 
 """Test the Scheduling passes"""
 
+from __future__ import annotations
+
 import unittest
 
 from ddt import ddt, data

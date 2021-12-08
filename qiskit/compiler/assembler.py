@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Assemble function for converting a list of circuits into a qobj"""
+from __future__ import annotations
+
 import copy
 import logging
 import uuid

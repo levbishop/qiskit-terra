@@ -12,6 +12,8 @@
 
 """Tests preset pass manager with faulty backends"""
 
+from __future__ import annotations
+
 from ddt import ddt, data
 
 from qiskit import QuantumCircuit, QuantumRegister, BasicAer, execute

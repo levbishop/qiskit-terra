@@ -17,6 +17,8 @@
 Transformations between QuantumChannel representations.
 """
 
+from __future__ import annotations
+
 import numpy as np
 import scipy.linalg as la
 

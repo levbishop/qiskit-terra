@@ -12,4 +12,6 @@
 
 """Mock singapore backend"""
 
+from __future__ import annotations
+
 from .fake_singapore import FakeSingapore, FakeLegacySingapore

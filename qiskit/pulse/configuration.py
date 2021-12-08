@@ -13,6 +13,8 @@
 """
 Configurations for pulse experiments.
 """
+from __future__ import annotations
+
 from typing import Dict, Union, Tuple, Optional
 
 from .channels import PulseChannel, DriveChannel, MeasureChannel

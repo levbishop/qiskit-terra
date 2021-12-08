@@ -14,6 +14,8 @@
 
 """Contains the terra version."""
 
+from __future__ import annotations
+
 import os
 import subprocess
 from collections.abc import Mapping

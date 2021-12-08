@@ -24,6 +24,8 @@ Qasm Pygments tools (:mod:`qiskit.qasm.pygments`)
    QasmTerminalStyle
    QasmHTMLStyle
 """
+from __future__ import annotations
+
 try:
     import pygments
 

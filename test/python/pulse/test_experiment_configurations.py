@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Test cases for the experimental conditions for pulse."""
+from __future__ import annotations
+
 import unittest
 
 from qiskit.pulse.channels import DriveChannel, MeasureChannel, AcquireChannel

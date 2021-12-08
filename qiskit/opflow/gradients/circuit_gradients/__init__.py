@@ -12,6 +12,8 @@
 
 """The module for Aqua's first order derivatives."""
 
+from __future__ import annotations
+
 from .circuit_gradient import CircuitGradient
 from .lin_comb import LinComb
 from .param_shift import ParamShift

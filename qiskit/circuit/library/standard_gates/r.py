@@ -12,6 +12,8 @@
 
 """Rotation around an axis in x-y plane."""
 
+from __future__ import annotations
+
 import math
 from typing import Optional
 

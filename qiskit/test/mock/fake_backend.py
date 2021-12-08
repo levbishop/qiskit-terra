@@ -16,6 +16,8 @@
 Base class for dummy backends.
 """
 
+from __future__ import annotations
+
 import uuid
 import warnings
 

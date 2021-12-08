@@ -12,6 +12,8 @@
 
 """Test BaseBackend methods."""
 
+from __future__ import annotations
+
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeOpenPulse2Q, FakeMelbourne
 

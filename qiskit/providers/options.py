@@ -12,6 +12,8 @@
 
 """Container class for backend options."""
 
+from __future__ import annotations
+
 import io
 
 

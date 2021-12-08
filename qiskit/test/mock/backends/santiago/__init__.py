@@ -12,4 +12,6 @@
 
 """Mock santiago backend"""
 
+from __future__ import annotations
+
 from .fake_santiago import FakeSantiago, FakeLegacySantiago

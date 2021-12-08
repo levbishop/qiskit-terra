@@ -19,6 +19,8 @@ Executing Experiments (:mod:`qiskit.execute_function`)
 
 .. autofunction:: execute
 """
+from __future__ import annotations
+
 import logging
 from time import time
 

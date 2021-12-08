@@ -13,6 +13,8 @@
 """ Test Operator construction, including OpPrimitives and singletons. """
 
 
+from __future__ import annotations
+
 import itertools
 import unittest
 from math import pi

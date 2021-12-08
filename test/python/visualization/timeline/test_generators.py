@@ -14,6 +14,8 @@
 
 """Tests for generator of timeline drawer."""
 
+from __future__ import annotations
+
 import qiskit
 from qiskit.test import QiskitTestCase
 from qiskit.visualization.timeline import generators, types, stylesheet

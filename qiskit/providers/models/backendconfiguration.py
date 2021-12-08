@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Backend Configuration Classes."""
+from __future__ import annotations
+
 import re
 import copy
 import numbers

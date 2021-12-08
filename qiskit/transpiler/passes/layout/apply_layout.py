@@ -12,6 +12,8 @@
 
 """Transform a circuit with virtual qubits into a circuit with physical qubits."""
 
+from __future__ import annotations
+
 from qiskit.circuit import QuantumRegister
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.basepasses import TransformationPass

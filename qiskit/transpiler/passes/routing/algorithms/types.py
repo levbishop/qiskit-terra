@@ -26,6 +26,8 @@
 
 """Type definitions used within the permutation package."""
 
+from __future__ import annotations
+
 from typing import TypeVar, Dict, Tuple, NamedTuple, Union
 
 from qiskit.circuit import Qubit

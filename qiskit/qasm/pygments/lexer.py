@@ -12,6 +12,8 @@
 """Pygments tools for Qasm.
 """
 
+from __future__ import annotations
+
 from qiskit.exceptions import MissingOptionalLibraryError
 
 try:

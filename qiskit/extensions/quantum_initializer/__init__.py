@@ -12,6 +12,8 @@
 
 """Initialize qubit registers to desired arbitrary state."""
 
+from __future__ import annotations
+
 from .squ import SingleQubitUnitary
 from .ucrz import UCRZGate
 from .ucry import UCRYGate

@@ -12,6 +12,8 @@
 
 """Reference circuits used by the tests."""
 
+from __future__ import annotations
+
 from qiskit.circuit import QuantumCircuit, QuantumRegister, ClassicalRegister
 
 

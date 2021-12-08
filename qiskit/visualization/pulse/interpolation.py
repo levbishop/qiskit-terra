@@ -15,6 +15,8 @@ Deprecated.
 
 Interpolation module for pulse visualization.
 """
+from __future__ import annotations
+
 from functools import partial
 from typing import Tuple
 

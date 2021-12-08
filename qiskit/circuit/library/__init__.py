@@ -358,6 +358,8 @@ RZXGate template circuits
 
 """
 
+from __future__ import annotations
+
 from .standard_gates import *
 from .templates import *
 from ..barrier import Barrier

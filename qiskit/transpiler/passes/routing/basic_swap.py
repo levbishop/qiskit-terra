@@ -12,6 +12,8 @@
 
 """Map (with minimum effort) a DAGCircuit onto a `coupling_map` adding swap gates."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.dagcircuit import DAGCircuit

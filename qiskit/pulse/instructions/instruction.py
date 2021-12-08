@@ -21,6 +21,8 @@ For example::
     sched = Schedule()
     sched += Delay(duration, channel)  # Delay is a specific subclass of Instruction
 """
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import Callable, Iterable, List, Optional, Set, Tuple
 

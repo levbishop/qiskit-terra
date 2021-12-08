@@ -12,6 +12,8 @@
 
 """PauliOp Class """
 
+from __future__ import annotations
+
 from math import pi
 from typing import Dict, List, Optional, Set, Union, cast
 

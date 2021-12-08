@@ -15,6 +15,8 @@
 
 """Diagonal matrix circuit."""
 
+from __future__ import annotations
+
 import cmath
 from typing import Union, List
 

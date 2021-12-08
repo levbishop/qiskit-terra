@@ -13,6 +13,8 @@
 """
 Quantum bit and Classical bit objects.
 """
+from __future__ import annotations
+
 import warnings
 
 from qiskit.circuit.exceptions import CircuitError

@@ -12,4 +12,6 @@
 
 """Mock vigo backend"""
 
+from __future__ import annotations
+
 from .fake_vigo import FakeVigo, FakeLegacyVigo

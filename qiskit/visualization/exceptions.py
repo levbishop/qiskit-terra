@@ -12,6 +12,8 @@
 
 """Exception for errors raised by visualization module."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

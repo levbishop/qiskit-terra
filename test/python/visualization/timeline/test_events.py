@@ -12,6 +12,8 @@
 
 """Tests for event of timeline drawer."""
 
+from __future__ import annotations
+
 import qiskit
 from qiskit import QuantumCircuit, transpile
 from qiskit.circuit import library

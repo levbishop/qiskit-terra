@@ -12,6 +12,8 @@
 
 """Test for the DAGCircuit object"""
 
+from __future__ import annotations
+
 import unittest
 from collections import Counter
 

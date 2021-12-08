@@ -12,4 +12,6 @@
 
 """Mock tenerife backend"""
 
+from __future__ import annotations
+
 from .fake_tenerife import FakeTenerife, FakeLegacyTenerife

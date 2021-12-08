@@ -12,4 +12,6 @@
 
 """Mock burlington backend"""
 
+from __future__ import annotations
+
 from .fake_burlington import FakeBurlington, FakeLegacyBurlington

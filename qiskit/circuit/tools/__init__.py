@@ -13,4 +13,6 @@
 """
 Helpful routines
 """
+from __future__ import annotations
+
 from .pi_check import pi_check

@@ -13,3 +13,5 @@
 # pylint: disable=cyclic-import
 
 """Qiskit pulse scheduling tests."""
+
+from __future__ import annotations

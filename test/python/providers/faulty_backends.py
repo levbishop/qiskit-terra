@@ -12,6 +12,8 @@
 
 """Faulty fake backends for testing"""
 
+from __future__ import annotations
+
 from qiskit.providers.models import BackendProperties
 from qiskit.test.mock import FakeOurense
 

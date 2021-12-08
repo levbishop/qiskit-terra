@@ -12,6 +12,8 @@
 
 """Utils for testing the standard gates."""
 
+from __future__ import annotations
+
 from inspect import signature, Parameter
 
 

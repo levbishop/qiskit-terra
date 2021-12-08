@@ -54,6 +54,8 @@ State Functions
 
 """
 
+from __future__ import annotations
+
 from .state_fn import StateFn
 from .dict_state_fn import DictStateFn
 from .operator_state_fn import OperatorStateFn

@@ -12,4 +12,6 @@
 
 """Mock casablanca backend"""
 
+from __future__ import annotations
+
 from .fake_casablanca import FakeCasablanca, FakeLegacyCasablanca

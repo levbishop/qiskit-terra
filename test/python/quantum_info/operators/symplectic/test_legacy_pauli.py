@@ -12,6 +12,8 @@
 
 """Quick program to test the qi tools modules."""
 
+from __future__ import annotations
+
 import unittest
 from copy import deepcopy
 

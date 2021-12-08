@@ -50,6 +50,8 @@ as the data amount scales.
 Note that we don't need to write any parameter management logic for each object,
 and thus this parameter framework gives greater scalability to the pulse module.
 """
+from __future__ import annotations
+
 from copy import deepcopy, copy
 from typing import List, Dict, Set, Any, Union
 

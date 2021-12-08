@@ -12,6 +12,8 @@
 
 """Tests for qiskit.quantum_info.analysis"""
 
+from __future__ import annotations
+
 import unittest
 
 import qiskit

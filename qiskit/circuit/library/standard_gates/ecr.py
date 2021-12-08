@@ -12,6 +12,8 @@
 
 """Two-qubit ZX-rotation gate."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit.gate import Gate

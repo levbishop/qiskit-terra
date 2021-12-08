@@ -14,6 +14,8 @@
 Tests for the Collect2qBlocks transpiler pass.
 """
 
+from __future__ import annotations
+
 import unittest
 from math import pi
 

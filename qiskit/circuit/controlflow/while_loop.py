@@ -12,6 +12,8 @@
 
 "Circuit operation representing a ``while`` loop."
 
+from __future__ import annotations
+
 from typing import Optional, Tuple, Union
 
 from qiskit.circuit import Clbit, ClassicalRegister, QuantumCircuit

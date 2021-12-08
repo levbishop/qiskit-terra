@@ -12,6 +12,8 @@
 
 """Cancel back-to-back `cx` gates in dag."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import TransformationPass
 
 

@@ -12,6 +12,8 @@
 
 """ Z2 Symmetry Tapering Converter Class """
 
+from __future__ import annotations
+
 import logging
 from typing import List, Tuple, Union, cast
 

@@ -12,6 +12,8 @@
 
 """Functions for dealing with classical conditions."""
 
+from __future__ import annotations
+
 from typing import Tuple, Union
 
 from qiskit.circuit.classicalregister import ClassicalRegister, Clbit

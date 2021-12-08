@@ -13,6 +13,8 @@
 Circuit simulation for the Clifford class.
 """
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.barrier import Barrier

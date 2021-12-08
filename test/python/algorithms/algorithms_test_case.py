@@ -12,6 +12,8 @@
 
 """ Algorithms Test Case """
 
+from __future__ import annotations
+
 from qiskit.test import QiskitTestCase
 
 

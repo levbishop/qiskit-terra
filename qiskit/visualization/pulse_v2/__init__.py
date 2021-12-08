@@ -15,6 +15,8 @@ Pulse visualization module.
 """
 
 # interface
+from __future__ import annotations
+
 from qiskit.visualization.pulse_v2.interface import draw
 
 # stylesheets

@@ -12,6 +12,8 @@
 
 """Node for an OPENQASM external function."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError

@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Expand a gate in a circuit using its decomposition rules."""
+from __future__ import annotations
+
 import warnings
 from typing import Type, Union, List, Optional
 from fnmatch import fnmatch

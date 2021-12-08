@@ -13,6 +13,8 @@
 "Circuit operation representing an ``if/else`` statement."
 
 
+from __future__ import annotations
+
 from typing import Optional, Tuple, Union
 
 from qiskit.circuit import ClassicalRegister, Clbit, QuantumCircuit, Qubit

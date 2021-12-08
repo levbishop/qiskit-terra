@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Map a DAGCircuit onto a given ``coupling_map``, allocating qubits and adding swap gates."""
+from __future__ import annotations
+
 import copy
 import logging
 import math

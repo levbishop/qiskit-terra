@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Qiskit Provider, basebackend, base job tests."""
+
+from __future__ import annotations

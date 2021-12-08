@@ -15,6 +15,8 @@ A target object represents the minimum set of information the transpiler needs
 from a backend
 """
 
+from __future__ import annotations
+
 import io
 import logging
 from collections.abc import Mapping

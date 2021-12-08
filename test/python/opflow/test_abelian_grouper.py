@@ -12,6 +12,8 @@
 
 """Test Abelian Grouper"""
 
+from __future__ import annotations
+
 import random
 import unittest
 from itertools import combinations, product

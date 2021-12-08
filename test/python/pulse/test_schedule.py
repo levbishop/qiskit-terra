@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Test cases for the pulse schedule."""
+from __future__ import annotations
+
 import unittest
 from unittest.mock import patch
 

@@ -12,6 +12,8 @@
 
 """Test the BasisTranslator pass"""
 
+from __future__ import annotations
+
 from qiskit.transpiler.passes.basis import UnrollCustomDefinitions
 from qiskit.test import QiskitTestCase
 from qiskit.circuit import EquivalenceLibrary, Gate, QuantumCircuit, QuantumRegister

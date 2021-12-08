@@ -12,6 +12,8 @@
 
 """Replace each block of consecutive gates by a single Unitary node."""
 
+from __future__ import annotations
+
 from qiskit.circuit.classicalregister import ClassicalRegister
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.quantumcircuit import QuantumCircuit

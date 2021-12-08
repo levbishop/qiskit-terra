@@ -13,6 +13,8 @@
 
 """Test Qiskit's EquivalenceLibrary class."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.test import QiskitTestCase

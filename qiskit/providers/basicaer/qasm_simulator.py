@@ -28,6 +28,8 @@ later be queried for the Result object. The result will contain a 'memory' data
 field, which is a result of measurements for each shot.
 """
 
+from __future__ import annotations
+
 import uuid
 import time
 import logging

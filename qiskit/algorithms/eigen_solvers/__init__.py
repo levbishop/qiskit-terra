@@ -12,6 +12,8 @@
 
 """ Eigen Solvers Package """
 
+from __future__ import annotations
+
 from .numpy_eigen_solver import NumPyEigensolver
 from .eigen_solver import Eigensolver, EigensolverResult
 

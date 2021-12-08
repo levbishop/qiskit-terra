@@ -16,6 +16,8 @@
 Fake provider class that provides access to fake backends.
 """
 
+from __future__ import annotations
+
 from qiskit.providers.provider import ProviderV1
 from qiskit.providers.baseprovider import BaseProvider
 from qiskit.providers.exceptions import QiskitBackendNotFoundError

@@ -12,6 +12,8 @@
 
 """Scheduling utility functions."""
 
+from __future__ import annotations
+
 from qiskit.utils.deprecation import deprecate_function
 from qiskit.pulse import macros, utils
 

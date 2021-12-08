@@ -12,6 +12,8 @@
 
 """Tests for the converters."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.converters import circuit_to_instruction

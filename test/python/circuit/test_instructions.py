@@ -12,6 +12,8 @@
 
 """Test Qiskit's Instruction class."""
 
+from __future__ import annotations
+
 import unittest.mock
 
 import numpy as np

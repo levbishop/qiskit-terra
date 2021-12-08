@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """VF2Layout pass to find a layout using subgraph isomorphism"""
+from __future__ import annotations
+
 import logging
 import random
 import time

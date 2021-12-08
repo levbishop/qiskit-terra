@@ -12,6 +12,8 @@
 
 """Test the expectation factory."""
 
+from __future__ import annotations
+
 import unittest
 from test.python.opflow import QiskitOpflowTestCase
 

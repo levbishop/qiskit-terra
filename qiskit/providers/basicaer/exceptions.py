@@ -14,6 +14,8 @@
 Exception for errors raised by Basic Aer.
 """
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

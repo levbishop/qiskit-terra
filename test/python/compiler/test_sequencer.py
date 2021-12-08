@@ -13,6 +13,8 @@
 # pylint: disable=missing-function-docstring
 
 """Tests basic functionality of the sequence function"""
+from __future__ import annotations
+
 import unittest
 
 from qiskit import QuantumCircuit, pulse

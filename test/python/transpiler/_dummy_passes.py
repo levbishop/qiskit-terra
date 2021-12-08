@@ -14,6 +14,8 @@
 
 """Dummy passes used by Transpiler testing"""
 
+from __future__ import annotations
+
 import logging
 
 from qiskit.transpiler.passes import FixedPoint

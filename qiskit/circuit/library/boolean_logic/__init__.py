@@ -12,6 +12,8 @@
 
 """The Boolean logic circuit library."""
 
+from __future__ import annotations
+
 from .quantum_and import AND
 from .quantum_or import OR
 from .quantum_xor import XOR

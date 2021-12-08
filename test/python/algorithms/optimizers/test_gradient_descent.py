@@ -12,6 +12,8 @@
 
 """Tests for the Gradient Descent optimizer."""
 
+from __future__ import annotations
+
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np

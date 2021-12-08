@@ -13,6 +13,8 @@
 # pylint: disable=unused-import
 
 """Assemble function for converting a list of circuits into a qobj."""
+from __future__ import annotations
+
 import hashlib
 from collections import defaultdict
 from typing import Any, Dict, List, Tuple, Union

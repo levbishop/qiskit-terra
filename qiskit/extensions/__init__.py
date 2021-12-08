@@ -45,6 +45,8 @@ Initialization
 """
 
 # import all standard gates
+from __future__ import annotations
+
 from qiskit.circuit.library.standard_gates import *
 from qiskit.circuit.barrier import Barrier
 

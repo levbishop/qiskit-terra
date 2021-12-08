@@ -12,6 +12,8 @@
 """
 ParameterExpression Class to enable creating simple expressions of Parameters.
 """
+from __future__ import annotations
+
 import numbers
 import operator
 from typing import Callable, Dict, Set, Union

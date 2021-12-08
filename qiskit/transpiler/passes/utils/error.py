@@ -12,6 +12,8 @@
 
 """Error pass to be called when an error happens."""
 
+from __future__ import annotations
+
 import logging
 import string
 import warnings

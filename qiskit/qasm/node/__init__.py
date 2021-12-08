@@ -12,6 +12,8 @@
 
 """QASM nodes."""
 
+from __future__ import annotations
+
 from .barrier import Barrier
 from .binaryop import BinaryOp
 from .binaryoperator import BinaryOperator

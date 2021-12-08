@@ -12,6 +12,8 @@
 
 """Test library of graph state circuits."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.test.base import QiskitTestCase

@@ -27,6 +27,8 @@ expected (equally distributed) result
 4) Testing the fitters on pre-generated data with noise
 """
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

@@ -12,6 +12,8 @@
 
 """Choose a noise-adaptive Layout based on current calibration data for the backend."""
 
+from __future__ import annotations
+
 import math
 
 import retworkx as rx

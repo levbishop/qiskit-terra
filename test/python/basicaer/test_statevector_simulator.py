@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Test StateVectorSimulatorPy."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

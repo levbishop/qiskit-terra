@@ -12,6 +12,8 @@
 
 """Multiple-Control, Multiple-Target Gate."""
 
+from __future__ import annotations
+
 import warnings
 from typing import Union, Callable, List, Tuple, Optional
 

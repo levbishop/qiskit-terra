@@ -12,6 +12,8 @@
 
 """Rotation around an arbitrary axis on the Bloch sphere."""
 
+from __future__ import annotations
+
 import numpy
 
 from qiskit.circuit.gate import Gate

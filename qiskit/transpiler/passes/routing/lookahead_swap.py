@@ -12,6 +12,8 @@
 
 """Map input circuit onto a backend topology via insertion of SWAPs."""
 
+from __future__ import annotations
+
 import logging
 from copy import deepcopy
 

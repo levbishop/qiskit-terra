@@ -12,6 +12,8 @@
 
 """Test the Check Map pass"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit import QuantumRegister, QuantumCircuit

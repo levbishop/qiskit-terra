@@ -18,6 +18,8 @@ These gates can have several control qubits and a single target qubit.
 If the k control qubits are in the state ket(i) (in the computational bases),
 a single-qubit rotation R_y(a_i) is applied to the target qubit.
 """
+from __future__ import annotations
+
 import math
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit

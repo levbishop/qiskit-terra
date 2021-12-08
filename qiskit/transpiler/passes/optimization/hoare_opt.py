@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """ Pass for Hoare logic circuit optimization. """
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.circuit import QuantumRegister, ControlledGate, Gate
 from qiskit.dagcircuit import DAGCircuit

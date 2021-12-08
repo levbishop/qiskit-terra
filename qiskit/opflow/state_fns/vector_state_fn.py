@@ -13,6 +13,8 @@
 """ VectorStateFn Class """
 
 
+from __future__ import annotations
+
 from typing import Dict, List, Optional, Set, Union, cast
 
 import numpy as np

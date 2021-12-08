@@ -12,6 +12,8 @@
 
 """Tests the layout object"""
 
+from __future__ import annotations
+
 import copy
 import unittest
 

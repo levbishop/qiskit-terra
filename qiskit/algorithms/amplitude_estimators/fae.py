@@ -12,6 +12,8 @@
 
 """Faster Amplitude Estimation."""
 
+from __future__ import annotations
+
 from typing import Optional, Union, List, Tuple
 
 import numpy as np

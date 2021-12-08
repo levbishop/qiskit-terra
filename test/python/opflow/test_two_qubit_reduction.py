@@ -12,6 +12,8 @@
 
 """ Test TwoQubitReduction """
 
+from __future__ import annotations
+
 from test.python.opflow import QiskitOpflowTestCase
 
 from qiskit.opflow import PauliSumOp, TwoQubitReduction, TaperedPauliSumOp, Z2Symmetries

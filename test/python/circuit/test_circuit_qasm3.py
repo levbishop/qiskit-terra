@@ -15,6 +15,8 @@
 # We can't really help how long the lines output by the exporter are in some cases.
 # pylint: disable=line-too-long
 
+from __future__ import annotations
+
 import unittest
 from io import StringIO
 

@@ -37,6 +37,8 @@ Because a single stylesheet doesn't generate multiple images with different appe
 only one layout function can be chosen for each stylesheet.
 """
 
+from __future__ import annotations
+
 import warnings
 from typing import Dict, Any, Mapping
 

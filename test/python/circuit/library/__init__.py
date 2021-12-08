@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Qiskit circuit library integration tests."""
+
+from __future__ import annotations

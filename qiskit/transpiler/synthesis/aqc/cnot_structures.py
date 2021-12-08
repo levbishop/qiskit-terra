@@ -12,6 +12,8 @@
 """
 These are the CNOT structure methods: anything that you need for creating CNOT structures.
 """
+from __future__ import annotations
+
 import logging
 
 import numpy as np

@@ -12,6 +12,8 @@
 
 """Exception for errors raised by Opflow module."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

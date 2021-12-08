@@ -12,4 +12,6 @@
 
 """Mock ourense backend"""
 
+from __future__ import annotations
+
 from .fake_ourense import FakeOurense, FakeLegacyOurense

@@ -12,6 +12,8 @@
 
 """Gate equivalence library."""
 
+from __future__ import annotations
+
 import io
 from collections import namedtuple
 

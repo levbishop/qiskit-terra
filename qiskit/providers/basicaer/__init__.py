@@ -62,6 +62,8 @@ Exceptions
    BasicAerError
 """
 
+from __future__ import annotations
+
 from .basicaerprovider import BasicAerProvider
 from .basicaerjob import BasicAerJob
 from .qasm_simulator import QasmSimulatorPy

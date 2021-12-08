@@ -14,6 +14,8 @@
 Tests for qiskit-terra/qiskit/quantum_info/synthesis/xx_decompose/xx_polytope.py .
 """
 
+from __future__ import annotations
+
 import random
 import unittest
 

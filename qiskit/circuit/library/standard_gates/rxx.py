@@ -12,6 +12,8 @@
 
 """Two-qubit XX-rotation gate."""
 
+from __future__ import annotations
+
 from typing import Optional
 
 from qiskit.circuit.gate import Gate

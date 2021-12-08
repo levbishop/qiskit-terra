@@ -30,6 +30,8 @@ q_1: ┤ X ├┤ RZ(ϴ) ├┤ √X ├┤ RZ(π) ├┤ √X ├┤ RZ(3π) �
 «     └─────────┘
 """
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit import Parameter, QuantumCircuit

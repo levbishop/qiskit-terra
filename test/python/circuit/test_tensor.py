@@ -12,6 +12,8 @@
 
 """Test QuantumCircuit.tensor()."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.circuit import QuantumRegister, ClassicalRegister, QuantumCircuit, Parameter

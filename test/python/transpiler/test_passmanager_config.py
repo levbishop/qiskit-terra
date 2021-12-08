@@ -12,6 +12,8 @@
 
 """Tests PassManagerConfig"""
 
+from __future__ import annotations
+
 from qiskit import QuantumRegister
 from qiskit.providers.backend import Backend
 from qiskit.test import QiskitTestCase

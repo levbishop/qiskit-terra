@@ -31,6 +31,8 @@ Evolution Synthesis
 
 """
 
+from __future__ import annotations
+
 from .evolution import (
     EvolutionSynthesis,
     ProductFormula,

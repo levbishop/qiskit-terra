@@ -12,6 +12,8 @@
 
 """Test the EchoRZXWeylDecomposition pass"""
 
+from __future__ import annotations
+
 import unittest
 from math import pi
 

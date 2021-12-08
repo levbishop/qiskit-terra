@@ -14,6 +14,8 @@
 
 """Single-qubit unitary tests."""
 
+from __future__ import annotations
+
 import itertools
 import unittest
 

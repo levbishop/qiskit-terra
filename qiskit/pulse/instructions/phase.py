@@ -15,6 +15,8 @@ This includes ``SetPhase`` instructions which lock the modulation to a particula
 at that moment, and ``ShiftPhase`` instructions which increase the existing phase by a
 relative amount.
 """
+from __future__ import annotations
+
 from typing import Optional, Union, Tuple
 
 from qiskit.circuit import ParameterExpression

@@ -12,6 +12,8 @@
 
 """Test the CSPLayout pass"""
 
+from __future__ import annotations
+
 import unittest
 from time import process_time
 

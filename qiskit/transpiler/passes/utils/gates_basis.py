@@ -12,6 +12,8 @@
 
 """Check if all gates in the DAGCircuit are in the specified basis gates."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

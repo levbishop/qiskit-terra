@@ -12,6 +12,8 @@
 
 """Tests for quantum channel representation transformations."""
 
+from __future__ import annotations
+
 import unittest
 
 from numpy.testing import assert_allclose

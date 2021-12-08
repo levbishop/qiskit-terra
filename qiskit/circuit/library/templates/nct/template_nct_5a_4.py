@@ -20,6 +20,8 @@ Template 5a_4:
          └───┘     └───┘└───┘
 """
 
+from __future__ import annotations
+
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
 

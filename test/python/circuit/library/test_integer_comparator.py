@@ -12,6 +12,8 @@
 
 """Test library of integer comparison circuits."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

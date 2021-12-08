@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """A collection of functions to convert ScheduleBlock to DAG representation."""
 
+from __future__ import annotations
+
 import retworkx as rx
 
 from qiskit.pulse.schedule import ScheduleBlock

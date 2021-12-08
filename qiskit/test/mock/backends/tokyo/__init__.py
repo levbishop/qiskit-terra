@@ -12,4 +12,6 @@
 
 """Mock tokyo backend"""
 
+from __future__ import annotations
+
 from .fake_tokyo import FakeTokyo, FakeLegacyTokyo

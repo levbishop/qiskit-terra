@@ -12,6 +12,8 @@
 
 """The Suzuki-Trotter product formula."""
 
+from __future__ import annotations
+
 from typing import Callable, Optional, Union
 
 import numpy as np

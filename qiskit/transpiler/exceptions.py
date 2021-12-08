@@ -13,6 +13,8 @@
 """
 Exception for errors raised by the transpiler.
 """
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

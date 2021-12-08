@@ -12,6 +12,8 @@
 
 """Module containing circuit analysis passes."""
 
+from __future__ import annotations
+
 from .resource_estimation import ResourceEstimation
 from .depth import Depth
 from .width import Width

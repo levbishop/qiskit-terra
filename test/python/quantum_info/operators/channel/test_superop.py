@@ -12,6 +12,8 @@
 
 """Tests for SuperOp quantum channel representation class."""
 
+from __future__ import annotations
+
 import copy
 import unittest
 

@@ -13,6 +13,8 @@
 
 """Test hardcoded decomposition rules and matrix definitions for standard gates."""
 
+from __future__ import annotations
+
 import inspect
 
 import numpy as np

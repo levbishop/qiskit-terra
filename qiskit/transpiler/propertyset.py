@@ -14,6 +14,9 @@
 about the current state of the circuit """
 
 
+from __future__ import annotations
+
+
 class PropertySet(dict):
     """A default dictionary-like object"""
 

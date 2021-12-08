@@ -13,4 +13,6 @@
 """Module containing transpiler synthesize."""
 
 
+from __future__ import annotations
+
 from .graysynth import graysynth, cnot_synth

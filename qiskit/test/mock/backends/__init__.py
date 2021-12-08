@@ -16,6 +16,8 @@ Mocked versions of real quantum backends.
 """
 
 # BackendV1 Backends
+from __future__ import annotations
+
 from .almaden import FakeAlmaden
 from .armonk import FakeArmonk
 from .athens import FakeAthens

@@ -12,6 +12,8 @@
 
 """A module for visualizing device coupling maps"""
 
+from __future__ import annotations
+
 import math
 from typing import List
 

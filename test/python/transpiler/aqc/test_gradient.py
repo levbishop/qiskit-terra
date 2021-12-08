@@ -13,6 +13,8 @@
 Tests analytical gradient vs the one computed via finite differences.
 """
 
+from __future__ import annotations
+
 import unittest
 from test.python.transpiler.aqc.sample_data import ORIGINAL_CIRCUIT
 

@@ -95,6 +95,8 @@ Exceptions
    ClassicalFunctionCompilerTypeError
 
 """
+from __future__ import annotations
+
 from .classicalfunction import ClassicalFunction
 from .exceptions import (
     ClassicalFunctionParseError,

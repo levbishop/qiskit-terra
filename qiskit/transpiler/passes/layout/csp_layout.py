@@ -15,6 +15,8 @@ Constraint Satisfaction Problem. It tries to find a solution that fully
 satisfy the circuit, i.e. no further swap is needed. If no solution is
 found, no ``property_set['layout']`` is set.
 """
+from __future__ import annotations
+
 import random
 from time import time
 

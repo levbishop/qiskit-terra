@@ -12,6 +12,8 @@
 
 """FixedPoint pass testing"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.transpiler.passes import FixedPoint

@@ -12,4 +12,6 @@
 
 """Mock toronto backend"""
 
+from __future__ import annotations
+
 from .fake_toronto import FakeToronto, FakeLegacyToronto

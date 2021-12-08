@@ -12,6 +12,8 @@
 
 """Gate cancellation pass testing"""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

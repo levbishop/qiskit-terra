@@ -78,6 +78,8 @@ It should be also noted that zero duration instructions issued at the same time 
 overlapped on the canvas. Thus it is convenient to plot a total frame change amount rather
 than plotting each operand value bound to the instruction.
 """
+from __future__ import annotations
+
 from collections import defaultdict
 from typing import Dict, List, Iterator, Tuple
 

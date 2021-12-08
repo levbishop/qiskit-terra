@@ -12,6 +12,8 @@
 
 """Base class for a backend provider."""
 
+from __future__ import annotations
+
 import warnings
 from abc import ABC, abstractmethod
 

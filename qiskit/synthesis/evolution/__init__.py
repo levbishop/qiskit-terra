@@ -12,6 +12,8 @@
 
 """Synthesis for operator evolution gates."""
 
+from __future__ import annotations
+
 from .evolution_synthesis import EvolutionSynthesis
 from .matrix_synthesis import MatrixExponential
 from .product_formula import ProductFormula

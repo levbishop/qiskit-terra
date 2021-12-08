@@ -12,6 +12,8 @@
 
 """Routing via SWAP insertion using the SABRE method from Li et al."""
 
+from __future__ import annotations
+
 import logging
 from collections import defaultdict
 from copy import copy, deepcopy

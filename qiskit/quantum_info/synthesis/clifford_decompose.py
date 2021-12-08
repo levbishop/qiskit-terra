@@ -14,6 +14,8 @@ Circuit synthesis for the Clifford class.
 """
 # pylint: disable=invalid-name
 
+from __future__ import annotations
+
 from itertools import product
 
 import numpy as np

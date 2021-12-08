@@ -12,6 +12,8 @@
 
 """ ConverterBase Class """
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 
 from qiskit.opflow.operator_base import OperatorBase

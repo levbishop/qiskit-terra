@@ -13,6 +13,8 @@
 """
 Fake 1Q device (1 qubit).
 """
+from __future__ import annotations
+
 import datetime
 
 from qiskit.providers.models.backendproperties import BackendProperties, Gate, Nduv

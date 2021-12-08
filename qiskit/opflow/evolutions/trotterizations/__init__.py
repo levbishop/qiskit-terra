@@ -15,6 +15,8 @@ Trotterization methods - Algorithms for approximating Exponentials of Operator S
 
 """
 
+from __future__ import annotations
+
 from .trotterization_base import TrotterizationBase
 from .trotterization_factory import TrotterizationFactory
 from .trotter import Trotter

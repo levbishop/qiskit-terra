@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Basic rescheduling functions which take schedule or instructions and return new schedules."""
 
+from __future__ import annotations
+
 import warnings
 from collections import defaultdict
 from typing import List, Optional, Iterable, Union

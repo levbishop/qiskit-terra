@@ -12,6 +12,8 @@
 
 """Functionality and helpers for testing Qiskit."""
 
+from __future__ import annotations
+
 from .base import QiskitTestCase
 from .decorators import requires_aer_provider, online_test, slow_test, requires_qe_access
 from .reference_circuits import ReferenceCircuits

@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Tests LogicNetwork.Tweedledum2Qiskit converter."""
+from __future__ import annotations
+
 from tweedledum.ir import Circuit
 from tweedledum.operators import X
 

@@ -13,6 +13,8 @@
 
 """Tests for PauliTable utility functions."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.test import QiskitTestCase

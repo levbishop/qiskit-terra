@@ -12,6 +12,8 @@
 
 """Shor's factoring algorithm."""
 
+from __future__ import annotations
+
 import array
 import fractions
 import logging

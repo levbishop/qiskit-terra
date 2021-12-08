@@ -12,6 +12,8 @@
 
 """The circuit library module on generalized gates."""
 
+from __future__ import annotations
+
 from .diagonal import Diagonal
 from .permutation import Permutation
 from .mcmt import MCMT, MCMTVChain

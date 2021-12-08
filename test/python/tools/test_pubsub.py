@@ -12,6 +12,8 @@
 
 """Tests for qiskit/tools/events/_pubsub.py"""
 
+from __future__ import annotations
+
 from qiskit.tools.events.pubsub import Publisher, Subscriber
 from qiskit.test import QiskitTestCase
 

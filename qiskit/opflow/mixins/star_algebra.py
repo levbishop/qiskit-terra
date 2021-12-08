@@ -12,6 +12,8 @@
 
 """The star algebra mixin abstract base class."""
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from numbers import Integral
 

@@ -12,6 +12,8 @@
 
 """Test Qiskit's Result class."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.result import models, marginal_counts, Result

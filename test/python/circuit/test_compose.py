@@ -14,6 +14,8 @@
 
 """Test QuantumCircuit.compose()."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit import transpile

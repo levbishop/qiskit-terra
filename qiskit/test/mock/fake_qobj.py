@@ -14,6 +14,8 @@
 Base Fake Qobj.
 """
 
+from __future__ import annotations
+
 from qiskit.qobj import (
     QasmQobj,
     QobjExperimentHeader,

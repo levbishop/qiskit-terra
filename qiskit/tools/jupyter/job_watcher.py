@@ -13,6 +13,8 @@
 
 """A module for the job watcher"""
 
+from __future__ import annotations
+
 from IPython.core.magic import line_magic, Magics, magics_class
 
 from qiskit.tools.events.pubsub import Subscriber

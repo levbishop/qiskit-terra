@@ -13,6 +13,8 @@
 
 """Tests for Stabilizerstate quantum state class."""
 
+from __future__ import annotations
+
 import unittest
 import logging
 from test import combine

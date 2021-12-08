@@ -12,6 +12,8 @@
 
 """ Trotterization Algorithm Base """
 
+from __future__ import annotations
+
 from abc import abstractmethod
 
 from qiskit.opflow.evolutions.evolution_base import EvolutionBase

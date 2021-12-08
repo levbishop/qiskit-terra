@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Helper function for converting a dag dependency to a circuit"""
+from __future__ import annotations
+
 from qiskit.circuit import QuantumCircuit
 
 

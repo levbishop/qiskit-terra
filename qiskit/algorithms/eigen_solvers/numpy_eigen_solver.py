@@ -12,6 +12,8 @@
 
 """The Eigensolver algorithm."""
 
+from __future__ import annotations
+
 import logging
 from typing import Callable, List, Optional, Tuple, Union
 

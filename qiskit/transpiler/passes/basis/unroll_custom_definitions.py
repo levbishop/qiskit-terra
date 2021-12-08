@@ -12,6 +12,8 @@
 
 """Unrolls instructions with custom definitions."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.circuit import ControlledGate

@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Test circuits with variable parameters."""
+from __future__ import annotations
+
 import unittest
 import cmath
 import math

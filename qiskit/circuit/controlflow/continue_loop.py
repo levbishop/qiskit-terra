@@ -12,6 +12,8 @@
 
 "Circuit operation representing a ``continue`` from a loop."
 
+from __future__ import annotations
+
 from typing import Optional
 
 from qiskit.circuit.instruction import Instruction

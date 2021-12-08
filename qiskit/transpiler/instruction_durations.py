@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Durations of instructions, one of transpiler configurations."""
+from __future__ import annotations
+
 import warnings
 from typing import Optional, List, Tuple, Union, Iterable, Set
 

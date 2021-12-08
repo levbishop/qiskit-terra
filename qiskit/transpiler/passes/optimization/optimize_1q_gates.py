@@ -12,6 +12,8 @@
 
 """Optimize chains of single-qubit u1, u2, u3 gates by combining them into a single gate."""
 
+from __future__ import annotations
+
 from itertools import groupby
 
 import numpy as np

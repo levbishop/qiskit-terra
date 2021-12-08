@@ -10,6 +10,8 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 """Integer programming model for quantum circuit compilation."""
+from __future__ import annotations
+
 import copy
 import logging
 from functools import lru_cache

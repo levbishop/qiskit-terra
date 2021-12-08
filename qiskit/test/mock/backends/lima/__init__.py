@@ -12,4 +12,6 @@
 
 """Mock lima backend"""
 
+from __future__ import annotations
+
 from .fake_lima import FakeLima, FakeLegacyLima

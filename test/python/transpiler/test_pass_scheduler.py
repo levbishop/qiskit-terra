@@ -12,6 +12,8 @@
 
 """Transpiler testing"""
 
+from __future__ import annotations
+
 import io
 import unittest.mock
 import sys

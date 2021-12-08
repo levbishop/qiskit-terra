@@ -12,6 +12,8 @@
 
 """Module containing transpiler optimization passes."""
 
+from __future__ import annotations
+
 from .optimize_1q_gates import Optimize1qGates
 from .optimize_1q_decomposition import Optimize1qGatesDecomposition
 from .collect_2q_blocks import Collect2qBlocks

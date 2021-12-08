@@ -12,6 +12,8 @@
 
 """The CVaR (Conditional Value at Risk) expectation class."""
 
+from __future__ import annotations
+
 from typing import Optional, Union
 
 from qiskit.opflow.expectations.aer_pauli_expectation import AerPauliExpectation

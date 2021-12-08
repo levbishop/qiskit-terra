@@ -12,6 +12,8 @@
 
 """Mock cambridge backend"""
 
+from __future__ import annotations
+
 from .fake_cambridge import (
     FakeCambridge,
     FakeCambridgeAlternativeBasis,

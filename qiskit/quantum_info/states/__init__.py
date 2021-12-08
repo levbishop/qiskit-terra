@@ -12,6 +12,8 @@
 
 """Quantum States."""
 
+from __future__ import annotations
+
 from .statevector import Statevector
 
 # These must come later to avoid cyclic import problems?

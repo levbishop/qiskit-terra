@@ -15,6 +15,8 @@ Base class for dummy jobs.
 """
 
 
+from __future__ import annotations
+
 from concurrent import futures
 
 from qiskit.providers import JobV1, BaseJob

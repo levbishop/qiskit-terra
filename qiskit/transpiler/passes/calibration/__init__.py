@@ -12,4 +12,6 @@
 
 """Module containing transpiler calibration passes."""
 
+from __future__ import annotations
+
 from .builders import RZXCalibrationBuilder, RZXCalibrationBuilderNoEcho, PulseGates

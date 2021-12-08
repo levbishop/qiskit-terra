@@ -13,6 +13,8 @@
 """
 Delay instruction (for circuit module).
 """
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit.exceptions import CircuitError

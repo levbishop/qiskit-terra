@@ -10,6 +10,8 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 """A generic implementation of Approximate Quantum Compiler."""
+from __future__ import annotations
+
 from typing import Optional
 
 import numpy as np

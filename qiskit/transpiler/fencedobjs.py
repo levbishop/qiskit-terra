@@ -12,6 +12,8 @@
 
 """ Fenced objects are wraps for raising TranspilerError when they are modified."""
 
+from __future__ import annotations
+
 from .exceptions import TranspilerError
 
 

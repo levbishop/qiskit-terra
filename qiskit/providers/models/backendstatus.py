@@ -12,6 +12,8 @@
 
 """Class for backend status."""
 
+from __future__ import annotations
+
 import html
 
 from qiskit.exceptions import QiskitError

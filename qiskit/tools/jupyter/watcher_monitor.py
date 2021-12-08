@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """A module of widgets for job monitoring"""
+from __future__ import annotations
+
 import sys
 import time
 import threading

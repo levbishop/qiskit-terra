@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Class for probability distributions."""
 
+from __future__ import annotations
+
 import re
 
 # NOTE: A dict subclass should not overload any dunder methods like __getitem__

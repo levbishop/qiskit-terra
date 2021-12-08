@@ -12,6 +12,8 @@
 
 """Synthesize UnitaryGates."""
 
+from __future__ import annotations
+
 from math import pi, inf
 from typing import List, Union
 from copy import deepcopy

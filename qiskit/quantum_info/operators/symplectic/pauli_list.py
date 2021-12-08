@@ -13,6 +13,8 @@
 Optimized list of Pauli operators
 """
 
+from __future__ import annotations
+
 from collections import defaultdict
 
 import numpy as np

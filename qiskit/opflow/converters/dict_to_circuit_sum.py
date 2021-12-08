@@ -12,6 +12,8 @@
 
 """DictToCircuitSum Class """
 
+from __future__ import annotations
+
 from qiskit.opflow.converters.converter_base import ConverterBase
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.operator_base import OperatorBase

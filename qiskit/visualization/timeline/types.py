@@ -14,6 +14,8 @@
 Special data types.
 """
 
+from __future__ import annotations
+
 from enum import Enum
 from typing import NamedTuple, List, Union, NewType, Tuple, Dict
 

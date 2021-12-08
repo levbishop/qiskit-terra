@@ -16,6 +16,8 @@
 Convenience function to load RZXGate based templates.
 """
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.transpiler.passes.calibration.rzx_templates import rzx_templates

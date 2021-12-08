@@ -12,6 +12,8 @@
 
 """Test for unit conversion functions."""
 
+from __future__ import annotations
+
 from ddt import ddt, data
 
 from qiskit.test import QiskitTestCase

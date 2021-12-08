@@ -12,6 +12,8 @@
 
 """With some utils"""
 
+from __future__ import annotations
+
 from ddt import data, unpack
 
 from qiskit.test.utils import generate_cases

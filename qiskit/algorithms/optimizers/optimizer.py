@@ -12,6 +12,8 @@
 
 """Optimizer interface"""
 
+from __future__ import annotations
+
 import warnings
 import logging
 from typing import Dict, Any, Union, Callable, Optional, Tuple, List

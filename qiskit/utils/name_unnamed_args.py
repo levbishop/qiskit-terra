@@ -12,6 +12,8 @@
 
 """Tool to name unnamed arguments."""
 
+from __future__ import annotations
+
 import functools
 
 

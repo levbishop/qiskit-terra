@@ -12,6 +12,8 @@
 
 """Tests quaternion conversion"""
 
+from __future__ import annotations
+
 import math
 
 import numpy as np

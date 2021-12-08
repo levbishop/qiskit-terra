@@ -69,6 +69,8 @@ Standard gates (:mod:`qiskit.circuit.library.standard_gates`)
 
 """
 
+from __future__ import annotations
+
 from .h import HGate, CHGate
 from .i import IGate
 from .p import PhaseGate, CPhaseGate, MCPhaseGate

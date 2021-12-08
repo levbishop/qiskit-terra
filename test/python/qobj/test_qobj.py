@@ -13,6 +13,8 @@
 
 """Qobj tests."""
 
+from __future__ import annotations
+
 import copy
 
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit

@@ -12,6 +12,8 @@
 
 """Unroll a circuit to a given basis."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.exceptions import QiskitError
 from qiskit.circuit import ControlledGate

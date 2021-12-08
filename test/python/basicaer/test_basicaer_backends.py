@@ -12,6 +12,8 @@
 
 """BasicAer Backends Test."""
 
+from __future__ import annotations
+
 from qiskit import BasicAer
 from qiskit.providers.basicaer import BasicAerProvider
 from qiskit.providers.exceptions import QiskitBackendNotFoundError

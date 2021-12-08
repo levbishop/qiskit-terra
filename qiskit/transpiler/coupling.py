@@ -19,6 +19,8 @@ CNOT gates. The object has a distance function that can be used to map quantum c
 onto a device with this coupling.
 """
 
+from __future__ import annotations
+
 import io
 import warnings
 

@@ -12,6 +12,8 @@
 
 """Module containing transpiler mapping passes."""
 
+from __future__ import annotations
+
 from .basic_swap import BasicSwap
 from .layout_transformation import LayoutTransformation
 from .lookahead_swap import LookaheadSwap

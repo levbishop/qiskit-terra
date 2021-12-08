@@ -13,6 +13,8 @@
 """Instruction sub-classes for dynamic circuits."""
 
 
+from __future__ import annotations
+
 from .control_flow import ControlFlowOp
 from .continue_loop import ContinueLoopOp
 from .break_loop import BreakLoopOp

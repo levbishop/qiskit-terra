@@ -12,6 +12,8 @@
 
 """Session gates."""
 
+from __future__ import annotations
+
 from .library.standard_gates.equivalence_library import StandardEquivalenceLibrary
 from .equivalence import EquivalenceLibrary
 

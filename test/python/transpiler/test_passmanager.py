@@ -12,6 +12,8 @@
 
 """Test the passmanager logic"""
 
+from __future__ import annotations
+
 import copy
 
 import numpy as np

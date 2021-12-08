@@ -12,6 +12,8 @@
 
 """Test registerless QuantumCircuit and Gates on wires"""
 
+from __future__ import annotations
+
 import numpy
 
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit

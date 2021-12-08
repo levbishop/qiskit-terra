@@ -12,6 +12,8 @@
 
 """Allocate all idle nodes from the coupling map as ancilla on the layout."""
 
+from __future__ import annotations
+
 from qiskit.circuit import QuantumRegister
 from qiskit.transpiler.basepasses import AnalysisPass
 from qiskit.transpiler.exceptions import TranspilerError

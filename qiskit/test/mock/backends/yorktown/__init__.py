@@ -12,4 +12,6 @@
 
 """Mock yorktown backend"""
 
+from __future__ import annotations
+
 from .fake_yorktown import FakeYorktown, FakeLegacyYorktown

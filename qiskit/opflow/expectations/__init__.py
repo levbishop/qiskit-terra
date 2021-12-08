@@ -56,6 +56,8 @@ Expectations
    CVaRExpectation
 """
 
+from __future__ import annotations
+
 from .expectation_base import ExpectationBase
 from .expectation_factory import ExpectationFactory
 from .pauli_expectation import PauliExpectation

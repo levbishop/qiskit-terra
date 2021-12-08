@@ -13,6 +13,8 @@
 
 """Utility to check that slow imports are not used in the default path."""
 
+from __future__ import annotations
+
 import subprocess
 import sys
 

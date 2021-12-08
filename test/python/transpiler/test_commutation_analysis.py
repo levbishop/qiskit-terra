@@ -13,6 +13,8 @@
 
 """Commutation analysis and transformation pass testing"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.circuit import QuantumRegister, QuantumCircuit, Qubit

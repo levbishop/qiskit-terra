@@ -12,6 +12,8 @@
 
 """Test the FullAncillaAllocation pass"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.circuit import QuantumRegister, QuantumCircuit

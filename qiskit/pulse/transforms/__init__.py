@@ -81,6 +81,8 @@ A sequence of transformations to generate a target code.
 
 """
 
+from __future__ import annotations
+
 from qiskit.pulse.transforms.alignments import (
     AlignEquispaced,
     AlignFunc,

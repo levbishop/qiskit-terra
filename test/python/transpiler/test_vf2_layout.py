@@ -12,6 +12,8 @@
 
 """Test the VF2Layout pass"""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy

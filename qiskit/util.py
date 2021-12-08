@@ -12,6 +12,8 @@
 
 """Common utilities for Qiskit."""
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.utils.deprecation import deprecate_arguments, deprecate_function

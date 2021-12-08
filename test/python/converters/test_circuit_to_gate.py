@@ -12,6 +12,8 @@
 
 """Tests for the converters."""
 
+from __future__ import annotations
+
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.circuit import Gate, Qubit
 from qiskit.test import QiskitTestCase

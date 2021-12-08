@@ -14,6 +14,8 @@
 Tests for qiskit-terra/qiskit/quantum_info/synthesis/xx_decompose/qiskit.py .
 """
 
+from __future__ import annotations
+
 import unittest
 from statistics import mean
 

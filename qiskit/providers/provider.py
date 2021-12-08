@@ -12,6 +12,8 @@
 
 """Base class for a provider."""
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 
 from qiskit.providers.exceptions import QiskitBackendNotFoundError

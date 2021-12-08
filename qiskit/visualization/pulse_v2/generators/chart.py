@@ -37,6 +37,8 @@ Arbitrary generator function satisfying the above format can be accepted.
 Returned `ElementaryData` can be arbitrary subclasses that are implemented in
 the plotter API.
 """
+from __future__ import annotations
+
 from typing import Dict, Any, List
 
 from qiskit.visualization.pulse_v2 import drawings, types, device_info

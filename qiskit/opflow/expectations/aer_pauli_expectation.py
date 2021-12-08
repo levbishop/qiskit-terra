@@ -12,6 +12,8 @@
 
 """ AerPauliExpectation Class """
 
+from __future__ import annotations
+
 import logging
 from functools import reduce
 from operator import add

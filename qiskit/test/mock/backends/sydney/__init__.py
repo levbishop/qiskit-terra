@@ -12,4 +12,6 @@
 
 """Mock sydney backend"""
 
+from __future__ import annotations
+
 from .fake_sydney import FakeSydney, FakeLegacySydney

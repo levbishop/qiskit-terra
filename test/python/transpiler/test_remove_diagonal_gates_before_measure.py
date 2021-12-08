@@ -12,6 +12,8 @@
 
 """Test RemoveDiagonalGatesBeforeMeasure pass"""
 
+from __future__ import annotations
+
 import unittest
 from copy import deepcopy
 

@@ -14,6 +14,8 @@
 
 """Tests for Pauli operator class."""
 
+from __future__ import annotations
+
 import unittest
 import itertools as it
 from functools import lru_cache

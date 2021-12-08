@@ -20,6 +20,8 @@ to the input of B. The object's methods allow circuits to be constructed,
 composed, and modified. Some natural properties like depth can be computed
 directly from the graph.
 """
+from __future__ import annotations
+
 import copy
 import itertools
 import math

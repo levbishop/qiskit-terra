@@ -14,6 +14,8 @@
 This module implements the abstract base class for algorithm results.
 """
 
+from __future__ import annotations
+
 import inspect
 import pprint
 from abc import ABC

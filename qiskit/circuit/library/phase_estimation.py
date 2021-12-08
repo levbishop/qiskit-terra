@@ -12,6 +12,8 @@
 
 """Phase estimation circuit."""
 
+from __future__ import annotations
+
 from typing import Optional
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister

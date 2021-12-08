@@ -12,6 +12,8 @@
 
 """Automatically require analysis passes for resource estimation."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 from qiskit.transpiler.passes.analysis.depth import Depth
 from qiskit.transpiler.passes.analysis.width import Width

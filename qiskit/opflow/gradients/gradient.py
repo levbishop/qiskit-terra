@@ -12,6 +12,8 @@
 
 """The base interface for Opflow's gradient."""
 
+from __future__ import annotations
+
 import functools
 from typing import Union, List, Optional
 

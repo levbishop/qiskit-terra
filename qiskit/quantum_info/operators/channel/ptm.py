@@ -15,6 +15,8 @@
 Pauli Transfer Matrix (PTM) representation of a Quantum Channel.
 """
 
+from __future__ import annotations
+
 import copy
 
 import numpy as np

@@ -12,6 +12,8 @@
 
 """Tests preset pass manager API"""
 
+from __future__ import annotations
+
 import unittest
 from test import combine
 

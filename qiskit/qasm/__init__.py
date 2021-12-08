@@ -39,6 +39,8 @@ Pygments
 
 """
 
+from __future__ import annotations
+
 from numpy import pi
 
 from .qasm import Qasm

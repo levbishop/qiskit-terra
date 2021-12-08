@@ -12,6 +12,8 @@
 
 """Tests for circuit templates."""
 
+from __future__ import annotations
+
 import unittest
 from test import combine
 from inspect import getmembers, isfunction

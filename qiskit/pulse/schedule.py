@@ -31,6 +31,8 @@ instruction occuring in parallel over multiple signal *channels*.
    ScheduleBlock
 """
 
+from __future__ import annotations
+
 import abc
 import copy
 import functools

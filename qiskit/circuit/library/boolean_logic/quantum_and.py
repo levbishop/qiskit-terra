@@ -13,6 +13,8 @@
 
 """Implementations of boolean logic quantum circuits."""
 
+from __future__ import annotations
+
 from typing import List, Optional
 
 from qiskit.circuit import QuantumRegister, QuantumCircuit, AncillaRegister

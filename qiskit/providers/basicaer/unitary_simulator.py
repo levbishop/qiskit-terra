@@ -26,6 +26,8 @@ later be queried for the Result object. The result will contain a 'unitary'
 data field, which is a 2**n x 2**n complex numpy array representing the
 circuit's unitary matrix.
 """
+from __future__ import annotations
+
 import logging
 import uuid
 import time

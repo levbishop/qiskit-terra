@@ -13,6 +13,8 @@
 """
 Utilities for handling duration of a circuit instruction.
 """
+from __future__ import annotations
+
 import warnings
 
 from qiskit.circuit import QuantumCircuit

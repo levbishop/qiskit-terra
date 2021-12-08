@@ -12,6 +12,8 @@
 
 """Unitary gate."""
 
+from __future__ import annotations
+
 from warnings import warn
 from typing import List, Optional, Union, Tuple
 

@@ -13,6 +13,8 @@
 
 """Test cases for the circuit qasm_file and qasm_string method."""
 
+from __future__ import annotations
+
 import os
 
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister

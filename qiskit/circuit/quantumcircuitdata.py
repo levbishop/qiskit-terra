@@ -13,6 +13,8 @@
 """A wrapper class for the purposes of validating modifications to
 QuantumCircuit.data while maintaining the interface of a python list."""
 
+from __future__ import annotations
+
 from collections.abc import MutableSequence
 
 from qiskit.circuit.exceptions import CircuitError

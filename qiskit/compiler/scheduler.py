@@ -14,6 +14,8 @@
 Convenience entry point into pulse scheduling, requiring only a circuit and a backend. For more
 control over pulse scheduling, look at `qiskit.scheduler.schedule_circuit`.
 """
+from __future__ import annotations
+
 import logging
 from time import time
 from typing import List, Optional, Union

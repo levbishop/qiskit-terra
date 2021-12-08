@@ -12,6 +12,8 @@
 
 """The n-local circuit class."""
 
+from __future__ import annotations
+
 import warnings
 from typing import Union, Optional, List, Any, Tuple, Sequence, Set, Callable
 from itertools import combinations

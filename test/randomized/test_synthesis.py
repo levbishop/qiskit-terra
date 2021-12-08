@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Randomized tests of quantum synthesis."""
+from __future__ import annotations
+
 import unittest
 from test.python.quantum_info.test_synthesis import CheckDecompositions
 

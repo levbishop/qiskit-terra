@@ -12,6 +12,8 @@
 
 """ ComposedOp Class """
 
+from __future__ import annotations
+
 from functools import partial, reduce
 from typing import List, Optional, Union, cast, Dict
 

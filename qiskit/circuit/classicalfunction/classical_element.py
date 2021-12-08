@@ -12,6 +12,8 @@
 
 """A quantum oracle constructed from a logical expression or a string in the DIMACS format."""
 
+from __future__ import annotations
+
 from abc import ABCMeta, abstractmethod
 
 from qiskit.circuit import Gate

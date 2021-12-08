@@ -39,6 +39,8 @@ Exceptions
 
    DAGCircuitError
 """
+from __future__ import annotations
+
 from .dagcircuit import DAGCircuit
 from .dagnode import DAGNode, DAGOpNode, DAGInNode, DAGOutNode
 from .dagdepnode import DAGDepNode

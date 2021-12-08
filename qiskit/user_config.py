@@ -12,6 +12,8 @@
 
 """Utils for reading a user preference config files."""
 
+from __future__ import annotations
+
 import configparser
 import os
 from warnings import warn

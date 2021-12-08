@@ -12,6 +12,8 @@
 
 """Internal utils for Classical Function Compiler"""
 
+from __future__ import annotations
+
 from tweedledum.ir import Qubit
 from tweedledum.passes import parity_decomp
 

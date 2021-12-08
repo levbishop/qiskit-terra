@@ -13,4 +13,6 @@
 Plotter API.
 """
 
+from __future__ import annotations
+
 from qiskit.visualization.timeline.plotters.matplotlib import MplPlotter

@@ -13,6 +13,8 @@
 Parameter Class for variable parameters.
 """
 
+from __future__ import annotations
+
 from uuid import uuid4
 
 from .parameterexpression import ParameterExpression

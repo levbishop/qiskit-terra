@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Disassemble function for a qobj into a list of circuits and its config"""
+from __future__ import annotations
+
 import collections
 import math
 from typing import Any, Dict, List, NewType, Tuple, Union

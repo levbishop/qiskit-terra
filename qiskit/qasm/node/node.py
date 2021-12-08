@@ -13,6 +13,9 @@
 """Base node object for the OPENQASM syntax tree."""
 
 
+from __future__ import annotations
+
+
 class Node:
     """Base node object for the OPENQASM syntax tree."""
 

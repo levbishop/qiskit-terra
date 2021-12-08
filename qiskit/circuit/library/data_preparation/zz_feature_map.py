@@ -12,6 +12,8 @@
 
 """Second-order Pauli-Z expansion circuit."""
 
+from __future__ import annotations
+
 from typing import Callable, List, Union, Optional
 
 import numpy as np

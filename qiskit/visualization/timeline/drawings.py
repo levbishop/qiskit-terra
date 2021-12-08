@@ -66,6 +66,8 @@ but ``GateLinkData`` can be associated with multiple bits to illustrate relation
 between quantum or classical bits during a gate operation.
 """
 
+from __future__ import annotations
+
 from abc import ABC
 from enum import Enum
 from typing import Optional, Dict, Any, List, Union

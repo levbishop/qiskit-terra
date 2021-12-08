@@ -65,6 +65,8 @@ If a plotter provides object handler for plotted shapes, the plotter API can man
 the lookup table of the handler and the drawing by using this data key.
 """
 
+from __future__ import annotations
+
 from copy import deepcopy
 from enum import Enum
 from functools import partial

@@ -12,6 +12,8 @@
 
 """Timing Constraints class."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.exceptions import TranspilerError
 
 

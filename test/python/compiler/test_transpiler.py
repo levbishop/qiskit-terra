@@ -12,6 +12,8 @@
 
 """Tests basic functionality of the transpile function"""
 
+from __future__ import annotations
+
 import io
 import os
 import sys

@@ -12,6 +12,8 @@
 
 """IMplicit FILtering (IMFIL) optimizer."""
 
+from __future__ import annotations
+
 from typing import Any, Dict, Callable, Optional, List, Tuple
 
 from qiskit.exceptions import MissingOptionalLibraryError

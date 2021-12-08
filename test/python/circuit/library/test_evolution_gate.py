@@ -12,6 +12,8 @@
 
 """Test the evolution gate."""
 
+from __future__ import annotations
+
 import numpy as np
 import scipy
 from ddt import ddt, data, unpack

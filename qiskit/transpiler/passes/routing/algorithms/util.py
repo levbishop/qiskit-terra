@@ -26,6 +26,8 @@
 
 """Utility functions shared between permutation functionality."""
 
+from __future__ import annotations
+
 from typing import List, TypeVar, Iterable, MutableMapping
 
 from qiskit.circuit import QuantumRegister

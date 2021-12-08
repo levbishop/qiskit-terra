@@ -14,6 +14,8 @@
 """The Iterative Quantum Phase Estimation Algorithm."""
 
 
+from __future__ import annotations
+
 from typing import Optional, Union
 
 import numpy

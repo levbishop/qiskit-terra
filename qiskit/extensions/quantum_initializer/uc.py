@@ -34,6 +34,8 @@ This gate is represented by a block-diagonal matrix, where each block is a
      [0,   0,  ...., U_(2^k-1)]]
 """
 
+from __future__ import annotations
+
 import cmath
 import math
 

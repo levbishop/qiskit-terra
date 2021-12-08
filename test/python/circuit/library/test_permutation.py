@@ -12,6 +12,8 @@
 
 """Test library of permutation logic quantum circuits."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

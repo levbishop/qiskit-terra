@@ -14,5 +14,7 @@
 OpFlow Mixins
 """
 
+from __future__ import annotations
+
 from .star_algebra import StarAlgebraMixin
 from .tensor import TensorMixin

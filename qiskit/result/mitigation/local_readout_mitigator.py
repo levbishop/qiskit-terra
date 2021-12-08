@@ -14,6 +14,8 @@ Readout mitigator class based on the 1-qubit local tensored mitigation method
 """
 
 
+from __future__ import annotations
+
 from typing import Optional, List, Tuple, Iterable, Callable, Union
 
 import numpy as np

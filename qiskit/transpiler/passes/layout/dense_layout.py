@@ -13,6 +13,8 @@
 """Choose a Layout by finding the most connected subset of qubits."""
 
 
+from __future__ import annotations
+
 import numpy as np
 import scipy.sparse as sp
 import scipy.sparse.csgraph as cs

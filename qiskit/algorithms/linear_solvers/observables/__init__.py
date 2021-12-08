@@ -12,6 +12,8 @@
 
 """Observables for Qiskit's linear solvers."""
 
+from __future__ import annotations
+
 from .linear_system_observable import LinearSystemObservable
 from .absolute_average import AbsoluteAverage
 from .matrix_functional import MatrixFunctional

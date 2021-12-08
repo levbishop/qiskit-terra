@@ -14,6 +14,8 @@
 Tests for the default UnitarySynthesis transpiler pass.
 """
 
+from __future__ import annotations
+
 import unittest
 
 from ddt import ddt, data

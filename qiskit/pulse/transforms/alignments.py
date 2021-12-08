@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """A collection of passes to reallocate the timeslots of instructions according to context."""
 
+from __future__ import annotations
+
 import abc
 from typing import Callable, Dict, Any, Union
 

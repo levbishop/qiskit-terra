@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Test the Unroll3qOrMore pass"""
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit

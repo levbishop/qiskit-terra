@@ -21,6 +21,8 @@ Template 6c_1:
          └───┘     └───┘     └───┘
 """
 
+from __future__ import annotations
+
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
 

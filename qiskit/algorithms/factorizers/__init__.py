@@ -12,6 +12,8 @@
 
 """ Factorizers Package """
 
+from __future__ import annotations
+
 from .shor import Shor, ShorResult
 
 __all__ = [

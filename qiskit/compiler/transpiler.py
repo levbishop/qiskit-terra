@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Circuit transpile function"""
+from __future__ import annotations
+
 import datetime
 import logging
 import warnings

@@ -12,6 +12,8 @@
 
 """Test the boolean logic circuits."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

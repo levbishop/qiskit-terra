@@ -12,6 +12,8 @@
 """
 Tests building up CNOT unit structures.
 """
+from __future__ import annotations
+
 from test.python.transpiler.aqc.sample_data import CARTAN_4, CARTAN_3
 
 import numpy as np

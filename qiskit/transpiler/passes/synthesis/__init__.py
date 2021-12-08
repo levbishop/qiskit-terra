@@ -12,5 +12,7 @@
 
 """Module containing transpiler synthesis passes."""
 
+from __future__ import annotations
+
 from .unitary_synthesis import UnitarySynthesis
 from .plugin import unitary_synthesis_plugin_names

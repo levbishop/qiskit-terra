@@ -12,6 +12,8 @@
 
 """A standard gradient descent optimizer."""
 
+from __future__ import annotations
+
 from typing import Iterator, Optional, Union, Callable, Dict, Any, List, Tuple
 from functools import partial
 

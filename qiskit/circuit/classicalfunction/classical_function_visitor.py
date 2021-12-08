@@ -14,6 +14,8 @@
 This module is used internally by ``qiskit.transpiler.classicalfunction.ClassicalFunction``.
 """
 
+from __future__ import annotations
+
 import ast
 import _ast
 

@@ -12,6 +12,8 @@
 
 """ Test Providers that support BackendV1 interface """
 
+from __future__ import annotations
+
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 

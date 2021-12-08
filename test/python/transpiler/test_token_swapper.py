@@ -26,6 +26,8 @@
 
 """Test cases for the permutation.complete package"""
 
+from __future__ import annotations
+
 import itertools
 
 import retworkx as rx

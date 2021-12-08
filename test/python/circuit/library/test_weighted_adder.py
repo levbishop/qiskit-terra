@@ -12,6 +12,8 @@
 
 """Test library of weighted adder circuits."""
 
+from __future__ import annotations
+
 import unittest
 from collections import defaultdict
 

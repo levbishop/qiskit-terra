@@ -13,6 +13,8 @@
 
 """This module implements the job class used by Basic Aer Provider."""
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.providers import JobStatus

@@ -28,6 +28,8 @@ they need a measurement. This assumption is based on current device properties
 and may need to be revised for future device generations.
 """
 
+from __future__ import annotations
+
 import math
 import operator
 from itertools import chain, combinations

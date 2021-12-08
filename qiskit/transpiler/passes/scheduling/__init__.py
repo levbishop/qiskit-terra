@@ -12,6 +12,8 @@
 
 """Module containing circuit scheduling passes."""
 
+from __future__ import annotations
+
 from .alap import ALAPSchedule
 from .asap import ASAPSchedule
 from .time_unit_conversion import TimeUnitConversion

@@ -12,6 +12,8 @@
 
 """Tests for pass manager visualization tool."""
 
+from __future__ import annotations
+
 import unittest
 import os
 

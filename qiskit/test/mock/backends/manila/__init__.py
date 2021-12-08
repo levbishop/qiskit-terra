@@ -12,4 +12,6 @@
 
 """Mock manila backend"""
 
+from __future__ import annotations
+
 from .fake_manila import FakeManila

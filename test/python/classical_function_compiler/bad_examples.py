@@ -14,6 +14,8 @@
 
 """These are bad examples and raise errors in in the classicalfunction compiler"""
 
+from __future__ import annotations
+
 from qiskit.circuit import Int1, Int2
 
 

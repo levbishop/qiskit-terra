@@ -16,6 +16,8 @@ To create add-on backend modules subclass the Backend class in this module.
 Doing so requires that the required backend interface is implemented.
 """
 
+from __future__ import annotations
+
 import warnings
 from abc import ABC, abstractmethod
 

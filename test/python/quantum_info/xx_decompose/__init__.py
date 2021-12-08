@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Qiskit integration tests for XX-based synthesis."""
+
+from __future__ import annotations

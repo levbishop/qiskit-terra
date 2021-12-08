@@ -12,6 +12,8 @@
 
 """ Suzuki Class """
 
+from __future__ import annotations
+
 from typing import List, Union, cast
 
 from numpy import isreal

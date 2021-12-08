@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """The Numpy LinearSolver algorithm (classical)."""
 
+from __future__ import annotations
+
 from typing import List, Union, Optional, Callable
 
 import numpy as np

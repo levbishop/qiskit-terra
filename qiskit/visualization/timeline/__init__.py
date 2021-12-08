@@ -15,6 +15,8 @@ Scheduled circuit visualization module.
 """
 
 # interface
+from __future__ import annotations
+
 from qiskit.visualization.timeline.interface import draw
 
 # stylesheets

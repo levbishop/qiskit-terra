@@ -38,6 +38,8 @@ of the complete initial data.
 
 """
 
+from __future__ import annotations
+
 from .pauli_feature_map import PauliFeatureMap
 from .z_feature_map import ZFeatureMap
 from .zz_feature_map import ZZFeatureMap

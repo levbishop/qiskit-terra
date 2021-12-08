@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Tests LogicNetwork.simulate method."""
+from __future__ import annotations
+
 from ddt import ddt, data
 
 from qiskit.circuit.classicalfunction import classical_function as compile_classical_function

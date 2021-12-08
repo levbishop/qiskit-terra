@@ -30,6 +30,8 @@ If an instruction is associated with multiple bits and the target bit of the cla
 the primary bit of the instruction, the instance also generates a ``GateLink`` object
 that shows the relationship between bits during multi-bit gates.
 """
+from __future__ import annotations
+
 from typing import List, Iterator
 
 from qiskit import circuit

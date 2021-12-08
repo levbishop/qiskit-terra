@@ -14,6 +14,8 @@
 Fake backend supporting OpenPulse.
 """
 
+from __future__ import annotations
+
 from qiskit.providers.models import (
     GateConfig,
     PulseBackendConfiguration,

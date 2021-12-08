@@ -12,6 +12,8 @@
 
 """Tests utility functions for QuantumState classes."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

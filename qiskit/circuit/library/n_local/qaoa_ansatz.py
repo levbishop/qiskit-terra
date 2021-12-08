@@ -13,6 +13,8 @@
 """A generalized QAOA quantum circuit with a support of custom initial states and mixers."""
 
 # pylint: disable=cyclic-import
+from __future__ import annotations
+
 from typing import Optional, List, Tuple
 
 import numpy as np

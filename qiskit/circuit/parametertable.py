@@ -12,6 +12,8 @@
 """
 Look-up table for variable parameters in QuantumCircuit.
 """
+from __future__ import annotations
+
 import warnings
 import functools
 from collections.abc import MutableMapping, MappingView

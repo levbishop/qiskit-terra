@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Configurable backend."""
+from __future__ import annotations
+
 import itertools
 from datetime import datetime
 from typing import Optional, List, Union

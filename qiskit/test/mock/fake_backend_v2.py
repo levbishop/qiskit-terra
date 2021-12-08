@@ -14,6 +14,8 @@
 
 """Mock BackendV2 object without run implemented for testing backwards compat"""
 
+from __future__ import annotations
+
 import datetime
 
 import numpy as np

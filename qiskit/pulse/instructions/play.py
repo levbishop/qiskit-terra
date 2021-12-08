@@ -13,6 +13,8 @@
 """An instruction to transmit a given pulse on a ``PulseChannel`` (i.e., those which support
 transmitted pulses, such as ``DriveChannel``).
 """
+from __future__ import annotations
+
 from typing import Optional, Union, Tuple, Set
 
 from qiskit.circuit.parameterexpression import ParameterExpression

@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Tests preset pass managers with 1Q backend"""
+from __future__ import annotations
+
 from test import combine
 
 from ddt import ddt

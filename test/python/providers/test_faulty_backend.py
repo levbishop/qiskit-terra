@@ -12,6 +12,8 @@
 
 """Testing a Faulty Ourense Backend."""
 
+from __future__ import annotations
+
 from qiskit.test import QiskitTestCase
 
 from .faulty_backends import (

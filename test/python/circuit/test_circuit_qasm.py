@@ -12,6 +12,8 @@
 
 """Test Qiskit's QuantumCircuit class."""
 
+from __future__ import annotations
+
 import re
 from math import pi
 

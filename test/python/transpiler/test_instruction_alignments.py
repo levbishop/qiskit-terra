@@ -12,6 +12,8 @@
 
 """Testing instruction alignment pass."""
 
+from __future__ import annotations
+
 from qiskit import QuantumCircuit, pulse
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import InstructionDurations

@@ -12,6 +12,8 @@
 
 """Pass Manager Configuration class."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.coupling import CouplingMap
 from qiskit.transpiler.instruction_durations import InstructionDurations
 

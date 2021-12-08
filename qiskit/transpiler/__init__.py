@@ -423,6 +423,8 @@ Exceptions
    TranspilerAccessError
 """
 
+from __future__ import annotations
+
 from .runningpassmanager import FlowController
 from .passmanager import PassManager
 from .passmanager_config import PassManagerConfig

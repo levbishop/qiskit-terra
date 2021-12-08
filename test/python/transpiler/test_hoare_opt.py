@@ -12,6 +12,8 @@
 
 """Test the HoareOptimizer pass"""
 
+from __future__ import annotations
+
 import unittest
 
 from numpy import pi

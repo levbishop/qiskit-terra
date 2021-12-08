@@ -12,4 +12,6 @@
 
 """Mock rochester backend"""
 
+from __future__ import annotations
+
 from .fake_rochester import FakeRochester, FakeLegacyRochester

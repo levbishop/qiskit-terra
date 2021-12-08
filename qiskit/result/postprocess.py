@@ -12,6 +12,8 @@
 
 """Post-processing of raw result."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.exceptions import QiskitError

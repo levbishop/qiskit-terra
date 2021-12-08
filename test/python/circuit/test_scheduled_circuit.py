@@ -13,6 +13,8 @@
 # pylint: disable=missing-function-docstring
 
 """Test scheduled circuit (quantum circuit with duration)."""
+from __future__ import annotations
+
 from ddt import ddt, data
 
 from qiskit import QuantumCircuit, QiskitError, transpile, assemble, BasicAer

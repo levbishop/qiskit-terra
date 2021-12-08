@@ -12,6 +12,8 @@
 
 """Test for the DAGCircuit object"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.circuit import QuantumRegister, ClassicalRegister, QuantumCircuit

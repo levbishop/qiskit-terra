@@ -13,6 +13,8 @@
 """Test QuantumCircuit.find_bit."""
 
 
+from __future__ import annotations
+
 from ddt import ddt, data, unpack
 
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit

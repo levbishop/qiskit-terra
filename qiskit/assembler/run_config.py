@@ -12,6 +12,8 @@
 
 """Models for RunConfig and its related components."""
 
+from __future__ import annotations
+
 from types import SimpleNamespace
 
 

@@ -12,6 +12,8 @@
 
 """Tests for all BasicAer  simulators."""
 
+from __future__ import annotations
+
 import io
 import sys
 from logging import StreamHandler, getLogger

@@ -12,6 +12,8 @@
 
 """Schema and helper models for schema-conformant Results."""
 
+from __future__ import annotations
+
 import copy
 
 from qiskit.qobj.utils import MeasReturnType, MeasLevel

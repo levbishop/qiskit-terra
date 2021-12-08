@@ -23,6 +23,8 @@ The input is a qobj dictionary and the output is a Result object.
 The input qobj to this simulator has no shots, no measures, no reset, no noise.
 """
 
+from __future__ import annotations
+
 import logging
 from math import log2
 

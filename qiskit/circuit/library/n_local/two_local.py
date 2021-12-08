@@ -12,6 +12,8 @@
 
 """The two-local gate circuit."""
 
+from __future__ import annotations
+
 from typing import Union, Optional, List, Callable, Any
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit

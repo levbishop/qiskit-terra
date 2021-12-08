@@ -12,6 +12,8 @@
 
 """The log-normal probability distribution circuit."""
 
+from __future__ import annotations
+
 import warnings
 from typing import Tuple, List, Union, Optional
 

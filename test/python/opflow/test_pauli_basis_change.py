@@ -12,6 +12,8 @@
 
 """ Test Pauli Change of Basis Converter """
 
+from __future__ import annotations
+
 import itertools
 import unittest
 from functools import reduce

@@ -12,6 +12,8 @@
 
 """Tests for quantum synthesis methods."""
 
+from __future__ import annotations
+
 import unittest
 import contextlib
 import logging

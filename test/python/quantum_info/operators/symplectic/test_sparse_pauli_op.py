@@ -12,6 +12,8 @@
 
 """Tests for SparsePauliOp class."""
 
+from __future__ import annotations
+
 import itertools as it
 import unittest
 from test import combine

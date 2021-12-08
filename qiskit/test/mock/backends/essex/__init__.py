@@ -12,4 +12,6 @@
 
 """Mock essex backend"""
 
+from __future__ import annotations
+
 from .fake_essex import FakeEssex, FakeLegacyEssex

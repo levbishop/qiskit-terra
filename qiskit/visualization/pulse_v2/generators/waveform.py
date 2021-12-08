@@ -37,6 +37,8 @@ Arbitrary generator function satisfying the above format can be accepted.
 Returned `ElementaryData` can be arbitrary subclasses that are implemented in
 the plotter API.
 """
+from __future__ import annotations
+
 import re
 from fractions import Fraction
 from typing import Dict, Any, List, Union

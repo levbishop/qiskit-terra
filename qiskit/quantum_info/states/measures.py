@@ -13,6 +13,8 @@
 Quantum information measures, metrics, and related functions for states.
 """
 
+from __future__ import annotations
+
 import numpy as np
 import scipy.linalg as la
 

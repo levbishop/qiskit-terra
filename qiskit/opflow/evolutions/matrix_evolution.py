@@ -12,6 +12,8 @@
 
 """ MatrixEvolution Class """
 
+from __future__ import annotations
+
 import logging
 
 from qiskit.opflow.evolutions.evolution_base import EvolutionBase

@@ -12,6 +12,8 @@
 """
 Test that the PulseBackendConfiguration methods work as expected with a mocked Pulse backend.
 """
+from __future__ import annotations
+
 import collections
 import copy
 

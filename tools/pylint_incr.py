@@ -14,6 +14,8 @@
 
 """Run pylint incrementally on only changed files"""
 
+from __future__ import annotations
+
 import subprocess
 import argparse
 import os

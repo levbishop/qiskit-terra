@@ -12,6 +12,8 @@
 
 """Add control to operation if supported."""
 
+from __future__ import annotations
+
 from typing import Union, Optional
 
 from qiskit.circuit.exceptions import CircuitError

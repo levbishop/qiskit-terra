@@ -12,6 +12,8 @@
 
 """Test library of Global Mølmer–Sørensen gate."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

@@ -12,6 +12,8 @@
 
 """Remove all barriers in a circuit"""
 
+from __future__ import annotations
+
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.basepasses import TransformationPass
 

@@ -12,6 +12,8 @@
 
 """Quantum Operators."""
 
+from __future__ import annotations
+
 from .operator import Operator
 
 # These must come after to avoid cyclic import problems?

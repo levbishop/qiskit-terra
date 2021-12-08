@@ -12,6 +12,8 @@
 
 """The QN-SPSA optimizer."""
 
+from __future__ import annotations
+
 from typing import Any, Iterator, Optional, Union, Callable, Dict
 
 import numpy as np

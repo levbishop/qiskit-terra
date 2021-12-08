@@ -12,6 +12,8 @@
 
 """The Iterative Quantum Amplitude Estimation Algorithm."""
 
+from __future__ import annotations
+
 from typing import Optional, Union, List, Tuple, Dict, cast
 
 import numpy as np

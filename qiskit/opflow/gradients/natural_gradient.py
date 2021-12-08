@@ -12,6 +12,8 @@
 
 """ Natural Gradient. """
 
+from __future__ import annotations
+
 import functools
 from collections.abc import Iterable
 from typing import List, Tuple, Callable, Optional, Union

@@ -12,6 +12,8 @@
 
 """ Test QAOA """
 
+from __future__ import annotations
+
 import unittest
 import math
 from test.python.algorithms import QiskitAlgorithmsTestCase

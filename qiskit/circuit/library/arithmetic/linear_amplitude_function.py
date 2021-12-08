@@ -12,6 +12,8 @@
 
 """A class implementing a (piecewise-) linear function on qubit amplitudes."""
 
+from __future__ import annotations
+
 from typing import Optional, List, Union, Tuple
 
 import numpy as np

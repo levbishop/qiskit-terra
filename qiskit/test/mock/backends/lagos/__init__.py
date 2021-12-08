@@ -12,4 +12,6 @@
 
 """Mock lagos backend"""
 
+from __future__ import annotations
+
 from .fake_lagos import FakeLagos

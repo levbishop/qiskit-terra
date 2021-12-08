@@ -16,6 +16,9 @@ matching algorithm.
 """
 
 
+from __future__ import annotations
+
+
 class Match:
     """
     Class Match is an object to store a list of match with its qubits and

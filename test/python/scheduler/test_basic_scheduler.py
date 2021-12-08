@@ -12,6 +12,8 @@
 
 """Test cases for the pulse scheduler passes."""
 
+from __future__ import annotations
+
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, schedule
 from qiskit.circuit import Gate, Parameter
 from qiskit.circuit.library import U1Gate, U2Gate, U3Gate

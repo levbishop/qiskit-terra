@@ -12,6 +12,8 @@
 
 """A container class for counts from a circuit execution."""
 
+from __future__ import annotations
+
 import re
 
 from qiskit.result import postprocess

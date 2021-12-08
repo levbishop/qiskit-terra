@@ -12,6 +12,8 @@
 
 """Tests for the converters."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.converters import dag_to_circuit, circuit_to_dag

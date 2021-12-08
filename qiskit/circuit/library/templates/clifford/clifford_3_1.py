@@ -19,6 +19,8 @@ Clifford template 3_1:
              └───┘└───┘└───┘
 """
 
+from __future__ import annotations
+
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
 

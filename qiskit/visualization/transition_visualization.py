@@ -13,6 +13,8 @@
 """
 Visualization function for animation of state transitions by applying gates to single qubit.
 """
+from __future__ import annotations
+
 import sys
 from math import sin, cos, acos, sqrt
 

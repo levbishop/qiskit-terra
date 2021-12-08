@@ -12,6 +12,8 @@
 
 """The module for the Quantum Fisher Information."""
 
+from __future__ import annotations
+
 from typing import List, Union
 
 import numpy as np

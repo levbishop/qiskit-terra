@@ -13,6 +13,8 @@
 """Set the ``layout`` property to the given layout."""
 
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

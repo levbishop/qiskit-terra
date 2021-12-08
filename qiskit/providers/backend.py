@@ -15,6 +15,8 @@
 """Backend abstract interface for providers."""
 
 
+from __future__ import annotations
+
 import datetime
 import logging
 from abc import ABC, abstractmethod

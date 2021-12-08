@@ -21,6 +21,8 @@ Template 9c_3:
               └───┘          └───┘     └───┘└───┘
 """
 
+from __future__ import annotations
+
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
 

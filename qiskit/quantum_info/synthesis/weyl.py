@@ -14,6 +14,8 @@
 """Routines that compute  and use the Weyl chamber coordinates.
 """
 
+from __future__ import annotations
+
 import numpy as np
 import scipy.linalg as la
 

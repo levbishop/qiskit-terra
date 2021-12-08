@@ -45,6 +45,8 @@ Mitigation
 
 """
 
+from __future__ import annotations
+
 from .result import Result
 from .exceptions import ResultError
 from .utils import marginal_counts

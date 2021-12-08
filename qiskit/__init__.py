@@ -14,6 +14,8 @@
 
 """Main Qiskit public functionality."""
 
+from __future__ import annotations
+
 import pkgutil
 import sys
 import warnings

@@ -12,6 +12,8 @@
 
 """Count the operations on the longest path in a DAGcircuit."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

@@ -14,6 +14,8 @@
 Tolerances mixin class.
 """
 
+from __future__ import annotations
+
 from abc import ABCMeta
 
 from qiskit.exceptions import QiskitError

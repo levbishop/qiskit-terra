@@ -12,6 +12,8 @@
 
 # pylint: disable=missing-docstring
 
+from __future__ import annotations
+
 import os
 import configparser as cp
 from uuid import uuid4

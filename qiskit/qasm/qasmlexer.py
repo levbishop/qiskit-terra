@@ -17,6 +17,8 @@ This is a wrapper around the PLY lexer to support the "include" statement
 by creating a stack of lexers.
 """
 
+from __future__ import annotations
+
 import os
 
 import numpy as np

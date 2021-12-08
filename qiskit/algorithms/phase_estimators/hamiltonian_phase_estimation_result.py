@@ -13,6 +13,8 @@
 """Result from running HamiltonianPhaseEstimation"""
 
 
+from __future__ import annotations
+
 from typing import Dict, Union, cast
 
 from qiskit.utils.deprecation import deprecate_function

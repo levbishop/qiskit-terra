@@ -14,6 +14,8 @@
 Message broker for the Publisher / Subscriber mechanism
 """
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

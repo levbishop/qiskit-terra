@@ -15,6 +15,8 @@ AST (abstract syntax tree) to DAG (directed acyclic graph) converter.
 
 Acts as an OpenQASM interpreter.
 """
+from __future__ import annotations
+
 from collections import OrderedDict
 
 from qiskit.dagcircuit import DAGCircuit

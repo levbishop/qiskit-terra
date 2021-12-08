@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Module containing Cython code for StochasticSwap mapper."""
+
+from __future__ import annotations

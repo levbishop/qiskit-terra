@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Tests for operator measures."""
 
+from __future__ import annotations
+
 import unittest
 from test import combine
 

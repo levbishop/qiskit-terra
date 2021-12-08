@@ -12,6 +12,8 @@
 
 """A circuit implementing a quadratic form on binary variables."""
 
+from __future__ import annotations
+
 from typing import Union, Optional, List
 
 import numpy as np

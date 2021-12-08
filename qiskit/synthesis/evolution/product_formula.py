@@ -12,6 +12,8 @@
 
 """A product formula base for decomposing non-commuting operator exponentials."""
 
+from __future__ import annotations
+
 from typing import Callable, Optional, Union
 from functools import partial
 

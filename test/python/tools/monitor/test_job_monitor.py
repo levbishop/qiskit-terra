@@ -12,6 +12,8 @@
 
 """Tests for the wrapper functionality."""
 
+from __future__ import annotations
+
 import io
 import unittest
 

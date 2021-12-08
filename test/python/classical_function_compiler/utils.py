@@ -12,6 +12,8 @@
 
 """Testing utilities for classicalfunction compiler."""
 
+from __future__ import annotations
+
 from inspect import getfullargspec, isfunction
 
 from . import examples

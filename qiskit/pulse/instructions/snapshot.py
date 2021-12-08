@@ -13,6 +13,8 @@
 """A simulator instruction to capture output within a simulation. The types of snapshot
 instructions available are determined by the simulator being used.
 """
+from __future__ import annotations
+
 from typing import Optional, Tuple
 
 from qiskit.pulse.channels import SnapshotChannel

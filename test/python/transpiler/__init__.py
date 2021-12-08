@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Qiskit transpiler unit tests."""
+
+from __future__ import annotations

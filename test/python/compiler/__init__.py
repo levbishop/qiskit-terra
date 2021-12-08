@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Tests for the compiler."""
+
+from __future__ import annotations

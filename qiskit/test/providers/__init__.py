@@ -12,5 +12,7 @@
 
 """Base TestCases for provider and backends."""
 
+from __future__ import annotations
+
 from .backend import BackendTestCase
 from .provider import ProviderTestCase

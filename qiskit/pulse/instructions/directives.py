@@ -12,6 +12,8 @@
 
 """Directives are hints to the pulse compiler for how to process its input programs."""
 
+from __future__ import annotations
+
 from abc import ABC
 from typing import Optional, Tuple
 

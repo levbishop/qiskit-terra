@@ -26,6 +26,8 @@ An instance of this class is instantiated by Pulse-enabled backends and populate
     inst_map = backend.defaults().instruction_schedule_map
 
 """
+from __future__ import annotations
+
 import inspect
 import functools
 import warnings

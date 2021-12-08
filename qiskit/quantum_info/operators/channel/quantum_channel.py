@@ -14,6 +14,8 @@
 Abstract base class for Quantum Channels.
 """
 
+from __future__ import annotations
+
 import copy
 from abc import abstractmethod
 from numbers import Number, Integral

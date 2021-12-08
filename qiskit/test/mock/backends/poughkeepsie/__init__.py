@@ -12,4 +12,6 @@
 
 """Mock poughkeepsie backend"""
 
+from __future__ import annotations
+
 from .fake_poughkeepsie import FakePoughkeepsie, FakeLegacyPoughkeepsie

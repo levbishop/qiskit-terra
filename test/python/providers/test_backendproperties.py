@@ -12,6 +12,8 @@
 
 """Base TestCase for testing Providers."""
 
+from __future__ import annotations
+
 import copy
 
 from qiskit.test.mock import FakeOurense, FakeProvider

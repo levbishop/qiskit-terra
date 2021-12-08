@@ -12,6 +12,8 @@
 
 """Tests for StabilizerTable class."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

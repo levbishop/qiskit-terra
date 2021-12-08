@@ -12,6 +12,8 @@
 """
 An AQC synthesis plugin to Qiskit's transpiler.
 """
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.converters import circuit_to_dag

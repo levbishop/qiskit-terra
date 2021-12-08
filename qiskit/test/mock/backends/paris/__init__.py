@@ -12,4 +12,6 @@
 
 """Mock paris backend"""
 
+from __future__ import annotations
+
 from .fake_paris import FakeParis, FakeLegacyParis

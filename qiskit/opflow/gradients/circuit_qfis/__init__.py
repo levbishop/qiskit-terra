@@ -12,6 +12,8 @@
 
 """The module for first order derivatives."""
 
+from __future__ import annotations
+
 from .circuit_qfi import CircuitQFI
 from .lin_comb_full import LinCombFull
 from .overlap_diag import OverlapDiag

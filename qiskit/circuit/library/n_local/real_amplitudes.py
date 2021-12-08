@@ -12,6 +12,8 @@
 
 """The real-amplitudes 2-local circuit."""
 
+from __future__ import annotations
+
 from typing import Union, Optional, List, Tuple, Callable, Any
 
 import numpy as np

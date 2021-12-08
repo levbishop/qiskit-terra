@@ -12,4 +12,6 @@
 
 """Mock armonk backend"""
 
+from __future__ import annotations
+
 from .fake_armonk import FakeArmonk, FakeLegacyArmonk

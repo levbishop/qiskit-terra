@@ -12,6 +12,8 @@
 
 """This module defines an enumerated type for the state of backend jobs"""
 
+from __future__ import annotations
+
 import enum
 
 

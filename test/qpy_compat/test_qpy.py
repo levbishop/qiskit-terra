@@ -13,6 +13,8 @@
 
 """Test cases to verify qpy backwards compatibility."""
 
+from __future__ import annotations
+
 import argparse
 import random
 import sys

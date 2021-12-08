@@ -14,6 +14,8 @@
 
 """Test delay instruction for quantum circuits."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit import Delay, Parameter, ParameterVector, QuantumCircuit

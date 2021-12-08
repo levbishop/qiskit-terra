@@ -12,4 +12,6 @@
 
 """Mock manhattan backend"""
 
+from __future__ import annotations
+
 from .fake_manhattan import FakeManhattan, FakeLegacyManhattan

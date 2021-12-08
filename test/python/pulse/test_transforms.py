@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Test cases for the pulse Schedule transforms."""
+from __future__ import annotations
+
 import unittest
 from typing import List, Set
 

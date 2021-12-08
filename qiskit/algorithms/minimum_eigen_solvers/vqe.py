@@ -15,6 +15,8 @@
 See https://arxiv.org/abs/1304.3061
 """
 
+from __future__ import annotations
+
 import logging
 import warnings
 from typing import Optional, List, Callable, Union, Dict, Tuple

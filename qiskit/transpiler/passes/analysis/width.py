@@ -12,6 +12,8 @@
 
 """Calculate the width of a DAG circuit."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

@@ -13,6 +13,8 @@
 
 """Test Qiskit's QuantumCircuit class."""
 
+from __future__ import annotations
+
 import numpy as np
 from ddt import ddt, data
 

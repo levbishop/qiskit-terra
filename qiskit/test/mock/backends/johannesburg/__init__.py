@@ -12,4 +12,6 @@
 
 """Mock johannesburg backend"""
 
+from __future__ import annotations
+
 from .fake_johannesburg import FakeJohannesburg, FakeLegacyJohannesburg

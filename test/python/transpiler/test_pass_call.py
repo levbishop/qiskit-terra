@@ -12,6 +12,8 @@
 
 """Test calling passes (passmanager-less)"""
 
+from __future__ import annotations
+
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.circuit.library import ZGate
 from qiskit.transpiler.passes import Unroller

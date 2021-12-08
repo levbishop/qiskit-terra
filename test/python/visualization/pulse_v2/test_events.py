@@ -12,6 +12,8 @@
 
 """Tests for core modules of pulse drawer."""
 
+from __future__ import annotations
+
 from qiskit import pulse, circuit
 from qiskit.test import QiskitTestCase
 from qiskit.visualization.pulse_v2 import events

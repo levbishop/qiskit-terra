@@ -123,6 +123,8 @@ Synthesis
    XXDecomposer
 """
 
+from __future__ import annotations
+
 from .operators import (
     Operator,
     ScalarOp,

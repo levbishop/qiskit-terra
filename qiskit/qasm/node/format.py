@@ -12,6 +12,8 @@
 
 """Node for an OPENQASM file identifier/version statement."""
 
+from __future__ import annotations
+
 import re
 
 from .node import Node

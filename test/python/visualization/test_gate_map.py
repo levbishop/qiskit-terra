@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """A test for visualizing device coupling maps"""
+from __future__ import annotations
+
 import unittest
 import sys
 from io import BytesIO

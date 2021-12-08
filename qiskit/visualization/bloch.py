@@ -46,6 +46,8 @@
 
 """Bloch sphere"""
 
+from __future__ import annotations
+
 __all__ = ["Bloch"]
 
 import os

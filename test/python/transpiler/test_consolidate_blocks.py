@@ -14,6 +14,8 @@
 Tests for the ConsolidateBlocks transpiler pass.
 """
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

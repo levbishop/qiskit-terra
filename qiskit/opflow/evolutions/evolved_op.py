@@ -12,6 +12,8 @@
 
 """ EvolutionOp Class """
 
+from __future__ import annotations
+
 from typing import List, Optional, Set, Union, cast
 
 import numpy as np

@@ -21,6 +21,8 @@ If the k control qubits are in the state ket(i) (in the computational bases),
 a single-qubit rotation R_t(a_i) is applied to the target qubit for a (real) angle a_i.
 """
 
+from __future__ import annotations
+
 import math
 
 import numpy as np

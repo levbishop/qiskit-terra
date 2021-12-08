@@ -12,6 +12,8 @@
 
 """A module for monitoring backends."""
 
+from __future__ import annotations
+
 import types
 import math
 import datetime

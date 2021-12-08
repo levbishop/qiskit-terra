@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Quasidistribution class"""
 
+from __future__ import annotations
+
 import re
 from math import sqrt
 

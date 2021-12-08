@@ -12,6 +12,8 @@
 
 """Tests for uniformly controlled Rx,Ry and Rz gates"""
 
+from __future__ import annotations
+
 import itertools
 import unittest
 

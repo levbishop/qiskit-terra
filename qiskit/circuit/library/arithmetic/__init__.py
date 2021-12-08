@@ -12,6 +12,8 @@
 
 """The arithmetic circuit library."""
 
+from __future__ import annotations
+
 from .functional_pauli_rotations import FunctionalPauliRotations
 from .integer_comparator import IntegerComparator
 from .linear_pauli_rotations import LinearPauliRotations

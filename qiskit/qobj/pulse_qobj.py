@@ -15,6 +15,8 @@
 
 """Module providing definitions of Pulse Qobj classes."""
 
+from __future__ import annotations
+
 import copy
 import pprint
 from typing import Union, List

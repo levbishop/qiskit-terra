@@ -159,6 +159,8 @@ Exceptions
 """
 
 # New Operators
+from __future__ import annotations
+
 from .operator_base import OperatorBase
 from .primitive_ops import (
     PrimitiveOp,

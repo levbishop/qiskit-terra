@@ -15,6 +15,8 @@ N-qubit Pauli Operator Class
 # pylint: disable=invalid-name
 # pylint: disable=bad-docstring-quotes  # for deprecate_function decorator
 
+from __future__ import annotations
+
 import re
 from typing import Dict
 

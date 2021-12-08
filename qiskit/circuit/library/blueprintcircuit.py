@@ -12,6 +12,8 @@
 
 """Blueprint circuit object."""
 
+from __future__ import annotations
+
 from typing import Optional
 from abc import ABC, abstractmethod
 

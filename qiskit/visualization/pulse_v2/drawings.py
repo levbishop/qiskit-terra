@@ -55,6 +55,8 @@ data arrays, if we introduced such a drawing and wrote a custom wrapper function
 on top of the existing API, it could be difficult to prevent bugs with the CI tools
 due to lack of the effective unittest.
 """
+from __future__ import annotations
+
 from abc import ABC
 from enum import Enum
 from typing import Dict, Any, Optional, Union, List

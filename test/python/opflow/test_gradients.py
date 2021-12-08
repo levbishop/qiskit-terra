@@ -13,6 +13,8 @@
 
 """ Test Quantum Gradient Framework """
 
+from __future__ import annotations
+
 import unittest
 from test.python.opflow import QiskitOpflowTestCase
 from itertools import product

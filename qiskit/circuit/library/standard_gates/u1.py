@@ -12,6 +12,8 @@
 
 """U1 Gate."""
 
+from __future__ import annotations
+
 from typing import Optional, Union
 
 import numpy

@@ -12,6 +12,8 @@
 
 """BasePass and generic pass testing"""
 
+from __future__ import annotations
+
 import unittest.mock
 
 from qiskit.test import QiskitTestCase

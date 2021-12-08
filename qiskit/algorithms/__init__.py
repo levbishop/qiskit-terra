@@ -177,6 +177,8 @@ Exceptions
    AlgorithmError
 """
 
+from __future__ import annotations
+
 from .algorithm_result import AlgorithmResult
 from .variational_algorithm import VariationalAlgorithm, VariationalResult
 from .amplitude_amplifiers import Grover, GroverResult, AmplificationProblem

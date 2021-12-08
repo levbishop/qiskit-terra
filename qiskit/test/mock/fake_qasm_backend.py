@@ -14,6 +14,8 @@
 Fake backend abstract class for mock backends.
 """
 
+from __future__ import annotations
+
 import json
 import os
 

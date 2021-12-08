@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Unify time unit in circuit for scheduling and following passes."""
+from __future__ import annotations
+
 from typing import Set
 
 from qiskit.circuit import Delay

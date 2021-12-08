@@ -14,6 +14,8 @@
 """Check if number close to values of PI
 """
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit.circuit.parameterexpression import ParameterExpression

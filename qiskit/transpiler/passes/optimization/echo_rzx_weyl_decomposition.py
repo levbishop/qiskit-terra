@@ -12,6 +12,8 @@
 
 """Weyl decomposition of two-qubit gates in terms of echoed cross-resonance gates."""
 
+from __future__ import annotations
+
 from typing import Tuple
 
 from qiskit.circuit import QuantumRegister

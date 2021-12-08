@@ -12,6 +12,8 @@
 
 """Exceptions for errors raised while handling Quantum Circuits."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

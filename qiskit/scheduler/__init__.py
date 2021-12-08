@@ -27,6 +27,8 @@ A circuit scheduler compiles a circuit program to a pulse program.
 
 .. automodule:: qiskit.scheduler.methods
 """
+from __future__ import annotations
+
 from qiskit.scheduler import schedule_circuit
 from qiskit.scheduler.config import ScheduleConfig
 from qiskit.scheduler.utils import measure, measure_all

@@ -12,6 +12,8 @@
 
 """Backend Properties classes."""
 
+from __future__ import annotations
+
 import copy
 import datetime
 from typing import Any, Iterable, Tuple, Union

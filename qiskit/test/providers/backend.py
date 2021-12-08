@@ -12,6 +12,8 @@
 
 """Base TestCase for testing backends."""
 
+from __future__ import annotations
+
 from unittest import SkipTest
 
 from qiskit import execute

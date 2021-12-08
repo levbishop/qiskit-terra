@@ -12,6 +12,8 @@
 
 """Helper function for converting a circuit to a dag"""
 
+from __future__ import annotations
+
 from qiskit.dagcircuit.dagcircuit import DAGCircuit
 
 

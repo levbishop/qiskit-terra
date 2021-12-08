@@ -14,6 +14,8 @@
 
 """
 
+from __future__ import annotations
+
 from string import ascii_uppercase, ascii_lowercase
 from typing import List, Optional
 

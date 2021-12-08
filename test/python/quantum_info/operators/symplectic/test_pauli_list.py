@@ -12,6 +12,8 @@
 
 """Tests for PauliList class."""
 
+from __future__ import annotations
+
 import unittest
 import itertools
 from test import combine

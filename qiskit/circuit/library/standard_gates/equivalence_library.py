@@ -13,6 +13,8 @@
 """Standard gates."""
 
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.qasm import pi

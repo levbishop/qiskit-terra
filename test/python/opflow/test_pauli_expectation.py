@@ -12,6 +12,8 @@
 
 """ Test PauliExpectation """
 
+from __future__ import annotations
+
 import itertools
 import unittest
 from test.python.opflow import QiskitOpflowTestCase

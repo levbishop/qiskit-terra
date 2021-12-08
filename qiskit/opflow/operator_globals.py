@@ -14,6 +14,8 @@
 Operator Globals
 """
 
+from __future__ import annotations
+
 from qiskit.quantum_info import Pauli
 from qiskit.circuit.library import CXGate, SGate, TGate, HGate, SwapGate, CZGate
 from qiskit.opflow.primitive_ops.pauli_op import PauliOp

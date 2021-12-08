@@ -12,6 +12,8 @@
 
 """Remove final measurements and barriers at the end of a circuit."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.dagcircuit import DAGOpNode
 

@@ -12,6 +12,8 @@
 
 """The module for Quantum the Fisher Information."""
 
+from __future__ import annotations
+
 import functools
 from typing import List, Union, Optional
 

@@ -12,6 +12,8 @@
 
 """Check if the CNOTs follow the right direction with respect to the coupling map.."""
 
+from __future__ import annotations
+
 import warnings
 
 from qiskit.transpiler.passes.utils.check_gate_direction import CheckGateDirection

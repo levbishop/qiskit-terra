@@ -74,6 +74,8 @@ Trotterizations
    QDrift
 """
 
+from __future__ import annotations
+
 from .evolution_base import EvolutionBase
 from .evolution_factory import EvolutionFactory
 from .evolved_op import EvolvedOp

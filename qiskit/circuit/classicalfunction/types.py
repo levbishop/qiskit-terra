@@ -12,6 +12,8 @@
 
 """ClassicalFunction function types."""
 
+from __future__ import annotations
+
 from typing import NewType
 
 Int1 = NewType("Int1", bool)

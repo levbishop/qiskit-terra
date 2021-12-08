@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Randomized tests of Clifford operator class."""
+from __future__ import annotations
+
 import unittest
 
 from hypothesis import given, strategies, settings

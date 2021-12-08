@@ -12,6 +12,8 @@
 
 """Quick program to test the quantum information states modules."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

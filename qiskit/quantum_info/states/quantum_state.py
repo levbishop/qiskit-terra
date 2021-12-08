@@ -14,6 +14,8 @@
 Abstract QuantumState class.
 """
 
+from __future__ import annotations
+
 import copy
 from abc import abstractmethod
 

@@ -12,6 +12,8 @@
 
 # pylint: disable=missing-function-docstring, missing-module-docstring
 
+from __future__ import annotations
+
 import unittest
 import warnings
 from inspect import signature

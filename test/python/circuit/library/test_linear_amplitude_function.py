@@ -12,6 +12,8 @@
 
 """Test the linear amplitude function."""
 
+from __future__ import annotations
+
 import unittest
 from functools import partial
 from collections import defaultdict

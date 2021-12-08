@@ -12,4 +12,6 @@
 
 """Mock bogota backend"""
 
+from __future__ import annotations
+
 from .fake_bogota import FakeBogota, FakeLegacyBogota

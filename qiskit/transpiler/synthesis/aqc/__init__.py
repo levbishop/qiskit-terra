@@ -159,6 +159,8 @@ References:
         `arXiv:2106.05649 <https://arxiv.org/abs/2106.05649>`_
 """
 
+from __future__ import annotations
+
 from .approximate import ApproximateCircuit, ApproximatingObjective
 from .aqc import AQC
 from .aqc_plugin import AQCSynthesisPlugin

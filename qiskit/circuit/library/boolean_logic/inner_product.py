@@ -14,6 +14,8 @@
 """InnerProduct circuit."""
 
 
+from __future__ import annotations
+
 from qiskit.circuit import QuantumRegister, QuantumCircuit
 
 

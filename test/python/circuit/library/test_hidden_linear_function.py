@@ -12,6 +12,8 @@
 
 """Test library of Hidden Linear Function circuits."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

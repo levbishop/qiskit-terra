@@ -13,3 +13,5 @@
 """Qiskit pulse tests."""
 
 # TODO pulse unittest reorganization Qiskit-terra/#6106
+
+from __future__ import annotations

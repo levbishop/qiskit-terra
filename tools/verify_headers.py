@@ -13,6 +13,8 @@
 
 """Utility script to verify qiskit copyright file headers"""
 
+from __future__ import annotations
+
 import argparse
 import multiprocessing
 import os

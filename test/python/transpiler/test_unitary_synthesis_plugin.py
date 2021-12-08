@@ -14,6 +14,8 @@
 Tests for the UnitarySynthesis transpiler pass.
 """
 
+from __future__ import annotations
+
 import functools
 import itertools
 import unittest.mock

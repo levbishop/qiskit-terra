@@ -12,6 +12,8 @@
 
 """Test the phase oracle circuits."""
 
+from __future__ import annotations
+
 import unittest
 
 from ddt import ddt, data, unpack

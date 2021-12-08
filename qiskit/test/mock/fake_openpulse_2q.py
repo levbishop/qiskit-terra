@@ -13,6 +13,8 @@
 """
 Fake backend supporting OpenPulse.
 """
+from __future__ import annotations
+
 import datetime
 
 from qiskit.providers.models import (

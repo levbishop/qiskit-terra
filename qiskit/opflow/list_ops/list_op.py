@@ -12,6 +12,8 @@
 
 """ ListOp Operator Class """
 
+from __future__ import annotations
+
 from functools import reduce
 from numbers import Number
 from typing import Any, Callable, Dict, Iterator, List, Optional, Set, Sequence, Union, cast

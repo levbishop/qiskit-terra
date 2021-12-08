@@ -12,6 +12,8 @@
 
 """Node for an OPENQASM binary operator."""
 
+from __future__ import annotations
+
 import operator
 
 from .node import Node

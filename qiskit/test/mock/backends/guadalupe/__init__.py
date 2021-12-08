@@ -12,4 +12,6 @@
 
 """Mock guadalupe backend"""
 
+from __future__ import annotations
+
 from .fake_guadalupe import FakeGuadalupe

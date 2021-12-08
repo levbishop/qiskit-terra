@@ -12,6 +12,8 @@
 
 """Rearrange the direction of the cx nodes to match the directed coupling map."""
 
+from __future__ import annotations
+
 from math import pi
 
 from qiskit.transpiler.layout import Layout

@@ -68,6 +68,8 @@ For example::
 
 # pylint: disable=attribute-defined-outside-init
 
+from __future__ import annotations
+
 import unittest
 import os
 import sys

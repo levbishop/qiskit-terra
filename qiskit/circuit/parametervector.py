@@ -12,6 +12,8 @@
 
 """Parameter Vector Class to simplify management of parameter lists."""
 
+from __future__ import annotations
+
 from uuid import uuid4
 
 from .parameter import Parameter

@@ -38,6 +38,8 @@ those pulses, which can greatly reduce the size of the job sent to the backend.
    GaussianSquare
 
 """
+from __future__ import annotations
+
 from .discrete import *
 from .parametric_pulses import ParametricPulse, Gaussian, GaussianSquare, Drag, Constant
 from .pulse import Pulse

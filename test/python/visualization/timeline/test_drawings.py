@@ -12,6 +12,8 @@
 
 """Tests for drawing of timeline drawer."""
 
+from __future__ import annotations
+
 import numpy as np
 
 import qiskit

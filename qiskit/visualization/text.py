@@ -14,6 +14,8 @@
 A module for drawing circuits in ascii art or some other text representation
 """
 
+from __future__ import annotations
+
 import sys
 from warnings import warn
 from shutil import get_terminal_size

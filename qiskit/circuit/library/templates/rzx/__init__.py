@@ -17,6 +17,8 @@ Templates are circuits that compute the identity. They find use
 in circuit optimization where matching part of the template allows the compiler
 to replace the match with the inverse of the remainder from the template.
 """
+from __future__ import annotations
+
 from .rzx_yz import rzx_yz
 from .rzx_xz import rzx_xz
 from .rzx_cy import rzx_cy

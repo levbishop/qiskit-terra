@@ -14,6 +14,8 @@
 
 """Helper class used to convert a pulse instruction into PulseQobjInstruction."""
 
+from __future__ import annotations
+
 import hashlib
 import re
 import warnings

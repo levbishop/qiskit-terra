@@ -12,6 +12,8 @@
 
 """Equivalence tests for quantum channel methods."""
 
+from __future__ import annotations
+
 import unittest
 
 import numpy as np

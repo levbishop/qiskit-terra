@@ -12,6 +12,8 @@
 
 """The module to compute the state gradient with the parameter shift rule."""
 
+from __future__ import annotations
+
 from collections.abc import Iterable
 from copy import deepcopy
 from functools import partial

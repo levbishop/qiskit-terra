@@ -13,6 +13,9 @@
 """Exception for errors raised while interpreting nodes."""
 
 
+from __future__ import annotations
+
+
 class NodeException(Exception):
     """Base class for errors raised while interpreting nodes."""
 

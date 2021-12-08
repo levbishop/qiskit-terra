@@ -12,6 +12,8 @@
 
 """A gate to implement time-evolution of operators."""
 
+from __future__ import annotations
+
 from typing import Union, Optional
 
 from qiskit.circuit.gate import Gate

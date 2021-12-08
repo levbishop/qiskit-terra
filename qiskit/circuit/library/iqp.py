@@ -12,6 +12,8 @@
 
 """Instantaneous quantum polynomial circuit."""
 
+from __future__ import annotations
+
 from typing import Union, List
 
 import numpy as np

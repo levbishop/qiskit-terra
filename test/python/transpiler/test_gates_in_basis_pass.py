@@ -12,6 +12,8 @@
 
 """Test GatesInBasis pass."""
 
+from __future__ import annotations
+
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.equivalence_library import SessionEquivalenceLibrary
 from qiskit.transpiler import PassManager

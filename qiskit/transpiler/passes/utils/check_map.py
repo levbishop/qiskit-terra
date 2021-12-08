@@ -12,6 +12,8 @@
 
 """Check if a DAG circuit is already mapped to a coupling map."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

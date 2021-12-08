@@ -12,6 +12,8 @@
 
 """The circuit library module containing N-local circuits."""
 
+from __future__ import annotations
+
 from .n_local import NLocal
 from .two_local import TwoLocal
 from .pauli_two_design import PauliTwoDesign

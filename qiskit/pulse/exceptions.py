@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 
 """Exception for errors raised by the pulse module."""
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

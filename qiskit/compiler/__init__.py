@@ -30,6 +30,8 @@ Circuit and Pulse Compilation Functions
 
 """
 
+from __future__ import annotations
+
 from .assembler import assemble
 from .transpiler import transpile
 from .scheduler import schedule

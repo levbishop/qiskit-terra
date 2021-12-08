@@ -14,6 +14,8 @@
 Fake Tenerife device (5 qubit).
 """
 
+from __future__ import annotations
+
 import os
 import json
 

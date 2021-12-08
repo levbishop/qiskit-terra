@@ -13,6 +13,8 @@
 """Test the evolved operator ansatz."""
 
 
+from __future__ import annotations
+
 from qiskit.circuit import QuantumCircuit
 from qiskit.opflow import X, Y, Z, I, MatrixEvolution
 from qiskit.circuit.library import EvolvedOperatorAnsatz

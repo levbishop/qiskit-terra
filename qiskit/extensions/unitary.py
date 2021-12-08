@@ -14,6 +14,8 @@
 Arbitrary unitary circuit instruction.
 """
 
+from __future__ import annotations
+
 from collections import OrderedDict
 
 import numpy

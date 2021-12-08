@@ -13,6 +13,8 @@
 # pylint: disable=invalid-name
 
 """Parser for mathematical string expressions returned by backends."""
+from __future__ import annotations
+
 import ast
 import copy
 import operator

@@ -13,6 +13,8 @@
 
 """Test Qiskit's power instruction operation."""
 
+from __future__ import annotations
+
 import unittest
 
 from ddt import ddt, data

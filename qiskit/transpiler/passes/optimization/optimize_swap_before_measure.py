@@ -13,6 +13,8 @@
 
 """Remove the swaps followed by measurement (and adapt the measurement)."""
 
+from __future__ import annotations
+
 from qiskit.circuit import Measure
 from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.transpiler.basepasses import TransformationPass

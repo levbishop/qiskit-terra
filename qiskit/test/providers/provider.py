@@ -12,6 +12,8 @@
 
 """Base TestCase for testing Providers."""
 
+from __future__ import annotations
+
 from unittest import SkipTest
 
 from ..base import QiskitTestCase

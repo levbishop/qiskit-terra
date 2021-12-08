@@ -149,6 +149,8 @@ Additional Passes
 """
 
 # layout selection (placement)
+from __future__ import annotations
+
 from .layout import (
     SetLayout,
     TrivialLayout,

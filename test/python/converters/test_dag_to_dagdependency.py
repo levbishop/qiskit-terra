@@ -13,6 +13,8 @@
 """Test for the converter dag dependency to dag circuit and
 dag circuit to dag dependency."""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.converters.circuit_to_dag import circuit_to_dag

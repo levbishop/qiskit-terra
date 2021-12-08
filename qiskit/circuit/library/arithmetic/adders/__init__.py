@@ -12,6 +12,8 @@
 
 """The adder circuit library."""
 
+from __future__ import annotations
+
 from .cdkm_ripple_carry_adder import CDKMRippleCarryAdder
 from .draper_qft_adder import DraperQFTAdder
 from .vbe_ripple_carry_adder import VBERippleCarryAdder

@@ -12,6 +12,8 @@
 
 """Translates gates to a target basis using a given equivalence library."""
 
+from __future__ import annotations
+
 import time
 import logging
 from heapq import heappush, heappop

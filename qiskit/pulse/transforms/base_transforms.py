@@ -13,6 +13,8 @@
 
 # TODO: replace this with proper pulse transformation passes. Qiskit-terra/#6121
 
+from __future__ import annotations
+
 from typing import Union, Iterable, Tuple
 
 from qiskit.pulse.instructions import Instruction

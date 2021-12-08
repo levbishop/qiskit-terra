@@ -12,4 +12,6 @@
 
 """Mock belem backend"""
 
+from __future__ import annotations
+
 from .fake_belem import FakeBelem, FakeLegacyBelem

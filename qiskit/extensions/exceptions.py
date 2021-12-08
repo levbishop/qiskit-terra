@@ -13,6 +13,8 @@
 """
 Exception for errors raised by extensions module.
 """
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

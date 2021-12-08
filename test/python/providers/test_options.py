@@ -13,6 +13,8 @@
 # pylint: disable=missing-class-docstring,missing-function-docstring
 # pylint: disable=missing-module-docstring
 
+from __future__ import annotations
+
 import copy
 import pickle
 

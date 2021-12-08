@@ -12,6 +12,8 @@
 
 """Test the RZXCalibrationBuilderNoEcho."""
 
+from __future__ import annotations
+
 from math import pi, erf, ceil
 
 import numpy as np

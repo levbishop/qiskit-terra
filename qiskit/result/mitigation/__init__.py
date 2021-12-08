@@ -11,3 +11,5 @@
 # that they have been altered from the originals.
 
 """Readout error mitigation."""
+
+from __future__ import annotations

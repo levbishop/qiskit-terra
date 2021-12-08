@@ -13,6 +13,8 @@
 """
 OPENQASM circuit object.
 """
+from __future__ import annotations
+
 from .exceptions import QasmError
 from .qasmparser import QasmParser
 

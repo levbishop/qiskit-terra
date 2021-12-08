@@ -36,6 +36,8 @@ by following the existing pattern:
         ...
         new_supported_pulse_name = library.YourPulseWaveformClass
 """
+from __future__ import annotations
+
 import math
 from abc import abstractmethod
 from typing import Any, Dict, Optional, Union

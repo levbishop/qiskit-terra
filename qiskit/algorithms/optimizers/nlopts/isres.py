@@ -12,6 +12,8 @@
 
 """ Improved Stochastic Ranking Evolution Strategy optimizer. """
 
+from __future__ import annotations
+
 from .nloptimizer import NLoptOptimizer, NLoptOptimizerType
 
 

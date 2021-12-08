@@ -12,6 +12,8 @@
 
 """The Amplitude Estimation interface."""
 
+from __future__ import annotations
+
 from abc import abstractmethod
 from typing import Union, Optional, Dict, Callable, Tuple
 

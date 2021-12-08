@@ -162,6 +162,8 @@ Derivatives
 
 """
 
+from __future__ import annotations
+
 from .circuit_gradients.circuit_gradient import CircuitGradient
 from .circuit_qfis.circuit_qfi import CircuitQFI
 from .derivative_base import DerivativeBase

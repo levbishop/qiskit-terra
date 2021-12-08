@@ -12,6 +12,8 @@
 
 """Exceptions that may be raised during processing OpenQASM 3."""
 
+from __future__ import annotations
+
 from qiskit.exceptions import QiskitError
 
 

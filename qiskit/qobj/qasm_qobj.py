@@ -12,6 +12,8 @@
 
 """Module providing definitions of QASM Qobj classes."""
 
+from __future__ import annotations
+
 import copy
 import pprint
 from types import SimpleNamespace

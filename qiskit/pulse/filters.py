@@ -12,6 +12,8 @@
 
 """A collection of functions that filter instructions in a pulse program."""
 
+from __future__ import annotations
+
 import abc
 from typing import Callable, List, Union, Iterable, Optional, Tuple, Any
 

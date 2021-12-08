@@ -12,4 +12,6 @@
 
 """Mock rome backend"""
 
+from __future__ import annotations
+
 from .fake_rome import FakeRome, FakeLegacyRome

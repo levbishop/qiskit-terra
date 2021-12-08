@@ -14,4 +14,6 @@
 CNOTDihedral Operators
 """
 
+from __future__ import annotations
+
 from .dihedral import CNOTDihedral

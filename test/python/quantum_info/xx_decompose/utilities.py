@@ -14,6 +14,8 @@
 Helper functions for the XXDecomposer test suite.
 """
 
+from __future__ import annotations
+
 from qiskit.circuit.library import RXXGate, RYYGate, RZZGate
 
 

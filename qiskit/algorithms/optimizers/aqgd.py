@@ -12,6 +12,8 @@
 
 """Analytical Quantum Gradient Descent (AQGD) optimizer."""
 
+from __future__ import annotations
+
 import logging
 from typing import Callable, Tuple, List, Dict, Union, Any, Optional
 

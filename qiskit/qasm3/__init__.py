@@ -25,6 +25,8 @@ Qasm (:mod:`qiskit.qasm3`)
     dump
 """
 
+from __future__ import annotations
+
 from .exporter import Exporter
 from .exceptions import QASM3Error, QASM3ExporterError
 

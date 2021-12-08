@@ -12,6 +12,8 @@
 
 """Module containing basis change passes."""
 
+from __future__ import annotations
+
 from .decompose import Decompose
 from .unroller import Unroller
 from .unroll_custom_definitions import UnrollCustomDefinitions

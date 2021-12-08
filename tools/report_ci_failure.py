@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Utility module to open an issue on the repository when CIs fail."""
 
+from __future__ import annotations
+
 import os
 import re
 

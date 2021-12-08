@@ -14,6 +14,8 @@
 Fake Melbourne device (14 qubit).
 """
 
+from __future__ import annotations
+
 import os
 import json
 

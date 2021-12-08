@@ -12,6 +12,8 @@
 
 " Test MatrixExpectation"
 
+from __future__ import annotations
+
 import unittest
 import itertools
 from test.python.opflow import QiskitOpflowTestCase

@@ -13,6 +13,8 @@
 """ A module for viewing the details of all available devices.
 """
 
+from __future__ import annotations
+
 import math
 
 from qiskit.exceptions import QiskitError, MissingOptionalLibraryError

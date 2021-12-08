@@ -12,4 +12,6 @@
 
 """Mock valencia backend"""
 
+from __future__ import annotations
+
 from .fake_valencia import FakeValencia, FakeLegacyValencia

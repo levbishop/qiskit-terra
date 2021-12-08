@@ -12,6 +12,8 @@
 
 """Phase Oracle object."""
 
+from __future__ import annotations
+
 from typing import Union, Callable, Optional
 
 from qiskit.circuit import QuantumCircuit

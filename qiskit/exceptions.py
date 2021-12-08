@@ -12,6 +12,8 @@
 
 """Exceptions for errors raised by Qiskit."""
 
+from __future__ import annotations
+
 import warnings
 from typing import Optional
 

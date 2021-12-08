@@ -12,6 +12,8 @@
 
 """An abstract class for linear systems solvers."""
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import Union, Optional, List, Callable
 

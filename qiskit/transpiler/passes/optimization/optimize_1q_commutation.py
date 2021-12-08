@@ -12,6 +12,8 @@
 
 """Reduce 1Q gate complexity by commuting through 2Q gates and resynthesizing."""
 
+from __future__ import annotations
+
 import logging
 from copy import copy
 

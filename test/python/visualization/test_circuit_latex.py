@@ -14,6 +14,8 @@
 
 """Tests for visualization of circuit with Latex drawer."""
 
+from __future__ import annotations
+
 import os
 import unittest
 import math

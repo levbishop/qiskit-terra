@@ -12,6 +12,8 @@
 
 """ Tests for graph MPL drawer"""
 
+from __future__ import annotations
+
 import unittest
 import json
 import os

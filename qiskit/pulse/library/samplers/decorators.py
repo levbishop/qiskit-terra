@@ -126,6 +126,8 @@ The user therefore has access to the correct sampled function docstring in its e
 still seeing the signature for the continuous pulse function and all of its arguments.
 """
 
+from __future__ import annotations
+
 import functools
 import textwrap
 import pydoc

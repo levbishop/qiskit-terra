@@ -13,6 +13,8 @@
 """Methods for generating random quantum information objects."""
 
 # pylint: disable=unused-import
+from __future__ import annotations
+
 from qiskit.quantum_info.operators.random import (
     random_clifford,
     random_cnotdihedral,

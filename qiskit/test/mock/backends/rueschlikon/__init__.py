@@ -12,4 +12,6 @@
 
 """Mock rueschlikon backend"""
 
+from __future__ import annotations
+
 from .fake_rueschlikon import FakeRueschlikon, FakeLegacyRueschlikon

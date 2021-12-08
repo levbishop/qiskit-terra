@@ -12,6 +12,8 @@
 
 """Wrapper class of scipy.optimize.minimize."""
 
+from __future__ import annotations
+
 from typing import Any, Callable, Dict, Union, List, Optional, Tuple
 
 import numpy as np

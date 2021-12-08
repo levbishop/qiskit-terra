@@ -13,6 +13,8 @@
 
 """Test Qiskit's controlled gate operation."""
 
+from __future__ import annotations
+
 import unittest
 from test import combine
 

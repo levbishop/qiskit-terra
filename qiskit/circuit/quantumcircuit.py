@@ -14,6 +14,8 @@
 
 """Quantum circuit object."""
 
+from __future__ import annotations
+
 import copy
 import itertools
 import functools

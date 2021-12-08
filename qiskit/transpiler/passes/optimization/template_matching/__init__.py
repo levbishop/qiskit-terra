@@ -12,6 +12,8 @@
 
 """Module containing template matching methods."""
 
+from __future__ import annotations
+
 from .forward_match import ForwardMatch
 from .backward_match import BackwardMatch, Match, MatchingScenarios, MatchingScenariosList
 from .template_matching import TemplateMatching

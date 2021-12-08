@@ -13,6 +13,8 @@
 
 """Randomized tests of transpiler circuit equivalence."""
 
+from __future__ import annotations
+
 from math import pi
 
 import hypothesis.strategies as st

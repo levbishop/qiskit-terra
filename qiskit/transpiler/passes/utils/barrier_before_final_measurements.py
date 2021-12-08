@@ -13,6 +13,8 @@
 
 """Add a barrier before final measurements."""
 
+from __future__ import annotations
+
 from qiskit.circuit.barrier import Barrier
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.dagcircuit import DAGCircuit, DAGOpNode

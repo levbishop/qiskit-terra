@@ -12,6 +12,8 @@
 
 """A module of widgets for job tracking"""
 
+from __future__ import annotations
+
 import ipywidgets as widgets
 from IPython.display import display, Javascript
 

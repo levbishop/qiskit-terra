@@ -11,6 +11,8 @@
 # that they have been altered from the originals.
 """Sample data for the AQC tests."""
 
+from __future__ import annotations
+
 import numpy as np
 
 # Circuit to optimize

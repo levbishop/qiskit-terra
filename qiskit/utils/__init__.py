@@ -57,6 +57,8 @@ backend etc.
 
 """
 
+from __future__ import annotations
+
 from .quantum_instance import QuantumInstance
 from .deprecation import deprecate_arguments, deprecate_function
 from .multiprocessing import local_hardware_info, is_main_process

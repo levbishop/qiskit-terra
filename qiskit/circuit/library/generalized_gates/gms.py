@@ -15,6 +15,8 @@
 Global Mølmer–Sørensen gate.
 """
 
+from __future__ import annotations
+
 from typing import Union, List
 
 import numpy as np

@@ -12,6 +12,8 @@
 
 """Extend the dag with virtual qubits that are in layout but not in the circuit yet."""
 
+from __future__ import annotations
+
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 

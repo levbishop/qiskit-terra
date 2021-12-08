@@ -30,4 +30,6 @@ A permutation function takes in a graph and a permutation of graph nodes,
 and returns a sequence of SWAPs that implements that permutation on the graph.
 """
 
+from __future__ import annotations
+
 from .token_swapper import ApproximateTokenSwapper

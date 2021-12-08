@@ -14,6 +14,8 @@
 
 """Test library of quantum circuits."""
 
+from __future__ import annotations
+
 from unittest import mock
 
 from qiskit.test import QiskitTestCase

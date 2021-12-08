@@ -12,6 +12,8 @@
 
 """Test Grover's algorithm."""
 
+from __future__ import annotations
+
 import unittest
 import itertools
 from test.python.algorithms import QiskitAlgorithmsTestCase

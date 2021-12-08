@@ -12,6 +12,8 @@
 
 """Optimize chains of single-qubit gates using Euler 1q decomposer"""
 
+from __future__ import annotations
+
 import copy
 import logging
 

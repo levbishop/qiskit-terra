@@ -14,6 +14,8 @@
 
 """Tests for core modules of pulse drawer."""
 
+from __future__ import annotations
+
 import numpy as np
 
 from qiskit import pulse

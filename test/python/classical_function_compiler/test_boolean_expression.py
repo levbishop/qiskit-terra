@@ -12,6 +12,8 @@
 
 """Test boolean expression."""
 
+from __future__ import annotations
+
 import unittest
 from os import path
 

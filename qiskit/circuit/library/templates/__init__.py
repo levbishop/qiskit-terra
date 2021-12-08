@@ -17,6 +17,8 @@ Templates are circuits that compute the identity. They find use
 in circuit optimization where matching part of the template allows the compiler
 to replace the match with the inverse of the remainder from the template.
 """
+from __future__ import annotations
+
 from .nct.template_nct_2a_1 import template_nct_2a_1
 from .nct.template_nct_2a_2 import template_nct_2a_2
 from .nct.template_nct_2a_3 import template_nct_2a_3

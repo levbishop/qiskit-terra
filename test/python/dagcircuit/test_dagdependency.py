@@ -12,6 +12,8 @@
 
 """Test for the DAGDependency object"""
 
+from __future__ import annotations
+
 import unittest
 
 from qiskit.dagcircuit import DAGDependency

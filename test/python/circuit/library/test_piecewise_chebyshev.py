@@ -12,6 +12,8 @@
 
 """Test the piecewise Chebyshev approximation."""
 
+from __future__ import annotations
+
 import unittest
 from collections import defaultdict
 
