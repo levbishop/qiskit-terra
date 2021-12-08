@@ -19,7 +19,6 @@ import ast
 import copy
 import operator
 import cmath
-from typing import Dict, List, Union
 
 from qiskit.pulse.exceptions import PulseError
 from qiskit.circuit import ParameterExpression

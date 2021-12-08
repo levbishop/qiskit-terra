@@ -17,8 +17,6 @@
 from __future__ import annotations
 
 import pkgutil
-import sys
-import warnings
 
 # qiskit errors operator
 from qiskit.exceptions import QiskitError, MissingOptionalLibraryError

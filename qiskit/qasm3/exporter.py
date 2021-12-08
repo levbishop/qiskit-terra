@@ -19,7 +19,7 @@ import io
 import itertools
 import numbers
 from os.path import dirname, join, abspath
-from typing import Iterable, List, Sequence, Union
+from typing import Iterable, Sequence
 
 from qiskit.circuit import (
     Barrier,

@@ -18,7 +18,6 @@ from collections.abc import Iterable
 from copy import deepcopy
 from functools import partial
 from itertools import product
-from typing import List, Optional, Tuple, Union
 
 import scipy
 import numpy as np

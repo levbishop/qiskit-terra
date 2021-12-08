@@ -52,7 +52,6 @@ Arbitrary layout function satisfying the above format can be accepted.
 from __future__ import annotations
 
 import warnings
-from typing import List, Tuple
 
 import numpy as np
 

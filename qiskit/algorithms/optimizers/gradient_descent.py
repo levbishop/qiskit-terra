@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Iterator, Optional, Union, Callable, Dict, Any, List, Tuple
+from typing import Any, Callable, Iterator
 from functools import partial
 
 import numpy as np

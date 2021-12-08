@@ -16,7 +16,7 @@ matplotlib pulse visualization.
 from __future__ import annotations
 
 import warnings
-from typing import Union, Callable, List, Dict, Tuple
+from typing import Callable
 
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.pulse import Schedule, Instruction, Waveform

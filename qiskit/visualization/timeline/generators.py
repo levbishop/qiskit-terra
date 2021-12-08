@@ -93,7 +93,7 @@ the plotter API.
 from __future__ import annotations
 
 import warnings
-from typing import List, Union, Dict, Any
+from typing import Any
 
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.visualization.timeline import types, drawings

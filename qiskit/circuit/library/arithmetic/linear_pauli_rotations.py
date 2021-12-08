@@ -15,7 +15,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 
 from qiskit.circuit import QuantumRegister, QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError

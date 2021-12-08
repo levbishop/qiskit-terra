@@ -71,7 +71,7 @@ from copy import deepcopy
 from enum import Enum
 from functools import partial
 from itertools import chain
-from typing import Union, List, Tuple, Iterator, Optional
+from typing import Iterator
 
 import numpy as np
 

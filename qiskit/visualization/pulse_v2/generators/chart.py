@@ -39,7 +39,7 @@ the plotter API.
 """
 from __future__ import annotations
 
-from typing import Dict, Any, List
+from typing import Any
 
 from qiskit.visualization.pulse_v2 import drawings, types, device_info
 

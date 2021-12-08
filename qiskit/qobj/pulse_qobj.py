@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import copy
 import pprint
-from typing import Union, List
 
 import numpy
 

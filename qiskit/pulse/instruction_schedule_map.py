@@ -33,7 +33,7 @@ import functools
 import warnings
 from collections import defaultdict
 from enum import IntEnum
-from typing import Callable, Iterable, List, Tuple, Union, Optional, NamedTuple
+from typing import Callable, Iterable, NamedTuple, Union
 
 from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.parameterexpression import ParameterExpression

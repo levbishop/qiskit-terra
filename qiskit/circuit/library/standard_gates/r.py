@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 import math
-from typing import Optional
 
 import numpy
 

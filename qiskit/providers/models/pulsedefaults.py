@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import copy
-from typing import Any, Dict, List
+from typing import Any
 
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap, CalibrationPublisher
 from qiskit.pulse.schedule import Schedule

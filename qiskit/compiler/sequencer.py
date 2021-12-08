@@ -15,7 +15,6 @@ Mapping a scheduled ``QuantumCircuit`` to a pulse ``Schedule``.
 """
 from __future__ import annotations
 
-from typing import List, Optional, Union
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.exceptions import QiskitError

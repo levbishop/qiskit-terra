@@ -15,7 +15,6 @@ the frequency of a channel.
 """
 from __future__ import annotations
 
-from typing import Optional, Union, Tuple
 
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse.channels import PulseChannel

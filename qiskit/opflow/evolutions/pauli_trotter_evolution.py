@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Optional, Union, cast
+from typing import cast
 
 import numpy as np
 

@@ -15,7 +15,6 @@ from __future__ import annotations
 
 import itertools
 from datetime import datetime
-from typing import Optional, List, Union
 
 import numpy as np
 

@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 import functools
-from typing import List, Union, Optional
 
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.circuit import ParameterExpression, ParameterVector

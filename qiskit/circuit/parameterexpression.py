@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import numbers
 import operator
-from typing import Callable, Dict, Set, Union
+from typing import Callable, Union
 
 import numpy
 

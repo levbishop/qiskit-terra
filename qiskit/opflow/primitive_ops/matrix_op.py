@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Set, Union, cast, get_type_hints
+from typing import cast, get_type_hints
 
 import numpy as np
 from scipy.sparse import spmatrix

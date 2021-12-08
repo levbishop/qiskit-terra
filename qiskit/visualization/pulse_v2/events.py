@@ -81,7 +81,7 @@ than plotting each operand value bound to the instruction.
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Dict, List, Iterator, Tuple
+from typing import Iterator
 
 from qiskit import pulse, circuit
 from qiskit.visualization.pulse_v2.types import PhaseFreqTuple, PulseInstruction

@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import hashlib
 from collections import defaultdict
-from typing import Any, Dict, List, Tuple, Union
+from typing import Any
 
 from qiskit import qobj, pulse
 from qiskit.assembler.run_config import RunConfig

@@ -19,7 +19,7 @@ Special data types.
 from __future__ import annotations
 
 from enum import Enum
-from typing import NamedTuple, Union, List, Optional, NewType, Dict, Any, Tuple
+from typing import Any, List, NamedTuple, NewType, Optional, Union
 
 import numpy as np
 

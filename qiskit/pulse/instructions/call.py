@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Optional, Union, Dict, Tuple, Set
 
 from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
 from qiskit.pulse.channels import Channel

@@ -15,7 +15,7 @@ Readout mitigator class based on the A-matrix inversion method
 
 from __future__ import annotations
 
-from typing import Optional, List, Tuple, Iterable, Callable, Union
+from typing import Callable, Iterable
 
 import numpy as np
 

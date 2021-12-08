@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, cast
+from typing import List, cast
 
 from numpy import isreal
 

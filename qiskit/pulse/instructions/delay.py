@@ -13,7 +13,6 @@
 """An instruction for blocking time on a channel; useful for scheduling alignment."""
 from __future__ import annotations
 
-from typing import Optional, Union, Tuple
 
 from qiskit.circuit import ParameterExpression
 from qiskit.pulse.channels import Channel

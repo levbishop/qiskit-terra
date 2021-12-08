@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Union
 
 from .circuit_gradients.circuit_gradient import CircuitGradient
 from .derivative_base import DerivativeBase

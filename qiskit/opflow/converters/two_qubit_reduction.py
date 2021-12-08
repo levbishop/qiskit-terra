@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import logging
-from typing import List, Tuple, Union, cast
+from typing import cast
 
 from qiskit.opflow.converters.converter_base import ConverterBase
 from qiskit.opflow.operator_base import OperatorBase

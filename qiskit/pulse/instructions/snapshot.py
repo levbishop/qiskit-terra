@@ -15,7 +15,6 @@ instructions available are determined by the simulator being used.
 """
 from __future__ import annotations
 
-from typing import Optional, Tuple
 
 from qiskit.pulse.channels import SnapshotChannel
 from qiskit.pulse.exceptions import PulseError

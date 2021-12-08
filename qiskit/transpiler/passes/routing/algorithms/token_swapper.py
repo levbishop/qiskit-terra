@@ -30,7 +30,7 @@ from __future__ import annotations
 
 import copy
 import logging
-from typing import Iterator, Mapping, MutableMapping, MutableSet, List, Iterable, Union
+from typing import Iterable, Iterator, Mapping, MutableMapping, MutableSet
 
 import numpy as np
 import retworkx as rx

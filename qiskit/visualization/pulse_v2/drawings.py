@@ -59,7 +59,7 @@ from __future__ import annotations
 
 from abc import ABC
 from enum import Enum
-from typing import Dict, Any, Optional, Union, List
+from typing import Any
 
 import numpy as np
 

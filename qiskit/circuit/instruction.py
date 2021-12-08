@@ -35,7 +35,6 @@ from __future__ import annotations
 import warnings
 import copy
 from itertools import zip_longest
-from typing import List
 
 import numpy
 

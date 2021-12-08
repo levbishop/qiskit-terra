@@ -20,7 +20,6 @@ Visualization functions for quantum states.
 from __future__ import annotations
 
 import colorsys
-from typing import Optional, List, Union
 from functools import reduce
 
 import numpy as np

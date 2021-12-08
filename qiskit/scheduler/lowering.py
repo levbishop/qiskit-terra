@@ -16,7 +16,6 @@ module handles the translation, but does not handle timing.
 from __future__ import annotations
 
 from collections import namedtuple
-from typing import Dict, List
 
 from qiskit.circuit.barrier import Barrier
 from qiskit.circuit.delay import Delay

@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import Optional, List, Callable, Union
+from typing import Callable
 
 import numpy
 

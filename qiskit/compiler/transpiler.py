@@ -17,7 +17,7 @@ import datetime
 import logging
 import warnings
 from time import time
-from typing import List, Union, Dict, Callable, Any, Optional, Tuple, Iterable
+from typing import Any, Callable, Iterable
 
 from qiskit import user_config
 from qiskit.circuit.quantumcircuit import QuantumCircuit

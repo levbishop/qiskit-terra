@@ -20,7 +20,7 @@ from __future__ import annotations
 import datetime
 import logging
 from abc import ABC, abstractmethod
-from typing import List, Union, Iterable, Tuple
+from typing import Iterable
 
 from qiskit.providers.provider import Provider
 from qiskit.providers.models.backendstatus import BackendStatus

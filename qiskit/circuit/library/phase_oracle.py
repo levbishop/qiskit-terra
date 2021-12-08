@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Callable, Optional
+from typing import Callable
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression

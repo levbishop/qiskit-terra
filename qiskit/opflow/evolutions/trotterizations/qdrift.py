@@ -17,7 +17,7 @@ QDrift Class
 
 from __future__ import annotations
 
-from typing import List, Union, cast
+from typing import List, cast
 
 import numpy as np
 

@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import logging
-from typing import List, Optional, Tuple, Callable
+from typing import Callable
 from enum import Enum
 from abc import abstractmethod
 

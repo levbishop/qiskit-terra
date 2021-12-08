@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import copy
 import datetime
-from typing import Any, Iterable, Tuple, Union
+from typing import Any, Iterable
 
 import dateutil.parser
 

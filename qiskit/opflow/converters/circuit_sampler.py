@@ -18,7 +18,7 @@ from __future__ import annotations
 import logging
 from functools import partial
 from time import time
-from typing import Any, Dict, List, Optional, Tuple, Union, cast
+from typing import Any, Dict, List, cast
 
 import numpy as np
 

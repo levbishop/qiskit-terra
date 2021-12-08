@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 from os.path import basename, isfile
-from typing import Callable, Optional
+from typing import Callable
 
 from tweedledum import BitVec, BoolFunction
 from tweedledum.synthesis import pkrm_synth

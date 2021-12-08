@@ -23,7 +23,7 @@ the configured canvas is passed to one of the plotter APIs to generate a visuali
 
 from __future__ import annotations
 
-from typing import Optional, Dict, Any, List, Tuple
+from typing import Any
 
 from qiskit import circuit
 from qiskit.exceptions import MissingOptionalLibraryError

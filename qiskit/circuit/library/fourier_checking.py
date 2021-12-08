@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 import math
-from typing import List
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError

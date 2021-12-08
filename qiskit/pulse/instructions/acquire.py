@@ -15,7 +15,6 @@ some metadata for the acquisition process, for example, where to store classifie
 """
 from __future__ import annotations
 
-from typing import Optional, Union, Tuple
 
 from qiskit.circuit import ParameterExpression
 from qiskit.pulse.channels import MemorySlot, RegisterSlot, AcquireChannel

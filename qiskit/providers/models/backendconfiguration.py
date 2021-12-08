@@ -17,7 +17,7 @@ import re
 import copy
 import numbers
 import warnings
-from typing import Dict, List, Any, Iterable, Tuple, Union
+from typing import Any, Iterable
 from collections import defaultdict
 
 from qiskit.exceptions import QiskitError

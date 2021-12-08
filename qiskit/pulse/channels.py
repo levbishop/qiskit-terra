@@ -52,7 +52,7 @@ All channels are children of the same abstract base class:
 from __future__ import annotations
 
 from abc import ABCMeta
-from typing import Any, Set, Union
+from typing import Any
 
 import numpy as np
 

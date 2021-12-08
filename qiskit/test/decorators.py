@@ -21,7 +21,7 @@ import os
 import socket
 import sys
 import unittest
-from typing import Union, Callable, Type, Iterable
+from typing import Callable, Iterable
 from warnings import warn
 
 from .testing_options import get_test_options

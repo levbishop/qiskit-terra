@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 import logging
-from typing import Optional, Union
 
 from qiskit import BasicAer
 from qiskit.opflow.expectations.aer_pauli_expectation import AerPauliExpectation

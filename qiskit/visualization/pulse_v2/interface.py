@@ -23,7 +23,7 @@ the configured canvas is passed to the one of plotter APIs to generate visualiza
 
 from __future__ import annotations
 
-from typing import Union, Optional, Dict, Any, Tuple, List
+from typing import Any
 
 from qiskit.providers import BaseBackend
 from qiskit.pulse import Waveform, ParametricPulse, Schedule, ScheduleBlock

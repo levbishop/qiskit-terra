@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Optional, Union
 
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.controlledgate import ControlledGate

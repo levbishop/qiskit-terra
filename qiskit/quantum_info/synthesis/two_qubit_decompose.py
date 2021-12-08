@@ -31,7 +31,7 @@ import io
 import base64
 import warnings
 import logging
-from typing import ClassVar, Optional, Type
+from typing import ClassVar
 
 import numpy as np
 import scipy.linalg as la

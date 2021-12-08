@@ -16,7 +16,6 @@ Readout mitigation data handling utils
 from __future__ import annotations
 
 import logging
-from typing import Optional, List, Tuple, Dict
 
 import numpy as np
 

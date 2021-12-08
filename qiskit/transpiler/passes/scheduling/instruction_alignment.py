@@ -16,7 +16,6 @@ from __future__ import annotations
 import itertools
 import warnings
 from collections import defaultdict
-from typing import List, Union
 
 from qiskit.circuit.delay import Delay
 from qiskit.circuit.instruction import Instruction

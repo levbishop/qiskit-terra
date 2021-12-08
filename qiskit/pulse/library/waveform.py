@@ -13,7 +13,7 @@
 """A pulse that is described by complex-valued sample points."""
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Union, Any
+from typing import Any
 
 import numpy as np
 

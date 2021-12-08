@@ -20,7 +20,6 @@ from __future__ import annotations
 from copy import copy
 from dataclasses import dataclass, field
 from itertools import combinations
-from typing import List
 
 import numpy as np
 

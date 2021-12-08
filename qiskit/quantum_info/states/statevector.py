@@ -19,7 +19,6 @@ from __future__ import annotations
 import copy
 import re
 from numbers import Number
-from typing import Dict
 
 import numpy as np
 

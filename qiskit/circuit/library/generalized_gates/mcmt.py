@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import Union, Callable, List, Tuple, Optional
+from typing import Callable
 
 from qiskit.circuit import ControlledGate, Gate, Instruction, Qubit, QuantumRegister, QuantumCircuit
 from qiskit.exceptions import QiskitError

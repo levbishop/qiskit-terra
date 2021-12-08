@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Callable, Optional, List, Tuple
+from typing import Any, Callable
 
 from qiskit.exceptions import MissingOptionalLibraryError
 

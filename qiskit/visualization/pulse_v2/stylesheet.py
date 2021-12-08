@@ -34,7 +34,7 @@ the appearance of the output image.
 from __future__ import annotations
 
 import warnings
-from typing import Dict, Any, Mapping
+from typing import Any, Mapping
 
 from qiskit.visualization.pulse_v2 import generators, layouts
 

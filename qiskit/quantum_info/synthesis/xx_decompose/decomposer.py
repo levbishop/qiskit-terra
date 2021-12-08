@@ -19,7 +19,7 @@ from __future__ import annotations
 import heapq
 import math
 from operator import itemgetter
-from typing import Callable, Optional
+from typing import Callable
 
 import numpy as np
 

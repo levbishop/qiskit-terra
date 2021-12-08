@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Union, List, Callable, Dict, Any
+from typing import Any, Callable
 
 import dill
 

@@ -22,7 +22,6 @@ from __future__ import annotations
 
 import copy
 import re
-from typing import List
 
 import numpy as np
 

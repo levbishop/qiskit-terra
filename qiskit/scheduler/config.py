@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import List
 
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
 from qiskit.pulse.utils import format_meas_map

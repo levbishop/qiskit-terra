@@ -17,7 +17,7 @@ from __future__ import annotations
 import itertools
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from typing import Dict, List, Optional, Set, Tuple, Union, cast
+from typing import cast
 
 import numpy as np
 from scipy.sparse import csr_matrix, spmatrix

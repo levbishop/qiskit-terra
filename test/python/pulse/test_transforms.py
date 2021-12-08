@@ -14,7 +14,6 @@
 from __future__ import annotations
 
 import unittest
-from typing import List, Set
 
 import numpy as np
 

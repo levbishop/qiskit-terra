@@ -16,7 +16,6 @@ from __future__ import annotations
 
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
-from typing import Optional, List, Tuple
 
 import numpy as np
 from ddt import ddt, data, unpack

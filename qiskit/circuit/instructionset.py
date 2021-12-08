@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import functools
 import warnings
-from typing import Callable, Optional, Tuple, Union
+from typing import Callable
 
 from qiskit.circuit.exceptions import CircuitError
 

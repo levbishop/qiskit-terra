@@ -18,7 +18,6 @@ from __future__ import annotations
 
 import logging
 from time import time
-from typing import List, Optional, Union
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.exceptions import QiskitError

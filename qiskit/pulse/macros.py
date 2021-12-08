@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Union
 
 from qiskit.pulse import channels, exceptions, instructions, utils
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap

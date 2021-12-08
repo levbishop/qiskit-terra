@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, cast, Dict
+from typing import List, Union, cast
 
 import numpy as np
 

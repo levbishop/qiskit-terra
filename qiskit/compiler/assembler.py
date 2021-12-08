@@ -18,7 +18,6 @@ import logging
 import uuid
 import warnings
 from time import time
-from typing import Union, List, Dict, Optional
 
 from qiskit.assembler import assemble_circuits, assemble_schedules
 from qiskit.assembler.run_config import RunConfig

@@ -14,7 +14,7 @@
 from __future__ import annotations
 
 import abc
-from typing import Callable, Dict, Any, Union
+from typing import Any, Callable
 
 import numpy as np
 

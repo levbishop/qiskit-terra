@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Callable, Optional, Union
+from typing import Callable
 from functools import partial
 
 import numpy as np

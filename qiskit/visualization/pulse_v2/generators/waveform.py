@@ -41,7 +41,7 @@ from __future__ import annotations
 
 import re
 from fractions import Fraction
-from typing import Dict, Any, List, Union
+from typing import Any
 
 import numpy as np
 

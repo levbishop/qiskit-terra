@@ -31,7 +31,7 @@ from __future__ import annotations
 import warnings
 import time
 import logging
-from typing import Optional, Callable, Union, Dict
+from typing import Callable
 from abc import abstractmethod
 
 import numpy as np

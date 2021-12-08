@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 import warnings
-from typing import Tuple, Union, List, Optional
 
 import numpy as np
 

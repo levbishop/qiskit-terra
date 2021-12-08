@@ -40,7 +40,7 @@ the plotter API.
 from __future__ import annotations
 
 from fractions import Fraction
-from typing import Dict, Any, List, Tuple
+from typing import Any
 
 import numpy as np
 

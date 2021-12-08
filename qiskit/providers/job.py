@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import time
 from abc import ABC, abstractmethod
-from typing import Callable, Optional
+from typing import Callable
 
 from qiskit.providers.jobstatus import JobStatus, JOB_FINAL_STATES
 from qiskit.providers.exceptions import JobTimeoutError

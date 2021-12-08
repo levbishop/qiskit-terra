@@ -53,7 +53,7 @@ and thus this parameter framework gives greater scalability to the pulse module.
 from __future__ import annotations
 
 from copy import deepcopy, copy
-from typing import List, Dict, Set, Any, Union
+from typing import Any
 
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType

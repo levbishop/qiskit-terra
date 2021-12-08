@@ -15,7 +15,6 @@
 
 from __future__ import annotations
 
-from typing import Optional, Tuple, Union
 
 from qiskit.circuit import ClassicalRegister, Clbit, QuantumCircuit, Qubit
 from qiskit.circuit.instructionset import InstructionSet

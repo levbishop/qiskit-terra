@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import copy
 from collections import defaultdict
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 
 from qiskit.assembler.run_config import RunConfig
 from qiskit.assembler.assemble_schedules import _assemble_instructions as _assemble_schedule

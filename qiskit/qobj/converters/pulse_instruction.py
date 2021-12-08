@@ -20,7 +20,6 @@ import hashlib
 import re
 import warnings
 from enum import Enum
-from typing import Union
 
 from qiskit.pulse import channels, instructions, library
 from qiskit.pulse.configuration import Kernel, Discriminator

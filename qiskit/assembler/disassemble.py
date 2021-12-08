@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import collections
 import math
-from typing import Any, Dict, List, NewType, Tuple, Union
+from typing import Any, Dict, List, NewType, Tuple
 
 from qiskit import pulse
 from qiskit.circuit.classicalregister import ClassicalRegister

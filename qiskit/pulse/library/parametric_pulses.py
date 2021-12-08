@@ -40,7 +40,7 @@ from __future__ import annotations
 
 import math
 from abc import abstractmethod
-from typing import Any, Dict, Optional, Union
+from typing import Any
 
 import numpy as np
 

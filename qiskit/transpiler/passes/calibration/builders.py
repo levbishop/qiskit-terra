@@ -17,7 +17,6 @@ from __future__ import annotations
 import warnings
 import math
 from abc import abstractmethod
-from typing import List, Union
 
 import numpy as np
 

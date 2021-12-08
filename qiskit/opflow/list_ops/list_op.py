@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from functools import reduce
 from numbers import Number
-from typing import Any, Callable, Dict, Iterator, List, Optional, Set, Sequence, Union, cast
+from typing import Any, Callable, Iterator, Sequence, cast
 
 import numpy as np
 from scipy.sparse import spmatrix

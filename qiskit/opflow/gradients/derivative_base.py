@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import warnings
 from abc import abstractmethod
-from typing import Callable, Iterable, List, Optional, Tuple, Union
+from typing import Callable, Iterable, Union
 
 import numpy as np
 

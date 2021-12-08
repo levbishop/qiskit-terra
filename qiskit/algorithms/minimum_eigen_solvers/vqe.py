@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import logging
 import warnings
-from typing import Optional, List, Callable, Union, Dict, Tuple
+from typing import Callable, Dict, Optional
 from time import time
 
 import numpy as np

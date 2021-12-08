@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 from functools import partial, reduce
-from typing import Callable, List, Optional, Tuple, Union, cast
+from typing import Callable, List, Optional, cast
 
 import numpy as np
 

@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Union, Optional, Dict, Callable, Tuple
+from typing import Callable
 
 import numpy as np
 

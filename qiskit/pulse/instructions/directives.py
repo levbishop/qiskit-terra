@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import Optional, Tuple
 
 from qiskit.pulse import channels as chans
 from qiskit.pulse.instructions import instruction

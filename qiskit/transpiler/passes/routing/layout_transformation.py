@@ -13,7 +13,6 @@
 """Map (with minimum effort) a DAGCircuit onto a `coupling_map` adding swap gates."""
 from __future__ import annotations
 
-from typing import Union
 
 import numpy as np
 

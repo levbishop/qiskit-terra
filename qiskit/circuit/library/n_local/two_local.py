@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional, List, Callable, Any
+from typing import Any, Callable
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit import Gate, Instruction, Parameter

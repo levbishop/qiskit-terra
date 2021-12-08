@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Optional, Union
 
 from qiskit import QuantumCircuit
 from qiskit.utils import QuantumInstance

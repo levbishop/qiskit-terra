@@ -21,7 +21,7 @@ from __future__ import annotations
 import time
 import warnings
 from abc import ABC, abstractmethod
-from typing import Callable, Optional
+from typing import Callable
 
 from .jobstatus import JobStatus, JOB_FINAL_STATES
 from .exceptions import JobTimeoutError

@@ -14,7 +14,6 @@
 from __future__ import annotations
 
 import warnings
-from typing import Type, Union, List, Optional
 from fnmatch import fnmatch
 
 from qiskit.transpiler.basepasses import TransformationPass

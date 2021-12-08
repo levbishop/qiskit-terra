@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Union
 
 from .derivative_base import DerivativeBase
 from .circuit_qfis import CircuitQFI

@@ -17,7 +17,6 @@ from __future__ import annotations
 import logging
 from functools import reduce
 from operator import add
-from typing import Union
 
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.opflow.expectations.expectation_base import ExpectationBase

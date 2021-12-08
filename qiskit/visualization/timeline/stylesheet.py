@@ -40,7 +40,7 @@ only one layout function can be chosen for each stylesheet.
 from __future__ import annotations
 
 import warnings
-from typing import Dict, Any, Mapping
+from typing import Any, Mapping
 
 from qiskit.visualization.timeline import generators, layouts
 

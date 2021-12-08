@@ -18,7 +18,7 @@ import copy
 import logging
 import time
 import warnings
-from typing import Optional, List, Union, Dict, Callable, Tuple
+from typing import Callable
 from enum import Enum
 
 import numpy as np

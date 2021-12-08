@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import ast
-from typing import Callable, Optional
+from typing import Callable
 
 from tweedledum.classical import simulate
 from tweedledum.synthesis import pkrm_synth

@@ -18,7 +18,7 @@ import logging
 import multiprocessing
 import platform
 import warnings
-from typing import Optional, List, Tuple, Callable
+from typing import Callable
 
 import numpy as np
 

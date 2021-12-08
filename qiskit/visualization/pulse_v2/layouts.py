@@ -79,7 +79,7 @@ An arbitrary layout function satisfying the above format can be accepted.
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import List, Dict, Any, Tuple, Iterator, Optional, Union
+from typing import Any, Iterator
 
 import numpy as np
 

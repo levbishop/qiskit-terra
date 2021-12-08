@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import Iterable, Optional, Union
+from typing import Iterable
 
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.exceptions import CircuitError

@@ -19,7 +19,6 @@ import fractions
 import logging
 import math
 import sys
-from typing import Optional, Union, List, Tuple
 
 import numpy as np
 

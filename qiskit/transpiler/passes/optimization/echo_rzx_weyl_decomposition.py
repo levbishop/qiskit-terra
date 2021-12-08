@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Tuple
 
 from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library.standard_gates import RZXGate, HGate, XGate

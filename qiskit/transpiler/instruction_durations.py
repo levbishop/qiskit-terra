@@ -14,7 +14,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import Optional, List, Tuple, Union, Iterable, Set
+from typing import Iterable, List, Optional, Tuple, Union
 
 from qiskit.circuit import Barrier, Delay, Instruction, Qubit, ParameterExpression
 from qiskit.circuit.duration import duration_in_dt

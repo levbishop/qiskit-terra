@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import abc
-from typing import Callable, List, Union, Iterable, Optional, Tuple, Any
+from typing import Any, Callable, Iterable
 
 import numpy as np
 

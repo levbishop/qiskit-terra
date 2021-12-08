@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import copy
-from typing import List, Optional, Tuple, Dict, Callable
+from typing import Callable
 
 from qiskit import compiler
 from qiskit.providers import BaseBackend

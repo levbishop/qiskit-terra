@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import warnings
 from collections import defaultdict
-from typing import List, Optional, Iterable, Union
+from typing import Iterable
 
 import numpy as np
 

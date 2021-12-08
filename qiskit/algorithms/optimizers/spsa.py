@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import logging
 import warnings
-from typing import Iterator, Optional, Union, Callable, Tuple, Dict, List, Any
+from typing import Any, Callable, Iterator
 from time import time
 from collections import deque
 

@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-from typing import Optional, Tuple, Union
 
 from qiskit.circuit import Clbit, ClassicalRegister, QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError

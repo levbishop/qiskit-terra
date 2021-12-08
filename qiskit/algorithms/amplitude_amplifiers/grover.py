@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import itertools
 import operator
-from typing import Iterator, List, Optional, Union
+from typing import Iterator
 
 import numpy as np
 

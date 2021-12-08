@@ -13,7 +13,7 @@
 """Piecewise polynomial Chebyshev approximation to a given f(x)."""
 from __future__ import annotations
 
-from typing import Callable, List, Optional, Union
+from typing import Callable
 
 import numpy as np
 from numpy.polynomial.chebyshev import Chebyshev

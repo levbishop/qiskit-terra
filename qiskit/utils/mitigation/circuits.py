@@ -20,7 +20,6 @@ use the fitters to produce a filter.
 """
 from __future__ import annotations
 
-from typing import List, Tuple, Union
 
 
 def count_keys(num_qubits: int) -> list[str]:

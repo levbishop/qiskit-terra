@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Optional, List, Union, Tuple, Dict, Callable
+from typing import Callable, List, Tuple
 
 import numpy as np
 from scipy.optimize import brute

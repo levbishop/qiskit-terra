@@ -32,7 +32,7 @@ that shows the relationship between bits during multi-bit gates.
 """
 from __future__ import annotations
 
-from typing import List, Iterator
+from typing import Iterator
 
 from qiskit import circuit
 from qiskit.visualization.exceptions import VisualizationError

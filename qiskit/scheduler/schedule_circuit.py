@@ -13,7 +13,6 @@
 """QuantumCircuit to Pulse scheduler."""
 from __future__ import annotations
 
-from typing import Optional
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.exceptions import QiskitError

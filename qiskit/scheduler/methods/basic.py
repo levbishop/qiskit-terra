@@ -16,7 +16,6 @@ The most straightforward scheduling methods: scheduling **as early** or **as lat
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import List
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.barrier import Barrier

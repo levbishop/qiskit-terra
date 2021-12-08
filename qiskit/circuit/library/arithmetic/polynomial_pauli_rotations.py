@@ -16,7 +16,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import List, Optional, Dict, Sequence
+from typing import Sequence
 from itertools import product
 
 from qiskit.circuit import QuantumRegister, QuantumCircuit

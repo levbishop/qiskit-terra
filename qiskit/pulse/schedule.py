@@ -40,7 +40,7 @@ import itertools
 import multiprocessing as mp
 import sys
 import warnings
-from typing import List, Tuple, Iterable, Union, Dict, Callable, Set, Optional, Any
+from typing import Any, Callable, Dict, Iterable, List, Tuple, Union
 
 import numpy as np
 

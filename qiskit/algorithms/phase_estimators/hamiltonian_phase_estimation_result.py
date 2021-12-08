@@ -15,7 +15,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, cast
+from typing import Dict, cast
 
 from qiskit.utils.deprecation import deprecate_function
 from qiskit.algorithms.algorithm_result import AlgorithmResult

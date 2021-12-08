@@ -15,7 +15,6 @@
 # pylint: disable=cyclic-import
 from __future__ import annotations
 
-from typing import Optional, List, Tuple
 
 import numpy as np
 

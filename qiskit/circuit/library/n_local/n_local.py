@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import Union, Optional, List, Any, Tuple, Sequence, Set, Callable
+from typing import Any, Callable, Sequence
 from itertools import combinations
 
 import numpy

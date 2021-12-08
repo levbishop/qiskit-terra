@@ -22,7 +22,7 @@ from __future__ import annotations
 
 import abc
 import typing
-from typing import Callable, Iterable, List, FrozenSet, Tuple, Union
+from typing import Callable, Iterable
 
 from qiskit.circuit.classicalregister import Clbit
 from qiskit.circuit.exceptions import CircuitError

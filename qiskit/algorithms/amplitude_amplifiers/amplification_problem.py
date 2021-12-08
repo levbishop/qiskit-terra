@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import Optional, Callable, Any, Union, List
+from typing import Any, Callable
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import GroverOperator
