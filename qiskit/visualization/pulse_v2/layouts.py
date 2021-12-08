@@ -89,8 +89,8 @@ from qiskit.visualization.pulse_v2.device_info import DrawerBackendInfo
 
 
 def channel_type_grouped_sort(
-    channels: List[pulse.channels.Channel], formatter: Dict[str, Any], device: DrawerBackendInfo
-) -> Iterator[Tuple[str, List[pulse.channels.Channel]]]:
+    channels: list[pulse.channels.Channel], formatter: dict[str, Any], device: DrawerBackendInfo
+) -> Iterator[tuple[str, list[pulse.channels.Channel]]]:
     """Layout function for the channel assignment to the chart instance.
 
     Assign single channel per chart. Channels are grouped by type and
@@ -139,8 +139,8 @@ def channel_type_grouped_sort(
 
 
 def channel_index_grouped_sort(
-    channels: List[pulse.channels.Channel], formatter: Dict[str, Any], device: DrawerBackendInfo
-) -> Iterator[Tuple[str, List[pulse.channels.Channel]]]:
+    channels: list[pulse.channels.Channel], formatter: dict[str, Any], device: DrawerBackendInfo
+) -> Iterator[tuple[str, list[pulse.channels.Channel]]]:
     """Layout function for the channel assignment to the chart instance.
 
     Assign single channel per chart. Channels are grouped by the same index and
@@ -201,8 +201,8 @@ def channel_index_grouped_sort(
 
 
 def channel_index_grouped_sort_u(
-    channels: List[pulse.channels.Channel], formatter: Dict[str, Any], device: DrawerBackendInfo
-) -> Iterator[Tuple[str, List[pulse.channels.Channel]]]:
+    channels: list[pulse.channels.Channel], formatter: dict[str, Any], device: DrawerBackendInfo
+) -> Iterator[tuple[str, list[pulse.channels.Channel]]]:
     """Layout function for the channel assignment to the chart instance.
 
     Assign single channel per chart. Channels are grouped by the same index and
@@ -264,8 +264,8 @@ def channel_index_grouped_sort_u(
 
 
 def qubit_index_sort(
-    channels: List[pulse.channels.Channel], formatter: Dict[str, Any], device: DrawerBackendInfo
-) -> Iterator[Tuple[str, List[pulse.channels.Channel]]]:
+    channels: list[pulse.channels.Channel], formatter: dict[str, Any], device: DrawerBackendInfo
+) -> Iterator[tuple[str, list[pulse.channels.Channel]]]:
     """Layout function for the channel assignment to the chart instance.
 
     Assign multiple channels per chart. Channels associated with the same qubit
@@ -307,7 +307,7 @@ def qubit_index_sort(
 
 
 def time_map_in_ns(
-    time_window: Tuple[int, int], axis_breaks: List[Tuple[int, int]], dt: Optional[float] = None
+    time_window: tuple[int, int], axis_breaks: list[tuple[int, int]], dt: float | None = None
 ) -> types.HorizontalAxis:
     """Layout function for the horizontal axis formatting.
 
@@ -365,7 +365,7 @@ def time_map_in_ns(
 
 
 def detail_title(
-    program: Union[pulse.Waveform, pulse.ParametricPulse, pulse.Schedule], device: DrawerBackendInfo
+    program: pulse.Waveform | pulse.ParametricPulse | pulse.Schedule, device: DrawerBackendInfo
 ) -> str:
     """Layout function for generating figure title.
 
@@ -392,7 +392,7 @@ def detail_title(
 
 
 def empty_title(
-    program: Union[pulse.Waveform, pulse.ParametricPulse, pulse.Schedule], device: DrawerBackendInfo
+    program: pulse.Waveform | pulse.ParametricPulse | pulse.Schedule, device: DrawerBackendInfo
 ) -> str:
     """Layout function for generating an empty figure title."""
     return ""

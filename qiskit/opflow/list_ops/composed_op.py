@@ -36,8 +36,8 @@ class ComposedOp(ListOp):
 
     def __init__(
         self,
-        oplist: List[OperatorBase],
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        oplist: list[OperatorBase],
+        coeff: complex | ParameterExpression = 1.0,
         abelian: bool = False,
     ) -> None:
         """
@@ -57,7 +57,7 @@ class ComposedOp(ListOp):
         return False
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {"oplist": self._oplist, "coeff": self._coeff, "abelian": self._abelian}
 
@@ -87,11 +87,11 @@ class ComposedOp(ListOp):
             "underlying circuit can be produced."
         )
 
-    def adjoint(self) -> "ComposedOp":
+    def adjoint(self) -> ComposedOp:
         return ComposedOp([op.adjoint() for op in reversed(self.oplist)], coeff=self.coeff)
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
 
         new_self, other = self._expand_shorter_operator_and_permute(other, permutation)
@@ -118,8 +118,8 @@ class ComposedOp(ListOp):
         return ComposedOp(new_self.oplist + [other], coeff=new_self.coeff)
 
     def eval(
-        self, front: Optional[Union[str, dict, np.ndarray, OperatorBase, Statevector]] = None
-    ) -> Union[OperatorBase, complex]:
+        self, front: str | dict | np.ndarray | OperatorBase | Statevector | None = None
+    ) -> OperatorBase | complex:
         if self._is_empty():
             return 0.0
 

@@ -32,7 +32,7 @@ class BlueprintCircuit(QuantumCircuit, ABC):
     accessed, the ``_build`` method is called. There the configuration of the circuit is checked.
     """
 
-    def __init__(self, *regs, name: Optional[str] = None) -> None:
+    def __init__(self, *regs, name: str | None = None) -> None:
         """Create a new blueprint circuit.
 
         The ``_data`` argument storing the internal circuit data is set to ``None`` to indicate

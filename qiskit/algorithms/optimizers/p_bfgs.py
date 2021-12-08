@@ -52,10 +52,10 @@ class P_BFGS(SciPyOptimizer):  # pylint: disable=invalid-name
         self,
         maxfun: int = 1000,
         ftol: float = 10 * np.finfo(float).eps,
-        factr: Optional[float] = None,
+        factr: float | None = None,
         iprint: int = -1,
-        max_processes: Optional[int] = None,
-        options: Optional[dict] = None,
+        max_processes: int | None = None,
+        options: dict | None = None,
         max_evals_grouped: int = 1,
         **kwargs,
     ) -> None:
@@ -130,8 +130,8 @@ class P_BFGS(SciPyOptimizer):  # pylint: disable=invalid-name
         self,
         fun: Callable[[POINT], float],
         x0: POINT,
-        jac: Optional[Callable[[POINT], POINT]] = None,
-        bounds: Optional[List[Tuple[float, float]]] = None,
+        jac: Callable[[POINT], POINT] | None = None,
+        bounds: list[tuple[float, float]] | None = None,
     ) -> OptimizerResult:
         x0 = np.asarray(x0)
 

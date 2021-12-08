@@ -61,7 +61,7 @@ from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.timeline import types
 
 
-def qreg_creg_ascending(bits: List[types.Bits]) -> List[types.Bits]:
+def qreg_creg_ascending(bits: list[types.Bits]) -> list[types.Bits]:
     """Sort bits by ascending order.
 
     Bit order becomes Q0, Q1, ..., Cl0, Cl1, ...
@@ -91,7 +91,7 @@ def qreg_creg_ascending(bits: List[types.Bits]) -> List[types.Bits]:
     return qregs + cregs
 
 
-def qreg_creg_descending(bits: List[types.Bits]) -> List[types.Bits]:
+def qreg_creg_descending(bits: list[types.Bits]) -> list[types.Bits]:
     """Sort bits by descending order.
 
     Bit order becomes Q_N, Q_N-1, ..., Cl_N, Cl_N-1, ...
@@ -119,7 +119,7 @@ def qreg_creg_descending(bits: List[types.Bits]) -> List[types.Bits]:
     return qregs + cregs
 
 
-def time_map_in_dt(time_window: Tuple[int, int]) -> types.HorizontalAxis:
+def time_map_in_dt(time_window: tuple[int, int]) -> types.HorizontalAxis:
     """Layout function for the horizontal axis formatting.
 
     Generate equispaced 6 horizontal axis ticks.

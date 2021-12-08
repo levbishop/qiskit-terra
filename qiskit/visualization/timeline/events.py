@@ -44,7 +44,7 @@ class BitEvents:
 
     _non_gates = (circuit.Barrier,)
 
-    def __init__(self, bit: types.Bits, instructions: List[types.ScheduledGate], t_stop: int):
+    def __init__(self, bit: types.Bits, instructions: list[types.ScheduledGate], t_stop: int):
         """Create new event for the specified bit.
 
         Args:

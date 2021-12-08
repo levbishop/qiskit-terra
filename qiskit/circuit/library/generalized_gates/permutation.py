@@ -28,8 +28,8 @@ class Permutation(QuantumCircuit):
     def __init__(
         self,
         num_qubits: int,
-        pattern: Optional[List[int]] = None,
-        seed: Optional[int] = None,
+        pattern: list[int] | None = None,
+        seed: int | None = None,
     ) -> None:
         """Return an n_qubit permutation circuit implemented using SWAPs.
 

@@ -103,14 +103,14 @@ class TimeUnitConversion(TransformationPass):
         return dag
 
     @staticmethod
-    def _units_used_in_delays(dag: DAGCircuit) -> Set[str]:
+    def _units_used_in_delays(dag: DAGCircuit) -> set[str]:
         units_used = set()
         for node in dag.op_nodes(op=Delay):
             units_used.add(node.op.unit)
         return units_used
 
     @staticmethod
-    def _unified(unit_set: Set[str]) -> str:
+    def _unified(unit_set: set[str]) -> str:
         if not unit_set:
             return "dt"
 

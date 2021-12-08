@@ -112,7 +112,7 @@ def _fix_gaussian_width(
     amp: float,
     center: float,
     sigma: float,
-    zeroed_width: Optional[float] = None,
+    zeroed_width: float | None = None,
     rescale_amp: bool = False,
     ret_scale_factor: bool = False,
 ) -> np.ndarray:
@@ -150,10 +150,10 @@ def gaussian(
     amp: complex,
     center: float,
     sigma: float,
-    zeroed_width: Optional[float] = None,
+    zeroed_width: float | None = None,
     rescale_amp: bool = False,
     ret_x: bool = False,
-) -> Union[np.ndarray, Tuple[np.ndarray, np.ndarray]]:
+) -> np.ndarray | tuple[np.ndarray, np.ndarray]:
     r"""Continuous unnormalized gaussian pulse.
 
     Integrated area under curve is $\Omega_g(amp, sigma) = amp \times np.sqrt(2\pi \sigma^2)$
@@ -199,7 +199,7 @@ def gaussian_deriv(
     center: float,
     sigma: float,
     ret_gaussian: bool = False,
-    zeroed_width: Optional[float] = None,
+    zeroed_width: float | None = None,
     rescale_amp: bool = False,
 ) -> np.ndarray:
     r"""Continuous unnormalized gaussian derivative pulse.
@@ -236,7 +236,7 @@ def _fix_sech_width(
     amp: float,
     center: float,
     sigma: float,
-    zeroed_width: Optional[float] = None,
+    zeroed_width: float | None = None,
     rescale_amp: bool = False,
     ret_scale_factor: bool = False,
 ) -> np.ndarray:
@@ -279,10 +279,10 @@ def sech(
     amp: complex,
     center: float,
     sigma: float,
-    zeroed_width: Optional[float] = None,
+    zeroed_width: float | None = None,
     rescale_amp: bool = False,
     ret_x: bool = False,
-) -> Union[np.ndarray, Tuple[np.ndarray, np.ndarray]]:
+) -> np.ndarray | tuple[np.ndarray, np.ndarray]:
     r"""Continuous unnormalized sech pulse.
 
     Args:
@@ -342,7 +342,7 @@ def gaussian_square(
     center: float,
     square_width: float,
     sigma: float,
-    zeroed_width: Optional[float] = None,
+    zeroed_width: float | None = None,
 ) -> np.ndarray:
     r"""Continuous gaussian square pulse.
 
@@ -396,7 +396,7 @@ def drag(
     center: float,
     sigma: float,
     beta: float,
-    zeroed_width: Optional[float] = None,
+    zeroed_width: float | None = None,
     rescale_amp: bool = False,
 ) -> np.ndarray:
     r"""Continuous Y-only correction DRAG pulse for standard nonlinear oscillator (SNO) [1].

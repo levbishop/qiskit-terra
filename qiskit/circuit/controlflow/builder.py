@@ -59,8 +59,8 @@ class InstructionPlaceholder(Instruction, abc.ABC):
 
     @abc.abstractmethod
     def concrete_instruction(
-        self, qubits: FrozenSet[Qubit], clbits: FrozenSet[Clbit]
-    ) -> Tuple[Instruction, Tuple[Qubit, ...], Tuple[Clbit, ...]]:
+        self, qubits: frozenset[Qubit], clbits: frozenset[Clbit]
+    ) -> tuple[Instruction, tuple[Qubit, ...], tuple[Clbit, ...]]:
         """Get a concrete, complete instruction that is valid to act over all the given resources.
 
         The returned resources may not be the full width of the given resources, but will certainly
@@ -85,7 +85,7 @@ class InstructionPlaceholder(Instruction, abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def placeholder_resources(self) -> Tuple[Tuple[Qubit, ...], Tuple[Clbit, ...]]:
+    def placeholder_resources(self) -> tuple[tuple[Qubit, ...], tuple[Clbit, ...]]:
         """Get the qubit and clbit resources that this placeholder instruction should be considered
         as using before construction.
 
@@ -200,7 +200,7 @@ class ControlFlowBuilderBlock:
                 here, and the documentation of :obj:`.InstructionSet`, which uses this same
                 callback.
         """
-        self.instructions: List[Tuple[Instruction, Tuple[Qubit, ...], Tuple[Clbit, ...]]] = []
+        self.instructions: list[tuple[Instruction, tuple[Qubit, ...], tuple[Clbit, ...]]] = []
         self.qubits = set(qubits)
         self.clbits = set(clbits)
         self._allow_jumps = allow_jumps
@@ -272,13 +272,13 @@ class ControlFlowBuilderBlock:
         self.add_bits((resource,) if isinstance(resource, Clbit) else resource)
         return resource
 
-    def peek(self) -> Tuple[Instruction, Tuple[Qubit, ...], Tuple[Clbit, ...]]:
+    def peek(self) -> tuple[Instruction, tuple[Qubit, ...], tuple[Clbit, ...]]:
         """Get the value of the most recent instruction tuple in this scope."""
         if not self.instructions:
             raise CircuitError("This scope contains no instructions.")
         return self.instructions[-1]
 
-    def pop(self) -> Tuple[Instruction, Tuple[Qubit, ...], Tuple[Clbit, ...]]:
+    def pop(self) -> tuple[Instruction, tuple[Qubit, ...], tuple[Clbit, ...]]:
         """Get the value of the most recent instruction tuple in this scope, and remove it from this
         object."""
         if not self.instructions:
@@ -286,7 +286,7 @@ class ControlFlowBuilderBlock:
         operation, qubits, clbits = self.instructions.pop()
         return (operation, qubits, clbits)
 
-    def add_bits(self, bits: Iterable[Union[Qubit, Clbit]]):
+    def add_bits(self, bits: Iterable[Qubit | Clbit]):
         """Add extra bits to this scope that are not associated with any concrete instruction yet.
 
         This is useful for expanding a scope's resource width when it may contain ``break`` or
@@ -310,8 +310,8 @@ class ControlFlowBuilderBlock:
                 raise TypeError(f"Can only add qubits or classical bits, but received '{bit}'.")
 
     def build(
-        self, all_qubits: FrozenSet[Qubit], all_clbits: FrozenSet[Clbit]
-    ) -> "qiskit.circuit.QuantumCircuit":
+        self, all_qubits: frozenset[Qubit], all_clbits: frozenset[Clbit]
+    ) -> qiskit.circuit.QuantumCircuit:
         """Build this scoped block into a complete :obj:`~QuantumCircuit` instance.
 
         This will build a circuit which contains all of the necessary qubits and clbits and no
@@ -374,7 +374,7 @@ class ControlFlowBuilderBlock:
 
         return out
 
-    def copy(self) -> "ControlFlowBuilderBlock":
+    def copy(self) -> ControlFlowBuilderBlock:
         """Return a semi-shallow copy of this builder block.
 
         The instruction lists and sets of qubits and clbits will be new instances (so mutations will

@@ -127,7 +127,7 @@ class ParameterSetter(NodeVisitor):
     and assign values to operands of nodes found.
     """
 
-    def __init__(self, param_map: Dict[ParameterExpression, ParameterValueType]):
+    def __init__(self, param_map: dict[ParameterExpression, ParameterValueType]):
         self._param_map = param_map
 
     # Top layer: Assign parameters to programs
@@ -245,7 +245,7 @@ class ParameterSetter(NodeVisitor):
 
         return format_parameter_value(new_value)
 
-    def _update_parameter_manager(self, node: Union[Schedule, ScheduleBlock]):
+    def _update_parameter_manager(self, node: Schedule | ScheduleBlock):
         """A helper function to update parameter manager of pulse program."""
         new_parameters = set()
 
@@ -360,7 +360,7 @@ class ParameterManager:
         self._parameters = set()
 
     @property
-    def parameters(self) -> Set:
+    def parameters(self) -> set:
         """Parameters which determine the schedule behavior."""
         return self._parameters
 
@@ -368,7 +368,7 @@ class ParameterManager:
         """Return True iff the instruction is parameterized."""
         return bool(self.parameters)
 
-    def get_parameters(self, parameter_name: str) -> List[Parameter]:
+    def get_parameters(self, parameter_name: str) -> list[Parameter]:
         """Get parameter object bound to this schedule by string name.
 
         Because different ``Parameter`` objects can have the same name,
@@ -385,7 +385,7 @@ class ParameterManager:
     def assign_parameters(
         self,
         pulse_program: Any,
-        value_dict: Dict[ParameterExpression, ParameterValueType],
+        value_dict: dict[ParameterExpression, ParameterValueType],
         inplace: bool = True,
     ) -> Any:
         """Modify and return program data with parameters assigned according to the input.

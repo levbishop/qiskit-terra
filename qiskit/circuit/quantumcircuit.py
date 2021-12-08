@@ -215,10 +215,10 @@ class QuantumCircuit:
 
     def __init__(
         self,
-        *regs: Union[Register, int, Sequence[Bit]],
-        name: Optional[str] = None,
+        *regs: Register | int | Sequence[Bit],
+        name: str | None = None,
         global_phase: ParameterValueType = 0,
-        metadata: Optional[Dict] = None,
+        metadata: dict | None = None,
     ):
         if any(not isinstance(reg, (list, QuantumRegister, ClassicalRegister)) for reg in regs):
             # check if inputs are integers, but also allow e.g. 2.0
@@ -307,7 +307,7 @@ class QuantumCircuit:
 
     @data.setter
     def data(
-        self, data_input: List[Tuple[Instruction, List[QubitSpecifier], List[ClbitSpecifier]]]
+        self, data_input: list[tuple[Instruction, list[QubitSpecifier], list[ClbitSpecifier]]]
     ):
         """Sets the circuit data from a list of instructions and context.
 
@@ -360,7 +360,7 @@ class QuantumCircuit:
         return self._metadata
 
     @metadata.setter
-    def metadata(self, metadata: Optional[dict]):
+    def metadata(self, metadata: dict | None):
         """Update the circuit metadata"""
         if not isinstance(metadata, dict) and metadata is not None:
             raise TypeError("Only a dictionary or None is accepted for circuit metadata")
@@ -419,7 +419,7 @@ class QuantumCircuit:
             has_reg = True
         return has_reg
 
-    def reverse_ops(self) -> "QuantumCircuit":
+    def reverse_ops(self) -> QuantumCircuit:
         """Reverse the circuit by reversing the order of instructions.
 
         This is done by recursively reversing all instructions.
@@ -455,7 +455,7 @@ class QuantumCircuit:
         reverse_circ.unit = self.unit
         return reverse_circ
 
-    def reverse_bits(self) -> "QuantumCircuit":
+    def reverse_bits(self) -> QuantumCircuit:
         """Return a circuit with the opposite order of wires.
 
         The circuit is "vertically" flipped. If a circuit is
@@ -503,7 +503,7 @@ class QuantumCircuit:
             circ._append(inst, new_qargs, new_cargs)
         return circ
 
-    def inverse(self) -> "QuantumCircuit":
+    def inverse(self) -> QuantumCircuit:
         """Invert (take adjoint of) this circuit.
 
         This is done by recursively inverting all gates.
@@ -543,7 +543,7 @@ class QuantumCircuit:
             inverse_circ._append(inst.inverse(), qargs, cargs)
         return inverse_circ
 
-    def repeat(self, reps: int) -> "QuantumCircuit":
+    def repeat(self, reps: int) -> QuantumCircuit:
         """Repeat this circuit ``reps`` times.
 
         Args:
@@ -568,7 +568,7 @@ class QuantumCircuit:
 
         return repeated_circ
 
-    def power(self, power: float, matrix_power: bool = False) -> "QuantumCircuit":
+    def power(self, power: float, matrix_power: bool = False) -> QuantumCircuit:
         """Raise this circuit to the power of ``power``.
 
         If ``power`` is a positive integer and ``matrix_power`` is ``False``, this implementation
@@ -614,9 +614,9 @@ class QuantumCircuit:
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
-    ) -> "QuantumCircuit":
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
+    ) -> QuantumCircuit:
         """Control this circuit on ``num_ctrl_qubits`` qubits.
 
         Args:
@@ -654,7 +654,7 @@ class QuantumCircuit:
         "Use the compose() method which is more flexible w.r.t "
         "circuit register compatibility."
     )
-    def combine(self, rhs: "QuantumCircuit") -> "QuantumCircuit":
+    def combine(self, rhs: QuantumCircuit) -> QuantumCircuit:
         """DEPRECATED - Returns rhs appended to self if self contains compatible registers.
 
         Two circuits are compatible if they contain the same registers
@@ -706,7 +706,7 @@ class QuantumCircuit:
         "compose() (potentially with the inplace=True argument) and tensor() "
         "methods which are more flexible w.r.t circuit register compatibility."
     )
-    def extend(self, rhs: "QuantumCircuit") -> "QuantumCircuit":
+    def extend(self, rhs: QuantumCircuit) -> QuantumCircuit:
         """DEPRECATED - Append QuantumCircuit to the RHS if it contains compatible registers.
 
         Two circuits are compatible if they contain the same registers
@@ -754,13 +754,13 @@ class QuantumCircuit:
 
     def compose(
         self,
-        other: Union["QuantumCircuit", Instruction],
-        qubits: Optional[Sequence[Union[Qubit, int]]] = None,
-        clbits: Optional[Sequence[Union[Clbit, int]]] = None,
+        other: Union[QuantumCircuit, Instruction],
+        qubits: Sequence[Qubit | int] | None = None,
+        clbits: Sequence[Clbit | int] | None = None,
         front: bool = False,
         inplace: bool = False,
         wrap: bool = False,
-    ) -> Optional["QuantumCircuit"]:
+    ) -> Optional[QuantumCircuit]:
         """Compose circuit with ``other`` circuit or instruction, optionally permuting wires.
 
         ``other`` can be narrower or of equal width to ``self``.
@@ -906,7 +906,7 @@ class QuantumCircuit:
 
         return dest
 
-    def tensor(self, other: "QuantumCircuit", inplace: bool = False) -> Optional["QuantumCircuit"]:
+    def tensor(self, other: QuantumCircuit, inplace: bool = False) -> Optional[QuantumCircuit]:
         """Tensor ``self`` with ``other``.
 
         Remember that in the little-endian convention the leftmost operation will be at the bottom
@@ -996,21 +996,21 @@ class QuantumCircuit:
         return dest
 
     @property
-    def qubits(self) -> List[Qubit]:
+    def qubits(self) -> list[Qubit]:
         """
         Returns a list of quantum bits in the order that the registers were added.
         """
         return self._qubits
 
     @property
-    def clbits(self) -> List[Clbit]:
+    def clbits(self) -> list[Clbit]:
         """
         Returns a list of classical bits in the order that the registers were added.
         """
         return self._clbits
 
     @property
-    def ancillas(self) -> List[AncillaQubit]:
+    def ancillas(self) -> list[AncillaQubit]:
         """
         Returns a list of ancilla bits in the order that the registers were added.
         """
@@ -1021,7 +1021,7 @@ class QuantumCircuit:
         "Use the compose() method which is more flexible w.r.t "
         "circuit register compatibility."
     )
-    def __add__(self, rhs: "QuantumCircuit") -> "QuantumCircuit":
+    def __add__(self, rhs: QuantumCircuit) -> QuantumCircuit:
         """Overload + to implement self.combine."""
         return self.combine(rhs)
 
@@ -1030,24 +1030,24 @@ class QuantumCircuit:
         "compose() (potentially with the inplace=True argument) and tensor() "
         "methods which are more flexible w.r.t circuit register compatibility."
     )
-    def __iadd__(self, rhs: "QuantumCircuit") -> "QuantumCircuit":
+    def __iadd__(self, rhs: QuantumCircuit) -> QuantumCircuit:
         """Overload += to implement self.extend."""
         return self.extend(rhs)
 
-    def __and__(self, rhs: "QuantumCircuit") -> "QuantumCircuit":
+    def __and__(self, rhs: QuantumCircuit) -> QuantumCircuit:
         """Overload & to implement self.compose."""
         return self.compose(rhs)
 
-    def __iand__(self, rhs: "QuantumCircuit") -> "QuantumCircuit":
+    def __iand__(self, rhs: QuantumCircuit) -> QuantumCircuit:
         """Overload &= to implement self.compose in place."""
         self.compose(rhs, inplace=True)
         return self
 
-    def __xor__(self, top: "QuantumCircuit") -> "QuantumCircuit":
+    def __xor__(self, top: QuantumCircuit) -> QuantumCircuit:
         """Overload ^ to implement self.tensor."""
         return self.tensor(top)
 
-    def __ixor__(self, top: "QuantumCircuit") -> "QuantumCircuit":
+    def __ixor__(self, top: QuantumCircuit) -> QuantumCircuit:
         """Overload ^= to implement self.tensor in place."""
         self.tensor(top, inplace=True)
         return self
@@ -1061,7 +1061,7 @@ class QuantumCircuit:
         ...
 
     @typing.overload
-    def __getitem__(self, item: slice) -> List[DataElement]:
+    def __getitem__(self, item: slice) -> list[DataElement]:
         ...
 
     def __getitem__(self, item):
@@ -1069,7 +1069,7 @@ class QuantumCircuit:
         return self._data[item]
 
     @staticmethod
-    def cast(value: S, type_: Callable[..., T]) -> Union[S, T]:
+    def cast(value: S, type_: Callable[..., T]) -> S | T:
         """Best effort to cast value to type. Otherwise, returns the value."""
         try:
             return type_(value)
@@ -1077,7 +1077,7 @@ class QuantumCircuit:
             return value
 
     @staticmethod
-    def _bit_argument_conversion(bit_representation, in_array: Sequence[BitType]) -> List[BitType]:
+    def _bit_argument_conversion(bit_representation, in_array: Sequence[BitType]) -> list[BitType]:
         try:
             if isinstance(bit_representation, Bit):
                 # circuit.h(qr[0]) -> circuit.h([qr[0]])
@@ -1116,7 +1116,7 @@ class QuantumCircuit:
             ) from ex
         return ret
 
-    def qbit_argument_conversion(self, qubit_representation: QubitSpecifier) -> List[Qubit]:
+    def qbit_argument_conversion(self, qubit_representation: QubitSpecifier) -> list[Qubit]:
         """
         Converts several qubit representations (such as indexes, range, etc.)
         into a list of qubits.
@@ -1129,7 +1129,7 @@ class QuantumCircuit:
         """
         return QuantumCircuit._bit_argument_conversion(qubit_representation, self.qubits)
 
-    def cbit_argument_conversion(self, clbit_representation: ClbitSpecifier) -> List[Clbit]:
+    def cbit_argument_conversion(self, clbit_representation: ClbitSpecifier) -> list[Clbit]:
         """
         Converts several classical bit representations (such as indexes, range, etc.)
         into a list of classical bits.
@@ -1185,8 +1185,8 @@ class QuantumCircuit:
     def append(
         self,
         instruction: Instruction,
-        qargs: Optional[Sequence[QubitSpecifier]] = None,
-        cargs: Optional[Sequence[ClbitSpecifier]] = None,
+        qargs: Sequence[QubitSpecifier] | None = None,
+        cargs: Sequence[ClbitSpecifier] | None = None,
     ) -> InstructionSet:
         """Append one or more instructions to the end of the circuit, modifying
         the circuit in place. Expands qargs and cargs.
@@ -1311,7 +1311,7 @@ class QuantumCircuit:
 
     def _check_dup_param_spec(
         self,
-        parameter_spec_list: Sequence[Tuple[Instruction, int]],
+        parameter_spec_list: Sequence[tuple[Instruction, int]],
         instruction: Instruction,
         param_index: int,
     ) -> bool:
@@ -1320,7 +1320,7 @@ class QuantumCircuit:
                 return True
         return False
 
-    def add_register(self, *regs: Union[Register, int, Sequence[Bit]]) -> None:
+    def add_register(self, *regs: Register | int | Sequence[Bit]) -> None:
         """Add registers."""
         if not regs:
             return
@@ -1467,8 +1467,8 @@ class QuantumCircuit:
 
     def to_instruction(
         self,
-        parameter_map: Optional[Dict[Parameter, ParameterValueType]] = None,
-        label: Optional[str] = None,
+        parameter_map: dict[Parameter, ParameterValueType] | None = None,
+        label: str | None = None,
     ) -> Instruction:
         """Create an Instruction out of this circuit.
 
@@ -1489,8 +1489,8 @@ class QuantumCircuit:
 
     def to_gate(
         self,
-        parameter_map: Optional[Dict[Parameter, ParameterValueType]] = None,
-        label: Optional[str] = None,
+        parameter_map: dict[Parameter, ParameterValueType] | None = None,
+        label: str | None = None,
     ) -> Gate:
         """Create a Gate out of this circuit.
 
@@ -1511,10 +1511,10 @@ class QuantumCircuit:
 
     def decompose(
         self,
-        gates_to_decompose: Optional[
-            Union[Type[Gate], Sequence[Type[Gate]], Sequence[str], str]
-        ] = None,
-    ) -> "QuantumCircuit":
+        gates_to_decompose: None | (
+            type[Gate] | Sequence[type[Gate]] | Sequence[str] | str
+        ) = None,
+    ) -> QuantumCircuit:
         """Call a decomposition pass on this circuit,
         to decompose one level (shallow decompose).
 
@@ -1534,7 +1534,7 @@ class QuantumCircuit:
         decomposed_dag = pass_.run(circuit_to_dag(self))
         return dag_to_circuit(decomposed_dag)
 
-    def _check_compatible_regs(self, rhs: "QuantumCircuit") -> None:
+    def _check_compatible_regs(self, rhs: QuantumCircuit) -> None:
         """Raise exception if the circuits are defined on incompatible registers"""
         list1 = self.qregs + self.cregs
         list2 = rhs.qregs + rhs.cregs
@@ -1567,9 +1567,9 @@ class QuantumCircuit:
     def qasm(
         self,
         formatted: bool = False,
-        filename: Optional[str] = None,
-        encoding: Optional[str] = None,
-    ) -> Optional[str]:
+        filename: str | None = None,
+        encoding: str | None = None,
+    ) -> str | None:
         """Return OpenQASM string.
 
         Args:
@@ -1736,21 +1736,21 @@ class QuantumCircuit:
 
     def draw(
         self,
-        output: Optional[str] = None,
-        scale: Optional[float] = None,
-        filename: Optional[str] = None,
-        style: Optional[Union[dict, str]] = None,
+        output: str | None = None,
+        scale: float | None = None,
+        filename: str | None = None,
+        style: dict | str | None = None,
         interactive: bool = False,
         plot_barriers: bool = True,
         reverse_bits: bool = False,
-        justify: Optional[str] = None,
-        vertical_compression: Optional[str] = "medium",
+        justify: str | None = None,
+        vertical_compression: str | None = "medium",
         idle_wires: bool = True,
         with_layout: bool = True,
-        fold: Optional[int] = None,
+        fold: int | None = None,
         # The type of ax is matplotlib.axes.Axes, but this is not a fixed dependency, so cannot be
         # safely forward-referenced.
-        ax: Optional[typing.Any] = None,
+        ax: typing.Any | None = None,
         initial_state: bool = False,
         cregbundle: bool = True,
     ):
@@ -1887,7 +1887,7 @@ class QuantumCircuit:
             cregbundle=cregbundle,
         )
 
-    def size(self, filter_function: Optional[callable] = lambda x: not x[0]._directive) -> int:
+    def size(self, filter_function: callable | None = lambda x: not x[0]._directive) -> int:
         """Returns total number of instructions in circuit.
 
         Args:
@@ -1900,7 +1900,7 @@ class QuantumCircuit:
         """
         return sum(map(filter_function, self._data))
 
-    def depth(self, filter_function: Optional[callable] = lambda x: not x[0]._directive) -> int:
+    def depth(self, filter_function: callable | None = lambda x: not x[0]._directive) -> int:
         """Return circuit depth (i.e., length of critical path).
 
         Args:
@@ -1994,13 +1994,13 @@ class QuantumCircuit:
     # The stringified return type is because OrderedDict can't be subscripted before Python 3.9, and
     # typing.OrderedDict wasn't added until 3.7.2.  It can be turned into a proper type once 3.6
     # support is dropped.
-    def count_ops(self) -> "OrderedDict[Instruction, int]":
+    def count_ops(self) -> OrderedDict[Instruction, int]:
         """Count each operation kind in the circuit.
 
         Returns:
             OrderedDict: a breakdown of how many operations of each kind, sorted by amount.
         """
-        count_ops: Dict[Instruction, int] = {}
+        count_ops: dict[Instruction, int] = {}
         for instr, _, _ in self._data:
             count_ops[instr.name] = count_ops.get(instr.name, 0) + 1
         return OrderedDict(sorted(count_ops.items(), key=lambda kv: kv[1], reverse=True))
@@ -2016,7 +2016,7 @@ class QuantumCircuit:
                 multi_qubit_gates += 1
         return multi_qubit_gates
 
-    def get_instructions(self, name: str) -> List[DataElement]:
+    def get_instructions(self, name: str) -> list[DataElement]:
         """Get instructions matching name.
 
         Args:
@@ -2115,7 +2115,7 @@ class QuantumCircuit:
         """
         return self.num_unitary_factors()
 
-    def copy(self, name: Optional[str] = None) -> "QuantumCircuit":
+    def copy(self, name: str | None = None) -> QuantumCircuit:
         """Copy the circuit.
 
         Args:
@@ -2208,7 +2208,7 @@ class QuantumCircuit:
         """
         return self.append(Measure(), [qubit], [cbit])
 
-    def measure_active(self, inplace: bool = True) -> Optional["QuantumCircuit"]:
+    def measure_active(self, inplace: bool = True) -> Optional[QuantumCircuit]:
         """Adds measurement to all non-idle qubits. Creates a new ClassicalRegister with
         a size equal to the number of non-idle qubits being measured.
 
@@ -2240,7 +2240,7 @@ class QuantumCircuit:
 
     def measure_all(
         self, inplace: bool = True, add_bits: bool = True
-    ) -> Optional["QuantumCircuit"]:
+    ) -> Optional[QuantumCircuit]:
         """Adds measurement to all qubits.
 
         By default, adds new classical bits in a :obj:`.ClassicalRegister` to store these
@@ -2283,7 +2283,7 @@ class QuantumCircuit:
         else:
             return None
 
-    def remove_final_measurements(self, inplace: bool = True) -> Optional["QuantumCircuit"]:
+    def remove_final_measurements(self, inplace: bool = True) -> Optional[QuantumCircuit]:
         """Removes final measurements and barriers on all qubits if they are present.
         Deletes the classical registers that were used to store the values from these measurements
         that become idle as a result of this operation, and deletes classical bits that are
@@ -2346,7 +2346,7 @@ class QuantumCircuit:
             return None
 
     @staticmethod
-    def from_qasm_file(path: str) -> "QuantumCircuit":
+    def from_qasm_file(path: str) -> QuantumCircuit:
         """Take in a QASM file and generate a QuantumCircuit object.
 
         Args:
@@ -2358,7 +2358,7 @@ class QuantumCircuit:
         return _circuit_from_qasm(qasm)
 
     @staticmethod
-    def from_qasm_str(qasm_str: str) -> "QuantumCircuit":
+    def from_qasm_str(qasm_str: str) -> QuantumCircuit:
         """Take in a QASM string and generate a QuantumCircuit object.
 
         Args:
@@ -2407,7 +2407,7 @@ class QuantumCircuit:
         """Convenience function to get the number of parameter objects in the circuit."""
         return len(self._unsorted_parameters())
 
-    def _unsorted_parameters(self) -> Set[Parameter]:
+    def _unsorted_parameters(self) -> set[Parameter]:
         """Efficiently get all parameters in the circuit, without any sorting overhead."""
         parameters = set(self._parameter_table)
         if isinstance(self.global_phase, ParameterExpression):
@@ -2417,9 +2417,9 @@ class QuantumCircuit:
 
     def assign_parameters(
         self,
-        parameters: Union[Mapping[Parameter, ParameterValueType], Sequence[ParameterValueType]],
+        parameters: Mapping[Parameter, ParameterValueType] | Sequence[ParameterValueType],
         inplace: bool = False,
-    ) -> Optional["QuantumCircuit"]:
+    ) -> Optional[QuantumCircuit]:
         """Assign parameters to new parameters or values.
 
         The keys of the parameter dictionary must be Parameter instances in the current circuit. The
@@ -2528,8 +2528,8 @@ class QuantumCircuit:
         return None if inplace else bound_circuit
 
     def bind_parameters(
-        self, values: Union[Mapping[Parameter, float], Sequence[float]]
-    ) -> "QuantumCircuit":
+        self, values: Mapping[Parameter, float] | Sequence[float]
+    ) -> QuantumCircuit:
         """Assign numeric parameters to values yielding a new circuit.
 
         To assign new Parameter objects or bind the values in-place, without yielding a new
@@ -2560,8 +2560,8 @@ class QuantumCircuit:
 
     def _unroll_param_dict(
         self, value_dict: Mapping[Parameter, ParameterValueType]
-    ) -> Dict[Parameter, ParameterValueType]:
-        unrolled_value_dict: Dict[Parameter, ParameterValueType] = {}
+    ) -> dict[Parameter, ParameterValueType]:
+        unrolled_value_dict: dict[Parameter, ParameterValueType] = {}
         for (param, value) in value_dict.items():
             if isinstance(param, ParameterVector):
                 if not len(param) == len(value):
@@ -2685,7 +2685,7 @@ class QuantumCircuit:
         """
         from .barrier import Barrier
 
-        qubits: List[QubitSpecifier] = []
+        qubits: list[QubitSpecifier] = []
 
         if not qargs:  # None
             qubits.extend(self.qubits)
@@ -2707,7 +2707,7 @@ class QuantumCircuit:
     def delay(
         self,
         duration: ParameterValueType,
-        qarg: Optional[QubitSpecifier] = None,
+        qarg: QubitSpecifier | None = None,
         unit: str = "dt",
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.Delay`. If qarg is None, applies to all qubits.
@@ -2725,7 +2725,7 @@ class QuantumCircuit:
         Raises:
             CircuitError: if arguments have bad format.
         """
-        qubits: List[QubitSpecifier] = []
+        qubits: list[QubitSpecifier] = []
         if qarg is None:  # -> apply delays to all qubits
             for q in self.qubits:
                 qubits.append(q)
@@ -2767,8 +2767,8 @@ class QuantumCircuit:
         self,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.CHGate`.
 
@@ -2860,8 +2860,8 @@ class QuantumCircuit:
         theta: ParameterValueType,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.CPhaseGate`.
 
@@ -3005,7 +3005,7 @@ class QuantumCircuit:
         )
 
     def rx(
-        self, theta: ParameterValueType, qubit: QubitSpecifier, label: Optional[str] = None
+        self, theta: ParameterValueType, qubit: QubitSpecifier, label: str | None = None
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.RXGate`.
 
@@ -3028,8 +3028,8 @@ class QuantumCircuit:
         theta: ParameterValueType,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.CRXGate`.
 
@@ -3073,7 +3073,7 @@ class QuantumCircuit:
         return self.append(RXXGate(theta), [qubit1, qubit2], [])
 
     def ry(
-        self, theta: ParameterValueType, qubit: QubitSpecifier, label: Optional[str] = None
+        self, theta: ParameterValueType, qubit: QubitSpecifier, label: str | None = None
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.RYGate`.
 
@@ -3096,8 +3096,8 @@ class QuantumCircuit:
         theta: ParameterValueType,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.CRYGate`.
 
@@ -3161,8 +3161,8 @@ class QuantumCircuit:
         theta: ParameterValueType,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.CRZGate`.
 
@@ -3304,8 +3304,8 @@ class QuantumCircuit:
         control_qubit: QubitSpecifier,
         target_qubit1: QubitSpecifier,
         target_qubit2: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.CSwapGate`.
 
@@ -3388,8 +3388,8 @@ class QuantumCircuit:
         self,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.CSXGate`.
 
@@ -3476,8 +3476,8 @@ class QuantumCircuit:
         gamma: ParameterValueType,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CUGate`.
 
@@ -3541,8 +3541,8 @@ class QuantumCircuit:
         theta: ParameterValueType,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CU1Gate`.
 
@@ -3668,8 +3668,8 @@ class QuantumCircuit:
         lam: ParameterValueType,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CU3Gate`.
 
@@ -3697,7 +3697,7 @@ class QuantumCircuit:
             [],
         )
 
-    def x(self, qubit: QubitSpecifier, label: Optional[str] = None) -> InstructionSet:
+    def x(self, qubit: QubitSpecifier, label: str | None = None) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.XGate`.
 
         For the full matrix form of this gate, see the underlying gate documentation.
@@ -3717,8 +3717,8 @@ class QuantumCircuit:
         self,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CXGate`.
 
@@ -3746,8 +3746,8 @@ class QuantumCircuit:
         self,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CXGate`.
 
@@ -3790,7 +3790,7 @@ class QuantumCircuit:
         control_qubit1: QubitSpecifier,
         control_qubit2: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        ctrl_state: Optional[Union[str, int]] = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CCXGate`.
 
@@ -3842,7 +3842,7 @@ class QuantumCircuit:
         self,
         control_qubits: Sequence[QubitSpecifier],
         target_qubit: QubitSpecifier,
-        ancilla_qubits: Optional[Union[QubitSpecifier, Sequence[QubitSpecifier]]] = None,
+        ancilla_qubits: QubitSpecifier | Sequence[QubitSpecifier] | None = None,
         mode: str = "noancilla",
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.MCXGate`.
@@ -3920,7 +3920,7 @@ class QuantumCircuit:
         self,
         control_qubits: Sequence[QubitSpecifier],
         target_qubit: QubitSpecifier,
-        ancilla_qubits: Optional[Union[QubitSpecifier, Sequence[QubitSpecifier]]] = None,
+        ancilla_qubits: QubitSpecifier | Sequence[QubitSpecifier] | None = None,
         mode: str = "noancilla",
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.library.MCXGate`.
@@ -3972,8 +3972,8 @@ class QuantumCircuit:
         self,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CYGate`.
 
@@ -4015,8 +4015,8 @@ class QuantumCircuit:
         self,
         control_qubit: QubitSpecifier,
         target_qubit: QubitSpecifier,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.CZGate`.
 
@@ -4082,7 +4082,7 @@ class QuantumCircuit:
             )
         )
 
-    def _pop_scope(self) -> "qiskit.circuit.controlflow.builder.ControlFlowBuilderBlock":
+    def _pop_scope(self) -> qiskit.circuit.controlflow.builder.ControlFlowBuilderBlock:
         """Finish a scope used in the control-flow builder interface, and return it to the caller.
 
         This should only be done by the control-flow context managers, since they naturally
@@ -4091,7 +4091,7 @@ class QuantumCircuit:
 
     def _peek_previous_instruction_in_scope(
         self,
-    ) -> Tuple[Instruction, Sequence[Qubit], Sequence[Clbit]]:
+    ) -> tuple[Instruction, Sequence[Qubit], Sequence[Clbit]]:
         """Return the instruction 3-tuple of the most recent instruction in the current scope, even
         if that scope is currently under construction.
 
@@ -4105,7 +4105,7 @@ class QuantumCircuit:
 
     def _pop_previous_instruction_in_scope(
         self,
-    ) -> Tuple[Instruction, Sequence[Qubit], Sequence[Clbit]]:
+    ) -> tuple[Instruction, Sequence[Qubit], Sequence[Clbit]]:
         """Return the instruction 3-tuple of the most recent instruction in the current scope, even
         if that scope is currently under construction, and remove it from that scope.
 
@@ -4153,24 +4153,24 @@ class QuantumCircuit:
     @typing.overload
     def while_loop(
         self,
-        condition: Tuple[Union[ClassicalRegister, Clbit], int],
+        condition: tuple[ClassicalRegister | Clbit, int],
         body: None,
         qubits: None,
         clbits: None,
         *,
-        label: Optional[str],
-    ) -> "qiskit.circuit.controlflow.while_loop.WhileLoopContext":
+        label: str | None,
+    ) -> qiskit.circuit.controlflow.while_loop.WhileLoopContext:
         ...
 
     @typing.overload
     def while_loop(
         self,
-        condition: Tuple[Union[ClassicalRegister, Clbit], int],
-        body: "QuantumCircuit",
+        condition: tuple[ClassicalRegister | Clbit, int],
+        body: QuantumCircuit,
         qubits: Sequence[QubitSpecifier],
         clbits: Sequence[ClbitSpecifier],
         *,
-        label: Optional[str],
+        label: str | None,
     ) -> InstructionSet:
         ...
 
@@ -4238,25 +4238,25 @@ class QuantumCircuit:
     def for_loop(
         self,
         indexset: Iterable[int],
-        loop_parameter: Optional[Parameter],
+        loop_parameter: Parameter | None,
         body: None,
         qubits: None,
         clbits: None,
         *,
-        label: Optional[str],
-    ) -> "qiskit.circuit.controlflow.for_loop.ForLoopContext":
+        label: str | None,
+    ) -> qiskit.circuit.controlflow.for_loop.ForLoopContext:
         ...
 
     @typing.overload
     def for_loop(
         self,
         indexset: Iterable[int],
-        loop_parameter: Union[Parameter, None],
-        body: "QuantumCircuit",
+        loop_parameter: Parameter | None,
+        body: QuantumCircuit,
         qubits: Sequence[QubitSpecifier],
         clbits: Sequence[ClbitSpecifier],
         *,
-        label: Optional[str],
+        label: str | None,
     ) -> InstructionSet:
         ...
 
@@ -4331,24 +4331,24 @@ class QuantumCircuit:
     @typing.overload
     def if_test(
         self,
-        condition: Tuple[Union[ClassicalRegister, Clbit], int],
+        condition: tuple[ClassicalRegister | Clbit, int],
         true_body: None,
         qubits: None,
         clbits: None,
         *,
-        label: Optional[str],
-    ) -> "qiskit.circuit.controlflow.if_else.IfContext":
+        label: str | None,
+    ) -> qiskit.circuit.controlflow.if_else.IfContext:
         ...
 
     @typing.overload
     def if_test(
         self,
-        condition: Tuple[Union[ClassicalRegister, Clbit], int],
-        true_body: "QuantumCircuit",
+        condition: tuple[ClassicalRegister | Clbit, int],
+        true_body: QuantumCircuit,
         qubits: Sequence[QubitSpecifier],
         clbits: Sequence[ClbitSpecifier],
         *,
-        label: Optional[str] = None,
+        label: str | None = None,
     ) -> InstructionSet:
         ...
 
@@ -4441,16 +4441,16 @@ class QuantumCircuit:
 
     def if_else(
         self,
-        condition: Union[
-            Tuple[ClassicalRegister, int],
-            Tuple[Clbit, int],
-            Tuple[Clbit, bool],
-        ],
-        true_body: "QuantumCircuit",
-        false_body: "QuantumCircuit",
+        condition: (
+            tuple[ClassicalRegister, int] |
+            tuple[Clbit, int] |
+            tuple[Clbit, bool]
+        ),
+        true_body: QuantumCircuit,
+        false_body: QuantumCircuit,
         qubits: Sequence[QubitSpecifier],
         clbits: Sequence[ClbitSpecifier],
-        label: Optional[str] = None,
+        label: str | None = None,
     ) -> InstructionSet:
         """Apply :class:`~qiskit.circuit.controlflow.IfElseOp`.
 
@@ -4558,14 +4558,14 @@ class QuantumCircuit:
 
     def add_calibration(
         self,
-        gate: Union[Gate, str],
+        gate: Gate | str,
         qubits: Sequence[int],
         # Schedule has the type `qiskit.pulse.Schedule`, but `qiskit.pulse` cannot be imported
         # while this module is, and so Sphinx will not accept a forward reference to it.  Sphinx
         # needs the types available at runtime, whereas mypy will accept it, because it handles the
         # type checking by static analysis.
         schedule,
-        params: Optional[Sequence[ParameterValueType]] = None,
+        params: Sequence[ParameterValueType] | None = None,
     ) -> None:
         """Register a low-level, custom pulse definition for the given gate.
 
@@ -4584,7 +4584,7 @@ class QuantumCircuit:
             self._calibrations[gate][(tuple(qubits), tuple(params or []))] = schedule
 
     # Functions only for scheduled circuits
-    def qubit_duration(self, *qubits: Union[Qubit, int]) -> float:
+    def qubit_duration(self, *qubits: Qubit | int) -> float:
         """Return the duration between the start and stop time of the first and last instructions,
         excluding delays, over the supplied qubits. Its time unit is ``self.unit``.
 
@@ -4596,7 +4596,7 @@ class QuantumCircuit:
         """
         return self.qubit_stop_time(*qubits) - self.qubit_start_time(*qubits)
 
-    def qubit_start_time(self, *qubits: Union[Qubit, int]) -> float:
+    def qubit_start_time(self, *qubits: Qubit | int) -> float:
         """Return the start time of the first instruction, excluding delays,
         over the supplied qubits. Its time unit is ``self.unit``.
 
@@ -4638,7 +4638,7 @@ class QuantumCircuit:
 
         return 0  # If there are no instructions over bits
 
-    def qubit_stop_time(self, *qubits: Union[Qubit, int]) -> float:
+    def qubit_stop_time(self, *qubits: Qubit | int) -> float:
         """Return the stop time of the last instruction, excluding delays, over the supplied qubits.
         Its time unit is ``self.unit``.
 
@@ -4681,7 +4681,7 @@ class QuantumCircuit:
         return 0  # If there are no instructions over bits
 
 
-def _circuit_from_qasm(qasm: Qasm) -> "QuantumCircuit":
+def _circuit_from_qasm(qasm: Qasm) -> QuantumCircuit:
     # pylint: disable=cyclic-import
     from qiskit.converters import ast_to_dag, dag_to_circuit
 
@@ -4710,8 +4710,8 @@ def _compare_parameters(param1: Parameter, param2: Parameter) -> int:
 
 def _add_sub_instruction_to_existing_composite_circuits(
     instruction: Instruction,
-    existing_gate_names: List[str],
-    existing_composite_circuits: List[Instruction],
+    existing_gate_names: list[str],
+    existing_composite_circuits: list[Instruction],
 ) -> None:
     """Recursively add undefined sub-instructions in the definition of the given
     instruction to existing_composite_circuit list.
@@ -4790,7 +4790,7 @@ def _get_composite_circuit_qasm_from_instruction(instruction: Instruction) -> st
 
 
 def _insert_composite_gate_definition_qasm(
-    string_temp: str, existing_composite_circuits: List[Instruction], extension_lib: str
+    string_temp: str, existing_composite_circuits: list[Instruction], extension_lib: str
 ) -> str:
     """Insert composite gate definition QASM code right after extension library in the header"""
 

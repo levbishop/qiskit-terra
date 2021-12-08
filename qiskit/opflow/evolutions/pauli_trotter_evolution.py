@@ -54,8 +54,8 @@ class PauliTrotterEvolution(EvolutionBase):
 
     def __init__(
         self,
-        trotter_mode: Optional[Union[str, TrotterizationBase]] = "trotter",
-        reps: Optional[int] = 1,
+        trotter_mode: str | TrotterizationBase | None = "trotter",
+        reps: int | None = 1,
         # TODO uncomment when we implement Abelian grouped evolution.
         # group_paulis: Optional[bool] = False
     ) -> None:

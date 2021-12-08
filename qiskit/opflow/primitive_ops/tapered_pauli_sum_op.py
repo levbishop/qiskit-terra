@@ -39,8 +39,8 @@ class TaperedPauliSumOp(PauliSumOp):
     def __init__(
         self,
         primitive: SparsePauliOp,
-        z2_symmetries: "Z2Symmetries",
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        z2_symmetries: Z2Symmetries,
+        coeff: complex | ParameterExpression = 1.0,
     ) -> None:
         """
         Args:
@@ -59,7 +59,7 @@ class TaperedPauliSumOp(PauliSumOp):
         self._z2_symmetries = z2_symmetries
 
     @property
-    def z2_symmetries(self) -> "Z2Symmetries":
+    def z2_symmetries(self) -> Z2Symmetries:
         """
         Z2 symmetries which the Operator has.
 
@@ -69,7 +69,7 @@ class TaperedPauliSumOp(PauliSumOp):
         return self._z2_symmetries
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return operator settings."""
         return {
             "primitive": self._primitive,
@@ -87,10 +87,10 @@ class Z2Symmetries:
 
     def __init__(
         self,
-        symmetries: List[Pauli],
-        sq_paulis: List[Pauli],
-        sq_list: List[int],
-        tapering_values: Optional[List[int]] = None,
+        symmetries: list[Pauli],
+        sq_paulis: list[Pauli],
+        sq_list: list[int],
+        tapering_values: list[int] | None = None,
     ):
         """
         Args:
@@ -136,7 +136,7 @@ class Z2Symmetries:
         return self._sq_paulis
 
     @property
-    def cliffords(self) -> List[PauliSumOp]:
+    def cliffords(self) -> list[PauliSumOp]:
         """
         Get clifford operators, build based on symmetries and single-qubit X.
         Returns:
@@ -164,7 +164,7 @@ class Z2Symmetries:
         self._tapering_values = new_value
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return operator settings."""
         return {
             "symmetries": self._symmetries,
@@ -199,7 +199,7 @@ class Z2Symmetries:
         ret = "\n".join(ret)
         return ret
 
-    def copy(self) -> "Z2Symmetries":
+    def copy(self) -> Z2Symmetries:
         """
         Get a copy of self.
         Returns:
@@ -217,7 +217,7 @@ class Z2Symmetries:
 
     # pylint: disable=invalid-name
     @classmethod
-    def find_Z2_symmetries(cls, operator: PauliSumOp) -> "Z2Symmetries":
+    def find_Z2_symmetries(cls, operator: PauliSumOp) -> Z2Symmetries:
         """
         Finds Z2 Pauli-type symmetries of an Operator.
 
@@ -380,7 +380,7 @@ class Z2Symmetries:
 
         return tapered_ops
 
-    def _taper(self, op: PauliSumOp, curr_tapering_values: List[int]) -> OperatorBase:
+    def _taper(self, op: PauliSumOp, curr_tapering_values: list[int]) -> OperatorBase:
         pauli_list = []
         for pauli_term in op:
             coeff_out = pauli_term.primitive.coeffs[0]
@@ -443,7 +443,7 @@ class Z2Symmetries:
         )
 
 
-def _kernel_F2(matrix_in) -> List[np.ndarray]:  # pylint: disable=invalid-name
+def _kernel_F2(matrix_in) -> list[np.ndarray]:  # pylint: disable=invalid-name
     """
     Computes the kernel of a binary matrix on the binary finite field
     Args:

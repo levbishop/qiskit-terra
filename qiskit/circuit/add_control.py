@@ -23,10 +23,10 @@ from . import ControlledGate, Gate, QuantumRegister, QuantumCircuit
 
 
 def add_control(
-    operation: Union[Gate, ControlledGate],
+    operation: Gate | ControlledGate,
     num_ctrl_qubits: int,
-    label: Union[str, None],
-    ctrl_state: Union[int, str, None],
+    label: str | None,
+    ctrl_state: int | str | None,
 ) -> ControlledGate:
     """For standard gates, if the controlled version already exists in the
     library, it will be returned (e.g. XGate.control() = CnotGate().
@@ -65,10 +65,10 @@ def add_control(
 
 
 def control(
-    operation: Union[Gate, ControlledGate],
-    num_ctrl_qubits: Optional[int] = 1,
-    label: Optional[Union[None, str]] = None,
-    ctrl_state: Optional[Union[None, int, str]] = None,
+    operation: Gate | ControlledGate,
+    num_ctrl_qubits: int | None = 1,
+    label: None | str | None = None,
+    ctrl_state: None | int | str | None = None,
 ) -> ControlledGate:
     """Return controlled version of gate using controlled rotations. This function
     first checks the name of the operation to see if it knows of a method from which

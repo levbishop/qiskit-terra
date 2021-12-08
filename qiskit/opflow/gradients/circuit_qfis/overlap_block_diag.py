@@ -43,8 +43,8 @@ class OverlapBlockDiag(CircuitQFI):
 
     def convert(
         self,
-        operator: Union[CircuitOp, CircuitStateFn],
-        params: Union[ParameterExpression, ParameterVector, List[ParameterExpression]],
+        operator: CircuitOp | CircuitStateFn,
+        params: ParameterExpression | ParameterVector | list[ParameterExpression],
     ) -> ListOp:
         r"""
         Args:
@@ -65,8 +65,8 @@ class OverlapBlockDiag(CircuitQFI):
 
     def _block_diag_approx(
         self,
-        operator: Union[CircuitOp, CircuitStateFn],
-        params: Union[ParameterExpression, ParameterVector, List[ParameterExpression]],
+        operator: CircuitOp | CircuitStateFn,
+        params: ParameterExpression | ParameterVector | list[ParameterExpression],
     ) -> ListOp:
         r"""
         Args:

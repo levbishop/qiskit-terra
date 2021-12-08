@@ -56,13 +56,13 @@ class WhileLoopOp(ControlFlowOp):
 
     def __init__(
         self,
-        condition: Union[
-            Tuple[ClassicalRegister, int],
-            Tuple[Clbit, int],
-            Tuple[Clbit, bool],
-        ],
+        condition: (
+            tuple[ClassicalRegister, int] |
+            tuple[Clbit, int] |
+            tuple[Clbit, bool]
+        ),
         body: QuantumCircuit,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
         num_qubits = body.num_qubits
         num_clbits = body.num_clbits
@@ -135,13 +135,13 @@ class WhileLoopContext:
     def __init__(
         self,
         circuit: QuantumCircuit,
-        condition: Union[
-            Tuple[ClassicalRegister, int],
-            Tuple[Clbit, int],
-            Tuple[Clbit, bool],
-        ],
+        condition: (
+            tuple[ClassicalRegister, int] |
+            tuple[Clbit, int] |
+            tuple[Clbit, bool]
+        ),
         *,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
 
         self._circuit = circuit

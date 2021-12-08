@@ -25,7 +25,7 @@ class ControlFlowOp(Instruction, ABC):
 
     @property
     @abstractmethod
-    def blocks(self) -> Tuple[QuantumCircuit, ...]:
+    def blocks(self) -> tuple[QuantumCircuit, ...]:
         """Tuple of QuantumCircuits which may be executed as part of the
         execution of this ControlFlowOp. May be parameterized by a loop
         parameter to be resolved at run time.

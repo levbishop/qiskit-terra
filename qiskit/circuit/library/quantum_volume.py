@@ -63,8 +63,8 @@ class QuantumVolume(QuantumCircuit):
     def __init__(
         self,
         num_qubits: int,
-        depth: Optional[int] = None,
-        seed: Optional[Union[int, np.random.Generator]] = None,
+        depth: int | None = None,
+        seed: int | np.random.Generator | None = None,
         classical_permutation: bool = True,
     ) -> None:
         """Create quantum volume model circuit of size num_qubits x depth.

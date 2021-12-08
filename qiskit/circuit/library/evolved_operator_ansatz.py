@@ -33,8 +33,8 @@ class EvolvedOperatorAnsatz(NLocal):
         evolution=None,
         insert_barriers: bool = False,
         name: str = "EvolvedOps",
-        parameter_prefix: Union[str, List[str]] = "t",
-        initial_state: Optional[QuantumCircuit] = None,
+        parameter_prefix: str | list[str] = "t",
+        initial_state: QuantumCircuit | None = None,
     ):
         """
         Args:

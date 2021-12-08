@@ -80,7 +80,7 @@ class iSwapGate(Gate):
             \end{pmatrix}
     """
 
-    def __init__(self, label: Optional[str] = None):
+    def __init__(self, label: str | None = None):
         """Create new iSwap gate."""
         super().__init__("iswap", 2, [], label=label)
 

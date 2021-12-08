@@ -27,12 +27,12 @@ from qiskit.scheduler.sequence import sequence as _sequence
 
 
 def sequence(
-    scheduled_circuits: Union[QuantumCircuit, List[QuantumCircuit]],
-    backend: Optional[Union[Backend, BaseBackend]] = None,
-    inst_map: Optional[InstructionScheduleMap] = None,
-    meas_map: Optional[List[List[int]]] = None,
-    dt: Optional[float] = None,
-) -> Union[Schedule, List[Schedule]]:
+    scheduled_circuits: QuantumCircuit | list[QuantumCircuit],
+    backend: Backend | BaseBackend | None = None,
+    inst_map: InstructionScheduleMap | None = None,
+    meas_map: list[list[int]] | None = None,
+    dt: float | None = None,
+) -> Schedule | list[Schedule]:
     """
     Schedule a scheduled circuit to a pulse ``Schedule``, using the backend.
 

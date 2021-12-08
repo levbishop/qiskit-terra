@@ -32,8 +32,8 @@ class BaseReadoutMitigator(ABC):
         self,
         data: Counts,
         qubits: Iterable[int] = None,
-        clbits: Optional[List[int]] = None,
-        shots: Optional[int] = None,
+        clbits: list[int] | None = None,
+        shots: int | None = None,
     ) -> QuasiDistribution:
         """Convert counts to a dictionary of quasi-probabilities
 
@@ -57,11 +57,11 @@ class BaseReadoutMitigator(ABC):
     def expectation_value(
         self,
         data: Counts,
-        diagonal: Union[Callable, dict, str, np.ndarray],
+        diagonal: Callable | dict | str | np.ndarray,
         qubits: Iterable[int] = None,
-        clbits: Optional[List[int]] = None,
-        shots: Optional[int] = None,
-    ) -> Tuple[float, float]:
+        clbits: list[int] | None = None,
+        shots: int | None = None,
+    ) -> tuple[float, float]:
         """Calculate the expectation value of a diagonal Hermitian operator.
 
         Args:

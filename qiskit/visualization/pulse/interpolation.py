@@ -26,7 +26,7 @@ from scipy import interpolate
 
 def interp1d(
     time: np.ndarray, samples: np.ndarray, nop: int, kind: str = "linear"
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Deprecated.
 
     Scipy interpolation wrapper.
@@ -56,7 +56,7 @@ def interp1d(
 
 def step_wise(
     time: np.ndarray, samples: np.ndarray, nop: int
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     # pylint: disable=unused-argument
     """Deprecated.
 

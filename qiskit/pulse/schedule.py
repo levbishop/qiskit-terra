@@ -124,9 +124,9 @@ class Schedule:
 
     def __init__(
         self,
-        *schedules: Union[ScheduleComponent, Tuple[int, ScheduleComponent]],
-        name: Optional[str] = None,
-        metadata: Optional[dict] = None,
+        *schedules: ScheduleComponent | tuple[int, ScheduleComponent],
+        name: str | None = None,
+        metadata: dict | None = None,
     ):
         """Create an empty schedule.
 
@@ -169,7 +169,7 @@ class Schedule:
             self._mutable_insert(time, sched)
 
     @classmethod
-    def initialize_from(cls, other_program: Any, name: Optional[str] = None) -> "Schedule":
+    def initialize_from(cls, other_program: Any, name: str | None = None) -> Schedule:
         """Create new schedule object with metadata of another schedule object.
 
         Args:
@@ -203,7 +203,7 @@ class Schedule:
         return self._name
 
     @property
-    def metadata(self) -> Dict[str, Any]:
+    def metadata(self) -> dict[str, Any]:
         """The user provided metadata associated with the schedule.
 
         User provided ``dict`` of metadata for the schedule.
@@ -243,12 +243,12 @@ class Schedule:
         return self.duration
 
     @property
-    def channels(self) -> Tuple[Channel]:
+    def channels(self) -> tuple[Channel]:
         """Returns channels that this schedule uses."""
         return tuple(self._timeslots.keys())
 
     @property
-    def children(self) -> Tuple[Tuple[int, ScheduleComponent], ...]:
+    def children(self) -> tuple[tuple[int, ScheduleComponent], ...]:
         """Return the child schedule components of this ``Schedule`` in the
         order they were added to the schedule.
 
@@ -264,7 +264,7 @@ class Schedule:
         return tuple(self._children)
 
     @property
-    def instructions(self) -> Tuple[Tuple[int, Instruction]]:
+    def instructions(self) -> tuple[tuple[int, Instruction]]:
         """Get the time-ordered instructions from self."""
 
         def key(time_inst_pair):
@@ -274,7 +274,7 @@ class Schedule:
         return tuple(sorted(self._instructions(), key=key))
 
     @property
-    def parameters(self) -> Set:
+    def parameters(self) -> set:
         """Parameters which determine the schedule behavior."""
         return self._parameter_manager.parameters
 
@@ -326,7 +326,7 @@ class Schedule:
         for insert_time, child_sched in self.children:
             yield from child_sched._instructions(time + insert_time)
 
-    def shift(self, time: int, name: Optional[str] = None, inplace: bool = False) -> "Schedule":
+    def shift(self, time: int, name: str | None = None, inplace: bool = False) -> Schedule:
         """Return a schedule shifted forward by ``time``.
 
         Args:
@@ -339,7 +339,7 @@ class Schedule:
             return self._mutable_shift(time)
         return self._immutable_shift(time, name=name)
 
-    def _immutable_shift(self, time: int, name: Optional[str] = None) -> "Schedule":
+    def _immutable_shift(self, time: int, name: str | None = None) -> Schedule:
         """Return a new schedule shifted forward by `time`.
 
         Args:
@@ -351,7 +351,7 @@ class Schedule:
 
         return shift_sched
 
-    def _mutable_shift(self, time: int) -> "Schedule":
+    def _mutable_shift(self, time: int) -> Schedule:
         """Return this schedule shifted forward by `time`.
 
         Args:
@@ -378,9 +378,9 @@ class Schedule:
         self,
         start_time: int,
         schedule: ScheduleComponent,
-        name: Optional[str] = None,
+        name: str | None = None,
         inplace: bool = False,
-    ) -> "Schedule":
+    ) -> Schedule:
         """Return a new schedule with ``schedule`` inserted into ``self`` at ``start_time``.
 
         Args:
@@ -394,7 +394,7 @@ class Schedule:
             return self._mutable_insert(start_time, schedule)
         return self._immutable_insert(start_time, schedule, name=name)
 
-    def _mutable_insert(self, start_time: int, schedule: ScheduleComponent) -> "Schedule":
+    def _mutable_insert(self, start_time: int, schedule: ScheduleComponent) -> Schedule:
         """Mutably insert `schedule` into `self` at `start_time`.
 
         Args:
@@ -410,8 +410,8 @@ class Schedule:
         self,
         start_time: int,
         schedule: ScheduleComponent,
-        name: Optional[str] = None,
-    ) -> "Schedule":
+        name: str | None = None,
+    ) -> Schedule:
         """Return a new schedule with ``schedule`` inserted into ``self`` at ``start_time``.
         Args:
             start_time: Time to insert the schedule.
@@ -424,8 +424,8 @@ class Schedule:
         return new_sched
 
     def append(
-        self, schedule: ScheduleComponent, name: Optional[str] = None, inplace: bool = False
-    ) -> "Schedule":
+        self, schedule: ScheduleComponent, name: str | None = None, inplace: bool = False
+    ) -> Schedule:
         r"""Return a new schedule with ``schedule`` inserted at the maximum time over
         all channels shared between ``self`` and ``schedule``.
 
@@ -447,12 +447,12 @@ class Schedule:
     def filter(
         self,
         *filter_funcs: Callable,
-        channels: Optional[Iterable[Channel]] = None,
-        instruction_types: Union[Iterable[abc.ABCMeta], abc.ABCMeta] = None,
-        time_ranges: Optional[Iterable[Tuple[int, int]]] = None,
-        intervals: Optional[Iterable[Interval]] = None,
+        channels: Iterable[Channel] | None = None,
+        instruction_types: Iterable[abc.ABCMeta] | abc.ABCMeta = None,
+        time_ranges: Iterable[tuple[int, int]] | None = None,
+        intervals: Iterable[Interval] | None = None,
         check_subroutine: bool = True,
-    ) -> "Schedule":
+    ) -> Schedule:
         """Return a new ``Schedule`` with only the instructions from this ``Schedule`` which pass
         though the provided filters; i.e. an instruction will be retained iff every function in
         ``filter_funcs`` returns ``True``, the instruction occurs on a channel type contained in
@@ -484,12 +484,12 @@ class Schedule:
     def exclude(
         self,
         *filter_funcs: Callable,
-        channels: Optional[Iterable[Channel]] = None,
-        instruction_types: Union[Iterable[abc.ABCMeta], abc.ABCMeta] = None,
-        time_ranges: Optional[Iterable[Tuple[int, int]]] = None,
-        intervals: Optional[Iterable[Interval]] = None,
+        channels: Iterable[Channel] | None = None,
+        instruction_types: Iterable[abc.ABCMeta] | abc.ABCMeta = None,
+        time_ranges: Iterable[tuple[int, int]] | None = None,
+        intervals: Iterable[Interval] | None = None,
         check_subroutine: bool = True,
-    ) -> "Schedule":
+    ) -> Schedule:
         """Return a ``Schedule`` with only the instructions from this Schedule *failing*
         at least one of the provided filters.
         This method is the complement of py:meth:`~self.filter`, so that::
@@ -631,7 +631,7 @@ class Schedule:
         old: ScheduleComponent,
         new: ScheduleComponent,
         inplace: bool = False,
-    ) -> "Schedule":
+    ) -> Schedule:
         """Return a ``Schedule`` with the ``old`` instruction replaced with a ``new``
         instruction.
 
@@ -718,8 +718,8 @@ class Schedule:
         return self._parameter_manager.is_parameterized()
 
     def assign_parameters(
-        self, value_dict: Dict[ParameterExpression, ParameterValueType], inplace: bool = True
-    ) -> "Schedule":
+        self, value_dict: dict[ParameterExpression, ParameterValueType], inplace: bool = True
+    ) -> Schedule:
         """Assign the parameters in this schedule according to the input.
 
         Args:
@@ -734,7 +734,7 @@ class Schedule:
             pulse_program=self, value_dict=value_dict, inplace=inplace
         )
 
-    def get_parameters(self, parameter_name: str) -> List[Parameter]:
+    def get_parameters(self, parameter_name: str) -> list[Parameter]:
         """Get parameter object bound to this schedule by string name.
 
         Because different ``Parameter`` objects can have the same name,
@@ -752,15 +752,15 @@ class Schedule:
         """Return number of instructions in the schedule."""
         return len(self.instructions)
 
-    def __add__(self, other: ScheduleComponent) -> "Schedule":
+    def __add__(self, other: ScheduleComponent) -> Schedule:
         """Return a new schedule with ``other`` inserted within ``self`` at ``start_time``."""
         return self.append(other)
 
-    def __or__(self, other: ScheduleComponent) -> "Schedule":
+    def __or__(self, other: ScheduleComponent) -> Schedule:
         """Return a new schedule which is the union of `self` and `other`."""
         return self.insert(0, other)
 
-    def __lshift__(self, time: int) -> "Schedule":
+    def __lshift__(self, time: int) -> Schedule:
         """Return a new schedule which is shifted forward by ``time``."""
         return self.shift(time)
 
@@ -892,7 +892,7 @@ class ScheduleBlock:
     instances_counter = itertools.count()
 
     def __init__(
-        self, name: Optional[str] = None, metadata: Optional[dict] = None, alignment_context=None
+        self, name: str | None = None, metadata: dict | None = None, alignment_context=None
     ):
         """Create an empty schedule block.
 
@@ -929,7 +929,7 @@ class ScheduleBlock:
         self._parameter_manager.update_parameter_table(self._alignment_context)
 
     @classmethod
-    def initialize_from(cls, other_program: Any, name: Optional[str] = None) -> "ScheduleBlock":
+    def initialize_from(cls, other_program: Any, name: str | None = None) -> ScheduleBlock:
         """Create new schedule object with metadata of another schedule object.
 
         Args:
@@ -968,7 +968,7 @@ class ScheduleBlock:
         return self._name
 
     @property
-    def metadata(self) -> Dict[str, Any]:
+    def metadata(self) -> dict[str, Any]:
         """The user provided metadata associated with the schedule.
 
         User provided ``dict`` of metadata for the schedule.
@@ -1016,7 +1016,7 @@ class ScheduleBlock:
         return self.duration
 
     @property
-    def channels(self) -> Tuple[Channel]:
+    def channels(self) -> tuple[Channel]:
         """Returns channels that this schedule clock uses."""
         chans = set()
         for block in self.blocks:
@@ -1026,17 +1026,17 @@ class ScheduleBlock:
 
     @property
     @_require_schedule_conversion
-    def instructions(self) -> Tuple[Tuple[int, Instruction]]:
+    def instructions(self) -> tuple[tuple[int, Instruction]]:
         """Get the time-ordered instructions from self."""
         return self.instructions
 
     @property
-    def blocks(self) -> Tuple[BlockComponent]:
+    def blocks(self) -> tuple[BlockComponent]:
         """Get the time-ordered instructions from self."""
         return tuple(self._blocks)
 
     @property
-    def parameters(self) -> Set:
+    def parameters(self) -> set:
         """Parameters which determine the schedule behavior."""
         return self._parameter_manager.parameters
 
@@ -1050,8 +1050,8 @@ class ScheduleBlock:
         return self.ch_duration(*channels)
 
     def append(
-        self, block: BlockComponent, name: Optional[str] = None, inplace: bool = True
-    ) -> "ScheduleBlock":
+        self, block: BlockComponent, name: str | None = None, inplace: bool = True
+    ) -> ScheduleBlock:
         """Return a new schedule block with ``block`` appended to the context block.
         The execution time is automatically assigned when the block is converted into schedule.
 
@@ -1086,11 +1086,11 @@ class ScheduleBlock:
 
     def filter(
         self,
-        *filter_funcs: List[Callable],
-        channels: Optional[Iterable[Channel]] = None,
-        instruction_types: Union[Iterable[abc.ABCMeta], abc.ABCMeta] = None,
-        time_ranges: Optional[Iterable[Tuple[int, int]]] = None,
-        intervals: Optional[Iterable[Interval]] = None,
+        *filter_funcs: list[Callable],
+        channels: Iterable[Channel] | None = None,
+        instruction_types: Iterable[abc.ABCMeta] | abc.ABCMeta = None,
+        time_ranges: Iterable[tuple[int, int]] | None = None,
+        intervals: Iterable[Interval] | None = None,
         check_subroutine: bool = True,
     ):
         """Return a new ``Schedule`` with only the instructions from this ``ScheduleBlock``
@@ -1131,11 +1131,11 @@ class ScheduleBlock:
 
     def exclude(
         self,
-        *filter_funcs: List[Callable],
-        channels: Optional[Iterable[Channel]] = None,
-        instruction_types: Union[Iterable[abc.ABCMeta], abc.ABCMeta] = None,
-        time_ranges: Optional[Iterable[Tuple[int, int]]] = None,
-        intervals: Optional[Iterable[Interval]] = None,
+        *filter_funcs: list[Callable],
+        channels: Iterable[Channel] | None = None,
+        instruction_types: Iterable[abc.ABCMeta] | abc.ABCMeta = None,
+        time_ranges: Iterable[tuple[int, int]] | None = None,
+        intervals: Iterable[Interval] | None = None,
         check_subroutine: bool = True,
     ):
         """Return a ``Schedule`` with only the instructions from this Schedule *failing*
@@ -1176,7 +1176,7 @@ class ScheduleBlock:
         old: BlockComponent,
         new: BlockComponent,
         inplace: bool = True,
-    ) -> "ScheduleBlock":
+    ) -> ScheduleBlock:
         """Return a ``ScheduleBlock`` with the ``old`` component replaced with a ``new``
         component.
 
@@ -1219,8 +1219,8 @@ class ScheduleBlock:
         return self._parameter_manager.is_parameterized()
 
     def assign_parameters(
-        self, value_dict: Dict[ParameterExpression, ParameterValueType], inplace: bool = True
-    ) -> "ScheduleBlock":
+        self, value_dict: dict[ParameterExpression, ParameterValueType], inplace: bool = True
+    ) -> ScheduleBlock:
         """Assign the parameters in this schedule according to the input.
 
         Args:
@@ -1235,7 +1235,7 @@ class ScheduleBlock:
             pulse_program=self, value_dict=value_dict, inplace=inplace
         )
 
-    def get_parameters(self, parameter_name: str) -> List[Parameter]:
+    def get_parameters(self, parameter_name: str) -> list[Parameter]:
         """Get parameter object bound to this schedule by string name.
 
         Because different ``Parameter`` objects can have the same name,
@@ -1253,7 +1253,7 @@ class ScheduleBlock:
         """Return number of instructions in the schedule."""
         return len(self.blocks)
 
-    def __eq__(self, other: "ScheduleBlock") -> bool:
+    def __eq__(self, other: ScheduleBlock) -> bool:
         """Test if two ScheduleBlocks are equal.
 
         Equality is checked by verifying there is an equal instruction at every time
@@ -1306,7 +1306,7 @@ class ScheduleBlock:
             self.__class__.__name__, blocks, name, repr(self.alignment_context)
         )
 
-    def __add__(self, other: BlockComponent) -> "ScheduleBlock":
+    def __add__(self, other: BlockComponent) -> ScheduleBlock:
         """Return a new schedule with ``other`` inserted within ``self`` at ``start_time``."""
         return self.append(other)
 
@@ -1321,8 +1321,8 @@ class ParameterizedSchedule:
     def __init__(
         self,
         *schedules,
-        parameters: Optional[Dict[str, complex]] = None,
-        name: Optional[str] = None,
+        parameters: dict[str, complex] | None = None,
+        name: str | None = None,
     ):
 
         warnings.warn(
@@ -1351,14 +1351,14 @@ class ParameterizedSchedule:
         self._parameters = tuple(sorted(set(parameters)))
 
     @property
-    def parameters(self) -> Tuple[str]:
+    def parameters(self) -> tuple[str]:
         """Schedule parameters."""
         return self._parameters
 
     def bind_parameters(
         self,
-        *args: Union[complex, ParameterExpression],
-        **kwargs: Union[complex, ParameterExpression],
+        *args: complex | ParameterExpression,
+        **kwargs: complex | ParameterExpression,
     ) -> Schedule:
         """Generate the Schedule from params to evaluate command expressions"""
         bound_schedule = Schedule(name=self.name)
@@ -1405,8 +1405,8 @@ class ParameterizedSchedule:
 
     def __call__(
         self,
-        *args: Union[complex, ParameterExpression],
-        **kwargs: Union[complex, ParameterExpression],
+        *args: complex | ParameterExpression,
+        **kwargs: complex | ParameterExpression,
     ) -> Schedule:
         return self.bind_parameters(*args, **kwargs)
 
@@ -1436,17 +1436,17 @@ def _common_method(*classes):
 @_common_method(Schedule, ScheduleBlock)
 def draw(
     self,
-    style: Optional[Dict[str, Any]] = None,
+    style: dict[str, Any] | None = None,
     backend=None,  # importing backend causes cyclic import
-    time_range: Optional[Tuple[int, int]] = None,
+    time_range: tuple[int, int] | None = None,
     time_unit: str = "dt",
-    disable_channels: Optional[List[Channel]] = None,
+    disable_channels: list[Channel] | None = None,
     show_snapshot: bool = True,
     show_framechange: bool = True,
     show_waveform_info: bool = True,
     show_barrier: bool = True,
     plotter: str = "mpl2d",
-    axis: Optional[Any] = None,
+    axis: Any | None = None,
 ):
     """Plot the schedule.
 
@@ -1505,7 +1505,7 @@ def draw(
     )
 
 
-def _interval_index(intervals: List[Interval], interval: Interval) -> int:
+def _interval_index(intervals: list[Interval], interval: Interval) -> int:
     """Find the index of an interval.
 
     Args:
@@ -1525,7 +1525,7 @@ def _interval_index(intervals: List[Interval], interval: Interval) -> int:
     return index
 
 
-def _locate_interval_index(intervals: List[Interval], interval: Interval, index: int = 0) -> int:
+def _locate_interval_index(intervals: list[Interval], interval: Interval, index: int = 0) -> int:
     """Using binary search on start times, find an interval.
 
     Args:
@@ -1548,7 +1548,7 @@ def _locate_interval_index(intervals: List[Interval], interval: Interval, index:
         return _locate_interval_index(intervals[mid_idx:], interval, index=index + mid_idx)
 
 
-def _find_insertion_index(intervals: List[Interval], new_interval: Interval) -> int:
+def _find_insertion_index(intervals: list[Interval], new_interval: Interval) -> int:
     """Using binary search on start times, return the index into `intervals` where the new interval
     belongs, or raise an error if the new interval overlaps with any existing ones.
     Args:

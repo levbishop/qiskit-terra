@@ -1150,7 +1150,7 @@ def _shade_colors(color, normals, lightsource=None):
 
 
 def state_to_latex(
-    state: Union[Statevector, DensityMatrix], dims: bool = None, convention: str = "ket", **args
+    state: Statevector | DensityMatrix, dims: bool = None, convention: str = "ket", **args
 ) -> str:
     """Return a Latex representation of a state. Wrapper function
     for `qiskit.visualization.array_to_latex` for convention 'vector'.
@@ -1198,7 +1198,7 @@ def _round_if_close(data):
     return data
 
 
-def num_to_latex_ket(raw_value: complex, first_term: bool) -> Optional[str]:
+def num_to_latex_ket(raw_value: complex, first_term: bool) -> str | None:
     """Convert a complex number to latex code suitable for a ket expression
 
     Args:
@@ -1259,7 +1259,7 @@ def num_to_latex_ket(raw_value: complex, first_term: bool) -> Optional[str]:
         return None
 
 
-def numbers_to_latex_terms(numbers: List[complex]) -> List[str]:
+def numbers_to_latex_terms(numbers: list[complex]) -> list[str]:
     """Convert a list of numbers to latex formatted terms
 
     The first non-zero term is treated differently. For this term a leading + is suppressed.
@@ -1279,7 +1279,7 @@ def numbers_to_latex_terms(numbers: List[complex]) -> List[str]:
     return terms
 
 
-def _state_to_latex_ket(data: List[complex], max_size: int = 12) -> str:
+def _state_to_latex_ket(data: list[complex], max_size: int = 12) -> str:
     """Convert state vector to latex representation
 
     Args:

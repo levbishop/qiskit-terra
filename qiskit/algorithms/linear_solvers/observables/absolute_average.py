@@ -61,7 +61,7 @@ class AbsoluteAverage(LinearSystemObservable):
             exact = observable.evaluate_classically(init_state)
     """
 
-    def observable(self, num_qubits: int) -> Union[TensoredOp, List[TensoredOp]]:
+    def observable(self, num_qubits: int) -> TensoredOp | list[TensoredOp]:
         """The observable operator.
 
         Args:
@@ -73,7 +73,7 @@ class AbsoluteAverage(LinearSystemObservable):
         zero_op = (I + Z) / 2
         return TensoredOp(num_qubits * [zero_op])
 
-    def observable_circuit(self, num_qubits: int) -> Union[QuantumCircuit, List[QuantumCircuit]]:
+    def observable_circuit(self, num_qubits: int) -> QuantumCircuit | list[QuantumCircuit]:
         """The circuit implementing the absolute average observable.
 
         Args:
@@ -87,7 +87,7 @@ class AbsoluteAverage(LinearSystemObservable):
         return qc
 
     def post_processing(
-        self, solution: Union[float, List[float]], num_qubits: int, scaling: float = 1
+        self, solution: float | list[float], num_qubits: int, scaling: float = 1
     ) -> float:
         """Evaluates the absolute average on the solution to the linear system.
 
@@ -110,7 +110,7 @@ class AbsoluteAverage(LinearSystemObservable):
 
         return np.real(np.sqrt(solution / (2 ** num_qubits)) / scaling)
 
-    def evaluate_classically(self, solution: Union[np.array, QuantumCircuit]) -> float:
+    def evaluate_classically(self, solution: np.array | QuantumCircuit) -> float:
         """Evaluates the given observable on the solution to the linear system.
 
         Args:

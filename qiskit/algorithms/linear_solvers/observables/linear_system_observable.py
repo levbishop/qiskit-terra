@@ -27,7 +27,7 @@ class LinearSystemObservable(ABC):
     """An abstract class for linear system observables in Qiskit."""
 
     @abstractmethod
-    def observable(self, num_qubits: int) -> Union[TensoredOp, List[TensoredOp]]:
+    def observable(self, num_qubits: int) -> TensoredOp | list[TensoredOp]:
         """The observable operator.
 
         Args:
@@ -39,7 +39,7 @@ class LinearSystemObservable(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def observable_circuit(self, num_qubits: int) -> Union[QuantumCircuit, List[QuantumCircuit]]:
+    def observable_circuit(self, num_qubits: int) -> QuantumCircuit | list[QuantumCircuit]:
         """The circuit implementing the observable.
 
         Args:
@@ -52,7 +52,7 @@ class LinearSystemObservable(ABC):
 
     @abstractmethod
     def post_processing(
-        self, solution: Union[float, List[float]], num_qubits: int, scaling: float = 1
+        self, solution: float | list[float], num_qubits: int, scaling: float = 1
     ) -> float:
         """Evaluates the given observable on the solution to the linear system.
 
@@ -67,7 +67,7 @@ class LinearSystemObservable(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def evaluate_classically(self, solution: Union[np.array, QuantumCircuit]) -> float:
+    def evaluate_classically(self, solution: np.array | QuantumCircuit) -> float:
         """Calculates the analytical value of the given observable from the solution vector to the
          linear system.
 

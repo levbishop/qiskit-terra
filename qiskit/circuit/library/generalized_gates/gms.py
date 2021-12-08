@@ -78,7 +78,7 @@ class GMS(QuantumCircuit):
     `arXiv:1707.06356 <https://arxiv.org/abs/1707.06356>`_
     """
 
-    def __init__(self, num_qubits: int, theta: Union[List[List[float]], np.ndarray]) -> None:
+    def __init__(self, num_qubits: int, theta: list[list[float]] | np.ndarray) -> None:
         """Create a new Global Mølmer–Sørensen (GMS) gate.
 
         Args:

@@ -44,12 +44,12 @@ class QiskitAlgorithmGlobals:
             logger.debug("User Config read error %s", str(ex))
 
     @property
-    def random_seed(self) -> Optional[int]:
+    def random_seed(self) -> int | None:
         """Return random seed."""
         return self._random_seed
 
     @random_seed.setter
-    def random_seed(self, seed: Optional[int]) -> None:
+    def random_seed(self, seed: int | None) -> None:
         """Set random seed."""
         self._random_seed = seed
         self._random = None
@@ -60,7 +60,7 @@ class QiskitAlgorithmGlobals:
         return self._num_processes
 
     @num_processes.setter
-    def num_processes(self, num_processes: Optional[int]) -> None:
+    def num_processes(self, num_processes: int | None) -> None:
         """Set num processes.
         If 'None' is passed, it resets to QiskitAlgorithmGlobals.CPU_COUNT
         """

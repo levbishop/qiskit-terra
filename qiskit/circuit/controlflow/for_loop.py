@@ -55,9 +55,9 @@ class ForLoopOp(ControlFlowOp):
     def __init__(
         self,
         indexset: Iterable[int],
-        loop_parameter: Union[Parameter, None],
+        loop_parameter: Parameter | None,
         body: QuantumCircuit,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
         num_qubits = body.num_qubits
         num_clbits = body.num_clbits
@@ -170,9 +170,9 @@ class ForLoopContext:
         self,
         circuit: QuantumCircuit,
         indexset: Iterable[int],
-        loop_parameter: Optional[Parameter] = None,
+        loop_parameter: Parameter | None = None,
         *,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
         self._circuit = circuit
         self._generate_loop_parameter = loop_parameter is None

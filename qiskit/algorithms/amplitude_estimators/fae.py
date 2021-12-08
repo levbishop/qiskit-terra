@@ -53,7 +53,7 @@ class FasterAmplitudeEstimation(AmplitudeEstimator):
         delta: float,
         maxiter: int,
         rescale: bool = True,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None,
+        quantum_instance: QuantumInstance | BaseBackend | Backend | None = None,
     ) -> None:
         r"""
         Args:
@@ -77,7 +77,7 @@ class FasterAmplitudeEstimation(AmplitudeEstimator):
         self._num_oracle_calls = 0
 
     @property
-    def quantum_instance(self) -> Optional[QuantumInstance]:
+    def quantum_instance(self) -> QuantumInstance | None:
         """Get the quantum instance.
 
         Returns:
@@ -87,7 +87,7 @@ class FasterAmplitudeEstimation(AmplitudeEstimator):
 
     @quantum_instance.setter
     def quantum_instance(
-        self, quantum_instance: Union[QuantumInstance, BaseBackend, Backend]
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend
     ) -> None:
         """Set quantum instance.
 
@@ -141,7 +141,7 @@ class FasterAmplitudeEstimation(AmplitudeEstimator):
 
     def construct_circuit(
         self, estimation_problem: EstimationProblem, k: int, measurement: bool = False
-    ) -> Union[QuantumCircuit, Tuple[QuantumCircuit, List[int]]]:
+    ) -> QuantumCircuit | tuple[QuantumCircuit, list[int]]:
         r"""Construct the circuit :math:`Q^k X |0\rangle>`.
 
         The A operator is the unitary specifying the QAE problem and Q the associated Grover
@@ -183,7 +183,7 @@ class FasterAmplitudeEstimation(AmplitudeEstimator):
 
         return circuit
 
-    def estimate(self, estimation_problem: EstimationProblem) -> "FasterAmplitudeEstimationResult":
+    def estimate(self, estimation_problem: EstimationProblem) -> FasterAmplitudeEstimationResult:
         self._num_oracle_calls = 0
         user_defined_shots = self.quantum_instance._run_config.shots
 
@@ -302,11 +302,11 @@ class FasterAmplitudeEstimationResult(AmplitudeEstimatorResult):
         self._num_first_state_steps = num_steps
 
     @property
-    def theta_intervals(self) -> List[List[float]]:
+    def theta_intervals(self) -> list[list[float]]:
         """Return the confidence intervals for the angles in each iteration."""
         return self._theta_intervals
 
     @theta_intervals.setter
-    def theta_intervals(self, value: List[List[float]]) -> None:
+    def theta_intervals(self, value: list[list[float]]) -> None:
         """Set the confidence intervals for the angles in each iteration."""
         self._theta_intervals = value

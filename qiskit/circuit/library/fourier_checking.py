@@ -52,7 +52,7 @@ class FourierChecking(QuantumCircuit):
     `arXiv:1411.5729 <https://arxiv.org/abs/1411.5729>`_
     """
 
-    def __init__(self, f: List[int], g: List[int]) -> None:
+    def __init__(self, f: list[int], g: list[int]) -> None:
         """Create Fourier checking circuit.
 
         Args:

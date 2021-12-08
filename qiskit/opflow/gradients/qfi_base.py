@@ -31,7 +31,7 @@ class QFIBase(DerivativeBase):
         [QFI]kl= Re[〈∂kψ|∂lψ〉−〈∂kψ|ψ〉〈ψ|∂lψ〉] * 4.
     """
 
-    def __init__(self, qfi_method: Union[str, CircuitQFI] = "lin_comb_full"):
+    def __init__(self, qfi_method: str | CircuitQFI = "lin_comb_full"):
         r"""
         Args:
             qfi_method: The method used to compute the state/probability gradient. Can be either

@@ -49,11 +49,11 @@ class PrimitiveOp(OperatorBase):
     # pylint: disable=unused-argument
     def __new__(
         cls,
-        primitive: Union[
-            Instruction, QuantumCircuit, List, np.ndarray, spmatrix, Operator, Pauli, SparsePauliOp
-        ],
-        coeff: Union[complex, ParameterExpression] = 1.0,
-    ) -> "PrimitiveOp":
+        primitive: (
+            Instruction | QuantumCircuit | list | np.ndarray | spmatrix | Operator | Pauli | SparsePauliOp
+        ),
+        coeff: complex | ParameterExpression = 1.0,
+    ) -> PrimitiveOp:
         """A factory method to produce the correct type of PrimitiveOp subclass
         based on the primitive passed in. Primitive and coeff arguments are passed into
         subclass's init() as-is automatically by new().
@@ -96,8 +96,8 @@ class PrimitiveOp(OperatorBase):
 
     def __init__(
         self,
-        primitive: Union[QuantumCircuit, Operator, Pauli, SparsePauliOp, OperatorBase],
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: QuantumCircuit | Operator | Pauli | SparsePauliOp | OperatorBase,
+        coeff: complex | ParameterExpression = 1.0,
     ) -> None:
         """
         Args:
@@ -109,7 +109,7 @@ class PrimitiveOp(OperatorBase):
         self._coeff = coeff
 
     @property
-    def primitive(self) -> Union[QuantumCircuit, Operator, Pauli, SparsePauliOp, OperatorBase]:
+    def primitive(self) -> QuantumCircuit | Operator | Pauli | SparsePauliOp | OperatorBase:
         """The primitive defining the underlying function of the Operator.
 
         Returns:
@@ -118,7 +118,7 @@ class PrimitiveOp(OperatorBase):
         return self._primitive
 
     @property
-    def coeff(self) -> Union[complex, ParameterExpression]:
+    def coeff(self) -> complex | ParameterExpression:
         """
         The scalar coefficient multiplying the Operator.
 
@@ -132,11 +132,11 @@ class PrimitiveOp(OperatorBase):
         raise NotImplementedError
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return operator settings."""
         return {"primitive": self._primitive, "coeff": self._coeff}
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         raise NotImplementedError
 
     def add(self, other: OperatorBase) -> OperatorBase:
@@ -148,7 +148,7 @@ class PrimitiveOp(OperatorBase):
     def equals(self, other: OperatorBase) -> bool:
         raise NotImplementedError
 
-    def mul(self, scalar: Union[complex, ParameterExpression]) -> OperatorBase:
+    def mul(self, scalar: complex | ParameterExpression) -> OperatorBase:
         if not isinstance(scalar, (int, float, complex, ParameterExpression)):
             raise ValueError(
                 "Operators can only be scalar multiplied by float or complex, not "
@@ -160,7 +160,7 @@ class PrimitiveOp(OperatorBase):
     def tensor(self, other: OperatorBase) -> OperatorBase:
         raise NotImplementedError
 
-    def tensorpower(self, other: int) -> Union[OperatorBase, int]:
+    def tensorpower(self, other: int) -> OperatorBase | int:
         # Hack to make Z^(I^0) work as intended.
         if other == 0:
             return 1
@@ -172,7 +172,7 @@ class PrimitiveOp(OperatorBase):
         return temp
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
         # pylint: disable=cyclic-import
         from ..list_ops.composed_op import ComposedOp
@@ -190,7 +190,7 @@ class PrimitiveOp(OperatorBase):
     def _expand_dim(self, num_qubits: int) -> OperatorBase:
         raise NotImplementedError
 
-    def permute(self, permutation: List[int]) -> OperatorBase:
+    def permute(self, permutation: list[int]) -> OperatorBase:
         raise NotImplementedError
 
     def exp_i(self) -> OperatorBase:
@@ -222,10 +222,10 @@ class PrimitiveOp(OperatorBase):
 
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         raise NotImplementedError
 
     @property

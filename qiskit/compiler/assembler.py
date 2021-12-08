@@ -41,41 +41,39 @@ def _log_assembly_time(start_time, end_time):
 
 # TODO: parallelize over the experiments (serialize each separately, then add global header/config)
 def assemble(
-    experiments: Union[
-        QuantumCircuit,
-        List[QuantumCircuit],
-        Schedule,
-        List[Schedule],
-        ScheduleBlock,
-        List[ScheduleBlock],
-    ],
-    backend: Optional[Union[Backend, BaseBackend]] = None,
-    qobj_id: Optional[str] = None,
-    qobj_header: Optional[Union[QobjHeader, Dict]] = None,
-    shots: Optional[int] = None,
-    memory: Optional[bool] = False,
-    max_credits: Optional[int] = None,
-    seed_simulator: Optional[int] = None,
-    qubit_lo_freq: Optional[List[float]] = None,
-    meas_lo_freq: Optional[List[float]] = None,
-    qubit_lo_range: Optional[List[float]] = None,
-    meas_lo_range: Optional[List[float]] = None,
-    schedule_los: Optional[
-        Union[
-            List[Union[Dict[PulseChannel, float], LoConfig]],
-            Union[Dict[PulseChannel, float], LoConfig],
-        ]
-    ] = None,
-    meas_level: Union[int, MeasLevel] = MeasLevel.CLASSIFIED,
-    meas_return: Union[str, MeasReturnType] = MeasReturnType.AVERAGE,
-    meas_map: Optional[List[List[Qubit]]] = None,
+    experiments: (
+        QuantumCircuit |
+        list[QuantumCircuit] |
+        Schedule |
+        list[Schedule] |
+        ScheduleBlock |
+        list[ScheduleBlock]
+    ),
+    backend: Backend | BaseBackend | None = None,
+    qobj_id: str | None = None,
+    qobj_header: QobjHeader | dict | None = None,
+    shots: int | None = None,
+    memory: bool | None = False,
+    max_credits: int | None = None,
+    seed_simulator: int | None = None,
+    qubit_lo_freq: list[float] | None = None,
+    meas_lo_freq: list[float] | None = None,
+    qubit_lo_range: list[float] | None = None,
+    meas_lo_range: list[float] | None = None,
+    schedule_los: None | (
+            list[dict[PulseChannel, float] | LoConfig] |
+            dict[PulseChannel, float] | LoConfig
+    ) = None,
+    meas_level: int | MeasLevel = MeasLevel.CLASSIFIED,
+    meas_return: str | MeasReturnType = MeasReturnType.AVERAGE,
+    meas_map: list[list[Qubit]] | None = None,
     memory_slot_size: int = 100,
-    rep_time: Optional[int] = None,
-    rep_delay: Optional[float] = None,
-    parameter_binds: Optional[List[Dict[Parameter, float]]] = None,
-    parametric_pulses: Optional[List[str]] = None,
+    rep_time: int | None = None,
+    rep_delay: float | None = None,
+    parameter_binds: list[dict[Parameter, float]] | None = None,
+    parametric_pulses: list[str] | None = None,
     init_qubits: bool = True,
-    **run_config: Dict,
+    **run_config: dict,
 ) -> Qobj:
     """Assemble a list of circuits or pulse schedules into a ``Qobj``.
 
@@ -374,8 +372,8 @@ def _parse_common_args(
 
 
 def _check_lo_freqs(
-    lo_freq: Union[List[float], None],
-    lo_range: Union[List[float], None],
+    lo_freq: list[float] | None,
+    lo_range: list[float] | None,
     lo_type: str,
 ):
     """Check that LO frequencies are within the perscribed LO range.
@@ -503,7 +501,7 @@ def _parse_circuit_args(
 
 
 def _parse_rep_delay(
-    rep_delay: float, default_rep_delay: float, rep_delay_range: List[float]
+    rep_delay: float, default_rep_delay: float, rep_delay_range: list[float]
 ) -> float:
     """Parse and set ``rep_delay`` parameter in runtime config.
 

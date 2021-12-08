@@ -23,7 +23,7 @@ from .derivative_base import DerivativeBase
 class HessianBase(DerivativeBase):
     """Base class for the Hessian of an expected value."""
 
-    def __init__(self, hess_method: Union[str, CircuitGradient] = "param_shift", **kwargs):
+    def __init__(self, hess_method: str | CircuitGradient = "param_shift", **kwargs):
         r"""
         Args:
             hess_method: The method used to compute the state/probability gradient. Can be either

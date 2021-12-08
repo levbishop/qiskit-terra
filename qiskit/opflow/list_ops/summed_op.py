@@ -34,8 +34,8 @@ class SummedOp(ListOp):
 
     def __init__(
         self,
-        oplist: List[OperatorBase],
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        oplist: list[OperatorBase],
+        coeff: complex | ParameterExpression = 1.0,
         abelian: bool = False,
     ) -> None:
         """
@@ -55,11 +55,11 @@ class SummedOp(ListOp):
         return True
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {"oplist": self._oplist, "coeff": self._coeff, "abelian": self._abelian}
 
-    def add(self, other: OperatorBase) -> "SummedOp":
+    def add(self, other: OperatorBase) -> SummedOp:
         """Return Operator addition of ``self`` and ``other``, overloaded by ``+``.
 
         Note:
@@ -85,7 +85,7 @@ class SummedOp(ListOp):
             other_new_ops = [other]
         return SummedOp(self_new_ops + other_new_ops)
 
-    def collapse_summands(self) -> "SummedOp":
+    def collapse_summands(self) -> SummedOp:
         """Return Operator by simplifying duplicate operators.
 
         E.g., ``SummedOp([2 * X ^ Y, X ^ Y]).collapse_summands() -> SummedOp([3 * X ^ Y])``.
@@ -175,7 +175,7 @@ class SummedOp(ListOp):
             "not return a MatrixOp."
         )
 
-    def to_matrix_op(self, massive: bool = False) -> "SummedOp":
+    def to_matrix_op(self, massive: bool = False) -> SummedOp:
         """Returns an equivalent Operator composed of only NumPy-based primitives, such as
         ``MatrixOp`` and ``VectorStateFn``."""
         accum = self.oplist[0].to_matrix_op(massive=massive)
@@ -184,7 +184,7 @@ class SummedOp(ListOp):
 
         return cast(SummedOp, accum * self.coeff)
 
-    def to_pauli_op(self, massive: bool = False) -> "SummedOp":
+    def to_pauli_op(self, massive: bool = False) -> SummedOp:
         # pylint: disable=cyclic-import
         from ..state_fns.state_fn import StateFn
 

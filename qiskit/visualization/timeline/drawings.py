@@ -89,12 +89,12 @@ class ElementaryData(ABC):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
-        xvals: Union[np.ndarray, List[types.Coordinate]],
-        yvals: Union[np.ndarray, List[types.Coordinate]],
-        bits: Optional[Union[types.Bits, List[types.Bits]]] = None,
-        meta: Optional[Dict[str, Any]] = None,
-        styles: Optional[Dict[str, Any]] = None,
+        data_type: str | Enum,
+        xvals: np.ndarray | list[types.Coordinate],
+        yvals: np.ndarray | list[types.Coordinate],
+        bits: types.Bits | list[types.Bits] | None = None,
+        meta: dict[str, Any] | None = None,
+        styles: dict[str, Any] | None = None,
     ):
         """Create new drawing.
 
@@ -146,12 +146,12 @@ class LineData(ElementaryData):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
-        xvals: Union[np.ndarray, List[types.Coordinate]],
-        yvals: Union[np.ndarray, List[types.Coordinate]],
+        data_type: str | Enum,
+        xvals: np.ndarray | list[types.Coordinate],
+        yvals: np.ndarray | list[types.Coordinate],
         bit: types.Bits,
-        meta: Dict[str, Any] = None,
-        styles: Dict[str, Any] = None,
+        meta: dict[str, Any] = None,
+        styles: dict[str, Any] = None,
     ):
         """Create new line.
 
@@ -173,12 +173,12 @@ class BoxData(ElementaryData):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
-        xvals: Union[np.ndarray, List[types.Coordinate]],
-        yvals: Union[np.ndarray, List[types.Coordinate]],
+        data_type: str | Enum,
+        xvals: np.ndarray | list[types.Coordinate],
+        yvals: np.ndarray | list[types.Coordinate],
         bit: types.Bits,
-        meta: Dict[str, Any] = None,
-        styles: Dict[str, Any] = None,
+        meta: dict[str, Any] = None,
+        styles: dict[str, Any] = None,
     ):
         """Create new box.
 
@@ -206,14 +206,14 @@ class TextData(ElementaryData):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
+        data_type: str | Enum,
         xval: types.Coordinate,
         yval: types.Coordinate,
         bit: types.Bits,
         text: str,
-        latex: Optional[str] = None,
-        meta: Dict[str, Any] = None,
-        styles: Dict[str, Any] = None,
+        latex: str | None = None,
+        meta: dict[str, Any] = None,
+        styles: dict[str, Any] = None,
     ):
         """Create new text.
 
@@ -243,7 +243,7 @@ class GateLinkData(ElementaryData):
     """
 
     def __init__(
-        self, xval: types.Coordinate, bits: List[types.Bits], styles: Dict[str, Any] = None
+        self, xval: types.Coordinate, bits: list[types.Bits], styles: dict[str, Any] = None
     ):
         """Create new bit link.
 

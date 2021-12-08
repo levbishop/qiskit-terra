@@ -88,13 +88,13 @@ class ParamShift(CircuitGradient):
     def convert(
         self,
         operator: OperatorBase,
-        params: Union[
-            ParameterExpression,
-            ParameterVector,
-            List[ParameterExpression],
-            Tuple[ParameterExpression, ParameterExpression],
-            List[Tuple[ParameterExpression, ParameterExpression]],
-        ],
+        params: (
+            ParameterExpression |
+            ParameterVector |
+            list[ParameterExpression] |
+            tuple[ParameterExpression, ParameterExpression] |
+            list[tuple[ParameterExpression, ParameterExpression]]
+        ),
     ) -> OperatorBase:
         """
         Args:
@@ -142,7 +142,7 @@ class ParamShift(CircuitGradient):
 
     # pylint: disable=too-many-return-statements
     def _parameter_shift(
-        self, operator: OperatorBase, params: Union[ParameterExpression, ParameterVector, List]
+        self, operator: OperatorBase, params: ParameterExpression | ParameterVector | list
     ) -> OperatorBase:
         r"""
         Args:
@@ -267,14 +267,14 @@ class ParamShift(CircuitGradient):
 
     @staticmethod
     def _prob_combo_fn(
-        x: Union[
-            DictStateFn,
-            VectorStateFn,
-            SparseVectorStateFn,
-            List[Union[DictStateFn, VectorStateFn, SparseVectorStateFn]],
-        ],
+        x: (
+            DictStateFn |
+            VectorStateFn |
+            SparseVectorStateFn |
+            list[DictStateFn | VectorStateFn | SparseVectorStateFn]
+        ),
         shift_constant: float,
-    ) -> Union[Dict, np.ndarray]:
+    ) -> dict | np.ndarray:
         """Implement the combo_fn used to evaluate probability gradients
 
         Args:
@@ -310,7 +310,7 @@ class ParamShift(CircuitGradient):
                 is_statefn = True
             items = [get_primitives(x)]
         if isinstance(items[0], dict):
-            prob_dict: Dict[str, float] = {}
+            prob_dict: dict[str, float] = {}
             for i, item in enumerate(items):
                 for key, prob_counts in item.items():
                     prob_dict[key] = (
@@ -371,7 +371,7 @@ class ParamShift(CircuitGradient):
             return operator
 
     @classmethod
-    def get_unique_circuits(cls, operator: OperatorBase) -> List[QuantumCircuit]:
+    def get_unique_circuits(cls, operator: OperatorBase) -> list[QuantumCircuit]:
         """Traverse the operator and return all unique circuits
 
         Args:
@@ -400,7 +400,7 @@ class ParamShift(CircuitGradient):
         return circuits
 
     @classmethod
-    def unroll_operator(cls, operator: OperatorBase) -> Union[OperatorBase, List[OperatorBase]]:
+    def unroll_operator(cls, operator: OperatorBase) -> OperatorBase | list[OperatorBase]:
         """Traverse the operator and return all OperatorBase objects flattened
            into a single list. This is used as a subroutine to extract all
            circuits within a large composite operator.

@@ -54,7 +54,7 @@ class PhaseEstimation(QuantumCircuit):
         self,
         num_evaluation_qubits: int,
         unitary: QuantumCircuit,
-        iqft: Optional[QuantumCircuit] = None,
+        iqft: QuantumCircuit | None = None,
         name: str = "QPE",
     ) -> None:
         """

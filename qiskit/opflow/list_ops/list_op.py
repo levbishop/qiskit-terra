@@ -58,10 +58,10 @@ class ListOp(OperatorBase):
     def __init__(
         self,
         oplist: Sequence[OperatorBase],
-        combo_fn: Optional[Callable] = None,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        combo_fn: Callable | None = None,
+        coeff: complex | ParameterExpression = 1.0,
         abelian: bool = False,
-        grad_combo_fn: Optional[Callable] = None,
+        grad_combo_fn: Callable | None = None,
     ) -> None:
         """
         Args:
@@ -91,11 +91,11 @@ class ListOp(OperatorBase):
 
     def _state(
         self,
-        coeff: Optional[Union[complex, ParameterExpression]] = None,
-        combo_fn: Optional[Callable] = None,
-        abelian: Optional[bool] = None,
-        grad_combo_fn: Optional[Callable] = None,
-    ) -> Dict:
+        coeff: complex | ParameterExpression | None = None,
+        combo_fn: Callable | None = None,
+        abelian: bool | None = None,
+        grad_combo_fn: Callable | None = None,
+    ) -> dict:
         return {
             "coeff": coeff if coeff is not None else self.coeff,
             "combo_fn": combo_fn if combo_fn is not None else self.combo_fn,
@@ -104,7 +104,7 @@ class ListOp(OperatorBase):
         }
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {
             "oplist": self._oplist,
@@ -115,7 +115,7 @@ class ListOp(OperatorBase):
         }
 
     @property
-    def oplist(self) -> List[OperatorBase]:
+    def oplist(self) -> list[OperatorBase]:
         """The list of ``OperatorBases`` defining the underlying function of this
         Operator.
 
@@ -143,7 +143,7 @@ class ListOp(OperatorBase):
         return self._combo_fn
 
     @property
-    def grad_combo_fn(self) -> Optional[Callable]:
+    def grad_combo_fn(self) -> Callable | None:
         """The gradient of ``combo_fn``."""
         return self._grad_combo_fn
 
@@ -169,7 +169,7 @@ class ListOp(OperatorBase):
         return True
 
     @property
-    def coeff(self) -> Union[complex, ParameterExpression]:
+    def coeff(self) -> complex | ParameterExpression:
         """The scalar coefficient multiplying the Operator.
 
         Returns:
@@ -178,7 +178,7 @@ class ListOp(OperatorBase):
         return self._coeff
 
     @property
-    def coeffs(self) -> List[Union[complex, ParameterExpression]]:
+    def coeffs(self) -> list[complex | ParameterExpression]:
         """Return a list of the coefficients of the operators listed.
         Raises exception for nested Listops.
         """
@@ -186,7 +186,7 @@ class ListOp(OperatorBase):
             raise TypeError("Coefficients are not returned for nested ListOps.")
         return [self.coeff * op.coeff for op in self.oplist]
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return reduce(set.union, [op.primitive_strings() for op in self.oplist])
 
     @property
@@ -196,7 +196,7 @@ class ListOp(OperatorBase):
             raise ValueError("Operators in ListOp have differing numbers of qubits.")
         return num_qubits0
 
-    def add(self, other: OperatorBase) -> "ListOp":
+    def add(self, other: OperatorBase) -> ListOp:
         if self == other:
             return self.mul(2.0)
 
@@ -206,7 +206,7 @@ class ListOp(OperatorBase):
 
         return SummedOp([self, other])
 
-    def adjoint(self) -> "ListOp":
+    def adjoint(self) -> ListOp:
         # TODO do this lazily? Basically rebuilds the entire tree, and ops and adjoints almost
         #  always come in pairs, so an AdjointOp holding a reference could save copying.
         if self.__class__ == ListOp:
@@ -218,8 +218,8 @@ class ListOp(OperatorBase):
         )
 
     def traverse(
-        self, convert_fn: Callable, coeff: Optional[Union[complex, ParameterExpression]] = None
-    ) -> "ListOp":
+        self, convert_fn: Callable, coeff: complex | ParameterExpression | None = None
+    ) -> ListOp:
         """Apply the convert_fn to each node in the oplist.
 
         Args:
@@ -251,7 +251,7 @@ class ListOp(OperatorBase):
     # isinstance(scalar, np.number) - this started happening when we added __get_item__().
     __array_priority__ = 10000
 
-    def mul(self, scalar: Union[complex, ParameterExpression]) -> "ListOp":
+    def mul(self, scalar: complex | ParameterExpression) -> ListOp:
         if not isinstance(scalar, (int, float, complex, ParameterExpression)):
             raise ValueError(
                 "Operators can only be scalar multiplied by float or complex, not "
@@ -268,7 +268,7 @@ class ListOp(OperatorBase):
 
         return TensoredOp([self, other])
 
-    def tensorpower(self, other: int) -> Union[OperatorBase, int]:
+    def tensorpower(self, other: int) -> OperatorBase | int:
         # Hack to make op1^(op2^0) work as intended.
         if other == 0:
             return 1
@@ -281,13 +281,13 @@ class ListOp(OperatorBase):
 
         return TensoredOp([self] * other)
 
-    def _expand_dim(self, num_qubits: int) -> "ListOp":
+    def _expand_dim(self, num_qubits: int) -> ListOp:
         oplist = [
             op._expand_dim(num_qubits + self.num_qubits - op.num_qubits) for op in self.oplist
         ]
         return ListOp(oplist, **self._state())
 
-    def permute(self, permutation: List[int]) -> "OperatorBase":
+    def permute(self, permutation: list[int]) -> OperatorBase:
         """Permute the qubits of the operator.
 
         Args:
@@ -331,7 +331,7 @@ class ListOp(OperatorBase):
         return CircuitOp(qc.reverse_ops()) @ new_self @ CircuitOp(qc)
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
 
         new_self, other = self._expand_shorter_operator_and_permute(other, permutation)
@@ -373,7 +373,7 @@ class ListOp(OperatorBase):
             mat = [mat]
         return np.asarray(mat, dtype=complex)
 
-    def to_spmatrix(self) -> Union[spmatrix, List[spmatrix]]:
+    def to_spmatrix(self) -> spmatrix | list[spmatrix]:
         """Returns SciPy sparse matrix representation of the Operator.
 
         Returns:
@@ -386,10 +386,10 @@ class ListOp(OperatorBase):
 
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         """
         Evaluate the Operator's underlying function, either on a binary string or another Operator.
         A square binary Operator can be defined as a function taking a binary function to another
@@ -534,7 +534,7 @@ class ListOp(OperatorBase):
             return ListOp(reduced_ops, **self._state())
         return self.__class__(reduced_ops, coeff=self.coeff, abelian=self.abelian)
 
-    def to_matrix_op(self, massive: bool = False) -> "ListOp":
+    def to_matrix_op(self, massive: bool = False) -> ListOp:
         """Returns an equivalent Operator composed of only NumPy-based primitives, such as
         ``MatrixOp`` and ``VectorStateFn``."""
         if self.__class__ == ListOp:
@@ -576,7 +576,7 @@ class ListOp(OperatorBase):
             abelian=self.abelian,
         ).reduce()
 
-    def to_pauli_op(self, massive: bool = False) -> "ListOp":
+    def to_pauli_op(self, massive: bool = False) -> ListOp:
         """Returns an equivalent Operator composed of only Pauli-based primitives,
         such as ``PauliOp``."""
         # pylint: disable=cyclic-import
@@ -608,7 +608,7 @@ class ListOp(OperatorBase):
 
     # Array operations:
 
-    def __getitem__(self, offset: Union[int, slice]) -> OperatorBase:
+    def __getitem__(self, offset: int | slice) -> OperatorBase:
         """Allows array-indexing style access to the Operators in ``oplist``.
 
         Args:

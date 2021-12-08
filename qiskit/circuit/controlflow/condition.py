@@ -21,8 +21,8 @@ from qiskit.circuit.exceptions import CircuitError
 
 
 def validate_condition(
-    condition: Tuple[Union[ClassicalRegister, Clbit], int]
-) -> Tuple[Union[ClassicalRegister, Clbit], int]:
+    condition: tuple[ClassicalRegister | Clbit, int]
+) -> tuple[ClassicalRegister | Clbit, int]:
     """Validate that a condition is in a valid format and return it, but raise if it is invalid.
 
     Args:
@@ -46,7 +46,7 @@ def validate_condition(
     )
 
 
-def condition_bits(condition: Tuple[Union[ClassicalRegister, Clbit], int]) -> Tuple[Clbit, ...]:
+def condition_bits(condition: tuple[ClassicalRegister | Clbit, int]) -> tuple[Clbit, ...]:
     """Return the classical resources used by ``condition`` as a tuple of :obj:`.Clbit`.
 
     This is useful when the exact set of bits is required, rather than the logical grouping of

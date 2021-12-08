@@ -55,7 +55,7 @@ class SwapGate(Gate):
         |a, b\rangle \rightarrow |b, a\rangle
     """
 
-    def __init__(self, label: Optional[str] = None):
+    def __init__(self, label: str | None = None):
         """Create new SWAP gate."""
         super().__init__("swap", 2, [], label=label)
 
@@ -83,8 +83,8 @@ class SwapGate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Return a (multi-)controlled-SWAP gate.
 
@@ -212,7 +212,7 @@ class CSwapGate(ControlledGate):
         ]
     )
 
-    def __init__(self, label: Optional[str] = None, ctrl_state: Optional[Union[str, int]] = None):
+    def __init__(self, label: str | None = None, ctrl_state: str | int | None = None):
         """Create new CSWAP gate."""
         super().__init__(
             "cswap",

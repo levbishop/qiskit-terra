@@ -48,8 +48,8 @@ class CircuitStateFn(StateFn):
     # TODO allow normalization somehow?
     def __init__(
         self,
-        primitive: Union[QuantumCircuit, Instruction] = None,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: QuantumCircuit | Instruction = None,
+        coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
         from_operator: bool = False,
     ) -> None:
@@ -83,7 +83,7 @@ class CircuitStateFn(StateFn):
         self.from_operator = from_operator
 
     @staticmethod
-    def from_dict(density_dict: dict) -> "CircuitStateFn":
+    def from_dict(density_dict: dict) -> CircuitStateFn:
         """Construct the CircuitStateFn from a dict mapping strings to probability densities.
 
         Args:
@@ -114,7 +114,7 @@ class CircuitStateFn(StateFn):
             return CircuitStateFn.from_vector(sf_dict.to_matrix())
 
     @staticmethod
-    def from_vector(statevector: np.ndarray) -> "CircuitStateFn":
+    def from_vector(statevector: np.ndarray) -> CircuitStateFn:
         """Construct the CircuitStateFn from a vector representing the statevector.
 
         Args:
@@ -127,11 +127,11 @@ class CircuitStateFn(StateFn):
         normalized_sv = statevector / normalization_coeff
         return CircuitStateFn(Initialize(normalized_sv), coeff=normalization_coeff)
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return {"QuantumCircuit"}
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         data = super().settings
         data["from_operator"] = self.from_operator
@@ -155,7 +155,7 @@ class CircuitStateFn(StateFn):
         # Covers all else.
         return SummedOp([self, other])
 
-    def adjoint(self) -> "CircuitStateFn":
+    def adjoint(self) -> CircuitStateFn:
         try:
             inverse = self.primitive.inverse()
         except CircuitError as missing_inverse:
@@ -169,7 +169,7 @@ class CircuitStateFn(StateFn):
         )
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
         if not self.is_measurement and not front:
             raise ValueError(
@@ -205,7 +205,7 @@ class CircuitStateFn(StateFn):
 
         return ComposedOp([new_self, other])
 
-    def tensor(self, other: OperatorBase) -> Union["CircuitStateFn", TensoredOp]:
+    def tensor(self, other: OperatorBase) -> Union[CircuitStateFn, TensoredOp]:
         r"""
         Return tensor product between self and other, overloaded by ``^``.
         Note: You must be conscious of Qiskit's big-endian bit printing convention.
@@ -279,7 +279,7 @@ class CircuitStateFn(StateFn):
                 self.coeff,
             )
 
-    def assign_parameters(self, param_dict: dict) -> Union["CircuitStateFn", ListOp]:
+    def assign_parameters(self, param_dict: dict) -> Union[CircuitStateFn, ListOp]:
         param_value = self.coeff
         qc = self.primitive
         if isinstance(self.coeff, ParameterExpression) or self.primitive.parameters:
@@ -303,10 +303,10 @@ class CircuitStateFn(StateFn):
 
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         if front is None:
             vector_state_fn = self.to_matrix_op().eval()
             return vector_state_fn
@@ -367,7 +367,7 @@ class CircuitStateFn(StateFn):
         return dict(sorted(scaled_dict.items(), key=lambda x: x[1], reverse=True))
 
     # Warning - modifying primitive!!
-    def reduce(self) -> "CircuitStateFn":
+    def reduce(self) -> CircuitStateFn:
         if self.primitive.data is not None:
             # Need to do this from the end because we're deleting items!
             for i in reversed(range(len(self.primitive.data))):
@@ -381,12 +381,12 @@ class CircuitStateFn(StateFn):
                     del self.primitive.data[i]
         return self
 
-    def _expand_dim(self, num_qubits: int) -> "CircuitStateFn":
+    def _expand_dim(self, num_qubits: int) -> CircuitStateFn:
         # this is equivalent to self.tensor(identity_operator), but optimized for better performance
         # just like in tensor method, qiskit endianness is reversed here
         return self.permute(list(range(num_qubits, num_qubits + self.num_qubits)))
 
-    def permute(self, permutation: List[int]) -> "CircuitStateFn":
+    def permute(self, permutation: list[int]) -> CircuitStateFn:
         r"""
         Permute the qubits of the circuit.
 

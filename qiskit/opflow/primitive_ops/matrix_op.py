@@ -39,8 +39,8 @@ class MatrixOp(PrimitiveOp):
 
     def __init__(
         self,
-        primitive: Union[list, np.ndarray, spmatrix, Operator],
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: list | np.ndarray | spmatrix | Operator,
+        coeff: complex | ParameterExpression = 1.0,
     ) -> None:
         """
         Args:
@@ -71,14 +71,14 @@ class MatrixOp(PrimitiveOp):
 
         super().__init__(primitive, coeff=coeff)
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return {"Matrix"}
 
     @property
     def num_qubits(self) -> int:
         return len(self.primitive.input_dims())
 
-    def add(self, other: OperatorBase) -> Union["MatrixOp", SummedOp]:
+    def add(self, other: OperatorBase) -> Union[MatrixOp, SummedOp]:
         if not self.num_qubits == other.num_qubits:
             raise ValueError(
                 "Sum over operators with different numbers of qubits, {} and {}, is not well "
@@ -99,7 +99,7 @@ class MatrixOp(PrimitiveOp):
         # Covers Paulis, Circuits, and all else.
         return SummedOp([self, other])
 
-    def adjoint(self) -> "MatrixOp":
+    def adjoint(self) -> MatrixOp:
         return MatrixOp(self.primitive.adjoint(), coeff=self.coeff.conjugate())
 
     def equals(self, other: OperatorBase) -> bool:
@@ -115,18 +115,18 @@ class MatrixOp(PrimitiveOp):
             return self.coeff == other.coeff and self.primitive == other.primitive
         return self.coeff * self.primitive == other.coeff * other.primitive
 
-    def _expand_dim(self, num_qubits: int) -> "MatrixOp":
+    def _expand_dim(self, num_qubits: int) -> MatrixOp:
         identity = np.identity(2 ** num_qubits, dtype=complex)
         return MatrixOp(self.primitive.tensor(Operator(identity)), coeff=self.coeff)
 
-    def tensor(self, other: OperatorBase) -> Union["MatrixOp", TensoredOp]:
+    def tensor(self, other: OperatorBase) -> Union[MatrixOp, TensoredOp]:
         if isinstance(other, MatrixOp):
             return MatrixOp(self.primitive.tensor(other.primitive), coeff=self.coeff * other.coeff)
 
         return TensoredOp([self, other])
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
 
         new_self, other = self._expand_shorter_operator_and_permute(other, permutation)
@@ -142,7 +142,7 @@ class MatrixOp(PrimitiveOp):
 
         return super(MatrixOp, new_self).compose(other)
 
-    def permute(self, permutation: Optional[List[int]] = None) -> OperatorBase:
+    def permute(self, permutation: list[int] | None = None) -> OperatorBase:
         """Creates a new MatrixOp that acts on the permuted qubits.
 
         Args:
@@ -189,10 +189,10 @@ class MatrixOp(PrimitiveOp):
 
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         # For other ops' eval we return self.to_matrix_op() here, but that's unnecessary here.
         if front is None:
             return self
@@ -226,7 +226,7 @@ class MatrixOp(PrimitiveOp):
 
     # Op Conversions
 
-    def to_matrix_op(self, massive: bool = False) -> "MatrixOp":
+    def to_matrix_op(self, massive: bool = False) -> MatrixOp:
         return self
 
     def to_instruction(self) -> Instruction:

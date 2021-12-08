@@ -53,7 +53,7 @@ class HGate(Gate):
             \end{pmatrix}
     """
 
-    def __init__(self, label: Optional[str] = None):
+    def __init__(self, label: str | None = None):
         """Create new H gate."""
         super().__init__("h", 1, [], label=label)
 
@@ -77,8 +77,8 @@ class HGate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[int, str]] = None,
+        label: str | None = None,
+        ctrl_state: int | str | None = None,
     ):
         """Return a (multi-)controlled-H gate.
 
@@ -172,7 +172,7 @@ class CHGate(ControlledGate):
         dtype=complex,
     )
 
-    def __init__(self, label: Optional[str] = None, ctrl_state: Optional[Union[int, str]] = None):
+    def __init__(self, label: str | None = None, ctrl_state: int | str | None = None):
         """Create new CH gate."""
         super().__init__(
             "ch", 2, [], num_ctrl_qubits=1, label=label, ctrl_state=ctrl_state, base_gate=HGate()

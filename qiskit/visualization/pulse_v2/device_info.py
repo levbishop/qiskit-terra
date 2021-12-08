@@ -49,10 +49,10 @@ class DrawerBackendInfo(ABC):
 
     def __init__(
         self,
-        name: Optional[str] = None,
-        dt: Optional[float] = None,
-        channel_frequency_map: Optional[Dict[pulse.channels.Channel, float]] = None,
-        qubit_channel_map: Optional[Dict[int, List[pulse.channels.Channel]]] = None,
+        name: str | None = None,
+        dt: float | None = None,
+        channel_frequency_map: dict[pulse.channels.Channel, float] | None = None,
+        qubit_channel_map: dict[int, list[pulse.channels.Channel]] | None = None,
     ):
         """Create new backend information.
 
@@ -82,14 +82,14 @@ class DrawerBackendInfo(ABC):
         """Return cycle time."""
         return self._dt
 
-    def get_qubit_index(self, chan: pulse.channels.Channel) -> Union[int, None]:
+    def get_qubit_index(self, chan: pulse.channels.Channel) -> int | None:
         """Get associated qubit index of given channel object."""
         for qind, chans in self._qubit_channel_map.items():
             if chan in chans:
                 return qind
         return chan.index
 
-    def get_channel_frequency(self, chan: pulse.channels.Channel) -> Union[float, None]:
+    def get_channel_frequency(self, chan: pulse.channels.Channel) -> float | None:
         """Get frequency of given channel object."""
         return self._chan_freq_map.get(chan, None)
 

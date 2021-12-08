@@ -48,8 +48,8 @@ class SciPyOptimizer(Optimizer):
 
     def __init__(
         self,
-        method: Union[str, Callable],
-        options: Optional[Dict[str, Any]] = None,
+        method: str | Callable,
+        options: dict[str, Any] | None = None,
         max_evals_grouped: int = 1,
         **kwargs,
     ):
@@ -87,7 +87,7 @@ class SciPyOptimizer(Optimizer):
         }
 
     @property
-    def settings(self) -> Dict[str, Any]:
+    def settings(self) -> dict[str, Any]:
         settings = {
             "max_evals_grouped": self._max_evals_grouped,
             "options": self._options,
@@ -103,8 +103,8 @@ class SciPyOptimizer(Optimizer):
         self,
         fun: Callable[[POINT], float],
         x0: POINT,
-        jac: Optional[Callable[[POINT], POINT]] = None,
-        bounds: Optional[List[Tuple[float, float]]] = None,
+        jac: Callable[[POINT], POINT] | None = None,
+        bounds: list[tuple[float, float]] | None = None,
     ) -> OptimizerResult:
         # Remove ignored parameters to supress the warning of scipy.optimize.minimize
         if self.is_bounds_ignored:

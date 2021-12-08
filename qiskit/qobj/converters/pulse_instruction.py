@@ -469,7 +469,7 @@ class QobjToInstructionConverter:
         raise QiskitError("Channel %s is not valid" % channel)
 
     @staticmethod
-    def disassemble_value(value_expr: Union[float, str]) -> Union[float, ParameterExpression]:
+    def disassemble_value(value_expr: float | str) -> float | ParameterExpression:
         """A helper function to format instruction operand.
 
         If parameter in string representation is specified, this method parses the

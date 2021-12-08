@@ -86,7 +86,7 @@ class PhaseEstimation(PhaseEstimator):
     def __init__(
         self,
         num_evaluation_qubits: int,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None,
+        quantum_instance: QuantumInstance | BaseBackend | Backend | None = None,
     ) -> None:
         """
         Args:
@@ -104,7 +104,7 @@ class PhaseEstimation(PhaseEstimator):
         self._quantum_instance = quantum_instance
 
     def construct_circuit(
-        self, unitary: QuantumCircuit, state_preparation: Optional[QuantumCircuit] = None
+        self, unitary: QuantumCircuit, state_preparation: QuantumCircuit | None = None
     ) -> QuantumCircuit:
         """Return the circuit to be executed to estimate phases.
 
@@ -141,7 +141,7 @@ class PhaseEstimation(PhaseEstimator):
 
     def _compute_phases(
         self, num_unitary_qubits: int, circuit_result: Result
-    ) -> Union[numpy.ndarray, qiskit.result.Counts]:
+    ) -> numpy.ndarray | qiskit.result.Counts:
         """Compute frequencies/counts of phases from the result of running the QPE circuit.
 
         How the frequencies are computed depends on whether the backend computes amplitude or
@@ -213,10 +213,10 @@ class PhaseEstimation(PhaseEstimator):
     # pylint: disable=missing-param-doc
     def estimate(
         self,
-        unitary: Optional[QuantumCircuit] = None,
-        state_preparation: Optional[QuantumCircuit] = None,
-        pe_circuit: Optional[QuantumCircuit] = None,
-        num_unitary_qubits: Optional[int] = None,
+        unitary: QuantumCircuit | None = None,
+        state_preparation: QuantumCircuit | None = None,
+        pe_circuit: QuantumCircuit | None = None,
+        num_unitary_qubits: int | None = None,
     ) -> PhaseEstimationResult:
         """Build a phase estimation circuit and run the corresponding algorithm.
 

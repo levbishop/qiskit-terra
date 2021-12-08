@@ -79,7 +79,7 @@ class ZFeatureMap(PauliFeatureMap):
         self,
         feature_dimension: int,
         reps: int = 2,
-        data_map_func: Optional[Callable[[np.ndarray], float]] = None,
+        data_map_func: Callable[[np.ndarray], float] | None = None,
         insert_barriers: bool = False,
         name: str = "ZFeatureMap",
     ) -> None:

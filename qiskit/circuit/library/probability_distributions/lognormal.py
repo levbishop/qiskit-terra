@@ -87,10 +87,10 @@ class LogNormalDistribution(QuantumCircuit):
 
     def __init__(
         self,
-        num_qubits: Union[int, List[int]],
-        mu: Optional[Union[float, List[float]]] = None,
-        sigma: Optional[Union[float, List[float]]] = None,
-        bounds: Optional[Union[Tuple[float, float], List[Tuple[float, float]]]] = None,
+        num_qubits: int | list[int],
+        mu: float | list[float] | None = None,
+        sigma: float | list[float] | None = None,
+        bounds: tuple[float, float] | list[tuple[float, float]] | None = None,
         upto_diag: bool = False,
         name: str = "P(X)",
     ) -> None:
@@ -202,6 +202,6 @@ class LogNormalDistribution(QuantumCircuit):
         return self._probabilities
 
     @property
-    def bounds(self) -> Union[Tuple[float, float], List[Tuple[float, float]]]:
+    def bounds(self) -> tuple[float, float] | list[tuple[float, float]]:
         """Return the bounds of the probability distribution."""
         return self._bounds

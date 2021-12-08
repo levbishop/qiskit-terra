@@ -83,7 +83,7 @@ class MatrixFunctional(LinearSystemObservable):
         self._main_diag = main_diag
         self._off_diag = off_diag
 
-    def observable(self, num_qubits: int) -> Union[TensoredOp, List[TensoredOp]]:
+    def observable(self, num_qubits: int) -> TensoredOp | list[TensoredOp]:
         """The observable operators.
 
         Args:
@@ -112,7 +112,7 @@ class MatrixFunctional(LinearSystemObservable):
 
         return observables
 
-    def observable_circuit(self, num_qubits: int) -> Union[QuantumCircuit, List[QuantumCircuit]]:
+    def observable_circuit(self, num_qubits: int) -> QuantumCircuit | list[QuantumCircuit]:
         """The circuits to implement the matrix functional observable.
 
         Args:
@@ -134,7 +134,7 @@ class MatrixFunctional(LinearSystemObservable):
         return qcs
 
     def post_processing(
-        self, solution: Union[float, List[float]], num_qubits: int, scaling: float = 1
+        self, solution: float | list[float], num_qubits: int, scaling: float = 1
     ) -> float:
         """Evaluates the matrix functional on the solution to the linear system.
 
@@ -159,7 +159,7 @@ class MatrixFunctional(LinearSystemObservable):
         main_val = solution[0] / (scaling ** 2)
         return np.real(self._main_diag * main_val + self._off_diag * off_val)
 
-    def evaluate_classically(self, solution: Union[np.array, QuantumCircuit]) -> float:
+    def evaluate_classically(self, solution: np.array | QuantumCircuit) -> float:
         """Evaluates the given observable on the solution to the linear system.
 
         Args:

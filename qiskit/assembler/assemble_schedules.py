@@ -29,11 +29,11 @@ from qiskit.qobj.converters.pulse_instruction import ParametricPulseShapes
 
 
 def assemble_schedules(
-    schedules: List[
+    schedules: list[
         Union[
-            "schedule.ScheduleBlock",
-            "schedule.ScheduleComponent",
-            Tuple[int, "schedule.ScheduleComponent"],
+            schedule.ScheduleBlock,
+            schedule.ScheduleComponent,
+            tuple[int, schedule.ScheduleComponent],
         ]
     ],
     qobj_id: int,
@@ -71,10 +71,10 @@ def assemble_schedules(
 
 
 def _assemble_experiments(
-    schedules: List[Union["schedule.ScheduleComponent", Tuple[int, "schedule.ScheduleComponent"]]],
+    schedules: list[Union[schedule.ScheduleComponent, tuple[int, schedule.ScheduleComponent]]],
     lo_converter: converters.LoConfigConverter,
     run_config: RunConfig,
-) -> Tuple[List[qobj.PulseQobjExperiment], Dict[str, Any]]:
+) -> tuple[list[qobj.PulseQobjExperiment], dict[str, Any]]:
     """Assembles a list of schedules into PulseQobjExperiments, and returns related metadata that
     will be assembled into the Qobj configuration.
 
@@ -160,11 +160,11 @@ def _assemble_experiments(
 
 
 def _assemble_instructions(
-    sched: Union[pulse.Schedule, pulse.ScheduleBlock],
+    sched: pulse.Schedule | pulse.ScheduleBlock,
     instruction_converter: converters.InstructionToQobjConverter,
     run_config: RunConfig,
-    user_pulselib: Dict[str, List[complex]],
-) -> Tuple[List[qobj.PulseQobjInstruction], int]:
+    user_pulselib: dict[str, list[complex]],
+) -> tuple[list[qobj.PulseQobjInstruction], int]:
     """Assembles the instructions in a schedule into a list of PulseQobjInstructions and returns
     related metadata that will be assembled into the Qobj configuration. Lookup table for
     pulses defined in all experiments are registered in ``user_pulselib``. This object should be
@@ -239,8 +239,8 @@ def _assemble_instructions(
 
 
 def _validate_meas_map(
-    instruction_map: Dict[Tuple[int, instructions.Acquire], List[instructions.Acquire]],
-    meas_map: List[List[int]],
+    instruction_map: dict[tuple[int, instructions.Acquire], list[instructions.Acquire]],
+    meas_map: list[list[int]],
 ) -> None:
     """Validate all qubits tied in ``meas_map`` are to be acquired.
 
@@ -285,7 +285,7 @@ def _validate_meas_map(
 
 def _assemble_config(
     lo_converter: converters.LoConfigConverter,
-    experiment_config: Dict[str, Any],
+    experiment_config: dict[str, Any],
     run_config: RunConfig,
 ) -> qobj.PulseQobjConfig:
     """Assembles the QobjConfiguration from experimental config and runtime config.

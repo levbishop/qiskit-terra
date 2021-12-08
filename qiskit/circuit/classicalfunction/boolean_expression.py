@@ -64,7 +64,7 @@ class BooleanExpression(ClassicalElement):
     def synth(
         self,
         registerless: bool = True,
-        synthesizer: Optional[Callable[["BooleanExpression"], QuantumCircuit]] = None,
+        synthesizer: Callable[[BooleanExpression], QuantumCircuit] | None = None,
     ):
         """Synthesis the logic network into a :class:`~qiskit.circuit.QuantumCircuit`.
 

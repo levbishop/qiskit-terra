@@ -39,8 +39,8 @@ class COBYLA(SciPyOptimizer):
         maxiter: int = 1000,
         disp: bool = False,
         rhobeg: float = 1.0,
-        tol: Optional[float] = None,
-        options: Optional[dict] = None,
+        tol: float | None = None,
+        options: dict | None = None,
         **kwargs,
     ) -> None:
         """

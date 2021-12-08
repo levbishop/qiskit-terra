@@ -52,12 +52,12 @@ class VariationalAlgorithm:
 
     def __init__(
         self,
-        ansatz: Optional[QuantumCircuit] = None,
-        optimizer: Optional[Optimizer] = None,
-        cost_fn: Optional[Callable] = None,
-        gradient: Optional[Union[GradientBase, Callable]] = None,
-        initial_point: Optional[np.ndarray] = None,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None,
+        ansatz: QuantumCircuit | None = None,
+        optimizer: Optimizer | None = None,
+        cost_fn: Callable | None = None,
+        gradient: GradientBase | Callable | None = None,
+        initial_point: np.ndarray | None = None,
+        quantum_instance: QuantumInstance | BaseBackend | Backend | None = None,
     ) -> None:
         """
         Args:
@@ -112,7 +112,7 @@ The VariationalAlgorithm is reduced to an interface. Thus, the
 quantum_instance property is deprecated as of Qiskit Terra 0.18.0
 and will be removed no sooner than 3 months after the releasedate."""
     )
-    def quantum_instance(self) -> Optional[QuantumInstance]:
+    def quantum_instance(self) -> QuantumInstance | None:
         """Returns quantum instance."""
         return self._quantum_instance
 
@@ -124,7 +124,7 @@ quantum_instance property is deprecated as of Qiskit Terra 0.18.0
 and will be removed no sooner than 3 months after the releasedate."""
     )
     def quantum_instance(
-        self, quantum_instance: Union[QuantumInstance, BaseBackend, Backend]
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend
     ) -> None:
         """Sets quantum instance."""
         if isinstance(quantum_instance, (BaseBackend, Backend)):
@@ -138,7 +138,7 @@ The VariationalAlgorithm is reduced to an interface. Thus, the
 ansatz property is deprecated as of Qiskit Terra 0.18.0
 and will be removed no sooner than 3 months after the releasedate."""
     )
-    def ansatz(self) -> Optional[QuantumCircuit]:
+    def ansatz(self) -> QuantumCircuit | None:
         """Returns the ansatz"""
         return self._ansatz
 
@@ -149,7 +149,7 @@ The VariationalAlgorithm is reduced to an interface. Thus, the
 ansatz property is deprecated as of Qiskit Terra 0.18.0
 and will be removed no sooner than 3 months after the releasedate."""
     )
-    def ansatz(self, ansatz: Optional[QuantumCircuit]):
+    def ansatz(self, ansatz: QuantumCircuit | None):
         """Sets the ansatz"""
         if isinstance(ansatz, QuantumCircuit):
             # store the parameters
@@ -168,7 +168,7 @@ The VariationalAlgorithm is reduced to an interface. Thus, the
 optimizer property is deprecated as of Qiskit Terra 0.18.0
 and will be removed no sooner than 3 months after the releasedate."""
     )
-    def optimizer(self) -> Optional[Optimizer]:
+    def optimizer(self) -> Optimizer | None:
         """Returns optimizer"""
         return self._optimizer
 
@@ -192,7 +192,7 @@ initial_point property will be made abstract no sooner than
 make a concrete implementation in any derived class and not rely on
 the implementation here which will be removed."""
     )
-    def initial_point(self) -> Optional[np.ndarray]:
+    def initial_point(self) -> np.ndarray | None:
         """Returns initial point"""
         return self._initial_point
 
@@ -217,12 +217,12 @@ and will be removed no sooner than 3 months after the releasedate."""
     )
     def find_minimum(
         self,
-        initial_point: Optional[np.ndarray] = None,
-        ansatz: Optional[QuantumCircuit] = None,
-        cost_fn: Optional[Callable] = None,
-        optimizer: Optional[Optimizer] = None,
-        gradient_fn: Optional[Callable] = None,
-    ) -> "VariationalResult":
+        initial_point: np.ndarray | None = None,
+        ansatz: QuantumCircuit | None = None,
+        cost_fn: Callable | None = None,
+        optimizer: Optimizer | None = None,
+        gradient_fn: Callable | None = None,
+    ) -> VariationalResult:
         """Optimize to find the minimum cost value.
 
         Args:
@@ -405,7 +405,7 @@ class VariationalResult(AlgorithmResult):
         self._optimal_parameters = None
 
     @property
-    def optimizer_evals(self) -> Optional[int]:
+    def optimizer_evals(self) -> int | None:
         """Returns number of optimizer evaluations"""
         return self._optimizer_evals
 
@@ -415,7 +415,7 @@ class VariationalResult(AlgorithmResult):
         self._optimizer_evals = value
 
     @property
-    def optimizer_time(self) -> Optional[float]:
+    def optimizer_time(self) -> float | None:
         """Returns time taken for optimization"""
         return self._optimizer_time
 
@@ -425,7 +425,7 @@ class VariationalResult(AlgorithmResult):
         self._optimizer_time = value
 
     @property
-    def optimal_value(self) -> Optional[float]:
+    def optimal_value(self) -> float | None:
         """Returns optimal value"""
         return self._optimal_value
 
@@ -435,7 +435,7 @@ class VariationalResult(AlgorithmResult):
         self._optimal_value = value
 
     @property
-    def optimal_point(self) -> Optional[np.ndarray]:
+    def optimal_point(self) -> np.ndarray | None:
         """Returns optimal point"""
         return self._optimal_point
 
@@ -445,11 +445,11 @@ class VariationalResult(AlgorithmResult):
         self._optimal_point = value
 
     @property
-    def optimal_parameters(self) -> Optional[Dict]:
+    def optimal_parameters(self) -> dict | None:
         """Returns the optimal parameters in a dictionary"""
         return self._optimal_parameters
 
     @optimal_parameters.setter
-    def optimal_parameters(self, value: Dict) -> None:
+    def optimal_parameters(self, value: dict) -> None:
         """Sets optimal parameters"""
         self._optimal_parameters = value

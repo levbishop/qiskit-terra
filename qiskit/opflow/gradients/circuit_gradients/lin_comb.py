@@ -105,13 +105,13 @@ class LinComb(CircuitGradient):
     def convert(
         self,
         operator: OperatorBase,
-        params: Union[
-            ParameterExpression,
-            ParameterVector,
-            List[ParameterExpression],
-            Tuple[ParameterExpression, ParameterExpression],
-            List[Tuple[ParameterExpression, ParameterExpression]],
-        ],
+        params: (
+            ParameterExpression |
+            ParameterVector |
+            list[ParameterExpression] |
+            tuple[ParameterExpression, ParameterExpression] |
+            list[tuple[ParameterExpression, ParameterExpression]]
+        ),
     ) -> OperatorBase:
         """Convert ``operator`` into an operator that represents the gradient w.r.t. ``params``.
 
@@ -135,13 +135,13 @@ class LinComb(CircuitGradient):
     def _prepare_operator(
         self,
         operator: OperatorBase,
-        params: Union[
-            ParameterExpression,
-            ParameterVector,
-            List[ParameterExpression],
-            Tuple[ParameterExpression, ParameterExpression],
-            List[Tuple[ParameterExpression, ParameterExpression]],
-        ],
+        params: (
+            ParameterExpression |
+            ParameterVector |
+            list[ParameterExpression] |
+            tuple[ParameterExpression, ParameterExpression] |
+            list[tuple[ParameterExpression, ParameterExpression]]
+        ),
     ) -> OperatorBase:
         """Traverse ``operator`` to get back the adapted operator representing the gradient.
 
@@ -359,7 +359,7 @@ class LinComb(CircuitGradient):
             return result
 
     @staticmethod
-    def _gate_gradient_dict(gate: Gate) -> List[Tuple[List[complex], List[Instruction]]]:
+    def _gate_gradient_dict(gate: Gate) -> list[tuple[list[complex], list[Instruction]]]:
         r"""Given a parameterized gate U(theta) with derivative
         dU(theta)/dtheta = sum_ia_iU(theta)V_i.
         This function returns a:=[a_0, ...] and V=[V_0, ...]
@@ -600,8 +600,8 @@ class LinComb(CircuitGradient):
     def _gradient_states(
         self,
         state_op: StateFn,
-        meas_op: Union[OperatorBase, bool] = True,
-        target_params: Optional[Union[Parameter, List[Parameter]]] = None,
+        meas_op: OperatorBase | bool = True,
+        target_params: Parameter | list[Parameter] | None = None,
         open_ctrl: bool = False,
         trim_after_grad_gate: bool = False,
     ) -> ListOp:
@@ -688,13 +688,11 @@ class LinComb(CircuitGradient):
     def _hessian_states(
         self,
         state_op: StateFn,
-        meas_op: Optional[OperatorBase] = None,
-        target_params: Optional[
-            Union[
-                Tuple[ParameterExpression, ParameterExpression],
-                List[Tuple[ParameterExpression, ParameterExpression]],
-            ]
-        ] = None,
+        meas_op: OperatorBase | None = None,
+        target_params: None | (
+                tuple[ParameterExpression, ParameterExpression] |
+                list[tuple[ParameterExpression, ParameterExpression]]
+        ) = None,
     ) -> OperatorBase:
         """Generate the operator states whose evaluation returns the Hessian (items).
 

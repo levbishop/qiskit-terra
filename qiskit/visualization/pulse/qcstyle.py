@@ -32,7 +32,7 @@ class SchedStyle:
 
     def __init__(
         self,
-        figsize: Optional[Tuple[float, float]] = (10.0, 12.0),
+        figsize: tuple[float, float] | None = (10.0, 12.0),
         fig_unit_h_table: float = 0.4,
         use_table: bool = True,
         table_columns: int = 2,
@@ -40,7 +40,7 @@ class SchedStyle:
         axis_font_size: int = 18,
         label_font_size: int = 10,
         icon_font_size: int = 18,
-        title_font_size: Optional[int] = 25,
+        title_font_size: int | None = 25,
         label_ch_linestyle: str = "--",
         label_ch_color: str = "#222222",
         label_ch_alpha: float = 0.3,
@@ -52,7 +52,7 @@ class SchedStyle:
         table_color: SchedTableColors = ("#e0e0e0", "#f6f6f6", "#f6f6f6"),
         bg_color: str = "#f2f3f4",
         num_points: int = 1000,
-        dpi: Optional[int] = 150,
+        dpi: int | None = 150,
         remove_spacing: bool = True,
         max_table_ratio: float = 0.5,
         vertical_span: float = 0.2,
@@ -176,12 +176,12 @@ class PulseStyle:
 
     def __init__(
         self,
-        figsize: Optional[Tuple[float, float]] = (7.0, 5.0),
-        title_font_size: Optional[int] = 18,
+        figsize: tuple[float, float] | None = (7.0, 5.0),
+        title_font_size: int | None = 18,
         wave_color: ComplexColors = ("#ff0000", "#0000ff"),
         bg_color: str = "#f2f3f4",
         num_points: int = 1000,
-        dpi: Optional[int] = None,
+        dpi: int | None = None,
     ):
         """Create new style sheet.
 

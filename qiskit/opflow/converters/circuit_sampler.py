@@ -55,8 +55,8 @@ class CircuitSampler(ConverterBase):
 
     def __init__(
         self,
-        backend: Union[Backend, BaseBackend, QuantumInstance],
-        statevector: Optional[bool] = None,
+        backend: Backend | BaseBackend | QuantumInstance,
+        statevector: bool | None = None,
         param_qobj: bool = False,
         attach_results: bool = False,
         caching: str = "last",
@@ -93,13 +93,13 @@ class CircuitSampler(ConverterBase):
 
         # Object state variables
         self._caching = caching
-        self._cached_ops: Dict[int, OperatorCache] = {}
+        self._cached_ops: dict[int, OperatorCache] = {}
 
-        self._last_op: Optional[OperatorBase] = None
+        self._last_op: OperatorBase | None = None
         self._reduced_op_cache = None
-        self._circuit_ops_cache: Dict[int, CircuitStateFn] = {}
-        self._transpiled_circ_cache: Optional[List[Any]] = None
-        self._transpiled_circ_templates: Optional[List[Any]] = None
+        self._circuit_ops_cache: dict[int, CircuitStateFn] = {}
+        self._transpiled_circ_cache: list[Any] | None = None
+        self._transpiled_circ_templates: list[Any] | None = None
         self._transpile_before_bind = True
 
     def _check_quantum_instance_and_modes_consistent(self) -> None:
@@ -132,7 +132,7 @@ class CircuitSampler(ConverterBase):
 
     @quantum_instance.setter
     def quantum_instance(
-        self, quantum_instance: Union[QuantumInstance, Backend, BaseBackend]
+        self, quantum_instance: QuantumInstance | Backend | BaseBackend
     ) -> None:
         """Sets the QuantumInstance.
 
@@ -148,7 +148,7 @@ class CircuitSampler(ConverterBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: Optional[Dict[Parameter, Union[float, List[float], List[List[float]]]]] = None,
+        params: dict[Parameter, float | list[float] | list[list[float]]] | None = None,
     ) -> OperatorBase:
         r"""
         Converts the Operator to one in which the CircuitStateFns are replaced by
@@ -266,9 +266,9 @@ class CircuitSampler(ConverterBase):
 
     def sample_circuits(
         self,
-        circuit_sfns: Optional[List[CircuitStateFn]] = None,
-        param_bindings: Optional[List[Dict[Parameter, float]]] = None,
-    ) -> Dict[int, List[StateFn]]:
+        circuit_sfns: list[CircuitStateFn] | None = None,
+        param_bindings: list[dict[Parameter, float]] | None = None,
+    ) -> dict[int, list[StateFn]]:
         r"""
         Samples the CircuitStateFns and returns a dict associating their ``id()`` values to their
         replacement DictStateFn or VectorStateFn. If param_bindings is provided,
@@ -390,8 +390,8 @@ class CircuitSampler(ConverterBase):
     def _build_aer_params(
         self,
         circuit: QuantumCircuit,
-        building_param_tables: Dict[Tuple[int, int], List[float]],
-        input_params: Dict[Parameter, float],
+        building_param_tables: dict[tuple[int, int], list[float]],
+        input_params: dict[Parameter, float],
     ) -> None:
         def resolve_param(inst_param):
             if not isinstance(inst_param, ParameterExpression):
@@ -418,8 +418,8 @@ class CircuitSampler(ConverterBase):
             gate_index += 1
 
     def _prepare_parameterized_run_config(
-        self, param_bindings: List[Dict[Parameter, float]]
-    ) -> List[Any]:
+        self, param_bindings: list[dict[Parameter, float]]
+    ) -> list[Any]:
 
         self.quantum_instance._run_config.parameterizations = []
 
@@ -435,7 +435,7 @@ class CircuitSampler(ConverterBase):
             ]
 
         for circ in self._transpiled_circ_cache:
-            building_param_tables: Dict[Tuple[int, int], List[float]] = {}
+            building_param_tables: dict[tuple[int, int], list[float]] = {}
             for param_binding in param_bindings:
                 self._build_aer_params(circ, building_param_tables, param_binding)
             param_tables = []
@@ -462,7 +462,7 @@ class OperatorCache:
     """A struct to cache an operator along with the circuits in contains."""
 
     reduced_op_cache = None  # the reduced operator
-    circuit_ops_cache: Optional[Dict[int, CircuitStateFn]] = None  # the extracted circuits
+    circuit_ops_cache: dict[int, CircuitStateFn] | None = None  # the extracted circuits
     transpiled_circ_cache = None  # the transpiled circuits
     transpile_before_bind = True  # whether to transpile before binding parameters in the operator
-    transpiled_circ_templates: Optional[List[Any]] = None  # transpiled circuit templates for Aer
+    transpiled_circ_templates: list[Any] | None = None  # transpiled circuit templates for Aer

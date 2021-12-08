@@ -279,8 +279,8 @@ class BackendProperties:
         return False
 
     def gate_property(
-        self, gate: str, qubits: Union[int, Iterable[int]] = None, name: str = None
-    ) -> Tuple[Any, datetime.datetime]:
+        self, gate: str, qubits: int | Iterable[int] = None, name: str = None
+    ) -> tuple[Any, datetime.datetime]:
         """
         Return the property of the given gate.
 
@@ -326,7 +326,7 @@ class BackendProperties:
                 faulty.append(gate)
         return faulty
 
-    def is_gate_operational(self, gate: str, qubits: Union[int, Iterable[int]] = None) -> bool:
+    def is_gate_operational(self, gate: str, qubits: int | Iterable[int] = None) -> bool:
         """
         Return the operational status of the given gate.
 
@@ -343,7 +343,7 @@ class BackendProperties:
             return bool(properties["operational"][0])
         return True  # if property operational not existent, then True.
 
-    def gate_error(self, gate: str, qubits: Union[int, Iterable[int]]) -> float:
+    def gate_error(self, gate: str, qubits: int | Iterable[int]) -> float:
         """
         Return gate error estimates from backend properties.
 
@@ -356,7 +356,7 @@ class BackendProperties:
         """
         return self.gate_property(gate, qubits, "gate_error")[0]  # Throw away datetime at index 1
 
-    def gate_length(self, gate: str, qubits: Union[int, Iterable[int]]) -> float:
+    def gate_length(self, gate: str, qubits: int | Iterable[int]) -> float:
         """
         Return the duration of the gate in units of seconds.
 
@@ -369,7 +369,7 @@ class BackendProperties:
         """
         return self.gate_property(gate, qubits, "gate_length")[0]  # Throw away datetime at index 1
 
-    def qubit_property(self, qubit: int, name: str = None) -> Tuple[Any, datetime.datetime]:
+    def qubit_property(self, qubit: int, name: str = None) -> tuple[Any, datetime.datetime]:
         """
         Return the property of the given qubit.
 

@@ -62,7 +62,7 @@ class PulseExpression(ast.NodeTransformer):
     _unary_ops = {ast.UAdd: operator.pos, ast.USub: operator.neg}
     """Valid unary operations."""
 
-    def __init__(self, source: Union[str, ast.Expression], partial_binding: bool = False):
+    def __init__(self, source: str | ast.Expression, partial_binding: bool = False):
         """Create new evaluator.
 
         Args:
@@ -88,7 +88,7 @@ class PulseExpression(ast.NodeTransformer):
         self.visit(self._tree)
 
     @property
-    def params(self) -> List[str]:
+    def params(self) -> list[str]:
         """Get parameters.
 
         Returns:
@@ -96,7 +96,7 @@ class PulseExpression(ast.NodeTransformer):
         """
         return sorted(self._params.copy())
 
-    def __call__(self, *args, **kwargs) -> Union[complex, ast.Expression]:
+    def __call__(self, *args, **kwargs) -> complex | ast.Expression:
         """Evaluate the expression with the given values of the expression's parameters.
 
         Args:
@@ -142,7 +142,7 @@ class PulseExpression(ast.NodeTransformer):
         return expr.body.n
 
     @staticmethod
-    def _match_ops(opr: ast.AST, opr_dict: Dict, *args) -> complex:
+    def _match_ops(opr: ast.AST, opr_dict: dict, *args) -> complex:
         """Helper method to apply operators.
 
         Args:
@@ -199,7 +199,7 @@ class PulseExpression(ast.NodeTransformer):
         """
         return node
 
-    def visit_Name(self, node: ast.Name) -> Union[ast.Name, ast.Constant]:
+    def visit_Name(self, node: ast.Name) -> ast.Name | ast.Constant:
         """Evaluate name and return ast.Constant if it is bound.
 
         Args:
@@ -232,7 +232,7 @@ class PulseExpression(ast.NodeTransformer):
         self._params.add(node.id)
         return node
 
-    def visit_UnaryOp(self, node: ast.UnaryOp) -> Union[ast.UnaryOp, ast.Constant]:
+    def visit_UnaryOp(self, node: ast.UnaryOp) -> ast.UnaryOp | ast.Constant:
         """Evaluate unary operation and return ast.Constant if operand is bound.
 
         Args:
@@ -247,7 +247,7 @@ class PulseExpression(ast.NodeTransformer):
             return ast.copy_location(val, node)
         return node
 
-    def visit_BinOp(self, node: ast.BinOp) -> Union[ast.BinOp, ast.Constant]:
+    def visit_BinOp(self, node: ast.BinOp) -> ast.BinOp | ast.Constant:
         """Evaluate binary operation and return ast.Constant if operands are bound.
 
         Args:
@@ -267,7 +267,7 @@ class PulseExpression(ast.NodeTransformer):
             return ast.copy_location(val, node)
         return node
 
-    def visit_Call(self, node: ast.Call) -> Union[ast.Call, ast.Constant]:
+    def visit_Call(self, node: ast.Call) -> ast.Call | ast.Constant:
         """Evaluate function and return ast.Constant if all arguments are bound.
 
         Args:

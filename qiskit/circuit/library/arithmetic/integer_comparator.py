@@ -45,8 +45,8 @@ class IntegerComparator(BlueprintCircuit):
 
     def __init__(
         self,
-        num_state_qubits: Optional[int] = None,
-        value: Optional[int] = None,
+        num_state_qubits: int | None = None,
+        value: int | None = None,
         geq: bool = True,
         name: str = "cmp",
     ) -> None:
@@ -125,7 +125,7 @@ class IntegerComparator(BlueprintCircuit):
         return self._num_state_qubits
 
     @num_state_qubits.setter
-    def num_state_qubits(self, num_state_qubits: Optional[int]) -> None:
+    def num_state_qubits(self, num_state_qubits: int | None) -> None:
         """Set the number of state qubits.
 
         Note that this will change the quantum registers.
@@ -150,7 +150,7 @@ class IntegerComparator(BlueprintCircuit):
                     qr_ancilla = AncillaRegister(num_ancillas)
                     self.add_register(qr_ancilla)
 
-    def _get_twos_complement(self) -> List[int]:
+    def _get_twos_complement(self) -> list[int]:
         """Returns the 2's complement of ``self.value`` as array.
 
         Returns:

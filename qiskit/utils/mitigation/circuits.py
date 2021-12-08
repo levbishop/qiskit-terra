@@ -23,7 +23,7 @@ from __future__ import annotations
 from typing import List, Tuple, Union
 
 
-def count_keys(num_qubits: int) -> List[str]:
+def count_keys(num_qubits: int) -> list[str]:
     """Return ordered count keys.
 
     Args:
@@ -38,11 +38,11 @@ def count_keys(num_qubits: int) -> List[str]:
 
 
 def complete_meas_cal(
-    qubit_list: List[int] = None,
-    qr: Union[int, List["QuantumRegister"]] = None,
-    cr: Union[int, List["ClassicalRegister"]] = None,
+    qubit_list: list[int] = None,
+    qr: int | list[QuantumRegister] = None,
+    cr: int | list[ClassicalRegister] = None,
     circlabel: str = "",
-) -> Tuple[List["QuantumCircuit"], List[str]]:
+) -> tuple[list[QuantumCircuit], list[str]]:
     """
     Return a list of measurement calibration circuits for the full
     Hilbert space.
@@ -115,11 +115,11 @@ def complete_meas_cal(
 
 
 def tensored_meas_cal(
-    mit_pattern: List[List[int]] = None,
-    qr: Union[int, List["QuantumRegister"]] = None,
-    cr: Union[int, List["ClassicalRegister"]] = None,
+    mit_pattern: list[list[int]] = None,
+    qr: int | list[QuantumRegister] = None,
+    cr: int | list[ClassicalRegister] = None,
     circlabel: str = "",
-) -> Tuple[List["QuantumCircuit"], List[List[int]]]:
+) -> tuple[list[QuantumCircuit], list[list[int]]]:
     """
     Return a list of calibration circuits
 

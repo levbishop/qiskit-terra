@@ -70,9 +70,9 @@ class PauliTwoDesign(TwoLocal):
 
     def __init__(
         self,
-        num_qubits: Optional[int] = None,
+        num_qubits: int | None = None,
         reps: int = 3,
-        seed: Optional[int] = None,
+        seed: int | None = None,
         insert_barriers: bool = False,
         name: str = "PauliTwoDesign",
     ):

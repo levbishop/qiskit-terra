@@ -53,9 +53,9 @@ class PauliEvolutionGate(Gate):
     def __init__(
         self,
         operator,
-        time: Union[float, ParameterExpression] = 1.0,
-        label: Optional[str] = None,
-        synthesis: Optional[EvolutionSynthesis] = None,
+        time: float | ParameterExpression = 1.0,
+        label: str | None = None,
+        synthesis: EvolutionSynthesis | None = None,
     ) -> None:
         """
         Args:
@@ -89,7 +89,7 @@ class PauliEvolutionGate(Gate):
         """Unroll, where the default synthesis is matrix based."""
         self.definition = self.synthesis.synthesize(self)
 
-    def inverse(self) -> "PauliEvolutionGate":
+    def inverse(self) -> PauliEvolutionGate:
         return PauliEvolutionGate(operator=self.operator, time=-self.time, synthesis=self.synthesis)
 
 

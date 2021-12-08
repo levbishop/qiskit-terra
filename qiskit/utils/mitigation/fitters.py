@@ -39,8 +39,8 @@ class CompleteMeasFitter:
     def __init__(
         self,
         results,
-        state_labels: List[str],
-        qubit_list: List[int] = None,
+        state_labels: list[str],
+        qubit_list: list[int] = None,
         circlabel: str = "",
     ):
         """
@@ -219,8 +219,8 @@ class TensoredMeasFitter:
     def __init__(
         self,
         results,
-        mit_pattern: List[List[int]],
-        substate_labels_list: List[List[str]] = None,
+        mit_pattern: list[list[int]],
+        substate_labels_list: list[list[str]] = None,
         circlabel: str = "",
     ):
         """

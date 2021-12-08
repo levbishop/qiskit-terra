@@ -38,9 +38,9 @@ class ProductFormula(EvolutionSynthesis):
         reps: int = 1,
         insert_barriers: bool = False,
         cx_structure: str = "chain",
-        atomic_evolution: Optional[
-            Callable[[Union[Pauli, SparsePauliOp], float], QuantumCircuit]
-        ] = None,
+        atomic_evolution: None | (
+            Callable[[Pauli | SparsePauliOp, float], QuantumCircuit]
+        ) = None,
     ) -> None:
         """
         Args:
@@ -67,9 +67,9 @@ class ProductFormula(EvolutionSynthesis):
 
 def evolve_pauli(
     pauli: Pauli,
-    time: Union[float, ParameterExpression] = 1.0,
+    time: float | ParameterExpression = 1.0,
     cx_structure: str = "chain",
-    label: Optional[str] = None,
+    label: str | None = None,
 ) -> QuantumCircuit:
     r"""Construct a circuit implementing the time evolution of a single Pauli string.
 

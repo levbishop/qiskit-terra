@@ -43,13 +43,13 @@ class Acquire(Instruction):
 
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
+        duration: int | ParameterExpression,
         channel: AcquireChannel,
-        mem_slot: Optional[MemorySlot] = None,
-        reg_slot: Optional[RegisterSlot] = None,
-        kernel: Optional[Kernel] = None,
-        discriminator: Optional[Discriminator] = None,
-        name: Optional[str] = None,
+        mem_slot: MemorySlot | None = None,
+        reg_slot: RegisterSlot | None = None,
+        kernel: Kernel | None = None,
+        discriminator: Discriminator | None = None,
+        name: str | None = None,
     ):
         """Create a new Acquire instruction.
 
@@ -90,12 +90,12 @@ class Acquire(Instruction):
         return self.operands[1]
 
     @property
-    def channels(self) -> Tuple[Union[AcquireChannel, MemorySlot, RegisterSlot]]:
+    def channels(self) -> tuple[AcquireChannel | MemorySlot | RegisterSlot]:
         """Returns the channels that this schedule uses."""
         return tuple(self.operands[ind] for ind in (1, 2, 3) if self.operands[ind] is not None)
 
     @property
-    def duration(self) -> Union[int, ParameterExpression]:
+    def duration(self) -> int | ParameterExpression:
         """Duration of this instruction."""
         return self.operands[0]
 

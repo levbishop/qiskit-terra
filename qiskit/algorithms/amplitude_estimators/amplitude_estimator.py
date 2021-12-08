@@ -27,7 +27,7 @@ class AmplitudeEstimator:
     """The Amplitude Estimation interface."""
 
     @abstractmethod
-    def estimate(self, estimation_problem: EstimationProblem) -> "AmplitudeEstimatorResult":
+    def estimate(self, estimation_problem: EstimationProblem) -> AmplitudeEstimatorResult:
         """Run the amplitude estimation algorithm.
 
         Args:
@@ -52,12 +52,12 @@ class AmplitudeEstimatorResult(AlgorithmResult):
         self._confidence_interval_processed = None
 
     @property
-    def circuit_results(self) -> Optional[Union[np.ndarray, Dict[str, int]]]:
+    def circuit_results(self) -> np.ndarray | dict[str, int] | None:
         """Return the circuit results. Can be a statevector or counts dictionary."""
         return self._circuit_results
 
     @circuit_results.setter
-    def circuit_results(self, value: Union[np.ndarray, Dict[str, int]]) -> None:
+    def circuit_results(self, value: np.ndarray | dict[str, int]) -> None:
         """Set the circuit results."""
         self._circuit_results = value
 
@@ -112,21 +112,21 @@ class AmplitudeEstimatorResult(AlgorithmResult):
         self._post_processing = post_processing
 
     @property
-    def confidence_interval(self) -> Tuple[float, float]:
+    def confidence_interval(self) -> tuple[float, float]:
         """Return the confidence interval for the amplitude (95% interval by default)."""
         return self._confidence_interval
 
     @confidence_interval.setter
-    def confidence_interval(self, confidence_interval: Tuple[float, float]) -> None:
+    def confidence_interval(self, confidence_interval: tuple[float, float]) -> None:
         """Set the confidence interval for the amplitude (95% interval by default)."""
         self._confidence_interval = confidence_interval
 
     @property
-    def confidence_interval_processed(self) -> Tuple[float, float]:
+    def confidence_interval_processed(self) -> tuple[float, float]:
         """Return the post-processed confidence interval (95% interval by default)."""
         return self._confidence_interval_processed
 
     @confidence_interval_processed.setter
-    def confidence_interval_processed(self, confidence_interval: Tuple[float, float]) -> None:
+    def confidence_interval_processed(self, confidence_interval: tuple[float, float]) -> None:
         """Set the post-processed confidence interval (95% interval by default)."""
         self._confidence_interval_processed = confidence_interval

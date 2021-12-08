@@ -108,7 +108,7 @@ class AerPauliExpectation(ExpectationBase):
             f"Conversion of OperatorStateFn of {operator.__class__.__name__} is not defined."
         )
 
-    def compute_variance(self, exp_op: OperatorBase) -> Union[list, float]:
+    def compute_variance(self, exp_op: OperatorBase) -> list | float:
         r"""
         Compute the variance of the expectation estimator. Because Aer takes this expectation
         with matrix multiplication, the estimation is exact and the variance is always 0,

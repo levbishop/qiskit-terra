@@ -136,7 +136,7 @@ class ClassicalFunction(ClassicalElement):
     def synth(
         self,
         registerless: bool = True,
-        synthesizer: Optional[Callable[[ClassicalElement], QuantumCircuit]] = None,
+        synthesizer: Callable[[ClassicalElement], QuantumCircuit] | None = None,
     ) -> QuantumCircuit:
         """Synthesis the logic network into a :class:`~qiskit.circuit.QuantumCircuit`.
 

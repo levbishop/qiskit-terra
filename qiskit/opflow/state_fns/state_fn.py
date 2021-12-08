@@ -53,20 +53,20 @@ class StateFn(OperatorBase):
     # pylint: disable=unused-argument
     def __new__(
         cls,
-        primitive: Union[
-            str,
-            dict,
-            Result,
-            list,
-            np.ndarray,
-            Statevector,
-            QuantumCircuit,
-            Instruction,
-            OperatorBase,
-        ] = None,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: (
+            str |
+            dict |
+            Result |
+            list |
+            np.ndarray |
+            Statevector |
+            QuantumCircuit |
+            Instruction |
+            OperatorBase
+        ) = None,
+        coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
-    ) -> "StateFn":
+    ) -> StateFn:
         """A factory method to produce the correct type of StateFn subclass
         based on the primitive passed in. Primitive, coeff, and is_measurement arguments
         are passed into subclass's init() as-is automatically by new().
@@ -116,18 +116,18 @@ class StateFn(OperatorBase):
     # TODO allow normalization somehow?
     def __init__(
         self,
-        primitive: Union[
-            str,
-            dict,
-            Result,
-            list,
-            np.ndarray,
-            Statevector,
-            QuantumCircuit,
-            Instruction,
-            OperatorBase,
-        ] = None,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: (
+            str |
+            dict |
+            Result |
+            list |
+            np.ndarray |
+            Statevector |
+            QuantumCircuit |
+            Instruction |
+            OperatorBase
+        ) = None,
+        coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
     ) -> None:
         """
@@ -147,7 +147,7 @@ class StateFn(OperatorBase):
         return self._primitive
 
     @property
-    def coeff(self) -> Union[complex, ParameterExpression]:
+    def coeff(self) -> complex | ParameterExpression:
         """A coefficient by which the state function is multiplied."""
         return self._coeff
 
@@ -157,7 +157,7 @@ class StateFn(OperatorBase):
         return self._is_measurement
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {
             "primitive": self._primitive,
@@ -165,7 +165,7 @@ class StateFn(OperatorBase):
             "is_measurement": self._is_measurement,
         }
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         raise NotImplementedError
 
     @property
@@ -178,10 +178,10 @@ class StateFn(OperatorBase):
     def adjoint(self) -> OperatorBase:
         raise NotImplementedError
 
-    def _expand_dim(self, num_qubits: int) -> "StateFn":
+    def _expand_dim(self, num_qubits: int) -> StateFn:
         raise NotImplementedError
 
-    def permute(self, permutation: List[int]) -> OperatorBase:
+    def permute(self, permutation: list[int]) -> OperatorBase:
         """Permute the qubits of the state function.
 
         Args:
@@ -200,7 +200,7 @@ class StateFn(OperatorBase):
         return self.primitive == other.primitive
         # Will return NotImplementedError if not supported
 
-    def mul(self, scalar: Union[complex, ParameterExpression]) -> OperatorBase:
+    def mul(self, scalar: complex | ParameterExpression) -> OperatorBase:
         if not isinstance(scalar, (int, float, complex, ParameterExpression)):
             raise ValueError(
                 "Operators can only be scalar multiplied by float or complex, not "
@@ -241,7 +241,7 @@ class StateFn(OperatorBase):
         """
         raise NotImplementedError
 
-    def tensorpower(self, other: int) -> Union[OperatorBase, int]:
+    def tensorpower(self, other: int) -> OperatorBase | int:
         if not isinstance(other, int) or other <= 0:
             raise TypeError("Tensorpower can only take positive int arguments")
         temp = StateFn(
@@ -252,8 +252,8 @@ class StateFn(OperatorBase):
         return temp
 
     def _expand_shorter_operator_and_permute(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None
-    ) -> Tuple[OperatorBase, OperatorBase]:
+        self, other: OperatorBase, permutation: list[int] | None = None
+    ) -> tuple[OperatorBase, OperatorBase]:
         # pylint: disable=cyclic-import
         from ..operator_globals import Zero
 
@@ -286,7 +286,7 @@ class StateFn(OperatorBase):
         raise NotImplementedError
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
         r"""
         Composition (Linear algebra-style: A@B(x) = A(B(x))) is not well defined for states
@@ -358,10 +358,10 @@ class StateFn(OperatorBase):
 
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         raise NotImplementedError
 
     @property
@@ -391,7 +391,7 @@ class StateFn(OperatorBase):
         return self
 
     def traverse(
-        self, convert_fn: Callable, coeff: Optional[Union[complex, ParameterExpression]] = None
+        self, convert_fn: Callable, coeff: complex | ParameterExpression | None = None
     ) -> OperatorBase:
         r"""
         Apply the convert_fn to the internal primitive if the primitive is an Operator (as in
@@ -438,7 +438,7 @@ class StateFn(OperatorBase):
 
     def sample(
         self, shots: int = 1024, massive: bool = False, reverse_endianness: bool = False
-    ) -> Dict[str, float]:
+    ) -> dict[str, float]:
         """Sample the state function as a normalized probability distribution. Returns dict of
         bitstrings in order of probability, with values being probability.
 

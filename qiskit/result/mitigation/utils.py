@@ -36,7 +36,7 @@ def z_diagonal(dim, dtype=float):
     return (-1) ** np.mod(parity, 2)
 
 
-def expval_with_stddev(coeffs: np.ndarray, probs: np.ndarray, shots: int) -> Tuple[float, float]:
+def expval_with_stddev(coeffs: np.ndarray, probs: np.ndarray, shots: int) -> tuple[float, float]:
     """Compute expectation value and standard deviation.
     Args:
         coeffs: array of diagonal operator coefficients.
@@ -88,7 +88,7 @@ def str2diag(string):
     return ret
 
 
-def counts_to_vector(counts: Counts, num_qubits: int) -> Tuple[np.ndarray, int]:
+def counts_to_vector(counts: Counts, num_qubits: int) -> tuple[np.ndarray, int]:
     """Transforms Counts to a probability vector"""
     vec = np.zeros(2 ** num_qubits, dtype=float)
     shots = 0
@@ -100,7 +100,7 @@ def counts_to_vector(counts: Counts, num_qubits: int) -> Tuple[np.ndarray, int]:
 
 
 def remap_qubits(
-    vec: np.ndarray, num_qubits: int, qubits: Optional[List[int]] = None
+    vec: np.ndarray, num_qubits: int, qubits: list[int] | None = None
 ) -> np.ndarray:
     """Remapping the qubits"""
     if qubits is not None:
@@ -113,9 +113,9 @@ def remap_qubits(
 
 def marganalize_counts(
     counts: Counts,
-    qubit_index: Dict[int, int],
-    qubits: Optional[List[int]] = None,
-    clbits: Optional[List[int]] = None,
+    qubit_index: dict[int, int],
+    qubits: list[int] | None = None,
+    clbits: list[int] | None = None,
 ) -> np.ndarray:
     """Marginalization of the Counts. Verify that number of clbits equals to the number of qubits."""
     if clbits is not None:
@@ -136,10 +136,10 @@ def marganalize_counts(
 
 def counts_probability_vector(
     counts: Counts,
-    qubit_index: Dict[int, int],
-    qubits: Optional[List[int]] = None,
-    clbits: Optional[List[int]] = None,
-) -> Tuple[np.ndarray, int]:
+    qubit_index: dict[int, int],
+    qubits: list[int] | None = None,
+    clbits: list[int] | None = None,
+) -> tuple[np.ndarray, int]:
     """Compute a probability vector for all count outcomes.
 
     Args:

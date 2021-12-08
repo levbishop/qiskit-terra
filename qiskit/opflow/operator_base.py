@@ -51,7 +51,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
 
     @property
     @abstractmethod
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings of this object in a dictionary.
 
         You can, for example, use this ``settings`` dictionary to serialize the
@@ -81,7 +81,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         r"""Return a set of strings describing the primitives contained in the Operator. For
         example, ``{'QuantumCircuit', 'Pauli'}``. For hierarchical Operators, such as ``ListOps``,
         this can help illuminate the primitives represented in the various recursive levels,
@@ -95,10 +95,10 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     @abstractmethod
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, "OperatorBase", Statevector]
-        ] = None,
-    ) -> Union["OperatorBase", complex]:
+        front: None | (
+            Union[str, dict[str, complex], np.ndarray, OperatorBase, Statevector]
+        ) = None,
+    ) -> Union[OperatorBase, complex]:
         r"""
         Evaluate the Operator's underlying function, either on a binary string or another Operator.
         A square binary Operator can be defined as a function taking a binary function to another
@@ -154,12 +154,12 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def to_matrix_op(self, massive: bool = False) -> "OperatorBase":
+    def to_matrix_op(self, massive: bool = False) -> OperatorBase:
         """Returns a ``MatrixOp`` equivalent to this Operator."""
         raise NotImplementedError
 
     @abstractmethod
-    def to_circuit_op(self) -> "OperatorBase":
+    def to_circuit_op(self) -> OperatorBase:
         """Returns a ``CircuitOp`` equivalent to this Operator."""
         raise NotImplementedError
 
@@ -190,7 +190,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     # Addition / Subtraction
 
     @abstractmethod
-    def add(self, other: "OperatorBase") -> "OperatorBase":
+    def add(self, other: OperatorBase) -> OperatorBase:
         r"""Return Operator addition of self and other, overloaded by ``+``.
 
         Args:
@@ -205,7 +205,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
 
     # Negation
 
-    def neg(self) -> "OperatorBase":
+    def neg(self) -> OperatorBase:
         r"""Return the Operator's negation, effectively just multiplying by -1.0,
         overloaded by ``-``.
 
@@ -217,7 +217,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     # Adjoint
 
     @abstractmethod
-    def adjoint(self) -> "OperatorBase":
+    def adjoint(self) -> OperatorBase:
         r"""Return a new Operator equal to the Operator's adjoint (conjugate transpose),
         overloaded by ``~``. For StateFns, this also turns the StateFn into a measurement.
 
@@ -242,7 +242,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         return self.equals(cast(OperatorBase, other))
 
     @abstractmethod
-    def equals(self, other: "OperatorBase") -> bool:
+    def equals(self, other: OperatorBase) -> bool:
         r"""
         Evaluate Equality between Operators, overloaded by ``==``. Only returns True if self and
         other are of the same representation (e.g. a DictStateFn and CircuitStateFn will never be
@@ -263,7 +263,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
 
     # pylint: disable=arguments-differ
     @abstractmethod
-    def mul(self, scalar: Union[complex, ParameterExpression]) -> "OperatorBase":
+    def mul(self, scalar: complex | ParameterExpression) -> OperatorBase:
         r"""
         Returns the scalar multiplication of the Operator, overloaded by ``*``, including
         support for Terra's ``Parameters``, which can be bound to values later (via
@@ -279,7 +279,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def tensor(self, other: "OperatorBase") -> "OperatorBase":
+    def tensor(self, other: OperatorBase) -> OperatorBase:
         r"""Return tensor product between self and other, overloaded by ``^``.
         Note: You must be conscious of Qiskit's big-endian bit printing convention.
         Meaning, X.tensor(Y) produces an X on qubit 0 and an Y on qubit 1, or X⨂Y,
@@ -300,7 +300,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def tensorpower(self, other: int) -> Union["OperatorBase", int]:
+    def tensorpower(self, other: int) -> Union[OperatorBase, int]:
         r"""Return tensor product with self multiple times, overloaded by ``^``.
 
         Args:
@@ -322,11 +322,11 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     @abstractmethod
     def assign_parameters(
         self,
-        param_dict: Dict[
+        param_dict: dict[
             ParameterExpression,
-            Union[complex, ParameterExpression, List[Union[complex, ParameterExpression]]],
+            complex | ParameterExpression | list[complex | ParameterExpression],
         ],
-    ) -> "OperatorBase":
+    ) -> OperatorBase:
         """Binds scalar values to any Terra ``Parameters`` in the coefficients or primitives of
         the Operator, or substitutes one ``Parameter`` for another. This method differs from
         Terra's ``assign_parameters`` in that it also supports lists of values to assign for a
@@ -347,7 +347,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def _expand_dim(self, num_qubits: int) -> "OperatorBase":
+    def _expand_dim(self, num_qubits: int) -> OperatorBase:
         """Expands the operator with identity operator of dimension 2**num_qubits.
 
         Returns:
@@ -357,7 +357,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def permute(self, permutation: List[int]) -> "OperatorBase":
+    def permute(self, permutation: list[int]) -> OperatorBase:
         """Permutes the qubits of the operator.
 
         Args:
@@ -374,11 +374,11 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
 
     def bind_parameters(
         self,
-        param_dict: Dict[
+        param_dict: dict[
             ParameterExpression,
-            Union[complex, ParameterExpression, List[Union[complex, ParameterExpression]]],
+            complex | ParameterExpression | list[complex | ParameterExpression],
         ],
-    ) -> "OperatorBase":
+    ) -> OperatorBase:
         r"""
         Same as assign_parameters, but maintained for consistency with QuantumCircuit in
         Terra (which has both assign_parameters and bind_parameters).
@@ -388,8 +388,8 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     # Mostly copied from terra, but with list unrolling added:
     @staticmethod
     def _unroll_param_dict(
-        value_dict: Dict[Union[ParameterExpression, ParameterVector], Union[complex, List[complex]]]
-    ) -> Union[Dict[ParameterExpression, complex], List[Dict[ParameterExpression, complex]]]:
+        value_dict: dict[ParameterExpression | ParameterVector, complex | list[complex]]
+    ) -> dict[ParameterExpression, complex] | list[dict[ParameterExpression, complex]]:
         """Unrolls the ParameterVectors in a param_dict into separate Parameters, and unrolls
         parameterization value lists into separate param_dicts without list nesting."""
         unrolled_value_dict = {}
@@ -419,13 +419,13 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         return unrolled_value_dict  # type: ignore
 
     @staticmethod
-    def _get_param_dict_for_index(unrolled_dict: Dict[ParameterExpression, List[complex]], i: int):
+    def _get_param_dict_for_index(unrolled_dict: dict[ParameterExpression, list[complex]], i: int):
         """Gets a single non-list-nested param_dict for a given list index from a nested one."""
         return {k: v[i] for (k, v) in unrolled_dict.items()}
 
     def _expand_shorter_operator_and_permute(
-        self, other: "OperatorBase", permutation: Optional[List[int]] = None
-    ) -> Tuple["OperatorBase", "OperatorBase"]:
+        self, other: OperatorBase, permutation: list[int] | None = None
+    ) -> tuple[OperatorBase, OperatorBase]:
         if permutation is not None:
             other = other.permute(permutation)
         new_self = self
@@ -442,7 +442,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
                 new_self = self._expand_dim(other.num_qubits - self.num_qubits)
         return new_self, other
 
-    def copy(self) -> "OperatorBase":
+    def copy(self) -> OperatorBase:
         """Return a deep copy of the Operator."""
         return deepcopy(self)
 
@@ -451,8 +451,8 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     # pylint: disable=arguments-differ
     @abstractmethod
     def compose(
-        self, other: "OperatorBase", permutation: Optional[List[int]] = None, front: bool = False
-    ) -> "OperatorBase":
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
+    ) -> OperatorBase:
         r"""Return Operator Composition between self and other (linear algebra-style:
         A@B(x) = A(B(x))), overloaded by ``@``.
 

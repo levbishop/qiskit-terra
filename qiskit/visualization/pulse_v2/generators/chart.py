@@ -45,8 +45,8 @@ from qiskit.visualization.pulse_v2 import drawings, types, device_info
 
 
 def gen_baseline(
-    data: types.ChartAxis, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.LineData]:
+    data: types.ChartAxis, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.LineData]:
     """Generate the baseline associated with the chart.
 
     Stylesheets:
@@ -81,8 +81,8 @@ def gen_baseline(
 
 
 def gen_chart_name(
-    data: types.ChartAxis, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.ChartAxis, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate the name of chart.
 
     Stylesheets:
@@ -118,8 +118,8 @@ def gen_chart_name(
 
 
 def gen_chart_scale(
-    data: types.ChartAxis, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.ChartAxis, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate the current scaling value of the chart.
 
     Stylesheets:
@@ -158,8 +158,8 @@ def gen_chart_scale(
 
 
 def gen_channel_freqs(
-    data: types.ChartAxis, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.ChartAxis, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate the frequency values of associated channels.
 
     Stylesheets:

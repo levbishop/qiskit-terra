@@ -81,12 +81,12 @@ class LinearAmplitudeFunction(QuantumCircuit):
     def __init__(
         self,
         num_state_qubits: int,
-        slope: Union[float, List[float]],
-        offset: Union[float, List[float]],
-        domain: Tuple[float, float],
-        image: Tuple[float, float],
+        slope: float | list[float],
+        offset: float | list[float],
+        domain: tuple[float, float],
+        image: tuple[float, float],
         rescaling_factor: float = 1,
-        breakpoints: Optional[List[float]] = None,
+        breakpoints: list[float] | None = None,
         name: str = "F",
     ) -> None:
         r"""

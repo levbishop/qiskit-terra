@@ -54,7 +54,7 @@ class QDrift(TrotterizationBase):
                 "Trotterization converters can only convert operators with real coefficients."
             )
 
-        operator_iter: Union[PauliSumOp, List[PrimitiveOp]]
+        operator_iter: PauliSumOp | list[PrimitiveOp]
 
         if isinstance(operator, PauliSumOp):
             operator_iter = operator

@@ -59,7 +59,7 @@ class RZGate(Gate):
         `1612.00858 <https://arxiv.org/abs/1612.00858>`_
     """
 
-    def __init__(self, phi: ParameterValueType, label: Optional[str] = None):
+    def __init__(self, phi: ParameterValueType, label: str | None = None):
         """Create new RZ gate."""
         super().__init__("rz", 1, [phi], label=label)
 
@@ -84,8 +84,8 @@ class RZGate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Return a (multi-)controlled-RZ gate.
 
@@ -183,8 +183,8 @@ class CRZGate(ControlledGate):
     def __init__(
         self,
         theta: ParameterValueType,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Create new CRZ gate."""
         super().__init__(

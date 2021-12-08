@@ -33,17 +33,17 @@ from qiskit.visualization.timeline import types, core, stylesheet
 
 def draw(
     program: circuit.QuantumCircuit,
-    style: Optional[Dict[str, Any]] = None,
-    time_range: Tuple[int, int] = None,
-    disable_bits: List[types.Bits] = None,
-    show_clbits: Optional[bool] = None,
-    show_idle: Optional[bool] = None,
-    show_barriers: Optional[bool] = None,
-    show_delays: Optional[bool] = None,
+    style: dict[str, Any] | None = None,
+    time_range: tuple[int, int] = None,
+    disable_bits: list[types.Bits] = None,
+    show_clbits: bool | None = None,
+    show_idle: bool | None = None,
+    show_barriers: bool | None = None,
+    show_delays: bool | None = None,
     show_labels: bool = True,
-    plotter: Optional[str] = types.Plotter.MPL.value,
-    axis: Optional[Any] = None,
-    filename: Optional[str] = None,
+    plotter: str | None = types.Plotter.MPL.value,
+    axis: Any | None = None,
+    filename: str | None = None,
 ):
     r"""Generate visualization data for scheduled circuit programs.
 

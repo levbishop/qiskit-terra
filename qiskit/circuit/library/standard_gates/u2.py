@@ -65,7 +65,7 @@ class U2Gate(Gate):
     """
 
     def __init__(
-        self, phi: ParameterValueType, lam: ParameterValueType, label: Optional[str] = None
+        self, phi: ParameterValueType, lam: ParameterValueType, label: str | None = None
     ):
         """Create new U2 gate."""
         super().__init__("u2", 1, [phi, lam], label=label)

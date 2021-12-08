@@ -69,7 +69,7 @@ class U3Gate(Gate):
         theta: ParameterValueType,
         phi: ParameterValueType,
         lam: ParameterValueType,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
         """Create new U3 gate."""
         super().__init__("u3", 1, [theta, phi, lam], label=label)
@@ -84,8 +84,8 @@ class U3Gate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Return a (multi-)controlled-U3 gate.
 
@@ -191,8 +191,8 @@ class CU3Gate(ControlledGate):
         theta: ParameterValueType,
         phi: ParameterValueType,
         lam: ParameterValueType,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Create new CU3 gate."""
         super().__init__(

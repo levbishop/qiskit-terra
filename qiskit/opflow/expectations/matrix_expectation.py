@@ -43,7 +43,7 @@ class MatrixExpectation(ExpectationBase):
         else:
             return operator
 
-    def compute_variance(self, exp_op: OperatorBase) -> Union[list, float]:
+    def compute_variance(self, exp_op: OperatorBase) -> list | float:
         r"""
         Compute the variance of the expectation estimator. Because this expectation
         works by matrix multiplication, the estimation is exact and the variance is

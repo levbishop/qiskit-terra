@@ -82,7 +82,7 @@ def _apply_mcu_graycode(circuit, theta, phi, lam, ctls, tgt, use_basis_gates):
 def mcrx(
     self,
     theta: ParameterValueType,
-    q_controls: Union[QuantumRegister, List[Qubit]],
+    q_controls: QuantumRegister | list[Qubit],
     q_target: Qubit,
     use_basis_gates: bool = False,
 ):
@@ -148,9 +148,9 @@ def mcrx(
 def mcry(
     self,
     theta: ParameterValueType,
-    q_controls: Union[QuantumRegister, List[Qubit]],
+    q_controls: QuantumRegister | list[Qubit],
     q_target: Qubit,
-    q_ancillae: Optional[Union[QuantumRegister, Tuple[QuantumRegister, int]]] = None,
+    q_ancillae: QuantumRegister | tuple[QuantumRegister, int] | None = None,
     mode: str = None,
     use_basis_gates=False,
 ):
@@ -241,7 +241,7 @@ def mcry(
 def mcrz(
     self,
     lam: ParameterValueType,
-    q_controls: Union[QuantumRegister, List[Qubit]],
+    q_controls: QuantumRegister | list[Qubit],
     q_target: Qubit,
     use_basis_gates: bool = False,
 ):

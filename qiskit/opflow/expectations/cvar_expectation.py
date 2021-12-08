@@ -56,7 +56,7 @@ class CVaRExpectation(ExpectationBase):
 
     """
 
-    def __init__(self, alpha: float, expectation: Optional[ExpectationBase] = None) -> None:
+    def __init__(self, alpha: float, expectation: ExpectationBase | None = None) -> None:
         """
         Args:
             alpha: The alpha value describing the quantile considered in the expectation value.
@@ -93,7 +93,7 @@ class CVaRExpectation(ExpectationBase):
 
         return replace_with_cvar(expectation)
 
-    def compute_variance(self, exp_op: OperatorBase) -> Union[list, float]:
+    def compute_variance(self, exp_op: OperatorBase) -> list | float:
         """Returns the variance of the CVaR calculation
 
         Args:

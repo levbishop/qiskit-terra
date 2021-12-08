@@ -41,7 +41,7 @@ class LinCombFull(CircuitQFI):
     def convert(
         self,
         operator: CircuitStateFn,
-        params: Union[ParameterExpression, ParameterVector, List[ParameterExpression]],
+        params: ParameterExpression | ParameterVector | list[ParameterExpression],
     ) -> ListOp:
         r"""
         Args:

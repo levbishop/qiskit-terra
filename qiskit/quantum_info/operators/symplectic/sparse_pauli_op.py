@@ -137,7 +137,7 @@ class SparsePauliOp(LinearOp):
         )
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {"data": self._pauli_list, "coeffs": self._coeffs}
 

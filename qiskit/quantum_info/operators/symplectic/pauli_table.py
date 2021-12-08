@@ -186,7 +186,7 @@ class PauliTable(BaseOperator, AdjointMixin):
         return False
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {"data": self._array}
 

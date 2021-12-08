@@ -37,7 +37,7 @@ class TwoQubitReduction(ConverterBase):
     sectors, (block spin order) according to the number of particles in the system.
     """
 
-    def __init__(self, num_particles: Union[int, List[int], Tuple[int, int]]):
+    def __init__(self, num_particles: int | list[int] | tuple[int, int]):
         """
         Args:
             num_particles: number of particles, if it is a list,

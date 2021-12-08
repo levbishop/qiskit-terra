@@ -80,7 +80,7 @@ class U1Gate(Gate):
         `1612.00858 <https://arxiv.org/abs/1612.00858>`_
     """
 
-    def __init__(self, theta: ParameterValueType, label: Optional[str] = None):
+    def __init__(self, theta: ParameterValueType, label: str | None = None):
         """Create new U1 gate."""
         super().__init__("u1", 1, [theta], label=label)
 
@@ -101,8 +101,8 @@ class U1Gate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Return a (multi-)controlled-U1 gate.
 
@@ -176,8 +176,8 @@ class CU1Gate(ControlledGate):
     def __init__(
         self,
         theta: ParameterValueType,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Create new CU1 gate."""
         super().__init__(
@@ -220,8 +220,8 @@ class CU1Gate(ControlledGate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Controlled version of this gate.
 
@@ -286,8 +286,8 @@ class MCU1Gate(ControlledGate):
         self,
         lam: ParameterValueType,
         num_ctrl_qubits: int,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Create new MCU1 gate."""
         super().__init__(
@@ -324,8 +324,8 @@ class MCU1Gate(ControlledGate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Controlled version of this gate.
 

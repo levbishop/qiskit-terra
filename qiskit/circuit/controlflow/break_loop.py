@@ -46,7 +46,7 @@ class BreakLoopOp(Instruction):
 
     """
 
-    def __init__(self, num_qubits: int, num_clbits: int, label: Optional[str] = None):
+    def __init__(self, num_qubits: int, num_clbits: int, label: str | None = None):
         super().__init__("break_loop", num_qubits, num_clbits, [], label=label)
 
 
@@ -54,7 +54,7 @@ class BreakLoopPlaceholder(InstructionPlaceholder):
     """A placeholder instruction for use in control-flow context managers, when the number of qubits
     and clbits is not yet known."""
 
-    def __init__(self, *, label: Optional[str] = None):
+    def __init__(self, *, label: str | None = None):
         super().__init__("break_loop", 0, 0, [], label=label)
 
     def concrete_instruction(self, qubits, clbits):

@@ -152,20 +152,20 @@ class TwoLocal(NLocal):
 
     def __init__(
         self,
-        num_qubits: Optional[int] = None,
-        rotation_blocks: Optional[
-            Union[str, List[str], type, List[type], QuantumCircuit, List[QuantumCircuit]]
-        ] = None,
-        entanglement_blocks: Optional[
-            Union[str, List[str], type, List[type], QuantumCircuit, List[QuantumCircuit]]
-        ] = None,
-        entanglement: Union[str, List[List[int]], Callable[[int], List[int]]] = "full",
+        num_qubits: int | None = None,
+        rotation_blocks: None | (
+            str | list[str] | type | list[type] | QuantumCircuit | list[QuantumCircuit]
+        ) = None,
+        entanglement_blocks: None | (
+            str | list[str] | type | list[type] | QuantumCircuit | list[QuantumCircuit]
+        ) = None,
+        entanglement: str | list[list[int]] | Callable[[int], list[int]] = "full",
         reps: int = 3,
         skip_unentangled_qubits: bool = False,
         skip_final_rotation_layer: bool = False,
         parameter_prefix: str = "θ",
         insert_barriers: bool = False,
-        initial_state: Optional[Any] = None,
+        initial_state: Any | None = None,
         name: str = "TwoLocal",
     ) -> None:
         """Construct a new two-local circuit.
@@ -215,7 +215,7 @@ class TwoLocal(NLocal):
             name=name,
         )
 
-    def _convert_to_block(self, layer: Union[str, type, Gate, QuantumCircuit]) -> QuantumCircuit:
+    def _convert_to_block(self, layer: str | type | Gate | QuantumCircuit) -> QuantumCircuit:
         """For a layer provided as str (e.g. 'ry') or type (e.g. RYGate) this function returns the
         according layer type along with the number of parameters (e.g. (RYGate, 1)).
 
@@ -299,7 +299,7 @@ class TwoLocal(NLocal):
 
     def get_entangler_map(
         self, rep_num: int, block_num: int, num_block_qubits: int
-    ) -> List[List[int]]:
+    ) -> list[list[int]]:
         """Overloading to handle the special case of 1 qubit where the entanglement are ignored."""
         if self.num_qubits <= 1:
             return []

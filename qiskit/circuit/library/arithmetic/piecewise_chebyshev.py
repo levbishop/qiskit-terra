@@ -58,10 +58,10 @@ class PiecewiseChebyshev(BlueprintCircuit):
 
     def __init__(
         self,
-        f_x: Union[float, Callable[[int], float]],
-        degree: Optional[int] = None,
-        breakpoints: Optional[List[int]] = None,
-        num_state_qubits: Optional[int] = None,
+        f_x: float | Callable[[int], float],
+        degree: int | None = None,
+        breakpoints: list[int] | None = None,
+        num_state_qubits: int | None = None,
         name: str = "pw_cheb",
     ) -> None:
         r"""
@@ -123,7 +123,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
         return valid
 
     @property
-    def f_x(self) -> Union[float, Callable[[int], float]]:
+    def f_x(self) -> float | Callable[[int], float]:
         """The function to be approximated.
 
         Returns:
@@ -132,7 +132,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
         return self._f_x
 
     @f_x.setter
-    def f_x(self, f_x: Optional[Union[float, Callable[[int], float]]]) -> None:
+    def f_x(self, f_x: float | Callable[[int], float] | None) -> None:
         """Set the function to be approximated.
 
         Note that this may change the underlying quantum register, if the number of state qubits
@@ -157,7 +157,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
         return self._degree
 
     @degree.setter
-    def degree(self, degree: Optional[int]) -> None:
+    def degree(self, degree: int | None) -> None:
         """Set the error tolerance.
 
         Note that this may change the underlying quantum register, if the number of state qubits
@@ -173,7 +173,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
             self._reset_registers(self.num_state_qubits)
 
     @property
-    def breakpoints(self) -> List[int]:
+    def breakpoints(self) -> list[int]:
         """The breakpoints for the piecewise approximation.
 
         Returns:
@@ -196,7 +196,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
         return breakpoints
 
     @breakpoints.setter
-    def breakpoints(self, breakpoints: Optional[List[int]]) -> None:
+    def breakpoints(self, breakpoints: list[int] | None) -> None:
         """Set the breakpoints for the piecewise approximation.
 
         Note that this may change the underlying quantum register, if the number of state qubits
@@ -212,7 +212,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
             self._reset_registers(self.num_state_qubits)
 
     @property
-    def polynomials(self) -> List[List[float]]:
+    def polynomials(self) -> list[list[float]]:
         """The polynomials for the piecewise approximation.
 
         Returns:
@@ -270,7 +270,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
         return polynomials
 
     @polynomials.setter
-    def polynomials(self, polynomials: Optional[List[List[float]]]) -> None:
+    def polynomials(self, polynomials: list[list[float]] | None) -> None:
         """Set the polynomials for the piecewise approximation.
 
         Note that this may change the underlying quantum register, if the number of state qubits
@@ -295,7 +295,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
         return self._num_state_qubits
 
     @num_state_qubits.setter
-    def num_state_qubits(self, num_state_qubits: Optional[int]) -> None:
+    def num_state_qubits(self, num_state_qubits: int | None) -> None:
         """Set the number of state qubits.
 
         Note that this may change the underlying quantum register, if the number of state qubits
@@ -314,7 +314,7 @@ class PiecewiseChebyshev(BlueprintCircuit):
 
             self._reset_registers(num_state_qubits)
 
-    def _reset_registers(self, num_state_qubits: Optional[int]) -> None:
+    def _reset_registers(self, num_state_qubits: int | None) -> None:
         self.qregs = []
 
         if num_state_qubits is not None:

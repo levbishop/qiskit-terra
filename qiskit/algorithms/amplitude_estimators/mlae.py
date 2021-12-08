@@ -52,9 +52,9 @@ class MaximumLikelihoodAmplitudeEstimation(AmplitudeEstimator):
 
     def __init__(
         self,
-        evaluation_schedule: Union[List[int], int],
-        minimizer: Optional[MINIMIZER] = None,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None,
+        evaluation_schedule: list[int] | int,
+        minimizer: MINIMIZER | None = None,
+        quantum_instance: QuantumInstance | BaseBackend | Backend | None = None,
     ) -> None:
         r"""
         Args:
@@ -102,7 +102,7 @@ class MaximumLikelihoodAmplitudeEstimation(AmplitudeEstimator):
             self._minimizer = minimizer
 
     @property
-    def quantum_instance(self) -> Optional[QuantumInstance]:
+    def quantum_instance(self) -> QuantumInstance | None:
         """Get the quantum instance.
 
         Returns:
@@ -112,7 +112,7 @@ class MaximumLikelihoodAmplitudeEstimation(AmplitudeEstimator):
 
     @quantum_instance.setter
     def quantum_instance(
-        self, quantum_instance: Union[QuantumInstance, BaseBackend, Backend]
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend
     ) -> None:
         """Set quantum instance.
 
@@ -125,7 +125,7 @@ class MaximumLikelihoodAmplitudeEstimation(AmplitudeEstimator):
 
     def construct_circuits(
         self, estimation_problem: EstimationProblem, measurement: bool = False
-    ) -> List[QuantumCircuit]:
+    ) -> list[QuantumCircuit]:
         """Construct the Amplitude Estimation w/o QPE quantum circuits.
 
         Args:
@@ -171,11 +171,11 @@ class MaximumLikelihoodAmplitudeEstimation(AmplitudeEstimator):
 
     @staticmethod
     def compute_confidence_interval(
-        result: "MaximumLikelihoodAmplitudeEstimationResult",
+        result: MaximumLikelihoodAmplitudeEstimationResult,
         alpha: float,
         kind: str = "fisher",
         apply_post_processing: bool = False,
-    ) -> Tuple[float, float]:
+    ) -> tuple[float, float]:
         """Compute the `alpha` confidence interval using the method `kind`.
 
         The confidence level is (1 - `alpha`) and supported kinds are 'fisher',
@@ -221,11 +221,11 @@ class MaximumLikelihoodAmplitudeEstimation(AmplitudeEstimator):
 
     def compute_mle(
         self,
-        circuit_results: Union[List[Dict[str, int]], List[np.ndarray]],
+        circuit_results: list[dict[str, int]] | list[np.ndarray],
         estimation_problem: EstimationProblem,
-        num_state_qubits: Optional[int] = None,
+        num_state_qubits: int | None = None,
         return_counts: bool = False,
-    ) -> Union[float, Tuple[float, List[float]]]:
+    ) -> float | tuple[float, list[float]]:
         """Compute the MLE via a grid-search.
 
         This is a stable approach if sufficient gridpoints are used.
@@ -263,7 +263,7 @@ class MaximumLikelihoodAmplitudeEstimation(AmplitudeEstimator):
 
     def estimate(
         self, estimation_problem: EstimationProblem
-    ) -> "MaximumLikelihoodAmplitudeEstimationResult":
+    ) -> MaximumLikelihoodAmplitudeEstimationResult:
         if estimation_problem.state_preparation is None:
             raise AlgorithmError(
                 "Either the state_preparation variable or the a_factory "
@@ -358,22 +358,22 @@ class MaximumLikelihoodAmplitudeEstimationResult(AmplitudeEstimatorResult):
         self._minimizer = value
 
     @property
-    def good_counts(self) -> List[float]:
+    def good_counts(self) -> list[float]:
         """Return the percentage of good counts per circuit power."""
         return self._good_counts
 
     @good_counts.setter
-    def good_counts(self, counts: List[float]) -> None:
+    def good_counts(self, counts: list[float]) -> None:
         """Set the percentage of good counts per circuit power."""
         self._good_counts = counts
 
     @property
-    def evaluation_schedule(self) -> List[int]:
+    def evaluation_schedule(self) -> list[int]:
         """Return the evaluation schedule for the powers of the Grover operator."""
         return self._evaluation_schedule
 
     @evaluation_schedule.setter
-    def evaluation_schedule(self, evaluation_schedule: List[int]) -> None:
+    def evaluation_schedule(self, evaluation_schedule: list[int]) -> None:
         """Set the evaluation schedule for the powers of the Grover operator."""
         self._evaluation_schedule = evaluation_schedule
 
@@ -401,8 +401,8 @@ def _safe_max(array, default=(np.pi / 2)):
 
 
 def _compute_fisher_information(
-    result: "MaximumLikelihoodAmplitudeEstimationResult",
-    num_sum_terms: Optional[int] = None,
+    result: MaximumLikelihoodAmplitudeEstimationResult,
+    num_sum_terms: int | None = None,
     observed: bool = False,
 ) -> float:
     """Compute the Fisher information.
@@ -460,7 +460,7 @@ def _compute_fisher_information(
 
 def _fisher_confint(
     result: MaximumLikelihoodAmplitudeEstimationResult, alpha: float = 0.05, observed: bool = False
-) -> Tuple[float, float]:
+) -> tuple[float, float]:
     """Compute the `alpha` confidence interval based on the Fisher information.
 
     Args:
@@ -494,8 +494,8 @@ def _fisher_confint(
 def _likelihood_ratio_confint(
     result: MaximumLikelihoodAmplitudeEstimationResult,
     alpha: float = 0.05,
-    nevals: Optional[int] = None,
-) -> List[float]:
+    nevals: int | None = None,
+) -> list[float]:
     """Compute the likelihood-ratio confidence interval.
 
     Args:
@@ -543,10 +543,10 @@ def _likelihood_ratio_confint(
 
 
 def _get_counts(
-    circuit_results: List[Union[np.ndarray, List[float], Dict[str, int]]],
+    circuit_results: list[np.ndarray | list[float] | dict[str, int]],
     estimation_problem: EstimationProblem,
     num_state_qubits: int,
-) -> Tuple[List[float], List[int]]:
+) -> tuple[list[float], list[int]]:
     """Get the good and total counts.
 
     Returns:

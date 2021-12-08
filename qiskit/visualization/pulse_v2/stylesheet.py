@@ -230,7 +230,7 @@ class IQXDebugging(dict):
         return "Pulse style sheet for pulse programmers."
 
 
-def default_style() -> Dict[str, Any]:
+def default_style() -> dict[str, Any]:
     """Define default values of the pulse stylesheet."""
     return {
         "formatter.general.fig_width": 13,

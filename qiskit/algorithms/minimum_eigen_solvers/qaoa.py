@@ -59,15 +59,15 @@ class QAOA(VQE):
         self,
         optimizer: Optimizer = None,
         reps: int = 1,
-        initial_state: Optional[QuantumCircuit] = None,
-        mixer: Union[QuantumCircuit, OperatorBase] = None,
-        initial_point: Optional[np.ndarray] = None,
-        gradient: Optional[Union[GradientBase, Callable[[Union[np.ndarray, List]], List]]] = None,
-        expectation: Optional[ExpectationBase] = None,
+        initial_state: QuantumCircuit | None = None,
+        mixer: QuantumCircuit | OperatorBase = None,
+        initial_point: np.ndarray | None = None,
+        gradient: GradientBase | Callable[[np.ndarray | list], list] | None = None,
+        expectation: ExpectationBase | None = None,
         include_custom: bool = False,
         max_evals_grouped: int = 1,
-        callback: Optional[Callable[[int, np.ndarray, float, float], None]] = None,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None,
+        callback: Callable[[int, np.ndarray, float, float], None] | None = None,
+        quantum_instance: QuantumInstance | BaseBackend | Backend | None = None,
     ) -> None:
         """
         Args:
@@ -137,7 +137,7 @@ class QAOA(VQE):
             ).decompose()  # TODO remove decompose once #6674 is fixed
 
     @property
-    def initial_state(self) -> Optional[QuantumCircuit]:
+    def initial_state(self) -> QuantumCircuit | None:
         """
         Returns:
             Returns the initial state.
@@ -145,7 +145,7 @@ class QAOA(VQE):
         return self._initial_state
 
     @initial_state.setter
-    def initial_state(self, initial_state: Optional[QuantumCircuit]) -> None:
+    def initial_state(self, initial_state: QuantumCircuit | None) -> None:
         """
         Args:
             initial_state: Initial state to set.
@@ -153,7 +153,7 @@ class QAOA(VQE):
         self._initial_state = initial_state
 
     @property
-    def mixer(self) -> Union[QuantumCircuit, OperatorBase]:
+    def mixer(self) -> QuantumCircuit | OperatorBase:
         """
         Returns:
             Returns the mixer.
@@ -161,7 +161,7 @@ class QAOA(VQE):
         return self._mixer
 
     @mixer.setter
-    def mixer(self, mixer: Union[QuantumCircuit, OperatorBase]) -> None:
+    def mixer(self, mixer: QuantumCircuit | OperatorBase) -> None:
         """
         Args:
             mixer: Mixer to set.

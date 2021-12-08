@@ -80,12 +80,12 @@ class QFT(BlueprintCircuit):
 
     def __init__(
         self,
-        num_qubits: Optional[int] = None,
+        num_qubits: int | None = None,
         approximation_degree: int = 0,
         do_swaps: bool = True,
         inverse: bool = False,
         insert_barriers: bool = False,
-        name: Optional[str] = None,
+        name: str | None = None,
     ) -> None:
         """Construct a new QFT circuit.
 
@@ -213,7 +213,7 @@ class QFT(BlueprintCircuit):
         """Invalidate the current build of the circuit."""
         self._data = None
 
-    def inverse(self) -> "QFT":
+    def inverse(self) -> QFT:
         """Invert this circuit.
 
         Returns:

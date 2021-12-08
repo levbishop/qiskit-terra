@@ -80,23 +80,21 @@ class EfficientSU2(TwoLocal):
 
     def __init__(
         self,
-        num_qubits: Optional[int] = None,
-        su2_gates: Optional[
-            Union[
-                str,
-                type,
-                Instruction,
-                QuantumCircuit,
-                List[Union[str, type, Instruction, QuantumCircuit]],
-            ]
-        ] = None,
-        entanglement: Union[str, List[List[int]], Callable[[int], List[int]]] = "full",
+        num_qubits: int | None = None,
+        su2_gates: None | (
+                str |
+                type |
+                Instruction |
+                QuantumCircuit |
+                list[str | type | Instruction | QuantumCircuit]
+        ) = None,
+        entanglement: str | list[list[int]] | Callable[[int], list[int]] = "full",
         reps: int = 3,
         skip_unentangled_qubits: bool = False,
         skip_final_rotation_layer: bool = False,
         parameter_prefix: str = "θ",
         insert_barriers: bool = False,
-        initial_state: Optional[Any] = None,
+        initial_state: Any | None = None,
         name: str = "EfficientSU2",
     ) -> None:
         """Create a new EfficientSU2 2-local circuit.
@@ -144,7 +142,7 @@ class EfficientSU2(TwoLocal):
         )
 
     @property
-    def parameter_bounds(self) -> List[Tuple[float, float]]:
+    def parameter_bounds(self) -> list[tuple[float, float]]:
         """Return the parameter bounds.
 
         Returns:

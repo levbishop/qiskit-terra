@@ -49,30 +49,30 @@ logger = logging.getLogger(__name__)
 
 
 def transpile(
-    circuits: Union[QuantumCircuit, List[QuantumCircuit]],
-    backend: Optional[Union[Backend, BaseBackend]] = None,
-    basis_gates: Optional[List[str]] = None,
-    inst_map: Optional[List[InstructionScheduleMap]] = None,
-    coupling_map: Optional[Union[CouplingMap, List[List[int]]]] = None,
-    backend_properties: Optional[BackendProperties] = None,
-    initial_layout: Optional[Union[Layout, Dict, List]] = None,
-    layout_method: Optional[str] = None,
-    routing_method: Optional[str] = None,
-    translation_method: Optional[str] = None,
-    scheduling_method: Optional[str] = None,
-    instruction_durations: Optional[InstructionDurationsType] = None,
-    dt: Optional[float] = None,
-    approximation_degree: Optional[float] = None,
-    timing_constraints: Optional[Dict[str, int]] = None,
-    seed_transpiler: Optional[int] = None,
-    optimization_level: Optional[int] = None,
-    pass_manager: Optional[PassManager] = None,
-    callback: Optional[Callable[[BasePass, DAGCircuit, float, PropertySet, int], Any]] = None,
-    output_name: Optional[Union[str, List[str]]] = None,
+    circuits: QuantumCircuit | list[QuantumCircuit],
+    backend: Backend | BaseBackend | None = None,
+    basis_gates: list[str] | None = None,
+    inst_map: list[InstructionScheduleMap] | None = None,
+    coupling_map: CouplingMap | list[list[int]] | None = None,
+    backend_properties: BackendProperties | None = None,
+    initial_layout: Layout | dict | list | None = None,
+    layout_method: str | None = None,
+    routing_method: str | None = None,
+    translation_method: str | None = None,
+    scheduling_method: str | None = None,
+    instruction_durations: InstructionDurationsType | None = None,
+    dt: float | None = None,
+    approximation_degree: float | None = None,
+    timing_constraints: dict[str, int] | None = None,
+    seed_transpiler: int | None = None,
+    optimization_level: int | None = None,
+    pass_manager: PassManager | None = None,
+    callback: Callable[[BasePass, DAGCircuit, float, PropertySet, int], Any] | None = None,
+    output_name: str | list[str] | None = None,
     unitary_synthesis_method: str = "default",
     unitary_synthesis_plugin_config: dict = None,
     target: Target = None,
-) -> Union[QuantumCircuit, List[QuantumCircuit]]:
+) -> QuantumCircuit | list[QuantumCircuit]:
     """Transpile one or more circuits, according to some desired transpilation targets.
 
     All arguments may be given as either a singleton or list. In case of a list,
@@ -389,7 +389,7 @@ def _log_transpile_time(start_time, end_time):
     logger.info(log_msg)
 
 
-def _transpile_circuit(circuit_config_tuple: Tuple[QuantumCircuit, Dict]) -> QuantumCircuit:
+def _transpile_circuit(circuit_config_tuple: tuple[QuantumCircuit, dict]) -> QuantumCircuit:
     """Select a PassManager and run a single circuit through it.
     Args:
         circuit_config_tuple (tuple):
@@ -521,7 +521,7 @@ def _parse_transpile_args(
     unitary_synthesis_method,
     unitary_synthesis_plugin_config,
     target,
-) -> List[Dict]:
+) -> list[dict]:
     """Resolve the various types of args allowed to the transpile() function through
     duck typing, overriding args, etc. Refer to the transpile() docstring for details on
     what types of inputs are allowed.
@@ -1117,7 +1117,7 @@ def _parse_timing_constraints(backend, timing_constraints, num_circuits):
     return [timing_constraints] * num_circuits
 
 
-def _zip_dict(mapping: Dict[Any, Iterable]) -> Iterable[Dict]:
+def _zip_dict(mapping: dict[Any, Iterable]) -> Iterable[dict]:
     """Zip a dictionary where all the values are iterables of the same length into an iterable of
     dictionaries with the same keys.  This has the same semantics as zip with regard to laziness
     (over the iterables; there must be a finite number of keys!) and unequal lengths."""

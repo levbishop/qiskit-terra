@@ -38,7 +38,7 @@ class AlgorithmResult(ABC):
 
         return pprint.pformat(result, indent=4)
 
-    def combine(self, result: "AlgorithmResult") -> None:
+    def combine(self, result: AlgorithmResult) -> None:
         """
         Any property from the argument that exists in the receiver is
         updated.

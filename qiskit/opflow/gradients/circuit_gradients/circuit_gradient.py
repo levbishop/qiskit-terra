@@ -43,15 +43,13 @@ class CircuitGradient(ConverterBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: Optional[
-            Union[
-                ParameterExpression,
-                ParameterVector,
-                List[ParameterExpression],
-                Tuple[ParameterExpression, ParameterExpression],
-                List[Tuple[ParameterExpression, ParameterExpression]],
-            ]
-        ] = None,
+        params: None | (
+                ParameterExpression |
+                ParameterVector |
+                list[ParameterExpression] |
+                tuple[ParameterExpression, ParameterExpression] |
+                list[tuple[ParameterExpression, ParameterExpression]]
+        ) = None,
     ) -> OperatorBase:
         r"""
         Args:
@@ -73,7 +71,7 @@ class CircuitGradient(ConverterBase):
 
     @staticmethod
     def _transpile_to_supported_operations(
-        circuit: QuantumCircuit, supported_gates: Set[str]
+        circuit: QuantumCircuit, supported_gates: set[str]
     ) -> QuantumCircuit:
         """Transpile the given circuit into a gate set for which the gradients may be computed.
 

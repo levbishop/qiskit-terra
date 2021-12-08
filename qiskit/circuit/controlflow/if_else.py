@@ -70,10 +70,10 @@ class IfElseOp(ControlFlowOp):
 
     def __init__(
         self,
-        condition: Tuple[Union[ClassicalRegister, Clbit], int],
+        condition: tuple[ClassicalRegister | Clbit, int],
         true_body: QuantumCircuit,
-        false_body: Optional[QuantumCircuit] = None,
-        label: Optional[str] = None,
+        false_body: QuantumCircuit | None = None,
+        label: str | None = None,
     ):
         # Type checking generally left to @params.setter, but required here for
         # finding num_qubits and num_clbits.
@@ -154,11 +154,11 @@ class IfElsePlaceholder(InstructionPlaceholder):
 
     def __init__(
         self,
-        condition: Tuple[Union[ClassicalRegister, Clbit], int],
+        condition: tuple[ClassicalRegister | Clbit, int],
         true_block: ControlFlowBuilderBlock,
-        false_block: Optional[ControlFlowBuilderBlock] = None,
+        false_block: ControlFlowBuilderBlock | None = None,
         *,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
         """
         Args:
@@ -171,14 +171,14 @@ class IfElsePlaceholder(InstructionPlaceholder):
         """
         # These are protected names because we're not trying to clash with parent attributes.
         self.__true_block = true_block
-        self.__false_block: Optional[ControlFlowBuilderBlock] = false_block
+        self.__false_block: ControlFlowBuilderBlock | None = false_block
         self.__resources = self._placeholder_resources()
         qubits, clbits = self.__resources
         super().__init__("if_else", len(qubits), len(clbits), [], label=label)
         # Set the condition after super().__init__() has initialised it to None.
         self.condition = validate_condition(condition)
 
-    def with_false_block(self, false_block: ControlFlowBuilderBlock) -> "IfElsePlaceholder":
+    def with_false_block(self, false_block: ControlFlowBuilderBlock) -> IfElsePlaceholder:
         """Return a new placeholder instruction, with the false block set to the given value,
         updating the bits used by both it and the true body, if necessary.
 
@@ -203,7 +203,7 @@ class IfElsePlaceholder(InstructionPlaceholder):
         false_block.add_bits(true_bits - false_bits)
         return type(self)(self.condition, true_block, false_block, label=self.label)
 
-    def _placeholder_resources(self) -> Tuple[Tuple[Qubit, ...], Tuple[Clbit, ...]]:
+    def _placeholder_resources(self) -> tuple[tuple[Qubit, ...], tuple[Clbit, ...]]:
         """Get the placeholder resources (see :meth:`.placeholder_resources`).
 
         This is a separate function because we use the resources during the initialisation to
@@ -277,10 +277,10 @@ class IfContext:
     def __init__(
         self,
         circuit: QuantumCircuit,
-        condition: Tuple[Union[ClassicalRegister, Clbit], int],
+        condition: tuple[ClassicalRegister | Clbit, int],
         *,
         in_loop: bool,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
         self._circuit = circuit
         self._condition = validate_condition(condition)
@@ -298,12 +298,12 @@ class IfContext:
         return self._circuit
 
     @property
-    def condition(self) -> Tuple[Union[ClassicalRegister, Clbit], int]:
+    def condition(self) -> tuple[ClassicalRegister | Clbit, int]:
         """Get the expression that this statement is conditioned on."""
         return self._condition
 
     @property
-    def appended_instructions(self) -> Union[InstructionSet, None]:
+    def appended_instructions(self) -> InstructionSet | None:
         """Get the instruction set that was created when this block finished.  If the block has not
         yet finished, then this will be ``None``."""
         return self._appended_instructions
@@ -435,8 +435,8 @@ class ElseContext:
 
 
 def _unify_circuit_bits(
-    true_body: QuantumCircuit, false_body: Optional[QuantumCircuit]
-) -> Tuple[QuantumCircuit, Union[QuantumCircuit, None]]:
+    true_body: QuantumCircuit, false_body: QuantumCircuit | None
+) -> tuple[QuantumCircuit, QuantumCircuit | None]:
     """
     Ensure that ``true_body`` and ``false_body`` have all the same qubits and clbits, and that they
     are defined in the same order.  The order is important for binding when the bodies are used in
@@ -475,7 +475,7 @@ def _unify_circuit_bits(
 
 def _unify_circuit_bits_rebuild(
     true_body: QuantumCircuit, false_body: QuantumCircuit
-) -> Tuple[QuantumCircuit, QuantumCircuit]:
+) -> tuple[QuantumCircuit, QuantumCircuit]:
     """
     Ensure that ``true_body`` and ``false_body`` have all the same qubits and clbits, and that they
     are defined in the same order.  The order is important for binding when the bodies are used in

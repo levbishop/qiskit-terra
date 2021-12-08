@@ -35,8 +35,8 @@ class CircuitOp(PrimitiveOp):
 
     def __init__(
         self,
-        primitive: Union[Instruction, QuantumCircuit],
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: Instruction | QuantumCircuit,
+        coeff: complex | ParameterExpression = 1.0,
     ) -> None:
         """
         Args:
@@ -64,7 +64,7 @@ class CircuitOp(PrimitiveOp):
         super().__init__(primitive, coeff)
         self._coeff = coeff
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return {"QuantumCircuit"}
 
     @property
@@ -87,7 +87,7 @@ class CircuitOp(PrimitiveOp):
 
         return SummedOp([self, other])
 
-    def adjoint(self) -> "CircuitOp":
+    def adjoint(self) -> CircuitOp:
         return CircuitOp(self.primitive.inverse(), coeff=self.coeff.conjugate())
 
     def equals(self, other: OperatorBase) -> bool:
@@ -96,7 +96,7 @@ class CircuitOp(PrimitiveOp):
 
         return self.primitive == other.primitive
 
-    def tensor(self, other: OperatorBase) -> Union["CircuitOp", TensoredOp]:
+    def tensor(self, other: OperatorBase) -> Union[CircuitOp, TensoredOp]:
         # pylint: disable=cyclic-import
         from .pauli_op import PauliOp
         from .matrix_op import MatrixOp
@@ -117,7 +117,7 @@ class CircuitOp(PrimitiveOp):
         return TensoredOp([self, other])
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
 
         new_self, other = self._expand_shorter_operator_and_permute(other, permutation)
@@ -187,10 +187,10 @@ class CircuitOp(PrimitiveOp):
 
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         from ..state_fns import CircuitStateFn
         from ..list_ops import ListOp
         from .pauli_op import PauliOp
@@ -210,7 +210,7 @@ class CircuitOp(PrimitiveOp):
     def to_circuit(self) -> QuantumCircuit:
         return self.primitive
 
-    def to_circuit_op(self) -> "CircuitOp":
+    def to_circuit_op(self) -> CircuitOp:
         return self
 
     def to_instruction(self) -> Instruction:
@@ -231,10 +231,10 @@ class CircuitOp(PrimitiveOp):
                     del self.primitive.data[i]
         return self
 
-    def _expand_dim(self, num_qubits: int) -> "CircuitOp":
+    def _expand_dim(self, num_qubits: int) -> CircuitOp:
         return self.permute(list(range(num_qubits, num_qubits + self.num_qubits)))
 
-    def permute(self, permutation: List[int]) -> "CircuitOp":
+    def permute(self, permutation: list[int]) -> CircuitOp:
         r"""
         Permute the qubits of the circuit.
 

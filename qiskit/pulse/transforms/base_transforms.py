@@ -25,7 +25,7 @@ InstructionSched = Union[Tuple[int, Instruction], Instruction]
 
 
 def target_qobj_transform(
-    sched: Union[ScheduleBlock, Schedule, InstructionSched, Iterable[InstructionSched]],
+    sched: ScheduleBlock | Schedule | InstructionSched | Iterable[InstructionSched],
     remove_directives: bool = True,
 ) -> Schedule:
     """A basic pulse program transformation for OpenPulse API execution.
@@ -57,7 +57,7 @@ def target_qobj_transform(
     return sched
 
 
-def _format_schedule_component(sched: Union[InstructionSched, Iterable[InstructionSched]]):
+def _format_schedule_component(sched: InstructionSched | Iterable[InstructionSched]):
     """A helper function to convert instructions into list of instructions."""
     # TODO remove schedule initialization with *args, Qiskit-terra/#5093
 

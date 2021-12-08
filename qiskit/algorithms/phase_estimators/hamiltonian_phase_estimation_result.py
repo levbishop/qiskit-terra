@@ -58,7 +58,7 @@ class HamiltonianPhaseEstimationResult(AlgorithmResult):
 
     def filter_phases(
         self, cutoff: float = 0.0, scaled: bool = True, as_float: bool = True
-    ) -> Dict[Union[str, float], float]:
+    ) -> dict[str | float, float]:
         """Filter phases as does `PhaseEstimatorResult.filter_phases`, with
         the addition that `phi` is shifted and translated to return eigenvalues
         of the Hamiltonian.

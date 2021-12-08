@@ -27,7 +27,7 @@ class InverseCancellation(TransformationPass):
     """Cancel specific Gates which are inverses of each other when they occur back-to-
     back."""
 
-    def __init__(self, gates_to_cancel: List[Union[Gate, Tuple[Gate, Gate]]]):
+    def __init__(self, gates_to_cancel: list[Gate | tuple[Gate, Gate]]):
         """Initialize InverseCancellation pass.
 
         Args:
@@ -82,7 +82,7 @@ class InverseCancellation(TransformationPass):
         dag = self._run_on_self_inverse(dag, self.self_inverse_gates)
         return self._run_on_inverse_pairs(dag, self.inverse_gate_pairs)
 
-    def _run_on_self_inverse(self, dag: DAGCircuit, self_inverse_gates: List[Gate]):
+    def _run_on_self_inverse(self, dag: DAGCircuit, self_inverse_gates: list[Gate]):
         """
         Run self-inverse gates on `dag`.
 
@@ -114,7 +114,7 @@ class InverseCancellation(TransformationPass):
                         dag.remove_op_node(node)
         return dag
 
-    def _run_on_inverse_pairs(self, dag: DAGCircuit, inverse_gate_pairs: List[Tuple[Gate, Gate]]):
+    def _run_on_inverse_pairs(self, dag: DAGCircuit, inverse_gate_pairs: list[tuple[Gate, Gate]]):
         """
         Run inverse gate pairs on `dag`.
 

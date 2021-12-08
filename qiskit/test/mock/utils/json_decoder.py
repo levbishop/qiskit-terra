@@ -21,7 +21,7 @@ from typing import Dict, Union, List
 import dateutil.parser
 
 
-def decode_pulse_defaults(defaults: Dict) -> None:
+def decode_pulse_defaults(defaults: dict) -> None:
     """Decode pulse defaults data.
 
     Args:
@@ -36,7 +36,7 @@ def decode_pulse_defaults(defaults: Dict) -> None:
                 _decode_pulse_qobj_instr(instr)
 
 
-def decode_backend_properties(properties: Dict) -> None:
+def decode_backend_properties(properties: dict) -> None:
     """Decode backend properties.
 
     Args:
@@ -53,7 +53,7 @@ def decode_backend_properties(properties: Dict) -> None:
         gen["date"] = dateutil.parser.isoparse(gen["date"])
 
 
-def decode_backend_configuration(config: Dict) -> None:
+def decode_backend_configuration(config: dict) -> None:
     """Decode backend configuration.
 
     Args:
@@ -68,7 +68,7 @@ def decode_backend_configuration(config: Dict) -> None:
                 u_channle_lo["scale"] = _to_complex(u_channle_lo["scale"])
 
 
-def _to_complex(value: Union[List[float], complex]) -> complex:
+def _to_complex(value: list[float] | complex) -> complex:
     """Convert the input value to type ``complex``.
 
     Args:
@@ -88,7 +88,7 @@ def _to_complex(value: Union[List[float], complex]) -> complex:
     raise TypeError(f"{value} is not in a valid complex number format.")
 
 
-def _decode_pulse_library_item(pulse_library_item: Dict) -> None:
+def _decode_pulse_library_item(pulse_library_item: dict) -> None:
     """Decode a pulse library item.
 
     Args:
@@ -99,7 +99,7 @@ def _decode_pulse_library_item(pulse_library_item: Dict) -> None:
     ]
 
 
-def _decode_pulse_qobj_instr(pulse_qobj_instr: Dict) -> None:
+def _decode_pulse_qobj_instr(pulse_qobj_instr: dict) -> None:
     """Decode a pulse Qobj instruction.
 
     Args:

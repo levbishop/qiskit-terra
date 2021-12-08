@@ -56,9 +56,9 @@ class DerivativeBase(ConverterBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: Optional[
-            Union[ParameterVector, ParameterExpression, List[ParameterExpression]]
-        ] = None,
+        params: None | (
+            ParameterVector | ParameterExpression | list[ParameterExpression]
+        ) = None,
     ) -> OperatorBase:
         r"""
         Args:
@@ -76,18 +76,16 @@ class DerivativeBase(ConverterBase):
     def gradient_wrapper(
         self,
         operator: OperatorBase,
-        bind_params: Union[ParameterExpression, ParameterVector, List[ParameterExpression]],
-        grad_params: Optional[
-            Union[
-                ParameterExpression,
-                ParameterVector,
-                List[ParameterExpression],
-                Tuple[ParameterExpression, ParameterExpression],
-                List[Tuple[ParameterExpression, ParameterExpression]],
-            ]
-        ] = None,
-        backend: Optional[Union[BaseBackend, Backend, QuantumInstance]] = None,
-        expectation: Optional[ExpectationBase] = None,
+        bind_params: ParameterExpression | ParameterVector | list[ParameterExpression],
+        grad_params: None | (
+                ParameterExpression |
+                ParameterVector |
+                list[ParameterExpression] |
+                tuple[ParameterExpression, ParameterExpression] |
+                list[tuple[ParameterExpression, ParameterExpression]]
+        ) = None,
+        backend: BaseBackend | Backend | QuantumInstance | None = None,
+        expectation: ExpectationBase | None = None,
     ) -> Callable[[Iterable], np.ndarray]:
         """Get a callable function which provides the respective gradient, Hessian or QFI for given
         parameter values. This callable can be used as gradient function for optimizers.
@@ -131,7 +129,7 @@ class DerivativeBase(ConverterBase):
     @staticmethod
     def parameter_expression_grad(
         param_expr: ParameterExpression, param: ParameterExpression
-    ) -> Union[ParameterExpression, float]:
+    ) -> ParameterExpression | float:
         """Get the derivative of a parameter expression w.r.t. the given parameter.
 
         Args:

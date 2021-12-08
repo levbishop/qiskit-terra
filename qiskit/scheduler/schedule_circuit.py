@@ -23,7 +23,7 @@ from qiskit.scheduler.methods import as_soon_as_possible, as_late_as_possible
 
 
 def schedule_circuit(
-    circuit: QuantumCircuit, schedule_config: ScheduleConfig, method: Optional[str] = None
+    circuit: QuantumCircuit, schedule_config: ScheduleConfig, method: str | None = None
 ) -> Schedule:
     """
     Basic scheduling pass from a circuit to a pulse Schedule, using the backend. If no method is

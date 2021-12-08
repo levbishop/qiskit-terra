@@ -42,62 +42,62 @@ class OptimizerResult(AlgorithmResult):
         self._nit = None
 
     @property
-    def x(self) -> Optional[POINT]:
+    def x(self) -> POINT | None:
         """The final point of the minimization."""
         return self._x
 
     @x.setter
-    def x(self, x: Optional[POINT]) -> None:
+    def x(self, x: POINT | None) -> None:
         """Set the final point of the minimization."""
         self._x = x
 
     @property
-    def fun(self) -> Optional[float]:
+    def fun(self) -> float | None:
         """The final value of the minimization."""
         return self._fun
 
     @fun.setter
-    def fun(self, fun: Optional[float]) -> None:
+    def fun(self, fun: float | None) -> None:
         """Set the final value of the minimization."""
         self._fun = fun
 
     @property
-    def jac(self) -> Optional[POINT]:
+    def jac(self) -> POINT | None:
         """The final gradient of the minimization."""
         return self._jac
 
     @jac.setter
-    def jac(self, jac: Optional[POINT]) -> None:
+    def jac(self, jac: POINT | None) -> None:
         """Set the final gradient of the minimization."""
         self._jac = jac
 
     @property
-    def nfev(self) -> Optional[int]:
+    def nfev(self) -> int | None:
         """The total number of function evaluations."""
         return self._nfev
 
     @nfev.setter
-    def nfev(self, nfev: Optional[int]) -> None:
+    def nfev(self, nfev: int | None) -> None:
         """Set the total number of function evaluations."""
         self._nfev = nfev
 
     @property
-    def njev(self) -> Optional[int]:
+    def njev(self) -> int | None:
         """The total number of gradient evaluations."""
         return self._njev
 
     @njev.setter
-    def njev(self, njev: Optional[int]) -> None:
+    def njev(self, njev: int | None) -> None:
         """Set the total number of gradient evaluations."""
         self._njev = njev
 
     @property
-    def nit(self) -> Optional[int]:
+    def nit(self) -> int | None:
         """The total number of iterations."""
         return self._njev
 
     @nit.setter
-    def nit(self, nit: Optional[int]) -> None:
+    def nit(self, nit: int | None) -> None:
         """Set the total number of iterations."""
         self._nit = nit
 
@@ -230,7 +230,7 @@ class Optimizer(ABC):
         return ret
 
     @property
-    def settings(self) -> Dict[str, Any]:
+    def settings(self) -> dict[str, Any]:
         """The optimizer settings in a dictionary format.
 
         The settings can for instance be used for JSON-serialization (if all settings are
@@ -252,8 +252,8 @@ class Optimizer(ABC):
         self,
         fun: Callable[[POINT], float],
         x0: POINT,
-        jac: Optional[Callable[[POINT], POINT]] = None,
-        bounds: Optional[List[Tuple[float, float]]] = None,
+        jac: Callable[[POINT], POINT] | None = None,
+        bounds: list[tuple[float, float]] | None = None,
     ) -> OptimizerResult:
         """Minimize the scalar function.
 

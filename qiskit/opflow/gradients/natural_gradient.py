@@ -52,9 +52,9 @@ class NaturalGradient(GradientBase):
 
     def __init__(
         self,
-        grad_method: Union[str, CircuitGradient] = "lin_comb",
-        qfi_method: Union[str, CircuitQFI] = "lin_comb_full",
-        regularization: Optional[str] = None,
+        grad_method: str | CircuitGradient = "lin_comb",
+        qfi_method: str | CircuitQFI = "lin_comb_full",
+        regularization: str | None = None,
         **kwargs,
     ):
         r"""
@@ -80,9 +80,9 @@ class NaturalGradient(GradientBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: Optional[
-            Union[ParameterVector, ParameterExpression, List[ParameterExpression]]
-        ] = None,
+        params: None | (
+            ParameterVector | ParameterExpression | list[ParameterExpression]
+        ) = None,
     ) -> OperatorBase:
         r"""
         Args:
@@ -156,7 +156,7 @@ class NaturalGradient(GradientBase):
         return self._qfi_method.qfi_method
 
     @property
-    def regularization(self) -> Optional[str]:
+    def regularization(self) -> str | None:
         """Returns the regularization option.
 
         Returns: the regularization option.
@@ -172,7 +172,7 @@ class NaturalGradient(GradientBase):
         lambda1: float = 1e-3,
         lambda4: float = 1.0,
         tol: float = 1e-8,
-    ) -> Tuple[float, np.ndarray]:
+    ) -> tuple[float, np.ndarray]:
         """
         This method implements a search for a regularization parameter lambda by finding for the
         corner of the L-curve
@@ -194,7 +194,7 @@ class NaturalGradient(GradientBase):
             regularization coefficient, solution to the regularization inverse problem
         """
 
-        def _get_curvature(x_lambda: List) -> float:
+        def _get_curvature(x_lambda: list) -> float:
             """Calculate Menger curvature
 
             Menger, K. (1930).  Untersuchungen  ̈uber Allgemeine Metrik. Math. Ann.,103(1), 466–501
@@ -287,8 +287,8 @@ class NaturalGradient(GradientBase):
         max_iter: int = 1000,
         tol: float = 0.0001,
         solver: str = "auto",
-        random_state: Optional[int] = None,
-    ) -> Tuple[float, np.ndarray]:
+        random_state: int | None = None,
+    ) -> tuple[float, np.ndarray]:
         """
         Ridge Regression with automatic search for a good regularization term lambda
         x_lambda = arg min{||Ax-C||^2 + lambda*||x||_2^2} (3)
@@ -354,15 +354,15 @@ class NaturalGradient(GradientBase):
         tol_search: float = 1e-8,
         fit_intercept: bool = True,
         normalize: bool = False,
-        precompute: Union[bool, Iterable] = False,
+        precompute: bool | Iterable = False,
         copy_a: bool = True,
         max_iter: int = 1000,
         tol: float = 0.0001,
         warm_start: bool = False,
         positive: bool = False,
-        random_state: Optional[int] = None,
+        random_state: int | None = None,
         selection: str = "random",
-    ) -> Tuple[float, np.ndarray]:
+    ) -> tuple[float, np.ndarray]:
         """
         Lasso Regression with automatic search for a good regularization term lambda
         x_lambda = arg min{||Ax-C||^2/(2*n_samples) + lambda*||x||_1} (4)
@@ -435,7 +435,7 @@ class NaturalGradient(GradientBase):
         lambda1: float = 1e-3,
         lambda4: float = 1.0,
         alpha: float = 0.0,
-        tol_norm_x: Tuple[float, float] = (1e-8, 5.0),
+        tol_norm_x: tuple[float, float] = (1e-8, 5.0),
         tol_cond_a: float = 1000.0,
     ) -> np.ndarray:
         """

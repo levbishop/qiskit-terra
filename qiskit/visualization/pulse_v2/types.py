@@ -74,7 +74,7 @@ SnapshotInstruction.inst.__doc__ = "Snapshot instruction."
 
 class ChartAxis(NamedTuple):
     name: str
-    channels: List[pulse.channels.Channel]
+    channels: list[pulse.channels.Channel]
 
 
 ChartAxis.__doc__ = "Data to represent an axis information of chart."
@@ -85,7 +85,7 @@ ChartAxis.channels.__doc__ = "Channels associated with chart."
 class ParsedInstruction(NamedTuple):
     xvals: np.ndarray
     yvals: np.ndarray
-    meta: Dict[str, Any]
+    meta: dict[str, Any]
 
 
 ParsedInstruction.__doc__ = "Data to represent a parsed pulse instruction for object generation."
@@ -96,7 +96,7 @@ ParsedInstruction.meta.__doc__ = "Dictionary containing instruction details."
 
 class OpaqueShape(NamedTuple):
     duration: np.ndarray
-    meta: Dict[str, Any]
+    meta: dict[str, Any]
 
 
 OpaqueShape.__doc__ = "Data to represent a pulse instruction with parameterized shape."
@@ -105,9 +105,9 @@ OpaqueShape.meta.__doc__ = "Dictionary containing instruction details."
 
 
 class HorizontalAxis(NamedTuple):
-    window: Tuple[int, int]
-    axis_map: Dict[float, Union[float, str]]
-    axis_break_pos: List[int]
+    window: tuple[int, int]
+    axis_map: dict[float, float | str]
+    axis_break_pos: list[int]
     label: str
 
 

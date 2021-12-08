@@ -38,9 +38,9 @@ class SetFrequency(Instruction):
 
     def __init__(
         self,
-        frequency: Union[float, ParameterExpression],
+        frequency: float | ParameterExpression,
         channel: PulseChannel,
-        name: Optional[str] = None,
+        name: str | None = None,
     ):
         """Creates a new set channel frequency instruction.
 
@@ -54,7 +54,7 @@ class SetFrequency(Instruction):
         super().__init__(operands=(frequency, channel), name=name)
 
     @property
-    def frequency(self) -> Union[float, ParameterExpression]:
+    def frequency(self) -> float | ParameterExpression:
         """New frequency."""
         return self.operands[0]
 
@@ -66,7 +66,7 @@ class SetFrequency(Instruction):
         return self.operands[1]
 
     @property
-    def channels(self) -> Tuple[PulseChannel]:
+    def channels(self) -> tuple[PulseChannel]:
         """Returns the channels that this schedule uses."""
         return (self.channel,)
 
@@ -85,9 +85,9 @@ class ShiftFrequency(Instruction):
 
     def __init__(
         self,
-        frequency: Union[float, ParameterExpression],
+        frequency: float | ParameterExpression,
         channel: PulseChannel,
-        name: Optional[str] = None,
+        name: str | None = None,
     ):
         """Creates a new shift frequency instruction.
 
@@ -101,7 +101,7 @@ class ShiftFrequency(Instruction):
         super().__init__(operands=(frequency, channel), name=name)
 
     @property
-    def frequency(self) -> Union[float, ParameterExpression]:
+    def frequency(self) -> float | ParameterExpression:
         """Frequency shift from the set frequency."""
         return self.operands[0]
 
@@ -113,7 +113,7 @@ class ShiftFrequency(Instruction):
         return self.operands[1]
 
     @property
-    def channels(self) -> Tuple[PulseChannel]:
+    def channels(self) -> tuple[PulseChannel]:
         """Returns the channels that this schedule uses."""
         return (self.channel,)
 

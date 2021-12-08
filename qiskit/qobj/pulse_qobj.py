@@ -249,7 +249,7 @@ class PulseQobjInstruction:
         return False
 
 
-def _to_complex(value: Union[List[float], complex]) -> complex:
+def _to_complex(value: list[float] | complex) -> complex:
     """Convert the input value to type ``complex``.
     Args:
         value: Value to be converted.

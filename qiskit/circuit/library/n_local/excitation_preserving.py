@@ -94,15 +94,15 @@ class ExcitationPreserving(TwoLocal):
 
     def __init__(
         self,
-        num_qubits: Optional[int] = None,
+        num_qubits: int | None = None,
         mode: str = "iswap",
-        entanglement: Union[str, List[List[int]], Callable[[int], List[int]]] = "full",
+        entanglement: str | list[list[int]] | Callable[[int], list[int]] = "full",
         reps: int = 3,
         skip_unentangled_qubits: bool = False,
         skip_final_rotation_layer: bool = False,
         parameter_prefix: str = "θ",
         insert_barriers: bool = False,
-        initial_state: Optional[Any] = None,
+        initial_state: Any | None = None,
         name: str = "ExcitationPreserving",
     ) -> None:
         """Create a new ExcitationPreserving 2-local circuit.
@@ -162,7 +162,7 @@ class ExcitationPreserving(TwoLocal):
         )
 
     @property
-    def parameter_bounds(self) -> List[Tuple[float, float]]:
+    def parameter_bounds(self) -> list[tuple[float, float]]:
         """Return the parameter bounds.
 
         Returns:

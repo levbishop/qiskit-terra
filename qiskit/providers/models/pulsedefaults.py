@@ -172,14 +172,14 @@ class PulseDefaults:
 
     def __init__(
         self,
-        qubit_freq_est: List[float],
-        meas_freq_est: List[float],
+        qubit_freq_est: list[float],
+        meas_freq_est: list[float],
         buffer: int,
-        pulse_library: List[PulseLibraryItem],
-        cmd_def: List[Command],
+        pulse_library: list[PulseLibraryItem],
+        cmd_def: list[Command],
         meas_kernel: MeasurementKernel = None,
         discriminator: Discriminator = None,
-        **kwargs: Dict[str, Any],
+        **kwargs: dict[str, Any],
     ):
         """
         Validate and reformat transport layer inputs to initialize.

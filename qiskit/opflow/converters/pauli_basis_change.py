@@ -59,9 +59,9 @@ class PauliBasisChange(ConverterBase):
 
     def __init__(
         self,
-        destination_basis: Optional[Union[Pauli, PauliOp]] = None,
+        destination_basis: Pauli | PauliOp | None = None,
         traverse: bool = True,
-        replacement_fn: Optional[Callable] = None,
+        replacement_fn: Callable | None = None,
     ) -> None:
         """
         Args:
@@ -93,7 +93,7 @@ class PauliBasisChange(ConverterBase):
         self._replacement_fn = replacement_fn or PauliBasisChange.operator_replacement_fn
 
     @property
-    def destination(self) -> Optional[PauliOp]:
+    def destination(self) -> PauliOp | None:
         r"""
         The destination ``PauliOp``, or ``None`` if using the default destination, the diagonal
         basis.
@@ -101,7 +101,7 @@ class PauliBasisChange(ConverterBase):
         return self._destination
 
     @destination.setter
-    def destination(self, dest: Union[Pauli, PauliOp]) -> None:
+    def destination(self, dest: Pauli | PauliOp) -> None:
         r"""
         The destination ``PauliOp``, or ``None`` if using the default destination, the diagonal
         basis.
@@ -161,7 +161,7 @@ class PauliBasisChange(ConverterBase):
                 for op in operator.primitive.oplist
             )
         ):
-            sf_list: List[OperatorBase] = [
+            sf_list: list[OperatorBase] = [
                 StateFn(op, is_measurement=operator.is_measurement)
                 for op in operator.primitive.oplist
             ]
@@ -191,7 +191,7 @@ class PauliBasisChange(ConverterBase):
                 if operator.primitive.abelian:
                     origin_pauli = self.get_tpb_pauli(operator.primitive)
                     cob_instr_op, _ = self.get_cob_circuit(origin_pauli)
-                    diag_ops: List[OperatorBase] = [
+                    diag_ops: list[OperatorBase] = [
                         self.get_diagonal_pauli_op(op) for op in operator.primitive.oplist
                     ]
                     dest_pauli_op = operator.primitive.__class__(
@@ -231,7 +231,7 @@ class PauliBasisChange(ConverterBase):
 
     @staticmethod
     def measurement_replacement_fn(
-        cob_instr_op: PrimitiveOp, dest_pauli_op: Union[PauliOp, PauliSumOp, ListOp]
+        cob_instr_op: PrimitiveOp, dest_pauli_op: PauliOp | PauliSumOp | ListOp
     ) -> OperatorBase:
         r"""
         A built-in convenience replacement function which produces measurements
@@ -249,7 +249,7 @@ class PauliBasisChange(ConverterBase):
 
     @staticmethod
     def statefn_replacement_fn(
-        cob_instr_op: PrimitiveOp, dest_pauli_op: Union[PauliOp, PauliSumOp, ListOp]
+        cob_instr_op: PrimitiveOp, dest_pauli_op: PauliOp | PauliSumOp | ListOp
     ) -> OperatorBase:
         r"""
         A built-in convenience replacement function which produces state functions
@@ -267,7 +267,7 @@ class PauliBasisChange(ConverterBase):
 
     @staticmethod
     def operator_replacement_fn(
-        cob_instr_op: PrimitiveOp, dest_pauli_op: Union[PauliOp, PauliSumOp, ListOp]
+        cob_instr_op: PrimitiveOp, dest_pauli_op: PauliOp | PauliSumOp | ListOp
     ) -> OperatorBase:
         r"""
         A built-in convenience replacement function which produces Operators
@@ -321,7 +321,7 @@ class PauliBasisChange(ConverterBase):
             coeff=pauli_op.coeff,
         )
 
-    def get_diagonalizing_clifford(self, pauli: Union[Pauli, PauliOp]) -> OperatorBase:
+    def get_diagonalizing_clifford(self, pauli: Pauli | PauliOp) -> OperatorBase:
         r"""
         Construct a ``CircuitOp`` with only single-qubit gates which takes the eigenvectors
         of ``pauli`` to eigenvectors composed only of \|0⟩ and \|1⟩ tensor products. Equivalently,
@@ -353,7 +353,7 @@ class PauliBasisChange(ConverterBase):
 
     def pad_paulis_to_equal_length(
         self, pauli_op1: PauliOp, pauli_op2: PauliOp
-    ) -> Tuple[PauliOp, PauliOp]:
+    ) -> tuple[PauliOp, PauliOp]:
         r"""
         If ``pauli_op1`` and ``pauli_op2`` do not act over the same number of qubits, pad
         identities to the end of the shorter of the two so they are of equal length. Padding is
@@ -466,7 +466,7 @@ class PauliBasisChange(ConverterBase):
 
         return PrimitiveOp(cnots)
 
-    def get_cob_circuit(self, origin: Union[Pauli, PauliOp]) -> Tuple[PrimitiveOp, PauliOp]:
+    def get_cob_circuit(self, origin: Pauli | PauliOp) -> tuple[PrimitiveOp, PauliOp]:
         r"""
         Construct an Operator which maps the +1 and -1 eigenvectors
         of the origin Pauli to the +1 and -1 eigenvectors of the destination Pauli. It does so by

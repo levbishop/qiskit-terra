@@ -78,8 +78,8 @@ class XXDecomposer:
     def __init__(
         self,
         euler_basis: str = "U",
-        embodiments: Optional[dict] = None,
-        backup_optimizer: Optional[Callable] = None,
+        embodiments: dict | None = None,
+        backup_optimizer: Callable | None = None,
     ):
         from qiskit.transpiler.passes.optimization.optimize_1q_decomposition import (
             Optimize1qGatesDecomposition,  # pylint: disable=cyclic-import

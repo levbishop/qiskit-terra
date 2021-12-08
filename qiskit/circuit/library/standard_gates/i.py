@@ -44,7 +44,7 @@ class IGate(Gate):
              └───┘
     """
 
-    def __init__(self, label: Optional[str] = None):
+    def __init__(self, label: str | None = None):
         """Create new Identity gate."""
         super().__init__("id", 1, [], label=label)
 

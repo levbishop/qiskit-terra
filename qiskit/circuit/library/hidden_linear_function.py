@@ -72,7 +72,7 @@ class HiddenLinearFunction(QuantumCircuit):
     `arXiv:1704.00690 <https://arxiv.org/abs/1704.00690>`_
     """
 
-    def __init__(self, adjacency_matrix: Union[List[List[int]], np.ndarray]) -> None:
+    def __init__(self, adjacency_matrix: list[list[int]] | np.ndarray) -> None:
         """Create new HLF circuit.
 
         Args:

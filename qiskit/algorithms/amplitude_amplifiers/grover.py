@@ -105,10 +105,10 @@ class Grover(AmplitudeAmplifier):
 
     def __init__(
         self,
-        iterations: Optional[Union[List[int], Iterator[int], int]] = None,
-        growth_rate: Optional[float] = None,
+        iterations: list[int] | Iterator[int] | int | None = None,
+        growth_rate: float | None = None,
         sample_from_iterations: bool = False,
-        quantum_instance: Optional[Union[QuantumInstance, Backend, BaseBackend]] = None,
+        quantum_instance: QuantumInstance | Backend | BaseBackend | None = None,
     ) -> None:
         r"""
         Args:
@@ -160,7 +160,7 @@ class Grover(AmplitudeAmplifier):
         self._iterations_arg = iterations
 
     @property
-    def quantum_instance(self) -> Optional[QuantumInstance]:
+    def quantum_instance(self) -> QuantumInstance | None:
         """Get the quantum instance.
         Returns:
             The quantum instance used to run this algorithm.
@@ -169,7 +169,7 @@ class Grover(AmplitudeAmplifier):
 
     @quantum_instance.setter
     def quantum_instance(
-        self, quantum_instance: Union[QuantumInstance, BaseBackend, Backend]
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend
     ) -> None:
         """Set quantum instance.
         Args:
@@ -179,7 +179,7 @@ class Grover(AmplitudeAmplifier):
             quantum_instance = QuantumInstance(quantum_instance)
         self._quantum_instance = quantum_instance
 
-    def amplify(self, amplification_problem: AmplificationProblem) -> "GroverResult":
+    def amplify(self, amplification_problem: AmplificationProblem) -> GroverResult:
         """Run the Grover algorithm.
 
         Args:
@@ -299,7 +299,7 @@ class Grover(AmplitudeAmplifier):
         return round(np.arccos(amplitude) / (2 * np.arcsin(amplitude)))
 
     def construct_circuit(
-        self, problem: AmplificationProblem, power: Optional[int] = None, measurement: bool = False
+        self, problem: AmplificationProblem, power: int | None = None, measurement: bool = False
     ) -> QuantumCircuit:
         """Construct the circuit for Grover's algorithm with ``power`` Grover operators.
 
@@ -343,7 +343,7 @@ class GroverResult(AmplitudeAmplifierResult):
         self._shots = None
 
     @property
-    def iterations(self) -> List[int]:
+    def iterations(self) -> list[int]:
         """All the powers of the Grover operator that have been tried.
 
         Returns:
@@ -352,7 +352,7 @@ class GroverResult(AmplitudeAmplifierResult):
         return self._iterations
 
     @iterations.setter
-    def iterations(self, value: List[int]) -> None:
+    def iterations(self, value: list[int]) -> None:
         """Set the powers of the Grover operator that have been tried.
 
         Args:

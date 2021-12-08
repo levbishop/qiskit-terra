@@ -36,13 +36,13 @@ class DictStateFn(StateFn):
     stored in a dict.
     """
 
-    primitive: Dict[str, complex]
+    primitive: dict[str, complex]
 
     # TODO allow normalization somehow?
     def __init__(
         self,
-        primitive: Union[str, dict, Result] = None,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: str | dict | Result = None,
+        coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
         from_operator: bool = False,
     ) -> None:
@@ -86,7 +86,7 @@ class DictStateFn(StateFn):
         super().__init__(primitive, coeff=coeff, is_measurement=is_measurement)
         self.from_operator = from_operator
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return {"Dict"}
 
     @property
@@ -94,7 +94,7 @@ class DictStateFn(StateFn):
         return len(next(iter(self.primitive)))
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         data = super().settings
         data["from_operator"] = self.from_operator
@@ -134,14 +134,14 @@ class DictStateFn(StateFn):
 
         return SummedOp([self, other])
 
-    def adjoint(self) -> "DictStateFn":
+    def adjoint(self) -> DictStateFn:
         return DictStateFn(
             {b: np.conj(v) for (b, v) in self.primitive.items()},
             coeff=self.coeff.conjugate(),
             is_measurement=(not self.is_measurement),
         )
 
-    def permute(self, permutation: List[int]) -> "DictStateFn":
+    def permute(self, permutation: list[int]) -> DictStateFn:
         new_num_qubits = max(permutation) + 1
         if self.num_qubits != len(permutation):
             raise OpflowError("New index must be defined for each qubit of the operator.")
@@ -156,7 +156,7 @@ class DictStateFn(StateFn):
         new_dict = {perm(key): value for key, value in self.primitive.items()}
         return DictStateFn(new_dict, coeff=self.coeff, is_measurement=self.is_measurement)
 
-    def _expand_dim(self, num_qubits: int) -> "DictStateFn":
+    def _expand_dim(self, num_qubits: int) -> DictStateFn:
         pad = "0" * num_qubits
         new_dict = {key + pad: value for key, value in self.primitive.items()}
         return DictStateFn(new_dict, coeff=self.coeff, is_measurement=self.is_measurement)
@@ -244,10 +244,10 @@ class DictStateFn(StateFn):
     # pylint: disable=too-many-return-statements
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         if front is None:
             sparse_vector_state_fn = self.to_spmatrix_op().eval()
             return sparse_vector_state_fn
@@ -323,7 +323,7 @@ class DictStateFn(StateFn):
 
     def sample(
         self, shots: int = 1024, massive: bool = False, reverse_endianness: bool = False
-    ) -> Dict[str, float]:
+    ) -> dict[str, float]:
         probs = np.square(np.abs(np.array(list(self.primitive.values()))))
         unique, counts = np.unique(
             algorithm_globals.random.choice(

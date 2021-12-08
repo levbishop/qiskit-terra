@@ -101,7 +101,7 @@ class Channel(metaclass=ABCMeta):
         self._hash = hash((self.__class__.__name__, self._index))
 
     @property
-    def index(self) -> Union[int, ParameterExpression]:
+    def index(self) -> int | ParameterExpression:
         """Return the index of this channel. The index is a label for a control signal line
         typically mapped trivially to a qubit index. For instance, ``DriveChannel(0)`` labels
         the signal line driving the qubit labeled with index 0.
@@ -127,7 +127,7 @@ class Channel(metaclass=ABCMeta):
             raise PulseError("Channel index must be a nonnegative integer")
 
     @property
-    def parameters(self) -> Set:
+    def parameters(self) -> set:
         """Parameters which determine the channel index."""
         if isinstance(self.index, ParameterExpression):
             return self.index.parameters
@@ -145,7 +145,7 @@ class Channel(metaclass=ABCMeta):
     def __repr__(self):
         return f"{self.__class__.__name__}({self._index})"
 
-    def __eq__(self, other: "Channel") -> bool:
+    def __eq__(self, other: Channel) -> bool:
         """Return True iff self and other are equal, specifically, iff they have the same type
         and the same index.
 

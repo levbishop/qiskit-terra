@@ -38,9 +38,9 @@ class Delay(Instruction):
 
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
+        duration: int | ParameterExpression,
         channel: Channel,
-        name: Optional[str] = None,
+        name: str | None = None,
     ):
         """Create a new delay instruction.
 
@@ -61,12 +61,12 @@ class Delay(Instruction):
         return self.operands[1]
 
     @property
-    def channels(self) -> Tuple[Channel]:
+    def channels(self) -> tuple[Channel]:
         """Returns the channels that this schedule uses."""
         return (self.channel,)
 
     @property
-    def duration(self) -> Union[int, ParameterExpression]:
+    def duration(self) -> int | ParameterExpression:
         """Duration of this instruction."""
         return self.operands[0]
 

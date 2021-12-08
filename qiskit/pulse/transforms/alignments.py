@@ -48,7 +48,7 @@ class AlignmentKind(abc.ABC):
         """
         pass
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Returns dictionary to represent this alignment."""
         return {"alignment": self.__class__.__name__}
 
@@ -224,7 +224,7 @@ class AlignEquispaced(AlignmentKind):
 
     is_sequential = True
 
-    def __init__(self, duration: Union[int, ParameterExpression]):
+    def __init__(self, duration: int | ParameterExpression):
         """Create new equispaced context.
 
         Args:
@@ -283,7 +283,7 @@ class AlignEquispaced(AlignmentKind):
 
         return aligned
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Returns dictionary to represent this alignment."""
         return {"alignment": self.__class__.__name__, "duration": self.duration}
 
@@ -307,7 +307,7 @@ class AlignFunc(AlignmentKind):
 
     is_sequential = True
 
-    def __init__(self, duration: Union[int, ParameterExpression], func: Callable):
+    def __init__(self, duration: int | ParameterExpression, func: Callable):
         """Create new equispaced context.
 
         Args:
@@ -356,7 +356,7 @@ class AlignFunc(AlignmentKind):
 
         return aligned
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Returns dictionary to represent this alignment.
 
         .. note:: ``func`` is not presented in this dictionary. Just name.

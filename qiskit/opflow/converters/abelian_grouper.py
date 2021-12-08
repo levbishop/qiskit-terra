@@ -84,7 +84,7 @@ class AbelianGrouper(ConverterBase):
         return operator
 
     @classmethod
-    def group_subops(cls, list_op: Union[ListOp, PauliSumOp]) -> ListOp:
+    def group_subops(cls, list_op: ListOp | PauliSumOp) -> ListOp:
         """Given a ListOp, attempt to group into Abelian ListOps of the same type.
 
         Args:
@@ -123,7 +123,7 @@ class AbelianGrouper(ConverterBase):
                 coeff=list_op.coeff,
             )
 
-        group_ops: List[ListOp] = [
+        group_ops: list[ListOp] = [
             list_op.__class__([list_op[idx] for idx in group], abelian=True)
             for group in groups.values()
         ]
@@ -132,7 +132,7 @@ class AbelianGrouper(ConverterBase):
         return list_op.__class__(group_ops, coeff=list_op.coeff)
 
     @staticmethod
-    def _anti_commutation_graph(ops: Union[ListOp, PauliSumOp]) -> List[Tuple[int, int]]:
+    def _anti_commutation_graph(ops: ListOp | PauliSumOp) -> list[tuple[int, int]]:
         """Create edges (i, j) if i and j are not commutable.
 
         Note:

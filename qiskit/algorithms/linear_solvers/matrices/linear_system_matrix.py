@@ -102,12 +102,12 @@ class LinearSystemMatrix(BlueprintCircuit, ABC):
         self._evolution_time = evolution_time
 
     @abstractmethod
-    def eigs_bounds(self) -> Tuple[float, float]:
+    def eigs_bounds(self) -> tuple[float, float]:
         """Return lower and upper bounds on the eigenvalues of the matrix."""
         raise NotImplementedError
 
     @abstractmethod
-    def condition_bounds(self) -> Tuple[float, float]:
+    def condition_bounds(self) -> tuple[float, float]:
         """Return lower and upper bounds on the condition number of the matrix."""
         raise NotImplementedError
 

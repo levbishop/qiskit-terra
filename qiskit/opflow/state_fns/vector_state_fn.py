@@ -40,8 +40,8 @@ class VectorStateFn(StateFn):
     # TODO allow normalization somehow?
     def __init__(
         self,
-        primitive: Union[list, np.ndarray, Statevector] = None,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        primitive: list | np.ndarray | Statevector = None,
+        coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
     ) -> None:
         """
@@ -58,7 +58,7 @@ class VectorStateFn(StateFn):
 
         super().__init__(primitive, coeff=coeff, is_measurement=is_measurement)
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return {"Vector"}
 
     @property
@@ -81,14 +81,14 @@ class VectorStateFn(StateFn):
             )
         return SummedOp([self, other])
 
-    def adjoint(self) -> "VectorStateFn":
+    def adjoint(self) -> VectorStateFn:
         return VectorStateFn(
             self.primitive.conjugate(),
             coeff=self.coeff.conjugate(),
             is_measurement=(not self.is_measurement),
         )
 
-    def permute(self, permutation: List[int]) -> "VectorStateFn":
+    def permute(self, permutation: list[int]) -> VectorStateFn:
         new_self = self
         new_num_qubits = max(permutation) + 1
 
@@ -131,7 +131,7 @@ class VectorStateFn(StateFn):
         new_dict = {format(i, "b").zfill(num_qubits): v for i, v in enumerate(self.primitive.data)}
         return DictStateFn(new_dict, coeff=self.coeff, is_measurement=self.is_measurement)
 
-    def _expand_dim(self, num_qubits: int) -> "VectorStateFn":
+    def _expand_dim(self, num_qubits: int) -> VectorStateFn:
         primitive = np.zeros(2 ** num_qubits, dtype=complex)
         return VectorStateFn(
             self.primitive.tensor(primitive), coeff=self.coeff, is_measurement=self.is_measurement
@@ -182,10 +182,10 @@ class VectorStateFn(StateFn):
     # pylint: disable=too-many-return-statements
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, Statevector, OperatorBase]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | Statevector | OperatorBase
+        ) = None,
+    ) -> OperatorBase | complex:
         if front is None:  # this object is already a VectorStateFn
             return self
 

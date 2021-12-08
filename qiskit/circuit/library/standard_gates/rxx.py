@@ -71,7 +71,7 @@ class RXXGate(Gate):
                                     \end{pmatrix}
     """
 
-    def __init__(self, theta: ParameterValueType, label: Optional[str] = None):
+    def __init__(self, theta: ParameterValueType, label: str | None = None):
         """Create new RXX gate."""
         super().__init__("rxx", 2, [theta], label=label)
 

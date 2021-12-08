@@ -102,8 +102,8 @@ class HHL(LinearSolver):
     def __init__(
         self,
         epsilon: float = 1e-2,
-        expectation: Optional[ExpectationBase] = None,
-        quantum_instance: Optional[Union[Backend, BaseBackend, QuantumInstance]] = None,
+        expectation: ExpectationBase | None = None,
+        quantum_instance: Backend | BaseBackend | QuantumInstance | None = None,
     ) -> None:
         r"""
         Args:
@@ -136,7 +136,7 @@ class HHL(LinearSolver):
         self.scaling = 1
 
     @property
-    def quantum_instance(self) -> Optional[QuantumInstance]:
+    def quantum_instance(self) -> QuantumInstance | None:
         """Get the quantum instance.
 
         Returns:
@@ -146,7 +146,7 @@ class HHL(LinearSolver):
 
     @quantum_instance.setter
     def quantum_instance(
-        self, quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]]
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend | None
     ) -> None:
         """Set quantum instance.
 
@@ -229,12 +229,12 @@ class HHL(LinearSolver):
     def _calculate_observable(
         self,
         solution: QuantumCircuit,
-        observable: Optional[Union[LinearSystemObservable, BaseOperator]] = None,
-        observable_circuit: Optional[QuantumCircuit] = None,
-        post_processing: Optional[
-            Callable[[Union[float, List[float]]], Union[float, List[float]]]
-        ] = None,
-    ) -> Tuple[Union[float, List[float]], Union[float, List[float]]]:
+        observable: LinearSystemObservable | BaseOperator | None = None,
+        observable_circuit: QuantumCircuit | None = None,
+        post_processing: None | (
+            Callable[[float | list[float]], float | list[float]]
+        ) = None,
+    ) -> tuple[float | list[float], float | list[float]]:
         """Calculates the value of the observable(s) given.
 
         Args:
@@ -313,9 +313,9 @@ class HHL(LinearSolver):
 
     def construct_circuit(
         self,
-        matrix: Union[List, np.ndarray, QuantumCircuit],
-        vector: Union[List, np.ndarray, QuantumCircuit],
-        neg_vals: Optional[bool] = True,
+        matrix: list | np.ndarray | QuantumCircuit,
+        vector: list | np.ndarray | QuantumCircuit,
+        neg_vals: bool | None = True,
     ) -> QuantumCircuit:
         """Construct the HHL circuit.
 
@@ -483,20 +483,18 @@ class HHL(LinearSolver):
 
     def solve(
         self,
-        matrix: Union[List, np.ndarray, QuantumCircuit],
-        vector: Union[List, np.ndarray, QuantumCircuit],
-        observable: Optional[
-            Union[
-                LinearSystemObservable,
-                BaseOperator,
-                List[LinearSystemObservable],
-                List[BaseOperator],
-            ]
-        ] = None,
-        observable_circuit: Optional[Union[QuantumCircuit, List[QuantumCircuit]]] = None,
-        post_processing: Optional[
-            Callable[[Union[float, List[float]]], Union[float, List[float]]]
-        ] = None,
+        matrix: list | np.ndarray | QuantumCircuit,
+        vector: list | np.ndarray | QuantumCircuit,
+        observable: None | (
+                LinearSystemObservable |
+                BaseOperator |
+                list[LinearSystemObservable] |
+                list[BaseOperator]
+        ) = None,
+        observable_circuit: QuantumCircuit | list[QuantumCircuit] | None = None,
+        post_processing: None | (
+            Callable[[float | list[float]], float | list[float]]
+        ) = None,
     ) -> LinearSolverResult:
         """Tries to solve the given linear system of equations.
 

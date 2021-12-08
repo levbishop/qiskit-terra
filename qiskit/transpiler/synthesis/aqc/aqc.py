@@ -46,8 +46,8 @@ class AQC:
 
     def __init__(
         self,
-        optimizer: Optional[Optimizer] = None,
-        seed: Optional[int] = None,
+        optimizer: Optimizer | None = None,
+        seed: int | None = None,
     ):
         """
         Args:
@@ -65,7 +65,7 @@ class AQC:
         target_matrix: np.ndarray,
         approximate_circuit: ApproximateCircuit,
         approximating_objective: ApproximatingObjective,
-        initial_point: Optional[np.ndarray] = None,
+        initial_point: np.ndarray | None = None,
     ) -> None:
         """
         Approximately compiles a circuit represented as a unitary matrix by solving an optimization

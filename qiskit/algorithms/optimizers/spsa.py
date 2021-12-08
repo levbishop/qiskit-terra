@@ -132,20 +132,20 @@ class SPSA(Optimizer):
         self,
         maxiter: int = 100,
         blocking: bool = False,
-        allowed_increase: Optional[float] = None,
+        allowed_increase: float | None = None,
         trust_region: bool = False,
-        learning_rate: Optional[Union[float, np.array, Callable[[], Iterator]]] = None,
-        perturbation: Optional[Union[float, np.array, Callable[[], Iterator]]] = None,
+        learning_rate: float | np.array | Callable[[], Iterator] | None = None,
+        perturbation: float | np.array | Callable[[], Iterator] | None = None,
         last_avg: int = 1,
-        resamplings: Union[int, Dict[int, int]] = 1,
-        perturbation_dims: Optional[int] = None,
+        resamplings: int | dict[int, int] = 1,
+        perturbation_dims: int | None = None,
         second_order: bool = False,
-        regularization: Optional[float] = None,
+        regularization: float | None = None,
         hessian_delay: int = 0,
-        lse_solver: Optional[Callable[[np.ndarray, np.ndarray], np.ndarray]] = None,
-        initial_hessian: Optional[np.ndarray] = None,
-        callback: Optional[CALLBACK] = None,
-        termination_checker: Optional[TERMINATIONCHECKER] = None,
+        lse_solver: Callable[[np.ndarray, np.ndarray], np.ndarray] | None = None,
+        initial_hessian: np.ndarray | None = None,
+        callback: CALLBACK | None = None,
+        termination_checker: TERMINATIONCHECKER | None = None,
     ) -> None:
         r"""
         Args:
@@ -285,12 +285,12 @@ class SPSA(Optimizer):
         initial_point: np.ndarray,
         c: float = 0.2,
         stability_constant: float = 0,
-        target_magnitude: Optional[float] = None,  # 2 pi / 10
+        target_magnitude: float | None = None,  # 2 pi / 10
         alpha: float = 0.602,
         gamma: float = 0.101,
         modelspace: bool = False,
         max_evals_grouped: int = 1,
-    ) -> Tuple[Iterator[float], Iterator[float]]:
+    ) -> tuple[Iterator[float], Iterator[float]]:
         r"""Calibrate SPSA parameters with a powerseries as learning rate and perturbation coeffs.
 
         The powerseries are:
@@ -380,7 +380,7 @@ class SPSA(Optimizer):
         return np.std(losses)
 
     @property
-    def settings(self) -> Dict[str, Any]:
+    def settings(self) -> dict[str, Any]:
         # if learning rate or perturbation are custom iterators expand them
         if callable(self.learning_rate):
             iterator = self.learning_rate()
@@ -504,8 +504,8 @@ class SPSA(Optimizer):
         self,
         fun: Callable[[POINT], float],
         x0: POINT,
-        jac: Optional[Callable[[POINT], POINT]] = None,
-        bounds: Optional[List[Tuple[float, float]]] = None,
+        jac: Callable[[POINT], POINT] | None = None,
+        bounds: list[tuple[float, float]] | None = None,
     ) -> OptimizerResult:
         # ensure learning rate and perturbation are correctly set: either none or both
         # this happens only here because for the calibration the loss function is required

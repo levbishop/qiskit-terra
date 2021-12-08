@@ -27,7 +27,7 @@ class AmplitudeAmplifier(ABC):
     """The interface for amplification algorithms."""
 
     @abstractmethod
-    def amplify(self, amplification_problem: AmplificationProblem) -> "AmplificationResult":
+    def amplify(self, amplification_problem: AmplificationProblem) -> AmplificationResult:
         """Run the amplification algorithm.
 
         Args:
@@ -50,7 +50,7 @@ class AmplitudeAmplifierResult(AlgorithmResult):
         self._oracle_evaluation = None
 
     @property
-    def top_measurement(self) -> Optional[str]:
+    def top_measurement(self) -> str | None:
         """The most frequently measured output as bitstring.
 
         Returns:
@@ -106,12 +106,12 @@ class AmplitudeAmplifierResult(AlgorithmResult):
         self._oracle_evaluation = value
 
     @property
-    def circuit_results(self) -> Optional[Union[List[np.ndarray], List[Dict[str, int]]]]:
+    def circuit_results(self) -> list[np.ndarray] | list[dict[str, int]] | None:
         """Return the circuit results. Can be a statevector or counts dictionary."""
         return self._circuit_results
 
     @circuit_results.setter
-    def circuit_results(self, value: Union[List[np.ndarray], List[Dict[str, int]]]) -> None:
+    def circuit_results(self, value: list[np.ndarray] | list[dict[str, int]]) -> None:
         """Set the circuit results."""
         self._circuit_results = value
 

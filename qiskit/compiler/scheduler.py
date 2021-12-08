@@ -37,13 +37,13 @@ def _log_schedule_time(start_time, end_time):
 
 
 def schedule(
-    circuits: Union[QuantumCircuit, List[QuantumCircuit]],
-    backend: Optional[Union[Backend, BaseBackend]] = None,
-    inst_map: Optional[InstructionScheduleMap] = None,
-    meas_map: Optional[List[List[int]]] = None,
-    dt: Optional[float] = None,
-    method: Optional[Union[str, List[str]]] = None,
-) -> Union[Schedule, List[Schedule]]:
+    circuits: QuantumCircuit | list[QuantumCircuit],
+    backend: Backend | BaseBackend | None = None,
+    inst_map: InstructionScheduleMap | None = None,
+    meas_map: list[list[int]] | None = None,
+    dt: float | None = None,
+    method: str | list[str] | None = None,
+) -> Schedule | list[Schedule]:
     """
     Schedule a circuit to a pulse ``Schedule``, using the backend, according to any specified
     methods. Supported methods are documented in :py:mod:`qiskit.scheduler.schedule_circuit`.

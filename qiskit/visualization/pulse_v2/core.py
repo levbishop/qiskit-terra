@@ -128,7 +128,7 @@ class DrawerCanvas:
         self.fig_title = ""
 
     @property
-    def time_range(self) -> Tuple[int, int]:
+    def time_range(self) -> tuple[int, int]:
         """Return current time range to draw.
 
         Calculate net duration and add side margin to edge location.
@@ -150,12 +150,12 @@ class DrawerCanvas:
         return new_t0, new_t1
 
     @time_range.setter
-    def time_range(self, new_range: Tuple[int, int]):
+    def time_range(self, new_range: tuple[int, int]):
         """Update time range to draw."""
         self._time_range = new_range
 
     @property
-    def time_breaks(self) -> List[Tuple[int, int]]:
+    def time_breaks(self) -> list[tuple[int, int]]:
         """Return time breaks with time range.
 
         If an edge of time range is in the axis break period,
@@ -194,11 +194,11 @@ class DrawerCanvas:
         return axis_breaks
 
     @time_breaks.setter
-    def time_breaks(self, new_breaks: List[Tuple[int, int]]):
+    def time_breaks(self, new_breaks: list[tuple[int, int]]):
         """Set new time breaks."""
         self._time_breaks = sorted(new_breaks, key=lambda x: x[0])
 
-    def load_program(self, program: Union[pulse.Waveform, pulse.ParametricPulse, pulse.Schedule]):
+    def load_program(self, program: pulse.Waveform | pulse.ParametricPulse | pulse.Schedule):
         """Load a program to draw.
 
         Args:
@@ -220,7 +220,7 @@ class DrawerCanvas:
         # set title
         self.fig_title = self.layout["figure_title"](program=program, device=self.device)
 
-    def _waveform_loader(self, program: Union[pulse.Waveform, pulse.ParametricPulse]):
+    def _waveform_loader(self, program: pulse.Waveform | pulse.ParametricPulse):
         """Load Waveform instance.
 
         This function is sub-routine of py:method:`load_program`.
@@ -246,7 +246,7 @@ class DrawerCanvas:
 
         self.charts.append(chart)
 
-    def _schedule_loader(self, program: Union[pulse.Schedule, pulse.ScheduleBlock]):
+    def _schedule_loader(self, program: pulse.Schedule | pulse.ScheduleBlock):
         """Load Schedule instance.
 
         This function is sub-routine of py:method:`load_program`.
@@ -314,7 +314,7 @@ class DrawerCanvas:
         # calculate axis break
         self.time_breaks = self._calculate_axis_break(program)
 
-    def _calculate_axis_break(self, program: pulse.Schedule) -> List[Tuple[int, int]]:
+    def _calculate_axis_break(self, program: pulse.Schedule) -> list[tuple[int, int]]:
         """A helper function to calculate axis break of long pulse sequence.
 
         Args:
@@ -426,7 +426,7 @@ class Chart:
         str(types.WaveformType.OPAQUE.value),
     ]
 
-    def __init__(self, parent: DrawerCanvas, name: Optional[str] = None):
+    def __init__(self, parent: DrawerCanvas, name: str | None = None):
         """Create new chart.
 
         Args:
@@ -580,7 +580,7 @@ class Chart:
         return False
 
     @property
-    def collections(self) -> Iterator[Tuple[str, drawings.ElementaryData]]:
+    def collections(self) -> Iterator[tuple[str, drawings.ElementaryData]]:
         """Return currently active entries from drawing data collection.
 
         The object is returned with unique name as a key of an object handler.
@@ -594,7 +594,7 @@ class Chart:
                 yield unique_id, data
 
     @property
-    def channels(self) -> List[pulse.channels.Channel]:
+    def channels(self) -> list[pulse.channels.Channel]:
         """Return a list of channels associated with this chart.
 
         Returns:
@@ -602,7 +602,7 @@ class Chart:
         """
         return list(self._channels)
 
-    def _truncate_data(self, data: drawings.ElementaryData) -> Tuple[np.ndarray, np.ndarray]:
+    def _truncate_data(self, data: drawings.ElementaryData) -> tuple[np.ndarray, np.ndarray]:
         """A helper function to truncate drawings according to time breaks.
 
         # TODO: move this function to common module to support axis break for timeline.
@@ -628,7 +628,7 @@ class Chart:
 
     def _truncate_pulse_labels(
         self, xvals: np.ndarray, yvals: np.ndarray
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """A helper function to remove text according to time breaks.
 
         Args:
@@ -655,7 +655,7 @@ class Chart:
 
     def _truncate_boxes(
         self, xvals: np.ndarray, yvals: np.ndarray
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """A helper function to clip box object according to time breaks.
 
         Args:
@@ -731,7 +731,7 @@ class Chart:
 
     def _truncate_vectors(
         self, xvals: np.ndarray, yvals: np.ndarray
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """A helper function to remove sequential data points according to time breaks.
 
         Args:

@@ -91,7 +91,7 @@ class InstructionScheduleMap:
         return False
 
     @property
-    def instructions(self) -> List[str]:
+    def instructions(self) -> list[str]:
         """Return all instructions which have definitions.
 
         By default, these are typically the basis gates along with other instructions such as
@@ -102,9 +102,7 @@ class InstructionScheduleMap:
         """
         return list(self._map.keys())
 
-    def qubits_with_instruction(
-        self, instruction: Union[str, Instruction]
-    ) -> List[Union[int, Tuple[int]]]:
+    def qubits_with_instruction(self, instruction: str | Instruction) -> list[int | tuple[int]]:
         """Return a list of the qubits for which the given instruction is defined. Single qubit
         instructions return a flat list, and multiqubit instructions return a list of ordered
         tuples.
@@ -127,7 +125,7 @@ class InstructionScheduleMap:
             for qubits in sorted(self._map[instruction].keys())
         ]
 
-    def qubit_instructions(self, qubits: Union[int, Iterable[int]]) -> List[str]:
+    def qubit_instructions(self, qubits: int | Iterable[int]) -> list[str]:
         """Return a list of the instruction names that are defined by the backend for the given
         qubit or qubits.
 
@@ -144,7 +142,7 @@ class InstructionScheduleMap:
             return list(self._qubit_instructions[_to_tuple(qubits)])
         return []
 
-    def has(self, instruction: Union[str, Instruction], qubits: Union[int, Iterable[int]]) -> bool:
+    def has(self, instruction: str | Instruction, qubits: int | Iterable[int]) -> bool:
         """Is the instruction defined for the given qubits?
 
         Args:
@@ -157,9 +155,7 @@ class InstructionScheduleMap:
         instruction = _get_instruction_string(instruction)
         return instruction in self._map and _to_tuple(qubits) in self._map[instruction]
 
-    def assert_has(
-        self, instruction: Union[str, Instruction], qubits: Union[int, Iterable[int]]
-    ) -> None:
+    def assert_has(self, instruction: str | Instruction, qubits: int | Iterable[int]) -> None:
         """Error if the given instruction is not defined.
 
         Args:
@@ -182,11 +178,11 @@ class InstructionScheduleMap:
 
     def get(
         self,
-        instruction: Union[str, Instruction],
-        qubits: Union[int, Iterable[int]],
-        *params: Union[complex, ParameterExpression],
-        **kwparams: Union[complex, ParameterExpression],
-    ) -> Union[Schedule, ScheduleBlock]:
+        instruction: str | Instruction,
+        qubits: int | Iterable[int],
+        *params: complex | ParameterExpression,
+        **kwparams: complex | ParameterExpression,
+    ) -> Schedule | ScheduleBlock:
         """Return the defined :py:class:`~qiskit.pulse.Schedule` or
         :py:class:`~qiskit.pulse.ScheduleBlock` for the given instruction on the given qubits.
 
@@ -246,10 +242,10 @@ class InstructionScheduleMap:
 
     def add(
         self,
-        instruction: Union[str, Instruction],
-        qubits: Union[int, Iterable[int]],
-        schedule: Union[Schedule, ScheduleBlock, Callable[..., Union[Schedule, ScheduleBlock]]],
-        arguments: Optional[List[str]] = None,
+        instruction: str | Instruction,
+        qubits: int | Iterable[int],
+        schedule: Schedule | ScheduleBlock | Callable[..., Schedule | ScheduleBlock],
+        arguments: list[str] | None = None,
     ) -> None:
         """Add a new known instruction for the given qubits and its mapping to a pulse schedule.
 
@@ -331,9 +327,7 @@ class InstructionScheduleMap:
         self._map[instruction][qubits] = Generator(schedule, signature)
         self._qubit_instructions[qubits].add(instruction)
 
-    def remove(
-        self, instruction: Union[str, Instruction], qubits: Union[int, Iterable[int]]
-    ) -> None:
+    def remove(self, instruction: str | Instruction, qubits: int | Iterable[int]) -> None:
         """Remove the given instruction from the listing of instructions defined in self.
 
         Args:
@@ -352,11 +346,11 @@ class InstructionScheduleMap:
 
     def pop(
         self,
-        instruction: Union[str, Instruction],
-        qubits: Union[int, Iterable[int]],
-        *params: Union[complex, ParameterExpression],
-        **kwparams: Union[complex, ParameterExpression],
-    ) -> Union[Schedule, ScheduleBlock]:
+        instruction: str | Instruction,
+        qubits: int | Iterable[int],
+        *params: complex | ParameterExpression,
+        **kwparams: complex | ParameterExpression,
+    ) -> Schedule | ScheduleBlock:
         """Remove and return the defined schedule for the given instruction on the given
         qubits.
 
@@ -375,8 +369,8 @@ class InstructionScheduleMap:
         return schedule
 
     def get_parameters(
-        self, instruction: Union[str, Instruction], qubits: Union[int, Iterable[int]]
-    ) -> Tuple[str]:
+        self, instruction: str | Instruction, qubits: int | Iterable[int]
+    ) -> tuple[str]:
         """Return the list of parameters taken by the given instruction on the given qubits.
 
         Args:
@@ -417,7 +411,7 @@ class InstructionScheduleMap:
         return True
 
 
-def _to_tuple(values: Union[int, Iterable[int]]) -> Tuple[int, ...]:
+def _to_tuple(values: int | Iterable[int]) -> tuple[int, ...]:
     """Return the input as a tuple.
 
     Args:
@@ -432,7 +426,7 @@ def _to_tuple(values: Union[int, Iterable[int]]) -> Tuple[int, ...]:
         return (values,)
 
 
-def _get_instruction_string(inst: Union[str, Instruction]):
+def _get_instruction_string(inst: str | Instruction):
     if isinstance(inst, str):
         return inst
     else:

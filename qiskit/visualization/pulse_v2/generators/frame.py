@@ -50,8 +50,8 @@ from qiskit.visualization.pulse_v2 import drawings, types, device_info
 
 
 def gen_formatted_phase(
-    data: types.PulseInstruction, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.PulseInstruction, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate the formatted virtual Z rotation label from provided frame instruction.
 
     Rotation angle is expressed in units of pi.
@@ -107,8 +107,8 @@ def gen_formatted_phase(
 
 
 def gen_formatted_freq_mhz(
-    data: types.PulseInstruction, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.PulseInstruction, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate the formatted frequency change label from provided frame instruction.
 
     Frequency change is expressed in units of MHz.
@@ -155,8 +155,8 @@ def gen_formatted_freq_mhz(
 
 
 def gen_formatted_frame_values(
-    data: types.PulseInstruction, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.PulseInstruction, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate the formatted virtual Z rotation label and the frequency change label
     from provided frame instruction.
 
@@ -231,8 +231,8 @@ def gen_formatted_frame_values(
 
 
 def gen_raw_operand_values_compact(
-    data: types.PulseInstruction, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.PulseInstruction, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate the formatted virtual Z rotation label and the frequency change label
     from provided frame instruction.
 
@@ -287,8 +287,8 @@ def gen_raw_operand_values_compact(
 
 
 def gen_frame_symbol(
-    data: types.PulseInstruction, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.TextData]:
+    data: types.PulseInstruction, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.TextData]:
     """Generate a frame change symbol with instruction meta data from provided frame instruction.
 
     Stylesheets:
@@ -354,8 +354,8 @@ def gen_frame_symbol(
 
 
 def _phase_to_text(
-    formatter: Dict[str, Any], phase: float, max_denom: int = 10, flip: bool = True
-) -> Tuple[str, str]:
+    formatter: dict[str, Any], phase: float, max_denom: int = 10, flip: bool = True
+) -> tuple[str, str]:
     """A helper function to convert a float value to text with pi.
 
     Args:
@@ -407,7 +407,7 @@ def _phase_to_text(
     return sign + plain, sign + latex
 
 
-def _freq_to_text(formatter: Dict[str, Any], freq: float, unit: str = "MHz") -> Tuple[str, str]:
+def _freq_to_text(formatter: dict[str, Any], freq: float, unit: str = "MHz") -> tuple[str, str]:
     """A helper function to convert a freq value to text with supplementary unit.
 
     Args:

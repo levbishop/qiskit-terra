@@ -46,9 +46,9 @@ from qiskit.visualization.pulse_v2 import drawings, types, device_info
 
 def gen_snapshot_name(
     data: types.SnapshotInstruction,
-    formatter: Dict[str, Any],
+    formatter: dict[str, Any],
     device: device_info.DrawerBackendInfo,
-) -> List[drawings.TextData]:
+) -> list[drawings.TextData]:
     """Generate the name of snapshot.
 
     Stylesheets:
@@ -86,9 +86,9 @@ def gen_snapshot_name(
 
 def gen_snapshot_symbol(
     data: types.SnapshotInstruction,
-    formatter: Dict[str, Any],
+    formatter: dict[str, Any],
     device: device_info.DrawerBackendInfo,
-) -> List[drawings.TextData]:
+) -> list[drawings.TextData]:
     """Generate a snapshot symbol with instruction meta data from provided snapshot instruction.
 
     Stylesheets:

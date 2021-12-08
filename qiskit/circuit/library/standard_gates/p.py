@@ -75,7 +75,7 @@ class PhaseGate(Gate):
         `1612.00858 <https://arxiv.org/abs/1612.00858>`_
     """
 
-    def __init__(self, theta: ParameterValueType, label: Optional[str] = None):
+    def __init__(self, theta: ParameterValueType, label: str | None = None):
         """Create new Phase gate."""
         super().__init__("p", 1, [theta], label=label)
 
@@ -93,8 +93,8 @@ class PhaseGate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[int, str]] = None,
+        label: str | None = None,
+        ctrl_state: int | str | None = None,
     ):
         """Return a (multi-)controlled-Phase gate.
 
@@ -168,8 +168,8 @@ class CPhaseGate(ControlledGate):
     def __init__(
         self,
         theta: ParameterValueType,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Create new CPhase gate."""
         super().__init__(
@@ -205,8 +205,8 @@ class CPhaseGate(ControlledGate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Controlled version of this gate.
 
@@ -264,7 +264,7 @@ class MCPhaseGate(ControlledGate):
         The singly-controlled-version of this gate.
     """
 
-    def __init__(self, lam: ParameterValueType, num_ctrl_qubits: int, label: Optional[str] = None):
+    def __init__(self, lam: ParameterValueType, num_ctrl_qubits: int, label: str | None = None):
         """Create new MCPhase gate."""
         super().__init__(
             "mcphase",
@@ -298,8 +298,8 @@ class MCPhaseGate(ControlledGate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Controlled version of this gate.
 

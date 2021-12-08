@@ -197,7 +197,7 @@ class IQXDebugging(dict):
         return "Timeline style sheet for timeline programmers."
 
 
-def default_style() -> Dict[str, Any]:
+def default_style() -> dict[str, Any]:
     """Define default values of the timeline stylesheet."""
     return {
         "formatter.general.fig_width": 14,

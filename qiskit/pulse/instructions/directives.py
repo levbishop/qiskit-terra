@@ -36,7 +36,7 @@ class Directive(instruction.Instruction, ABC):
 class RelativeBarrier(Directive):
     """Pulse ``RelativeBarrier`` directive."""
 
-    def __init__(self, *channels: chans.Channel, name: Optional[str] = None):
+    def __init__(self, *channels: chans.Channel, name: str | None = None):
         """Create a relative barrier directive.
 
         The barrier directive blocks instructions within the same schedule
@@ -50,7 +50,7 @@ class RelativeBarrier(Directive):
         super().__init__(operands=tuple(channels), name=name)
 
     @property
-    def channels(self) -> Tuple[chans.Channel]:
+    def channels(self) -> tuple[chans.Channel]:
         """Returns the channels that this schedule uses."""
         return self.operands
 

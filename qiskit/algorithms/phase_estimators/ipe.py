@@ -42,7 +42,7 @@ class IterativePhaseEstimation(PhaseEstimator):
     def __init__(
         self,
         num_iterations: int,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None,
+        quantum_instance: QuantumInstance | BaseBackend | Backend | None = None,
     ) -> None:
 
         """Args:
@@ -147,7 +147,7 @@ class IterativePhaseEstimation(PhaseEstimator):
     # pylint: disable=arguments-differ
     def estimate(
         self, unitary: QuantumCircuit, state_preparation: QuantumCircuit
-    ) -> "IterativePhaseEstimationResult":
+    ) -> IterativePhaseEstimationResult:
         """
         Estimate the eigenphase of the input unitary and initial-state pair.
 

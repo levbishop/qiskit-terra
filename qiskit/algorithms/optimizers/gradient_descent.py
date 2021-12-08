@@ -109,10 +109,10 @@ class GradientDescent(Optimizer):
     def __init__(
         self,
         maxiter: int = 100,
-        learning_rate: Union[float, Callable[[], Iterator]] = 0.01,
+        learning_rate: float | Callable[[], Iterator] = 0.01,
         tol: float = 1e-7,
-        callback: Optional[CALLBACK] = None,
-        perturbation: Optional[float] = None,
+        callback: CALLBACK | None = None,
+        perturbation: float | None = None,
     ) -> None:
         r"""
         Args:
@@ -135,7 +135,7 @@ class GradientDescent(Optimizer):
         self.callback = callback
 
     @property
-    def settings(self) -> Dict[str, Any]:
+    def settings(self) -> dict[str, Any]:
         # if learning rate or perturbation are custom iterators expand them
         if callable(self.learning_rate):
             iterator = self.learning_rate()
@@ -155,8 +155,8 @@ class GradientDescent(Optimizer):
         self,
         fun: Callable[[POINT], float],
         x0: POINT,
-        jac: Optional[Callable[[POINT], POINT]] = None,
-        bounds: Optional[List[Tuple[float, float]]] = None,
+        jac: Callable[[POINT], POINT] | None = None,
+        bounds: list[tuple[float, float]] | None = None,
     ) -> OptimizerResult:
         # set learning rate
         if isinstance(self.learning_rate, float):

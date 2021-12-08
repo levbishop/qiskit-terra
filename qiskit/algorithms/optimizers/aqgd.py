@@ -52,10 +52,10 @@ class AQGD(Optimizer):
 
     def __init__(
         self,
-        maxiter: Union[int, List[int]] = 1000,
-        eta: Union[float, List[float]] = 1.0,
+        maxiter: int | list[int] = 1000,
+        eta: float | list[float] = 1.0,
         tol: float = 1e-6,  # this is tol
-        momentum: Union[float, List[float]] = 0.25,
+        momentum: float | list[float] = 0.25,
         param_tol: float = 1e-6,
         averaging: int = 10,
     ) -> None:
@@ -107,7 +107,7 @@ class AQGD(Optimizer):
         self._prev_loss = []  # type: List[float]
         self._prev_grad = []  # type: List[List[float]]
 
-    def get_support_level(self) -> Dict[str, OptimizerSupportLevel]:
+    def get_support_level(self) -> dict[str, OptimizerSupportLevel]:
         """Support level dictionary
 
         Returns:
@@ -121,7 +121,7 @@ class AQGD(Optimizer):
         }
 
     @property
-    def settings(self) -> Dict[str, Any]:
+    def settings(self) -> dict[str, Any]:
         return {
             "maxiter": self._maxiter,
             "eta": self._eta,
@@ -132,8 +132,8 @@ class AQGD(Optimizer):
         }
 
     def _compute_objective_fn_and_gradient(
-        self, params: List[float], obj: Callable
-    ) -> Tuple[float, np.array]:
+        self, params: list[float], obj: Callable
+    ) -> tuple[float, np.array]:
         """
         Obtains the objective function value for params and the analytical quantum derivatives of
         the objective function with respect to each parameter. Requires
@@ -176,7 +176,7 @@ class AQGD(Optimizer):
         mprev: np.ndarray,
         step_size: float,
         momentum_coeff: float,
-    ) -> Tuple[List[float], List[float]]:
+    ) -> tuple[list[float], list[float]]:
         """
         Updates full parameter array based on a step that is a convex
         combination of the gradient and previous momentum
@@ -236,7 +236,7 @@ class AQGD(Optimizer):
             return True
         return False
 
-    def _converged_parameter(self, parameter: List[float], tol: float) -> bool:
+    def _converged_parameter(self, parameter: list[float], tol: float) -> bool:
         """
         Tests convergence based on change in parameter
 
@@ -259,7 +259,7 @@ class AQGD(Optimizer):
             return True
         return False
 
-    def _converged_alt(self, gradient: List[float], tol: float, window_size: int) -> bool:
+    def _converged_alt(self, gradient: list[float], tol: float, window_size: int) -> bool:
         """
         Tests convergence from norm of windowed average of gradients
 
@@ -300,9 +300,9 @@ class AQGD(Optimizer):
         num_vars: int,
         objective_function: Callable,
         gradient_function: Callable = None,
-        variable_bounds: List[Tuple[float, float]] = None,
+        variable_bounds: list[tuple[float, float]] = None,
         initial_point: np.ndarray = None,
-    ) -> Tuple[np.ndarray, float, int]:
+    ) -> tuple[np.ndarray, float, int]:
         super().optimize(
             num_vars, objective_function, gradient_function, variable_bounds, initial_point
         )
@@ -315,8 +315,8 @@ class AQGD(Optimizer):
         self,
         fun: Callable[[POINT], float],
         x0: POINT,
-        jac: Optional[Callable[[POINT], POINT]] = None,
-        bounds: Optional[List[Tuple[float, float]]] = None,
+        jac: Callable[[POINT], POINT] | None = None,
+        bounds: list[tuple[float, float]] | None = None,
     ) -> OptimizerResult:
         params = np.asarray(x0)
         momentum = np.zeros(shape=(params.size,))

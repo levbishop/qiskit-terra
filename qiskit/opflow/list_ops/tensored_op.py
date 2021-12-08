@@ -35,8 +35,8 @@ class TensoredOp(ListOp):
 
     def __init__(
         self,
-        oplist: List[OperatorBase],
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        oplist: list[OperatorBase],
+        coeff: complex | ParameterExpression = 1.0,
         abelian: bool = False,
     ) -> None:
         """
@@ -56,11 +56,11 @@ class TensoredOp(ListOp):
         return False
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {"oplist": self._oplist, "coeff": self._coeff, "abelian": self._abelian}
 
-    def _expand_dim(self, num_qubits: int) -> "TensoredOp":
+    def _expand_dim(self, num_qubits: int) -> TensoredOp:
         """Appends I ^ num_qubits to ``oplist``. Choice of PauliOp as
         identity is arbitrary and can be substituted for other PrimitiveOp identity.
 
@@ -80,8 +80,8 @@ class TensoredOp(ListOp):
     # TODO eval should partial trace the input into smaller StateFns each of size
     #  op.num_qubits for each op in oplist. Right now just works through matmul.
     def eval(
-        self, front: Union[str, dict, np.ndarray, OperatorBase, Statevector] = None
-    ) -> Union[OperatorBase, complex]:
+        self, front: str | dict | np.ndarray | OperatorBase | Statevector = None
+    ) -> OperatorBase | complex:
         if self._is_empty():
             return 0.0
         return cast(Union[OperatorBase, complex], self.to_matrix_op().eval(front=front))

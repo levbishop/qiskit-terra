@@ -58,9 +58,9 @@ class ParametricPulse(Pulse):
     @abstractmethod
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
-        name: Optional[str] = None,
-        limit_amplitude: Optional[bool] = None,
+        duration: int | ParameterExpression,
+        name: str | None = None,
+        limit_amplitude: bool | None = None,
     ):
         """Create a parametric pulse and validate the input parameters.
 
@@ -113,11 +113,11 @@ class Gaussian(ParametricPulse):
 
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
-        amp: Union[complex, ParameterExpression],
-        sigma: Union[float, ParameterExpression],
-        name: Optional[str] = None,
-        limit_amplitude: Optional[bool] = None,
+        duration: int | ParameterExpression,
+        amp: complex | ParameterExpression,
+        sigma: float | ParameterExpression,
+        name: str | None = None,
+        limit_amplitude: bool | None = None,
     ):
         """Initialize the gaussian pulse.
 
@@ -138,12 +138,12 @@ class Gaussian(ParametricPulse):
         super().__init__(duration=duration, name=name, limit_amplitude=limit_amplitude)
 
     @property
-    def amp(self) -> Union[complex, ParameterExpression]:
+    def amp(self) -> complex | ParameterExpression:
         """The Gaussian amplitude."""
         return self._amp
 
     @property
-    def sigma(self) -> Union[float, ParameterExpression]:
+    def sigma(self) -> float | ParameterExpression:
         """The Gaussian standard deviation of the pulse width."""
         return self._sigma
 
@@ -160,7 +160,7 @@ class Gaussian(ParametricPulse):
             raise PulseError("Sigma must be greater than 0.")
 
     @property
-    def parameters(self) -> Dict[str, Any]:
+    def parameters(self) -> dict[str, Any]:
         return {"duration": self.duration, "amp": self.amp, "sigma": self.sigma}
 
     def __repr__(self) -> str:
@@ -208,13 +208,13 @@ class GaussianSquare(ParametricPulse):
 
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
-        amp: Union[complex, ParameterExpression],
-        sigma: Union[float, ParameterExpression],
-        width: Union[float, ParameterExpression] = None,
-        risefall_sigma_ratio: Union[float, ParameterExpression] = None,
-        name: Optional[str] = None,
-        limit_amplitude: Optional[bool] = None,
+        duration: int | ParameterExpression,
+        amp: complex | ParameterExpression,
+        sigma: float | ParameterExpression,
+        width: float | ParameterExpression = None,
+        risefall_sigma_ratio: float | ParameterExpression = None,
+        name: str | None = None,
+        limit_amplitude: bool | None = None,
     ):
         """Initialize the gaussian square pulse.
 
@@ -239,22 +239,22 @@ class GaussianSquare(ParametricPulse):
         super().__init__(duration=duration, name=name, limit_amplitude=limit_amplitude)
 
     @property
-    def amp(self) -> Union[complex, ParameterExpression]:
+    def amp(self) -> complex | ParameterExpression:
         """The Gaussian amplitude."""
         return self._amp
 
     @property
-    def sigma(self) -> Union[float, ParameterExpression]:
+    def sigma(self) -> float | ParameterExpression:
         """The Gaussian standard deviation of the pulse width."""
         return self._sigma
 
     @property
-    def risefall_sigma_ratio(self) -> Union[float, ParameterExpression]:
+    def risefall_sigma_ratio(self) -> float | ParameterExpression:
         """The duration of each risefall in terms of sigma."""
         return self._risefall_sigma_ratio
 
     @property
-    def width(self) -> Union[float, ParameterExpression]:
+    def width(self) -> float | ParameterExpression:
         """The width of the square portion of the pulse."""
         return self._width
 
@@ -305,7 +305,7 @@ class GaussianSquare(ParametricPulse):
             self._width = self.duration - 2.0 * self.risefall_sigma_ratio * self.sigma
 
     @property
-    def parameters(self) -> Dict[str, Any]:
+    def parameters(self) -> dict[str, Any]:
         return {
             "duration": self.duration,
             "amp": self.amp,
@@ -360,12 +360,12 @@ class Drag(ParametricPulse):
 
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
-        amp: Union[complex, ParameterExpression],
-        sigma: Union[float, ParameterExpression],
-        beta: Union[float, ParameterExpression],
-        name: Optional[str] = None,
-        limit_amplitude: Optional[bool] = None,
+        duration: int | ParameterExpression,
+        amp: complex | ParameterExpression,
+        sigma: float | ParameterExpression,
+        beta: float | ParameterExpression,
+        name: str | None = None,
+        limit_amplitude: bool | None = None,
     ):
         """Initialize the drag pulse.
 
@@ -388,17 +388,17 @@ class Drag(ParametricPulse):
         super().__init__(duration=duration, name=name, limit_amplitude=limit_amplitude)
 
     @property
-    def amp(self) -> Union[complex, ParameterExpression]:
+    def amp(self) -> complex | ParameterExpression:
         """The Gaussian amplitude."""
         return self._amp
 
     @property
-    def sigma(self) -> Union[float, ParameterExpression]:
+    def sigma(self) -> float | ParameterExpression:
         """The Gaussian standard deviation of the pulse width."""
         return self._sigma
 
     @property
-    def beta(self) -> Union[float, ParameterExpression]:
+    def beta(self) -> float | ParameterExpression:
         """The weighing factor for the Gaussian derivative component of the waveform."""
         return self._beta
 
@@ -449,7 +449,7 @@ class Drag(ParametricPulse):
                 raise PulseError("Beta is too large; pulse amplitude norm exceeds 1.")
 
     @property
-    def parameters(self) -> Dict[str, Any]:
+    def parameters(self) -> dict[str, Any]:
         return {"duration": self.duration, "amp": self.amp, "sigma": self.sigma, "beta": self.beta}
 
     def __repr__(self) -> str:
@@ -475,10 +475,10 @@ class Constant(ParametricPulse):
 
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
-        amp: Union[complex, ParameterExpression],
-        name: Optional[str] = None,
-        limit_amplitude: Optional[bool] = None,
+        duration: int | ParameterExpression,
+        amp: complex | ParameterExpression,
+        name: str | None = None,
+        limit_amplitude: bool | None = None,
     ):
         """
         Initialize the constant-valued pulse.
@@ -497,7 +497,7 @@ class Constant(ParametricPulse):
         super().__init__(duration=duration, name=name, limit_amplitude=limit_amplitude)
 
     @property
-    def amp(self) -> Union[complex, ParameterExpression]:
+    def amp(self) -> complex | ParameterExpression:
         """The constant value amplitude."""
         return self._amp
 
@@ -512,7 +512,7 @@ class Constant(ParametricPulse):
             )
 
     @property
-    def parameters(self) -> Dict[str, Any]:
+    def parameters(self) -> dict[str, Any]:
         return {"duration": self.duration, "amp": self.amp}
 
     def __repr__(self) -> str:

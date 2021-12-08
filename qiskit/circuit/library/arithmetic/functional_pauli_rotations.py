@@ -25,7 +25,7 @@ class FunctionalPauliRotations(BlueprintCircuit, ABC):
     """Base class for functional Pauli rotations."""
 
     def __init__(
-        self, num_state_qubits: Optional[int] = None, basis: str = "Y", name: str = "F"
+        self, num_state_qubits: int | None = None, basis: str = "Y", name: str = "F"
     ) -> None:
         r"""Create a new functional Pauli rotation circuit.
 
@@ -82,7 +82,7 @@ class FunctionalPauliRotations(BlueprintCircuit, ABC):
         return self._num_state_qubits
 
     @num_state_qubits.setter
-    def num_state_qubits(self, num_state_qubits: Optional[int]) -> None:
+    def num_state_qubits(self, num_state_qubits: int | None) -> None:
         """Set the number of state qubits.
 
         Note that this may change the underlying quantum register, if the number of state qubits
@@ -98,7 +98,7 @@ class FunctionalPauliRotations(BlueprintCircuit, ABC):
             self._reset_registers(num_state_qubits)
 
     @abstractmethod
-    def _reset_registers(self, num_state_qubits: Optional[int]) -> None:
+    def _reset_registers(self, num_state_qubits: int | None) -> None:
         """Reset the registers according to the new number of state qubits.
 
         Args:

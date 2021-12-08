@@ -38,7 +38,7 @@ class ExpectationFactory:
     @staticmethod
     def build(
         operator: OperatorBase,
-        backend: Optional[Union[Backend, BaseBackend, QuantumInstance]] = None,
+        backend: Backend | BaseBackend | QuantumInstance | None = None,
         include_custom: bool = True,
     ) -> ExpectationBase:
         """

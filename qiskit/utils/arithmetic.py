@@ -98,7 +98,7 @@ def next_power_of_2_base(n):
     return base
 
 
-def transpositions(permutation: List[int]) -> List[Tuple[int, int]]:
+def transpositions(permutation: list[int]) -> list[tuple[int, int]]:
     """Return a sequence of transpositions, corresponding to the permutation.
 
     Args:

@@ -53,7 +53,7 @@ class ExpectationBase(ConverterBase):
         raise NotImplementedError
 
     @abstractmethod
-    def compute_variance(self, exp_op: OperatorBase) -> Union[list, complex, np.ndarray]:
+    def compute_variance(self, exp_op: OperatorBase) -> list | complex | np.ndarray:
         """Compute the variance of the expectation estimator.
 
         Args:

@@ -92,7 +92,7 @@ class HamiltonianPhaseEstimation:
     def __init__(
         self,
         num_evaluation_qubits: int,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend]] = None,
+        quantum_instance: QuantumInstance | BaseBackend | None = None,
     ) -> None:
         """
         Args:
@@ -132,9 +132,9 @@ class HamiltonianPhaseEstimation:
     def estimate(
         self,
         hamiltonian: OperatorBase,
-        state_preparation: Optional[StateFn] = None,
-        evolution: Optional[EvolutionBase] = None,
-        bound: Optional[float] = None,
+        state_preparation: StateFn | None = None,
+        evolution: EvolutionBase | None = None,
+        bound: float | None = None,
     ) -> HamiltonianPhaseEstimationResult:
         """Run the Hamiltonian phase estimation algorithm.
 

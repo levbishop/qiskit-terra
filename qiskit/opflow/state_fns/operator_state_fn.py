@@ -41,7 +41,7 @@ class OperatorStateFn(StateFn):
     def __init__(
         self,
         primitive: OperatorBase,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
     ) -> None:
         """
@@ -54,14 +54,14 @@ class OperatorStateFn(StateFn):
 
         super().__init__(primitive, coeff=coeff, is_measurement=is_measurement)
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return self.primitive.primitive_strings()
 
     @property
     def num_qubits(self) -> int:
         return self.primitive.num_qubits
 
-    def add(self, other: OperatorBase) -> Union["OperatorStateFn", SummedOp]:
+    def add(self, other: OperatorBase) -> Union[OperatorStateFn, SummedOp]:
         if not self.num_qubits == other.num_qubits:
             raise ValueError(
                 "Sum over statefns with different numbers of qubits, {} and {}, is not well "
@@ -86,28 +86,28 @@ class OperatorStateFn(StateFn):
 
         return SummedOp([self, other])
 
-    def adjoint(self) -> "OperatorStateFn":
+    def adjoint(self) -> OperatorStateFn:
         return OperatorStateFn(
             self.primitive.adjoint(),
             coeff=self.coeff.conjugate(),
             is_measurement=(not self.is_measurement),
         )
 
-    def _expand_dim(self, num_qubits: int) -> "OperatorStateFn":
+    def _expand_dim(self, num_qubits: int) -> OperatorStateFn:
         return OperatorStateFn(
             self.primitive._expand_dim(num_qubits),
             coeff=self.coeff,
             is_measurement=self.is_measurement,
         )
 
-    def permute(self, permutation: List[int]) -> "OperatorStateFn":
+    def permute(self, permutation: list[int]) -> OperatorStateFn:
         return OperatorStateFn(
             self.primitive.permute(permutation),
             coeff=self.coeff,
             is_measurement=self.is_measurement,
         )
 
-    def tensor(self, other: OperatorBase) -> Union["OperatorStateFn", TensoredOp]:
+    def tensor(self, other: OperatorBase) -> Union[OperatorStateFn, TensoredOp]:
         if isinstance(other, OperatorStateFn):
             return OperatorStateFn(
                 self.primitive.tensor(other.primitive),
@@ -128,7 +128,7 @@ class OperatorStateFn(StateFn):
         OperatorBase._check_massive("to_density_matrix", True, self.num_qubits, massive)
         return self.primitive.to_matrix() * self.coeff
 
-    def to_matrix_op(self, massive: bool = False) -> "OperatorStateFn":
+    def to_matrix_op(self, massive: bool = False) -> OperatorStateFn:
         """Return a MatrixOp for this operator."""
         return OperatorStateFn(
             self.primitive.to_matrix_op(massive=massive) * self.coeff,
@@ -197,8 +197,8 @@ class OperatorStateFn(StateFn):
             )
 
     def eval(
-        self, front: Optional[Union[str, dict, np.ndarray, OperatorBase, Statevector]] = None
-    ) -> Union[OperatorBase, complex]:
+        self, front: str | dict | np.ndarray | OperatorBase | Statevector | None = None
+    ) -> OperatorBase | complex:
         if front is None:
             matrix = cast(MatrixOp, self.primitive.to_matrix_op()).primitive.data
             # pylint: disable=cyclic-import

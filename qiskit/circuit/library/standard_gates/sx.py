@@ -59,7 +59,7 @@ class SXGate(Gate):
 
     """
 
-    def __init__(self, label: Optional[str] = None):
+    def __init__(self, label: str | None = None):
         """Create new SX gate."""
         super().__init__("sx", 1, [], label=label)
 
@@ -86,8 +86,8 @@ class SXGate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Return a (multi-)controlled-SX gate.
 
@@ -139,7 +139,7 @@ class SXdgGate(Gate):
 
     """
 
-    def __init__(self, label: Optional[str] = None):
+    def __init__(self, label: str | None = None):
         """Create new SXdg gate."""
         super().__init__("sxdg", 1, [], label=label)
 
@@ -238,7 +238,7 @@ class CSXGate(ControlledGate):
         ]
     )
 
-    def __init__(self, label: Optional[str] = None, ctrl_state: Optional[Union[str, int]] = None):
+    def __init__(self, label: str | None = None, ctrl_state: str | int | None = None):
         """Create new CSX gate."""
         super().__init__(
             "csx", 2, [], num_ctrl_qubits=1, label=label, ctrl_state=ctrl_state, base_gate=SXGate()

@@ -43,9 +43,9 @@ class ShiftPhase(Instruction):
 
     def __init__(
         self,
-        phase: Union[complex, ParameterExpression],
+        phase: complex | ParameterExpression,
         channel: PulseChannel,
-        name: Optional[str] = None,
+        name: str | None = None,
     ):
         """Instantiate a shift phase instruction, increasing the output signal phase on ``channel``
         by ``phase`` [radians].
@@ -58,7 +58,7 @@ class ShiftPhase(Instruction):
         super().__init__(operands=(phase, channel), name=name)
 
     @property
-    def phase(self) -> Union[complex, ParameterExpression]:
+    def phase(self) -> complex | ParameterExpression:
         """Return the rotation angle enacted by this instruction in radians."""
         return self.operands[0]
 
@@ -70,7 +70,7 @@ class ShiftPhase(Instruction):
         return self.operands[1]
 
     @property
-    def channels(self) -> Tuple[PulseChannel]:
+    def channels(self) -> tuple[PulseChannel]:
         """Returns the channels that this schedule uses."""
         return (self.channel,)
 
@@ -99,9 +99,9 @@ class SetPhase(Instruction):
 
     def __init__(
         self,
-        phase: Union[complex, ParameterExpression],
+        phase: complex | ParameterExpression,
         channel: PulseChannel,
-        name: Optional[str] = None,
+        name: str | None = None,
     ):
         """Instantiate a set phase instruction, setting the output signal phase on ``channel``
         to ``phase`` [radians].
@@ -114,7 +114,7 @@ class SetPhase(Instruction):
         super().__init__(operands=(phase, channel), name=name)
 
     @property
-    def phase(self) -> Union[complex, ParameterExpression]:
+    def phase(self) -> complex | ParameterExpression:
         """Return the rotation angle enacted by this instruction in radians."""
         return self.operands[0]
 
@@ -126,7 +126,7 @@ class SetPhase(Instruction):
         return self.operands[1]
 
     @property
-    def channels(self) -> Tuple[PulseChannel]:
+    def channels(self) -> tuple[PulseChannel]:
         """Returns the channels that this schedule uses."""
         return (self.channel,)
 

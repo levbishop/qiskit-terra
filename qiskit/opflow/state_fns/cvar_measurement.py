@@ -46,7 +46,7 @@ class CVaRMeasurement(OperatorStateFn):
         self,
         primitive: OperatorBase = None,
         alpha: float = 1.0,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        coeff: complex | ParameterExpression = 1.0,
     ) -> None:
         """
         Args:
@@ -94,7 +94,7 @@ class CVaRMeasurement(OperatorStateFn):
         return self._alpha
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {"primitive": self._primitive, "coeff": self._coeff, "alpha": self._alpha}
 
@@ -112,7 +112,7 @@ class CVaRMeasurement(OperatorStateFn):
         """
         raise OpflowError("Adjoint of a CVaR measurement not defined")
 
-    def mul(self, scalar: Union[complex, ParameterExpression]) -> "CVaRMeasurement":
+    def mul(self, scalar: complex | ParameterExpression) -> CVaRMeasurement:
         if not isinstance(scalar, (int, float, complex, ParameterExpression)):
             raise ValueError(
                 "Operators can only be scalar multiplied by float or complex, not "
@@ -121,7 +121,7 @@ class CVaRMeasurement(OperatorStateFn):
 
         return self.__class__(self.primitive, coeff=self.coeff * scalar, alpha=self._alpha)
 
-    def tensor(self, other: OperatorBase) -> Union["OperatorStateFn", TensoredOp]:
+    def tensor(self, other: OperatorBase) -> Union[OperatorStateFn, TensoredOp]:
         if isinstance(other, OperatorStateFn):
             return OperatorStateFn(
                 self.primitive.tensor(other.primitive), coeff=self.coeff * other.coeff
@@ -148,7 +148,7 @@ class CVaRMeasurement(OperatorStateFn):
         return f"CVaRMeasurement({str(self.primitive)}) * {self.coeff}"
 
     def eval(
-        self, front: Union[str, dict, np.ndarray, OperatorBase, Statevector] = None
+        self, front: str | dict | np.ndarray | OperatorBase | Statevector = None
     ) -> complex:
         r"""
         Given the energies of each sampled measurement outcome (H_i) as well as the
@@ -178,7 +178,7 @@ class CVaRMeasurement(OperatorStateFn):
         return self.compute_cvar(energies, probabilities)
 
     def eval_variance(
-        self, front: Optional[Union[str, dict, np.ndarray, OperatorBase]] = None
+        self, front: str | dict | np.ndarray | OperatorBase | None = None
     ) -> complex:
         r"""
         Given the energies of each sampled measurement outcome (H_i) as well as the
@@ -204,8 +204,8 @@ class CVaRMeasurement(OperatorStateFn):
         return self.compute_cvar(sq_energies, probabilities) - self.eval(front) ** 2
 
     def get_outcome_energies_probabilities(
-        self, front: Optional[Union[str, dict, np.ndarray, OperatorBase, Statevector]] = None
-    ) -> Tuple[list, list]:
+        self, front: str | dict | np.ndarray | OperatorBase | Statevector | None = None
+    ) -> tuple[list, list]:
         r"""
         In order to compute the  CVaR of an observable expectation, we require
         the energies of each sampled measurement outcome as well as the sampling
@@ -323,7 +323,7 @@ class CVaRMeasurement(OperatorStateFn):
         return self.coeff * cvar / alpha
 
     def traverse(
-        self, convert_fn: Callable, coeff: Optional[Union[complex, ParameterExpression]] = None
+        self, convert_fn: Callable, coeff: complex | ParameterExpression | None = None
     ) -> OperatorBase:
         r"""
         Apply the convert_fn to the internal primitive if the primitive is an Operator (as in

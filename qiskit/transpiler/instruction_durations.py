@@ -32,7 +32,7 @@ class InstructionDurations:
     """
 
     def __init__(
-        self, instruction_durations: Optional["InstructionDurationsType"] = None, dt: float = None
+        self, instruction_durations: Optional[InstructionDurationsType] = None, dt: float = None
     ):
         self.duration_by_name = {}
         self.duration_by_name_qubits = {}
@@ -87,7 +87,7 @@ class InstructionDurations:
 
         return InstructionDurations(instruction_durations, dt=dt)
 
-    def update(self, inst_durations: Optional["InstructionDurationsType"], dt: float = None):
+    def update(self, inst_durations: Optional[InstructionDurationsType], dt: float = None):
         """Update self with inst_durations (inst_durations overwrite self).
 
         Args:
@@ -133,8 +133,8 @@ class InstructionDurations:
 
     def get(
         self,
-        inst: Union[str, Instruction],
-        qubits: Union[int, List[int], Qubit, List[Qubit]],
+        inst: str | Instruction,
+        qubits: int | list[int] | Qubit | list[Qubit],
         unit: str = "dt",
     ) -> float:
         """Get the duration of the instruction with the name and the qubits.
@@ -181,7 +181,7 @@ class InstructionDurations:
                 f"Duration of {inst_name} on qubits {qubits} is not found."
             ) from ex
 
-    def _get(self, name: str, qubits: List[int], to_unit: str) -> float:
+    def _get(self, name: str, qubits: list[int], to_unit: str) -> float:
         """Get the duration of the instruction with the name and the qubits."""
         if name == "barrier":
             return 0
@@ -218,7 +218,7 @@ class InstructionDurations:
         else:
             raise TranspilerError(f"Conversion from '{from_unit}' to '{to_unit}' is not supported")
 
-    def units_used(self) -> Set[str]:
+    def units_used(self) -> set[str]:
         """Get the set of all units used in this instruction durations.
 
         Returns:

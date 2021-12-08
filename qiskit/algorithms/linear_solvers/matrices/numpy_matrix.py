@@ -146,14 +146,14 @@ class NumPyMatrix(LinearSystemMatrix):
         """
         self._matrix = matrix
 
-    def eigs_bounds(self) -> Tuple[float, float]:
+    def eigs_bounds(self) -> tuple[float, float]:
         """Return lower and upper bounds on the eigenvalues of the matrix."""
         matrix_array = self.matrix
         lambda_max = max(np.abs(np.linalg.eigvals(matrix_array)))
         lambda_min = min(np.abs(np.linalg.eigvals(matrix_array)))
         return lambda_min, lambda_max
 
-    def condition_bounds(self) -> Tuple[float, float]:
+    def condition_bounds(self) -> tuple[float, float]:
         """Return lower and upper bounds on the condition number of the matrix."""
         matrix_array = self.matrix
         kappa = np.linalg.cond(matrix_array)

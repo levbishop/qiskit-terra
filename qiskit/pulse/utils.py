@@ -23,7 +23,7 @@ from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse.exceptions import UnassignedDurationError, QiskitError
 
 
-def format_meas_map(meas_map: List[List[int]]) -> Dict[int, List[int]]:
+def format_meas_map(meas_map: list[list[int]]) -> dict[int, list[int]]:
     """
     Return a mapping from qubit label to measurement group given the nested list meas_map returned
     by a backend configuration. (Qubits can not always be measured independently.) Sorts the
@@ -46,7 +46,7 @@ def format_meas_map(meas_map: List[List[int]]) -> Dict[int, List[int]]:
 def format_parameter_value(
     operand: ParameterExpression,
     decimal: int = 10,
-) -> Union[ParameterExpression, complex]:
+) -> ParameterExpression | complex:
     """Convert ParameterExpression into the most suitable data type.
 
     Args:

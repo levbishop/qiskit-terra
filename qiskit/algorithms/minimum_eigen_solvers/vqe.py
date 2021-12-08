@@ -88,15 +88,15 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
 
     def __init__(
         self,
-        ansatz: Optional[QuantumCircuit] = None,
-        optimizer: Optional[Optimizer] = None,
-        initial_point: Optional[np.ndarray] = None,
-        gradient: Optional[Union[GradientBase, Callable]] = None,
-        expectation: Optional[ExpectationBase] = None,
+        ansatz: QuantumCircuit | None = None,
+        optimizer: Optimizer | None = None,
+        initial_point: np.ndarray | None = None,
+        gradient: GradientBase | Callable | None = None,
+        expectation: ExpectationBase | None = None,
         include_custom: bool = False,
         max_evals_grouped: int = 1,
-        callback: Optional[Callable[[int, np.ndarray, float, float], None]] = None,
-        quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None,
+        callback: Callable[[int, np.ndarray, float, float], None] | None = None,
+        quantum_instance: QuantumInstance | BaseBackend | Backend | None = None,
     ) -> None:
         """
 
@@ -177,7 +177,7 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         return self._ansatz
 
     @ansatz.setter
-    def ansatz(self, ansatz: Optional[QuantumCircuit]):
+    def ansatz(self, ansatz: QuantumCircuit | None):
         """Sets the ansatz.
 
         Args:
@@ -192,23 +192,23 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         self._ansatz_params = list(ansatz.parameters)
 
     @property
-    def gradient(self) -> Optional[Union[GradientBase, Callable]]:
+    def gradient(self) -> GradientBase | Callable | None:
         """Returns the gradient."""
         return self._gradient
 
     @gradient.setter
-    def gradient(self, gradient: Optional[Union[GradientBase, Callable]]):
+    def gradient(self, gradient: GradientBase | Callable | None):
         """Sets the gradient."""
         self._gradient = gradient
 
     @property
-    def quantum_instance(self) -> Optional[QuantumInstance]:
+    def quantum_instance(self) -> QuantumInstance | None:
         """Returns quantum instance."""
         return self._quantum_instance
 
     @quantum_instance.setter
     def quantum_instance(
-        self, quantum_instance: Union[QuantumInstance, BaseBackend, Backend]
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend
     ) -> None:
         """Sets quantum_instance"""
         if not isinstance(quantum_instance, QuantumInstance):
@@ -220,7 +220,7 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         )
 
     @property
-    def initial_point(self) -> Optional[np.ndarray]:
+    def initial_point(self) -> np.ndarray | None:
         """Returns initial point"""
         return self._initial_point
 
@@ -255,23 +255,23 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
             self.expectation = None
 
     @property
-    def callback(self) -> Optional[Callable[[int, np.ndarray, float, float], None]]:
+    def callback(self) -> Callable[[int, np.ndarray, float, float], None] | None:
         """Returns callback"""
         return self._callback
 
     @callback.setter
-    def callback(self, callback: Optional[Callable[[int, np.ndarray, float, float], None]]):
+    def callback(self, callback: Callable[[int, np.ndarray, float, float], None] | None):
         """Sets callback"""
         self._callback = callback
 
     @property
-    def expectation(self) -> Optional[ExpectationBase]:
+    def expectation(self) -> ExpectationBase | None:
         """The expectation value algorithm used to construct the expectation measurement from
         the observable."""
         return self._expectation
 
     @expectation.setter
-    def expectation(self, exp: Optional[ExpectationBase]) -> None:
+    def expectation(self, exp: ExpectationBase | None) -> None:
         self._expectation = exp
 
     def _check_operator_ansatz(self, operator: OperatorBase):
@@ -295,7 +295,7 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         return self._optimizer
 
     @optimizer.setter
-    def optimizer(self, optimizer: Optional[Optimizer]):
+    def optimizer(self, optimizer: Optimizer | None):
         """Sets the optimizer attribute.
 
         Args:
@@ -346,10 +346,10 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
 
     def construct_expectation(
         self,
-        parameter: Union[List[float], List[Parameter], np.ndarray],
+        parameter: list[float] | list[Parameter] | np.ndarray,
         operator: OperatorBase,
         return_expectation: bool = False,
-    ) -> Union[OperatorBase, Tuple[OperatorBase, ExpectationBase]]:
+    ) -> OperatorBase | tuple[OperatorBase, ExpectationBase]:
         r"""
         Generate the ansatz circuit and expectation value measurement, and return their
         runnable composition.
@@ -399,9 +399,9 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
 
     def construct_circuit(
         self,
-        parameter: Union[List[float], List[Parameter], np.ndarray],
+        parameter: list[float] | list[Parameter] | np.ndarray,
         operator: OperatorBase,
-    ) -> List[QuantumCircuit]:
+    ) -> list[QuantumCircuit]:
         """Return the circuits used to compute the expectation value.
 
         Args:
@@ -437,7 +437,7 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         aux_operators: ListOrDict[OperatorBase],
         expectation: ExpectationBase,
         threshold: float = 1e-12,
-    ) -> ListOrDict[Tuple[complex, complex]]:
+    ) -> ListOrDict[tuple[complex, complex]]:
         # Create new CircuitSampler to avoid breaking existing one's caches.
         sampler = CircuitSampler(self.quantum_instance)
 
@@ -485,7 +485,7 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         return aux_operator_eigenvalues
 
     def compute_minimum_eigenvalue(
-        self, operator: OperatorBase, aux_operators: Optional[ListOrDict[OperatorBase]] = None
+        self, operator: OperatorBase, aux_operators: ListOrDict[OperatorBase] | None = None
     ) -> MinimumEigensolverResult:
         super().compute_minimum_eigenvalue(operator, aux_operators)
 
@@ -594,7 +594,7 @@ class VQE(VariationalAlgorithm, MinimumEigensolver):
         self,
         operator: OperatorBase,
         return_expectation: bool = False,
-    ) -> Callable[[np.ndarray], Union[float, List[float]]]:
+    ) -> Callable[[np.ndarray], float | list[float]]:
         """Returns a function handle to evaluates the energy at given parameters for the ansatz.
 
         This is the objective function to be passed to the optimizer that is used for evaluation.
@@ -692,7 +692,7 @@ and will be removed no sooner than 3 months after the releasedate.
 This information is part of the returned result object and can be
 queried as VQEResult.eigenvector."""
     )
-    def get_optimal_vector(self) -> Union[List[float], Dict[str, int]]:
+    def get_optimal_vector(self) -> list[float] | dict[str, int]:
         """Get the simulation outcome of the optimal circuit."""
         if self._ret.optimal_parameters is None:
             raise AlgorithmError(
@@ -700,7 +700,7 @@ queried as VQEResult.eigenvector."""
             )
         return self._get_eigenstate(self._ret.optimal_parameters)
 
-    def _get_eigenstate(self, optimal_parameters) -> Union[List[float], Dict[str, int]]:
+    def _get_eigenstate(self, optimal_parameters) -> list[float] | dict[str, int]:
         """Get the simulation outcome of the ansatz, provided with parameters."""
         optimal_circuit = self.ansatz.bind_parameters(optimal_parameters)
         state_fn = self._circuit_sampler.convert(StateFn(optimal_circuit)).eval()
@@ -734,7 +734,7 @@ class VQEResult(VariationalResult, MinimumEigensolverResult):
         self._cost_function_evals = None
 
     @property
-    def cost_function_evals(self) -> Optional[int]:
+    def cost_function_evals(self) -> int | None:
         """Returns number of cost optimizer evaluations"""
         return self._cost_function_evals
 
@@ -744,7 +744,7 @@ class VQEResult(VariationalResult, MinimumEigensolverResult):
         self._cost_function_evals = value
 
     @property
-    def eigenstate(self) -> Optional[np.ndarray]:
+    def eigenstate(self) -> np.ndarray | None:
         """return eigen state"""
         return self._eigenstate
 

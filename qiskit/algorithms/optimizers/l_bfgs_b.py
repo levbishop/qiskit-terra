@@ -57,11 +57,11 @@ class L_BFGS_B(SciPyOptimizer):  # pylint: disable=invalid-name
         maxfun: int = 1000,
         maxiter: int = 15000,
         ftol: float = 10 * np.finfo(float).eps,
-        factr: Optional[float] = None,
+        factr: float | None = None,
         iprint: int = -1,
         epsilon: float = 1e-08,
         eps: float = 1e-08,
-        options: Optional[dict] = None,
+        options: dict | None = None,
         max_evals_grouped: int = 1,
         **kwargs,
     ):

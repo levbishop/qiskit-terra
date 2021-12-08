@@ -52,15 +52,15 @@ class NumPyLinearSolver(LinearSolver):
 
     def solve(
         self,
-        matrix: Union[np.ndarray, QuantumCircuit],
-        vector: Union[np.ndarray, QuantumCircuit],
-        observable: Optional[
-            Union[LinearSystemObservable, BaseOperator, List[BaseOperator]]
-        ] = None,
-        observable_circuit: Optional[Union[QuantumCircuit, List[QuantumCircuit]]] = None,
-        post_processing: Optional[
-            Callable[[Union[float, List[float]]], Union[float, List[float]]]
-        ] = None,
+        matrix: np.ndarray | QuantumCircuit,
+        vector: np.ndarray | QuantumCircuit,
+        observable: None | (
+            LinearSystemObservable | BaseOperator | list[BaseOperator]
+        ) = None,
+        observable_circuit: QuantumCircuit | list[QuantumCircuit] | None = None,
+        post_processing: None | (
+            Callable[[float | list[float]], float | list[float]]
+        ) = None,
     ) -> LinearSolverResult:
         """Solve classically the linear system and compute the observable(s)
 

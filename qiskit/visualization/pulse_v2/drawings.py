@@ -75,13 +75,13 @@ class ElementaryData(ABC):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
+        data_type: str | Enum,
         xvals: np.ndarray,
         yvals: np.ndarray,
-        channels: Optional[Union[Channel, List[Channel]]] = None,
-        meta: Optional[Dict[str, Any]] = None,
+        channels: Channel | list[Channel] | None = None,
+        meta: dict[str, Any] | None = None,
         ignore_scaling: bool = False,
-        styles: Optional[Dict[str, Any]] = None,
+        styles: dict[str, Any] | None = None,
     ):
         """Create new drawing.
 
@@ -130,14 +130,14 @@ class LineData(ElementaryData):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
-        xvals: Union[np.ndarray, List[types.Coordinate]],
-        yvals: Union[np.ndarray, List[types.Coordinate]],
+        data_type: str | Enum,
+        xvals: np.ndarray | list[types.Coordinate],
+        yvals: np.ndarray | list[types.Coordinate],
         fill: bool = False,
-        channels: Optional[Union[Channel, List[Channel]]] = None,
-        meta: Optional[Dict[str, Any]] = None,
+        channels: Channel | list[Channel] | None = None,
+        meta: dict[str, Any] | None = None,
         ignore_scaling: bool = False,
-        styles: Optional[Dict[str, Any]] = None,
+        styles: dict[str, Any] | None = None,
     ):
         """Create new drawing.
 
@@ -172,15 +172,15 @@ class TextData(ElementaryData):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
-        xvals: Union[np.ndarray, List[types.Coordinate]],
-        yvals: Union[np.ndarray, List[types.Coordinate]],
+        data_type: str | Enum,
+        xvals: np.ndarray | list[types.Coordinate],
+        yvals: np.ndarray | list[types.Coordinate],
         text: str,
-        latex: Optional[str] = None,
-        channels: Optional[Union[Channel, List[Channel]]] = None,
-        meta: Optional[Dict[str, Any]] = None,
+        latex: str | None = None,
+        channels: Channel | list[Channel] | None = None,
+        meta: dict[str, Any] | None = None,
         ignore_scaling: bool = False,
-        styles: Optional[Dict[str, Any]] = None,
+        styles: dict[str, Any] | None = None,
     ):
         """Create new drawing.
 
@@ -217,13 +217,13 @@ class BoxData(ElementaryData):
 
     def __init__(
         self,
-        data_type: Union[str, Enum],
-        xvals: Union[np.ndarray, List[types.Coordinate]],
-        yvals: Union[np.ndarray, List[types.Coordinate]],
-        channels: Optional[Union[Channel, List[Channel]]] = None,
-        meta: Dict[str, Any] = None,
+        data_type: str | Enum,
+        xvals: np.ndarray | list[types.Coordinate],
+        yvals: np.ndarray | list[types.Coordinate],
+        channels: Channel | list[Channel] | None = None,
+        meta: dict[str, Any] = None,
         ignore_scaling: bool = False,
-        styles: Dict[str, Any] = None,
+        styles: dict[str, Any] = None,
     ):
         """Create new box.
 

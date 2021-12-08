@@ -41,9 +41,9 @@ class QDrift(ProductFormula):
         reps: int = 1,
         insert_barriers: bool = False,
         cx_structure: str = "chain",
-        atomic_evolution: Optional[
-            Callable[[Union[Pauli, SparsePauliOp], float], QuantumCircuit]
-        ] = None,
+        atomic_evolution: None | (
+            Callable[[Pauli | SparsePauliOp, float], QuantumCircuit]
+        ) = None,
     ) -> None:
         r"""
         Args:

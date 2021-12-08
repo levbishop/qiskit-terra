@@ -38,7 +38,7 @@ class QAOAAnsatz(EvolvedOperatorAnsatz):
         self,
         cost_operator=None,
         reps: int = 1,
-        initial_state: Optional[QuantumCircuit] = None,
+        initial_state: QuantumCircuit | None = None,
         mixer_operator=None,
         name: str = "QAOA",
     ):
@@ -107,7 +107,7 @@ class QAOAAnsatz(EvolvedOperatorAnsatz):
         return valid
 
     @property
-    def parameter_bounds(self) -> Optional[List[Tuple[Optional[float], Optional[float]]]]:
+    def parameter_bounds(self) -> list[tuple[float | None, float | None]] | None:
         """The parameter bounds for the unbound parameters in the circuit.
 
         Returns:
@@ -137,7 +137,7 @@ class QAOAAnsatz(EvolvedOperatorAnsatz):
 
     @parameter_bounds.setter
     def parameter_bounds(
-        self, bounds: Optional[List[Tuple[Optional[float], Optional[float]]]]
+        self, bounds: list[tuple[float | None, float | None]] | None
     ) -> None:
         """Set the parameter bounds.
 
@@ -188,7 +188,7 @@ class QAOAAnsatz(EvolvedOperatorAnsatz):
         self._invalidate()
 
     @property
-    def initial_state(self) -> Optional[QuantumCircuit]:
+    def initial_state(self) -> QuantumCircuit | None:
         """Returns an optional initial state as a circuit"""
         if self._initial_state is not None:
             return self._initial_state
@@ -203,7 +203,7 @@ class QAOAAnsatz(EvolvedOperatorAnsatz):
         return None
 
     @initial_state.setter
-    def initial_state(self, initial_state: Optional[QuantumCircuit]) -> None:
+    def initial_state(self, initial_state: QuantumCircuit | None) -> None:
         """Sets initial state."""
         self._initial_state = initial_state
         self._invalidate()

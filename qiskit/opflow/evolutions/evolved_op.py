@@ -42,7 +42,7 @@ class EvolvedOp(PrimitiveOp):
     primitive: PrimitiveOp
 
     def __init__(
-        self, primitive: OperatorBase, coeff: Union[complex, ParameterExpression] = 1.0
+        self, primitive: OperatorBase, coeff: complex | ParameterExpression = 1.0
     ) -> None:
         """
         Args:
@@ -51,14 +51,14 @@ class EvolvedOp(PrimitiveOp):
         """
         super().__init__(primitive, coeff=coeff)
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return self.primitive.primitive_strings()
 
     @property
     def num_qubits(self) -> int:
         return self.primitive.num_qubits
 
-    def add(self, other: OperatorBase) -> Union["EvolvedOp", SummedOp]:
+    def add(self, other: OperatorBase) -> Union[EvolvedOp, SummedOp]:
         if not self.num_qubits == other.num_qubits:
             raise ValueError(
                 "Sum over operators with different numbers of qubits, {} and {}, is not well "
@@ -74,7 +74,7 @@ class EvolvedOp(PrimitiveOp):
 
         return SummedOp([self, other])
 
-    def adjoint(self) -> "EvolvedOp":
+    def adjoint(self) -> EvolvedOp:
         return EvolvedOp(self.primitive.adjoint() * -1, coeff=self.coeff.conjugate())
 
     def equals(self, other: OperatorBase) -> bool:
@@ -95,11 +95,11 @@ class EvolvedOp(PrimitiveOp):
 
         return self.tensor(I ^ num_qubits)
 
-    def permute(self, permutation: List[int]) -> "EvolvedOp":
+    def permute(self, permutation: list[int]) -> EvolvedOp:
         return EvolvedOp(self.primitive.permute(permutation), coeff=self.coeff)
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
         new_self, other = self._expand_shorter_operator_and_permute(other, permutation)
         if front:
@@ -119,10 +119,10 @@ class EvolvedOp(PrimitiveOp):
     def __repr__(self) -> str:
         return f"EvolvedOp({repr(self.primitive)}, coeff={self.coeff})"
 
-    def reduce(self) -> "EvolvedOp":
+    def reduce(self) -> EvolvedOp:
         return EvolvedOp(self.primitive.reduce(), coeff=self.coeff)
 
-    def assign_parameters(self, param_dict: dict) -> Union["EvolvedOp", ListOp]:
+    def assign_parameters(self, param_dict: dict) -> Union[EvolvedOp, ListOp]:
         param_value = self.coeff
         if isinstance(self.coeff, ParameterExpression):
             unrolled_dict = self._unroll_param_dict(param_dict)
@@ -134,8 +134,8 @@ class EvolvedOp(PrimitiveOp):
         return EvolvedOp(self.primitive.bind_parameters(param_dict), coeff=param_value)
 
     def eval(
-        self, front: Optional[Union[str, dict, np.ndarray, OperatorBase, Statevector]] = None
-    ) -> Union[OperatorBase, complex]:
+        self, front: str | dict | np.ndarray | OperatorBase | Statevector | None = None
+    ) -> OperatorBase | complex:
         return cast(Union[OperatorBase, complex], self.to_matrix_op().eval(front=front))
 
     def to_matrix(self, massive: bool = False) -> np.ndarray:
@@ -154,7 +154,7 @@ class EvolvedOp(PrimitiveOp):
         prim_mat = -1.0j * self.primitive.to_matrix()
         return scipy.linalg.expm(prim_mat) * self.coeff
 
-    def to_matrix_op(self, massive: bool = False) -> Union[ListOp, MatrixOp]:
+    def to_matrix_op(self, massive: bool = False) -> ListOp | MatrixOp:
         """Returns a ``MatrixOp`` equivalent to this Operator."""
         primitive = self.primitive
         if isinstance(primitive, ListOp) and primitive.__class__.__name__ == ListOp.__name__:

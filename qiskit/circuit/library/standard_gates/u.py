@@ -70,7 +70,7 @@ class UGate(Gate):
         theta: ParameterValueType,
         phi: ParameterValueType,
         lam: ParameterValueType,
-        label: Optional[str] = None,
+        label: str | None = None,
     ):
         """Create new U gate."""
         super().__init__("u", 1, [theta, phi, lam], label=label)
@@ -85,8 +85,8 @@ class UGate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Return a (multi-)controlled-U gate.
 
@@ -191,8 +191,8 @@ class CUGate(ControlledGate):
         phi: ParameterValueType,
         lam: ParameterValueType,
         gamma: ParameterValueType,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Create new CU gate."""
         super().__init__(

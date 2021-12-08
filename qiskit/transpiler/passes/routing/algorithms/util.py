@@ -70,7 +70,7 @@ def swap_permutation(
                 mapping[sw1] = val2
 
 
-def permutation_circuit(swaps: Iterable[List[Swap[_V]]]) -> PermutationCircuit:
+def permutation_circuit(swaps: Iterable[list[Swap[_V]]]) -> PermutationCircuit:
     """Produce a circuit description of a list of swaps.
         With a given permutation and permuter you can compute the swaps using the permuter function
         then feed it into this circuit function to obtain a circuit description.

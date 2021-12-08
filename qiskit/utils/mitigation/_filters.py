@@ -465,7 +465,7 @@ class TensoredFilter:
 
         return new_count_dict
 
-    def flip_state(self, state: str, mat_index: int, flip_poses: List[int]) -> str:
+    def flip_state(self, state: str, mat_index: int, flip_poses: list[int]) -> str:
         """Flip the state according to the chosen qubit positions"""
         flip_poses = [pos for i, pos in enumerate(flip_poses) if (mat_index >> i) & 1]
         flip_poses = sorted(flip_poses)
@@ -478,7 +478,7 @@ class TensoredFilter:
         new_state += state[pos:]
         return new_state
 
-    def compute_index_of_cal_mat(self, state: str, pos_qubits: List[int], indices: dict) -> int:
+    def compute_index_of_cal_mat(self, state: str, pos_qubits: list[int], indices: dict) -> int:
         """Return the index of (pseudo inverse) calibration matrix for the input quantum state"""
         sub_state = ""
         for pos in pos_qubits:

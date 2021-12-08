@@ -67,7 +67,7 @@ class ZGate(Gate):
         |1\rangle \rightarrow -|1\rangle
     """
 
-    def __init__(self, label: Optional[str] = None):
+    def __init__(self, label: str | None = None):
         """Create new Z gate."""
         super().__init__("z", 1, [], label=label)
 
@@ -88,8 +88,8 @@ class ZGate(Gate):
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[str, int]] = None,
+        label: str | None = None,
+        ctrl_state: str | int | None = None,
     ):
         """Return a (multi-)controlled-Z gate.
 
@@ -149,7 +149,7 @@ class CZGate(ControlledGate):
     the target qubit if the control qubit is in the :math:`|1\rangle` state.
     """
 
-    def __init__(self, label: Optional[str] = None, ctrl_state: Optional[Union[str, int]] = None):
+    def __init__(self, label: str | None = None, ctrl_state: str | int | None = None):
         """Create new CZ gate."""
         super().__init__(
             "cz", 2, [], label=label, num_ctrl_qubits=1, ctrl_state=ctrl_state, base_gate=ZGate()

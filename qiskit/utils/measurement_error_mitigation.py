@@ -34,8 +34,8 @@ from qiskit.utils.mitigation import (
 
 
 def get_measured_qubits(
-    transpiled_circuits: List[QuantumCircuit],
-) -> Tuple[List[int], Dict[str, List[int]]]:
+    transpiled_circuits: list[QuantumCircuit],
+) -> tuple[list[int], dict[str, list[int]]]:
     """
     Retrieve the measured qubits from transpiled circuits.
 
@@ -77,7 +77,7 @@ def get_measured_qubits(
     return sorted(qubit_index), qubit_mappings
 
 
-def get_measured_qubits_from_qobj(qobj: QasmQobj) -> Tuple[List[int], Dict[str, List[int]]]:
+def get_measured_qubits_from_qobj(qobj: QasmQobj) -> tuple[list[int], dict[str, list[int]]]:
     """
     Retrieve the measured qubits from transpiled circuits.
 
@@ -119,13 +119,13 @@ def get_measured_qubits_from_qobj(qobj: QasmQobj) -> Tuple[List[int], Dict[str, 
 
 
 def build_measurement_error_mitigation_circuits(
-    qubit_list: List[int],
+    qubit_list: list[int],
     fitter_cls: Callable,
     backend: BaseBackend,
-    backend_config: Optional[Dict] = None,
-    compile_config: Optional[Dict] = None,
-    mit_pattern: Optional[List[List[int]]] = None,
-) -> Tuple[QuantumCircuit, List[str], List[str]]:
+    backend_config: dict | None = None,
+    compile_config: dict | None = None,
+    mit_pattern: list[list[int]] | None = None,
+) -> tuple[QuantumCircuit, list[str], list[str]]:
     """Build measurement error mitigation circuits
     Args:
         qubit_list: list of ordered qubits used in the algorithm
@@ -196,14 +196,14 @@ def build_measurement_error_mitigation_circuits(
 
 
 def build_measurement_error_mitigation_qobj(
-    qubit_list: List[int],
+    qubit_list: list[int],
     fitter_cls: Callable,
     backend: BaseBackend,
-    backend_config: Optional[Dict] = None,
-    compile_config: Optional[Dict] = None,
-    run_config: Optional[RunConfig] = None,
-    mit_pattern: Optional[List[List[int]]] = None,
-) -> Tuple[QasmQobj, List[str], List[str]]:
+    backend_config: dict | None = None,
+    compile_config: dict | None = None,
+    run_config: RunConfig | None = None,
+    mit_pattern: list[list[int]] | None = None,
+) -> tuple[QasmQobj, list[str], list[str]]:
     """
     Args:
         qubit_list: list of ordered qubits used in the algorithm

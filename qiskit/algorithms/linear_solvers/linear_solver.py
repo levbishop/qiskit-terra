@@ -44,12 +44,12 @@ class LinearSolverResult(AlgorithmResult):
         self._circuit_results = None
 
     @property
-    def observable(self) -> Union[float, List[float]]:
+    def observable(self) -> float | list[float]:
         """return the (list of) calculated observable(s)"""
         return self._observable
 
     @observable.setter
-    def observable(self, observable: Union[float, List[float]]) -> None:
+    def observable(self, observable: float | list[float]) -> None:
         """Set the value(s) of the observable(s).
 
         Args:
@@ -58,12 +58,12 @@ class LinearSolverResult(AlgorithmResult):
         self._observable = observable
 
     @property
-    def state(self) -> Union[QuantumCircuit, np.ndarray]:
+    def state(self) -> QuantumCircuit | np.ndarray:
         """return either the circuit that prepares the solution or the solution as a vector"""
         return self._state
 
     @state.setter
-    def state(self, state: Union[QuantumCircuit, np.ndarray]) -> None:
+    def state(self, state: QuantumCircuit | np.ndarray) -> None:
         """Set the solution state as either the circuit that prepares it or as a vector.
 
         Args:
@@ -86,12 +86,12 @@ class LinearSolverResult(AlgorithmResult):
         self._euclidean_norm = norm
 
     @property
-    def circuit_results(self) -> Union[List[float], List[Result]]:
+    def circuit_results(self) -> list[float] | list[Result]:
         """return the results from the circuits"""
         return self._circuit_results
 
     @circuit_results.setter
-    def circuit_results(self, results: Union[List[float], List[Result]]):
+    def circuit_results(self, results: list[float] | list[Result]):
         self._circuit_results = results
 
 
@@ -101,20 +101,18 @@ class LinearSolver(ABC):
     @abstractmethod
     def solve(
         self,
-        matrix: Union[np.ndarray, QuantumCircuit],
-        vector: Union[np.ndarray, QuantumCircuit],
-        observable: Optional[
-            Union[
-                LinearSystemObservable,
-                BaseOperator,
-                List[LinearSystemObservable],
-                List[BaseOperator],
-            ]
-        ] = None,
-        observable_circuit: Optional[Union[QuantumCircuit, List[QuantumCircuit]]] = None,
-        post_processing: Optional[
-            Callable[[Union[float, List[float]]], Union[float, List[float]]]
-        ] = None,
+        matrix: np.ndarray | QuantumCircuit,
+        vector: np.ndarray | QuantumCircuit,
+        observable: None | (
+                LinearSystemObservable |
+                BaseOperator |
+                list[LinearSystemObservable] |
+                list[BaseOperator]
+        ) = None,
+        observable_circuit: QuantumCircuit | list[QuantumCircuit] | None = None,
+        post_processing: None | (
+            Callable[[float | list[float]], float | list[float]]
+        ) = None,
     ) -> LinearSolverResult:
         """Solve the system and compute the observable(s)
 

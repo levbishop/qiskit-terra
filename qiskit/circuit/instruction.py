@@ -158,7 +158,7 @@ class Instruction:
             self.name, self.num_qubits, self.num_clbits, self.params
         )
 
-    def soft_compare(self, other: "Instruction") -> bool:
+    def soft_compare(self, other: Instruction) -> bool:
         """
         Soft comparison between gates. Their names, number of qubits, and classical
         bit numbers must match. The number of parameters must match. Each parameter
@@ -541,7 +541,7 @@ class Instruction:
         return instruction
 
     @property
-    def condition_bits(self) -> List[Clbit]:
+    def condition_bits(self) -> list[Clbit]:
         """Get Clbits in condition."""
         if self.condition is None:
             return []

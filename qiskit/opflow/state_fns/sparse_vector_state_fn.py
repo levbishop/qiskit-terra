@@ -42,7 +42,7 @@ class SparseVectorStateFn(StateFn):
     def __init__(
         self,
         primitive: scipy.sparse.spmatrix,
-        coeff: Union[complex, ParameterExpression] = 1.0,
+        coeff: complex | ParameterExpression = 1.0,
         is_measurement: bool = False,
     ) -> None:
         """
@@ -66,7 +66,7 @@ class SparseVectorStateFn(StateFn):
 
         super().__init__(primitive, coeff=coeff, is_measurement=is_measurement)
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return {"SparseVector"}
 
     @property
@@ -88,7 +88,7 @@ class SparseVectorStateFn(StateFn):
 
         return SummedOp([self, other])
 
-    def adjoint(self) -> "SparseVectorStateFn":
+    def adjoint(self) -> SparseVectorStateFn:
         return SparseVectorStateFn(
             self.primitive.conjugate(),
             coeff=self.coeff.conjugate(),
@@ -157,10 +157,10 @@ class SparseVectorStateFn(StateFn):
     # pylint: disable=too-many-return-statements
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, Statevector, OperatorBase]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | Statevector | OperatorBase
+        ) = None,
+    ) -> OperatorBase | complex:
         if front is None:
             return self
 

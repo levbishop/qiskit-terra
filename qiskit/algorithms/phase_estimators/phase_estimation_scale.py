@@ -96,8 +96,8 @@ class PhaseEstimationScale:
             return (phi - 1) * w + id_coefficient
 
     def scale_phases(
-        self, phases: Union[List, Dict], id_coefficient: float = 0.0
-    ) -> Union[Dict, List]:
+        self, phases: list | dict, id_coefficient: float = 0.0
+    ) -> dict | list:
         """Convert a list or dict of phases to eigenvalues.
 
         The values in the list, or keys in the dict, are values of ``phi` and
@@ -119,7 +119,7 @@ class PhaseEstimationScale:
         return phases
 
     @classmethod
-    def from_pauli_sum(cls, pauli_sum: SummedOp) -> "PhaseEstimationScale":
+    def from_pauli_sum(cls, pauli_sum: SummedOp) -> PhaseEstimationScale:
         """Create a PhaseEstimationScale from a `SummedOp` representing a sum of Pauli Operators.
 
         It is assumed that the ``pauli_sum`` is the sum of ``PauliOp`` objects. The bound on

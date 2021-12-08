@@ -510,7 +510,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
         backend_name: str,
         backend_version: str,
         n_qubits: int,
-        basis_gates: List[str],
+        basis_gates: list[str],
         gates: GateConfig,
         local: bool,
         simulator: bool,
@@ -520,16 +520,16 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
         max_shots: int,
         coupling_map,
         n_uchannels: int,
-        u_channel_lo: List[List[UchannelLO]],
-        meas_levels: List[int],
-        qubit_lo_range: List[List[float]],
-        meas_lo_range: List[List[float]],
+        u_channel_lo: list[list[UchannelLO]],
+        meas_levels: list[int],
+        qubit_lo_range: list[list[float]],
+        meas_lo_range: list[list[float]],
         dt: float,
         dtm: float,
-        rep_times: List[float],
-        meas_kernels: List[str],
-        discriminators: List[str],
-        hamiltonian: Dict[str, Any] = None,
+        rep_times: list[float],
+        meas_kernels: list[str],
+        discriminators: list[str],
+        hamiltonian: dict[str, Any] = None,
         channel_bandwidth=None,
         acquisition_latency=None,
         conditional_latency=None,
@@ -544,7 +544,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
         display_name=None,
         description=None,
         tags=None,
-        channels: Dict[str, Any] = None,
+        channels: dict[str, Any] = None,
         **kwargs,
     ):
         """
@@ -789,7 +789,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
         return 1.0 / self.dt
 
     @property
-    def control_channels(self) -> Dict[Tuple[int, ...], List]:
+    def control_channels(self) -> dict[tuple[int, ...], list]:
         """Return the control channels"""
         return self._control_channels
 
@@ -833,7 +833,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
             raise BackendConfigurationError(f"Invalid index for {qubit}-qubit systems.")
         return AcquireChannel(qubit)
 
-    def control(self, qubits: Iterable[int] = None, channel: int = None) -> List[ControlChannel]:
+    def control(self, qubits: Iterable[int] = None, channel: int = None) -> list[ControlChannel]:
         """
         Return the secondary drive channel for the given qubit -- typically utilized for
         controlling multiqubit interactions. This channel is derived from other channels.
@@ -872,7 +872,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
                 f"This backend - '{self.backend_name}' does not provide channel information."
             ) from ex
 
-    def get_channel_qubits(self, channel: Channel) -> List[int]:
+    def get_channel_qubits(self, channel: Channel) -> list[int]:
         """
         Return a list of indices for qubits which are operated on directly by the given ``channel``.
 
@@ -892,7 +892,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
                 f"This backend - '{self.backend_name}' does not provide channel information."
             ) from ex
 
-    def get_qubit_channels(self, qubit: Union[int, Iterable[int]]) -> List[Channel]:
+    def get_qubit_channels(self, qubit: int | Iterable[int]) -> list[Channel]:
         r"""Return a list of channels which operate on the given ``qubit``.
 
         Raises:
@@ -923,7 +923,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
                 f"This backend - '{self.backend_name}' does not provide channel information."
             ) from ex
 
-    def describe(self, channel: ControlChannel) -> Dict[DriveChannel, complex]:
+    def describe(self, channel: ControlChannel) -> dict[DriveChannel, complex]:
         """
         Return a basic description of the channel dependency. Derived channels are given weights
         which describe how their frames are linked to other frames.
@@ -953,7 +953,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
             result[DriveChannel(u_chan_lo.q)] = u_chan_lo.scale
         return result
 
-    def _parse_channels(self, channels: Dict[set, Any]) -> Dict[Any, Any]:
+    def _parse_channels(self, channels: dict[set, Any]) -> dict[Any, Any]:
         r"""
         Generates a dictionaries of ``Channel``\s, and tuple of qubit(s) they operate on.
 

@@ -33,7 +33,7 @@ class RZXTemplateMap(Enum):
     CY = rzx.rzx_cy()
 
 
-def rzx_templates(template_list: List[str] = None) -> Dict:
+def rzx_templates(template_list: list[str] = None) -> dict:
     """Convenience function to get the cost_dict and templates for template matching.
 
     Args:

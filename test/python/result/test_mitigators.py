@@ -284,7 +284,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_12, mitigated_probs_12)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly marganalize for qubits 1,2".format(mitigator),
+                f"Mitigator {mitigator} did not correctly marganalize for qubits 1,2",
             )
 
             mitigated_probs_02 = (
@@ -295,7 +295,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_02, mitigated_probs_02)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly marganalize for qubits 0,2".format(mitigator),
+                f"Mitigator {mitigator} did not correctly marganalize for qubits 0,2",
             )
 
     @data([test_data["test_1"]])
@@ -320,7 +320,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_012, mitigated_probs_012)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly handle qubit order 0, 1, 2".format(mitigator),
+                f"Mitigator {mitigator} did not correctly handle qubit order 0, 1, 2",
             )
 
             mitigated_probs_210 = (
@@ -331,7 +331,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_210, mitigated_probs_210)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly handle qubit order 2, 1, 0".format(mitigator),
+                f"Mitigator {mitigator} did not correctly handle qubit order 2, 1, 0",
             )
 
             mitigated_probs_102 = (
@@ -342,7 +342,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_102, mitigated_probs_102)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly handle qubit order 1, 0, 2".format(mitigator),
+                f"Mitigator {mitigator} did not correctly handle qubit order 1, 0, 2",
             )
 
     @data([test_data["test_1"]])
@@ -368,7 +368,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_210, mitigated_probs_210)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly handle qubit order 2,1,0".format(mitigator),
+                f"Mitigator {mitigator} did not correctly handle qubit order 2,1,0",
             )
 
             # checking qubit order 2,1,0 should not "overwrite" the default 0,1,2
@@ -409,7 +409,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_2, mitigated_probs_2)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly handle qubit subset".format(mitigator),
+                f"Mitigator {mitigator} did not correctly handle qubit subset",
             )
 
             mitigated_probs_6 = (
@@ -420,7 +420,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = self.compare_results(counts_ideal_6, mitigated_probs_6)
             self.assertTrue(
                 mitigated_error < 0.001,
-                "Mitigator {} did not correctly handle qubit subset".format(mitigator),
+                f"Mitigator {mitigator} did not correctly handle qubit subset",
             )
             diagonal = str2diag("ZZ")
             ideal_expectation = 0
@@ -430,7 +430,7 @@ class TestReadoutMitigation(QiskitTestCase):
             mitigated_error = np.abs(ideal_expectation - mitigated_expectation)
             self.assertTrue(
                 mitigated_error < 0.1,
-                "Mitigator {} did not improve circuit expectation".format(mitigator),
+                f"Mitigator {mitigator} did not improve circuit expectation",
             )
 
     def test_from_backend(self):

@@ -30,7 +30,7 @@ from .runningpassmanager import RunningPassManager, FlowController
 class PassManager:
     """Manager for a set of Passes and their scheduling during transpilation."""
 
-    def __init__(self, passes: Union[BasePass, List[BasePass]] = None, max_iteration: int = 1000):
+    def __init__(self, passes: BasePass | list[BasePass] = None, max_iteration: int = 1000):
         """Initialize an empty `PassManager` object (with no passes scheduled).
 
         Args:
@@ -50,7 +50,7 @@ class PassManager:
 
     def append(
         self,
-        passes: Union[BasePass, List[BasePass]],
+        passes: BasePass | list[BasePass],
         max_iteration: int = None,
         **flow_controller_conditions: Any,
     ) -> None:
@@ -83,7 +83,7 @@ class PassManager:
     def replace(
         self,
         index: int,
-        passes: Union[BasePass, List[BasePass]],
+        passes: BasePass | list[BasePass],
         max_iteration: int = None,
         **flow_controller_conditions: Any,
     ) -> None:
@@ -163,8 +163,8 @@ class PassManager:
 
     @staticmethod
     def _normalize_passes(
-        passes: Union[BasePass, List[BasePass], FlowController]
-    ) -> List[BasePass]:
+        passes: BasePass | list[BasePass] | FlowController
+    ) -> list[BasePass]:
         if isinstance(passes, FlowController):
             return passes
         if isinstance(passes, BasePass):
@@ -176,10 +176,10 @@ class PassManager:
 
     def run(
         self,
-        circuits: Union[QuantumCircuit, List[QuantumCircuit]],
+        circuits: QuantumCircuit | list[QuantumCircuit],
         output_name: str = None,
         callback: Callable = None,
-    ) -> Union[QuantumCircuit, List[QuantumCircuit]]:
+    ) -> QuantumCircuit | list[QuantumCircuit]:
         """Run all the passes on the specified ``circuits``.
 
         Args:
@@ -237,8 +237,8 @@ class PassManager:
         return result
 
     def _run_several_circuits(
-        self, circuits: List[QuantumCircuit], output_name: str = None, callback: Callable = None
-    ) -> List[QuantumCircuit]:
+        self, circuits: list[QuantumCircuit], output_name: str = None, callback: Callable = None
+    ) -> list[QuantumCircuit]:
         """Run all the passes on the specified ``circuits``.
 
         Args:
@@ -301,7 +301,7 @@ class PassManager:
         """
         return pass_manager_drawer(self, filename=filename, style=style, raw=raw)
 
-    def passes(self) -> List[Dict[str, BasePass]]:
+    def passes(self) -> list[dict[str, BasePass]]:
         """Return a list structure of the appended passes and its options.
 
         Returns:

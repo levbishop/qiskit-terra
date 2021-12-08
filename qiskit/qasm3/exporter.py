@@ -380,7 +380,7 @@ class QASM3Builder:
         """Builds a list of included files."""
         return [ast.Include(filename) for filename in self.includeslist]
 
-    def build_global_statements(self) -> List[ast.Statement]:
+    def build_global_statements(self) -> list[ast.Statement]:
         """
         globalStatement
             : subroutineDefinition
@@ -599,7 +599,7 @@ class QASM3Builder:
             ast.Designator(self.build_integer(self.current_scope().circuit.num_qubits)),
         )
 
-    def build_aliases(self, registers: Iterable[Register]) -> List[ast.AliasStatement]:
+    def build_aliases(self, registers: Iterable[Register]) -> list[ast.AliasStatement]:
         """Return a list of alias declarations for the given registers.  The registers can be either
         classical or quantum."""
         out = []
@@ -834,7 +834,7 @@ class QASM3Builder:
 
 def _infer_variable_declaration(
     circuit: QuantumCircuit, parameter: Parameter
-) -> Union[ast.ClassicalDeclaration, None]:
+) -> ast.ClassicalDeclaration | None:
     """Attempt to infer what type a parameter should be declared as to work with a circuit.
 
     This is very simplistic; it assumes all parameters are real numbers that need to be input to the

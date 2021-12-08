@@ -256,7 +256,7 @@ class Pauli(BasePauli):
         return np.all(self._z == other._z) and np.all(self._x == other._x)
 
     @property
-    def settings(self) -> Dict:
+    def settings(self) -> dict:
         """Return settings."""
         return {"data": self.to_label()}
 

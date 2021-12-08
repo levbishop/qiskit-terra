@@ -161,8 +161,8 @@ class PolynomialPauliRotations(FunctionalPauliRotations):
 
     def __init__(
         self,
-        num_state_qubits: Optional[int] = None,
-        coeffs: Optional[List[float]] = None,
+        num_state_qubits: int | None = None,
+        coeffs: list[float] | None = None,
         basis: str = "Y",
         reverse: bool = False,
         name: str = "poly",
@@ -192,7 +192,7 @@ class PolynomialPauliRotations(FunctionalPauliRotations):
         super().__init__(num_state_qubits=num_state_qubits, basis=basis, name=name)
 
     @property
-    def coeffs(self) -> List[float]:
+    def coeffs(self) -> list[float]:
         """The multiplicative factor in the rotation angle of the controlled rotations.
 
         The rotation angles are ``slope * 2^0``, ``slope * 2^1``, ... , ``slope * 2^(n-1)`` where
@@ -204,7 +204,7 @@ class PolynomialPauliRotations(FunctionalPauliRotations):
         return self._coeffs
 
     @coeffs.setter
-    def coeffs(self, coeffs: List[float]) -> None:
+    def coeffs(self, coeffs: list[float]) -> None:
         """Set the multiplicative factor of the rotation angles.
 
         Args:
@@ -273,7 +273,7 @@ class PolynomialPauliRotations(FunctionalPauliRotations):
 
         return valid
 
-    def _get_rotation_coefficients(self) -> Dict[Sequence[int], float]:
+    def _get_rotation_coefficients(self) -> dict[Sequence[int], float]:
         """Compute the coefficient of each monomial.
 
         Returns:

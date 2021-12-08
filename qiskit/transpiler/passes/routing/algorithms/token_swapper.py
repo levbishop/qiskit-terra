@@ -48,7 +48,7 @@ class ApproximateTokenSwapper:
     """
 
     def __init__(
-        self, graph: rx.PyGraph, seed: Union[int, np.random.Generator, None] = None
+        self, graph: rx.PyGraph, seed: int | np.random.Generator | None = None
     ) -> None:
         """Construct an ApproximateTokenSwapping object.
 
@@ -81,7 +81,7 @@ class ApproximateTokenSwapper:
         parallel_swaps = [[swap] for swap in sequential_swaps]
         return permutation_circuit(parallel_swaps)
 
-    def map(self, mapping: Mapping[int, int], trials: int = 4) -> List[Swap[int]]:
+    def map(self, mapping: Mapping[int, int], trials: int = 4) -> list[Swap[int]]:
         """Perform an approximately optimal Token Swapping algorithm to implement the permutation.
 
         Supports partial mappings (i.e. not-permutations) for graphs with missing tokens.
@@ -114,7 +114,7 @@ class ApproximateTokenSwapper:
         )
 
         # Once we find a zero solution we stop.
-        def take_until_zero(results: Iterable[List[int]]) -> Iterator[List[int]]:
+        def take_until_zero(results: Iterable[list[int]]) -> Iterator[list[int]]:
             """Take results until one is emitted of length zero (and also emit that)."""
             for result in results:
                 yield result

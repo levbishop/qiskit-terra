@@ -31,9 +31,9 @@ class Pulse(ABC):
     @abstractmethod
     def __init__(
         self,
-        duration: Union[int, ParameterExpression],
-        name: Optional[str] = None,
-        limit_amplitude: Optional[bool] = None,
+        duration: int | ParameterExpression,
+        name: str | None = None,
+        limit_amplitude: bool | None = None,
     ):
         """Abstract base class for pulses
         Args:
@@ -58,7 +58,7 @@ class Pulse(ABC):
 
     @property
     @abstractmethod
-    def parameters(self) -> Dict[str, Any]:
+    def parameters(self) -> dict[str, Any]:
         """Return a dictionary containing the pulse's parameters."""
         pass
 
@@ -68,13 +68,13 @@ class Pulse(ABC):
 
     def draw(
         self,
-        style: Optional[Dict[str, Any]] = None,
+        style: dict[str, Any] | None = None,
         backend=None,  # importing backend causes cyclic import
-        time_range: Optional[Tuple[int, int]] = None,
+        time_range: tuple[int, int] | None = None,
         time_unit: str = "dt",
         show_waveform_info: bool = True,
         plotter: str = "mpl2d",
-        axis: Optional[Any] = None,
+        axis: Any | None = None,
     ):
         """Plot the interpolated envelope of pulse.
 
@@ -124,7 +124,7 @@ class Pulse(ABC):
         )
 
     @abstractmethod
-    def __eq__(self, other: "Pulse") -> bool:
+    def __eq__(self, other: Pulse) -> bool:
         return isinstance(other, type(self))
 
     @abstractmethod

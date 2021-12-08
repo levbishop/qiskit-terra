@@ -93,7 +93,7 @@ class PauliExpectation(ExpectationBase):
 
         return operator
 
-    def compute_variance(self, exp_op: OperatorBase) -> Union[list, float, np.ndarray]:
+    def compute_variance(self, exp_op: OperatorBase) -> list | float | np.ndarray:
         def sum_variance(operator):
             if isinstance(operator, ComposedOp):
                 sfdict = operator.oplist[1]

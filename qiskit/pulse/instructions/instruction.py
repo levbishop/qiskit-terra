@@ -39,8 +39,8 @@ class Instruction(ABC):
 
     def __init__(
         self,
-        operands: Tuple,
-        name: Optional[str] = None,
+        operands: tuple,
+        name: str | None = None,
     ):
         """Instruction initializer.
 
@@ -72,13 +72,13 @@ class Instruction(ABC):
         return id(self)
 
     @property
-    def operands(self) -> Tuple:
+    def operands(self) -> tuple:
         """Return instruction operands."""
         return self._operands
 
     @property
     @abstractmethod
-    def channels(self) -> Tuple[Channel]:
+    def channels(self) -> tuple[Channel]:
         """Returns the channels that this schedule uses."""
         raise NotImplementedError
 
@@ -98,16 +98,16 @@ class Instruction(ABC):
         raise NotImplementedError
 
     @property
-    def _children(self) -> Tuple["Instruction"]:
+    def _children(self) -> tuple[Instruction]:
         """Instruction has no child nodes."""
         return ()
 
     @property
-    def instructions(self) -> Tuple[Tuple[int, "Instruction"]]:
+    def instructions(self) -> tuple[tuple[int, Instruction]]:
         """Iterable for getting instructions from Schedule tree."""
         return tuple(self._instructions())
 
-    def ch_duration(self, *channels: List[Channel]) -> int:
+    def ch_duration(self, *channels: list[Channel]) -> int:
         """Return duration of the supplied channels in this Instruction.
 
         Args:
@@ -115,7 +115,7 @@ class Instruction(ABC):
         """
         return self.ch_stop_time(*channels)
 
-    def ch_start_time(self, *channels: List[Channel]) -> int:
+    def ch_start_time(self, *channels: list[Channel]) -> int:
         # pylint: disable=unused-argument
         """Return minimum start time for supplied channels.
 
@@ -124,7 +124,7 @@ class Instruction(ABC):
         """
         return 0
 
-    def ch_stop_time(self, *channels: List[Channel]) -> int:
+    def ch_stop_time(self, *channels: list[Channel]) -> int:
         """Return maximum start time for supplied channels.
 
         Args:
@@ -134,7 +134,7 @@ class Instruction(ABC):
             return self.duration
         return 0
 
-    def _instructions(self, time: int = 0) -> Iterable[Tuple[int, "Instruction"]]:
+    def _instructions(self, time: int = 0) -> Iterable[tuple[int, Instruction]]:
         """Iterable for flattening Schedule tree.
 
         Args:
@@ -146,7 +146,7 @@ class Instruction(ABC):
         """
         yield (time, self)
 
-    def shift(self, time: int, name: Optional[str] = None):
+    def shift(self, time: int, name: str | None = None):
         """Return a new schedule shifted forward by `time`.
 
         Args:
@@ -162,7 +162,7 @@ class Instruction(ABC):
             name = self.name
         return Schedule((time, self), name=name)
 
-    def insert(self, start_time: int, schedule, name: Optional[str] = None):
+    def insert(self, start_time: int, schedule, name: str | None = None):
         """Return a new :class:`~qiskit.pulse.Schedule` with ``schedule`` inserted within
         ``self`` at ``start_time``.
 
@@ -180,7 +180,7 @@ class Instruction(ABC):
             name = self.name
         return Schedule(self, (start_time, schedule), name=name)
 
-    def append(self, schedule, name: Optional[str] = None):
+    def append(self, schedule, name: str | None = None):
         """Return a new :class:`~qiskit.pulse.Schedule` with ``schedule`` inserted at the
         maximum time over all channels shared between ``self`` and ``schedule``.
 
@@ -196,7 +196,7 @@ class Instruction(ABC):
         return self.insert(time, schedule, name=name)
 
     @property
-    def parameters(self) -> Set:
+    def parameters(self) -> set:
         """Parameters which determine the instruction behavior."""
         parameters = set()
         for op in self.operands:
@@ -213,16 +213,16 @@ class Instruction(ABC):
         self,
         dt: float = 1,
         style=None,
-        filename: Optional[str] = None,
-        interp_method: Optional[Callable] = None,
+        filename: str | None = None,
+        interp_method: Callable | None = None,
         scale: float = 1,
         plot_all: bool = False,
-        plot_range: Optional[Tuple[float]] = None,
+        plot_range: tuple[float] | None = None,
         interactive: bool = False,
         table: bool = True,
         label: bool = False,
         framechange: bool = True,
-        channels: Optional[List[Channel]] = None,
+        channels: list[Channel] | None = None,
     ):
         """Plot the instruction.
 
@@ -263,7 +263,7 @@ class Instruction(ABC):
             channels=channels,
         )
 
-    def __eq__(self, other: "Instruction") -> bool:
+    def __eq__(self, other: Instruction) -> bool:
         """Check if this Instruction is equal to the `other` instruction.
 
         Equality is determined by the instruction sharing the same operands and channels.

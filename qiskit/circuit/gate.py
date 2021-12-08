@@ -30,7 +30,7 @@ class Gate(Instruction):
     """Unitary gate."""
 
     def __init__(
-        self, name: str, num_qubits: int, params: List, label: Optional[str] = None
+        self, name: str, num_qubits: int, params: list, label: str | None = None
     ) -> None:
         """Create a new gate.
 
@@ -92,14 +92,14 @@ class Gate(Instruction):
         unitary_power = unitary @ np.diag(decomposition_power) @ unitary.conj().T
         return UnitaryGate(unitary_power, label=f"{self.name}^{exponent}")
 
-    def _return_repeat(self, exponent: float) -> "Gate":
+    def _return_repeat(self, exponent: float) -> Gate:
         return Gate(name=f"{self.name}*{exponent}", num_qubits=self.num_qubits, params=self.params)
 
     def control(
         self,
         num_ctrl_qubits: int = 1,
-        label: Optional[str] = None,
-        ctrl_state: Optional[Union[int, str]] = None,
+        label: str | None = None,
+        ctrl_state: int | str | None = None,
     ):
         """Return controlled version of gate. See :class:`.ControlledGate` for usage.
 
@@ -123,7 +123,7 @@ class Gate(Instruction):
         return add_control(self, num_ctrl_qubits, label, ctrl_state)
 
     @staticmethod
-    def _broadcast_single_argument(qarg: List) -> List:
+    def _broadcast_single_argument(qarg: list) -> list:
         """Expands a single argument.
 
         For example: [q[0], q[1]] -> [q[0]], [q[1]]
@@ -134,7 +134,7 @@ class Gate(Instruction):
             yield [arg0], []
 
     @staticmethod
-    def _broadcast_2_arguments(qarg0: List, qarg1: List) -> List:
+    def _broadcast_2_arguments(qarg0: list, qarg1: list) -> list:
         if len(qarg0) == len(qarg1):
             # [[q[0], q[1]], [r[0], r[1]]] -> [q[0], r[0]]
             #                              -> [q[1], r[1]]
@@ -156,14 +156,14 @@ class Gate(Instruction):
             )
 
     @staticmethod
-    def _broadcast_3_or_more_args(qargs: List) -> List:
+    def _broadcast_3_or_more_args(qargs: list) -> list:
         if all(len(qarg) == len(qargs[0]) for qarg in qargs):
             for arg in zip(*qargs):
                 yield list(arg), []
         else:
             raise CircuitError("Not sure how to combine these qubit arguments:\n %s\n" % qargs)
 
-    def broadcast_arguments(self, qargs: List, cargs: List) -> Tuple[List, List]:
+    def broadcast_arguments(self, qargs: list, cargs: list) -> tuple[list, list]:
         """Validation and handling of the arguments and its relationship.
 
         For example, ``cx([q[0],q[1]], q[2])`` means ``cx(q[0], q[2]); cx(q[1], q[2])``. This

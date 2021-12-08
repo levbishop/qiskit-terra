@@ -33,9 +33,9 @@ class LayoutTransformation(TransformationPass):
     def __init__(
         self,
         coupling_map: CouplingMap,
-        from_layout: Union[Layout, str],
-        to_layout: Union[Layout, str],
-        seed: Union[int, np.random.default_rng] = None,
+        from_layout: Layout | str,
+        to_layout: Layout | str,
+        seed: int | np.random.default_rng = None,
         trials=4,
     ):
         """LayoutTransformation initializer.

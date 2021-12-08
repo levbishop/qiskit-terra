@@ -38,7 +38,7 @@ CircuitModule = NewType(
 PulseModule = NewType("PulseModule", Tuple[List[pulse.Schedule], Dict[str, Any], Dict[str, Any]])
 
 
-def disassemble(qobj) -> Union[CircuitModule, PulseModule]:
+def disassemble(qobj) -> CircuitModule | PulseModule:
     """Disassemble a qobj and return the circuits or pulse schedules, run_config, and user header.
 
     .. note::
@@ -271,7 +271,7 @@ def _disassemble_pulse_schedule(qobj) -> PulseModule:
     return PulseModule((_experiments_to_schedules(qobj), run_config, user_qobj_header))
 
 
-def _experiments_to_schedules(qobj) -> List[pulse.Schedule]:
+def _experiments_to_schedules(qobj) -> list[pulse.Schedule]:
     """Return a list of :class:`qiskit.pulse.Schedule` object(s) from a qobj.
 
     Args:

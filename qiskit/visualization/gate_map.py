@@ -374,8 +374,8 @@ def plot_gate_map(
 
 def plot_coupling_map(
     num_qubits: int,
-    qubit_coordinates: List[List[int]],
-    coupling_map: List[List[int]],
+    qubit_coordinates: list[list[int]],
+    coupling_map: list[list[int]],
     figsize=None,
     plot_directed=False,
     label_qubits=True,

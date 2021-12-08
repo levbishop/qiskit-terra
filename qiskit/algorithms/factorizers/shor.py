@@ -54,7 +54,7 @@ class Shor:
     """
 
     def __init__(
-        self, quantum_instance: Optional[Union[QuantumInstance, BaseBackend, Backend]] = None
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend | None = None
     ) -> None:
         """
         Args:
@@ -66,13 +66,13 @@ class Shor:
             self.quantum_instance = quantum_instance
 
     @property
-    def quantum_instance(self) -> Optional[QuantumInstance]:
+    def quantum_instance(self) -> QuantumInstance | None:
         """Returns quantum instance."""
         return self._quantum_instance
 
     @quantum_instance.setter
     def quantum_instance(
-        self, quantum_instance: Union[QuantumInstance, BaseBackend, Backend]
+        self, quantum_instance: QuantumInstance | BaseBackend | Backend
     ) -> None:
         """Sets quantum instance."""
         if isinstance(quantum_instance, (BaseBackend, Backend)):
@@ -94,7 +94,7 @@ class Shor:
         return angles * np.pi
 
     @staticmethod
-    def _phi_add_gate(angles: Union[np.ndarray, ParameterVector]) -> Gate:
+    def _phi_add_gate(angles: np.ndarray | ParameterVector) -> Gate:
         """Gate that performs addition by a in Fourier Space."""
         circuit = QuantumCircuit(len(angles), name="phi_add_a")
         for i, angle in enumerate(angles):
@@ -103,7 +103,7 @@ class Shor:
 
     def _double_controlled_phi_add_mod_N(
         self,
-        angles: Union[np.ndarray, ParameterVector],
+        angles: np.ndarray | ParameterVector,
         c_phi_add_N: Gate,
         iphi_add_N: Gate,
         qft: Gate,
@@ -289,7 +289,7 @@ class Shor:
     def modinv(a: int, m: int) -> int:
         """Returns the modular multiplicative inverse of a with respect to the modulus m."""
 
-        def egcd(a: int, b: int) -> Tuple[int, int, int]:
+        def egcd(a: int, b: int) -> tuple[int, int, int]:
             if a == 0:
                 return b, 0, 1
             else:
@@ -304,7 +304,7 @@ class Shor:
             )
         return x % m
 
-    def _get_factors(self, N: int, a: int, measurement: str) -> Optional[List[int]]:
+    def _get_factors(self, N: int, a: int, measurement: str) -> list[int] | None:
         """Apply the continued fractions to find r and the gcd to find the desired factors."""
         x_final = int(measurement, 2)
         logger.info("In decimal, x_final value for this result is: %s.", x_final)
@@ -407,7 +407,7 @@ class Shor:
         self,
         N: int,
         a: int = 2,
-    ) -> "ShorResult":
+    ) -> ShorResult:
         """Execute the algorithm.
 
         The input integer :math:`N` to be factored is expected to be odd and greater than 2.
@@ -496,12 +496,12 @@ class ShorResult(AlgorithmResult):
         self._successful_counts = 0
 
     @property
-    def factors(self) -> List[List[int]]:
+    def factors(self) -> list[list[int]]:
         """returns factors"""
         return self._factors
 
     @factors.setter
-    def factors(self, value: List[List[int]]) -> None:
+    def factors(self, value: list[list[int]]) -> None:
         """set factors"""
         self._factors = value
 

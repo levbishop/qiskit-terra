@@ -46,7 +46,7 @@ class CalibrationBuilder(TransformationPass):
     """Abstract base class to inject calibrations into circuits."""
 
     @abstractmethod
-    def supported(self, node_op: CircuitInst, qubits: List) -> bool:
+    def supported(self, node_op: CircuitInst, qubits: list) -> bool:
         """Determine if a given node supports the calibration.
 
         Args:
@@ -58,7 +58,7 @@ class CalibrationBuilder(TransformationPass):
         """
 
     @abstractmethod
-    def get_calibration(self, node_op: CircuitInst, qubits: List) -> Union[Schedule, ScheduleBlock]:
+    def get_calibration(self, node_op: CircuitInst, qubits: list) -> Schedule | ScheduleBlock:
         """Gets the calibrated schedule for the given instruction and qubits.
 
         Args:
@@ -109,9 +109,9 @@ class RZXCalibrationBuilder(CalibrationBuilder):
 
     def __init__(
         self,
-        backend: Union[BaseBackend, BackendV1] = None,
+        backend: BaseBackend | BackendV1 = None,
         instruction_schedule_map: InstructionScheduleMap = None,
-        qubit_channel_mapping: List[List[str]] = None,
+        qubit_channel_mapping: list[list[str]] = None,
     ):
         """
         Initializes a RZXGate calibration builder.
@@ -155,7 +155,7 @@ class RZXCalibrationBuilder(CalibrationBuilder):
             self._inst_map = instruction_schedule_map
             self._channel_map = qubit_channel_mapping
 
-    def supported(self, node_op: CircuitInst, qubits: List) -> bool:
+    def supported(self, node_op: CircuitInst, qubits: list) -> bool:
         """Determine if a given node supports the calibration.
 
         Args:
@@ -214,7 +214,7 @@ class RZXCalibrationBuilder(CalibrationBuilder):
         else:
             raise QiskitError("RZXCalibrationBuilder only stretches/compresses GaussianSquare.")
 
-    def get_calibration(self, node_op: CircuitInst, qubits: List) -> Union[Schedule, ScheduleBlock]:
+    def get_calibration(self, node_op: CircuitInst, qubits: list) -> Schedule | ScheduleBlock:
         """Builds the calibration schedule for the RZXGate(theta) with echos.
 
         Args:
@@ -336,7 +336,7 @@ class RZXCalibrationBuilderNoEcho(RZXCalibrationBuilder):
     """
 
     @staticmethod
-    def _filter_control(inst: (int, Union["Schedule", PulseInst])) -> bool:
+    def _filter_control(inst: (int, Union[Schedule, PulseInst])) -> bool:
         """
         Looks for Gaussian square pulses applied to control channels.
 
@@ -356,7 +356,7 @@ class RZXCalibrationBuilderNoEcho(RZXCalibrationBuilder):
         return False
 
     @staticmethod
-    def _filter_drive(inst: (int, Union["Schedule", PulseInst])) -> bool:
+    def _filter_drive(inst: (int, Union[Schedule, PulseInst])) -> bool:
         """
         Looks for Gaussian square pulses applied to drive channels.
 
@@ -375,7 +375,7 @@ class RZXCalibrationBuilderNoEcho(RZXCalibrationBuilder):
 
         return False
 
-    def get_calibration(self, node_op: CircuitInst, qubits: List) -> Union[Schedule, ScheduleBlock]:
+    def get_calibration(self, node_op: CircuitInst, qubits: list) -> Schedule | ScheduleBlock:
         """Builds the calibration schedule for the RZXGate(theta) without echos.
 
         Args:
@@ -478,7 +478,7 @@ class PulseGates(CalibrationBuilder):
         super().__init__()
         self.inst_map = inst_map
 
-    def supported(self, node_op: CircuitInst, qubits: List) -> bool:
+    def supported(self, node_op: CircuitInst, qubits: list) -> bool:
         """Determine if a given node supports the calibration.
 
         Args:
@@ -490,7 +490,7 @@ class PulseGates(CalibrationBuilder):
         """
         return self.inst_map.has(instruction=node_op.name, qubits=qubits)
 
-    def get_calibration(self, node_op: CircuitInst, qubits: List) -> Union[Schedule, ScheduleBlock]:
+    def get_calibration(self, node_op: CircuitInst, qubits: list) -> Schedule | ScheduleBlock:
         """Gets the calibrated schedule for the given instruction and qubits.
 
         Args:

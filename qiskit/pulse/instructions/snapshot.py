@@ -25,7 +25,7 @@ from qiskit.pulse.instructions.instruction import Instruction
 class Snapshot(Instruction):
     """An instruction targeted for simulators, to capture a moment in the simulation."""
 
-    def __init__(self, label: str, snapshot_type: str = "statevector", name: Optional[str] = None):
+    def __init__(self, label: str, snapshot_type: str = "statevector", name: str | None = None):
         """Create new snapshot.
 
         Args:
@@ -63,7 +63,7 @@ class Snapshot(Instruction):
         return self._channel
 
     @property
-    def channels(self) -> Tuple[SnapshotChannel]:
+    def channels(self) -> tuple[SnapshotChannel]:
         """Returns the channels that this schedule uses."""
         return (self.channel,)
 

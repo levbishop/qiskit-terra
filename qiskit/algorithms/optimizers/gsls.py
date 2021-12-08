@@ -89,7 +89,7 @@ class GSLS(Optimizer):
             if k in self._OPTIONS:
                 self._options[k] = v
 
-    def get_support_level(self) -> Dict[str, int]:
+    def get_support_level(self) -> dict[str, int]:
         """Return support level dictionary.
 
         Returns:
@@ -102,15 +102,15 @@ class GSLS(Optimizer):
         }
 
     @property
-    def settings(self) -> Dict[str, Any]:
+    def settings(self) -> dict[str, Any]:
         return {key: self._options.get(key, None) for key in self._OPTIONS}
 
     def minimize(
         self,
         fun: Callable[[POINT], float],
         x0: POINT,
-        jac: Optional[Callable[[POINT], POINT]] = None,
-        bounds: Optional[List[Tuple[float, float]]] = None,
+        jac: Callable[[POINT], POINT] | None = None,
+        bounds: list[tuple[float, float]] | None = None,
     ) -> OptimizerResult:
         if not isinstance(x0, np.ndarray):
             x0 = np.asarray(x0)
@@ -136,10 +136,10 @@ class GSLS(Optimizer):
         self,
         num_vars: int,
         objective_function: Callable,
-        gradient_function: Optional[Callable] = None,
-        variable_bounds: Optional[List[Tuple[float, float]]] = None,
-        initial_point: Optional[np.ndarray] = None,
-    ) -> Tuple[np.ndarray, float, int]:
+        gradient_function: Callable | None = None,
+        variable_bounds: list[tuple[float, float]] | None = None,
+        initial_point: np.ndarray | None = None,
+    ) -> tuple[np.ndarray, float, int]:
         super().optimize(
             num_vars, objective_function, gradient_function, variable_bounds, initial_point
         )
@@ -161,7 +161,7 @@ class GSLS(Optimizer):
         initial_point: np.ndarray,
         var_lb: np.ndarray,
         var_ub: np.ndarray,
-    ) -> Tuple[np.ndarray, float, int, float]:
+    ) -> tuple[np.ndarray, float, int, float]:
         """Run the line search optimization.
 
         Args:
@@ -273,7 +273,7 @@ class GSLS(Optimizer):
 
     def sample_points(
         self, n: int, x: np.ndarray, num_points: int
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """Sample ``num_points`` points around ``x`` on the ``n``-sphere of specified radius.
 
         The radius of the sphere is ``self._options['sampling_radius']``.
@@ -295,7 +295,7 @@ class GSLS(Optimizer):
 
     def sample_set(
         self, n: int, x: np.ndarray, var_lb: np.ndarray, var_ub: np.ndarray, num_points: int
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """Construct sample set of given size.
 
         Args:

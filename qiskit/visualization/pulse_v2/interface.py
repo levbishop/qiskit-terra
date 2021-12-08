@@ -34,18 +34,18 @@ from qiskit.exceptions import MissingOptionalLibraryError
 
 
 def draw(
-    program: Union[Waveform, ParametricPulse, Schedule, ScheduleBlock],
-    style: Optional[Dict[str, Any]] = None,
-    backend: Optional[BaseBackend] = None,
-    time_range: Optional[Tuple[int, int]] = None,
+    program: Waveform | ParametricPulse | Schedule | ScheduleBlock,
+    style: dict[str, Any] | None = None,
+    backend: BaseBackend | None = None,
+    time_range: tuple[int, int] | None = None,
     time_unit: str = types.TimeUnits.CYCLES.value,
-    disable_channels: Optional[List[Channel]] = None,
+    disable_channels: list[Channel] | None = None,
     show_snapshot: bool = True,
     show_framechange: bool = True,
     show_waveform_info: bool = True,
     show_barrier: bool = True,
     plotter: str = types.Plotter.Mpl2D.value,
-    axis: Optional[Any] = None,
+    axis: Any | None = None,
 ):
     """Generate visualization data for pulse programs.
 

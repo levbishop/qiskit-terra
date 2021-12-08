@@ -113,10 +113,10 @@ class TwoQubitWeylDecomposition:
     K2r: np.ndarray
 
     unitary_matrix: np.ndarray  # The unitary that was input
-    requested_fidelity: Optional[float]  # None means no automatic specialization
+    requested_fidelity: float | None  # None means no automatic specialization
     calculated_fidelity: float  # Fidelity after specialization
 
-    _original_decomposition: "TwoQubitWeylDecomposition"
+    _original_decomposition: TwoQubitWeylDecomposition
     _is_flipped_from_original: bool  # The approx is closest to a Weyl reflection of the original?
 
     _default_1q_basis: ClassVar[str] = "ZYZ"  # Default one qubit basis (explicit parameterization)
@@ -364,7 +364,7 @@ class TwoQubitWeylDecomposition:
         raise NotImplementedError
 
     def circuit(
-        self, *, euler_basis: Optional[str] = None, simplify=False, atol=DEFAULT_ATOL
+        self, *, euler_basis: str | None = None, simplify=False, atol=DEFAULT_ATOL
     ) -> QuantumCircuit:
         """Returns Weyl decomposition in circuit form.
 
@@ -427,7 +427,7 @@ class TwoQubitWeylDecomposition:
     @classmethod
     def from_bytes(
         cls, bytes_in: bytes, *, requested_fidelity: float, **kwargs
-    ) -> "TwoQubitWeylDecomposition":
+    ) -> TwoQubitWeylDecomposition:
         """Decode bytes into TwoQubitWeylDecomposition. Used by __repr__"""
         del kwargs  # Unused (just for display)
         b64 = base64.decodebytes(bytes_in)
@@ -558,7 +558,7 @@ class TwoQubitControlledUDecomposer:
     """Decompose two-qubit unitary in terms of a desired U ~ Ud(α, 0, 0) ~ Ctrl-U gate
     that is locally equivalent to an RXXGate."""
 
-    def __init__(self, rxx_equivalent_gate: Type[Gate]):
+    def __init__(self, rxx_equivalent_gate: type[Gate]):
         """Initialize the KAK decomposition.
 
         Args:

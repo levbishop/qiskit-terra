@@ -45,8 +45,8 @@ from qiskit.visualization.pulse_v2 import drawings, types, device_info
 
 
 def gen_barrier(
-    data: types.BarrierInstruction, formatter: Dict[str, Any], device: device_info.DrawerBackendInfo
-) -> List[drawings.LineData]:
+    data: types.BarrierInstruction, formatter: dict[str, Any], device: device_info.DrawerBackendInfo
+) -> list[drawings.LineData]:
     """Generate the barrier from provided relative barrier instruction.
 
     Stylesheets:

@@ -40,7 +40,7 @@ class PhaseEstimationResult(PhaseEstimatorResult):
         self,
         num_evaluation_qubits: int,
         circuit_result: Result,
-        phases: Union[numpy.ndarray, Dict[str, float]],
+        phases: numpy.ndarray | dict[str, float],
     ) -> None:
         """
         Args:
@@ -56,7 +56,7 @@ class PhaseEstimationResult(PhaseEstimatorResult):
         self._circuit_result = circuit_result
 
     @property
-    def phases(self) -> Union[numpy.ndarray, dict]:
+    def phases(self) -> numpy.ndarray | dict:
         """Return all phases and their frequencies computed by QPE.
 
         This is an array or dict whose values correspond to weights on bit strings.
@@ -101,7 +101,7 @@ class PhaseEstimationResult(PhaseEstimatorResult):
         phase = _bit_string_to_phase(binary_phase_string)
         return phase
 
-    def filter_phases(self, cutoff: float = 0.0, as_float: bool = True) -> Dict:
+    def filter_phases(self, cutoff: float = 0.0, as_float: bool = True) -> dict:
         """Return a filtered dict of phases (keys) and frequencies (values).
 
         Only phases with frequencies (counts) larger than `cutoff` are included.
@@ -167,7 +167,7 @@ def _bit_string_to_phase(binary_string: str) -> float:
     return int(binary_string, 2) / (2 ** n_qubits)
 
 
-def _sort_phases(phases: Dict) -> Dict:
+def _sort_phases(phases: dict) -> dict:
     """Sort a dict of bit strings representing phases (keys) and frequencies (values) by bit string.
 
     The bit strings are sorted according to increasing phase. This relies on Python

@@ -29,7 +29,7 @@ from .classicalregister import Clbit, ClassicalRegister
 # its creation, so caching this allows us to only pay the register-unrolling penalty once.  The
 # cache does not need to be large, because in general only one circuit is constructed at once.
 @functools.lru_cache(4)
-def _requester_from_cregs(cregs: Tuple[ClassicalRegister]) -> Callable:
+def _requester_from_cregs(cregs: tuple[ClassicalRegister]) -> Callable:
     """Get a classical resource requester from an iterable of classical registers.
 
     This implements the deprecated functionality of constructing an :obj:`.InstructionSet` with a
@@ -93,7 +93,7 @@ class InstructionSet:
 
     __slots__ = ("instructions", "qargs", "cargs", "_requester")
 
-    def __init__(self, circuit_cregs=None, *, resource_requester: Optional[Callable] = None):
+    def __init__(self, circuit_cregs=None, *, resource_requester: Callable | None = None):
         """New collection of instructions.
 
         The context (qargs and cargs that each instruction is attached to) is also stored separately
@@ -138,7 +138,7 @@ class InstructionSet:
                 DeprecationWarning,
                 stacklevel=2,
             )
-            self._requester: Optional[Callable] = _requester_from_cregs(tuple(circuit_cregs))
+            self._requester: Callable | None = _requester_from_cregs(tuple(circuit_cregs))
         else:
             self._requester = resource_requester
 
@@ -164,7 +164,7 @@ class InstructionSet:
             self.instructions[index] = instruction.inverse()
         return self
 
-    def c_if(self, classical: Union[Clbit, ClassicalRegister, int], val: int) -> "InstructionSet":
+    def c_if(self, classical: Clbit | ClassicalRegister | int, val: int) -> InstructionSet:
         """Set a classical equality condition on all the instructions in this set between the
         :obj:`.ClassicalRegister` or :obj:`.Clbit` ``classical`` and value ``val``.
 

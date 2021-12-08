@@ -33,7 +33,7 @@ class Play(Instruction):
     cycle time, dt, of the backend.
     """
 
-    def __init__(self, pulse: Pulse, channel: PulseChannel, name: Optional[str] = None):
+    def __init__(self, pulse: Pulse, channel: PulseChannel, name: str | None = None):
         """Create a new pulse instruction.
 
         Args:
@@ -68,17 +68,17 @@ class Play(Instruction):
         return self.operands[1]
 
     @property
-    def channels(self) -> Tuple[PulseChannel]:
+    def channels(self) -> tuple[PulseChannel]:
         """Returns the channels that this schedule uses."""
         return (self.channel,)
 
     @property
-    def duration(self) -> Union[int, ParameterExpression]:
+    def duration(self) -> int | ParameterExpression:
         """Duration of this instruction."""
         return self.pulse.duration
 
     @property
-    def parameters(self) -> Set:
+    def parameters(self) -> set:
         """Parameters which determine the instruction behavior."""
         parameters = set()
         for pulse_param_expr in self.pulse.parameters.values():

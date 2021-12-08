@@ -36,7 +36,7 @@ class Mpl2DPlotter(BasePlotter):
     Each chart is map to X-Y axis of the canvas.
     """
 
-    def __init__(self, canvas: core.DrawerCanvas, axis: Optional[plt.Axes] = None):
+    def __init__(self, canvas: core.DrawerCanvas, axis: plt.Axes | None = None):
         """Create new plotter.
 
         Args:

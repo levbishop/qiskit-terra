@@ -86,7 +86,7 @@ class JobV1(Job, ABC):
         return self.status() in JOB_FINAL_STATES
 
     def wait_for_final_state(
-        self, timeout: Optional[float] = None, wait: float = 5, callback: Optional[Callable] = None
+        self, timeout: float | None = None, wait: float = 5, callback: Callable | None = None
     ) -> None:
         """Poll the job status until it progresses to a final state such as ``DONE`` or ``ERROR``.
 

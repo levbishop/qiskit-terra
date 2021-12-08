@@ -29,20 +29,20 @@ from qiskit.visualization.utils import matplotlib_close_if_inline
 
 
 def pulse_drawer(
-    data: Union[Waveform, Union[Schedule, Instruction]],
+    data: Waveform | Schedule | Instruction,
     dt: int = 1,
-    style: Union[PulseStyle, SchedStyle] = None,
+    style: PulseStyle | SchedStyle = None,
     filename: str = None,
     interp_method: Callable = None,
     scale: float = None,
-    channel_scales: Dict[Channel, float] = None,
+    channel_scales: dict[Channel, float] = None,
     plot_all: bool = False,
-    plot_range: Tuple[float, float] = None,
+    plot_range: tuple[float, float] = None,
     interactive: bool = False,
     table: bool = False,
     label: bool = False,
     framechange: bool = True,
-    channels: List[Channel] = None,
+    channels: list[Channel] = None,
     show_framechange_channels: bool = True,
     draw_title: bool = False,
 ):

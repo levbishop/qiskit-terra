@@ -35,7 +35,7 @@ class MSGate(Gate):
     and is thus reduced to the RXXGate.
     """
 
-    def __init__(self, num_qubits: int, theta: ParameterValueType, label: Optional[str] = None):
+    def __init__(self, num_qubits: int, theta: ParameterValueType, label: str | None = None):
         """Create new MS gate."""
         warnings.warn(
             "The qiskit.circuit.library.standard_gates.ms import "

@@ -50,10 +50,10 @@ class MCMT(QuantumCircuit):
 
     def __init__(
         self,
-        gate: Union[Gate, Callable[[QuantumCircuit, Qubit, Qubit], Instruction]],
+        gate: Gate | Callable[[QuantumCircuit, Qubit, Qubit], Instruction],
         num_ctrl_qubits: int,
         num_target_qubits: int,
-        label: Optional[str] = None,
+        label: str | None = None,
     ) -> None:
         """Create a new multi-control multi-target gate.
 
@@ -265,10 +265,10 @@ class MCMTVChain(MCMT):
 
     def _ccx_v_chain_rule(
         self,
-        control_qubits: Union[QuantumRegister, List[Qubit]],
-        ancilla_qubits: Union[QuantumRegister, List[Qubit]],
+        control_qubits: QuantumRegister | list[Qubit],
+        ancilla_qubits: QuantumRegister | list[Qubit],
         reverse: bool = False,
-    ) -> List[Tuple[Gate, List[Qubit], List]]:
+    ) -> list[tuple[Gate, list[Qubit], list]]:
         """Get the rule for the CCX V-chain.
 
         The CCX V-chain progressively computes the CCX of the control qubits and puts the final

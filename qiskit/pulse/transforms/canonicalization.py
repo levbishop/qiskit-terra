@@ -78,7 +78,7 @@ def block_to_schedule(block: ScheduleBlock) -> Schedule:
     return block.alignment_context.align(schedule)
 
 
-def compress_pulses(schedules: List[Schedule]) -> List[Schedule]:
+def compress_pulses(schedules: list[Schedule]) -> list[Schedule]:
     """Optimization pass to replace identical pulses.
 
     Args:
@@ -135,7 +135,7 @@ def flatten(program: Schedule) -> Schedule:
         raise PulseError(f"Invalid input program {program.__class__.__name__} is specified.")
 
 
-def inline_subroutines(program: Union[Schedule, ScheduleBlock]) -> Union[Schedule, ScheduleBlock]:
+def inline_subroutines(program: Schedule | ScheduleBlock) -> Schedule | ScheduleBlock:
     """Recursively remove call instructions and inline the respective subroutine instructions.
 
     Assigned parameter values, which are stored in the parameter table, are also applied.
@@ -243,12 +243,12 @@ def remove_trivial_barriers(schedule: Schedule) -> Schedule:
 
 def align_measures(
     schedules: Iterable[ScheduleComponent],
-    inst_map: Optional[InstructionScheduleMap] = None,
+    inst_map: InstructionScheduleMap | None = None,
     cal_gate: str = "u3",
-    max_calibration_duration: Optional[int] = None,
-    align_time: Optional[int] = None,
-    align_all: Optional[bool] = True,
-) -> List[Schedule]:
+    max_calibration_duration: int | None = None,
+    align_time: int | None = None,
+    align_all: bool | None = True,
+) -> list[Schedule]:
     """Return new schedules where measurements occur at the same physical time.
 
     This transformation will align the first :class:`.Acquire` on
@@ -401,7 +401,7 @@ def align_measures(
     return new_schedules
 
 
-def add_implicit_acquires(schedule: ScheduleComponent, meas_map: List[List[int]]) -> Schedule:
+def add_implicit_acquires(schedule: ScheduleComponent, meas_map: list[list[int]]) -> Schedule:
     """Return a new schedule with implicit acquires from the measurement mapping replaced by
     explicit ones.
 
@@ -455,8 +455,8 @@ def add_implicit_acquires(schedule: ScheduleComponent, meas_map: List[List[int]]
 
 def pad(
     schedule: Schedule,
-    channels: Optional[Iterable[chans.Channel]] = None,
-    until: Optional[int] = None,
+    channels: Iterable[chans.Channel] | None = None,
+    until: int | None = None,
     inplace: bool = False,
 ) -> Schedule:
     """Pad the input Schedule with ``Delay``s on all unoccupied timeslots until

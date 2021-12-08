@@ -37,7 +37,7 @@ class PauliOp(PrimitiveOp):
 
     primitive: Pauli
 
-    def __init__(self, primitive: Pauli, coeff: Union[complex, ParameterExpression] = 1.0) -> None:
+    def __init__(self, primitive: Pauli, coeff: complex | ParameterExpression = 1.0) -> None:
         """
         Args:
             primitive: The Pauli which defines the behavior of the underlying function.
@@ -50,7 +50,7 @@ class PauliOp(PrimitiveOp):
             raise TypeError(f"PauliOp can only be instantiated with Paulis, not {type(primitive)}")
         super().__init__(primitive, coeff=coeff)
 
-    def primitive_strings(self) -> Set[str]:
+    def primitive_strings(self) -> set[str]:
         return {"Pauli"}
 
     @property
@@ -85,7 +85,7 @@ class PauliOp(PrimitiveOp):
 
         return SummedOp([self, other])
 
-    def adjoint(self) -> "PauliOp":
+    def adjoint(self) -> PauliOp:
         return PauliOp(self.primitive, coeff=self.coeff.conjugate())
 
     def equals(self, other: OperatorBase) -> bool:
@@ -94,7 +94,7 @@ class PauliOp(PrimitiveOp):
 
         return self.primitive == other.primitive
 
-    def _expand_dim(self, num_qubits: int) -> "PauliOp":
+    def _expand_dim(self, num_qubits: int) -> PauliOp:
         return PauliOp(Pauli("I" * num_qubits).expand(self.primitive), coeff=self.coeff)
 
     def tensor(self, other: OperatorBase) -> OperatorBase:
@@ -116,7 +116,7 @@ class PauliOp(PrimitiveOp):
 
         return TensoredOp([self, other])
 
-    def permute(self, permutation: List[int]) -> "PauliOp":
+    def permute(self, permutation: list[int]) -> PauliOp:
         """Permutes the sequence of Pauli matrices.
 
         Args:
@@ -142,7 +142,7 @@ class PauliOp(PrimitiveOp):
         return PauliOp(Pauli("".join(new_pauli_list)), self.coeff)
 
     def compose(
-        self, other: OperatorBase, permutation: Optional[List[int]] = None, front: bool = False
+        self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
 
         new_self, other = self._expand_shorter_operator_and_permute(other, permutation)
@@ -201,10 +201,10 @@ class PauliOp(PrimitiveOp):
 
     def eval(
         self,
-        front: Optional[
-            Union[str, Dict[str, complex], np.ndarray, OperatorBase, Statevector]
-        ] = None,
-    ) -> Union[OperatorBase, complex]:
+        front: None | (
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
+        ) = None,
+    ) -> OperatorBase | complex:
         if front is None:
             return self.to_matrix_op()
 
@@ -236,7 +236,7 @@ class PauliOp(PrimitiveOp):
 
             if isinstance(front, DictStateFn):
 
-                new_dict: Dict[str, complex] = {}
+                new_dict: dict[str, complex] = {}
                 corrected_x_bits = self.primitive.x[::-1]
                 corrected_z_bits = self.primitive.z[::-1]
 
@@ -343,5 +343,5 @@ class PauliOp(PrimitiveOp):
 
         return self.primitive.to_instruction()
 
-    def to_pauli_op(self, massive: bool = False) -> "PauliOp":
+    def to_pauli_op(self, massive: bool = False) -> PauliOp:
         return self

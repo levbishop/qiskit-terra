@@ -90,18 +90,18 @@ class QNSPSA(SPSA):
         fidelity: FIDELITY,
         maxiter: int = 100,
         blocking: bool = True,
-        allowed_increase: Optional[float] = None,
-        learning_rate: Optional[Union[float, Callable[[], Iterator]]] = None,
-        perturbation: Optional[Union[float, Callable[[], Iterator]]] = None,
+        allowed_increase: float | None = None,
+        learning_rate: float | Callable[[], Iterator] | None = None,
+        perturbation: float | Callable[[], Iterator] | None = None,
         last_avg: int = 1,
-        resamplings: Union[int, Dict[int, int]] = 1,
-        perturbation_dims: Optional[int] = None,
-        regularization: Optional[float] = None,
+        resamplings: int | dict[int, int] = 1,
+        perturbation_dims: int | None = None,
+        regularization: float | None = None,
         hessian_delay: int = 0,
-        lse_solver: Optional[Callable[[np.ndarray, np.ndarray], np.ndarray]] = None,
-        initial_hessian: Optional[np.ndarray] = None,
-        callback: Optional[CALLBACK] = None,
-        termination_checker: Optional[TERMINATIONCHECKER] = None,
+        lse_solver: Callable[[np.ndarray, np.ndarray], np.ndarray] | None = None,
+        initial_hessian: np.ndarray | None = None,
+        callback: CALLBACK | None = None,
+        termination_checker: TERMINATIONCHECKER | None = None,
     ) -> None:
         r"""
         Args:
@@ -207,7 +207,7 @@ class QNSPSA(SPSA):
         return np.mean(loss_values), gradient_estimate, hessian_estimate
 
     @property
-    def settings(self) -> Dict[str, Any]:
+    def settings(self) -> dict[str, Any]:
         """The optimizer settings in a dictionary format."""
         # re-use serialization from SPSA
         settings = super().settings
@@ -222,8 +222,8 @@ class QNSPSA(SPSA):
     @staticmethod
     def get_fidelity(
         circuit: QuantumCircuit,
-        backend: Optional[Union[Backend, QuantumInstance]] = None,
-        expectation: Optional[ExpectationBase] = None,
+        backend: Backend | QuantumInstance | None = None,
+        expectation: ExpectationBase | None = None,
     ) -> Callable[[np.ndarray, np.ndarray], float]:
         r"""Get a function to compute the fidelity of ``circuit`` with itself.
 

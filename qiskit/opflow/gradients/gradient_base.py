@@ -26,7 +26,7 @@ class GradientBase(DerivativeBase):
     Convert an operator expression to the first-order gradient.
     """
 
-    def __init__(self, grad_method: Union[str, CircuitGradient] = "param_shift", **kwargs):
+    def __init__(self, grad_method: str | CircuitGradient = "param_shift", **kwargs):
         r"""
         Args:
             grad_method: The method used to compute the state/probability gradient. Can be either

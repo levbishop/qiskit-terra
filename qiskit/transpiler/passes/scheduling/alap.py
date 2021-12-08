@@ -74,7 +74,7 @@ class ALAPSchedule(TransformationPass):
         clbit_readable = defaultdict(int)
         clbit_writeable = defaultdict(int)
 
-        def pad_with_delays(qubits: List[int], until, unit) -> None:
+        def pad_with_delays(qubits: list[int], until, unit) -> None:
             """Pad idle time-slots in ``qubits`` with delays in ``unit`` until ``until``."""
             for q in qubits:
                 if qubit_time_available[q] < until:

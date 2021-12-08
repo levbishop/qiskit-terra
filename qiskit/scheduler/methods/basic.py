@@ -45,7 +45,7 @@ def as_soon_as_possible(circuit: QuantumCircuit, schedule_config: ScheduleConfig
     """
     qubit_time_available = defaultdict(int)
 
-    def update_times(inst_qubits: List[int], time: int = 0) -> None:
+    def update_times(inst_qubits: list[int], time: int = 0) -> None:
         """Update the time tracker for all inst_qubits to the given time."""
         for q in inst_qubits:
             qubit_time_available[q] = time
@@ -95,7 +95,7 @@ def as_late_as_possible(circuit: QuantumCircuit, schedule_config: ScheduleConfig
     """
     qubit_time_available = defaultdict(int)
 
-    def update_times(inst_qubits: List[int], time: int = 0) -> None:
+    def update_times(inst_qubits: list[int], time: int = 0) -> None:
         """Update the time tracker for all inst_qubits to the given time."""
         for q in inst_qubits:
             qubit_time_available[q] = time

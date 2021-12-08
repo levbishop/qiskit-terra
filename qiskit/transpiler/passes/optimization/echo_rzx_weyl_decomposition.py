@@ -43,7 +43,7 @@ class EchoRZXWeylDecomposition(TransformationPass):
         super().__init__()
         self._inst_map = instruction_schedule_map
 
-    def _is_native(self, qubit_pair: Tuple) -> bool:
+    def _is_native(self, qubit_pair: tuple) -> bool:
         """Return the direction of the qubit pair that is native, i.e. with the shortest schedule."""
         cx1 = self._inst_map.get("cx", qubit_pair)
         cx2 = self._inst_map.get("cx", qubit_pair[::-1])

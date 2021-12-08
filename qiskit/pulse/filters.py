@@ -25,7 +25,7 @@ from qiskit.pulse.schedule import Interval
 
 
 def filter_instructions(
-    sched: Schedule, filters: List[Callable], negate: bool = False, recurse_subroutines: bool = True
+    sched: Schedule, filters: list[Callable], negate: bool = False, recurse_subroutines: bool = True
 ) -> Schedule:
     """A filtering function that takes a schedule and returns a schedule consisting of
     filtered instructions.
@@ -64,11 +64,11 @@ def filter_instructions(
 
 
 def composite_filter(
-    channels: Optional[Union[Iterable[Channel], Channel]] = None,
-    instruction_types: Optional[Union[Iterable[abc.ABCMeta], abc.ABCMeta]] = None,
-    time_ranges: Optional[Iterable[Tuple[int, int]]] = None,
-    intervals: Optional[Iterable[Interval]] = None,
-) -> List[Callable]:
+    channels: Iterable[Channel] | Channel | None = None,
+    instruction_types: Iterable[abc.ABCMeta] | abc.ABCMeta | None = None,
+    time_ranges: Iterable[tuple[int, int]] | None = None,
+    intervals: Iterable[Interval] | None = None,
+) -> list[Callable]:
     """A helper function to generate a list of filter functions based on
     typical elements to be filtered.
 
@@ -98,7 +98,7 @@ def composite_filter(
     return filters
 
 
-def with_channels(channels: Union[Iterable[Channel], Channel]) -> Callable:
+def with_channels(channels: Iterable[Channel] | Channel) -> Callable:
     """Channel filter generator.
 
     Args:
@@ -123,7 +123,7 @@ def with_channels(channels: Union[Iterable[Channel], Channel]) -> Callable:
     return channel_filter
 
 
-def with_instruction_types(types: Union[Iterable[abc.ABCMeta], abc.ABCMeta]) -> Callable:
+def with_instruction_types(types: Iterable[abc.ABCMeta] | abc.ABCMeta) -> Callable:
     """Instruction type filter generator.
 
     Args:
@@ -148,7 +148,7 @@ def with_instruction_types(types: Union[Iterable[abc.ABCMeta], abc.ABCMeta]) -> 
     return instruction_filter
 
 
-def with_intervals(ranges: Union[Iterable[Interval], Interval]) -> Callable:
+def with_intervals(ranges: Iterable[Interval] | Interval) -> Callable:
     """Interval filter generator.
 
     Args:
@@ -177,7 +177,7 @@ def with_intervals(ranges: Union[Iterable[Interval], Interval]) -> Callable:
     return interval_filter
 
 
-def _if_scalar_cast_to_list(to_list: Any) -> List[Any]:
+def _if_scalar_cast_to_list(to_list: Any) -> list[Any]:
     """A helper function to create python list of input arguments.
 
     Args:

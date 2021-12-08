@@ -82,11 +82,11 @@ class Suzuki(TrotterizationBase):
 
     @staticmethod
     def _recursive_expansion(
-        op_list: Union[List[OperatorBase], PauliSumOp],
-        evo_time: Union[float, ParameterExpression],
+        op_list: list[OperatorBase] | PauliSumOp,
+        evo_time: float | ParameterExpression,
         expansion_order: int,
         reps: int,
-    ) -> List[PrimitiveOp]:
+    ) -> list[PrimitiveOp]:
         """
         Compute the list of pauli terms for a single slice of the Suzuki expansion
         following the paper https://arxiv.org/pdf/quant-ph/0508139.pdf.

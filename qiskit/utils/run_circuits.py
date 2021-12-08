@@ -47,7 +47,7 @@ logger = logging.getLogger(__name__)
 
 def find_regs_by_name(
     circuit: QuantumCircuit, name: str, qreg: bool = True
-) -> Optional[Union[QuantumRegister, ClassicalRegister]]:
+) -> QuantumRegister | ClassicalRegister | None:
     """Find the registers in the circuits.
 
     Args:
@@ -68,7 +68,7 @@ def find_regs_by_name(
     return found_reg
 
 
-def _combine_result_objects(results: List[Result]) -> Result:
+def _combine_result_objects(results: list[Result]) -> Result:
     """Temporary helper function.
 
     TODO:
@@ -85,7 +85,7 @@ def _combine_result_objects(results: List[Result]) -> Result:
     return new_result
 
 
-def _split_qobj_to_qobjs(qobj: QasmQobj, chunk_size: int) -> List[QasmQobj]:
+def _split_qobj_to_qobjs(qobj: QasmQobj, chunk_size: int) -> list[QasmQobj]:
     qobjs = []
     num_chunks = int(np.ceil(len(qobj.experiments) / chunk_size))
     if num_chunks == 1:
@@ -106,7 +106,7 @@ def _split_qobj_to_qobjs(qobj: QasmQobj, chunk_size: int) -> List[QasmQobj]:
     return qobjs
 
 
-def _maybe_split_qobj_by_gates(qobjs: List[QasmQobj], qobj: QasmQobj) -> List[QasmQobj]:
+def _maybe_split_qobj_by_gates(qobjs: list[QasmQobj], qobj: QasmQobj) -> list[QasmQobj]:
     if MAX_GATES_PER_JOB is not None:
         max_gates_per_job = int(MAX_GATES_PER_JOB)
         total_num_gates = 0
@@ -144,12 +144,12 @@ def _maybe_split_qobj_by_gates(qobjs: List[QasmQobj], qobj: QasmQobj) -> List[Qa
 
 def _safe_submit_qobj(
     qobj: QasmQobj,
-    backend: Union[Backend, BaseBackend],
-    backend_options: Dict,
-    noise_config: Dict,
+    backend: Backend | BaseBackend,
+    backend_options: dict,
+    noise_config: dict,
     skip_qobj_validation: bool,
     max_job_retries: int,
-) -> Tuple[BaseJob, str]:
+) -> tuple[BaseJob, str]:
     # assure get job ids
     for _ in range(max_job_retries):
         try:
@@ -232,12 +232,12 @@ def _safe_get_job_status(job: BaseJob, job_id: str, max_job_retries: int) -> Job
 
 def run_qobj(
     qobj: QasmQobj,
-    backend: Union[Backend, BaseBackend],
-    qjob_config: Optional[Dict] = None,
-    backend_options: Optional[Dict] = None,
-    noise_config: Optional[Dict] = None,
+    backend: Backend | BaseBackend,
+    qjob_config: dict | None = None,
+    backend_options: dict | None = None,
+    noise_config: dict | None = None,
     skip_qobj_validation: bool = False,
-    job_callback: Optional[Callable] = None,
+    job_callback: Callable | None = None,
     max_job_retries: int = 50,
 ) -> Result:
     """
@@ -405,10 +405,10 @@ def run_qobj(
 # skip_qobj_validation = True does what backend.run
 # and aerjob.submit do, but without qobj validation.
 def run_on_backend(
-    backend: Union[Backend, BaseBackend],
+    backend: Backend | BaseBackend,
     qobj: QasmQobj,
-    backend_options: Optional[Dict] = None,
-    noise_config: Optional[Dict] = None,
+    backend_options: dict | None = None,
+    noise_config: dict | None = None,
     skip_qobj_validation: bool = False,
 ) -> BaseJob:
     """run on backend"""
@@ -441,13 +441,13 @@ def run_on_backend(
 
 
 def run_circuits(
-    circuits: Union[QuantumCircuit, List[QuantumCircuit]],
-    backend: Union[Backend, BaseBackend],
-    qjob_config: Dict,
-    backend_options: Optional[Dict] = None,
-    noise_config: Optional[Dict] = None,
-    run_config: Optional[Dict] = None,
-    job_callback: Optional[Callable] = None,
+    circuits: QuantumCircuit | list[QuantumCircuit],
+    backend: Backend | BaseBackend,
+    qjob_config: dict,
+    backend_options: dict | None = None,
+    noise_config: dict | None = None,
+    run_config: dict | None = None,
+    job_callback: Callable | None = None,
     max_job_retries: int = 50,
 ) -> Result:
     """
@@ -632,14 +632,14 @@ def run_circuits(
 
 
 def _safe_submit_circuits(
-    circuits: Union[QuantumCircuit, List[QuantumCircuit]],
-    backend: Union[Backend, BaseBackend],
-    qjob_config: Dict,
-    backend_options: Dict,
-    noise_config: Dict,
-    run_config: Dict,
+    circuits: QuantumCircuit | list[QuantumCircuit],
+    backend: Backend | BaseBackend,
+    qjob_config: dict,
+    backend_options: dict,
+    noise_config: dict,
+    run_config: dict,
     max_job_retries: int,
-) -> Tuple[BaseJob, str]:
+) -> tuple[BaseJob, str]:
     # assure get job ids
     for _ in range(max_job_retries):
         try:
@@ -701,11 +701,11 @@ def _safe_submit_circuits(
 
 
 def _run_circuits_on_backend(
-    backend: Union[Backend, BaseBackend],
-    circuits: Union[QuantumCircuit, List[QuantumCircuit]],
-    backend_options: Dict,
-    noise_config: Dict,
-    run_config: Dict,
+    backend: Backend | BaseBackend,
+    circuits: QuantumCircuit | list[QuantumCircuit],
+    backend_options: dict,
+    noise_config: dict,
+    run_config: dict,
 ) -> BaseJob:
     """run on backend"""
     run_kwargs = {}

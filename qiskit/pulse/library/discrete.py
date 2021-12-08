@@ -27,7 +27,7 @@ from . import continuous, samplers
 _sampled_constant_pulse = samplers.midpoint(continuous.constant)
 
 
-def constant(duration: int, amp: complex, name: Optional[str] = None) -> Waveform:
+def constant(duration: int, amp: complex, name: str | None = None) -> Waveform:
     r"""Generates constant-sampled :class:`~qiskit.pulse.library.Waveform`.
 
     For :math:`A=` ``amp``, samples from the function:
@@ -47,7 +47,7 @@ def constant(duration: int, amp: complex, name: Optional[str] = None) -> Wavefor
 _sampled_zero_pulse = samplers.midpoint(continuous.zero)
 
 
-def zero(duration: int, name: Optional[str] = None) -> Waveform:
+def zero(duration: int, name: str | None = None) -> Waveform:
     """Generates zero-sampled :class:`~qiskit.pulse.library.Waveform`.
 
     Samples from the function:
@@ -67,7 +67,7 @@ _sampled_square_pulse = samplers.midpoint(continuous.square)
 
 
 def square(
-    duration: int, amp: complex, freq: float = None, phase: float = 0, name: Optional[str] = None
+    duration: int, amp: complex, freq: float = None, phase: float = 0, name: str | None = None
 ) -> Waveform:
     r"""Generates square wave :class:`~qiskit.pulse.library.Waveform`.
 
@@ -99,7 +99,7 @@ _sampled_sawtooth_pulse = samplers.midpoint(continuous.sawtooth)
 
 
 def sawtooth(
-    duration: int, amp: complex, freq: float = None, phase: float = 0, name: Optional[str] = None
+    duration: int, amp: complex, freq: float = None, phase: float = 0, name: str | None = None
 ) -> Waveform:
     r"""Generates sawtooth wave :class:`~qiskit.pulse.library.Waveform`.
 
@@ -143,7 +143,7 @@ _sampled_triangle_pulse = samplers.midpoint(continuous.triangle)
 
 
 def triangle(
-    duration: int, amp: complex, freq: float = None, phase: float = 0, name: Optional[str] = None
+    duration: int, amp: complex, freq: float = None, phase: float = 0, name: str | None = None
 ) -> Waveform:
     r"""Generates triangle wave :class:`~qiskit.pulse.library.Waveform`.
 
@@ -187,7 +187,7 @@ _sampled_cos_pulse = samplers.midpoint(continuous.cos)
 
 
 def cos(
-    duration: int, amp: complex, freq: float = None, phase: float = 0, name: Optional[str] = None
+    duration: int, amp: complex, freq: float = None, phase: float = 0, name: str | None = None
 ) -> Waveform:
     r"""Generates cosine wave :class:`~qiskit.pulse.library.Waveform`.
 
@@ -216,7 +216,7 @@ _sampled_sin_pulse = samplers.midpoint(continuous.sin)
 
 
 def sin(
-    duration: int, amp: complex, freq: float = None, phase: float = 0, name: Optional[str] = None
+    duration: int, amp: complex, freq: float = None, phase: float = 0, name: str | None = None
 ) -> Waveform:
     r"""Generates sine wave :class:`~qiskit.pulse.library.Waveform`.
 
@@ -245,7 +245,7 @@ _sampled_gaussian_pulse = samplers.midpoint(continuous.gaussian)
 
 
 def gaussian(
-    duration: int, amp: complex, sigma: float, name: Optional[str] = None, zero_ends: bool = True
+    duration: int, amp: complex, sigma: float, name: str | None = None, zero_ends: bool = True
 ) -> Waveform:
     r"""Generates unnormalized gaussian :class:`~qiskit.pulse.library.Waveform`.
 
@@ -289,7 +289,7 @@ _sampled_gaussian_deriv_pulse = samplers.midpoint(continuous.gaussian_deriv)
 
 
 def gaussian_deriv(
-    duration: int, amp: complex, sigma: float, name: Optional[str] = None
+    duration: int, amp: complex, sigma: float, name: str | None = None
 ) -> Waveform:
     r"""Generates unnormalized gaussian derivative :class:`~qiskit.pulse.library.Waveform`.
 
@@ -386,9 +386,9 @@ def gaussian_square(
     duration: int,
     amp: complex,
     sigma: float,
-    risefall: Optional[float] = None,
-    width: Optional[float] = None,
-    name: Optional[str] = None,
+    risefall: float | None = None,
+    width: float | None = None,
+    name: str | None = None,
     zero_ends: bool = True,
 ) -> Waveform:
     r"""Generates gaussian square :class:`~qiskit.pulse.library.Waveform`.
@@ -453,7 +453,7 @@ def drag(
     amp: complex,
     sigma: float,
     beta: float,
-    name: Optional[str] = None,
+    name: str | None = None,
     zero_ends: bool = True,
 ) -> Waveform:
     r"""Generates Y-only correction DRAG :class:`~qiskit.pulse.library.Waveform` for standard nonlinear

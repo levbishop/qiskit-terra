@@ -353,7 +353,7 @@ class TestPad(QiskitTestCase):
         self.assertEqual(transforms.pad(sched, until=30, inplace=True), ref_sched)
 
 
-def get_pulse_ids(schedules: List[Schedule]) -> Set[int]:
+def get_pulse_ids(schedules: list[Schedule]) -> set[int]:
     """Returns ids of pulses used in Schedules."""
     ids = set()
     for schedule in schedules:

@@ -49,9 +49,9 @@ class Gradient(GradientBase):
     def convert(
         self,
         operator: OperatorBase,
-        params: Optional[
-            Union[ParameterVector, ParameterExpression, List[ParameterExpression]]
-        ] = None,
+        params: None | (
+            ParameterVector | ParameterExpression | list[ParameterExpression]
+        ) = None,
     ) -> OperatorBase:
         r"""
         Args:
@@ -92,7 +92,7 @@ class Gradient(GradientBase):
     def get_gradient(
         self,
         operator: OperatorBase,
-        params: Union[ParameterExpression, ParameterVector, List[ParameterExpression]],
+        params: ParameterExpression | ParameterVector | list[ParameterExpression],
     ) -> OperatorBase:
         """Get the gradient for the given operator w.r.t. the given parameters
 

@@ -104,8 +104,8 @@ class ChannelEvents:
 
     def __init__(
         self,
-        waveforms: Dict[int, pulse.Instruction],
-        frames: Dict[int, List[pulse.Instruction]],
+        waveforms: dict[int, pulse.Instruction],
+        frames: dict[int, list[pulse.Instruction]],
         channel: pulse.channels.Channel,
     ):
         """Create new event manager.
@@ -227,8 +227,8 @@ class ChannelEvents:
 
     @classmethod
     def _calculate_current_frame(
-        cls, frame_changes: List[pulse.instructions.Instruction], phase: float, frequency: float
-    ) -> Tuple[float, float]:
+        cls, frame_changes: list[pulse.instructions.Instruction], phase: float, frequency: float
+    ) -> tuple[float, float]:
         """Calculate the current frame from the previous frame.
 
         If parameter is unbound phase or frequency accumulation with this instruction is skipped.

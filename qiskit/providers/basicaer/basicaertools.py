@@ -28,7 +28,7 @@ from qiskit.exceptions import QiskitError
 SINGLE_QUBIT_GATES = ("U", "u1", "u2", "u3", "rz", "sx", "x")
 
 
-def single_gate_matrix(gate: str, params: Optional[List[float]] = None):
+def single_gate_matrix(gate: str, params: list[float] | None = None):
     """Get the matrix for a single qubit.
 
     Args:

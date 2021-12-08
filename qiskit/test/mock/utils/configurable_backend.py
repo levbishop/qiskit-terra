@@ -39,17 +39,17 @@ class ConfigurableFakeBackend(FakeBackend):
         self,
         name: str,
         n_qubits: int,
-        version: Optional[str] = None,
-        coupling_map: Optional[List[List[int]]] = None,
-        basis_gates: Optional[List[str]] = None,
-        qubit_t1: Optional[Union[float, List[float]]] = None,
-        qubit_t2: Optional[Union[float, List[float]]] = None,
-        qubit_frequency: Optional[Union[float, List[float]]] = None,
-        qubit_readout_error: Optional[Union[float, List[float]]] = None,
-        single_qubit_gates: Optional[List[str]] = None,
-        dt: Optional[float] = None,
-        std: Optional[float] = None,
-        seed: Optional[int] = None,
+        version: str | None = None,
+        coupling_map: list[list[int]] | None = None,
+        basis_gates: list[str] | None = None,
+        qubit_t1: float | list[float] | None = None,
+        qubit_t2: float | list[float] | None = None,
+        qubit_frequency: float | list[float] | None = None,
+        qubit_readout_error: float | list[float] | None = None,
+        single_qubit_gates: list[str] | None = None,
+        dt: float | None = None,
+        std: float | None = None,
+        seed: int | None = None,
     ):
         """Creates backend based on provided configuration.
 
@@ -133,7 +133,7 @@ class ConfigurableFakeBackend(FakeBackend):
         """Return backend properties"""
         return self._properties
 
-    def _generate_cmap(self) -> List[List[int]]:
+    def _generate_cmap(self) -> list[list[int]]:
         """Generate default grid-like coupling map."""
         cmap = []
         grid_size = int(np.ceil(np.sqrt(self.n_qubits)))
