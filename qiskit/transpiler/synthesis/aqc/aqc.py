@@ -12,12 +12,10 @@
 """A generic implementation of Approximate Quantum Compiler."""
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.algorithms.optimizers import L_BFGS_B, Optimizer
 from qiskit.quantum_info import Operator
-
 from qiskit.transpiler.synthesis.aqc.approximate import ApproximateCircuit, ApproximatingObjective
 
 

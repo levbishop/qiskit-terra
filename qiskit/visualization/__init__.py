@@ -128,11 +128,20 @@ from qiskit.visualization.state_visualization import (
 )
 from qiskit.visualization.transition_visualization import visualize_transition
 from qiskit.visualization.array import array_to_latex
-
-from qiskit.visualization.circuit_visualization import circuit_drawer, HAS_PIL, HAS_PDFLATEX, HAS_PDFTOCAIRO
+from qiskit.visualization.circuit_visualization import (
+    circuit_drawer,
+    HAS_PIL,
+    HAS_PDFLATEX,
+    HAS_PDFTOCAIRO,
+)
 from qiskit.visualization.dag_visualization import dag_drawer
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.gate_map import plot_gate_map, plot_circuit_layout, plot_error_map, plot_coupling_map
+from qiskit.visualization.gate_map import (
+    plot_gate_map,
+    plot_circuit_layout,
+    plot_error_map,
+    plot_coupling_map,
+)
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB, HAS_PYLATEX
 from qiskit.visualization.pass_manager_visualization import pass_manager_drawer
 from qiskit.visualization.pulse.interpolation import step_wise, linear, cubic_spline

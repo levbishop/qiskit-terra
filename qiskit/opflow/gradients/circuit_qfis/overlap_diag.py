@@ -20,7 +20,6 @@ import numpy as np
 from qiskit.circuit import ParameterVector, ParameterExpression
 from qiskit.circuit.library import RZGate, RXGate, RYGate
 from qiskit.converters import dag_to_circuit, circuit_to_dag
-
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation

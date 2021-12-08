@@ -17,7 +17,6 @@ relative amount.
 """
 from __future__ import annotations
 
-
 from qiskit.circuit import ParameterExpression
 from qiskit.pulse.channels import PulseChannel
 from qiskit.pulse.instructions.instruction import Instruction

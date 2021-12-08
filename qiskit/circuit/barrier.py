@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 from qiskit.exceptions import QiskitError
-
 from qiskit.circuit.instruction import Instruction
 
 

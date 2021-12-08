@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 from qiskit.opflow.expectations.aer_pauli_expectation import AerPauliExpectation
 from qiskit.opflow.expectations.expectation_base import ExpectationBase
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation

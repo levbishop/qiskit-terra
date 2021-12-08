@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.circuit.gate import Gate
@@ -80,7 +79,6 @@ class RYYGate(Gate):
         """Calculate a subcircuit that implements this unitary."""
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.x import CXGate
         from qiskit.circuit.library.standard_gates.rx import RXGate
         from qiskit.circuit.library.standard_gates.rz import RZGate

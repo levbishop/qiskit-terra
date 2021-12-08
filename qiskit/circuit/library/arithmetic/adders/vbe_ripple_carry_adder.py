@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister
-
 from qiskit.circuit.library.arithmetic.adders.adder import Adder
 
 

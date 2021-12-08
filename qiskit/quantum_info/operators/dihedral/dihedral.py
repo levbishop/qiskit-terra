@@ -27,7 +27,6 @@ from qiskit.quantum_info.operators.scalar_op import ScalarOp
 from qiskit.quantum_info.synthesis.cnotdihedral_decompose import decompose_cnotdihedral
 from qiskit.quantum_info.operators.mixins import generate_apidocs, AdjointMixin
 from qiskit.circuit import QuantumCircuit, Instruction
-
 from qiskit.quantum_info.operators.dihedral.dihedral_circuits import _append_circuit
 from qiskit.quantum_info.operators.dihedral.polynomial import SpecialPolynomial
 

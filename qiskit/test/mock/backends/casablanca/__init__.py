@@ -14,4 +14,7 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.casablanca.fake_casablanca import FakeCasablanca, FakeLegacyCasablanca
+from qiskit.test.mock.backends.casablanca.fake_casablanca import (
+    FakeCasablanca,
+    FakeLegacyCasablanca,
+)

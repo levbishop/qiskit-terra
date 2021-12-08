@@ -19,7 +19,12 @@ from qiskit.quantum_info.operators.operator import Operator
 # These must come after to avoid cyclic import problems?
 from qiskit.quantum_info.operators.scalar_op import ScalarOp
 from qiskit.quantum_info.operators.channel import Choi, SuperOp, Kraus, Stinespring, Chi, PTM
-from qiskit.quantum_info.operators.measures import process_fidelity, average_gate_fidelity, gate_error, diamond_norm
+from qiskit.quantum_info.operators.measures import (
+    process_fidelity,
+    average_gate_fidelity,
+    gate_error,
+    diamond_norm,
+)
 from qiskit.quantum_info.operators.symplectic import (
     Clifford,
     Pauli,

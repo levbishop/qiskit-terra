@@ -18,7 +18,6 @@ from __future__ import annotations
 import itertools
 
 from qiskit.circuit.exceptions import CircuitError
-
 from qiskit.circuit.register import Register
 from qiskit.circuit.bit import Bit
 

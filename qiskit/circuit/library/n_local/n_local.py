@@ -25,7 +25,6 @@ from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit import Instruction, Parameter, ParameterVector, ParameterExpression
 from qiskit.circuit.parametertable import ParameterTable
 from qiskit.exceptions import QiskitError
-
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 

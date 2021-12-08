@@ -14,9 +14,7 @@
 
 from __future__ import annotations
 
-
 from qiskit.circuit import QuantumCircuit, QuantumRegister
-
 from qiskit.circuit.library.basis_change import QFT
 
 

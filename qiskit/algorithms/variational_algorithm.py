@@ -40,7 +40,6 @@ from qiskit.circuit import QuantumCircuit
 from qiskit.providers import BaseBackend, Backend
 from qiskit.opflow.gradients import GradientBase
 from qiskit.utils import QuantumInstance, algorithm_globals, deprecate_function
-
 from qiskit.algorithms.algorithm_result import AlgorithmResult
 from qiskit.algorithms.optimizers import Optimizer, SLSQP
 

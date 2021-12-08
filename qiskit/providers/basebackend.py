@@ -22,7 +22,6 @@ import warnings
 from abc import ABC, abstractmethod
 
 from qiskit.version import VERSION as __version__
-
 from qiskit.providers.models import BackendStatus
 
 

@@ -51,7 +51,6 @@ from qiskit.circuit.library.standard_gates import (
     ZGate,
 )
 from qiskit.quantum_info import partial_trace
-
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.list_ops.composed_op import ComposedOp

@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 
 

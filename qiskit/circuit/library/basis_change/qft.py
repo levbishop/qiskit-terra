@@ -14,11 +14,9 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister
-
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 

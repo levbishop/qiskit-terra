@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
 from qiskit.pulse.channels import Channel
 from qiskit.pulse.exceptions import PulseError

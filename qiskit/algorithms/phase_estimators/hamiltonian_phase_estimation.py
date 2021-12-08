@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 from qiskit import QuantumCircuit
 from qiskit.utils import QuantumInstance
 from qiskit.opflow import (
@@ -28,9 +27,10 @@ from qiskit.opflow import (
     StateFn,
 )
 from qiskit.providers import BaseBackend
-
 from qiskit.algorithms.phase_estimators.phase_estimation import PhaseEstimation
-from qiskit.algorithms.phase_estimators.hamiltonian_phase_estimation_result import HamiltonianPhaseEstimationResult
+from qiskit.algorithms.phase_estimators.hamiltonian_phase_estimation_result import (
+    HamiltonianPhaseEstimationResult,
+)
 from qiskit.algorithms.phase_estimators.phase_estimation_scale import PhaseEstimationScale
 
 

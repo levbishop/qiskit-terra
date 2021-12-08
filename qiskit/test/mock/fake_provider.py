@@ -21,7 +21,6 @@ from __future__ import annotations
 from qiskit.providers.provider import ProviderV1
 from qiskit.providers.baseprovider import BaseProvider
 from qiskit.providers.exceptions import QiskitBackendNotFoundError
-
 from qiskit.test.mock.backends import *
 from qiskit.test.mock.fake_qasm_simulator import FakeQasmSimulator
 from qiskit.test.mock.fake_openpulse_2q import FakeOpenPulse2Q

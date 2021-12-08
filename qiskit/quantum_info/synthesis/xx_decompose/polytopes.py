@@ -24,7 +24,6 @@ from itertools import combinations
 import numpy as np
 
 from qiskit.exceptions import QiskitError
-
 from qiskit.quantum_info.synthesis.xx_decompose.utilities import EPSILON
 
 

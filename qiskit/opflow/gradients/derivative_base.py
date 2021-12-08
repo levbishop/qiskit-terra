@@ -23,7 +23,6 @@ import numpy as np
 from qiskit.utils.quantum_instance import QuantumInstance
 from qiskit.circuit import ParameterExpression, ParameterVector
 from qiskit.providers import BaseBackend, Backend
-
 from qiskit.opflow.converters.converter_base import ConverterBase
 from qiskit.opflow.expectations import ExpectationBase, PauliExpectation
 from qiskit.opflow.list_ops.composed_op import ComposedOp

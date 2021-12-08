@@ -14,11 +14,23 @@
 
 from __future__ import annotations
 
-from qiskit.algorithms.amplitude_estimators.amplitude_estimator import AmplitudeEstimator, AmplitudeEstimatorResult
+from qiskit.algorithms.amplitude_estimators.amplitude_estimator import (
+    AmplitudeEstimator,
+    AmplitudeEstimatorResult,
+)
 from qiskit.algorithms.amplitude_estimators.ae import AmplitudeEstimation, AmplitudeEstimationResult
-from qiskit.algorithms.amplitude_estimators.fae import FasterAmplitudeEstimation, FasterAmplitudeEstimationResult
-from qiskit.algorithms.amplitude_estimators.iae import IterativeAmplitudeEstimation, IterativeAmplitudeEstimationResult
-from qiskit.algorithms.amplitude_estimators.mlae import MaximumLikelihoodAmplitudeEstimation, MaximumLikelihoodAmplitudeEstimationResult
+from qiskit.algorithms.amplitude_estimators.fae import (
+    FasterAmplitudeEstimation,
+    FasterAmplitudeEstimationResult,
+)
+from qiskit.algorithms.amplitude_estimators.iae import (
+    IterativeAmplitudeEstimation,
+    IterativeAmplitudeEstimationResult,
+)
+from qiskit.algorithms.amplitude_estimators.mlae import (
+    MaximumLikelihoodAmplitudeEstimation,
+    MaximumLikelihoodAmplitudeEstimationResult,
+)
 from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 
 __all__ = [

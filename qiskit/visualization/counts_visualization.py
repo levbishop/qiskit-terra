@@ -22,7 +22,6 @@ from collections import Counter, OrderedDict
 import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError
-
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.utils import matplotlib_close_if_inline

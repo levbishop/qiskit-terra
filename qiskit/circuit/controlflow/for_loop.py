@@ -20,7 +20,6 @@ from typing import Iterable
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-
 from qiskit.circuit.controlflow.control_flow import ControlFlowOp
 
 

@@ -24,7 +24,6 @@ import numpy as np
 
 from qiskit.utils import algorithm_globals
 from qiskit.utils.validation import validate_min
-
 from qiskit.algorithms.optimizers.optimizer import OptimizerResult, POINT
 from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 

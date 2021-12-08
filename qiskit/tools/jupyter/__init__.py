@@ -105,7 +105,6 @@ from IPython import get_ipython
 
 from qiskit.test.mock import FakeBackend
 from qiskit.tools.visualization import HAS_MATPLOTLIB
-
 from qiskit.tools.jupyter.jupyter_magics import ProgressBarMagic, StatusMagic
 from qiskit.tools.jupyter.progressbar import HTMLProgressBar
 from qiskit.tools.jupyter.version_table import VersionTable

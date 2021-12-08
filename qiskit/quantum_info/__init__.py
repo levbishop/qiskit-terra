@@ -138,7 +138,12 @@ from qiskit.quantum_info.operators import (
     pauli_group,
 )
 from qiskit.quantum_info.operators.channel import Choi, SuperOp, Kraus, Stinespring, Chi, PTM
-from qiskit.quantum_info.operators.measures import process_fidelity, average_gate_fidelity, gate_error, diamond_norm
+from qiskit.quantum_info.operators.measures import (
+    process_fidelity,
+    average_gate_fidelity,
+    gate_error,
+    diamond_norm,
+)
 from qiskit.quantum_info.operators.dihedral import CNOTDihedral
 from qiskit.quantum_info.states import (
     Statevector,

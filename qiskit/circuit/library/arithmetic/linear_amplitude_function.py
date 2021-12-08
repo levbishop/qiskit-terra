@@ -14,12 +14,12 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit
-
-from qiskit.circuit.library.arithmetic.piecewise_linear_pauli_rotations import PiecewiseLinearPauliRotations
+from qiskit.circuit.library.arithmetic.piecewise_linear_pauli_rotations import (
+    PiecewiseLinearPauliRotations,
+)
 
 
 class LinearAmplitudeFunction(QuantumCircuit):

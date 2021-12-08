@@ -18,7 +18,6 @@ from typing import Any, Callable
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit import Gate, Instruction, Parameter
-
 from qiskit.circuit.library.n_local.n_local import NLocal
 from qiskit.circuit.library.standard_gates import (
     IGate,

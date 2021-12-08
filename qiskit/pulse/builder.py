@@ -446,16 +446,7 @@ import functools
 import itertools
 import warnings
 from contextlib import contextmanager
-from typing import (
-    Any,
-    Callable,
-    ContextManager,
-    Iterable,
-    Mapping,
-    TypeVar,
-    Union,
-    NewType,
-)
+from typing import Any, Callable, ContextManager, Iterable, Mapping, TypeVar, Union, NewType
 
 import numpy as np
 

@@ -16,7 +16,6 @@ Utils to decode fake backend configurations from json
 
 from __future__ import annotations
 
-
 import dateutil.parser
 
 

@@ -18,7 +18,6 @@ import functools
 
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.circuit import ParameterExpression, ParameterVector
-
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn

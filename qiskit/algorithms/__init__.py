@@ -197,7 +197,12 @@ from qiskit.algorithms.amplitude_estimators import (
 )
 from qiskit.algorithms.eigen_solvers import NumPyEigensolver, Eigensolver, EigensolverResult
 from qiskit.algorithms.factorizers import Shor, ShorResult
-from qiskit.algorithms.linear_solvers import HHL, LinearSolver, NumPyLinearSolver, LinearSolverResult
+from qiskit.algorithms.linear_solvers import (
+    HHL,
+    LinearSolver,
+    NumPyLinearSolver,
+    LinearSolverResult,
+)
 from qiskit.algorithms.minimum_eigen_solvers import (
     VQE,
     VQEResult,

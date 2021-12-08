@@ -23,7 +23,6 @@ import numpy as np
 
 from qiskit import QuantumCircuit
 from qiskit.circuit import Parameter, ParameterExpression, ParameterVector
-
 from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.state_fns.state_fn import StateFn

@@ -15,10 +15,8 @@
 
 from __future__ import annotations
 
-
 from qiskit.circuit import QuantumRegister, QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
-
 from qiskit.circuit.library.arithmetic.functional_pauli_rotations import FunctionalPauliRotations
 
 

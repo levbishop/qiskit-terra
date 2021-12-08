@@ -20,7 +20,6 @@ from typing import Callable, Iterable
 import numpy as np
 
 from qiskit.exceptions import QiskitError
-
 from qiskit.result.distributions.quasi import QuasiDistribution
 from qiskit.result.counts import Counts
 from qiskit.result.mitigation.base_readout_mitigator import BaseReadoutMitigator

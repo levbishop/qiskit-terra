@@ -14,7 +14,9 @@
 
 from __future__ import annotations
 
-from qiskit.algorithms.linear_solvers.observables.linear_system_observable import LinearSystemObservable
+from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
+    LinearSystemObservable,
+)
 from qiskit.algorithms.linear_solvers.observables.absolute_average import AbsoluteAverage
 from qiskit.algorithms.linear_solvers.observables.matrix_functional import MatrixFunctional
 

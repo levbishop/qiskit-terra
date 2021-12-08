@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.synthesis import EvolutionSynthesis, LieTrotter

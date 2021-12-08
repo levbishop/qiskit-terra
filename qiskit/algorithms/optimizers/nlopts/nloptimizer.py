@@ -22,8 +22,12 @@ from abc import abstractmethod
 import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError
-
-from qiskit.algorithms.optimizers.optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
+from qiskit.algorithms.optimizers.optimizer import (
+    Optimizer,
+    OptimizerSupportLevel,
+    OptimizerResult,
+    POINT,
+)
 
 logger = logging.getLogger(__name__)
 

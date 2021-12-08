@@ -19,7 +19,6 @@ import warnings
 import numpy as np
 
 from qiskit.utils.deprecation import deprecate_arguments
-
 from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 
 

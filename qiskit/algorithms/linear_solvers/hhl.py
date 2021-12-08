@@ -35,10 +35,11 @@ from qiskit.opflow import (
 from qiskit.providers import Backend, BaseBackend
 from qiskit.quantum_info.operators.base_operator import BaseOperator
 from qiskit.utils import QuantumInstance
-
 from qiskit.algorithms.linear_solvers.linear_solver import LinearSolver, LinearSolverResult
 from qiskit.algorithms.linear_solvers.matrices.numpy_matrix import NumPyMatrix
-from qiskit.algorithms.linear_solvers.observables.linear_system_observable import LinearSystemObservable
+from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
+    LinearSystemObservable,
+)
 
 
 class HHL(LinearSolver):

@@ -23,8 +23,10 @@ from scipy.stats import norm, chi2
 from qiskit.providers import BaseBackend, Backend
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
 from qiskit.utils import QuantumInstance
-
-from qiskit.algorithms.amplitude_estimators.amplitude_estimator import AmplitudeEstimator, AmplitudeEstimatorResult
+from qiskit.algorithms.amplitude_estimators.amplitude_estimator import (
+    AmplitudeEstimator,
+    AmplitudeEstimatorResult,
+)
 from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 from qiskit.algorithms.exceptions import AlgorithmError
 

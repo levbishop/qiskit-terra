@@ -14,15 +14,15 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 from scipy.sparse import diags
 
 from qiskit import QuantumCircuit
 from qiskit.quantum_info import Statevector
 from qiskit.opflow import I, Z, TensoredOp
-
-from qiskit.algorithms.linear_solvers.observables.linear_system_observable import LinearSystemObservable
+from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
+    LinearSystemObservable,
+)
 
 
 class MatrixFunctional(LinearSystemObservable):

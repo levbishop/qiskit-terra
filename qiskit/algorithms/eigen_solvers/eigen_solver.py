@@ -20,7 +20,6 @@ from typing import Dict, List, Optional, TypeVar, Union
 import numpy as np
 
 from qiskit.opflow import OperatorBase
-
 from qiskit.algorithms.algorithm_result import AlgorithmResult
 
 # Introduced new type to maintain readability.

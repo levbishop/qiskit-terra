@@ -16,7 +16,6 @@ to be parametrized and used for approximate compiling optimization.
 
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.transpiler.synthesis.aqc.approximate import ApproximateCircuit

@@ -25,7 +25,6 @@ from qiskit.circuit.parameterexpression import ParameterValueType
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit._utils import _compute_control_matrix, _ctrl_state_to_int
 from qiskit.qasm import pi
-
 from qiskit.circuit.library.standard_gates.h import HGate
 from qiskit.circuit.library.standard_gates.t import TGate, TdgGate
 from qiskit.circuit.library.standard_gates.u1 import U1Gate
@@ -86,7 +85,6 @@ class XGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.u3 import U3Gate
 
         q = QuantumRegister(1, "q")
@@ -533,7 +531,6 @@ class C3SXGate(ControlledGate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.u1 import CU1Gate
 
         q = QuantumRegister(4, name="q")
@@ -865,7 +862,6 @@ class C4XGate(ControlledGate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.u1 import CU1Gate
 
         q = QuantumRegister(5, name="q")
@@ -1067,7 +1063,6 @@ class MCXGrayCode(MCXGate):
         """Define the MCX gate using the Gray code."""
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.u1 import MCU1Gate
 
         q = QuantumRegister(self.num_qubits, name="q")

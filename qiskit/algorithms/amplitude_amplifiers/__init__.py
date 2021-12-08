@@ -14,7 +14,10 @@
 
 from __future__ import annotations
 
-from qiskit.algorithms.amplitude_amplifiers.amplitude_amplifier import AmplitudeAmplifier, AmplitudeAmplifierResult
+from qiskit.algorithms.amplitude_amplifiers.amplitude_amplifier import (
+    AmplitudeAmplifier,
+    AmplitudeAmplifierResult,
+)
 from qiskit.algorithms.amplitude_amplifiers.amplification_problem import AmplificationProblem
 from qiskit.algorithms.amplitude_amplifiers.grover import Grover, GroverResult
 

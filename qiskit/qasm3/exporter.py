@@ -45,7 +45,6 @@ from qiskit.circuit.controlflow import (
 from qiskit.circuit.library import standard_gates
 from qiskit.circuit.register import Register
 from qiskit.circuit.tools import pi_check
-
 from qiskit.qasm3 import ast
 from qiskit.qasm3.exceptions import QASM3ExporterError
 from qiskit.qasm3.printer import BasicPrinter

@@ -19,7 +19,6 @@ import warnings
 import numpy as np
 
 from qiskit.circuit import QuantumRegister, AncillaRegister, QuantumCircuit
-
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 

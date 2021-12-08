@@ -21,7 +21,6 @@ from scipy.linalg import schur
 
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.circuit.exceptions import CircuitError
-
 from qiskit.circuit.instruction import Instruction
 
 

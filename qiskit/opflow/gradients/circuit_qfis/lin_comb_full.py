@@ -14,12 +14,10 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, ParameterVector, ParameterExpression
 from qiskit.utils.arithmetic import triu_to_dense
-
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.list_ops.summed_op import SummedOp
 from qiskit.opflow.operator_globals import I, Z, Y

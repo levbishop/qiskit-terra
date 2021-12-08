@@ -19,7 +19,6 @@ from typing import Any, Callable
 import numpy as np
 
 from qiskit.circuit.library.standard_gates import RYGate, CXGate
-
 from qiskit.circuit.library.n_local.two_local import TwoLocal
 
 

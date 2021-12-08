@@ -49,7 +49,6 @@ class MSGate(Gate):
     def _define(self):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.rxx import RXXGate
 
         theta = self.params[0]

@@ -43,7 +43,6 @@ from qiskit.providers.backend import BackendV1
 from qiskit.providers.options import Options
 from qiskit.providers.basicaer.basicaerjob import BasicAerJob
 from qiskit.result import Result
-
 from qiskit.providers.basicaer.exceptions import BasicAerError
 from qiskit.providers.basicaer.basicaertools import (
     single_gate_matrix,

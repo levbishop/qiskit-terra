@@ -25,7 +25,6 @@ from qiskit.circuit import Gate, QuantumCircuit, QuantumRegister, ParameterExpre
 from qiskit.quantum_info.operators.predicates import matrix_equal, is_hermitian_matrix
 from qiskit.extensions.exceptions import ExtensionError
 from qiskit.circuit.exceptions import CircuitError
-
 from qiskit.extensions.unitary import UnitaryGate
 
 

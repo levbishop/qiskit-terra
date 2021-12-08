@@ -14,11 +14,9 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit
-
 from qiskit.circuit.library.n_local.two_local import TwoLocal
 
 

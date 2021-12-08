@@ -16,7 +16,6 @@
 
 from __future__ import annotations
 
-
 import numpy
 
 import qiskit
@@ -24,7 +23,6 @@ from qiskit.circuit import QuantumCircuit, QuantumRegister
 from qiskit.circuit.classicalregister import ClassicalRegister
 from qiskit.providers import BaseBackend, Backend
 from qiskit.utils import QuantumInstance
-
 from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator, PhaseEstimatorResult
 
 

@@ -21,7 +21,6 @@ import numpy as np
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.circuit import ParameterExpression, ParameterVector
-
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
 from qiskit.opflow.gradients.gradient_base import GradientBase
 from qiskit.opflow.gradients.derivative_base import _coeff_derivative

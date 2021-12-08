@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.parameterexpression import ParameterValueType
@@ -78,7 +77,6 @@ class RXXGate(Gate):
         """Calculate a subcircuit that implements this unitary."""
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.x import CXGate
         from qiskit.circuit.library.standard_gates.h import HGate
         from qiskit.circuit.library.standard_gates.rz import RZGate

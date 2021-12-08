@@ -20,7 +20,6 @@ from typing import Optional
 import numpy as np
 
 from qiskit.tools import parallel
-
 from qiskit.user_config import get_config
 from qiskit.exceptions import QiskitError
 

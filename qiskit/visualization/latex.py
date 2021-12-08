@@ -26,7 +26,6 @@ from qiskit.circuit.library.standard_gates import SwapGate, XGate, ZGate, RZZGat
 from qiskit.circuit.measure import Measure
 from qiskit.visualization.qcstyle import load_style
 from qiskit.circuit.tools.pi_check import pi_check
-
 from qiskit.visualization.utils import (
     get_gate_ctrl_text,
     get_param_str,

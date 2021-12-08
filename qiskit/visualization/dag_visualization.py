@@ -24,7 +24,6 @@ import tempfile
 
 from qiskit.dagcircuit.dagnode import DAGOpNode, DAGInNode, DAGOutNode
 from qiskit.exceptions import MissingOptionalLibraryError
-
 from qiskit.visualization.exceptions import VisualizationError
 
 try:

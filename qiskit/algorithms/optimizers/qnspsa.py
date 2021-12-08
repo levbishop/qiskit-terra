@@ -22,7 +22,6 @@ from qiskit.providers import Backend
 from qiskit.circuit import ParameterVector, QuantumCircuit
 from qiskit.opflow import StateFn, CircuitSampler, ExpectationBase
 from qiskit.utils import QuantumInstance
-
 from qiskit.algorithms.optimizers.spsa import SPSA, CALLBACK, TERMINATIONCHECKER, _batch_evaluate
 
 # the function to compute the fidelity

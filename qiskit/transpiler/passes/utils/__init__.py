@@ -19,7 +19,9 @@ from qiskit.transpiler.passes.utils.check_cx_direction import CheckCXDirection  
 from qiskit.transpiler.passes.utils.cx_direction import CXDirection  # Deprecated
 from qiskit.transpiler.passes.utils.check_gate_direction import CheckGateDirection
 from qiskit.transpiler.passes.utils.gate_direction import GateDirection
-from qiskit.transpiler.passes.utils.barrier_before_final_measurements import BarrierBeforeFinalMeasurements
+from qiskit.transpiler.passes.utils.barrier_before_final_measurements import (
+    BarrierBeforeFinalMeasurements,
+)
 from qiskit.transpiler.passes.utils.remove_final_measurements import RemoveFinalMeasurements
 from qiskit.transpiler.passes.utils.merge_adjacent_barriers import MergeAdjacentBarriers
 from qiskit.transpiler.passes.utils.dag_fixed_point import DAGFixedPoint

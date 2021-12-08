@@ -27,8 +27,10 @@ from qiskit.circuit.classicalregister import ClassicalRegister
 from qiskit.providers import BaseBackend, Backend
 from qiskit.utils import QuantumInstance
 from qiskit.result import Result
-
-from qiskit.algorithms.phase_estimators.phase_estimation_result import PhaseEstimationResult, _sort_phases
+from qiskit.algorithms.phase_estimators.phase_estimation_result import (
+    PhaseEstimationResult,
+    _sort_phases,
+)
 from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator
 
 

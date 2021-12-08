@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 import numpy
 
 from qiskit.circuit.controlledgate import ControlledGate
@@ -64,7 +63,6 @@ class SwapGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.x import CXGate
 
         q = QuantumRegister(2, "q")
@@ -233,7 +231,6 @@ class CSwapGate(ControlledGate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.x import CXGate, CCXGate
 
         q = QuantumRegister(3, "q")

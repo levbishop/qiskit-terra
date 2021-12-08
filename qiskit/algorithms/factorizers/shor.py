@@ -31,7 +31,6 @@ from qiskit.utils import summarize_circuits
 from qiskit.utils.arithmetic import is_power
 from qiskit.utils.quantum_instance import QuantumInstance
 from qiskit.utils.validation import validate_min
-
 from qiskit.algorithms.algorithm_result import AlgorithmResult
 from qiskit.algorithms.exceptions import AlgorithmError
 

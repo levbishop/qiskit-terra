@@ -20,9 +20,10 @@ import numpy as np
 from qiskit import QuantumCircuit
 from qiskit.quantum_info import Operator, Statevector
 from qiskit.quantum_info.operators.base_operator import BaseOperator
-
 from qiskit.algorithms.linear_solvers.linear_solver import LinearSolverResult, LinearSolver
-from qiskit.algorithms.linear_solvers.observables.linear_system_observable import LinearSystemObservable
+from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
+    LinearSystemObservable,
+)
 
 
 class NumPyLinearSolver(LinearSolver):

@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 import numpy
 
 from qiskit.qasm import pi
@@ -70,7 +69,6 @@ class U2Gate(Gate):
     def _define(self):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.u3 import U3Gate
 
         q = QuantumRegister(1, "q")

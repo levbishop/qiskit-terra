@@ -65,7 +65,10 @@ from qiskit.test.mock.backends.belem import FakeLegacyBelem
 from qiskit.test.mock.backends.boeblingen import FakeLegacyBoeblingen
 from qiskit.test.mock.backends.bogota import FakeLegacyBogota
 from qiskit.test.mock.backends.burlington import FakeLegacyBurlington
-from qiskit.test.mock.backends.cambridge import FakeLegacyCambridge, FakeLegacyCambridgeAlternativeBasis
+from qiskit.test.mock.backends.cambridge import (
+    FakeLegacyCambridge,
+    FakeLegacyCambridgeAlternativeBasis,
+)
 from qiskit.test.mock.backends.casablanca import FakeLegacyCasablanca
 from qiskit.test.mock.backends.essex import FakeLegacyEssex
 from qiskit.test.mock.backends.johannesburg import FakeLegacyJohannesburg

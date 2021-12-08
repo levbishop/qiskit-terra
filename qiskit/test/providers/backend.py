@@ -17,7 +17,6 @@ from __future__ import annotations
 from unittest import SkipTest
 
 from qiskit import execute
-
 from qiskit.test.base import QiskitTestCase
 from qiskit.test.reference_circuits import ReferenceCircuits
 

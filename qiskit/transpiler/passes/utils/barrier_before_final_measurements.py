@@ -18,7 +18,6 @@ from __future__ import annotations
 from qiskit.circuit.barrier import Barrier
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.dagcircuit import DAGCircuit, DAGOpNode
-
 from qiskit.transpiler.passes.utils.merge_adjacent_barriers import MergeAdjacentBarriers
 
 

@@ -21,7 +21,6 @@ import warnings
 from typing import Callable
 
 from qiskit.circuit.exceptions import CircuitError
-
 from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.classicalregister import Clbit, ClassicalRegister
 

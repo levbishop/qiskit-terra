@@ -22,7 +22,6 @@ from time import time
 
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.converters import circuit_to_dag, dag_to_circuit
-
 from qiskit.transpiler.propertyset import PropertySet
 from qiskit.transpiler.fencedobjs import FencedPropertySet, FencedDAGCircuit
 from qiskit.transpiler.exceptions import TranspilerError

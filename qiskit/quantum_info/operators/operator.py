@@ -485,7 +485,6 @@ class Operator(LinearOp):
     def _append_instruction(self, obj, qargs=None):
         """Update the current Operator by apply an instruction."""
         from qiskit.circuit.barrier import Barrier
-
         from qiskit.quantum_info.operators.scalar_op import ScalarOp
 
         mat = self._instruction_to_matrix(obj)

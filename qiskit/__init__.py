@@ -47,7 +47,6 @@ _config = _user_config.get_config()
 # with other modules that check for IBMQ (tools)
 from qiskit.execute_function import execute  # noqa
 from qiskit.compiler import transpile, assemble, schedule, sequence  # noqa
-
 from qiskit.version import __version__  # noqa
 from qiskit.version import QiskitVersion  # noqa
 

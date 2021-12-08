@@ -17,7 +17,6 @@ from __future__ import annotations
 import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError
-
 from qiskit.qasm.node.node import Node
 
 

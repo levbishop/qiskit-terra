@@ -14,13 +14,11 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 from scipy.linalg import block_diag
 
 from qiskit.circuit import Parameter, ParameterVector, ParameterExpression
 from qiskit.utils.arithmetic import triu_to_dense
-
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation

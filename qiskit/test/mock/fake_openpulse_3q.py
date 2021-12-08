@@ -24,7 +24,6 @@ from qiskit.providers.models import (
     UchannelLO,
 )
 from qiskit.qobj import PulseQobjInstruction
-
 from qiskit.test.mock.fake_backend import FakeBackend
 
 

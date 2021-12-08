@@ -21,7 +21,6 @@ import numpy as np
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.quantum_info.operators import SparsePauliOp, Pauli
 from qiskit.utils import algorithm_globals
-
 from qiskit.synthesis.evolution.product_formula import ProductFormula
 from qiskit.synthesis.evolution.lie_trotter import LieTrotter
 

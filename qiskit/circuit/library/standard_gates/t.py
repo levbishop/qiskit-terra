@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 import numpy
 
 from qiskit.qasm import pi
@@ -60,7 +59,6 @@ class TGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.u1 import U1Gate
 
         q = QuantumRegister(1, "q")
@@ -117,7 +115,6 @@ class TdgGate(Gate):
         """
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-
         from qiskit.circuit.library.standard_gates.u1 import U1Gate
 
         q = QuantumRegister(1, "q")

@@ -21,7 +21,6 @@ from numpy.random import default_rng
 
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.random import random_unitary
-
 from qiskit.quantum_info.states.statevector import Statevector
 from qiskit.quantum_info.states.densitymatrix import DensityMatrix
 

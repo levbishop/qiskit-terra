@@ -14,7 +14,6 @@
 
 from __future__ import annotations
 
-
 import numpy as np
 
 from qiskit.quantum_info.random import random_unitary

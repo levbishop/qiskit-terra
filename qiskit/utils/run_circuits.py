@@ -29,7 +29,6 @@ from qiskit.providers import Backend, BaseBackend, JobStatus, JobError, BaseJob
 from qiskit.providers.jobstatus import JOB_FINAL_STATES
 from qiskit.result import Result
 from qiskit.qobj import QasmQobj
-
 from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
 from qiskit.utils.backend_utils import (
     is_aer_provider,

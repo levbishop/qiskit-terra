@@ -17,7 +17,6 @@ from __future__ import annotations
 from scipy.linalg import expm
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-
 from qiskit.synthesis.evolution.evolution_synthesis import EvolutionSynthesis
 
 

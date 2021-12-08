@@ -19,8 +19,16 @@ from typing import Callable
 
 from qiskit.circuit import ControlledGate, Gate, Instruction, Qubit, QuantumRegister, QuantumCircuit
 from qiskit.exceptions import QiskitError
-
-from qiskit.circuit.library.standard_gates import XGate, YGate, ZGate, HGate, TGate, TdgGate, SGate, SdgGate
+from qiskit.circuit.library.standard_gates import (
+    XGate,
+    YGate,
+    ZGate,
+    HGate,
+    TGate,
+    TdgGate,
+    SGate,
+    SdgGate,
+)
 
 
 class MCMT(QuantumCircuit):

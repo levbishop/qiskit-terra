@@ -15,7 +15,6 @@ transmitted pulses, such as ``DriveChannel``).
 """
 from __future__ import annotations
 
-
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse.channels import PulseChannel
 from qiskit.pulse.exceptions import PulseError

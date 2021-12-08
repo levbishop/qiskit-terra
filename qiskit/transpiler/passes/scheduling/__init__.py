@@ -18,4 +18,7 @@ from qiskit.transpiler.passes.scheduling.alap import ALAPSchedule
 from qiskit.transpiler.passes.scheduling.asap import ASAPSchedule
 from qiskit.transpiler.passes.scheduling.time_unit_conversion import TimeUnitConversion
 from qiskit.transpiler.passes.scheduling.dynamical_decoupling import DynamicalDecoupling
-from qiskit.transpiler.passes.scheduling.instruction_alignment import AlignMeasures, ValidatePulseGates
+from qiskit.transpiler.passes.scheduling.instruction_alignment import (
+    AlignMeasures,
+    ValidatePulseGates,
+)

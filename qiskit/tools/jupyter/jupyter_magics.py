@@ -35,7 +35,6 @@ except ImportError as ex:
 import qiskit
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.tools.events.progressbar import TextProgressBar
-
 from qiskit.tools.jupyter.progressbar import HTMLProgressBar
 from qiskit.tools.jupyter.library import circuit_library_widget
 
