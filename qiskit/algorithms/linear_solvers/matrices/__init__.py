@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from .linear_system_matrix import LinearSystemMatrix
-from .numpy_matrix import NumPyMatrix
-from .tridiagonal_toeplitz import TridiagonalToeplitz
+from qiskit.algorithms.linear_solvers.matrices.linear_system_matrix import LinearSystemMatrix
+from qiskit.algorithms.linear_solvers.matrices.numpy_matrix import NumPyMatrix
+from qiskit.algorithms.linear_solvers.matrices.tridiagonal_toeplitz import TridiagonalToeplitz
 
 __all__ = ["LinearSystemMatrix", "NumPyMatrix", "TridiagonalToeplitz"]

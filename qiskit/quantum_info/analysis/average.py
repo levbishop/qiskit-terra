@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from .make_observable import make_dict_observable
+from qiskit.quantum_info.analysis.make_observable import make_dict_observable
 
 
 def average_data(counts, observable):

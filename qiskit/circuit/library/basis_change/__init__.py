@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .qft import QFT
+from qiskit.circuit.library.basis_change.qft import QFT

@@ -22,8 +22,8 @@ from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.qasm import pi
 
-from .t import TGate, TdgGate
-from .s import SGate, SdgGate
+from qiskit.circuit.library.standard_gates.t import TGate, TdgGate
+from qiskit.circuit.library.standard_gates.s import SGate, SdgGate
 
 
 class HGate(Gate):
@@ -63,7 +63,7 @@ class HGate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u2 import U2Gate
+        from qiskit.circuit.library.standard_gates.u2 import U2Gate
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -192,7 +192,7 @@ class CHGate(ControlledGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .x import CXGate  # pylint: disable=cyclic-import
+        from qiskit.circuit.library.standard_gates.x import CXGate  # pylint: disable=cyclic-import
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)

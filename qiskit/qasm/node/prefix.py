@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from qiskit.exceptions import MissingOptionalLibraryError
 
-from .node import Node
+from qiskit.qasm.node.node import Node
 
 
 class Prefix(Node):

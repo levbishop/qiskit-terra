@@ -60,7 +60,7 @@ class RXGate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .r import RGate
+        from qiskit.circuit.library.standard_gates.r import RGate
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -192,9 +192,9 @@ class CRXGate(ControlledGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u1 import U1Gate
-        from .u3 import U3Gate
-        from .x import CXGate
+        from qiskit.circuit.library.standard_gates.u1 import U1Gate
+        from qiskit.circuit.library.standard_gates.u3 import U3Gate
+        from qiskit.circuit.library.standard_gates.x import CXGate
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)

@@ -18,7 +18,7 @@ from typing import Callable
 
 import numpy as np
 
-from .pauli_feature_map import PauliFeatureMap
+from qiskit.circuit.library.data_preparation.pauli_feature_map import PauliFeatureMap
 
 
 class ZFeatureMap(PauliFeatureMap):

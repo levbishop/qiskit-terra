@@ -130,7 +130,7 @@ class DictStateFn(StateFn):
                 )
                 return DictStateFn(new_dict, is_measurement=self._is_measurement)
         # pylint: disable=cyclic-import
-        from ..list_ops.summed_op import SummedOp
+        from qiskit.opflow.list_ops.summed_op import SummedOp
 
         return SummedOp([self, other])
 
@@ -178,7 +178,7 @@ class DictStateFn(StateFn):
                 new_dict, coeff=self.coeff * other.coeff, is_measurement=self.is_measurement
             )
         # pylint: disable=cyclic-import
-        from ..list_ops.tensored_op import TensoredOp
+        from qiskit.opflow.list_ops.tensored_op import TensoredOp
 
         return TensoredOp([self, other])
 
@@ -217,13 +217,13 @@ class DictStateFn(StateFn):
 
     def to_spmatrix_op(self) -> OperatorBase:
         """Convert this state function to a ``SparseVectorStateFn``."""
-        from .sparse_vector_state_fn import SparseVectorStateFn
+        from qiskit.opflow.state_fns.sparse_vector_state_fn import SparseVectorStateFn
 
         return SparseVectorStateFn(self.to_spmatrix(), self.coeff, self.is_measurement)
 
     def to_circuit_op(self) -> OperatorBase:
         """Convert this state function to a ``CircuitStateFn``."""
-        from .circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
         csfn = CircuitStateFn.from_dict(self.primitive) * self.coeff
         return csfn.adjoint() if self.is_measurement else csfn
@@ -266,7 +266,7 @@ class DictStateFn(StateFn):
             front = StateFn(front)
 
         # pylint: disable=cyclic-import
-        from ..operator_globals import EVAL_SIG_DIGITS
+        from qiskit.opflow.operator_globals import EVAL_SIG_DIGITS
 
         # If the primitive is a lookup of bitstrings,
         # we define all missing strings to have a function value of
@@ -302,14 +302,14 @@ class DictStateFn(StateFn):
                 decimals=EVAL_SIG_DIGITS,
             )
 
-        from .circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
         if isinstance(front, CircuitStateFn):
             # Don't reimplement logic from CircuitStateFn
             self_adjoint = cast(DictStateFn, self.adjoint())
             return np.conj(front.adjoint().eval(self_adjoint.primitive)) * self.coeff
 
-        from .operator_state_fn import OperatorStateFn
+        from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
 
         if isinstance(front, OperatorStateFn):
             return cast(Union[OperatorBase, complex], front.adjoint().eval(self.adjoint()))

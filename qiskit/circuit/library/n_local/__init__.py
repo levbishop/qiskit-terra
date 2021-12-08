@@ -14,13 +14,13 @@
 
 from __future__ import annotations
 
-from .n_local import NLocal
-from .two_local import TwoLocal
-from .pauli_two_design import PauliTwoDesign
-from .real_amplitudes import RealAmplitudes
-from .efficient_su2 import EfficientSU2
-from .excitation_preserving import ExcitationPreserving
-from .qaoa_ansatz import QAOAAnsatz
+from qiskit.circuit.library.n_local.n_local import NLocal
+from qiskit.circuit.library.n_local.two_local import TwoLocal
+from qiskit.circuit.library.n_local.pauli_two_design import PauliTwoDesign
+from qiskit.circuit.library.n_local.real_amplitudes import RealAmplitudes
+from qiskit.circuit.library.n_local.efficient_su2 import EfficientSU2
+from qiskit.circuit.library.n_local.excitation_preserving import ExcitationPreserving
+from qiskit.circuit.library.n_local.qaoa_ansatz import QAOAAnsatz
 
 __all__ = [
     "NLocal",

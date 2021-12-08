@@ -87,7 +87,7 @@ class U1Gate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u3 import U3Gate  # pylint: disable=cyclic-import
+        from qiskit.circuit.library.standard_gates.u3 import U3Gate  # pylint: disable=cyclic-import
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -200,7 +200,7 @@ class CU1Gate(ControlledGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .x import CXGate  # pylint: disable=cyclic-import
+        from qiskit.circuit.library.standard_gates.x import CXGate  # pylint: disable=cyclic-import
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -311,7 +311,7 @@ class MCU1Gate(ControlledGate):
         if self.num_ctrl_qubits == 1:
             definition = CU1Gate(self.params[0]).definition
         else:
-            from .u3 import _gray_code_chain
+            from qiskit.circuit.library.standard_gates.u3 import _gray_code_chain
 
             scaled_lam = self.params[0] / (2 ** (self.num_ctrl_qubits - 1))
             bottom_gate = CU1Gate(scaled_lam)

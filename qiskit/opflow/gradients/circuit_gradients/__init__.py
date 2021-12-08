@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from .circuit_gradient import CircuitGradient
-from .lin_comb import LinComb
-from .param_shift import ParamShift
+from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
+from qiskit.opflow.gradients.circuit_gradients.lin_comb import LinComb
+from qiskit.opflow.gradients.circuit_gradients.param_shift import ParamShift
 
 __all__ = ["CircuitGradient", "LinComb", "ParamShift"]

@@ -110,7 +110,7 @@ class VectorStateFn(StateFn):
         for trans in transpositions:
             qc.swap(trans[0], trans[1])
 
-        from ..primitive_ops.circuit_op import CircuitOp
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         matrix = CircuitOp(qc).to_matrix()
         vector = new_self.primitive.data
@@ -125,7 +125,7 @@ class VectorStateFn(StateFn):
         Returns:
             A new DictStateFn equivalent to ``self``.
         """
-        from .dict_state_fn import DictStateFn
+        from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
 
         num_qubits = self.num_qubits
         new_dict = {format(i, "b").zfill(num_qubits): v for i, v in enumerate(self.primitive.data)}
@@ -161,7 +161,7 @@ class VectorStateFn(StateFn):
     def to_circuit_op(self) -> OperatorBase:
         """Return ``StateFnCircuit`` corresponding to this StateFn."""
         # pylint: disable=cyclic-import
-        from .circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
         csfn = CircuitStateFn.from_vector(self.primitive.data) * self.coeff
         return csfn.adjoint() if self.is_measurement else csfn
@@ -202,10 +202,10 @@ class VectorStateFn(StateFn):
             front = StateFn(front)
 
         # pylint: disable=cyclic-import
-        from ..operator_globals import EVAL_SIG_DIGITS
-        from .operator_state_fn import OperatorStateFn
-        from .circuit_state_fn import CircuitStateFn
-        from .dict_state_fn import DictStateFn
+        from qiskit.opflow.operator_globals import EVAL_SIG_DIGITS
+        from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
 
         if isinstance(front, DictStateFn):
             return np.round(

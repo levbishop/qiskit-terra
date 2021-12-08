@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from .node import Node
+from qiskit.qasm.node.node import Node
 
 
 class Opaque(Node):

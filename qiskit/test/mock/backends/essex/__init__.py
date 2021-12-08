@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_essex import FakeEssex, FakeLegacyEssex
+from qiskit.test.mock.backends.essex.fake_essex import FakeEssex, FakeLegacyEssex

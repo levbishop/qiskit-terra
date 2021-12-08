@@ -59,7 +59,7 @@ from matplotlib.patches import FancyArrowPatch
 from mpl_toolkits.mplot3d import Axes3D, proj3d
 from mpl_toolkits.mplot3d.art3d import Patch3D
 
-from .utils import matplotlib_close_if_inline
+from qiskit.visualization.utils import matplotlib_close_if_inline
 
 
 class Arrow3D(Patch3D, FancyArrowPatch):

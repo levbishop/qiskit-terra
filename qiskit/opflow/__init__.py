@@ -161,8 +161,8 @@ Exceptions
 # New Operators
 from __future__ import annotations
 
-from .operator_base import OperatorBase
-from .primitive_ops import (
+from qiskit.opflow.operator_base import OperatorBase
+from qiskit.opflow.primitive_ops import (
     PrimitiveOp,
     PauliOp,
     MatrixOp,
@@ -171,7 +171,7 @@ from .primitive_ops import (
     TaperedPauliSumOp,
     Z2Symmetries,
 )
-from .state_fns import (
+from qiskit.opflow.state_fns import (
     StateFn,
     DictStateFn,
     VectorStateFn,
@@ -180,8 +180,8 @@ from .state_fns import (
     OperatorStateFn,
     SparseVectorStateFn,
 )
-from .list_ops import ListOp, SummedOp, ComposedOp, TensoredOp
-from .converters import (
+from qiskit.opflow.list_ops import ListOp, SummedOp, ComposedOp, TensoredOp
+from qiskit.opflow.converters import (
     ConverterBase,
     CircuitSampler,
     PauliBasisChange,
@@ -189,7 +189,7 @@ from .converters import (
     AbelianGrouper,
     TwoQubitReduction,
 )
-from .expectations import (
+from qiskit.opflow.expectations import (
     ExpectationBase,
     ExpectationFactory,
     PauliExpectation,
@@ -197,7 +197,7 @@ from .expectations import (
     AerPauliExpectation,
     CVaRExpectation,
 )
-from .evolutions import (
+from qiskit.opflow.evolutions import (
     EvolutionBase,
     EvolutionFactory,
     EvolvedOp,
@@ -209,10 +209,10 @@ from .evolutions import (
     Suzuki,
     QDrift,
 )
-from .utils import commutator, anti_commutator, double_commutator
+from qiskit.opflow.utils import commutator, anti_commutator, double_commutator
 
 # Convenience immutable instances
-from .operator_globals import (
+from qiskit.opflow.operator_globals import (
     EVAL_SIG_DIGITS,
     X,
     Y,
@@ -231,7 +231,7 @@ from .operator_globals import (
 )
 
 # Gradients
-from .gradients import (
+from qiskit.opflow.gradients import (
     DerivativeBase,
     GradientBase,
     Gradient,
@@ -245,7 +245,7 @@ from .gradients import (
 )
 
 # Exceptions
-from .exceptions import OpflowError
+from qiskit.opflow.exceptions import OpflowError
 
 __all__ = [
     # Operators

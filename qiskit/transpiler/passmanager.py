@@ -22,9 +22,9 @@ from qiskit.visualization import pass_manager_drawer
 from qiskit.tools.parallel import parallel_map
 from qiskit.circuit import QuantumCircuit
 
-from .basepasses import BasePass
-from .exceptions import TranspilerError
-from .runningpassmanager import RunningPassManager, FlowController
+from qiskit.transpiler.basepasses import BasePass
+from qiskit.transpiler.exceptions import TranspilerError
+from qiskit.transpiler.runningpassmanager import RunningPassManager, FlowController
 
 
 class PassManager:

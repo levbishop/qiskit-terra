@@ -22,7 +22,7 @@ from scipy.linalg import schur
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.circuit.exceptions import CircuitError
 
-from .instruction import Instruction
+from qiskit.circuit.instruction import Instruction
 
 
 class Gate(Instruction):
@@ -115,7 +115,7 @@ class Gate(Instruction):
             QiskitError: unrecognized mode or invalid ctrl_state
         """
         # pylint: disable=cyclic-import
-        from .add_control import add_control
+        from qiskit.circuit.add_control import add_control
 
         return add_control(self, num_ctrl_qubits, label, ctrl_state)
 

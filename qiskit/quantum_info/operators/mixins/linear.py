@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from .multiply import MultiplyMixin
+from qiskit.quantum_info.operators.mixins.multiply import MultiplyMixin
 
 
 class LinearMixin(MultiplyMixin, ABC):

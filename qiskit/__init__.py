@@ -48,8 +48,8 @@ _config = _user_config.get_config()
 from qiskit.execute_function import execute  # noqa
 from qiskit.compiler import transpile, assemble, schedule, sequence  # noqa
 
-from .version import __version__  # noqa
-from .version import QiskitVersion  # noqa
+from qiskit.version import __version__  # noqa
+from qiskit.version import QiskitVersion  # noqa
 
 __qiskit_version__ = QiskitVersion()
 

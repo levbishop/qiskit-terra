@@ -23,7 +23,7 @@ from abc import ABC, abstractmethod
 
 from qiskit.version import VERSION as __version__
 
-from .models import BackendStatus
+from qiskit.providers.models import BackendStatus
 
 
 class BaseBackend(ABC):

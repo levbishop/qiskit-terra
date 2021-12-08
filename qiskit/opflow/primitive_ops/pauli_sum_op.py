@@ -250,8 +250,8 @@ class PauliSumOp(PrimitiveOp):
             )
 
         # pylint: disable=cyclic-import
-        from ..state_fns.circuit_state_fn import CircuitStateFn
-        from .circuit_op import CircuitOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         if isinstance(other, (CircuitOp, CircuitStateFn)):
             pauli_op = cast(Union[PauliOp, SummedOp], new_self.to_pauli_op())
@@ -295,11 +295,11 @@ class PauliSumOp(PrimitiveOp):
             return self.to_matrix_op()
 
         # pylint: disable=cyclic-import
-        from ..list_ops.list_op import ListOp
-        from ..state_fns.circuit_state_fn import CircuitStateFn
-        from ..state_fns.dict_state_fn import DictStateFn
-        from ..state_fns.state_fn import StateFn
-        from .circuit_op import CircuitOp
+        from qiskit.opflow.list_ops.list_op import ListOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
+        from qiskit.opflow.state_fns.state_fn import StateFn
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         # For now, always do this. If it's not performant, we can be more granular.
         if not isinstance(front, OperatorBase):
@@ -350,7 +350,7 @@ class PauliSumOp(PrimitiveOp):
     def exp_i(self) -> OperatorBase:
         """Return a ``CircuitOp`` equivalent to e^-iH for this operator H."""
         # TODO: optimize for some special cases
-        from ..evolutions.evolved_op import EvolvedOp
+        from qiskit.opflow.evolutions.evolved_op import EvolvedOp
 
         return EvolvedOp(self)
 

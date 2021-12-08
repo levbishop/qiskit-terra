@@ -429,7 +429,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         new_self = self
         if not self.num_qubits == other.num_qubits:
             # pylint: disable=cyclic-import
-            from .operator_globals import Zero
+            from qiskit.opflow.operator_globals import Zero
 
             if other == Zero:
                 # Zero is special - we'll expand it to the correct qubit number.

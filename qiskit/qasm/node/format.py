@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import re
 
-from .node import Node
+from qiskit.qasm.node.node import Node
 
 
 class Format(Node):

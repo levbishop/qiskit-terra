@@ -24,14 +24,14 @@ from qiskit.utils.quantum_instance import QuantumInstance
 from qiskit.circuit import ParameterExpression, ParameterVector
 from qiskit.providers import BaseBackend, Backend
 
-from ..converters.converter_base import ConverterBase
-from ..expectations import ExpectationBase, PauliExpectation
-from ..list_ops.composed_op import ComposedOp
-from ..list_ops.list_op import ListOp
-from ..list_ops.tensored_op import TensoredOp
-from ..operator_base import OperatorBase
-from ..primitive_ops.primitive_op import PrimitiveOp
-from ..state_fns import StateFn, OperatorStateFn
+from qiskit.opflow.converters.converter_base import ConverterBase
+from qiskit.opflow.expectations import ExpectationBase, PauliExpectation
+from qiskit.opflow.list_ops.composed_op import ComposedOp
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.list_ops.tensored_op import TensoredOp
+from qiskit.opflow.operator_base import OperatorBase
+from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
+from qiskit.opflow.state_fns import StateFn, OperatorStateFn
 
 OperatorType = Union[StateFn, PrimitiveOp, ListOp]
 
@@ -103,7 +103,7 @@ class DerivativeBase(ConverterBase):
             Function to compute a gradient, Hessian or QFI. The function
             takes an iterable as argument which holds the parameter values.
         """
-        from ..converters import CircuitSampler
+        from qiskit.opflow.converters import CircuitSampler
 
         if not grad_params:
             grad_params = bind_params

@@ -19,7 +19,7 @@ from functools import partial
 
 import numpy as np
 
-from .optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
+from qiskit.algorithms.optimizers.optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
 
 CALLBACK = Callable[[int, np.ndarray, float, float], None]
 

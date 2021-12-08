@@ -39,5 +39,5 @@ Monitoring
 
 from __future__ import annotations
 
-from .parallel import parallel_map
-from .monitor import job_monitor, backend_monitor, backend_overview
+from qiskit.tools.parallel import parallel_map
+from qiskit.tools.monitor import job_monitor, backend_monitor, backend_overview

@@ -18,8 +18,8 @@ import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError
 
-from .node import Node
-from .nodeexception import NodeException
+from qiskit.qasm.node.node import Node
+from qiskit.qasm.node.nodeexception import NodeException
 
 
 class External(Node):

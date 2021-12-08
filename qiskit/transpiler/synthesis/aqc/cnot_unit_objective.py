@@ -20,8 +20,8 @@ from abc import ABC
 import numpy as np
 from numpy import linalg as la
 
-from .approximate import ApproximatingObjective
-from .elementary_operations import ry_matrix, rz_matrix, place_unitary, place_cnot, rx_matrix
+from qiskit.transpiler.synthesis.aqc.approximate import ApproximatingObjective
+from qiskit.transpiler.synthesis.aqc.elementary_operations import ry_matrix, rz_matrix, place_unitary, place_cnot, rx_matrix
 
 
 class CNOTUnitObjective(ApproximatingObjective, ABC):

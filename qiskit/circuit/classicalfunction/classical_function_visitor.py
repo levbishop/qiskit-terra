@@ -21,7 +21,7 @@ import _ast
 
 from tweedledum.classical import LogicNetwork
 
-from .exceptions import ClassicalFunctionParseError, ClassicalFunctionCompilerTypeError
+from qiskit.circuit.classicalfunction.exceptions import ClassicalFunctionParseError, ClassicalFunctionCompilerTypeError
 
 
 class ClassicalFunctionVisitor(ast.NodeVisitor):

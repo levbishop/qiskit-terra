@@ -16,7 +16,7 @@ from __future__ import annotations
 import re
 from math import sqrt
 
-from .probability import ProbDistribution
+from qiskit.result.distributions.probability import ProbDistribution
 
 # NOTE: A dict subclass should not overload any dunder methods like __getitem__
 # this can cause unexpected behavior and issues as the cPython dict

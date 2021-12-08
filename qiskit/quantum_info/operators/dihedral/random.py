@@ -18,7 +18,7 @@ from __future__ import annotations
 import numpy as np
 from numpy.random import default_rng
 
-from .dihedral import CNOTDihedral
+from qiskit.quantum_info.operators.dihedral.dihedral import CNOTDihedral
 
 
 def random_cnotdihedral(num_qubits, seed=None):

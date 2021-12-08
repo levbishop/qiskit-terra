@@ -22,8 +22,8 @@ from qiskit.providers import BaseBackend, Backend
 from qiskit.utils import QuantumInstance
 from qiskit.algorithms.exceptions import AlgorithmError
 
-from .amplitude_estimator import AmplitudeEstimator, AmplitudeEstimatorResult
-from .estimation_problem import EstimationProblem
+from qiskit.algorithms.amplitude_estimators.amplitude_estimator import AmplitudeEstimator, AmplitudeEstimatorResult
+from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 
 
 class FasterAmplitudeEstimation(AmplitudeEstimator):

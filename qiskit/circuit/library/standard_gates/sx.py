@@ -69,8 +69,8 @@ class SXGate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .s import SdgGate
-        from .h import HGate
+        from qiskit.circuit.library.standard_gates.s import SdgGate
+        from qiskit.circuit.library.standard_gates.h import HGate
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name, global_phase=pi / 4)
@@ -149,8 +149,8 @@ class SXdgGate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .s import SGate
-        from .h import HGate
+        from qiskit.circuit.library.standard_gates.s import SGate
+        from qiskit.circuit.library.standard_gates.h import HGate
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name, global_phase=-pi / 4)
@@ -250,8 +250,8 @@ class CSXGate(ControlledGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .h import HGate
-        from .u1 import CU1Gate
+        from qiskit.circuit.library.standard_gates.h import HGate
+        from qiskit.circuit.library.standard_gates.u1 import CU1Gate
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)

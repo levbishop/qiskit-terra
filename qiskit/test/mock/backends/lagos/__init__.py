@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_lagos import FakeLagos
+from qiskit.test.mock.backends.lagos.fake_lagos import FakeLagos

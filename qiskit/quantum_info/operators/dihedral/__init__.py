@@ -16,4 +16,4 @@ CNOTDihedral Operators
 
 from __future__ import annotations
 
-from .dihedral import CNOTDihedral
+from qiskit.quantum_info.operators.dihedral.dihedral import CNOTDihedral

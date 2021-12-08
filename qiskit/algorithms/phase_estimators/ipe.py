@@ -25,7 +25,7 @@ from qiskit.circuit.classicalregister import ClassicalRegister
 from qiskit.providers import BaseBackend, Backend
 from qiskit.utils import QuantumInstance
 
-from .phase_estimator import PhaseEstimator, PhaseEstimatorResult
+from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator, PhaseEstimatorResult
 
 
 class IterativePhaseEstimation(PhaseEstimator):

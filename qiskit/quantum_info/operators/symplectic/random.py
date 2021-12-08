@@ -18,11 +18,11 @@ from __future__ import annotations
 import numpy as np
 from numpy.random import default_rng
 
-from .clifford import Clifford
-from .pauli import Pauli
-from .pauli_list import PauliList
-from .pauli_table import PauliTable
-from .stabilizer_table import StabilizerTable
+from qiskit.quantum_info.operators.symplectic.clifford import Clifford
+from qiskit.quantum_info.operators.symplectic.pauli import Pauli
+from qiskit.quantum_info.operators.symplectic.pauli_list import PauliList
+from qiskit.quantum_info.operators.symplectic.pauli_table import PauliTable
+from qiskit.quantum_info.operators.symplectic.stabilizer_table import StabilizerTable
 
 
 def random_pauli(num_qubits, group_phase=False, seed=None):

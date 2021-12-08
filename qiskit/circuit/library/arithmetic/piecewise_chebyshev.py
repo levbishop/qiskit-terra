@@ -22,7 +22,7 @@ from qiskit.circuit import QuantumRegister, AncillaRegister
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 from qiskit.circuit.exceptions import CircuitError
 
-from .piecewise_polynomial_pauli_rotations import PiecewisePolynomialPauliRotations
+from qiskit.circuit.library.arithmetic.piecewise_polynomial_pauli_rotations import PiecewisePolynomialPauliRotations
 
 
 class PiecewiseChebyshev(BlueprintCircuit):

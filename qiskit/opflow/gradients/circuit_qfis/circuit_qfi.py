@@ -18,8 +18,8 @@ from abc import abstractmethod
 
 from qiskit.circuit import ParameterExpression, ParameterVector
 
-from ...converters.converter_base import ConverterBase
-from ...operator_base import OperatorBase
+from qiskit.opflow.converters.converter_base import ConverterBase
+from qiskit.opflow.operator_base import OperatorBase
 
 
 class CircuitQFI(ConverterBase):

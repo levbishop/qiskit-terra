@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from .lognormal import LogNormalDistribution
-from .normal import NormalDistribution
-from .uniform import UniformDistribution
+from qiskit.circuit.library.probability_distributions.lognormal import LogNormalDistribution
+from qiskit.circuit.library.probability_distributions.normal import NormalDistribution
+from qiskit.circuit.library.probability_distributions.uniform import UniformDistribution
 
 __all__ = ["LogNormalDistribution", "NormalDistribution", "UniformDistribution"]

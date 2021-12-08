@@ -15,8 +15,8 @@ OPENQASM circuit object.
 """
 from __future__ import annotations
 
-from .exceptions import QasmError
-from .qasmparser import QasmParser
+from qiskit.qasm.exceptions import QasmError
+from qiskit.qasm.qasmparser import QasmParser
 
 
 class Qasm:

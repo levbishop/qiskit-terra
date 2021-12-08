@@ -19,7 +19,7 @@ import numpy as np
 
 from qiskit.circuit import Parameter, QuantumRegister, QuantumCircuit
 
-from .n_local.n_local import NLocal
+from qiskit.circuit.library.n_local.n_local import NLocal
 
 
 class EvolvedOperatorAnsatz(NLocal):

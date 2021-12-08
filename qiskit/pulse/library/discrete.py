@@ -19,9 +19,9 @@ Note the sampling strategy use for all discrete pulses is ``midpoint``.
 from __future__ import annotations
 
 
-from ..exceptions import PulseError
-from .waveform import Waveform
-from . import continuous, samplers
+from qiskit.pulse.exceptions import PulseError
+from qiskit.pulse.library.waveform import Waveform
+from qiskit.pulse.library import continuous, samplers
 
 _sampled_constant_pulse = samplers.midpoint(continuous.constant)
 

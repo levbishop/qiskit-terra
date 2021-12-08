@@ -47,18 +47,18 @@ from qiskit.qasm.exceptions import QasmError
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.utils.deprecation import deprecate_function
 
-from .parameterexpression import ParameterExpression, ParameterValueType
-from .quantumregister import QuantumRegister, Qubit, AncillaRegister, AncillaQubit
-from .classicalregister import ClassicalRegister, Clbit
-from .parametertable import ParameterTable, ParameterView
-from .parametervector import ParameterVector, ParameterVectorElement
-from .instructionset import InstructionSet
-from .register import Register
-from .bit import Bit
-from .quantumcircuitdata import QuantumCircuitData
-from .delay import Delay
-from .measure import Measure
-from .reset import Reset
+from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
+from qiskit.circuit.quantumregister import QuantumRegister, Qubit, AncillaRegister, AncillaQubit
+from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.parametertable import ParameterTable, ParameterView
+from qiskit.circuit.parametervector import ParameterVector, ParameterVectorElement
+from qiskit.circuit.instructionset import InstructionSet
+from qiskit.circuit.register import Register
+from qiskit.circuit.bit import Bit
+from qiskit.circuit.quantumcircuitdata import QuantumCircuitData
+from qiskit.circuit.delay import Delay
+from qiskit.circuit.measure import Measure
+from qiskit.circuit.reset import Reset
 
 try:
     import pygments
@@ -2675,7 +2675,7 @@ class QuantumCircuit:
         Returns:
             qiskit.circuit.InstructionSet: handle to the added instructions.
         """
-        from .barrier import Barrier
+        from qiskit.circuit.barrier import Barrier
 
         qubits: list[QubitSpecifier] = []
 
@@ -2751,7 +2751,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.h import HGate
+        from qiskit.circuit.library.standard_gates.h import HGate
 
         return self.append(HGate(), [qubit], [])
 
@@ -2777,7 +2777,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.h import CHGate
+        from qiskit.circuit.library.standard_gates.h import CHGate
 
         return self.append(
             CHGate(label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -2794,7 +2794,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.i import IGate
+        from qiskit.circuit.library.standard_gates.i import IGate
 
         return self.append(IGate(), [qubit], [])
 
@@ -2827,7 +2827,7 @@ class QuantumCircuit:
             A handle to the instructions created.
         """
         # pylint: disable=cyclic-import
-        from .library.generalized_gates.gms import MSGate
+        from qiskit.circuit.library.generalized_gates.gms import MSGate
 
         return self.append(MSGate(len(qubits), theta), qubits)
 
@@ -2843,7 +2843,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.p import PhaseGate
+        from qiskit.circuit.library.standard_gates.p import PhaseGate
 
         return self.append(PhaseGate(theta), [qubit], [])
 
@@ -2871,7 +2871,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.p import CPhaseGate
+        from qiskit.circuit.library.standard_gates.p import CPhaseGate
 
         return self.append(
             CPhaseGate(theta, label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -2895,7 +2895,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.p import MCPhaseGate
+        from qiskit.circuit.library.standard_gates.p import MCPhaseGate
 
         num_ctrl_qubits = len(control_qubits)
         return self.append(
@@ -2917,7 +2917,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.r import RGate
+        from qiskit.circuit.library.standard_gates.r import RGate
 
         return self.append(RGate(theta, phi), [qubit], [])
 
@@ -2944,7 +2944,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.generalized_gates.rv import RVGate
+        from qiskit.circuit.library.generalized_gates.rv import RVGate
 
         return self.append(RVGate(vx, vy, vz), [qubit], [])
 
@@ -2966,7 +2966,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.x import RCCXGate
+        from qiskit.circuit.library.standard_gates.x import RCCXGate
 
         return self.append(RCCXGate(), [control_qubit1, control_qubit2, target_qubit], [])
 
@@ -2990,7 +2990,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.x import RC3XGate
+        from qiskit.circuit.library.standard_gates.x import RC3XGate
 
         return self.append(
             RC3XGate(), [control_qubit1, control_qubit2, control_qubit3, target_qubit], []
@@ -3011,7 +3011,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.rx import RXGate
+        from qiskit.circuit.library.standard_gates.rx import RXGate
 
         return self.append(RXGate(theta, label=label), [qubit], [])
 
@@ -3039,7 +3039,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.rx import CRXGate
+        from qiskit.circuit.library.standard_gates.rx import CRXGate
 
         return self.append(
             CRXGate(theta, label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -3060,7 +3060,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.rxx import RXXGate
+        from qiskit.circuit.library.standard_gates.rxx import RXXGate
 
         return self.append(RXXGate(theta), [qubit1, qubit2], [])
 
@@ -3079,7 +3079,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.ry import RYGate
+        from qiskit.circuit.library.standard_gates.ry import RYGate
 
         return self.append(RYGate(theta, label=label), [qubit], [])
 
@@ -3107,7 +3107,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.ry import CRYGate
+        from qiskit.circuit.library.standard_gates.ry import CRYGate
 
         return self.append(
             CRYGate(theta, label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -3128,7 +3128,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.ryy import RYYGate
+        from qiskit.circuit.library.standard_gates.ryy import RYYGate
 
         return self.append(RYYGate(theta), [qubit1, qubit2], [])
 
@@ -3144,7 +3144,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.rz import RZGate
+        from qiskit.circuit.library.standard_gates.rz import RZGate
 
         return self.append(RZGate(phi), [qubit], [])
 
@@ -3172,7 +3172,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.rz import CRZGate
+        from qiskit.circuit.library.standard_gates.rz import CRZGate
 
         return self.append(
             CRZGate(theta, label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -3193,7 +3193,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.rzx import RZXGate
+        from qiskit.circuit.library.standard_gates.rzx import RZXGate
 
         return self.append(RZXGate(theta), [qubit1, qubit2], [])
 
@@ -3212,7 +3212,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.rzz import RZZGate
+        from qiskit.circuit.library.standard_gates.rzz import RZZGate
 
         return self.append(RZZGate(theta), [qubit1, qubit2], [])
 
@@ -3227,7 +3227,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.ecr import ECRGate
+        from qiskit.circuit.library.standard_gates.ecr import ECRGate
 
         return self.append(ECRGate(), [qubit1, qubit2], [])
 
@@ -3242,7 +3242,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.s import SGate
+        from qiskit.circuit.library.standard_gates.s import SGate
 
         return self.append(SGate(), [qubit], [])
 
@@ -3257,7 +3257,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.s import SdgGate
+        from qiskit.circuit.library.standard_gates.s import SdgGate
 
         return self.append(SdgGate(), [qubit], [])
 
@@ -3272,7 +3272,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.swap import SwapGate
+        from qiskit.circuit.library.standard_gates.swap import SwapGate
 
         return self.append(SwapGate(), [qubit1, qubit2], [])
 
@@ -3287,7 +3287,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.iswap import iSwapGate
+        from qiskit.circuit.library.standard_gates.iswap import iSwapGate
 
         return self.append(iSwapGate(), [qubit1, qubit2], [])
 
@@ -3315,7 +3315,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.swap import CSwapGate
+        from qiskit.circuit.library.standard_gates.swap import CSwapGate
 
         return self.append(
             CSwapGate(label=label, ctrl_state=ctrl_state),
@@ -3357,7 +3357,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.sx import SXGate
+        from qiskit.circuit.library.standard_gates.sx import SXGate
 
         return self.append(SXGate(), [qubit], [])
 
@@ -3372,7 +3372,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.sx import SXdgGate
+        from qiskit.circuit.library.standard_gates.sx import SXdgGate
 
         return self.append(SXdgGate(), [qubit], [])
 
@@ -3398,7 +3398,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.sx import CSXGate
+        from qiskit.circuit.library.standard_gates.sx import CSXGate
 
         return self.append(
             CSXGate(label=label, ctrl_state=ctrl_state),
@@ -3417,7 +3417,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.t import TGate
+        from qiskit.circuit.library.standard_gates.t import TGate
 
         return self.append(TGate(), [qubit], [])
 
@@ -3432,7 +3432,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.t import TdgGate
+        from qiskit.circuit.library.standard_gates.t import TdgGate
 
         return self.append(TdgGate(), [qubit], [])
 
@@ -3456,7 +3456,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u import UGate
+        from qiskit.circuit.library.standard_gates.u import UGate
 
         return self.append(UGate(theta, phi, lam), [qubit], [])
 
@@ -3490,7 +3490,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u import CUGate
+        from qiskit.circuit.library.standard_gates.u import CUGate
 
         return self.append(
             CUGate(theta, phi, lam, gamma, label=label, ctrl_state=ctrl_state),
@@ -3517,7 +3517,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u1 import U1Gate
+        from qiskit.circuit.library.standard_gates.u1 import U1Gate
 
         return self.append(U1Gate(theta), [qubit], [])
 
@@ -3552,7 +3552,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u1 import CU1Gate
+        from qiskit.circuit.library.standard_gates.u1 import CU1Gate
 
         return self.append(
             CU1Gate(theta, label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -3583,7 +3583,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u1 import MCU1Gate
+        from qiskit.circuit.library.standard_gates.u1 import MCU1Gate
 
         num_ctrl_qubits = len(control_qubits)
         return self.append(MCU1Gate(lam, num_ctrl_qubits), control_qubits[:] + [target_qubit], [])
@@ -3612,7 +3612,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u2 import U2Gate
+        from qiskit.circuit.library.standard_gates.u2 import U2Gate
 
         return self.append(U2Gate(phi, lam), [qubit], [])
 
@@ -3643,7 +3643,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u3 import U3Gate
+        from qiskit.circuit.library.standard_gates.u3 import U3Gate
 
         return self.append(U3Gate(theta, phi, lam), [qubit], [])
 
@@ -3681,7 +3681,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.u3 import CU3Gate
+        from qiskit.circuit.library.standard_gates.u3 import CU3Gate
 
         return self.append(
             CU3Gate(theta, phi, lam, label=label, ctrl_state=ctrl_state),
@@ -3701,7 +3701,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.x import XGate
+        from qiskit.circuit.library.standard_gates.x import XGate
 
         return self.append(XGate(label=label), [qubit], [])
 
@@ -3728,7 +3728,7 @@ class QuantumCircuit:
             A handle to the instructions created.
         """
 
-        from .library.standard_gates.x import CXGate
+        from qiskit.circuit.library.standard_gates.x import CXGate
 
         return self.append(
             CXGate(label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -3773,7 +3773,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.dcx import DCXGate
+        from qiskit.circuit.library.standard_gates.dcx import DCXGate
 
         return self.append(DCXGate(), [qubit1, qubit2], [])
 
@@ -3799,7 +3799,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.x import CCXGate
+        from qiskit.circuit.library.standard_gates.x import CCXGate
 
         return self.append(
             CCXGate(ctrl_state=ctrl_state),
@@ -3862,7 +3862,7 @@ class QuantumCircuit:
             ValueError: if the given mode is not known, or if too few ancilla qubits are passed.
             AttributeError: if no ancilla qubits are passed, but some are needed.
         """
-        from .library.standard_gates.x import MCXGrayCode, MCXRecursive, MCXVChain
+        from qiskit.circuit.library.standard_gates.x import MCXGrayCode, MCXRecursive, MCXVChain
 
         num_ctrl_qubits = len(control_qubits)
 
@@ -3956,7 +3956,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.y import YGate
+        from qiskit.circuit.library.standard_gates.y import YGate
 
         return self.append(YGate(), [qubit], [])
 
@@ -3982,7 +3982,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.y import CYGate
+        from qiskit.circuit.library.standard_gates.y import CYGate
 
         return self.append(
             CYGate(label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
@@ -3999,7 +3999,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.z import ZGate
+        from qiskit.circuit.library.standard_gates.z import ZGate
 
         return self.append(ZGate(), [qubit], [])
 
@@ -4025,7 +4025,7 @@ class QuantumCircuit:
         Returns:
             A handle to the instructions created.
         """
-        from .library.standard_gates.z import CZGate
+        from qiskit.circuit.library.standard_gates.z import CZGate
 
         return self.append(
             CZGate(label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []

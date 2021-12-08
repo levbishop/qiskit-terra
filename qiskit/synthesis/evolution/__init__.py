@@ -14,9 +14,9 @@
 
 from __future__ import annotations
 
-from .evolution_synthesis import EvolutionSynthesis
-from .matrix_synthesis import MatrixExponential
-from .product_formula import ProductFormula
-from .lie_trotter import LieTrotter
-from .suzuki_trotter import SuzukiTrotter
-from .qdrift import QDrift
+from qiskit.synthesis.evolution.evolution_synthesis import EvolutionSynthesis
+from qiskit.synthesis.evolution.matrix_synthesis import MatrixExponential
+from qiskit.synthesis.evolution.product_formula import ProductFormula
+from qiskit.synthesis.evolution.lie_trotter import LieTrotter
+from qiskit.synthesis.evolution.suzuki_trotter import SuzukiTrotter
+from qiskit.synthesis.evolution.qdrift import QDrift

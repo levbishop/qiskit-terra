@@ -68,7 +68,7 @@ class PauliOp(PrimitiveOp):
             return PauliOp(self.primitive, coeff=self.coeff + other.coeff)
 
         # pylint: disable=cyclic-import
-        from .pauli_sum_op import PauliSumOp
+        from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
 
         if (
             isinstance(other, PauliOp)
@@ -103,13 +103,13 @@ class PauliOp(PrimitiveOp):
             return PauliOp(self.primitive.tensor(other.primitive), coeff=self.coeff * other.coeff)
 
         # pylint: disable=cyclic-import
-        from .pauli_sum_op import PauliSumOp
+        from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
 
         if isinstance(other, PauliSumOp):
             new_primitive = SparsePauliOp(self.primitive).tensor(other.primitive)
             return PauliSumOp(new_primitive, coeff=self.coeff * other.coeff)
 
-        from .circuit_op import CircuitOp
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         if isinstance(other, CircuitOp):
             return self.to_circuit_op().tensor(other)
@@ -160,7 +160,7 @@ class PauliOp(PrimitiveOp):
             return PrimitiveOp(product, coeff=new_self.coeff * other.coeff)
 
         # pylint: disable=cyclic-import
-        from .pauli_sum_op import PauliSumOp
+        from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
 
         if isinstance(other, PauliSumOp):
             return PauliSumOp(
@@ -169,8 +169,8 @@ class PauliOp(PrimitiveOp):
             )
 
         # pylint: disable=cyclic-import
-        from ..state_fns.circuit_state_fn import CircuitStateFn
-        from .circuit_op import CircuitOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         if isinstance(other, (CircuitOp, CircuitStateFn)):
             return new_self.to_circuit_op().compose(other)
@@ -207,11 +207,11 @@ class PauliOp(PrimitiveOp):
             return self.to_matrix_op()
 
         # pylint: disable=cyclic-import
-        from ..list_ops.list_op import ListOp
-        from ..state_fns.circuit_state_fn import CircuitStateFn
-        from ..state_fns.dict_state_fn import DictStateFn
-        from ..state_fns.state_fn import StateFn
-        from .circuit_op import CircuitOp
+        from qiskit.opflow.list_ops.list_op import ListOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
+        from qiskit.opflow.state_fns.state_fn import StateFn
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         new_front = None
 
@@ -287,7 +287,7 @@ class PauliOp(PrimitiveOp):
                 else self.coeff
             )
 
-            from .circuit_op import CircuitOp
+            from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
             # Y rotation
             if corrected_x[sig_qubit_index] and corrected_z[sig_qubit_index]:
@@ -300,14 +300,14 @@ class PauliOp(PrimitiveOp):
                 rot_op = CircuitOp(RXGate(2 * coeff))
 
             # pylint: disable=cyclic-import
-            from ..operator_globals import I
+            from qiskit.opflow.operator_globals import I
 
             left_pad = I.tensorpower(sig_qubit_index)
             right_pad = I.tensorpower(self.num_qubits - sig_qubit_index - 1)
             # Need to use overloaded operators here in case left_pad == I^0
             return left_pad ^ rot_op ^ right_pad
         else:
-            from ..evolutions.evolved_op import EvolvedOp
+            from qiskit.opflow.evolutions.evolved_op import EvolvedOp
 
             return EvolvedOp(self)
 

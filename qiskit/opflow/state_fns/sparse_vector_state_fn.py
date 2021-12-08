@@ -113,7 +113,7 @@ class SparseVectorStateFn(StateFn):
         Returns:
             A new DictStateFn equivalent to ``self``.
         """
-        from .dict_state_fn import DictStateFn
+        from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
 
         num_qubits = self.num_qubits
         dok = self.primitive.todok()
@@ -134,7 +134,7 @@ class SparseVectorStateFn(StateFn):
     def to_circuit_op(self) -> OperatorBase:
         """Convert this state function to a ``CircuitStateFn``."""
         # pylint: disable=cyclic-import
-        from .circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
         csfn = CircuitStateFn.from_vector(self.primitive) * self.coeff
         return csfn.adjoint() if self.is_measurement else csfn
@@ -176,10 +176,10 @@ class SparseVectorStateFn(StateFn):
             front = StateFn(front)
 
         # pylint: disable=cyclic-import
-        from ..operator_globals import EVAL_SIG_DIGITS
-        from .operator_state_fn import OperatorStateFn
-        from .circuit_state_fn import CircuitStateFn
-        from .dict_state_fn import DictStateFn
+        from qiskit.opflow.operator_globals import EVAL_SIG_DIGITS
+        from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
 
         if isinstance(front, DictStateFn):
             return np.round(

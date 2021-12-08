@@ -22,17 +22,17 @@ from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.circuit import ParameterExpression, ParameterVector
 
-from ..expectations.pauli_expectation import PauliExpectation
-from .gradient_base import GradientBase
-from .derivative_base import _coeff_derivative
-from ..list_ops.composed_op import ComposedOp
-from ..list_ops.list_op import ListOp
-from ..list_ops.summed_op import SummedOp
-from ..list_ops.tensored_op import TensoredOp
-from ..operator_base import OperatorBase
-from ..operator_globals import Zero, One
-from ..state_fns.circuit_state_fn import CircuitStateFn
-from ..exceptions import OpflowError
+from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
+from qiskit.opflow.gradients.gradient_base import GradientBase
+from qiskit.opflow.gradients.derivative_base import _coeff_derivative
+from qiskit.opflow.list_ops.composed_op import ComposedOp
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.list_ops.summed_op import SummedOp
+from qiskit.opflow.list_ops.tensored_op import TensoredOp
+from qiskit.opflow.operator_base import OperatorBase
+from qiskit.opflow.operator_globals import Zero, One
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.opflow.exceptions import OpflowError
 
 try:
     from jax import grad, jit

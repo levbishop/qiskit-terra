@@ -19,7 +19,7 @@ import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister
 
-from ..blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 
 class QFT(BlueprintCircuit):

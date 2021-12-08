@@ -23,7 +23,7 @@ from qiskit.circuit import ParameterVector, QuantumCircuit
 from qiskit.opflow import StateFn, CircuitSampler, ExpectationBase
 from qiskit.utils import QuantumInstance
 
-from .spsa import SPSA, CALLBACK, TERMINATIONCHECKER, _batch_evaluate
+from qiskit.algorithms.optimizers.spsa import SPSA, CALLBACK, TERMINATIONCHECKER, _batch_evaluate
 
 # the function to compute the fidelity
 FIDELITY = Callable[[np.ndarray, np.ndarray], float]

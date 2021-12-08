@@ -18,7 +18,7 @@ from __future__ import annotations
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.extensions import UnitaryGate
 
-from . import ControlledGate, Gate, QuantumRegister, QuantumCircuit
+from qiskit.circuit import ControlledGate, Gate, QuantumRegister, QuantumCircuit
 
 
 def add_control(

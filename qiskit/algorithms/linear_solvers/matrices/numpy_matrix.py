@@ -20,7 +20,7 @@ import scipy as sp
 
 from qiskit import QuantumCircuit, QuantumRegister
 
-from .linear_system_matrix import LinearSystemMatrix
+from qiskit.algorithms.linear_solvers.matrices.linear_system_matrix import LinearSystemMatrix
 
 
 class NumPyMatrix(LinearSystemMatrix):

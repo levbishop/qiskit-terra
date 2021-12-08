@@ -94,7 +94,7 @@ class SummedOp(ListOp):
             A simplified ``SummedOp`` equivalent to self.
         """
         # pylint: disable=cyclic-import
-        from ..primitive_ops.primitive_op import PrimitiveOp
+        from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
 
         oplist = []  # type: List[OperatorBase]
         coeffs = []  # type: List[Union[int, float, complex, ParameterExpression]]
@@ -138,7 +138,7 @@ class SummedOp(ListOp):
             reduced_ops = reduced_ops.collapse_summands()
 
         # pylint: disable=cyclic-import
-        from ..primitive_ops.pauli_sum_op import PauliSumOp
+        from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
 
         if isinstance(reduced_ops, PauliSumOp):
             reduced_ops = reduced_ops.reduce()
@@ -165,7 +165,7 @@ class SummedOp(ListOp):
             parameterized PrimitiveOps).
         """
         # pylint: disable=cyclic-import
-        from ..primitive_ops.matrix_op import MatrixOp
+        from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
 
         matrix_op = self.to_matrix_op()
         if isinstance(matrix_op, MatrixOp):
@@ -186,7 +186,7 @@ class SummedOp(ListOp):
 
     def to_pauli_op(self, massive: bool = False) -> SummedOp:
         # pylint: disable=cyclic-import
-        from ..state_fns.state_fn import StateFn
+        from qiskit.opflow.state_fns.state_fn import StateFn
 
         pauli_sum = SummedOp(
             [

@@ -13,5 +13,5 @@
 """Module for functions for post processing results."""
 from __future__ import annotations
 
-from .average import average_data
-from .distance import hellinger_fidelity, hellinger_distance
+from qiskit.quantum_info.analysis.average import average_data
+from qiskit.quantum_info.analysis.distance import hellinger_fidelity, hellinger_distance

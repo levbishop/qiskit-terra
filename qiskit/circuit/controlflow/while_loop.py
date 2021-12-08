@@ -18,8 +18,8 @@ from __future__ import annotations
 from qiskit.circuit import Clbit, ClassicalRegister, QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
 
-from .condition import validate_condition, condition_bits
-from .control_flow import ControlFlowOp
+from qiskit.circuit.controlflow.condition import validate_condition, condition_bits
+from qiskit.circuit.controlflow.control_flow import ControlFlowOp
 
 
 class WhileLoopOp(ControlFlowOp):

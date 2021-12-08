@@ -14,11 +14,11 @@
 
 from __future__ import annotations
 
-from .squ import SingleQubitUnitary
-from .ucrz import UCRZGate
-from .ucry import UCRYGate
-from .ucrx import UCRXGate
-from .diagonal import DiagonalGate
-from .uc import UCGate
-from .isometry import Isometry
-from .initializer import Initialize
+from qiskit.extensions.quantum_initializer.squ import SingleQubitUnitary
+from qiskit.extensions.quantum_initializer.ucrz import UCRZGate
+from qiskit.extensions.quantum_initializer.ucry import UCRYGate
+from qiskit.extensions.quantum_initializer.ucrx import UCRXGate
+from qiskit.extensions.quantum_initializer.diagonal import DiagonalGate
+from qiskit.extensions.quantum_initializer.uc import UCGate
+from qiskit.extensions.quantum_initializer.isometry import Isometry
+from qiskit.extensions.quantum_initializer.initializer import Initialize

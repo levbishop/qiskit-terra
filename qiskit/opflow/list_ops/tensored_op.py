@@ -68,7 +68,7 @@ class TensoredOp(ListOp):
             TensoredOp expanded with identity operator.
         """
         # pylint: disable=cyclic-import
-        from ..operator_globals import I
+        from qiskit.opflow.operator_globals import I
 
         return TensoredOp(self.oplist + [I ^ num_qubits], coeff=self.coeff)
 
@@ -109,8 +109,8 @@ class TensoredOp(ListOp):
         """
         circuit_op = self.to_circuit_op()
         # pylint: disable=cyclic-import
-        from ..state_fns.circuit_state_fn import CircuitStateFn
-        from ..primitive_ops.primitive_op import PrimitiveOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
 
         if isinstance(circuit_op, (PrimitiveOp, CircuitStateFn)):
             return circuit_op.to_circuit()

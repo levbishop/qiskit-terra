@@ -21,16 +21,16 @@ from scipy.linalg import block_diag
 from qiskit.circuit import Parameter, ParameterVector, ParameterExpression
 from qiskit.utils.arithmetic import triu_to_dense
 
-from ...list_ops.list_op import ListOp
-from ...primitive_ops.circuit_op import CircuitOp
-from ...expectations.pauli_expectation import PauliExpectation
-from ...operator_globals import Zero
-from ...state_fns.state_fn import StateFn
-from ...state_fns.circuit_state_fn import CircuitStateFn
-from ...exceptions import OpflowError
-from .circuit_qfi import CircuitQFI
-from ..derivative_base import _coeff_derivative
-from .overlap_diag import _get_generators, _partition_circuit
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
+from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
+from qiskit.opflow.operator_globals import Zero
+from qiskit.opflow.state_fns.state_fn import StateFn
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.opflow.exceptions import OpflowError
+from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
+from qiskit.opflow.gradients.derivative_base import _coeff_derivative
+from qiskit.opflow.gradients.circuit_qfis.overlap_diag import _get_generators, _partition_circuit
 
 
 class OverlapBlockDiag(CircuitQFI):

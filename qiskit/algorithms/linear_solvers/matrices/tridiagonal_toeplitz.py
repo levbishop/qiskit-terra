@@ -21,7 +21,7 @@ from scipy.sparse import diags
 from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister
 from qiskit.circuit.library import UGate, MCMTVChain
 
-from .linear_system_matrix import LinearSystemMatrix
+from qiskit.algorithms.linear_solvers.matrices.linear_system_matrix import LinearSystemMatrix
 
 
 class TridiagonalToeplitz(LinearSystemMatrix):

@@ -19,9 +19,9 @@ to replace the match with the inverse of the remainder from the template.
 """
 from __future__ import annotations
 
-from .rzx_yz import rzx_yz
-from .rzx_xz import rzx_xz
-from .rzx_cy import rzx_cy
-from .rzx_zz1 import rzx_zz1
-from .rzx_zz2 import rzx_zz2
-from .rzx_zz3 import rzx_zz3
+from qiskit.circuit.library.templates.rzx.rzx_yz import rzx_yz
+from qiskit.circuit.library.templates.rzx.rzx_xz import rzx_xz
+from qiskit.circuit.library.templates.rzx.rzx_cy import rzx_cy
+from qiskit.circuit.library.templates.rzx.rzx_zz1 import rzx_zz1
+from qiskit.circuit.library.templates.rzx.rzx_zz2 import rzx_zz2
+from qiskit.circuit.library.templates.rzx.rzx_zz3 import rzx_zz3

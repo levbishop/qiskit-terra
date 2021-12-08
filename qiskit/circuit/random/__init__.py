@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .utils import random_circuit
+from qiskit.circuit.random.utils import random_circuit

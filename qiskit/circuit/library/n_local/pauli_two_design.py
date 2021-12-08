@@ -19,7 +19,7 @@ import numpy as np
 
 from qiskit.circuit import QuantumCircuit
 
-from .two_local import TwoLocal
+from qiskit.circuit.library.n_local.two_local import TwoLocal
 
 
 class PauliTwoDesign(TwoLocal):

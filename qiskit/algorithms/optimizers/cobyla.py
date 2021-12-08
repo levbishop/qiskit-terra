@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 
-from .scipy_optimizer import SciPyOptimizer
+from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 
 
 class COBYLA(SciPyOptimizer):

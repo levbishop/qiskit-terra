@@ -14,5 +14,5 @@
 
 from __future__ import annotations
 
-from .unitary_synthesis import UnitarySynthesis
-from .plugin import unitary_synthesis_plugin_names
+from qiskit.transpiler.passes.synthesis.unitary_synthesis import UnitarySynthesis
+from qiskit.transpiler.passes.synthesis.plugin import unitary_synthesis_plugin_names

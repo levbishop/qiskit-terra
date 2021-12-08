@@ -196,8 +196,8 @@ class MatrixOp(PrimitiveOp):
             return self
 
         # pylint: disable=cyclic-import
-        from ..list_ops import ListOp
-        from ..state_fns import StateFn, VectorStateFn, OperatorStateFn
+        from qiskit.opflow.list_ops import ListOp
+        from qiskit.opflow.state_fns import StateFn, VectorStateFn, OperatorStateFn
 
         new_front = None
 

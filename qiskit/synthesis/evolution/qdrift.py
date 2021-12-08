@@ -22,8 +22,8 @@ from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.quantum_info.operators import SparsePauliOp, Pauli
 from qiskit.utils import algorithm_globals
 
-from .product_formula import ProductFormula
-from .lie_trotter import LieTrotter
+from qiskit.synthesis.evolution.product_formula import ProductFormula
+from qiskit.synthesis.evolution.lie_trotter import LieTrotter
 
 
 class QDrift(ProductFormula):

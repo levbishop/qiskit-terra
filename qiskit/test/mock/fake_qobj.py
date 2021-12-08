@@ -26,7 +26,7 @@ from qiskit.qobj import (
     QasmQobjConfig,
 )
 
-from .fake_qasm_simulator import FakeQasmSimulator
+from qiskit.test.mock.fake_qasm_simulator import FakeQasmSimulator
 
 
 class FakeQobj(QasmQobj):

@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister
 
-from .adder import Adder
+from qiskit.circuit.library.arithmetic.adders.adder import Adder
 
 
 class VBERippleCarryAdder(Adder):

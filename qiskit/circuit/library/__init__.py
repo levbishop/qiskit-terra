@@ -360,13 +360,13 @@ RZXGate template circuits
 
 from __future__ import annotations
 
-from .standard_gates import *
-from .templates import *
-from ..barrier import Barrier
-from ..measure import Measure
-from ..reset import Reset
-from .blueprintcircuit import BlueprintCircuit
-from .generalized_gates import (
+from qiskit.circuit.library.standard_gates import *
+from qiskit.circuit.library.templates import *
+from qiskit.circuit.barrier import Barrier
+from qiskit.circuit.measure import Measure
+from qiskit.circuit.reset import Reset
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.library.generalized_gates import (
     Diagonal,
     MCMT,
     MCMTVChain,
@@ -379,10 +379,10 @@ from .generalized_gates import (
     RVGate,
     PauliGate,
 )
-from .pauli_evolution import PauliEvolutionGate
-from .boolean_logic import AND, OR, XOR, InnerProduct
-from .basis_change import QFT
-from .arithmetic import (
+from qiskit.circuit.library.pauli_evolution import PauliEvolutionGate
+from qiskit.circuit.library.boolean_logic import AND, OR, XOR, InnerProduct
+from qiskit.circuit.library.basis_change import QFT
+from qiskit.circuit.library.arithmetic import (
     FunctionalPauliRotations,
     LinearPauliRotations,
     PiecewiseLinearPauliRotations,
@@ -400,7 +400,7 @@ from .arithmetic import (
     RGQFTMultiplier,
     ExactReciprocal,
 )
-from .n_local import (
+from qiskit.circuit.library.n_local import (
     NLocal,
     TwoLocal,
     PauliTwoDesign,
@@ -409,18 +409,18 @@ from .n_local import (
     ExcitationPreserving,
     QAOAAnsatz,
 )
-from .data_preparation import PauliFeatureMap, ZFeatureMap, ZZFeatureMap
-from .probability_distributions import (
+from qiskit.circuit.library.data_preparation import PauliFeatureMap, ZFeatureMap, ZZFeatureMap
+from qiskit.circuit.library.probability_distributions import (
     LogNormalDistribution,
     NormalDistribution,
     UniformDistribution,
 )
-from .quantum_volume import QuantumVolume
-from .fourier_checking import FourierChecking
-from .graph_state import GraphState
-from .hidden_linear_function import HiddenLinearFunction
-from .iqp import IQP
-from .phase_estimation import PhaseEstimation
-from .grover_operator import GroverOperator
-from .phase_oracle import PhaseOracle
-from .evolved_operator_ansatz import EvolvedOperatorAnsatz
+from qiskit.circuit.library.quantum_volume import QuantumVolume
+from qiskit.circuit.library.fourier_checking import FourierChecking
+from qiskit.circuit.library.graph_state import GraphState
+from qiskit.circuit.library.hidden_linear_function import HiddenLinearFunction
+from qiskit.circuit.library.iqp import IQP
+from qiskit.circuit.library.phase_estimation import PhaseEstimation
+from qiskit.circuit.library.grover_operator import GroverOperator
+from qiskit.circuit.library.phase_oracle import PhaseOracle
+from qiskit.circuit.library.evolved_operator_ansatz import EvolvedOperatorAnsatz

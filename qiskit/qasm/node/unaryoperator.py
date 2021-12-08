@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import operator
 
-from .node import Node
-from .nodeexception import NodeException
+from qiskit.qasm.node.node import Node
+from qiskit.qasm.node.nodeexception import NodeException
 
 VALID_OPERATORS = {
     "+": operator.pos,

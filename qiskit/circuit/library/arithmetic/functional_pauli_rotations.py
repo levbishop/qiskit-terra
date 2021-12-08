@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from ..blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 
 class FunctionalPauliRotations(BlueprintCircuit, ABC):

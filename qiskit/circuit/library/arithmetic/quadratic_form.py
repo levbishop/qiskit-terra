@@ -19,7 +19,7 @@ import numpy as np
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister, ParameterExpression
 
-from ..basis_change import QFT
+from qiskit.circuit.library.basis_change import QFT
 
 
 class QuadraticForm(QuantumCircuit):

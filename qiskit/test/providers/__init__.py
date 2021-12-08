@@ -14,5 +14,5 @@
 
 from __future__ import annotations
 
-from .backend import BackendTestCase
-from .provider import ProviderTestCase
+from qiskit.test.providers.backend import BackendTestCase
+from qiskit.test.providers.provider import ProviderTestCase

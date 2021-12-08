@@ -15,4 +15,4 @@
 
 from __future__ import annotations
 
-from .progressbar import TextProgressBar
+from qiskit.tools.events.progressbar import TextProgressBar

@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from .node import Node
-from .nodeexception import NodeException
+from qiskit.qasm.node.node import Node
+from qiskit.qasm.node.nodeexception import NodeException
 
 
 class Id(Node):

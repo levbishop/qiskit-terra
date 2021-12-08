@@ -16,4 +16,4 @@ Submodule symbol exports for XX decomposition.
 
 from __future__ import annotations
 
-from .decomposer import XXDecomposer
+from qiskit.quantum_info.synthesis.xx_decompose.decomposer import XXDecomposer

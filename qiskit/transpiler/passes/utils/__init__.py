@@ -14,17 +14,17 @@
 
 from __future__ import annotations
 
-from .check_map import CheckMap
-from .check_cx_direction import CheckCXDirection  # Deprecated
-from .cx_direction import CXDirection  # Deprecated
-from .check_gate_direction import CheckGateDirection
-from .gate_direction import GateDirection
-from .barrier_before_final_measurements import BarrierBeforeFinalMeasurements
-from .remove_final_measurements import RemoveFinalMeasurements
-from .merge_adjacent_barriers import MergeAdjacentBarriers
-from .dag_fixed_point import DAGFixedPoint
-from .fixed_point import FixedPoint
-from .error import Error
-from .remove_barriers import RemoveBarriers
-from .contains_instruction import ContainsInstruction
-from .gates_basis import GatesInBasis
+from qiskit.transpiler.passes.utils.check_map import CheckMap
+from qiskit.transpiler.passes.utils.check_cx_direction import CheckCXDirection  # Deprecated
+from qiskit.transpiler.passes.utils.cx_direction import CXDirection  # Deprecated
+from qiskit.transpiler.passes.utils.check_gate_direction import CheckGateDirection
+from qiskit.transpiler.passes.utils.gate_direction import GateDirection
+from qiskit.transpiler.passes.utils.barrier_before_final_measurements import BarrierBeforeFinalMeasurements
+from qiskit.transpiler.passes.utils.remove_final_measurements import RemoveFinalMeasurements
+from qiskit.transpiler.passes.utils.merge_adjacent_barriers import MergeAdjacentBarriers
+from qiskit.transpiler.passes.utils.dag_fixed_point import DAGFixedPoint
+from qiskit.transpiler.passes.utils.fixed_point import FixedPoint
+from qiskit.transpiler.passes.utils.error import Error
+from qiskit.transpiler.passes.utils.remove_barriers import RemoveBarriers
+from qiskit.transpiler.passes.utils.contains_instruction import ContainsInstruction
+from qiskit.transpiler.passes.utils.gates_basis import GatesInBasis

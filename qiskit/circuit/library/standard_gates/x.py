@@ -26,11 +26,11 @@ from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit._utils import _compute_control_matrix, _ctrl_state_to_int
 from qiskit.qasm import pi
 
-from .h import HGate
-from .t import TGate, TdgGate
-from .u1 import U1Gate
-from .u2 import U2Gate
-from .sx import SXGate
+from qiskit.circuit.library.standard_gates.h import HGate
+from qiskit.circuit.library.standard_gates.t import TGate, TdgGate
+from qiskit.circuit.library.standard_gates.u1 import U1Gate
+from qiskit.circuit.library.standard_gates.u2 import U2Gate
+from qiskit.circuit.library.standard_gates.sx import SXGate
 
 
 class XGate(Gate):
@@ -87,7 +87,7 @@ class XGate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u3 import U3Gate
+        from qiskit.circuit.library.standard_gates.u3 import U3Gate
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -534,7 +534,7 @@ class C3SXGate(ControlledGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u1 import CU1Gate
+        from qiskit.circuit.library.standard_gates.u1 import CU1Gate
 
         q = QuantumRegister(4, name="q")
         # pylint: disable=invalid-unary-operand-type
@@ -866,7 +866,7 @@ class C4XGate(ControlledGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u1 import CU1Gate
+        from qiskit.circuit.library.standard_gates.u1 import CU1Gate
 
         q = QuantumRegister(5, name="q")
         qc = QuantumCircuit(q, name=self.name)
@@ -1068,7 +1068,7 @@ class MCXGrayCode(MCXGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u1 import MCU1Gate
+        from qiskit.circuit.library.standard_gates.u1 import MCU1Gate
 
         q = QuantumRegister(self.num_qubits, name="q")
         qc = QuantumCircuit(q, name=self.name)

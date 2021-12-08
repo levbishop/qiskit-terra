@@ -179,10 +179,10 @@ Exceptions
 
 from __future__ import annotations
 
-from .algorithm_result import AlgorithmResult
-from .variational_algorithm import VariationalAlgorithm, VariationalResult
-from .amplitude_amplifiers import Grover, GroverResult, AmplificationProblem
-from .amplitude_estimators import (
+from qiskit.algorithms.algorithm_result import AlgorithmResult
+from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
+from qiskit.algorithms.amplitude_amplifiers import Grover, GroverResult, AmplificationProblem
+from qiskit.algorithms.amplitude_estimators import (
     AmplitudeEstimator,
     AmplitudeEstimatorResult,
     AmplitudeEstimation,
@@ -195,10 +195,10 @@ from .amplitude_estimators import (
     MaximumLikelihoodAmplitudeEstimationResult,
     EstimationProblem,
 )
-from .eigen_solvers import NumPyEigensolver, Eigensolver, EigensolverResult
-from .factorizers import Shor, ShorResult
-from .linear_solvers import HHL, LinearSolver, NumPyLinearSolver, LinearSolverResult
-from .minimum_eigen_solvers import (
+from qiskit.algorithms.eigen_solvers import NumPyEigensolver, Eigensolver, EigensolverResult
+from qiskit.algorithms.factorizers import Shor, ShorResult
+from qiskit.algorithms.linear_solvers import HHL, LinearSolver, NumPyLinearSolver, LinearSolverResult
+from qiskit.algorithms.minimum_eigen_solvers import (
     VQE,
     VQEResult,
     QAOA,
@@ -206,7 +206,7 @@ from .minimum_eigen_solvers import (
     MinimumEigensolver,
     MinimumEigensolverResult,
 )
-from .phase_estimators import (
+from qiskit.algorithms.phase_estimators import (
     HamiltonianPhaseEstimation,
     HamiltonianPhaseEstimationResult,
     PhaseEstimationScale,
@@ -214,7 +214,7 @@ from .phase_estimators import (
     PhaseEstimationResult,
     IterativePhaseEstimation,
 )
-from .exceptions import AlgorithmError
+from qiskit.algorithms.exceptions import AlgorithmError
 
 __all__ = [
     "AlgorithmResult",

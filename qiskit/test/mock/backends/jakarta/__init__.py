@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_jakarta import FakeJakarta
+from qiskit.test.mock.backends.jakarta.fake_jakarta import FakeJakarta

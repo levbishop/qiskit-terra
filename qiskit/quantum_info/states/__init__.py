@@ -14,13 +14,13 @@
 
 from __future__ import annotations
 
-from .statevector import Statevector
+from qiskit.quantum_info.states.statevector import Statevector
 
 # These must come later to avoid cyclic import problems?
-from .stabilizerstate import StabilizerState
-from .densitymatrix import DensityMatrix
-from .utils import partial_trace, shannon_entropy
-from .measures import (
+from qiskit.quantum_info.states.stabilizerstate import StabilizerState
+from qiskit.quantum_info.states.densitymatrix import DensityMatrix
+from qiskit.quantum_info.states.utils import partial_trace, shannon_entropy
+from qiskit.quantum_info.states.measures import (
     state_fidelity,
     purity,
     entropy,

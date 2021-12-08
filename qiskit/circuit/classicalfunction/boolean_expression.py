@@ -22,7 +22,7 @@ from tweedledum.synthesis import pkrm_synth
 
 from qiskit.circuit import QuantumCircuit
 
-from .classical_element import ClassicalElement
+from qiskit.circuit.classicalfunction.classical_element import ClassicalElement
 
 
 class BooleanExpression(ClassicalElement):
@@ -83,7 +83,7 @@ class BooleanExpression(ClassicalElement):
             qregs = None  # TODO: Probably from self._tweedledum_bool_expression._signature
 
         if synthesizer is None:
-            from .utils import tweedledum2qiskit  # Avoid an import cycle
+            from qiskit.circuit.classicalfunction.utils import tweedledum2qiskit  # Avoid an import cycle
 
             truth_table = self._tweedledum_bool_expression.truth_table(output_bit=0)
             return tweedledum2qiskit(pkrm_synth(truth_table), name=self.name, qregs=qregs)

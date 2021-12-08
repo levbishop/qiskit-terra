@@ -25,8 +25,8 @@ import numpy as np
 from qiskit.utils import algorithm_globals
 from qiskit.utils.validation import validate_min
 
-from .optimizer import OptimizerResult, POINT
-from .scipy_optimizer import SciPyOptimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult, POINT
+from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 
 logger = logging.getLogger(__name__)
 

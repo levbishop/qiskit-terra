@@ -20,8 +20,8 @@ from typing import Dict, cast
 from qiskit.utils.deprecation import deprecate_function
 from qiskit.algorithms.algorithm_result import AlgorithmResult
 
-from .phase_estimation_result import PhaseEstimationResult
-from .phase_estimation_scale import PhaseEstimationScale
+from qiskit.algorithms.phase_estimators.phase_estimation_result import PhaseEstimationResult
+from qiskit.algorithms.phase_estimators.phase_estimation_scale import PhaseEstimationScale
 
 
 class HamiltonianPhaseEstimationResult(AlgorithmResult):

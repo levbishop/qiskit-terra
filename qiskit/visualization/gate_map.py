@@ -20,9 +20,9 @@ import numpy as np
 
 from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
 
-from .matplotlib import HAS_MATPLOTLIB
-from .exceptions import VisualizationError
-from .utils import matplotlib_close_if_inline
+from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
+from qiskit.visualization.exceptions import VisualizationError
+from qiskit.visualization.utils import matplotlib_close_if_inline
 
 
 def plot_gate_map(

@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_yorktown import FakeYorktown, FakeLegacyYorktown
+from qiskit.test.mock.backends.yorktown.fake_yorktown import FakeYorktown, FakeLegacyYorktown

@@ -44,7 +44,7 @@ from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
 from qiskit.qobj.qasm_qobj import QasmQobjInstruction
 from qiskit.circuit.parameter import ParameterExpression
 
-from .tools import pi_check
+from qiskit.circuit.tools import pi_check
 
 _CUTOFF_PRECISION = 1e-10
 

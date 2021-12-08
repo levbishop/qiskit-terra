@@ -36,8 +36,8 @@ import qiskit
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.tools.events.progressbar import TextProgressBar
 
-from .progressbar import HTMLProgressBar
-from .library import circuit_library_widget
+from qiskit.tools.jupyter.progressbar import HTMLProgressBar
+from qiskit.tools.jupyter.library import circuit_library_widget
 
 
 def _html_checker(job_var, interval, status, header, _interval_set=False):

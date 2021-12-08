@@ -40,9 +40,9 @@ of the complete initial data.
 
 from __future__ import annotations
 
-from .pauli_feature_map import PauliFeatureMap
-from .z_feature_map import ZFeatureMap
-from .zz_feature_map import ZZFeatureMap
+from qiskit.circuit.library.data_preparation.pauli_feature_map import PauliFeatureMap
+from qiskit.circuit.library.data_preparation.z_feature_map import ZFeatureMap
+from qiskit.circuit.library.data_preparation.zz_feature_map import ZZFeatureMap
 
 __all__ = [
     "PauliFeatureMap",

@@ -83,9 +83,9 @@ List Operators
 
 from __future__ import annotations
 
-from .list_op import ListOp
-from .summed_op import SummedOp
-from .composed_op import ComposedOp
-from .tensored_op import TensoredOp
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.list_ops.summed_op import SummedOp
+from qiskit.opflow.list_ops.composed_op import ComposedOp
+from qiskit.opflow.list_ops.tensored_op import TensoredOp
 
 __all__ = ["ListOp", "SummedOp", "TensoredOp", "ComposedOp"]

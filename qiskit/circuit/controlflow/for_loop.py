@@ -21,7 +21,7 @@ from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-from .control_flow import ControlFlowOp
+from qiskit.circuit.controlflow.control_flow import ControlFlowOp
 
 
 class ForLoopOp(ControlFlowOp):

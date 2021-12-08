@@ -15,8 +15,8 @@
 from __future__ import annotations
 
 
-from .circuit_gradients.circuit_gradient import CircuitGradient
-from .derivative_base import DerivativeBase
+from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
+from qiskit.opflow.gradients.derivative_base import DerivativeBase
 
 
 class HessianBase(DerivativeBase):
@@ -37,18 +37,18 @@ class HessianBase(DerivativeBase):
         if isinstance(hess_method, CircuitGradient):
             self._hess_method = hess_method
         elif hess_method == "param_shift":
-            from .circuit_gradients import ParamShift
+            from qiskit.opflow.gradients.circuit_gradients import ParamShift
 
             self._hess_method = ParamShift()
 
         elif hess_method == "fin_diff":
-            from .circuit_gradients import ParamShift
+            from qiskit.opflow.gradients.circuit_gradients import ParamShift
 
             epsilon = kwargs.get("epsilon", 1e-6)
             self._hess_method = ParamShift(analytic=False, epsilon=epsilon)
 
         elif hess_method == "lin_comb":
-            from .circuit_gradients import LinComb
+            from qiskit.opflow.gradients.circuit_gradients import LinComb
 
             self._hess_method = LinComb()
 

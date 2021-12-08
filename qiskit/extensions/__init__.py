@@ -50,7 +50,7 @@ from __future__ import annotations
 from qiskit.circuit.library.standard_gates import *
 from qiskit.circuit.barrier import Barrier
 
-from .quantum_initializer import Initialize, SingleQubitUnitary
-from .unitary import UnitaryGate
-from .hamiltonian_gate import HamiltonianGate
-from .simulator import Snapshot
+from qiskit.extensions.quantum_initializer import Initialize, SingleQubitUnitary
+from qiskit.extensions.unitary import UnitaryGate
+from qiskit.extensions.hamiltonian_gate import HamiltonianGate
+from qiskit.extensions.simulator import Snapshot

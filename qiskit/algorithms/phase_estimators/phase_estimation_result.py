@@ -20,7 +20,7 @@ import numpy
 from qiskit.utils.deprecation import deprecate_function
 from qiskit.result import Result
 
-from .phase_estimator import PhaseEstimatorResult
+from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimatorResult
 
 
 class PhaseEstimationResult(PhaseEstimatorResult):

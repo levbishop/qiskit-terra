@@ -202,7 +202,7 @@ class ListOp(OperatorBase):
 
         # Avoid circular dependency
         # pylint: disable=cyclic-import
-        from .summed_op import SummedOp
+        from qiskit.opflow.list_ops.summed_op import SummedOp
 
         return SummedOp([self, other])
 
@@ -264,7 +264,7 @@ class ListOp(OperatorBase):
     def tensor(self, other: OperatorBase) -> OperatorBase:
         # Avoid circular dependency
         # pylint: disable=cyclic-import
-        from .tensored_op import TensoredOp
+        from qiskit.opflow.list_ops.tensored_op import TensoredOp
 
         return TensoredOp([self, other])
 
@@ -277,7 +277,7 @@ class ListOp(OperatorBase):
 
         # Avoid circular dependency
         # pylint: disable=cyclic-import
-        from .tensored_op import TensoredOp
+        from qiskit.opflow.list_ops.tensored_op import TensoredOp
 
         return TensoredOp([self] * other)
 
@@ -326,7 +326,7 @@ class ListOp(OperatorBase):
             qc.swap(trans[0], trans[1])
 
         # pylint: disable=cyclic-import
-        from ..primitive_ops.circuit_op import CircuitOp
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         return CircuitOp(qc.reverse_ops()) @ new_self @ CircuitOp(qc)
 
@@ -341,7 +341,7 @@ class ListOp(OperatorBase):
             return other.compose(new_self)
         # Avoid circular dependency
         # pylint: disable=cyclic-import
-        from .composed_op import ComposedOp
+        from qiskit.opflow.list_ops.composed_op import ComposedOp
 
         return ComposedOp([new_self, other])
 
@@ -351,7 +351,7 @@ class ListOp(OperatorBase):
 
         # Avoid circular dependency
         # pylint: disable=cyclic-import
-        from .composed_op import ComposedOp
+        from qiskit.opflow.list_ops.composed_op import ComposedOp
 
         return ComposedOp([self] * exponent)
 
@@ -420,9 +420,9 @@ class ListOp(OperatorBase):
 
         """
         # pylint: disable=cyclic-import
-        from ..state_fns.dict_state_fn import DictStateFn
-        from ..state_fns.vector_state_fn import VectorStateFn
-        from ..state_fns.sparse_vector_state_fn import SparseVectorStateFn
+        from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
+        from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
+        from qiskit.opflow.state_fns.sparse_vector_state_fn import SparseVectorStateFn
 
         # The below code only works for distributive ListOps, e.g. ListOp and SummedOp
         if not self.distributive:
@@ -472,7 +472,7 @@ class ListOp(OperatorBase):
             )
 
         # pylint: disable=cyclic-import
-        from ..evolutions.evolved_op import EvolvedOp
+        from qiskit.opflow.evolutions.evolved_op import EvolvedOp
 
         return EvolvedOp(self)
 
@@ -555,7 +555,7 @@ class ListOp(OperatorBase):
         """Returns an equivalent Operator composed of only QuantumCircuit-based primitives,
         such as ``CircuitOp`` and ``CircuitStateFn``."""
         # pylint: disable=cyclic-import
-        from ..state_fns.operator_state_fn import OperatorStateFn
+        from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
 
         if self.__class__ == ListOp:
             return ListOp(
@@ -578,7 +578,7 @@ class ListOp(OperatorBase):
         """Returns an equivalent Operator composed of only Pauli-based primitives,
         such as ``PauliOp``."""
         # pylint: disable=cyclic-import
-        from ..state_fns.state_fn import StateFn
+        from qiskit.opflow.state_fns.state_fn import StateFn
 
         if self.__class__ == ListOp:
             return ListOp(

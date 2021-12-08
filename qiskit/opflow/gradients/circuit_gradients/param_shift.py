@@ -24,20 +24,20 @@ import numpy as np
 from qiskit import QuantumCircuit
 from qiskit.circuit import Parameter, ParameterExpression, ParameterVector
 
-from .circuit_gradient import CircuitGradient
-from ...operator_base import OperatorBase
-from ...state_fns.state_fn import StateFn
-from ...operator_globals import Zero, One
-from ...state_fns.circuit_state_fn import CircuitStateFn
-from ...primitive_ops.circuit_op import CircuitOp
-from ...list_ops.summed_op import SummedOp
-from ...list_ops.list_op import ListOp
-from ...list_ops.composed_op import ComposedOp
-from ...state_fns.dict_state_fn import DictStateFn
-from ...state_fns.vector_state_fn import VectorStateFn
-from ...state_fns.sparse_vector_state_fn import SparseVectorStateFn
-from ...exceptions import OpflowError
-from ..derivative_base import _coeff_derivative
+from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
+from qiskit.opflow.operator_base import OperatorBase
+from qiskit.opflow.state_fns.state_fn import StateFn
+from qiskit.opflow.operator_globals import Zero, One
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
+from qiskit.opflow.list_ops.summed_op import SummedOp
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.list_ops.composed_op import ComposedOp
+from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
+from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
+from qiskit.opflow.state_fns.sparse_vector_state_fn import SparseVectorStateFn
+from qiskit.opflow.exceptions import OpflowError
+from qiskit.opflow.gradients.derivative_base import _coeff_derivative
 
 
 class ParamShift(CircuitGradient):

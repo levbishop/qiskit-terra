@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_ourense import FakeOurense, FakeLegacyOurense
+from qiskit.test.mock.backends.ourense.fake_ourense import FakeOurense, FakeLegacyOurense

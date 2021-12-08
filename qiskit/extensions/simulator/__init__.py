@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .snapshot import Snapshot
+from qiskit.extensions.simulator.snapshot import Snapshot

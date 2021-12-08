@@ -425,14 +425,14 @@ Exceptions
 
 from __future__ import annotations
 
-from .runningpassmanager import FlowController
-from .passmanager import PassManager
-from .passmanager_config import PassManagerConfig
-from .propertyset import PropertySet
-from .exceptions import TranspilerError, TranspilerAccessError
-from .fencedobjs import FencedDAGCircuit, FencedPropertySet
-from .basepasses import AnalysisPass, TransformationPass
-from .coupling import CouplingMap
-from .layout import Layout
-from .instruction_durations import InstructionDurations
-from .target import Target, InstructionProperties
+from qiskit.transpiler.runningpassmanager import FlowController
+from qiskit.transpiler.passmanager import PassManager
+from qiskit.transpiler.passmanager_config import PassManagerConfig
+from qiskit.transpiler.propertyset import PropertySet
+from qiskit.transpiler.exceptions import TranspilerError, TranspilerAccessError
+from qiskit.transpiler.fencedobjs import FencedDAGCircuit, FencedPropertySet
+from qiskit.transpiler.basepasses import AnalysisPass, TransformationPass
+from qiskit.transpiler.coupling import CouplingMap
+from qiskit.transpiler.layout import Layout
+from qiskit.transpiler.instruction_durations import InstructionDurations
+from qiskit.transpiler.target import Target, InstructionProperties

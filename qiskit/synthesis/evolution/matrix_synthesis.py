@@ -18,7 +18,7 @@ from scipy.linalg import expm
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-from .evolution_synthesis import EvolutionSynthesis
+from qiskit.synthesis.evolution.evolution_synthesis import EvolutionSynthesis
 
 
 class MatrixExponential(EvolutionSynthesis):

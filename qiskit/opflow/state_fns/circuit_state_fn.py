@@ -197,7 +197,7 @@ class CircuitStateFn(StateFn):
 
         if isinstance(other, CircuitStateFn) and self.is_measurement:
             # pylint: disable=cyclic-import
-            from ..operator_globals import Zero
+            from qiskit.opflow.operator_globals import Zero
 
             return self.compose(CircuitOp(other.primitive)).compose(
                 (Zero ^ self.num_qubits) * other.coeff
@@ -261,7 +261,7 @@ class CircuitStateFn(StateFn):
         statevector_backend = BasicAer.get_backend("statevector_simulator")
         transpiled = transpile(qc, statevector_backend, optimization_level=0)
         statevector = statevector_backend.run(transpiled).result().get_statevector()
-        from ..operator_globals import EVAL_SIG_DIGITS
+        from qiskit.opflow.operator_globals import EVAL_SIG_DIGITS
 
         return np.round(statevector * self.coeff, decimals=EVAL_SIG_DIGITS)
 

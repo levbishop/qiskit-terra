@@ -21,9 +21,9 @@ import tempfile
 import numpy as np
 from ply import yacc
 
-from . import node
-from .exceptions import QasmError
-from .qasmlexer import QasmLexer
+from qiskit.qasm import node
+from qiskit.qasm.exceptions import QasmError
+from qiskit.qasm.qasmlexer import QasmLexer
 
 
 class QasmParser:

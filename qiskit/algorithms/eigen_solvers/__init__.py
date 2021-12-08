@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from .numpy_eigen_solver import NumPyEigensolver
-from .eigen_solver import Eigensolver, EigensolverResult
+from qiskit.algorithms.eigen_solvers.numpy_eigen_solver import NumPyEigensolver
+from qiskit.algorithms.eigen_solvers.eigen_solver import Eigensolver, EigensolverResult
 
 __all__ = ["NumPyEigensolver", "Eigensolver", "EigensolverResult"]

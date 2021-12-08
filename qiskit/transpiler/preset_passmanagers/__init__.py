@@ -28,7 +28,7 @@ Preset Passmanagers (:mod:`qiskit.transpiler.preset_passmanagers`)
 
 from __future__ import annotations
 
-from .level0 import level_0_pass_manager
-from .level1 import level_1_pass_manager
-from .level2 import level_2_pass_manager
-from .level3 import level_3_pass_manager
+from qiskit.transpiler.preset_passmanagers.level0 import level_0_pass_manager
+from qiskit.transpiler.preset_passmanagers.level1 import level_1_pass_manager
+from qiskit.transpiler.preset_passmanagers.level2 import level_2_pass_manager
+from qiskit.transpiler.preset_passmanagers.level3 import level_3_pass_manager

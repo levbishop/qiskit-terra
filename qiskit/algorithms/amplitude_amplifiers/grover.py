@@ -25,8 +25,8 @@ from qiskit.providers import Backend, BaseBackend
 from qiskit.quantum_info import partial_trace
 from qiskit.utils import QuantumInstance
 
-from .amplification_problem import AmplificationProblem
-from .amplitude_amplifier import AmplitudeAmplifier, AmplitudeAmplifierResult
+from qiskit.algorithms.amplitude_amplifiers.amplification_problem import AmplificationProblem
+from qiskit.algorithms.amplitude_amplifiers.amplitude_amplifier import AmplitudeAmplifier, AmplitudeAmplifierResult
 
 
 class Grover(AmplitudeAmplifier):

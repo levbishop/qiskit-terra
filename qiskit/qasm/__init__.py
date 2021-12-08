@@ -43,8 +43,8 @@ from __future__ import annotations
 
 from numpy import pi
 
-from .qasm import Qasm
-from .exceptions import QasmError
+from qiskit.qasm.qasm import Qasm
+from qiskit.qasm.exceptions import QasmError
 
 try:
     import pygments
@@ -55,6 +55,6 @@ except ImportError:
 
 if HAS_PYGMENTS:
     try:
-        from .pygments import OpenQASMLexer, QasmHTMLStyle, QasmTerminalStyle
+        from qiskit.qasm.pygments import OpenQASMLexer, QasmHTMLStyle, QasmTerminalStyle
     except Exception:  # pylint: disable=broad-except
         HAS_PYGMENTS = False

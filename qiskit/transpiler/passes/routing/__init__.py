@@ -14,9 +14,9 @@
 
 from __future__ import annotations
 
-from .basic_swap import BasicSwap
-from .layout_transformation import LayoutTransformation
-from .lookahead_swap import LookaheadSwap
-from .stochastic_swap import StochasticSwap
-from .sabre_swap import SabreSwap
-from .bip_mapping import BIPMapping
+from qiskit.transpiler.passes.routing.basic_swap import BasicSwap
+from qiskit.transpiler.passes.routing.layout_transformation import LayoutTransformation
+from qiskit.transpiler.passes.routing.lookahead_swap import LookaheadSwap
+from qiskit.transpiler.passes.routing.stochastic_swap import StochasticSwap
+from qiskit.transpiler.passes.routing.sabre_swap import SabreSwap
+from qiskit.transpiler.passes.routing.bip_mapping import BIPMapping

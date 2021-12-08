@@ -41,8 +41,8 @@ from qiskit.providers import BaseBackend, Backend
 from qiskit.opflow.gradients import GradientBase
 from qiskit.utils import QuantumInstance, algorithm_globals, deprecate_function
 
-from .algorithm_result import AlgorithmResult
-from .optimizers import Optimizer, SLSQP
+from qiskit.algorithms.algorithm_result import AlgorithmResult
+from qiskit.algorithms.optimizers import Optimizer, SLSQP
 
 logger = logging.getLogger(__name__)
 

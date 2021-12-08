@@ -20,7 +20,7 @@ import numpy as np
 
 from qiskit.circuit import QuantumRegister, AncillaRegister, QuantumCircuit
 
-from ..blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 
 class WeightedAdder(BlueprintCircuit):

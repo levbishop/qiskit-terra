@@ -20,7 +20,7 @@ import numpy as np
 
 from qiskit.utils import algorithm_globals
 
-from .optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
+from qiskit.algorithms.optimizers.optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
 
 
 class GSLS(Optimizer):

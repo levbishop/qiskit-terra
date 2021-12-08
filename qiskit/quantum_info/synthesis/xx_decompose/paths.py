@@ -37,7 +37,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from .polytopes import ConvexPolytopeData, PolytopeData, manual_get_vertex, polytope_has_element
+from qiskit.quantum_info.synthesis.xx_decompose.polytopes import ConvexPolytopeData, PolytopeData, manual_get_vertex, polytope_has_element
 
 
 def get_augmented_coordinate(target_coordinate, strengths):

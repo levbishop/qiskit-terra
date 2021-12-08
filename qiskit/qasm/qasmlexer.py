@@ -24,8 +24,8 @@ import os
 import numpy as np
 from ply import lex
 
-from . import node
-from .exceptions import QasmError
+from qiskit.qasm import node
+from qiskit.qasm.exceptions import QasmError
 
 CORE_LIBS_PATH = os.path.join(os.path.dirname(__file__), "libs")
 CORE_LIBS = os.listdir(CORE_LIBS_PATH)

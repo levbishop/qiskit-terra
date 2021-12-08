@@ -231,8 +231,8 @@ class ControlFlowBuilderBlock:
         used in total."""
         if not self._allow_jumps:
             # pylint: disable=cyclic-import
-            from .break_loop import BreakLoopOp, BreakLoopPlaceholder
-            from .continue_loop import ContinueLoopOp, ContinueLoopPlaceholder
+            from qiskit.circuit.controlflow.break_loop import BreakLoopOp, BreakLoopPlaceholder
+            from qiskit.circuit.controlflow.continue_loop import ContinueLoopOp, ContinueLoopPlaceholder
 
             forbidden = (BreakLoopOp, BreakLoopPlaceholder, ContinueLoopOp, ContinueLoopPlaceholder)
             if isinstance(operation, forbidden):

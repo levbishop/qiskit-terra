@@ -19,8 +19,8 @@ import numpy as np
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumregister import QuantumRegister
 
-from .rzx import RZXGate
-from .x import XGate
+from qiskit.circuit.library.standard_gates.rzx import RZXGate
+from qiskit.circuit.library.standard_gates.x import XGate
 
 
 class ECRGate(Gate):

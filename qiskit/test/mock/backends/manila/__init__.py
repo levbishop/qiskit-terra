@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_manila import FakeManila
+from qiskit.test.mock.backends.manila.fake_manila import FakeManila

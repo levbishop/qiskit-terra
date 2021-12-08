@@ -17,7 +17,7 @@ from __future__ import annotations
 import warnings
 from abc import ABC, abstractmethod
 
-from .exceptions import QiskitBackendNotFoundError
+from qiskit.providers.exceptions import QiskitBackendNotFoundError
 
 
 class BaseProvider(ABC):

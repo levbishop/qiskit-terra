@@ -202,7 +202,7 @@ class OperatorStateFn(StateFn):
         if front is None:
             matrix = cast(MatrixOp, self.primitive.to_matrix_op()).primitive.data
             # pylint: disable=cyclic-import
-            from .vector_state_fn import VectorStateFn
+            from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
 
             return VectorStateFn(matrix[0, :])
 
@@ -227,7 +227,7 @@ class OperatorStateFn(StateFn):
             return result * self.coeff * self.primitive.coeff
 
         # pylint: disable=cyclic-import
-        from .vector_state_fn import VectorStateFn
+        from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
 
         if isinstance(self.primitive, PauliSumOp) and isinstance(front, VectorStateFn):
             return (

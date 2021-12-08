@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from .approximate import ApproximateCircuit
+from qiskit.transpiler.synthesis.aqc.approximate import ApproximateCircuit
 
 
 class CNOTUnitCircuit(ApproximateCircuit):

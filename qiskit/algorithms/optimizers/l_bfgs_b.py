@@ -20,7 +20,7 @@ import numpy as np
 
 from qiskit.utils.deprecation import deprecate_arguments
 
-from .scipy_optimizer import SciPyOptimizer
+from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 
 
 class L_BFGS_B(SciPyOptimizer):  # pylint: disable=invalid-name

@@ -89,7 +89,7 @@ class EvolvedOp(PrimitiveOp):
 
     def _expand_dim(self, num_qubits: int) -> TensoredOp:
         # pylint: disable=cyclic-import
-        from ..operator_globals import I
+        from qiskit.opflow.operator_globals import I
 
         return self.tensor(I ^ num_qubits)
 

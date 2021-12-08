@@ -15,8 +15,8 @@
 from __future__ import annotations
 
 
-from .derivative_base import DerivativeBase
-from .circuit_qfis import CircuitQFI
+from qiskit.opflow.gradients.derivative_base import DerivativeBase
+from qiskit.opflow.gradients.circuit_qfis import CircuitQFI
 
 
 class QFIBase(DerivativeBase):
@@ -45,15 +45,15 @@ class QFIBase(DerivativeBase):
             self._qfi_method = qfi_method
 
         elif qfi_method == "lin_comb_full":
-            from .circuit_qfis import LinCombFull
+            from qiskit.opflow.gradients.circuit_qfis import LinCombFull
 
             self._qfi_method = LinCombFull()
         elif qfi_method == "overlap_block_diag":
-            from .circuit_qfis import OverlapBlockDiag
+            from qiskit.opflow.gradients.circuit_qfis import OverlapBlockDiag
 
             self._qfi_method = OverlapBlockDiag()
         elif qfi_method == "overlap_diag":
-            from .circuit_qfis import OverlapDiag
+            from qiskit.opflow.gradients.circuit_qfis import OverlapDiag
 
             self._qfi_method = OverlapDiag()
         else:

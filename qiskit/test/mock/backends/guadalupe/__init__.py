@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_guadalupe import FakeGuadalupe
+from qiskit.test.mock.backends.guadalupe.fake_guadalupe import FakeGuadalupe

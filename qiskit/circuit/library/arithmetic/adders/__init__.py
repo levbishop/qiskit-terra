@@ -14,6 +14,6 @@
 
 from __future__ import annotations
 
-from .cdkm_ripple_carry_adder import CDKMRippleCarryAdder
-from .draper_qft_adder import DraperQFTAdder
-from .vbe_ripple_carry_adder import VBERippleCarryAdder
+from qiskit.circuit.library.arithmetic.adders.cdkm_ripple_carry_adder import CDKMRippleCarryAdder
+from qiskit.circuit.library.arithmetic.adders.draper_qft_adder import DraperQFTAdder
+from qiskit.circuit.library.arithmetic.adders.vbe_ripple_carry_adder import VBERippleCarryAdder

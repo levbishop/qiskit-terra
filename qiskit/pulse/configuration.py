@@ -16,8 +16,8 @@ Configurations for pulse experiments.
 from __future__ import annotations
 
 
-from .channels import PulseChannel, DriveChannel, MeasureChannel
-from .exceptions import PulseError
+from qiskit.pulse.channels import PulseChannel, DriveChannel, MeasureChannel
+from qiskit.pulse.exceptions import PulseError
 
 
 class Kernel:

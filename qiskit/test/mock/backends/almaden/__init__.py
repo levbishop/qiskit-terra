@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_almaden import FakeAlmaden, FakeLegacyAlmaden
+from qiskit.test.mock.backends.almaden.fake_almaden import FakeAlmaden, FakeLegacyAlmaden

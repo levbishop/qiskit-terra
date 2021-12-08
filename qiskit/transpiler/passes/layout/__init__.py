@@ -14,14 +14,14 @@
 
 from __future__ import annotations
 
-from .set_layout import SetLayout
-from .trivial_layout import TrivialLayout
-from .dense_layout import DenseLayout
-from .noise_adaptive_layout import NoiseAdaptiveLayout
-from .sabre_layout import SabreLayout
-from .csp_layout import CSPLayout
-from .vf2_layout import VF2Layout
-from .apply_layout import ApplyLayout
-from .layout_2q_distance import Layout2qDistance
-from .enlarge_with_ancilla import EnlargeWithAncilla
-from .full_ancilla_allocation import FullAncillaAllocation
+from qiskit.transpiler.passes.layout.set_layout import SetLayout
+from qiskit.transpiler.passes.layout.trivial_layout import TrivialLayout
+from qiskit.transpiler.passes.layout.dense_layout import DenseLayout
+from qiskit.transpiler.passes.layout.noise_adaptive_layout import NoiseAdaptiveLayout
+from qiskit.transpiler.passes.layout.sabre_layout import SabreLayout
+from qiskit.transpiler.passes.layout.csp_layout import CSPLayout
+from qiskit.transpiler.passes.layout.vf2_layout import VF2Layout
+from qiskit.transpiler.passes.layout.apply_layout import ApplyLayout
+from qiskit.transpiler.passes.layout.layout_2q_distance import Layout2qDistance
+from qiskit.transpiler.passes.layout.enlarge_with_ancilla import EnlargeWithAncilla
+from qiskit.transpiler.passes.layout.full_ancilla_allocation import FullAncillaAllocation

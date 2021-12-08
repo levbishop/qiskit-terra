@@ -15,8 +15,8 @@
 from __future__ import annotations
 
 
-from .circuit_gradients.circuit_gradient import CircuitGradient
-from .derivative_base import DerivativeBase
+from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
+from qiskit.opflow.gradients.derivative_base import DerivativeBase
 
 
 class GradientBase(DerivativeBase):
@@ -40,18 +40,18 @@ class GradientBase(DerivativeBase):
         if isinstance(grad_method, CircuitGradient):
             self._grad_method = grad_method
         elif grad_method == "param_shift":
-            from .circuit_gradients.param_shift import ParamShift
+            from qiskit.opflow.gradients.circuit_gradients.param_shift import ParamShift
 
             self._grad_method = ParamShift(analytic=True)
 
         elif grad_method == "fin_diff":
-            from .circuit_gradients.param_shift import ParamShift
+            from qiskit.opflow.gradients.circuit_gradients.param_shift import ParamShift
 
             epsilon = kwargs.get("epsilon", 1e-6)
             self._grad_method = ParamShift(analytic=False, epsilon=epsilon)
 
         elif grad_method == "lin_comb":
-            from .circuit_gradients.lin_comb import LinComb
+            from qiskit.opflow.gradients.circuit_gradients.lin_comb import LinComb
 
             self._grad_method = LinComb()
         else:

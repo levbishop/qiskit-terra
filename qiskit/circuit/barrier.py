@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from qiskit.exceptions import QiskitError
 
-from .instruction import Instruction
+from qiskit.circuit.instruction import Instruction
 
 
 class Barrier(Instruction):

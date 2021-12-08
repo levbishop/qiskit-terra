@@ -59,15 +59,15 @@ backend etc.
 
 from __future__ import annotations
 
-from .quantum_instance import QuantumInstance
-from .deprecation import deprecate_arguments, deprecate_function
-from .multiprocessing import local_hardware_info, is_main_process
-from .units import apply_prefix, detach_prefix
-from .circuit_utils import summarize_circuits
-from .entangler_map import get_entangler_map, validate_entangler_map
-from .backend_utils import has_ibmq, has_aer
-from .name_unnamed_args import name_args
-from .algorithm_globals import algorithm_globals
+from qiskit.utils.quantum_instance import QuantumInstance
+from qiskit.utils.deprecation import deprecate_arguments, deprecate_function
+from qiskit.utils.multiprocessing import local_hardware_info, is_main_process
+from qiskit.utils.units import apply_prefix, detach_prefix
+from qiskit.utils.circuit_utils import summarize_circuits
+from qiskit.utils.entangler_map import get_entangler_map, validate_entangler_map
+from qiskit.utils.backend_utils import has_ibmq, has_aer
+from qiskit.utils.name_unnamed_args import name_args
+from qiskit.utils.algorithm_globals import algorithm_globals
 
 __all__ = [
     "QuantumInstance",

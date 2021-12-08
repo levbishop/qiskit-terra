@@ -16,5 +16,5 @@ OpFlow Mixins
 
 from __future__ import annotations
 
-from .star_algebra import StarAlgebraMixin
-from .tensor import TensorMixin
+from qiskit.opflow.mixins.star_algebra import StarAlgebraMixin
+from qiskit.opflow.mixins.tensor import TensorMixin

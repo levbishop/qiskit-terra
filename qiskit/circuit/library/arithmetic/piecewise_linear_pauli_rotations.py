@@ -22,9 +22,9 @@ import numpy as np
 from qiskit.circuit import QuantumRegister, AncillaRegister, QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
 
-from .functional_pauli_rotations import FunctionalPauliRotations
-from .linear_pauli_rotations import LinearPauliRotations
-from .integer_comparator import IntegerComparator
+from qiskit.circuit.library.arithmetic.functional_pauli_rotations import FunctionalPauliRotations
+from qiskit.circuit.library.arithmetic.linear_pauli_rotations import LinearPauliRotations
+from qiskit.circuit.library.arithmetic.integer_comparator import IntegerComparator
 
 
 class PiecewiseLinearPauliRotations(FunctionalPauliRotations):

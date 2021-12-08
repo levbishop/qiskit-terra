@@ -89,22 +89,22 @@ class StateFn(OperatorBase):
 
         # pylint: disable=cyclic-import
         if isinstance(primitive, (str, dict, Result)):
-            from .dict_state_fn import DictStateFn
+            from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
 
             return DictStateFn.__new__(DictStateFn)
 
         if isinstance(primitive, (list, np.ndarray, Statevector)):
-            from .vector_state_fn import VectorStateFn
+            from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
 
             return VectorStateFn.__new__(VectorStateFn)
 
         if isinstance(primitive, (QuantumCircuit, Instruction)):
-            from .circuit_state_fn import CircuitStateFn
+            from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
             return CircuitStateFn.__new__(CircuitStateFn)
 
         if isinstance(primitive, OperatorBase):
-            from .operator_state_fn import OperatorStateFn
+            from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
 
             return OperatorStateFn.__new__(OperatorStateFn)
 
@@ -255,7 +255,7 @@ class StateFn(OperatorBase):
         self, other: OperatorBase, permutation: list[int] | None = None
     ) -> tuple[OperatorBase, OperatorBase]:
         # pylint: disable=cyclic-import
-        from ..operator_globals import Zero
+        from qiskit.opflow.operator_globals import Zero
 
         if self == StateFn({"0": 1}, is_measurement=True):
             # Zero is special - we'll expand it to the correct qubit number.
@@ -314,7 +314,7 @@ class StateFn(OperatorBase):
         if front:
             return other.compose(self)
         # TODO maybe include some reduction here in the subclasses - vector and Op, op and Op, etc.
-        from ..primitive_ops.circuit_op import CircuitOp
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         if self.primitive == {"0" * self.num_qubits: 1.0} and isinstance(other, CircuitOp):
             # Returning CircuitStateFn
@@ -322,7 +322,7 @@ class StateFn(OperatorBase):
                 other.primitive, is_measurement=self.is_measurement, coeff=self.coeff * other.coeff
             )
 
-        from ..list_ops.composed_op import ComposedOp
+        from qiskit.opflow.list_ops.composed_op import ComposedOp
 
         if isinstance(other, ComposedOp):
             return ComposedOp([new_self] + other.oplist, coeff=new_self.coeff * other.coeff)
@@ -376,7 +376,7 @@ class StateFn(OperatorBase):
         if isinstance(self.coeff, ParameterExpression):
             unrolled_dict = self._unroll_param_dict(param_dict)
             if isinstance(unrolled_dict, list):
-                from ..list_ops.list_op import ListOp
+                from qiskit.opflow.list_ops.list_op import ListOp
 
                 return ListOp([self.assign_parameters(param_dict) for param_dict in unrolled_dict])
             if self.coeff.parameters <= set(unrolled_dict.keys()):
@@ -424,7 +424,7 @@ class StateFn(OperatorBase):
             A VectorStateFn equivalent to self.
         """
         # pylint: disable=cyclic-import
-        from .vector_state_fn import VectorStateFn
+        from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
 
         return VectorStateFn(self.to_matrix(massive=massive), is_measurement=self.is_measurement)
 

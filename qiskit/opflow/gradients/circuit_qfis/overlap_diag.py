@@ -21,14 +21,14 @@ from qiskit.circuit import ParameterVector, ParameterExpression
 from qiskit.circuit.library import RZGate, RXGate, RYGate
 from qiskit.converters import dag_to_circuit, circuit_to_dag
 
-from ...list_ops.list_op import ListOp
-from ...primitive_ops.circuit_op import CircuitOp
-from ...expectations.pauli_expectation import PauliExpectation
-from ...operator_globals import I, Z, Y, X, Zero
-from ...state_fns.state_fn import StateFn
-from ...state_fns.circuit_state_fn import CircuitStateFn
-from .circuit_qfi import CircuitQFI
-from ..derivative_base import _coeff_derivative
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
+from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
+from qiskit.opflow.operator_globals import I, Z, Y, X, Zero
+from qiskit.opflow.state_fns.state_fn import StateFn
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
+from qiskit.opflow.gradients.derivative_base import _coeff_derivative
 
 
 class OverlapDiag(CircuitQFI):

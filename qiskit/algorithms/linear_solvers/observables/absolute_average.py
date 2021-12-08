@@ -21,7 +21,7 @@ from qiskit import QuantumCircuit
 from qiskit.opflow import I, Z, TensoredOp
 from qiskit.quantum_info import Statevector
 
-from .linear_system_observable import LinearSystemObservable
+from qiskit.algorithms.linear_solvers.observables.linear_system_observable import LinearSystemObservable
 
 
 class AbsoluteAverage(LinearSystemObservable):

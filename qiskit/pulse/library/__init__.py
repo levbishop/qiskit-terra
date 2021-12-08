@@ -40,7 +40,7 @@ those pulses, which can greatly reduce the size of the job sent to the backend.
 """
 from __future__ import annotations
 
-from .discrete import *
-from .parametric_pulses import ParametricPulse, Gaussian, GaussianSquare, Drag, Constant
-from .pulse import Pulse
-from .waveform import Waveform
+from qiskit.pulse.library.discrete import *
+from qiskit.pulse.library.parametric_pulses import ParametricPulse, Gaussian, GaussianSquare, Drag, Constant
+from qiskit.pulse.library.pulse import Pulse
+from qiskit.pulse.library.waveform import Waveform

@@ -27,7 +27,7 @@ from qiskit.circuit.measure import Measure
 from qiskit.visualization.qcstyle import load_style
 from qiskit.circuit.tools.pi_check import pi_check
 
-from .utils import (
+from qiskit.visualization.utils import (
     get_gate_ctrl_text,
     get_param_str,
     get_bit_label,

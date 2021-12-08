@@ -26,7 +26,7 @@ from qiskit.circuit import Instruction, Parameter, ParameterVector, ParameterExp
 from qiskit.circuit.parametertable import ParameterTable
 from qiskit.exceptions import QiskitError
 
-from ..blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 
 class NLocal(BlueprintCircuit):

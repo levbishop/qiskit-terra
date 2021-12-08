@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from qiskit.circuit.instruction import Instruction
 
-from .builder import InstructionPlaceholder
+from qiskit.circuit.controlflow.builder import InstructionPlaceholder
 
 
 class BreakLoopOp(Instruction):

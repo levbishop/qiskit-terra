@@ -28,7 +28,7 @@ import numpy as np
 
 from qiskit.utils import algorithm_globals
 
-from .optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
+from qiskit.algorithms.optimizers.optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
 
 # number of function evaluations, parameters, loss, stepsize, accepted
 CALLBACK = Callable[[int, np.ndarray, float, float, bool], None]

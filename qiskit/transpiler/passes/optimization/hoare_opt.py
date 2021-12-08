@@ -22,7 +22,7 @@ from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.standard_gates import CZGate, CU1Gate, MCU1Gate
 
-from . import _gate_extension  # pylint: disable=unused-import
+from qiskit.transpiler.passes.optimization import _gate_extension  # pylint: disable=unused-import
 
 try:
     from z3 import And, Or, Not, Implies, Solver, Bool, unsat

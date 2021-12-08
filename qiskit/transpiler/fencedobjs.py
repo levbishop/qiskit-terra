@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from .exceptions import TranspilerError
+from qiskit.transpiler.exceptions import TranspilerError
 
 
 class FencedObject:

@@ -21,8 +21,8 @@ import numpy as np
 
 from qiskit.tools import parallel
 
-from ..user_config import get_config
-from ..exceptions import QiskitError
+from qiskit.user_config import get_config
+from qiskit.exceptions import QiskitError
 
 logger = logging.getLogger(__name__)
 

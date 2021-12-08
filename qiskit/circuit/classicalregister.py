@@ -19,8 +19,8 @@ import itertools
 
 from qiskit.circuit.exceptions import CircuitError
 
-from .register import Register
-from .bit import Bit
+from qiskit.circuit.register import Register
+from qiskit.circuit.bit import Bit
 
 
 class Clbit(Bit):

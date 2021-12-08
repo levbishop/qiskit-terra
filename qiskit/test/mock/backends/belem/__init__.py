@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_belem import FakeBelem, FakeLegacyBelem
+from qiskit.test.mock.backends.belem.fake_belem import FakeBelem, FakeLegacyBelem

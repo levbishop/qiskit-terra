@@ -30,7 +30,7 @@ from qiskit.visualization.utils import (
     get_condition_label,
 )
 
-from .exceptions import VisualizationError
+from qiskit.visualization.exceptions import VisualizationError
 
 
 class TextDrawerCregBundle(VisualizationError):

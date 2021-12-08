@@ -20,7 +20,7 @@ import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError
 
-from .optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
+from qiskit.algorithms.optimizers.optimizer import Optimizer, OptimizerSupportLevel, OptimizerResult, POINT
 
 try:
     import skquant.opt as skq

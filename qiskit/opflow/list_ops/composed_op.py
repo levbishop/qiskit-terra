@@ -76,8 +76,8 @@ class ComposedOp(ListOp):
             OpflowError: for operators where a single underlying circuit can not be obtained.
         """
         # pylint: disable=cyclic-import
-        from ..state_fns.circuit_state_fn import CircuitStateFn
-        from ..primitive_ops.primitive_op import PrimitiveOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+        from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
 
         circuit_op = self.to_circuit_op()
         if isinstance(circuit_op, (PrimitiveOp, CircuitStateFn)):
@@ -124,7 +124,7 @@ class ComposedOp(ListOp):
             return 0.0
 
         # pylint: disable=cyclic-import
-        from ..state_fns.state_fn import StateFn
+        from qiskit.opflow.state_fns.state_fn import StateFn
 
         def tree_recursive_eval(r, l_arg):
             if isinstance(r, list):

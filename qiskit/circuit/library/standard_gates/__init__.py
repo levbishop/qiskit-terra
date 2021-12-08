@@ -71,30 +71,30 @@ Standard gates (:mod:`qiskit.circuit.library.standard_gates`)
 
 from __future__ import annotations
 
-from .h import HGate, CHGate
-from .i import IGate
-from .p import PhaseGate, CPhaseGate, MCPhaseGate
-from .ms import MSGate
-from .r import RGate
-from .rx import RXGate, CRXGate
-from .rxx import RXXGate
-from .ry import RYGate, CRYGate
-from .ryy import RYYGate
-from .rz import RZGate, CRZGate
-from .rzz import RZZGate
-from .rzx import RZXGate
-from .ecr import ECRGate
-from .s import SGate, SdgGate
-from .swap import SwapGate, CSwapGate
-from .iswap import iSwapGate
-from .sx import SXGate, SXdgGate, CSXGate
-from .dcx import DCXGate
-from .t import TGate, TdgGate
-from .u import UGate, CUGate
-from .u1 import U1Gate, CU1Gate, MCU1Gate
-from .u2 import U2Gate
-from .u3 import U3Gate, CU3Gate
-from .x import (
+from qiskit.circuit.library.standard_gates.h import HGate, CHGate
+from qiskit.circuit.library.standard_gates.i import IGate
+from qiskit.circuit.library.standard_gates.p import PhaseGate, CPhaseGate, MCPhaseGate
+from qiskit.circuit.library.standard_gates.ms import MSGate
+from qiskit.circuit.library.standard_gates.r import RGate
+from qiskit.circuit.library.standard_gates.rx import RXGate, CRXGate
+from qiskit.circuit.library.standard_gates.rxx import RXXGate
+from qiskit.circuit.library.standard_gates.ry import RYGate, CRYGate
+from qiskit.circuit.library.standard_gates.ryy import RYYGate
+from qiskit.circuit.library.standard_gates.rz import RZGate, CRZGate
+from qiskit.circuit.library.standard_gates.rzz import RZZGate
+from qiskit.circuit.library.standard_gates.rzx import RZXGate
+from qiskit.circuit.library.standard_gates.ecr import ECRGate
+from qiskit.circuit.library.standard_gates.s import SGate, SdgGate
+from qiskit.circuit.library.standard_gates.swap import SwapGate, CSwapGate
+from qiskit.circuit.library.standard_gates.iswap import iSwapGate
+from qiskit.circuit.library.standard_gates.sx import SXGate, SXdgGate, CSXGate
+from qiskit.circuit.library.standard_gates.dcx import DCXGate
+from qiskit.circuit.library.standard_gates.t import TGate, TdgGate
+from qiskit.circuit.library.standard_gates.u import UGate, CUGate
+from qiskit.circuit.library.standard_gates.u1 import U1Gate, CU1Gate, MCU1Gate
+from qiskit.circuit.library.standard_gates.u2 import U2Gate
+from qiskit.circuit.library.standard_gates.u3 import U3Gate, CU3Gate
+from qiskit.circuit.library.standard_gates.x import (
     XGate,
     CXGate,
     CCXGate,
@@ -108,6 +108,6 @@ from .x import (
     MCXRecursive,
     MCXVChain,
 )
-from .y import YGate, CYGate
-from .z import ZGate, CZGate
-from .multi_control_rotation_gates import mcrx, mcry, mcrz
+from qiskit.circuit.library.standard_gates.y import YGate, CYGate
+from qiskit.circuit.library.standard_gates.z import ZGate, CZGate
+from qiskit.circuit.library.standard_gates.multi_control_rotation_gates import mcrx, mcry, mcrz

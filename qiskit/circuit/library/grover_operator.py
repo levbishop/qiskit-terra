@@ -21,7 +21,7 @@ from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info import Statevector, Operator, DensityMatrix
 
-from .standard_gates import MCXGate
+from qiskit.circuit.library.standard_gates import MCXGate
 
 
 class GroverOperator(QuantumCircuit):

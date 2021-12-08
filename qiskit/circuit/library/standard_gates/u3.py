@@ -218,8 +218,8 @@ class CU3Gate(ControlledGate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u1 import U1Gate
-        from .x import CXGate  # pylint: disable=cyclic-import
+        from qiskit.circuit.library.standard_gates.u1 import U1Gate
+        from qiskit.circuit.library.standard_gates.x import CXGate  # pylint: disable=cyclic-import
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -290,7 +290,7 @@ def _gray_code_chain(q, num_ctrl_qubits, gate):
     Ported and adapted from Aqua (github.com/Qiskit/qiskit-aqua),
     commit 769ca8d, file qiskit/aqua/circuits/gates/multi_control_u1_gate.py.
     """
-    from .x import CXGate
+    from qiskit.circuit.library.standard_gates.x import CXGate
 
     rule = []
     q_controls, q_target = q[:num_ctrl_qubits], q[num_ctrl_qubits]

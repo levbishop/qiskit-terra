@@ -34,9 +34,9 @@ from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import RXXGate, RYYGate, RZGate
 from qiskit.exceptions import QiskitError
 
-from .paths import decomposition_hop
-from .utilities import EPSILON, safe_arccos
-from .weyl import (
+from qiskit.quantum_info.synthesis.xx_decompose.paths import decomposition_hop
+from qiskit.quantum_info.synthesis.xx_decompose.utilities import EPSILON, safe_arccos
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import (
     apply_reflection,
     apply_shift,
     canonical_rotation_circuit,

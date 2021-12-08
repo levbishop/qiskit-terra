@@ -26,8 +26,8 @@ try:
     HAS_IBMQ = True
 except ImportError:
     HAS_IBMQ = False
-from .job_widgets import build_job_viewer, make_clear_button, make_labels, create_job_widget
-from .watcher_monitor import _job_monitor
+from qiskit.tools.jupyter.job_widgets import build_job_viewer, make_clear_button, make_labels, create_job_widget
+from qiskit.tools.jupyter.watcher_monitor import _job_monitor
 
 
 class JobWatcher(Subscriber):

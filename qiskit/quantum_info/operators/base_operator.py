@@ -22,7 +22,7 @@ from abc import ABC
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.op_shape import OpShape
 
-from .mixins import GroupMixin
+from qiskit.quantum_info.operators.mixins import GroupMixin
 
 
 class BaseOperator(GroupMixin, ABC):

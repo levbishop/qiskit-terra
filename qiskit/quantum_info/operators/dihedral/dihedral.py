@@ -28,8 +28,8 @@ from qiskit.quantum_info.synthesis.cnotdihedral_decompose import decompose_cnotd
 from qiskit.quantum_info.operators.mixins import generate_apidocs, AdjointMixin
 from qiskit.circuit import QuantumCircuit, Instruction
 
-from .dihedral_circuits import _append_circuit
-from .polynomial import SpecialPolynomial
+from qiskit.quantum_info.operators.dihedral.dihedral_circuits import _append_circuit
+from qiskit.quantum_info.operators.dihedral.polynomial import SpecialPolynomial
 
 
 class CNOTDihedral(BaseOperator, AdjointMixin):

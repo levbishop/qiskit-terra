@@ -23,9 +23,9 @@ import warnings
 from abc import ABC, abstractmethod
 from typing import Callable
 
-from .jobstatus import JobStatus, JOB_FINAL_STATES
-from .exceptions import JobTimeoutError
-from .basebackend import BaseBackend
+from qiskit.providers.jobstatus import JobStatus, JOB_FINAL_STATES
+from qiskit.providers.exceptions import JobTimeoutError
+from qiskit.providers.basebackend import BaseBackend
 
 
 class BaseJob(ABC):

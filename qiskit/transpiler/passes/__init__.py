@@ -151,7 +151,7 @@ Additional Passes
 # layout selection (placement)
 from __future__ import annotations
 
-from .layout import (
+from qiskit.transpiler.passes.layout import (
     SetLayout,
     TrivialLayout,
     DenseLayout,
@@ -166,7 +166,7 @@ from .layout import (
 )
 
 # routing
-from .routing import (
+from qiskit.transpiler.passes.routing import (
     BasicSwap,
     LayoutTransformation,
     LookaheadSwap,
@@ -176,10 +176,10 @@ from .routing import (
 )
 
 # basis change
-from .basis import Decompose, Unroller, UnrollCustomDefinitions, Unroll3qOrMore, BasisTranslator
+from qiskit.transpiler.passes.basis import Decompose, Unroller, UnrollCustomDefinitions, Unroll3qOrMore, BasisTranslator
 
 # optimization
-from .optimization import (
+from qiskit.transpiler.passes.optimization import (
     Optimize1qGates,
     Optimize1qGatesDecomposition,
     Collect2qBlocks,
@@ -201,7 +201,7 @@ from .optimization import (
 )
 
 # circuit analysis
-from .analysis import (
+from qiskit.transpiler.passes.analysis import (
     ResourceEstimation,
     Depth,
     Size,
@@ -213,13 +213,13 @@ from .analysis import (
 )
 
 # synthesis
-from .synthesis import UnitarySynthesis, unitary_synthesis_plugin_names
+from qiskit.transpiler.passes.synthesis import UnitarySynthesis, unitary_synthesis_plugin_names
 
 # calibration
-from .calibration import PulseGates, RZXCalibrationBuilder, RZXCalibrationBuilderNoEcho
+from qiskit.transpiler.passes.calibration import PulseGates, RZXCalibrationBuilder, RZXCalibrationBuilderNoEcho
 
 # circuit scheduling
-from .scheduling import (
+from qiskit.transpiler.passes.scheduling import (
     TimeUnitConversion,
     ALAPSchedule,
     ASAPSchedule,
@@ -229,9 +229,9 @@ from .scheduling import (
 )
 
 # additional utility passes
-from .utils import CheckCXDirection  # Deprecated
-from .utils import CXDirection  # Deprecated
-from .utils import (
+from qiskit.transpiler.passes.utils import CheckCXDirection  # Deprecated
+from qiskit.transpiler.passes.utils import CXDirection  # Deprecated
+from qiskit.transpiler.passes.utils import (
     CheckMap,
     CheckGateDirection,
     GateDirection,

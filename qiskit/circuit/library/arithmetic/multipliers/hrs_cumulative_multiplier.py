@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from qiskit.circuit import QuantumRegister, AncillaRegister, QuantumCircuit
 
-from .multiplier import Multiplier
+from qiskit.circuit.library.arithmetic.multipliers.multiplier import Multiplier
 
 
 class HRSCumulativeMultiplier(Multiplier):

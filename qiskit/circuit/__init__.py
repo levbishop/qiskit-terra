@@ -226,28 +226,28 @@ Random Circuits
 """
 from __future__ import annotations
 
-from .quantumcircuit import QuantumCircuit
-from .classicalregister import ClassicalRegister, Clbit
-from .quantumregister import QuantumRegister, Qubit, AncillaRegister, AncillaQubit
-from .gate import Gate
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.quantumregister import QuantumRegister, Qubit, AncillaRegister, AncillaQubit
+from qiskit.circuit.gate import Gate
 
 # pylint: disable=cyclic-import
-from .controlledgate import ControlledGate
-from .instruction import Instruction
-from .instructionset import InstructionSet
-from .barrier import Barrier
-from .delay import Delay
-from .measure import Measure
-from .reset import Reset
-from .parameter import Parameter
-from .parametervector import ParameterVector
-from .parameterexpression import ParameterExpression
-from .equivalence import EquivalenceLibrary
+from qiskit.circuit.controlledgate import ControlledGate
+from qiskit.circuit.instruction import Instruction
+from qiskit.circuit.instructionset import InstructionSet
+from qiskit.circuit.barrier import Barrier
+from qiskit.circuit.delay import Delay
+from qiskit.circuit.measure import Measure
+from qiskit.circuit.reset import Reset
+from qiskit.circuit.parameter import Parameter
+from qiskit.circuit.parametervector import ParameterVector
+from qiskit.circuit.parameterexpression import ParameterExpression
+from qiskit.circuit.equivalence import EquivalenceLibrary
 
 # These must be last to avoid cyclic import problems?
-from .classicalfunction.types import Int1, Int2
-from .classicalfunction import classical_function, BooleanExpression
-from .controlflow import (
+from qiskit.circuit.classicalfunction.types import Int1, Int2
+from qiskit.circuit.classicalfunction import classical_function, BooleanExpression
+from qiskit.circuit.controlflow import (
     ControlFlowOp,
     WhileLoopOp,
     ForLoopOp,

@@ -21,7 +21,7 @@ from qiskit.qasm import pi
 from qiskit.circuit import EquivalenceLibrary, Parameter, QuantumCircuit, QuantumRegister
 from qiskit.quantum_info.synthesis.ion_decompose import cnot_rxx_decompose
 
-from . import (
+from qiskit.circuit.library.standard_gates import (
     HGate,
     CHGate,
     MSGate,

@@ -16,4 +16,4 @@ Utils for test backends.
 
 from __future__ import annotations
 
-from .configurable_backend import ConfigurableFakeBackend
+from qiskit.test.mock.utils.configurable_backend import ConfigurableFakeBackend

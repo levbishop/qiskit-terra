@@ -22,8 +22,8 @@ import numpy as np
 from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister
 from qiskit.circuit.exceptions import CircuitError
 
-from ..boolean_logic import OR
-from ..blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.library.boolean_logic import OR
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 
 class IntegerComparator(BlueprintCircuit):

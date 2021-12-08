@@ -13,7 +13,7 @@
 """Node for an OPENQASM U statement."""
 from __future__ import annotations
 
-from .node import Node
+from qiskit.qasm.node.node import Node
 
 
 class UniversalUnitary(Node):

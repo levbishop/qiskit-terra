@@ -21,7 +21,7 @@ from numpy import pi
 from qiskit.circuit import QuantumCircuit, Parameter
 from qiskit.circuit.library.standard_gates import RZGate
 
-from .two_local import TwoLocal
+from qiskit.circuit.library.n_local.two_local import TwoLocal
 
 
 class ExcitationPreserving(TwoLocal):

@@ -17,7 +17,7 @@ from __future__ import annotations
 import io
 from typing import Sequence
 
-from . import ast
+from qiskit.qasm3 import ast
 
 
 class BasicPrinter:

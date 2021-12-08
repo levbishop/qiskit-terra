@@ -30,8 +30,8 @@ from qiskit.providers.jobstatus import JOB_FINAL_STATES
 from qiskit.result import Result
 from qiskit.qobj import QasmQobj
 
-from ..exceptions import QiskitError, MissingOptionalLibraryError
-from .backend_utils import (
+from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
+from qiskit.utils.backend_utils import (
     is_aer_provider,
     is_basicaer_provider,
     is_simulator_backend,

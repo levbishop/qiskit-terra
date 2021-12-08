@@ -21,7 +21,7 @@ from qiskit.circuit import QuantumRegister, QuantumCircuit
 from qiskit.circuit.library.standard_gates import PhaseGate
 from qiskit.circuit.library.basis_change import QFT
 
-from .multiplier import Multiplier
+from qiskit.circuit.library.arithmetic.multipliers.multiplier import Multiplier
 
 
 class RGQFTMultiplier(Multiplier):

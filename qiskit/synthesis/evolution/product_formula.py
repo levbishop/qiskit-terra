@@ -23,7 +23,7 @@ from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.quantum_info import SparsePauliOp, Pauli
 
-from .evolution_synthesis import EvolutionSynthesis
+from qiskit.synthesis.evolution.evolution_synthesis import EvolutionSynthesis
 
 
 class ProductFormula(EvolutionSynthesis):

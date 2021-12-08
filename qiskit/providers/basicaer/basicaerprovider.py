@@ -23,9 +23,9 @@ from qiskit.providers.provider import ProviderV1
 from qiskit.providers.exceptions import QiskitBackendNotFoundError
 from qiskit.providers.providerutils import resolve_backend_name, filter_backends
 
-from .qasm_simulator import QasmSimulatorPy
-from .statevector_simulator import StatevectorSimulatorPy
-from .unitary_simulator import UnitarySimulatorPy
+from qiskit.providers.basicaer.qasm_simulator import QasmSimulatorPy
+from qiskit.providers.basicaer.statevector_simulator import StatevectorSimulatorPy
+from qiskit.providers.basicaer.unitary_simulator import UnitarySimulatorPy
 
 logger = logging.getLogger(__name__)
 

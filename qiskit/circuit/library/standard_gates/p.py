@@ -82,7 +82,7 @@ class PhaseGate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .u import UGate
+        from qiskit.circuit.library.standard_gates.u import UGate
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -286,7 +286,7 @@ class MCPhaseGate(ControlledGate):
         if self.num_ctrl_qubits == 1:
             qc.cp(self.params[0], 0, 1)
         else:
-            from .u3 import _gray_code_chain
+            from qiskit.circuit.library.standard_gates.u3 import _gray_code_chain
 
             scaled_lam = self.params[0] / (2 ** (self.num_ctrl_qubits - 1))
             bottom_gate = CPhaseGate(scaled_lam)

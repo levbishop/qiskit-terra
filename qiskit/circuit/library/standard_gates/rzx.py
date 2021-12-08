@@ -127,9 +127,9 @@ class RZXGate(Gate):
         # pylint: disable=cyclic-import
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-        from .h import HGate
-        from .x import CXGate
-        from .rz import RZGate
+        from qiskit.circuit.library.standard_gates.h import HGate
+        from qiskit.circuit.library.standard_gates.x import CXGate
+        from qiskit.circuit.library.standard_gates.rz import RZGate
 
         theta = self.params[0]
         q = QuantumRegister(2, "q")

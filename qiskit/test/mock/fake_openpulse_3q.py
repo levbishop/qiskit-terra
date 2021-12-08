@@ -25,7 +25,7 @@ from qiskit.providers.models import (
 )
 from qiskit.qobj import PulseQobjInstruction
 
-from .fake_backend import FakeBackend
+from qiskit.test.mock.fake_backend import FakeBackend
 
 
 class FakeOpenPulse3Q(FakeBackend):

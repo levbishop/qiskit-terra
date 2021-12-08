@@ -18,7 +18,7 @@ import warnings
 import functools
 from collections.abc import MutableMapping, MappingView
 
-from .instruction import Instruction
+from qiskit.circuit.instruction import Instruction
 
 
 class ParameterTable(MutableMapping):

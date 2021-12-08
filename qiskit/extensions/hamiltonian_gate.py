@@ -26,7 +26,7 @@ from qiskit.quantum_info.operators.predicates import matrix_equal, is_hermitian_
 from qiskit.extensions.exceptions import ExtensionError
 from qiskit.circuit.exceptions import CircuitError
 
-from .unitary import UnitaryGate
+from qiskit.extensions.unitary import UnitaryGate
 
 
 class HamiltonianGate(Gate):

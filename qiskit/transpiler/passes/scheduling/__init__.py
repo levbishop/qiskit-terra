@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from .alap import ALAPSchedule
-from .asap import ASAPSchedule
-from .time_unit_conversion import TimeUnitConversion
-from .dynamical_decoupling import DynamicalDecoupling
-from .instruction_alignment import AlignMeasures, ValidatePulseGates
+from qiskit.transpiler.passes.scheduling.alap import ALAPSchedule
+from qiskit.transpiler.passes.scheduling.asap import ASAPSchedule
+from qiskit.transpiler.passes.scheduling.time_unit_conversion import TimeUnitConversion
+from qiskit.transpiler.passes.scheduling.dynamical_decoupling import DynamicalDecoupling
+from qiskit.transpiler.passes.scheduling.instruction_alignment import AlignMeasures, ValidatePulseGates

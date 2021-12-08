@@ -43,10 +43,10 @@ from qiskit.utils.backend_utils import is_aer_provider
 from qiskit.utils.deprecation import deprecate_function
 from qiskit.utils import QuantumInstance, algorithm_globals
 
-from ..optimizers import Optimizer, SLSQP
-from ..variational_algorithm import VariationalAlgorithm, VariationalResult
-from .minimum_eigen_solver import MinimumEigensolver, MinimumEigensolverResult, ListOrDict
-from ..exceptions import AlgorithmError
+from qiskit.algorithms.optimizers import Optimizer, SLSQP
+from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import MinimumEigensolver, MinimumEigensolverResult, ListOrDict
+from qiskit.algorithms.exceptions import AlgorithmError
 
 logger = logging.getLogger(__name__)
 

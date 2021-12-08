@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from .hhl import HHL
-from .numpy_linear_solver import NumPyLinearSolver
-from .linear_solver import LinearSolver, LinearSolverResult
+from qiskit.algorithms.linear_solvers.hhl import HHL
+from qiskit.algorithms.linear_solvers.numpy_linear_solver import NumPyLinearSolver
+from qiskit.algorithms.linear_solvers.linear_solver import LinearSolver, LinearSolverResult
 
 __all__ = ["HHL", "NumPyLinearSolver", "LinearSolver", "LinearSolverResult"]

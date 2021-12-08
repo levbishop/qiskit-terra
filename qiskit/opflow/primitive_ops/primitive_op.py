@@ -77,22 +77,22 @@ class PrimitiveOp(OperatorBase):
         """
         # pylint: disable=cyclic-import
         if isinstance(primitive, (Instruction, QuantumCircuit)):
-            from .circuit_op import CircuitOp
+            from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
             return super().__new__(CircuitOp)
 
         if isinstance(primitive, (list, np.ndarray, spmatrix, Operator)):
-            from .matrix_op import MatrixOp
+            from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
 
             return super().__new__(MatrixOp)
 
         if isinstance(primitive, Pauli):
-            from .pauli_op import PauliOp
+            from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 
             return super().__new__(PauliOp)
 
         if isinstance(primitive, SparsePauliOp):
-            from .pauli_sum_op import PauliSumOp
+            from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
 
             return super().__new__(PauliSumOp)
 
@@ -182,7 +182,7 @@ class PrimitiveOp(OperatorBase):
         self, other: OperatorBase, permutation: list[int] | None = None, front: bool = False
     ) -> OperatorBase:
         # pylint: disable=cyclic-import
-        from ..list_ops.composed_op import ComposedOp
+        from qiskit.opflow.list_ops.composed_op import ComposedOp
 
         new_self, other = self._expand_shorter_operator_and_permute(other, permutation)
         if isinstance(other, ComposedOp):
@@ -203,7 +203,7 @@ class PrimitiveOp(OperatorBase):
     def exp_i(self) -> OperatorBase:
         """Return Operator exponentiation, equaling e^(-i * op)"""
         # pylint: disable=cyclic-import
-        from ..evolutions.evolved_op import EvolvedOp
+        from qiskit.opflow.evolutions.evolved_op import EvolvedOp
 
         return EvolvedOp(self)
 
@@ -212,8 +212,8 @@ class PrimitiveOp(OperatorBase):
         function is the effective inverse of exp_i, equivalent to finding the Hermitian
         Operator which produces self when exponentiated."""
         # pylint: disable=cyclic-import
-        from ..operator_globals import EVAL_SIG_DIGITS
-        from .matrix_op import MatrixOp
+        from qiskit.opflow.operator_globals import EVAL_SIG_DIGITS
+        from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
 
         return MatrixOp(
             np.around(
@@ -248,7 +248,7 @@ class PrimitiveOp(OperatorBase):
             unrolled_dict = self._unroll_param_dict(param_dict)
             if isinstance(unrolled_dict, list):
                 # pylint: disable=cyclic-import
-                from ..list_ops.list_op import ListOp
+                from qiskit.opflow.list_ops.list_op import ListOp
 
                 return ListOp([self.assign_parameters(param_dict) for param_dict in unrolled_dict])
             if self.coeff.parameters <= set(unrolled_dict.keys()):
@@ -271,7 +271,7 @@ class PrimitiveOp(OperatorBase):
         op = self.copy()
         op._coeff = 1
         prim_mat = op.to_matrix(massive=massive)
-        from .matrix_op import MatrixOp
+        from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
 
         return MatrixOp(prim_mat, coeff=coeff)
 
@@ -287,7 +287,7 @@ class PrimitiveOp(OperatorBase):
 
     def to_circuit_op(self) -> OperatorBase:
         """Returns a ``CircuitOp`` equivalent to this Operator."""
-        from .circuit_op import CircuitOp
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         if self.coeff == 0:
             return CircuitOp(QuantumCircuit(self.num_qubits), coeff=0)
@@ -296,22 +296,22 @@ class PrimitiveOp(OperatorBase):
     def to_pauli_op(self, massive: bool = False) -> OperatorBase:
         """Returns a sum of ``PauliOp`` s equivalent to this Operator."""
         # pylint: disable=cyclic-import
-        from .matrix_op import MatrixOp
+        from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
 
         mat_op = cast(MatrixOp, self.to_matrix_op(massive=massive))
         sparse_pauli = SparsePauliOp.from_operator(mat_op.primitive)
         if not sparse_pauli.to_list():
-            from ..operator_globals import I
+            from qiskit.opflow.operator_globals import I
 
             return (I ^ self.num_qubits) * 0.0
-        from .pauli_op import PauliOp
+        from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 
         if len(sparse_pauli) == 1:
             label, coeff = sparse_pauli.to_list()[0]
             coeff = coeff.real if np.isreal(coeff) else coeff
             return PauliOp(Pauli(label), coeff * self.coeff)
 
-        from ..list_ops.summed_op import SummedOp
+        from qiskit.opflow.list_ops.summed_op import SummedOp
 
         return SummedOp(
             [

@@ -18,8 +18,8 @@ from unittest import SkipTest
 
 from qiskit import execute
 
-from ..base import QiskitTestCase
-from ..reference_circuits import ReferenceCircuits
+from qiskit.test.base import QiskitTestCase
+from qiskit.test.reference_circuits import ReferenceCircuits
 
 
 class BackendTestCase(QiskitTestCase):

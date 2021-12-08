@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from .fake_cambridge import (
+from qiskit.test.mock.backends.cambridge.fake_cambridge import (
     FakeCambridge,
     FakeCambridgeAlternativeBasis,
     FakeLegacyCambridge,

@@ -21,8 +21,8 @@ import numpy as np
 
 from qiskit.exceptions import QiskitError
 
-from ..utils import marginal_counts
-from ..counts import Counts
+from qiskit.result.utils import marginal_counts
+from qiskit.result.counts import Counts
 
 logger = logging.getLogger(__name__)
 

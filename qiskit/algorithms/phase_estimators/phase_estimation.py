@@ -28,8 +28,8 @@ from qiskit.providers import BaseBackend, Backend
 from qiskit.utils import QuantumInstance
 from qiskit.result import Result
 
-from .phase_estimation_result import PhaseEstimationResult, _sort_phases
-from .phase_estimator import PhaseEstimator
+from qiskit.algorithms.phase_estimators.phase_estimation_result import PhaseEstimationResult, _sort_phases
+from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator
 
 
 class PhaseEstimation(PhaseEstimator):

@@ -40,8 +40,8 @@ try:
 except ImportError:
     HAS_FIXTURES = False
 
-from .decorators import enforce_subclasses_call
-from .utils import Path, setup_test_logging
+from qiskit.test.decorators import enforce_subclasses_call
+from qiskit.test.utils import Path, setup_test_logging
 
 __unittest = True  # Allows shorter stack trace for .assertDictAlmostEqual
 

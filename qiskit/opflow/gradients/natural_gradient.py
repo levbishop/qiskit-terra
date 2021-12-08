@@ -24,15 +24,15 @@ from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.circuit import ParameterVector, ParameterExpression
 from qiskit.exceptions import MissingOptionalLibraryError
 
-from ..operator_base import OperatorBase
-from ..list_ops.list_op import ListOp
-from ..list_ops.composed_op import ComposedOp
-from ..state_fns.circuit_state_fn import CircuitStateFn
-from .circuit_gradients import CircuitGradient
-from .circuit_qfis import CircuitQFI
-from .gradient import Gradient
-from .gradient_base import GradientBase
-from .qfi import QFI
+from qiskit.opflow.operator_base import OperatorBase
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.list_ops.composed_op import ComposedOp
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.opflow.gradients.circuit_gradients import CircuitGradient
+from qiskit.opflow.gradients.circuit_qfis import CircuitQFI
+from qiskit.opflow.gradients.gradient import Gradient
+from qiskit.opflow.gradients.gradient_base import GradientBase
+from qiskit.opflow.gradients.qfi import QFI
 
 
 class NaturalGradient(GradientBase):

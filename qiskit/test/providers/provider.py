@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from unittest import SkipTest
 
-from ..base import QiskitTestCase
+from qiskit.test.base import QiskitTestCase
 
 
 class ProviderTestCase(QiskitTestCase):

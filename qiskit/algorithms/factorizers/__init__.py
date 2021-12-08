@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from .shor import Shor, ShorResult
+from qiskit.algorithms.factorizers.shor import Shor, ShorResult
 
 __all__ = [
     "Shor",

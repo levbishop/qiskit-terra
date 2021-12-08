@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_boeblingen import FakeBoeblingen, FakeLegacyBoeblingen
+from qiskit.test.mock.backends.boeblingen.fake_boeblingen import FakeBoeblingen, FakeLegacyBoeblingen

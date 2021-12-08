@@ -23,8 +23,8 @@ from qiskit import QuantumCircuit
 from qiskit.result import Result
 from qiskit.quantum_info.operators.base_operator import BaseOperator
 
-from .observables.linear_system_observable import LinearSystemObservable
-from ..algorithm_result import AlgorithmResult
+from qiskit.algorithms.linear_solvers.observables.linear_system_observable import LinearSystemObservable
+from qiskit.algorithms.algorithm_result import AlgorithmResult
 
 
 class LinearSolverResult(AlgorithmResult):

@@ -22,7 +22,7 @@ from itertools import product
 from qiskit.circuit import QuantumRegister, QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
 
-from .functional_pauli_rotations import FunctionalPauliRotations
+from qiskit.circuit.library.arithmetic.functional_pauli_rotations import FunctionalPauliRotations
 
 
 def _binomial_coefficients(n):

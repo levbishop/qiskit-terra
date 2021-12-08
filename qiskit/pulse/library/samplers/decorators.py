@@ -135,9 +135,9 @@ from typing import Callable
 
 import numpy as np
 
-from ...exceptions import PulseError
-from ..waveform import Waveform
-from . import strategies
+from qiskit.pulse.exceptions import PulseError
+from qiskit.pulse.library.waveform import Waveform
+from qiskit.pulse.library.samplers import strategies
 
 
 def functional_pulse(func: Callable) -> Callable:

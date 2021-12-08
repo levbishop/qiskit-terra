@@ -125,7 +125,7 @@ Synthesis
 
 from __future__ import annotations
 
-from .operators import (
+from qiskit.quantum_info.operators import (
     Operator,
     ScalarOp,
     Pauli,
@@ -137,10 +137,10 @@ from .operators import (
     pauli_basis,
     pauli_group,
 )
-from .operators.channel import Choi, SuperOp, Kraus, Stinespring, Chi, PTM
-from .operators.measures import process_fidelity, average_gate_fidelity, gate_error, diamond_norm
-from .operators.dihedral import CNOTDihedral
-from .states import (
+from qiskit.quantum_info.operators.channel import Choi, SuperOp, Kraus, Stinespring, Chi, PTM
+from qiskit.quantum_info.operators.measures import process_fidelity, average_gate_fidelity, gate_error, diamond_norm
+from qiskit.quantum_info.operators.dihedral import CNOTDihedral
+from qiskit.quantum_info.states import (
     Statevector,
     DensityMatrix,
     StabilizerState,
@@ -153,7 +153,7 @@ from .states import (
     mutual_information,
     shannon_entropy,
 )
-from .random import (
+from qiskit.quantum_info.random import (
     random_quantum_channel,
     random_unitary,
     random_clifford,
@@ -166,7 +166,7 @@ from .random import (
     random_density_matrix,
     random_cnotdihedral,
 )
-from .synthesis import (
+from qiskit.quantum_info.synthesis import (
     OneQubitEulerDecomposer,
     TwoQubitBasisDecomposer,
     two_qubit_cnot_decompose,
@@ -174,4 +174,4 @@ from .synthesis import (
     decompose_clifford,
     XXDecomposer,
 )
-from .analysis import hellinger_distance, hellinger_fidelity
+from qiskit.quantum_info.analysis import hellinger_distance, hellinger_fidelity

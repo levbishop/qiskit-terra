@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from .fake_vigo import FakeVigo, FakeLegacyVigo
+from qiskit.test.mock.backends.vigo.fake_vigo import FakeVigo, FakeLegacyVigo

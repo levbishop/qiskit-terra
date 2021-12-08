@@ -24,7 +24,7 @@ import unittest
 from typing import Callable, Iterable
 from warnings import warn
 
-from .testing_options import get_test_options
+from qiskit.test.testing_options import get_test_options
 
 HAS_NET_CONNECTION = None
 

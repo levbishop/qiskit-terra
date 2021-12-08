@@ -18,7 +18,7 @@ import numpy as np
 
 from qiskit.exceptions import MissingOptionalLibraryError
 
-from .node import Node
+from qiskit.qasm.node.node import Node
 
 
 class Real(Node):

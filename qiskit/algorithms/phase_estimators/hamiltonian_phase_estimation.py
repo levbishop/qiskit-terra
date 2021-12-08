@@ -29,9 +29,9 @@ from qiskit.opflow import (
 )
 from qiskit.providers import BaseBackend
 
-from .phase_estimation import PhaseEstimation
-from .hamiltonian_phase_estimation_result import HamiltonianPhaseEstimationResult
-from .phase_estimation_scale import PhaseEstimationScale
+from qiskit.algorithms.phase_estimators.phase_estimation import PhaseEstimation
+from qiskit.algorithms.phase_estimators.hamiltonian_phase_estimation_result import HamiltonianPhaseEstimationResult
+from qiskit.algorithms.phase_estimators.phase_estimation_scale import PhaseEstimationScale
 
 
 class HamiltonianPhaseEstimation:

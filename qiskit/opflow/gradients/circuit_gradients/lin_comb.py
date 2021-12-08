@@ -52,19 +52,19 @@ from qiskit.circuit.library.standard_gates import (
 )
 from qiskit.quantum_info import partial_trace
 
-from ...operator_base import OperatorBase
-from ...list_ops.list_op import ListOp
-from ...list_ops.composed_op import ComposedOp
-from ...list_ops.summed_op import SummedOp
-from ...operator_globals import Z, I, One, Zero
-from ...primitive_ops.primitive_op import PrimitiveOp
-from ...state_fns.state_fn import StateFn
-from ...state_fns.circuit_state_fn import CircuitStateFn
-from ...state_fns.dict_state_fn import DictStateFn
-from ...state_fns.vector_state_fn import VectorStateFn
-from ...state_fns.sparse_vector_state_fn import SparseVectorStateFn
-from ...exceptions import OpflowError
-from .circuit_gradient import CircuitGradient
+from qiskit.opflow.operator_base import OperatorBase
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.list_ops.composed_op import ComposedOp
+from qiskit.opflow.list_ops.summed_op import SummedOp
+from qiskit.opflow.operator_globals import Z, I, One, Zero
+from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
+from qiskit.opflow.state_fns.state_fn import StateFn
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
+from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
+from qiskit.opflow.state_fns.sparse_vector_state_fn import SparseVectorStateFn
+from qiskit.opflow.exceptions import OpflowError
+from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
 
 
 class LinComb(CircuitGradient):

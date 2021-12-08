@@ -20,7 +20,7 @@ from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.library.basis_change import QFT
 
-from .adder import Adder
+from qiskit.circuit.library.arithmetic.adders.adder import Adder
 
 
 class DraperQFTAdder(Adder):

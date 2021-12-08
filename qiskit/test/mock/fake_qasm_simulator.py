@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from qiskit.providers.models import GateConfig, QasmBackendConfiguration
 
-from .fake_backend import FakeBackend
+from qiskit.test.mock.fake_backend import FakeBackend
 
 
 class FakeQasmSimulator(FakeBackend):

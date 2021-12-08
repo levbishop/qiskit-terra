@@ -32,4 +32,4 @@ and returns a sequence of SWAPs that implements that permutation on the graph.
 
 from __future__ import annotations
 
-from .token_swapper import ApproximateTokenSwapper
+from qiskit.transpiler.passes.routing.algorithms.token_swapper import ApproximateTokenSwapper

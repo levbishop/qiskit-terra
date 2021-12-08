@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from uuid import uuid4
 
-from .parameter import Parameter
+from qiskit.circuit.parameter import Parameter
 
 
 class ParameterVectorElement(Parameter):

@@ -28,10 +28,10 @@ from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.transpiler.layout import Layout
 
 # pylint: disable=no-name-in-module
-from .cython.stochastic_swap.utils import nlayout_from_layout
+from qiskit.transpiler.passes.routing.cython.stochastic_swap.utils import nlayout_from_layout
 
 # pylint: disable=no-name-in-module
-from .cython.stochastic_swap.swap_trial import swap_trial
+from qiskit.transpiler.passes.routing.cython.stochastic_swap.swap_trial import swap_trial
 
 logger = logging.getLogger(__name__)
 

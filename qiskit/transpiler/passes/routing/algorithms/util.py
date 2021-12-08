@@ -34,7 +34,7 @@ from qiskit.circuit import QuantumRegister
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.circuit.library.standard_gates import SwapGate
 
-from .types import Swap, PermutationCircuit
+from qiskit.transpiler.passes.routing.algorithms.types import Swap, PermutationCircuit
 
 _K = TypeVar("_K")
 _V = TypeVar("_V")
