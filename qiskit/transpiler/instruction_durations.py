@@ -32,7 +32,7 @@ class InstructionDurations:
     """
 
     def __init__(
-        self, instruction_durations: Optional[InstructionDurationsType] = None, dt: float = None
+        self, instruction_durations: InstructionDurationsType | None = None, dt: float = None
     ):
         self.duration_by_name = {}
         self.duration_by_name_qubits = {}
@@ -87,7 +87,7 @@ class InstructionDurations:
 
         return InstructionDurations(instruction_durations, dt=dt)
 
-    def update(self, inst_durations: Optional[InstructionDurationsType], dt: float = None):
+    def update(self, inst_durations: InstructionDurationsType | None, dt: float = None):
         """Update self with inst_durations (inst_durations overwrite self).
 
         Args:

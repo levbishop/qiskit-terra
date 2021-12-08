@@ -727,7 +727,7 @@ class NLocal(BlueprintCircuit):
 
     def add_layer(
         self,
-        other: Union[NLocal, Instruction, QuantumCircuit],
+        other: NLocal | Instruction | QuantumCircuit,
         entanglement: list[int] | str | list[list[int]] | None = None,
         front: bool = False,
     ) -> NLocal:

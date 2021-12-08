@@ -58,7 +58,7 @@ class EvolvedOp(PrimitiveOp):
     def num_qubits(self) -> int:
         return self.primitive.num_qubits
 
-    def add(self, other: OperatorBase) -> Union[EvolvedOp, SummedOp]:
+    def add(self, other: OperatorBase) -> EvolvedOp | SummedOp:
         if not self.num_qubits == other.num_qubits:
             raise ValueError(
                 "Sum over operators with different numbers of qubits, {} and {}, is not well "
@@ -122,7 +122,7 @@ class EvolvedOp(PrimitiveOp):
     def reduce(self) -> EvolvedOp:
         return EvolvedOp(self.primitive.reduce(), coeff=self.coeff)
 
-    def assign_parameters(self, param_dict: dict) -> Union[EvolvedOp, ListOp]:
+    def assign_parameters(self, param_dict: dict) -> EvolvedOp | ListOp:
         param_value = self.coeff
         if isinstance(self.coeff, ParameterExpression):
             unrolled_dict = self._unroll_param_dict(param_dict)

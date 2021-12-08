@@ -754,13 +754,13 @@ class QuantumCircuit:
 
     def compose(
         self,
-        other: Union[QuantumCircuit, Instruction],
+        other: QuantumCircuit | Instruction,
         qubits: Sequence[Qubit | int] | None = None,
         clbits: Sequence[Clbit | int] | None = None,
         front: bool = False,
         inplace: bool = False,
         wrap: bool = False,
-    ) -> Optional[QuantumCircuit]:
+    ) -> QuantumCircuit | None:
         """Compose circuit with ``other`` circuit or instruction, optionally permuting wires.
 
         ``other`` can be narrower or of equal width to ``self``.
@@ -906,7 +906,7 @@ class QuantumCircuit:
 
         return dest
 
-    def tensor(self, other: QuantumCircuit, inplace: bool = False) -> Optional[QuantumCircuit]:
+    def tensor(self, other: QuantumCircuit, inplace: bool = False) -> QuantumCircuit | None:
         """Tensor ``self`` with ``other``.
 
         Remember that in the little-endian convention the leftmost operation will be at the bottom
@@ -2208,7 +2208,7 @@ class QuantumCircuit:
         """
         return self.append(Measure(), [qubit], [cbit])
 
-    def measure_active(self, inplace: bool = True) -> Optional[QuantumCircuit]:
+    def measure_active(self, inplace: bool = True) -> QuantumCircuit | None:
         """Adds measurement to all non-idle qubits. Creates a new ClassicalRegister with
         a size equal to the number of non-idle qubits being measured.
 
@@ -2240,7 +2240,7 @@ class QuantumCircuit:
 
     def measure_all(
         self, inplace: bool = True, add_bits: bool = True
-    ) -> Optional[QuantumCircuit]:
+    ) -> QuantumCircuit | None:
         """Adds measurement to all qubits.
 
         By default, adds new classical bits in a :obj:`.ClassicalRegister` to store these
@@ -2283,7 +2283,7 @@ class QuantumCircuit:
         else:
             return None
 
-    def remove_final_measurements(self, inplace: bool = True) -> Optional[QuantumCircuit]:
+    def remove_final_measurements(self, inplace: bool = True) -> QuantumCircuit | None:
         """Removes final measurements and barriers on all qubits if they are present.
         Deletes the classical registers that were used to store the values from these measurements
         that become idle as a result of this operation, and deletes classical bits that are
@@ -2419,7 +2419,7 @@ class QuantumCircuit:
         self,
         parameters: Mapping[Parameter, ParameterValueType] | Sequence[ParameterValueType],
         inplace: bool = False,
-    ) -> Optional[QuantumCircuit]:
+    ) -> QuantumCircuit | None:
         """Assign parameters to new parameters or values.
 
         The keys of the parameter dictionary must be Parameter instances in the current circuit. The

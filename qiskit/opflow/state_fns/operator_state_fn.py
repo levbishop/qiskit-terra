@@ -61,7 +61,7 @@ class OperatorStateFn(StateFn):
     def num_qubits(self) -> int:
         return self.primitive.num_qubits
 
-    def add(self, other: OperatorBase) -> Union[OperatorStateFn, SummedOp]:
+    def add(self, other: OperatorBase) -> OperatorStateFn | SummedOp:
         if not self.num_qubits == other.num_qubits:
             raise ValueError(
                 "Sum over statefns with different numbers of qubits, {} and {}, is not well "
@@ -107,7 +107,7 @@ class OperatorStateFn(StateFn):
             is_measurement=self.is_measurement,
         )
 
-    def tensor(self, other: OperatorBase) -> Union[OperatorStateFn, TensoredOp]:
+    def tensor(self, other: OperatorBase) -> OperatorStateFn | TensoredOp:
         if isinstance(other, OperatorStateFn):
             return OperatorStateFn(
                 self.primitive.tensor(other.primitive),

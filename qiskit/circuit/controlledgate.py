@@ -36,7 +36,7 @@ class ControlledGate(Gate):
         params: list,
         label: str | None = None,
         num_ctrl_qubits: int | None = 1,
-        definition: Optional[QuantumCircuit] = None,
+        definition: QuantumCircuit | None = None,
         ctrl_state: int | str | None = None,
         base_gate: Gate | None = None,
     ):

@@ -205,7 +205,7 @@ class CircuitStateFn(StateFn):
 
         return ComposedOp([new_self, other])
 
-    def tensor(self, other: OperatorBase) -> Union[CircuitStateFn, TensoredOp]:
+    def tensor(self, other: OperatorBase) -> CircuitStateFn | TensoredOp:
         r"""
         Return tensor product between self and other, overloaded by ``^``.
         Note: You must be conscious of Qiskit's big-endian bit printing convention.
@@ -279,7 +279,7 @@ class CircuitStateFn(StateFn):
                 self.coeff,
             )
 
-    def assign_parameters(self, param_dict: dict) -> Union[CircuitStateFn, ListOp]:
+    def assign_parameters(self, param_dict: dict) -> CircuitStateFn | ListOp:
         param_value = self.coeff
         qc = self.primitive
         if isinstance(self.coeff, ParameterExpression) or self.primitive.parameters:

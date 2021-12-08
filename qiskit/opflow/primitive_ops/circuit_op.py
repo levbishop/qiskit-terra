@@ -96,7 +96,7 @@ class CircuitOp(PrimitiveOp):
 
         return self.primitive == other.primitive
 
-    def tensor(self, other: OperatorBase) -> Union[CircuitOp, TensoredOp]:
+    def tensor(self, other: OperatorBase) -> CircuitOp | TensoredOp:
         # pylint: disable=cyclic-import
         from .pauli_op import PauliOp
         from .matrix_op import MatrixOp

@@ -78,7 +78,7 @@ class MatrixOp(PrimitiveOp):
     def num_qubits(self) -> int:
         return len(self.primitive.input_dims())
 
-    def add(self, other: OperatorBase) -> Union[MatrixOp, SummedOp]:
+    def add(self, other: OperatorBase) -> MatrixOp | SummedOp:
         if not self.num_qubits == other.num_qubits:
             raise ValueError(
                 "Sum over operators with different numbers of qubits, {} and {}, is not well "
@@ -119,7 +119,7 @@ class MatrixOp(PrimitiveOp):
         identity = np.identity(2 ** num_qubits, dtype=complex)
         return MatrixOp(self.primitive.tensor(Operator(identity)), coeff=self.coeff)
 
-    def tensor(self, other: OperatorBase) -> Union[MatrixOp, TensoredOp]:
+    def tensor(self, other: OperatorBase) -> MatrixOp | TensoredOp:
         if isinstance(other, MatrixOp):
             return MatrixOp(self.primitive.tensor(other.primitive), coeff=self.coeff * other.coeff)
 

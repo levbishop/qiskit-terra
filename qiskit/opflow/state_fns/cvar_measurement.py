@@ -121,7 +121,7 @@ class CVaRMeasurement(OperatorStateFn):
 
         return self.__class__(self.primitive, coeff=self.coeff * scalar, alpha=self._alpha)
 
-    def tensor(self, other: OperatorBase) -> Union[OperatorStateFn, TensoredOp]:
+    def tensor(self, other: OperatorBase) -> OperatorStateFn | TensoredOp:
         if isinstance(other, OperatorStateFn):
             return OperatorStateFn(
                 self.primitive.tensor(other.primitive), coeff=self.coeff * other.coeff

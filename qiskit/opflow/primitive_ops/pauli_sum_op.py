@@ -171,7 +171,7 @@ class PauliSumOp(PrimitiveOp):
             coeff=self.coeff,
         )
 
-    def tensor(self, other: OperatorBase) -> Union[PauliSumOp, TensoredOp]:
+    def tensor(self, other: OperatorBase) -> PauliSumOp | TensoredOp:
         if isinstance(other, PauliSumOp):
             return PauliSumOp(
                 self.primitive.tensor(other.primitive),

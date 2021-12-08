@@ -96,9 +96,9 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
     def eval(
         self,
         front: None | (
-            Union[str, dict[str, complex], np.ndarray, OperatorBase, Statevector]
+            str | dict[str, complex] | np.ndarray | OperatorBase | Statevector
         ) = None,
-    ) -> Union[OperatorBase, complex]:
+    ) -> OperatorBase | complex:
         r"""
         Evaluate the Operator's underlying function, either on a binary string or another Operator.
         A square binary Operator can be defined as a function taking a binary function to another
@@ -300,7 +300,7 @@ class OperatorBase(StarAlgebraMixin, TensorMixin, ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def tensorpower(self, other: int) -> Union[OperatorBase, int]:
+    def tensorpower(self, other: int) -> OperatorBase | int:
         r"""Return tensor product with self multiple times, overloaded by ``^``.
 
         Args:
