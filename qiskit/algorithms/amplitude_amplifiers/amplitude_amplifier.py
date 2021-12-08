@@ -27,14 +27,14 @@ class AmplitudeAmplifier(ABC):
     """The interface for amplification algorithms."""
 
     @abstractmethod
-    def amplify(self, amplification_problem: AmplificationProblem) -> AmplificationResult:
+    def amplify(self, amplification_problem: AmplificationProblem) -> AmplitudeAmplifierResult:
         """Run the amplification algorithm.
 
         Args:
             amplification_problem: The amplification problem.
 
         Returns:
-            The result as a ``AmplificationResult``, where e.g. the most likely state can be queried
+            The result as a ``AmplitudeAmplifierResult``, where e.g. the most likely state can be queried
             as ``result.top_measurement``.
         """
         raise NotImplementedError

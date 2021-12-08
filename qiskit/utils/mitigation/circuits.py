@@ -20,6 +20,10 @@ use the fitters to produce a filter.
 """
 from __future__ import annotations
 
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.circuit.quantumregister import QuantumRegister
+
 
 def count_keys(num_qubits: int) -> list[str]:
     """Return ordered count keys.
