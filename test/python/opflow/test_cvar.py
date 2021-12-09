@@ -18,25 +18,25 @@ import unittest
 from test.python.opflow import QiskitOpflowTestCase
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 
 from qiskit import QuantumCircuit
 from qiskit.opflow import (
-    CVaRMeasurement,
-    StateFn,
-    Z,
-    I,
-    X,
-    Y,
-    Plus,
-    PauliExpectation,
-    MatrixExpectation,
-    CVaRExpectation,
-    ListOp,
-    CircuitOp,
     AerPauliExpectation,
+    CircuitOp,
+    CVaRExpectation,
+    CVaRMeasurement,
+    I,
+    ListOp,
+    MatrixExpectation,
     MatrixOp,
     OpflowError,
+    PauliExpectation,
+    Plus,
+    StateFn,
+    X,
+    Y,
+    Z,
 )
 
 

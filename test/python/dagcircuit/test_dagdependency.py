@@ -16,19 +16,19 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.dagcircuit import DAGDependency
 from qiskit.circuit import (
-    QuantumRegister,
     ClassicalRegister,
-    QuantumCircuit,
-    Qubit,
     Clbit,
-    Measure,
     Instruction,
+    Measure,
+    QuantumCircuit,
+    QuantumRegister,
+    Qubit,
 )
 from qiskit.circuit.library.standard_gates.h import HGate
-from qiskit.dagcircuit.exceptions import DAGDependencyError
 from qiskit.converters import circuit_to_dagdependency
+from qiskit.dagcircuit import DAGDependency
+from qiskit.dagcircuit.exceptions import DAGDependencyError
 from qiskit.test import QiskitTestCase
 
 try:

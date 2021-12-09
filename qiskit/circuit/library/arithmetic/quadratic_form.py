@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, ParameterExpression
+from qiskit.circuit import ParameterExpression, QuantumCircuit, QuantumRegister
 from qiskit.circuit.library.basis_change import QFT
 
 

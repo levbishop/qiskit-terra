@@ -14,25 +14,25 @@
 
 from __future__ import annotations
 
-import unittest
 import json
 import os
+import unittest
 from contextlib import contextmanager
 
-from qiskit.visualization.state_visualization import state_drawer
-from qiskit import BasicAer, execute, QuantumCircuit
+from qiskit import BasicAer, QuantumCircuit, execute
 from qiskit.test import QiskitTestCase
-from qiskit.tools.visualization import HAS_MATPLOTLIB
-from qiskit.visualization.counts_visualization import plot_histogram
-from qiskit.visualization.gate_map import plot_gate_map, plot_coupling_map
 from qiskit.test.mock.fake_provider import (
     FakeArmonk,
     FakeBelem,
     FakeCasablanca,
-    FakeRueschlikon,
-    FakeMumbai,
     FakeManhattan,
+    FakeMumbai,
+    FakeRueschlikon,
 )
+from qiskit.tools.visualization import HAS_MATPLOTLIB
+from qiskit.visualization.counts_visualization import plot_histogram
+from qiskit.visualization.gate_map import plot_coupling_map, plot_gate_map
+from qiskit.visualization.state_visualization import state_drawer
 
 if HAS_MATPLOTLIB:
     from matplotlib.pyplot import close as mpl_close

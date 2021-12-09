@@ -15,9 +15,9 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.pulse.channels import DriveChannel, MeasureChannel, AcquireChannel
-from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse import LoConfig, LoRange
+from qiskit.pulse.channels import AcquireChannel, DriveChannel, MeasureChannel
+from qiskit.pulse.exceptions import PulseError
 from qiskit.test import QiskitTestCase
 
 

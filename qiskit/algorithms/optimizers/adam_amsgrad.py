@@ -14,20 +14,20 @@
 
 from __future__ import annotations
 
-import os
 import csv
+import os
 from typing import Any, Callable
 
 import numpy as np
 
+from qiskit.algorithms.optimizers.optimizer import (
+    POINT,
+    Optimizer,
+    OptimizerResult,
+    OptimizerSupportLevel,
+)
 from qiskit.utils import algorithm_globals
 from qiskit.utils.deprecation import deprecate_arguments
-from qiskit.algorithms.optimizers.optimizer import (
-    Optimizer,
-    OptimizerSupportLevel,
-    OptimizerResult,
-    POINT,
-)
 
 # pylint: disable=invalid-name
 

@@ -17,12 +17,12 @@ from __future__ import annotations
 import unittest
 
 import numpy as np
-from ddt import ddt, data, unpack
+from ddt import data, ddt, unpack
 
-from qiskit.test.base import QiskitTestCase
 from qiskit.circuit import QuantumCircuit
-from qiskit.quantum_info import Statevector
 from qiskit.circuit.library import CDKMRippleCarryAdder, DraperQFTAdder, VBERippleCarryAdder
+from qiskit.quantum_info import Statevector
+from qiskit.test.base import QiskitTestCase
 
 
 @ddt

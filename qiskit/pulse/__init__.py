@@ -64,8 +64,8 @@ from __future__ import annotations
 
 from qiskit.pulse.builder import (
     active_backend,
-    active_transpiler_settings,
     active_circuit_scheduler_settings,
+    active_transpiler_settings,
     build,
     num_qubits,
     qubit_channels,
@@ -106,7 +106,7 @@ from qiskit.pulse.builder import (
 )
 
 # Macros:
-from qiskit.pulse.builder import macro, measure, measure_all, delay_qubits
+from qiskit.pulse.builder import delay_qubits, macro, measure, measure_all
 
 # Circuit instructions:
 from qiskit.pulse.builder import cx, u1, u2, u3, x

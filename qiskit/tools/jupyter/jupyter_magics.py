@@ -14,13 +14,13 @@
 
 from __future__ import annotations
 
-import time
 import threading
+import time
 
 from IPython import get_ipython
-from IPython.display import display
 from IPython.core import magic_arguments
-from IPython.core.magic import cell_magic, line_magic, Magics, magics_class, register_line_magic
+from IPython.core.magic import Magics, cell_magic, line_magic, magics_class, register_line_magic
+from IPython.display import display
 
 from qiskit.exceptions import MissingOptionalLibraryError
 
@@ -33,10 +33,10 @@ except ImportError as ex:
         pip_install="pip install ipywidgets",
     ) from ex
 import qiskit
-from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.tools.events.progressbar import TextProgressBar
-from qiskit.tools.jupyter.progressbar import HTMLProgressBar
 from qiskit.tools.jupyter.library import circuit_library_widget
+from qiskit.tools.jupyter.progressbar import HTMLProgressBar
+from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 
 
 def _html_checker(job_var, interval, status, header, _interval_set=False):

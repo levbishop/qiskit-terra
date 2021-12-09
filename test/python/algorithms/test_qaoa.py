@@ -14,19 +14,19 @@
 
 from __future__ import annotations
 
-import unittest
 import math
+import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np
 import retworkx as rx
 from ddt import ddt, idata, unpack
 
+from qiskit import BasicAer, QuantumCircuit, QuantumRegister
 from qiskit.algorithms import QAOA
 from qiskit.algorithms.optimizers import COBYLA, NELDER_MEAD
-from qiskit.opflow import I, X, Z, PauliSumOp
-from qiskit import BasicAer, QuantumCircuit, QuantumRegister
 from qiskit.circuit import Parameter
+from qiskit.opflow import I, PauliSumOp, X, Z
 from qiskit.quantum_info import Pauli
 from qiskit.utils import QuantumInstance, algorithm_globals
 

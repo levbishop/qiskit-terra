@@ -14,35 +14,35 @@
 
 from __future__ import annotations
 
-import unittest
+import copy
 import io
 import sys
-import copy
+import unittest
 from logging import StreamHandler, getLogger
 
 import numpy as np
 
 from qiskit import pulse
 from qiskit.circuit import (
-    Instruction,
+    ClassicalRegister,
     Gate,
+    Instruction,
     Parameter,
     ParameterVector,
-    QuantumRegister,
-    ClassicalRegister,
     QuantumCircuit,
+    QuantumRegister,
 )
 from qiskit.compiler.assembler import assemble
 from qiskit.exceptions import QiskitError
-from qiskit.pulse import Schedule, Acquire, Play
-from qiskit.pulse.channels import MemorySlot, AcquireChannel, DriveChannel, MeasureChannel
-from qiskit.pulse.configuration import Kernel, Discriminator
+from qiskit.pulse import Acquire, Play, Schedule
+from qiskit.pulse.channels import AcquireChannel, DriveChannel, MeasureChannel, MemorySlot
+from qiskit.pulse.configuration import Discriminator, Kernel
 from qiskit.pulse.library import gaussian
-from qiskit.qobj import QasmQobj, PulseQobj
-from qiskit.qobj.utils import MeasLevel, MeasReturnType
 from qiskit.pulse.macros import measure
+from qiskit.qobj import PulseQobj, QasmQobj
+from qiskit.qobj.utils import MeasLevel, MeasReturnType
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeOpenPulse2Q, FakeOpenPulse3Q, FakeYorktown, FakeAlmaden
+from qiskit.test.mock import FakeAlmaden, FakeOpenPulse2Q, FakeOpenPulse3Q, FakeYorktown
 
 
 class RxGate(Gate):

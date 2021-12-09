@@ -18,50 +18,50 @@ gate cancellation using commutativity rules.
 
 from __future__ import annotations
 
-from qiskit.transpiler.passmanager_config import PassManagerConfig
-from qiskit.transpiler.timing_constraints import TimingConstraints
-from qiskit.transpiler.passmanager import PassManager
+from qiskit.transpiler import TranspilerError
 from qiskit.transpiler.passes import (
-    Unroller,
-    BasisTranslator,
-    UnrollCustomDefinitions,
-    Unroll3qOrMore,
-    CheckMap,
-    GateDirection,
-    SetLayout,
-    CSPLayout,
-    TrivialLayout,
-    DenseLayout,
-    NoiseAdaptiveLayout,
-    SabreLayout,
+    ALAPSchedule,
+    AlignMeasures,
+    ApplyLayout,
+    ASAPSchedule,
     BarrierBeforeFinalMeasurements,
     BasicSwap,
-    LookaheadSwap,
-    StochasticSwap,
-    SabreSwap,
-    FullAncillaAllocation,
-    EnlargeWithAncilla,
-    FixedPoint,
-    Depth,
-    RemoveResetInZeroState,
-    Optimize1qGatesDecomposition,
-    CommutativeCancellation,
-    ApplyLayout,
-    Layout2qDistance,
+    BasisTranslator,
     CheckGateDirection,
+    CheckMap,
     Collect2qBlocks,
+    CommutativeCancellation,
     ConsolidateBlocks,
-    UnitarySynthesis,
-    TimeUnitConversion,
-    ALAPSchedule,
-    ASAPSchedule,
-    AlignMeasures,
-    ValidatePulseGates,
-    PulseGates,
-    Error,
     ContainsInstruction,
+    CSPLayout,
+    DenseLayout,
+    Depth,
+    EnlargeWithAncilla,
+    Error,
+    FixedPoint,
+    FullAncillaAllocation,
+    GateDirection,
+    Layout2qDistance,
+    LookaheadSwap,
+    NoiseAdaptiveLayout,
+    Optimize1qGatesDecomposition,
+    PulseGates,
+    RemoveResetInZeroState,
+    SabreLayout,
+    SabreSwap,
+    SetLayout,
+    StochasticSwap,
+    TimeUnitConversion,
+    TrivialLayout,
+    UnitarySynthesis,
+    Unroll3qOrMore,
+    UnrollCustomDefinitions,
+    Unroller,
+    ValidatePulseGates,
 )
-from qiskit.transpiler import TranspilerError
+from qiskit.transpiler.passmanager import PassManager
+from qiskit.transpiler.passmanager_config import PassManagerConfig
+from qiskit.transpiler.timing_constraints import TimingConstraints
 
 
 def level_2_pass_manager(pass_manager_config: PassManagerConfig) -> PassManager:

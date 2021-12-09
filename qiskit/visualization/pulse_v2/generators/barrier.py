@@ -41,7 +41,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from qiskit.visualization.pulse_v2 import drawings, types, device_info
+from qiskit.visualization.pulse_v2 import device_info, drawings, types
 
 
 def gen_barrier(

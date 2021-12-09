@@ -695,21 +695,21 @@ from __future__ import annotations
 import pkgutil
 
 # Providers interface
-from qiskit.providers.provider import Provider, ProviderV1
 from qiskit.providers.backend import Backend, BackendV1, BackendV2, QubitProperties
-from qiskit.providers.options import Options
 from qiskit.providers.job import Job, JobV1
+from qiskit.providers.options import Options
+from qiskit.providers.provider import Provider, ProviderV1
 
 # Legacy providers interface
 from qiskit.providers.basebackend import BaseBackend
-from qiskit.providers.baseprovider import BaseProvider
 from qiskit.providers.basejob import BaseJob
+from qiskit.providers.baseprovider import BaseProvider
 from qiskit.providers.exceptions import (
+    BackendConfigurationError,
+    BackendPropertyError,
     JobError,
     JobTimeoutError,
     QiskitBackendNotFoundError,
-    BackendPropertyError,
-    BackendConfigurationError,
 )
 from qiskit.providers.jobstatus import JobStatus
 

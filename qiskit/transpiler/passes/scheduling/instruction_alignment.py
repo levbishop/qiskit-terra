@@ -23,7 +23,7 @@ from qiskit.circuit.measure import Measure
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.pulse import Play
-from qiskit.transpiler.basepasses import TransformationPass, AnalysisPass
+from qiskit.transpiler.basepasses import AnalysisPass, TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 
 

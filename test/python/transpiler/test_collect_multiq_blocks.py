@@ -18,11 +18,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit.circuit import ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
+from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
 from qiskit.transpiler.passes import CollectMultiQBlocks
-from qiskit.test import QiskitTestCase
 
 
 class TestCollect2qBlocks(QiskitTestCase):

@@ -17,8 +17,8 @@ from __future__ import annotations
 import warnings
 
 from qiskit.circuit.gate import Gate
-from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.parameterexpression import ParameterValueType
+from qiskit.circuit.quantumregister import QuantumRegister
 
 
 class MSGate(Gate):
@@ -48,8 +48,8 @@ class MSGate(Gate):
 
     def _define(self):
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.rxx import RXXGate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         theta = self.params[0]
         q = QuantumRegister(self.num_qubits, "q")

@@ -16,12 +16,12 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import QuantumRegister, QuantumCircuit
-from qiskit.transpiler import CouplingMap
-from qiskit.transpiler.passes import DenseLayout
+from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeTokyo
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler.passes import DenseLayout
 
 
 class TestDenseLayout(QiskitTestCase):

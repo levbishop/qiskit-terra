@@ -76,8 +76,8 @@ class ComposedOp(ListOp):
             OpflowError: for operators where a single underlying circuit can not be obtained.
         """
         # pylint: disable=cyclic-import
-        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
         from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
         circuit_op = self.to_circuit_op()
         if isinstance(circuit_op, (PrimitiveOp, CircuitStateFn)):

@@ -22,11 +22,11 @@ from numpy import linalg as la
 
 from qiskit.transpiler.synthesis.aqc.approximate import ApproximatingObjective
 from qiskit.transpiler.synthesis.aqc.elementary_operations import (
+    place_cnot,
+    place_unitary,
+    rx_matrix,
     ry_matrix,
     rz_matrix,
-    place_unitary,
-    place_cnot,
-    rx_matrix,
 )
 
 

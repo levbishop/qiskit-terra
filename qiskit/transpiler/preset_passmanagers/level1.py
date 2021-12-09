@@ -17,49 +17,49 @@ Level 1 pass manager: light optimization by simple adjacent gate collapsing.
 
 from __future__ import annotations
 
-from qiskit.transpiler.passmanager_config import PassManagerConfig
-from qiskit.transpiler.timing_constraints import TimingConstraints
-from qiskit.transpiler.passmanager import PassManager
+from qiskit.transpiler import TranspilerError
 from qiskit.transpiler.passes import (
-    Unroller,
-    BasisTranslator,
-    UnrollCustomDefinitions,
-    Unroll3qOrMore,
-    CXCancellation,
-    CheckMap,
-    GateDirection,
-    SetLayout,
-    TrivialLayout,
-    DenseLayout,
-    NoiseAdaptiveLayout,
-    SabreLayout,
+    ALAPSchedule,
+    AlignMeasures,
+    ApplyLayout,
+    ASAPSchedule,
     BarrierBeforeFinalMeasurements,
     BasicSwap,
-    LookaheadSwap,
-    StochasticSwap,
-    SabreSwap,
-    FullAncillaAllocation,
-    EnlargeWithAncilla,
-    FixedPoint,
-    Depth,
-    RemoveResetInZeroState,
-    Optimize1qGatesDecomposition,
-    ApplyLayout,
+    BasisTranslator,
     CheckGateDirection,
-    Layout2qDistance,
+    CheckMap,
     Collect2qBlocks,
     ConsolidateBlocks,
-    UnitarySynthesis,
-    TimeUnitConversion,
-    ALAPSchedule,
-    ASAPSchedule,
-    AlignMeasures,
-    ValidatePulseGates,
-    PulseGates,
-    Error,
     ContainsInstruction,
+    CXCancellation,
+    DenseLayout,
+    Depth,
+    EnlargeWithAncilla,
+    Error,
+    FixedPoint,
+    FullAncillaAllocation,
+    GateDirection,
+    Layout2qDistance,
+    LookaheadSwap,
+    NoiseAdaptiveLayout,
+    Optimize1qGatesDecomposition,
+    PulseGates,
+    RemoveResetInZeroState,
+    SabreLayout,
+    SabreSwap,
+    SetLayout,
+    StochasticSwap,
+    TimeUnitConversion,
+    TrivialLayout,
+    UnitarySynthesis,
+    Unroll3qOrMore,
+    UnrollCustomDefinitions,
+    Unroller,
+    ValidatePulseGates,
 )
-from qiskit.transpiler import TranspilerError
+from qiskit.transpiler.passmanager import PassManager
+from qiskit.transpiler.passmanager_config import PassManagerConfig
+from qiskit.transpiler.timing_constraints import TimingConstraints
 
 
 def level_1_pass_manager(pass_manager_config: PassManagerConfig) -> PassManager:

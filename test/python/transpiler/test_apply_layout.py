@@ -16,12 +16,12 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.circuit import QuantumRegister, QuantumCircuit, ClassicalRegister
+from qiskit.circuit import ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.layout import Layout
 from qiskit.transpiler.passes import ApplyLayout
-from qiskit.transpiler.exceptions import TranspilerError
 
 
 class TestApplyLayout(QiskitTestCase):

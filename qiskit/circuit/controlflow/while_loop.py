@@ -14,10 +14,10 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import Clbit, ClassicalRegister, QuantumCircuit
-from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.controlflow.condition import validate_condition, condition_bits
+from qiskit.circuit import ClassicalRegister, Clbit, QuantumCircuit
+from qiskit.circuit.controlflow.condition import condition_bits, validate_condition
 from qiskit.circuit.controlflow.control_flow import ControlFlowOp
+from qiskit.circuit.exceptions import CircuitError
 
 
 class WhileLoopOp(ControlFlowOp):

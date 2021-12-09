@@ -16,14 +16,14 @@ This module is used internally by ``qiskit.transpiler.classicalfunction.Classica
 
 from __future__ import annotations
 
-import ast
 import _ast
+import ast
 
 from tweedledum.classical import LogicNetwork
 
 from qiskit.circuit.classicalfunction.exceptions import (
-    ClassicalFunctionParseError,
     ClassicalFunctionCompilerTypeError,
+    ClassicalFunctionParseError,
 )
 
 

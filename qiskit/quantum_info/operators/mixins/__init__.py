@@ -18,8 +18,8 @@ from __future__ import annotations
 
 from inspect import getdoc
 
-from qiskit.quantum_info.operators.mixins.group import GroupMixin
 from qiskit.quantum_info.operators.mixins.adjoint import AdjointMixin
+from qiskit.quantum_info.operators.mixins.group import GroupMixin
 from qiskit.quantum_info.operators.mixins.linear import LinearMixin
 from qiskit.quantum_info.operators.mixins.multiply import MultiplyMixin
 from qiskit.quantum_info.operators.mixins.tolerances import TolerancesMixin

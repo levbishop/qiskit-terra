@@ -14,9 +14,9 @@
 
 from __future__ import annotations
 
+from qiskit.exceptions import QiskitError
 from qiskit.pulse.channels import DriveChannel, MeasureChannel
 from qiskit.pulse.configuration import LoConfig
-from qiskit.exceptions import QiskitError
 
 
 class LoConfigConverter:

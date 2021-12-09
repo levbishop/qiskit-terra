@@ -19,16 +19,16 @@ from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np
 import retworkx as rx
-from ddt import ddt, data
+from ddt import data, ddt
 
 from qiskit import QuantumCircuit
-from qiskit.quantum_info import Pauli
-from qiskit.exceptions import QiskitError
-from qiskit.utils import QuantumInstance, algorithm_globals
-from qiskit.algorithms import VQE, QAOA
-from qiskit.opflow import I, X, Z, PauliSumOp
-from qiskit.algorithms.optimizers import SPSA, COBYLA
+from qiskit.algorithms import QAOA, VQE
+from qiskit.algorithms.optimizers import COBYLA, SPSA
 from qiskit.circuit.library import EfficientSU2
+from qiskit.exceptions import QiskitError
+from qiskit.opflow import I, PauliSumOp, X, Z
+from qiskit.quantum_info import Pauli
+from qiskit.utils import QuantumInstance, algorithm_globals
 from qiskit.utils.mitigation import CompleteMeasFitter, TensoredMeasFitter
 
 try:

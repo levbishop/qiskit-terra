@@ -20,9 +20,9 @@ from test import combine
 import numpy as np
 from ddt import ddt
 
+from qiskit.quantum_info import DensityMatrix, Statevector
+from qiskit.quantum_info.random import random_density_matrix, random_statevector
 from qiskit.test import QiskitTestCase
-from qiskit.quantum_info import Statevector, DensityMatrix
-from qiskit.quantum_info.random import random_statevector, random_density_matrix
 
 
 @ddt

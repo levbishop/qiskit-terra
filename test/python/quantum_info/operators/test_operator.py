@@ -16,19 +16,19 @@
 
 from __future__ import annotations
 
-import unittest
-import logging
 import copy
+import logging
+import unittest
 
 import numpy as np
 import scipy.linalg as la
 from numpy.testing import assert_allclose
 
-from qiskit import QiskitError, QuantumRegister, ClassicalRegister, QuantumCircuit
-from qiskit.circuit.library import HGate, CHGate, CXGate, QFT
-from qiskit.test import QiskitTestCase
+from qiskit import ClassicalRegister, QiskitError, QuantumCircuit, QuantumRegister
+from qiskit.circuit.library import QFT, CHGate, CXGate, HGate
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.predicates import matrix_equal
+from qiskit.test import QiskitTestCase
 
 logger = logging.getLogger(__name__)
 

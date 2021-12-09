@@ -15,10 +15,10 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Tuple
+from typing import Iterable, Tuple, Union
 
 from qiskit.pulse.instructions import Instruction
-from qiskit.pulse.schedule import ScheduleBlock, Schedule
+from qiskit.pulse.schedule import Schedule, ScheduleBlock
 from qiskit.pulse.transforms import canonicalization
 
 InstructionSched = Union[Tuple[int, Instruction], Instruction]

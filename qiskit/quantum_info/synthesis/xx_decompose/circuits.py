@@ -30,8 +30,8 @@ from operator import itemgetter
 
 import numpy as np
 
-from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import RXXGate, RYYGate, RZGate
+from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.synthesis.xx_decompose.paths import decomposition_hop
 from qiskit.quantum_info.synthesis.xx_decompose.utilities import EPSILON, safe_arccos

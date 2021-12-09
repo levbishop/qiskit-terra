@@ -19,8 +19,8 @@ from typing import Any
 
 import numpy as np
 
-from qiskit.algorithms.amplitude_amplifiers.amplification_problem import AmplificationProblem
 from qiskit.algorithms.algorithm_result import AlgorithmResult
+from qiskit.algorithms.amplitude_amplifiers.amplification_problem import AmplificationProblem
 
 
 class AmplitudeAmplifier(ABC):

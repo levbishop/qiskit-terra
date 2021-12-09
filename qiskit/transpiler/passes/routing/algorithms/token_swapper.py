@@ -35,7 +35,7 @@ from typing import Iterable, Iterator, Mapping, MutableMapping, MutableSet
 import numpy as np
 import retworkx as rx
 
-from qiskit.transpiler.passes.routing.algorithms.types import Swap, Permutation
+from qiskit.transpiler.passes.routing.algorithms.types import Permutation, Swap
 from qiskit.transpiler.passes.routing.algorithms.util import PermutationCircuit, permutation_circuit
 
 logger = logging.getLogger(__name__)

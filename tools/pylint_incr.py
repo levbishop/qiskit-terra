@@ -16,9 +16,9 @@
 
 from __future__ import annotations
 
-import subprocess
 import argparse
 import os
+import subprocess
 import sys
 
 from pylint import lint

@@ -14,14 +14,14 @@
 
 from __future__ import annotations
 
-from typing import Callable
 from functools import partial
+from typing import Callable
 
 import numpy as np
 
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.quantum_info import SparsePauliOp, Pauli
+from qiskit.quantum_info import Pauli, SparsePauliOp
 from qiskit.synthesis.evolution.evolution_synthesis import EvolutionSynthesis
 
 

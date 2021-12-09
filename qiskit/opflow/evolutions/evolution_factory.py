@@ -14,10 +14,10 @@
 
 from __future__ import annotations
 
-from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.evolutions.evolution_base import EvolutionBase
-from qiskit.opflow.evolutions.pauli_trotter_evolution import PauliTrotterEvolution
 from qiskit.opflow.evolutions.matrix_evolution import MatrixEvolution
+from qiskit.opflow.evolutions.pauli_trotter_evolution import PauliTrotterEvolution
+from qiskit.opflow.operator_base import OperatorBase
 
 
 class EvolutionFactory:

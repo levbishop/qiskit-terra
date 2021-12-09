@@ -18,9 +18,9 @@ from typing import Any, Callable
 
 from numpy import pi
 
-from qiskit.circuit import QuantumCircuit, Parameter
-from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit import Parameter, QuantumCircuit
 from qiskit.circuit.library.n_local.two_local import TwoLocal
+from qiskit.circuit.library.standard_gates import RZGate
 
 
 class ExcitationPreserving(TwoLocal):

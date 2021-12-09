@@ -15,10 +15,10 @@
 from __future__ import annotations
 
 from qiskit.circuit import QuantumCircuit, QuantumRegister
-from qiskit.quantum_info.operators import Operator
 from qiskit.extensions.unitary import UnitaryGate
-from qiskit.transpiler.synthesis import graysynth, cnot_synth
+from qiskit.quantum_info.operators import Operator
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler.synthesis import cnot_synth, graysynth
 
 
 class TestGraySynth(QiskitTestCase):

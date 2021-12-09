@@ -22,16 +22,16 @@ import numpy as np
 
 from qiskit.circuit import Clbit
 from qiskit.circuit.controlledgate import ControlledGate
-from qiskit.circuit.library.standard_gates import SwapGate, XGate, ZGate, RZZGate, U1Gate, PhaseGate
+from qiskit.circuit.library.standard_gates import PhaseGate, RZZGate, SwapGate, U1Gate, XGate, ZGate
 from qiskit.circuit.measure import Measure
-from qiskit.visualization.qcstyle import load_style
 from qiskit.circuit.tools.pi_check import pi_check
+from qiskit.visualization.qcstyle import load_style
 from qiskit.visualization.utils import (
+    generate_latex_label,
+    get_bit_label,
+    get_condition_label,
     get_gate_ctrl_text,
     get_param_str,
-    get_bit_label,
-    generate_latex_label,
-    get_condition_label,
 )
 
 

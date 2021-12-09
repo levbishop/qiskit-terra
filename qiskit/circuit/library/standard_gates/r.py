@@ -18,10 +18,10 @@ import math
 
 import numpy
 
-from qiskit.qasm import pi
 from qiskit.circuit.gate import Gate
-from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.parameterexpression import ParameterValueType
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.qasm import pi
 
 
 class RGate(Gate):
@@ -59,8 +59,8 @@ class RGate(Gate):
         gate r(θ, φ) a {u3(θ, φ - π/2, -φ + π/2) a;}
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.u3 import U3Gate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)

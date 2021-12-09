@@ -18,12 +18,12 @@ import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 from qiskit import BasicAer
+from qiskit.algorithms import VQE
+from qiskit.algorithms.optimizers import BOBYQA, IMFIL, SNOBFIT
 from qiskit.circuit.library import RealAmplitudes
-from qiskit.utils import QuantumInstance, algorithm_globals
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.opflow import PauliSumOp
-from qiskit.algorithms import VQE
-from qiskit.algorithms.optimizers import BOBYQA, SNOBFIT, IMFIL
+from qiskit.utils import QuantumInstance, algorithm_globals
 
 
 class TestOptimizers(QiskitAlgorithmsTestCase):

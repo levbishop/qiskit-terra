@@ -70,14 +70,14 @@ For example::
 
 from __future__ import annotations
 
-import unittest
 import os
 import sys
+import unittest
 
-from qiskit import execute, ClassicalRegister, QuantumRegister, QuantumCircuit, BasicAer
-from qiskit.transpiler import PassManager, CouplingMap, Layout
-from qiskit.transpiler.passes import BasicSwap, LookaheadSwap, StochasticSwap, SabreSwap, SetLayout
+from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler import CouplingMap, Layout, PassManager
+from qiskit.transpiler.passes import BasicSwap, LookaheadSwap, SabreSwap, SetLayout, StochasticSwap
 
 
 class CommonUtilitiesMixin:

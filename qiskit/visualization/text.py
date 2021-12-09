@@ -17,19 +17,19 @@ A module for drawing circuits in ascii art or some other text representation
 from __future__ import annotations
 
 import sys
-from warnings import warn
 from shutil import get_terminal_size
+from warnings import warn
 
-from qiskit.circuit import Clbit, ControlledGate, Reset, Measure
-from qiskit.circuit.library.standard_gates import IGate, RZZGate, SwapGate, SXGate, SXdgGate
+from qiskit.circuit import Clbit, ControlledGate, Measure, Reset
+from qiskit.circuit.library.standard_gates import IGate, RZZGate, SwapGate, SXdgGate, SXGate
 from qiskit.circuit.tools.pi_check import pi_check
+from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.utils import (
-    get_gate_ctrl_text,
-    get_param_str,
     get_bit_label,
     get_condition_label,
+    get_gate_ctrl_text,
+    get_param_str,
 )
-from qiskit.visualization.exceptions import VisualizationError
 
 
 class TextDrawerCregBundle(VisualizationError):

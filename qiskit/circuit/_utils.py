@@ -17,8 +17,8 @@ from __future__ import annotations
 
 import numpy
 
-from qiskit.exceptions import QiskitError
 from qiskit.circuit.exceptions import CircuitError
+from qiskit.exceptions import QiskitError
 
 
 def _compute_control_matrix(base_mat, num_ctrl_qubits, ctrl_state=None):

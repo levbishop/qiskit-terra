@@ -22,9 +22,9 @@ import uuid
 import warnings
 
 from qiskit import circuit, pulse
-from qiskit.providers.models import BackendProperties
-from qiskit.providers import BackendV1, BaseBackend
 from qiskit.exceptions import QiskitError
+from qiskit.providers import BackendV1, BaseBackend
+from qiskit.providers.models import BackendProperties
 from qiskit.test.mock import fake_job
 
 try:

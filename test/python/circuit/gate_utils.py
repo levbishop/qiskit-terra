@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from inspect import signature, Parameter
+from inspect import Parameter, signature
 
 
 def _get_free_params(fun, ignore=None):

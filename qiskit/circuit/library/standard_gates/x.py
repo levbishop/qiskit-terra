@@ -19,17 +19,17 @@ from math import ceil
 
 import numpy
 
+from qiskit.circuit._utils import _compute_control_matrix, _ctrl_state_to_int
 from qiskit.circuit.controlledgate import ControlledGate
 from qiskit.circuit.gate import Gate
-from qiskit.circuit.parameterexpression import ParameterValueType
-from qiskit.circuit.quantumregister import QuantumRegister
-from qiskit.circuit._utils import _compute_control_matrix, _ctrl_state_to_int
-from qiskit.qasm import pi
 from qiskit.circuit.library.standard_gates.h import HGate
-from qiskit.circuit.library.standard_gates.t import TGate, TdgGate
+from qiskit.circuit.library.standard_gates.sx import SXGate
+from qiskit.circuit.library.standard_gates.t import TdgGate, TGate
 from qiskit.circuit.library.standard_gates.u1 import U1Gate
 from qiskit.circuit.library.standard_gates.u2 import U2Gate
-from qiskit.circuit.library.standard_gates.sx import SXGate
+from qiskit.circuit.parameterexpression import ParameterValueType
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.qasm import pi
 
 
 class XGate(Gate):
@@ -84,8 +84,8 @@ class XGate(Gate):
         gate x a { u3(pi,0,pi) a; }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.u3 import U3Gate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -198,11 +198,11 @@ class CXGate(ControlledGate):
             Identifier,
             Integer,
             QuantumBlock,
+            QuantumGateCall,
+            QuantumGateDefinition,
             QuantumGateModifier,
             QuantumGateModifierName,
             QuantumGateSignature,
-            QuantumGateDefinition,
-            QuantumGateCall,
         )
 
         control, target = Identifier("c"), Identifier("t")
@@ -530,8 +530,8 @@ class C3SXGate(ControlledGate):
         }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.u1 import CU1Gate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(4, name="q")
         # pylint: disable=invalid-unary-operand-type
@@ -861,8 +861,8 @@ class C4XGate(ControlledGate):
         }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.u1 import CU1Gate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(5, name="q")
         qc = QuantumCircuit(q, name=self.name)
@@ -1062,8 +1062,8 @@ class MCXGrayCode(MCXGate):
     def _define(self):
         """Define the MCX gate using the Gray code."""
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.u1 import MCU1Gate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(self.num_qubits, name="q")
         qc = QuantumCircuit(q, name=self.name)

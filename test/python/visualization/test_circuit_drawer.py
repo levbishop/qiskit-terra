@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import unittest
 import os
+import unittest
 from unittest.mock import patch
 
 from PIL import Image

@@ -18,7 +18,7 @@ import collections
 import io
 import itertools
 import numbers
-from os.path import dirname, join, abspath
+from os.path import abspath, dirname, join
 from typing import Iterable, Sequence
 
 from qiskit.circuit import (
@@ -35,12 +35,12 @@ from qiskit.circuit import (
 )
 from qiskit.circuit.bit import Bit
 from qiskit.circuit.controlflow import (
-    IfElseOp,
-    ForLoopOp,
-    WhileLoopOp,
-    ControlFlowOp,
     BreakLoopOp,
     ContinueLoopOp,
+    ControlFlowOp,
+    ForLoopOp,
+    IfElseOp,
+    WhileLoopOp,
 )
 from qiskit.circuit.library import standard_gates
 from qiskit.circuit.register import Register

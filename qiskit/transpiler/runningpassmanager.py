@@ -16,15 +16,15 @@ This object holds the state of a pass manager during running-time."""
 from __future__ import annotations
 
 import logging
-from functools import partial
 from collections import OrderedDict
+from functools import partial
 from time import time
 
-from qiskit.dagcircuit import DAGCircuit
 from qiskit.converters import circuit_to_dag, dag_to_circuit
-from qiskit.transpiler.propertyset import PropertySet
-from qiskit.transpiler.fencedobjs import FencedPropertySet, FencedDAGCircuit
+from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.exceptions import TranspilerError
+from qiskit.transpiler.fencedobjs import FencedDAGCircuit, FencedPropertySet
+from qiskit.transpiler.propertyset import PropertySet
 
 logger = logging.getLogger(__name__)
 

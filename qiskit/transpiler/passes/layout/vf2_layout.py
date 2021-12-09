@@ -18,11 +18,11 @@ import random
 import time
 from enum import Enum
 
-from retworkx import PyGraph, PyDiGraph, vf2_mapping
+from retworkx import PyDiGraph, PyGraph, vf2_mapping
 
-from qiskit.transpiler.layout import Layout
-from qiskit.transpiler.basepasses import AnalysisPass
 from qiskit.providers.exceptions import BackendPropertyError
+from qiskit.transpiler.basepasses import AnalysisPass
+from qiskit.transpiler.layout import Layout
 
 logger = logging.getLogger(__name__)
 

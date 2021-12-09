@@ -62,8 +62,8 @@ class SwapGate(Gate):
         gate swap a,b { cx a,b; cx b,a; cx a,b; }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.x import CXGate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -230,8 +230,8 @@ class CSwapGate(ControlledGate):
         }
         """
         # pylint: disable=cyclic-import
+        from qiskit.circuit.library.standard_gates.x import CCXGate, CXGate
         from qiskit.circuit.quantumcircuit import QuantumCircuit
-        from qiskit.circuit.library.standard_gates.x import CXGate, CCXGate
 
         q = QuantumRegister(3, "q")
         qc = QuantumCircuit(q, name=self.name)

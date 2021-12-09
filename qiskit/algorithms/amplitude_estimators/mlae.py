@@ -18,17 +18,17 @@ from typing import Callable, List, Tuple
 
 import numpy as np
 from scipy.optimize import brute
-from scipy.stats import norm, chi2
+from scipy.stats import chi2, norm
 
-from qiskit.providers import BaseBackend, Backend
-from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
-from qiskit.utils import QuantumInstance
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.algorithms.amplitude_estimators.amplitude_estimator import (
     AmplitudeEstimator,
     AmplitudeEstimatorResult,
 )
 from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 from qiskit.algorithms.exceptions import AlgorithmError
+from qiskit.providers import Backend, BaseBackend
+from qiskit.utils import QuantumInstance
 
 MINIMIZER = Callable[[Callable[[float], float], List[Tuple[float, float]]], float]
 

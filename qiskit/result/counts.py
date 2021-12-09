@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import re
 
-from qiskit.result import postprocess
 from qiskit import exceptions
+from qiskit.result import postprocess
 
 # NOTE: A dict subclass should not overload any dunder methods like __getitem__
 # this can cause unexpected behavior and issues as the cPython dict

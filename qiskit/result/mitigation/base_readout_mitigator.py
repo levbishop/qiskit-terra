@@ -20,8 +20,8 @@ from typing import Callable, Iterable
 
 import numpy as np
 
-from qiskit.result.distributions.quasi import QuasiDistribution
 from qiskit.result.counts import Counts
+from qiskit.result.distributions.quasi import QuasiDistribution
 
 
 class BaseReadoutMitigator(ABC):

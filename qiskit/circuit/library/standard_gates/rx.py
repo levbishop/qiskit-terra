@@ -18,11 +18,11 @@ import math
 
 import numpy
 
-from qiskit.qasm import pi
 from qiskit.circuit.controlledgate import ControlledGate
 from qiskit.circuit.gate import Gate
-from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.parameterexpression import ParameterValueType
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.qasm import pi
 
 
 class RXGate(Gate):
@@ -58,8 +58,8 @@ class RXGate(Gate):
         gate rx(theta) a {r(theta, 0) a;}
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.r import RGate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -189,10 +189,10 @@ class CRXGate(ControlledGate):
         }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.u1 import U1Gate
         from qiskit.circuit.library.standard_gates.u3 import U3Gate
         from qiskit.circuit.library.standard_gates.x import CXGate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)

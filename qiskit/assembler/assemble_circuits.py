@@ -17,24 +17,24 @@ import copy
 from collections import defaultdict
 from typing import Dict, List
 
-from qiskit.assembler.run_config import RunConfig
 from qiskit.assembler.assemble_schedules import _assemble_instructions as _assemble_schedule
+from qiskit.assembler.run_config import RunConfig
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.classicalregister import Clbit
 from qiskit.exceptions import QiskitError
 from qiskit.qobj import (
-    QasmQobj,
-    QobjExperimentHeader,
-    QasmQobjInstruction,
-    QasmQobjExperimentConfig,
-    QasmQobjExperiment,
-    QasmQobjConfig,
-    QasmExperimentCalibrations,
     GateCalibration,
-    PulseQobjInstruction,
     PulseLibraryItem,
-    converters,
+    PulseQobjInstruction,
+    QasmExperimentCalibrations,
+    QasmQobj,
+    QasmQobjConfig,
+    QasmQobjExperiment,
+    QasmQobjExperimentConfig,
+    QasmQobjInstruction,
+    QobjExperimentHeader,
     QobjHeader,
+    converters,
 )
 from qiskit.tools.parallel import parallel_map
 

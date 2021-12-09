@@ -15,7 +15,7 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import QuantumCircuit, Measure
+from qiskit.circuit import Measure, QuantumCircuit
 from qiskit.circuit.random import random_circuit
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase

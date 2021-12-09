@@ -18,17 +18,17 @@ import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np
-from ddt import ddt, data, unpack
+from ddt import data, ddt, unpack
 
 import qiskit
+from qiskit import QuantumCircuit
 from qiskit.algorithms.phase_estimators import (
-    PhaseEstimation,
     HamiltonianPhaseEstimation,
     IterativePhaseEstimation,
+    PhaseEstimation,
 )
-from qiskit.opflow.evolutions import PauliTrotterEvolution, MatrixEvolution
-from qiskit import QuantumCircuit
-from qiskit.opflow import H, X, Y, Z, I, StateFn
+from qiskit.opflow import H, I, StateFn, X, Y, Z
+from qiskit.opflow.evolutions import MatrixEvolution, PauliTrotterEvolution
 
 
 @ddt

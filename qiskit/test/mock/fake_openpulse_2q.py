@@ -18,13 +18,13 @@ from __future__ import annotations
 import datetime
 
 from qiskit.providers.models import (
+    Command,
     GateConfig,
     PulseBackendConfiguration,
     PulseDefaults,
-    Command,
     UchannelLO,
 )
-from qiskit.providers.models.backendproperties import Nduv, Gate, BackendProperties
+from qiskit.providers.models.backendproperties import BackendProperties, Gate, Nduv
 from qiskit.qobj import PulseQobjInstruction
 from qiskit.test.mock.fake_backend import FakeBackend
 

@@ -18,19 +18,19 @@ import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np
-from ddt import ddt, idata, data, unpack
+from ddt import data, ddt, idata, unpack
 
-from qiskit import QuantumRegister, QuantumCircuit, BasicAer
-from qiskit.circuit.library import QFT, GroverOperator
-from qiskit.utils import QuantumInstance
+from qiskit import BasicAer, QuantumCircuit, QuantumRegister
 from qiskit.algorithms import (
     AmplitudeEstimation,
-    MaximumLikelihoodAmplitudeEstimation,
-    IterativeAmplitudeEstimation,
-    FasterAmplitudeEstimation,
     EstimationProblem,
+    FasterAmplitudeEstimation,
+    IterativeAmplitudeEstimation,
+    MaximumLikelihoodAmplitudeEstimation,
 )
+from qiskit.circuit.library import QFT, GroverOperator
 from qiskit.quantum_info import Operator, Statevector
+from qiskit.utils import QuantumInstance
 
 
 class BernoulliStateIn(QuantumCircuit):

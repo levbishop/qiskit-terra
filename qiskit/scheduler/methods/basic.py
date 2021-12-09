@@ -17,8 +17,8 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.barrier import Barrier
+from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.pulse.schedule import Schedule
 from qiskit.scheduler.config import ScheduleConfig
 from qiskit.scheduler.lowering import lower_gates

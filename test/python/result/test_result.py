@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.result import models, marginal_counts, Result
 from qiskit.qobj import QobjExperimentHeader
+from qiskit.result import Result, marginal_counts, models
 from qiskit.test import QiskitTestCase
 
 

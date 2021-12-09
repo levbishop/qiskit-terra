@@ -17,22 +17,22 @@ from __future__ import annotations
 from qiskit.quantum_info.operators.operator import Operator
 
 # These must come after to avoid cyclic import problems?
-from qiskit.quantum_info.operators.scalar_op import ScalarOp
-from qiskit.quantum_info.operators.channel import Choi, SuperOp, Kraus, Stinespring, Chi, PTM
+from qiskit.quantum_info.operators.channel import PTM, Chi, Choi, Kraus, Stinespring, SuperOp
+from qiskit.quantum_info.operators.dihedral import CNOTDihedral
 from qiskit.quantum_info.operators.measures import (
-    process_fidelity,
     average_gate_fidelity,
-    gate_error,
     diamond_norm,
+    gate_error,
+    process_fidelity,
 )
+from qiskit.quantum_info.operators.pauli import pauli_group
+from qiskit.quantum_info.operators.scalar_op import ScalarOp
 from qiskit.quantum_info.operators.symplectic import (
     Clifford,
     Pauli,
     PauliList,
-    SparsePauliOp,
     PauliTable,
+    SparsePauliOp,
     StabilizerTable,
     pauli_basis,
 )
-from qiskit.quantum_info.operators.pauli import pauli_group
-from qiskit.quantum_info.operators.dihedral import CNOTDihedral

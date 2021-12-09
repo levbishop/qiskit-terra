@@ -20,12 +20,12 @@ import numpy as np
 from ddt import ddt
 
 from qiskit.quantum_info import (
-    Operator,
     Choi,
-    process_fidelity,
+    Operator,
     average_gate_fidelity,
-    gate_error,
     diamond_norm,
+    gate_error,
+    process_fidelity,
 )
 from qiskit.test import QiskitTestCase
 

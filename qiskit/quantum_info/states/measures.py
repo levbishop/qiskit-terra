@@ -19,13 +19,13 @@ import numpy as np
 import scipy.linalg as la
 
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info.states.statevector import Statevector
 from qiskit.quantum_info.states.densitymatrix import DensityMatrix
+from qiskit.quantum_info.states.statevector import Statevector
 from qiskit.quantum_info.states.utils import (
-    partial_trace,
-    shannon_entropy,
     _format_state,
     _funm_svd,
+    partial_trace,
+    shannon_entropy,
 )
 
 

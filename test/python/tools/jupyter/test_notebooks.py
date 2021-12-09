@@ -21,8 +21,8 @@ import unittest
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
-from qiskit.tools.visualization import HAS_MATPLOTLIB
 from qiskit.test import Path, QiskitTestCase, slow_test
+from qiskit.tools.visualization import HAS_MATPLOTLIB
 
 # Timeout (in seconds) for a single notebook.
 TIMEOUT = 1000

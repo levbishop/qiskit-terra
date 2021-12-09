@@ -14,35 +14,35 @@
 
 from __future__ import annotations
 
-import unittest
 import json
-import os
 import math
+import os
+import unittest
 from contextlib import contextmanager
 
 import numpy as np
 from numpy import pi
 
-from qiskit.test import QiskitTestCase
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, transpile
-from qiskit.test.mock import FakeTenerife
-from qiskit.visualization.circuit_visualization import _matplotlib_circuit_drawer
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
+from qiskit.circuit import Clbit, Parameter, Qubit
 from qiskit.circuit.library import (
-    XGate,
-    MCXGate,
-    HGate,
-    RZZGate,
-    SwapGate,
-    DCXGate,
-    ZGate,
-    SGate,
-    MCXVChain,
     IQP,
+    DCXGate,
+    HGate,
+    MCXGate,
+    MCXVChain,
+    RZZGate,
+    SGate,
+    SwapGate,
+    XGate,
+    ZGate,
 )
 from qiskit.extensions import HamiltonianGate
-from qiskit.circuit import Parameter, Qubit, Clbit
 from qiskit.quantum_info.random import random_unitary
+from qiskit.test import QiskitTestCase
+from qiskit.test.mock import FakeTenerife
 from qiskit.tools.visualization import HAS_MATPLOTLIB
+from qiskit.visualization.circuit_visualization import _matplotlib_circuit_drawer
 
 if HAS_MATPLOTLIB:
     from matplotlib.pyplot import close as mpl_close

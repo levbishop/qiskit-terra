@@ -14,65 +14,65 @@
 
 from __future__ import annotations
 
-import unittest
 import contextlib
 import logging
+import unittest
 from test import combine
 
 import numpy as np
 from ddt import ddt
 
-from qiskit import execute, QiskitError
+from qiskit import QiskitError, execute
 from qiskit.circuit import QuantumCircuit, QuantumRegister
-from qiskit.converters import dag_to_circuit, circuit_to_dag
-from qiskit.extensions import UnitaryGate
 from qiskit.circuit.library import (
+    CPhaseGate,
+    CRZGate,
+    CXGate,
+    CZGate,
     HGate,
     IGate,
+    RXGate,
+    RXXGate,
+    RYGate,
+    RYYGate,
+    RZGate,
+    RZXGate,
+    RZZGate,
     SdgGate,
     SGate,
+    SwapGate,
     U3Gate,
     UGate,
     XGate,
     YGate,
     ZGate,
-    CXGate,
-    CZGate,
     iSwapGate,
-    SwapGate,
-    RXXGate,
-    RYYGate,
-    RZZGate,
-    RZXGate,
-    CPhaseGate,
-    CRZGate,
-    RXGate,
-    RYGate,
-    RZGate,
 )
+from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit.extensions import UnitaryGate
 from qiskit.providers.basicaer import UnitarySimulatorPy
 from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.random import random_unitary
+from qiskit.quantum_info.synthesis.ion_decompose import cnot_rxx_decompose
 from qiskit.quantum_info.synthesis.one_qubit_decompose import OneQubitEulerDecomposer
 from qiskit.quantum_info.synthesis.two_qubit_decompose import (
+    TwoQubitBasisDecomposer,
+    TwoQubitControlledUDecomposer,
+    TwoQubitWeylControlledEquiv,
     TwoQubitWeylDecomposition,
-    TwoQubitWeylIdEquiv,
-    TwoQubitWeylSWAPEquiv,
-    TwoQubitWeylPartialSWAPEquiv,
-    TwoQubitWeylPartialSWAPFlipEquiv,
     TwoQubitWeylfSimaabEquiv,
     TwoQubitWeylfSimabbEquiv,
     TwoQubitWeylfSimabmbEquiv,
-    TwoQubitWeylControlledEquiv,
-    TwoQubitWeylMirrorControlledEquiv,
     TwoQubitWeylGeneral,
-    two_qubit_cnot_decompose,
-    TwoQubitBasisDecomposer,
-    TwoQubitControlledUDecomposer,
+    TwoQubitWeylIdEquiv,
+    TwoQubitWeylMirrorControlledEquiv,
+    TwoQubitWeylPartialSWAPEquiv,
+    TwoQubitWeylPartialSWAPFlipEquiv,
+    TwoQubitWeylSWAPEquiv,
     Ud,
     decompose_two_qubit_product_gate,
+    two_qubit_cnot_decompose,
 )
-from qiskit.quantum_info.synthesis.ion_decompose import cnot_rxx_decompose
 from qiskit.test import QiskitTestCase
 
 

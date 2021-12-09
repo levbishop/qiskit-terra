@@ -16,15 +16,15 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, ParameterVector, ParameterExpression
-from qiskit.utils.arithmetic import triu_to_dense
-from qiskit.opflow.list_ops.list_op import ListOp
-from qiskit.opflow.list_ops.summed_op import SummedOp
-from qiskit.opflow.operator_globals import I, Z, Y
-from qiskit.opflow.state_fns.state_fn import StateFn
-from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.circuit import ParameterExpression, ParameterVector, QuantumCircuit, QuantumRegister
 from qiskit.opflow.gradients.circuit_gradients.lin_comb import LinComb
 from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.list_ops.summed_op import SummedOp
+from qiskit.opflow.operator_globals import I, Y, Z
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
+from qiskit.opflow.state_fns.state_fn import StateFn
+from qiskit.utils.arithmetic import triu_to_dense
 
 
 class LinCombFull(CircuitQFI):

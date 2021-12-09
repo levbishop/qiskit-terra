@@ -16,16 +16,16 @@
 from __future__ import annotations
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 
-from qiskit import BasicAer, QuantumRegister, ClassicalRegister, QuantumCircuit, execute
+from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute
 from qiskit.circuit import Gate, Instruction, Parameter
 from qiskit.circuit.classicalregister import Clbit
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.quantumcircuit import BitLocations
-from qiskit.test import QiskitTestCase
 from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.quantumcircuit import BitLocations
 from qiskit.quantum_info import Operator
+from qiskit.test import QiskitTestCase
 
 
 @ddt

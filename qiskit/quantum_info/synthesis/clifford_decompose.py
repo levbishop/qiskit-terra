@@ -20,19 +20,19 @@ from itertools import product
 
 import numpy as np
 
-from qiskit.exceptions import QiskitError
 from qiskit.circuit import QuantumCircuit
-from qiskit.quantum_info.operators.symplectic.pauli import Pauli
+from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.symplectic.clifford_circuits import (
-    _append_z,
-    _append_x,
+    _append_cx,
     _append_h,
     _append_s,
+    _append_swap,
     _append_v,
     _append_w,
-    _append_cx,
-    _append_swap,
+    _append_x,
+    _append_z,
 )
+from qiskit.quantum_info.operators.symplectic.pauli import Pauli
 
 
 def decompose_clifford(clifford, method=None):

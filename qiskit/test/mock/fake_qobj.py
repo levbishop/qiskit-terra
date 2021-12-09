@@ -18,12 +18,12 @@ from __future__ import annotations
 
 from qiskit.qobj import (
     QasmQobj,
+    QasmQobjConfig,
+    QasmQobjExperiment,
+    QasmQobjExperimentConfig,
+    QasmQobjInstruction,
     QobjExperimentHeader,
     QobjHeader,
-    QasmQobjInstruction,
-    QasmQobjExperimentConfig,
-    QasmQobjExperiment,
-    QasmQobjConfig,
 )
 from qiskit.test.mock.fake_qasm_simulator import FakeQasmSimulator
 

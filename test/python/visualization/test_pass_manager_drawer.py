@@ -14,23 +14,23 @@
 
 from __future__ import annotations
 
-import unittest
 import os
+import unittest
 
-from qiskit.transpiler import CouplingMap, Layout
-from qiskit.transpiler.passmanager import PassManager
 from qiskit import QuantumRegister
+from qiskit.transpiler import CouplingMap, Layout
 from qiskit.transpiler.passes import (
-    Unroller,
+    BarrierBeforeFinalMeasurements,
     CheckMap,
     CXDirection,
+    EnlargeWithAncilla,
+    FullAncillaAllocation,
+    RemoveResetInZeroState,
     SetLayout,
     TrivialLayout,
-    BarrierBeforeFinalMeasurements,
-    FullAncillaAllocation,
-    EnlargeWithAncilla,
-    RemoveResetInZeroState,
+    Unroller,
 )
+from qiskit.transpiler.passmanager import PassManager
 
 from .visualization import QiskitVisualizationTestCase, path_to_diagram_reference
 

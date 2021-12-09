@@ -17,11 +17,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import pulse, circuit
+from qiskit import circuit, pulse
 from qiskit.pulse import transforms
 from qiskit.pulse.exceptions import PulseError
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeOpenPulse2Q, FakeArmonk
+from qiskit.test.mock import FakeArmonk, FakeOpenPulse2Q
 from qiskit.utils import has_aer
 
 

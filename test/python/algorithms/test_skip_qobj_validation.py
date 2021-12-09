@@ -17,9 +17,9 @@ from __future__ import annotations
 import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, BasicAer
-from qiskit.utils import QuantumInstance
+from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.exceptions import QiskitError
+from qiskit.utils import QuantumInstance
 
 
 def _compare_dict(dict1, dict2):
@@ -97,8 +97,8 @@ class TestSkipQobjValidation(QiskitAlgorithmsTestCase):
         # build noise model
         # Asymmetric readout error on qubit-0 only
         try:
-            from qiskit.providers.aer.noise import NoiseModel
             from qiskit import Aer
+            from qiskit.providers.aer.noise import NoiseModel
 
             self.backend = Aer.get_backend("qasm_simulator")
         except ImportError as ex:

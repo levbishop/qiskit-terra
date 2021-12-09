@@ -19,16 +19,16 @@ from __future__ import annotations
 import unittest
 
 from qiskit import transpile
-from qiskit.pulse import Schedule
 from qiskit.circuit import (
-    QuantumRegister,
     ClassicalRegister,
-    QuantumCircuit,
-    Parameter,
     Gate,
     Instruction,
+    Parameter,
+    QuantumCircuit,
+    QuantumRegister,
 )
-from qiskit.circuit.library import HGate, RZGate, CXGate, CCXGate
+from qiskit.circuit.library import CCXGate, CXGate, HGate, RZGate
+from qiskit.pulse import Schedule
 from qiskit.test import QiskitTestCase
 
 

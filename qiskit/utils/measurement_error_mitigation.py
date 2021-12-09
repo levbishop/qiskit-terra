@@ -18,16 +18,16 @@ import copy
 from typing import Callable
 
 from qiskit import compiler
-from qiskit.providers import BaseBackend
-from qiskit.circuit import QuantumCircuit
-from qiskit.qobj import QasmQobj
 from qiskit.assembler.run_config import RunConfig
+from qiskit.circuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
+from qiskit.providers import BaseBackend
+from qiskit.qobj import QasmQobj
 from qiskit.utils.mitigation import (
-    complete_meas_cal,
-    tensored_meas_cal,
     CompleteMeasFitter,
     TensoredMeasFitter,
+    complete_meas_cal,
+    tensored_meas_cal,
 )
 
 # pylint: disable=invalid-name

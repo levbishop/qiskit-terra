@@ -25,24 +25,24 @@ arXiv:1811.12926 [quant-ph] (2018).
 """
 from __future__ import annotations
 
-import cmath
-import math
-import io
 import base64
-import warnings
+import cmath
+import io
 import logging
+import math
+import warnings
 from typing import ClassVar
 
 import numpy as np
 import scipy.linalg as la
 
-from qiskit.circuit.quantumregister import QuantumRegister
-from qiskit.circuit.quantumcircuit import QuantumCircuit, Gate
 from qiskit.circuit.library.standard_gates import CXGate, RXGate, RYGate, RZGate
+from qiskit.circuit.quantumcircuit import Gate, QuantumCircuit
+from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators import Operator
-from qiskit.quantum_info.synthesis.weyl import weyl_coordinates, transform_to_magic_basis
-from qiskit.quantum_info.synthesis.one_qubit_decompose import OneQubitEulerDecomposer, DEFAULT_ATOL
+from qiskit.quantum_info.synthesis.one_qubit_decompose import DEFAULT_ATOL, OneQubitEulerDecomposer
+from qiskit.quantum_info.synthesis.weyl import transform_to_magic_basis, weyl_coordinates
 
 logger = logging.getLogger(__name__)
 

@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import QuantumRegister, AncillaRegister, QuantumCircuit
+from qiskit.circuit import AncillaRegister, QuantumCircuit, QuantumRegister
 from qiskit.circuit.library.arithmetic.multipliers.multiplier import Multiplier
 
 

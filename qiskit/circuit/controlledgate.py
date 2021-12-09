@@ -19,10 +19,10 @@ import copy
 from qiskit.circuit.exceptions import CircuitError
 
 # pylint: disable=cyclic-import
-from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.circuit.gate import Gate
-from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit._utils import _ctrl_state_to_int
+from qiskit.circuit.gate import Gate
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.circuit.quantumregister import QuantumRegister
 
 
 class ControlledGate(Gate):

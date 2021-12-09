@@ -16,12 +16,12 @@
 from __future__ import annotations
 
 import ast
+import cmath
 import copy
 import operator
-import cmath
 
-from qiskit.pulse.exceptions import PulseError
 from qiskit.circuit import ParameterExpression
+from qiskit.pulse.exceptions import PulseError
 
 
 class PulseExpression(ast.NodeTransformer):

@@ -26,19 +26,19 @@ import numpy as np
 from scipy import linalg
 
 from qiskit import user_config
+from qiskit.circuit.tools.pi_check import pi_check
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.quantum_info.states.statevector import Statevector
 from qiskit.quantum_info.states.densitymatrix import DensityMatrix
-from qiskit.visualization.array import array_to_latex
+from qiskit.quantum_info.states.statevector import Statevector
 from qiskit.utils.deprecation import deprecate_arguments
-from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
+from qiskit.visualization.array import array_to_latex
 from qiskit.visualization.exceptions import VisualizationError
+from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.visualization.utils import (
     _bloch_multivector_data,
     _paulivec_data,
     matplotlib_close_if_inline,
 )
-from qiskit.circuit.tools.pi_check import pi_check
 
 
 @deprecate_arguments({"rho": "state"})
@@ -1118,7 +1118,7 @@ def _shade_colors(color, normals, lightsource=None):
         )
 
     import matplotlib.colors as mcolors
-    from matplotlib.colors import Normalize, LightSource
+    from matplotlib.colors import LightSource, Normalize
 
     if lightsource is None:
         # chosen for backwards-compatibility

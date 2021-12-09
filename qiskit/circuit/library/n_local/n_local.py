@@ -15,17 +15,17 @@
 from __future__ import annotations
 
 import warnings
-from typing import Any, Callable, Sequence
 from itertools import combinations
+from typing import Any, Callable, Sequence
 
 import numpy
 
+from qiskit.circuit import Instruction, Parameter, ParameterExpression, ParameterVector
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.parametertable import ParameterTable
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import QuantumRegister
-from qiskit.circuit import Instruction, Parameter, ParameterVector, ParameterExpression
-from qiskit.circuit.parametertable import ParameterTable
 from qiskit.exceptions import QiskitError
-from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 
 class NLocal(BlueprintCircuit):

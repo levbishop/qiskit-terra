@@ -20,12 +20,12 @@ from typing import Callable
 import numpy as np
 
 from qiskit import QuantumCircuit
-from qiskit.result import Result
-from qiskit.quantum_info.operators.base_operator import BaseOperator
+from qiskit.algorithms.algorithm_result import AlgorithmResult
 from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
     LinearSystemObservable,
 )
-from qiskit.algorithms.algorithm_result import AlgorithmResult
+from qiskit.quantum_info.operators.base_operator import BaseOperator
+from qiskit.result import Result
 
 
 class LinearSolverResult(AlgorithmResult):

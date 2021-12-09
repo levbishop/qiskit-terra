@@ -19,14 +19,14 @@ import unittest
 import numpy as np
 from numpy import pi
 
-from qiskit.circuit import QuantumCircuit, Delay
-from qiskit.circuit.library import XGate, YGate, RXGate, UGate
+from qiskit.circuit import Delay, QuantumCircuit
+from qiskit.circuit.library import RXGate, UGate, XGate, YGate
 from qiskit.quantum_info import Operator
-from qiskit.transpiler.instruction_durations import InstructionDurations
-from qiskit.transpiler.passes import ASAPSchedule, ALAPSchedule, DynamicalDecoupling
-from qiskit.transpiler.passmanager import PassManager
-from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler.exceptions import TranspilerError
+from qiskit.transpiler.instruction_durations import InstructionDurations
+from qiskit.transpiler.passes import ALAPSchedule, ASAPSchedule, DynamicalDecoupling
+from qiskit.transpiler.passmanager import PassManager
 
 
 class TestDynamicalDecoupling(QiskitTestCase):

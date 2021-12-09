@@ -17,11 +17,11 @@ import unittest
 
 import numpy as np
 
+from qiskit import QuantumCircuit, QuantumRegister, execute
 from qiskit.providers.basicaer import StatevectorSimulatorPy
-from qiskit.test import ReferenceCircuits, providers
-from qiskit import QuantumRegister, QuantumCircuit, execute
-from qiskit.quantum_info.random import random_unitary
 from qiskit.quantum_info import state_fidelity
+from qiskit.quantum_info.random import random_unitary
+from qiskit.test import ReferenceCircuits, providers
 
 
 class StatevectorSimulatorTest(providers.BackendTestCase):

@@ -15,10 +15,10 @@ Simulator command to snapshot internal simulator representation.
 
 from __future__ import annotations
 
+from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import QuantumRegister
-from qiskit.circuit.instruction import Instruction
-from qiskit.extensions.exceptions import QiskitError, ExtensionError
+from qiskit.extensions.exceptions import ExtensionError, QiskitError
 
 
 class Snapshot(Instruction):

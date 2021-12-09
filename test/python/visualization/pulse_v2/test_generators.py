@@ -18,9 +18,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit import pulse, circuit
+from qiskit import circuit, pulse
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.pulse_v2 import drawings, types, stylesheet, device_info
+from qiskit.visualization.pulse_v2 import device_info, drawings, stylesheet, types
 from qiskit.visualization.pulse_v2.generators import barrier, chart, frame, snapshot, waveform
 
 

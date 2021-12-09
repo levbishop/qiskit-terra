@@ -22,7 +22,7 @@ import pprint
 
 import numpy
 
-from qiskit.qobj.common import QobjDictField, QobjHeader, QobjExperimentHeader
+from qiskit.qobj.common import QobjDictField, QobjExperimentHeader, QobjHeader
 
 
 class QobjMeasurementOption:

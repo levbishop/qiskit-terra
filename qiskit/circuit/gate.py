@@ -19,9 +19,9 @@ from warnings import warn
 import numpy as np
 from scipy.linalg import schur
 
-from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.instruction import Instruction
+from qiskit.circuit.parameterexpression import ParameterExpression
 
 
 class Gate(Instruction):
@@ -69,8 +69,8 @@ class Gate(Instruction):
         Raises:
             CircuitError: If Gate is not unitary
         """
-        from qiskit.quantum_info.operators import Operator  # pylint: disable=cyclic-import
         from qiskit.extensions.unitary import UnitaryGate  # pylint: disable=cyclic-import
+        from qiskit.quantum_info.operators import Operator  # pylint: disable=cyclic-import
 
         # Should be diagonalized because it's a unitary.
         decomposition, unitary = schur(Operator(self).data, output="complex")

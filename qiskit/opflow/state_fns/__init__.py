@@ -56,13 +56,13 @@ State Functions
 
 from __future__ import annotations
 
-from qiskit.opflow.state_fns.state_fn import StateFn
-from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
-from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
-from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
-from qiskit.opflow.state_fns.sparse_vector_state_fn import SparseVectorStateFn
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 from qiskit.opflow.state_fns.cvar_measurement import CVaRMeasurement
+from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
+from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
+from qiskit.opflow.state_fns.sparse_vector_state_fn import SparseVectorStateFn
+from qiskit.opflow.state_fns.state_fn import StateFn
+from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
 
 __all__ = [
     "StateFn",

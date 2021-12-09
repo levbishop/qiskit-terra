@@ -21,32 +21,32 @@ from typing import Any, Callable
 
 import numpy as np
 
-from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.visualization.pulse.qcstyle import PulseStyle, SchedStyle
-from qiskit.visualization.pulse.interpolation import step_wise
-from qiskit.pulse.channels import (
-    DriveChannel,
-    ControlChannel,
-    MeasureChannel,
-    AcquireChannel,
-    SnapshotChannel,
-    Channel,
-)
 from qiskit.pulse import (
-    Waveform,
-    Snapshot,
-    Play,
     Acquire,
-    PulseError,
-    ParametricPulse,
-    SetFrequency,
-    ShiftPhase,
     Instruction,
-    ShiftFrequency,
+    ParametricPulse,
+    Play,
+    PulseError,
+    SetFrequency,
     SetPhase,
+    ShiftFrequency,
+    ShiftPhase,
+    Snapshot,
+    Waveform,
+)
+from qiskit.pulse.channels import (
+    AcquireChannel,
+    Channel,
+    ControlChannel,
+    DriveChannel,
+    MeasureChannel,
+    SnapshotChannel,
 )
 from qiskit.pulse.schedule import ScheduleComponent
+from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
+from qiskit.visualization.pulse.interpolation import step_wise
+from qiskit.visualization.pulse.qcstyle import PulseStyle, SchedStyle
 
 
 class EventsOutputChannels:

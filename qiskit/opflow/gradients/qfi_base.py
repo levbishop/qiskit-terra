@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.opflow.gradients.derivative_base import DerivativeBase
 from qiskit.opflow.gradients.circuit_qfis import CircuitQFI
+from qiskit.opflow.gradients.derivative_base import DerivativeBase
 
 
 class QFIBase(DerivativeBase):

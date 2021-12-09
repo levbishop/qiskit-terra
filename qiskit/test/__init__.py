@@ -15,6 +15,6 @@
 from __future__ import annotations
 
 from qiskit.test.base import QiskitTestCase
-from qiskit.test.decorators import requires_aer_provider, online_test, slow_test, requires_qe_access
+from qiskit.test.decorators import online_test, requires_aer_provider, requires_qe_access, slow_test
 from qiskit.test.reference_circuits import ReferenceCircuits
 from qiskit.test.utils import Path

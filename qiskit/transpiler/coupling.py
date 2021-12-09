@@ -25,12 +25,12 @@ import io
 import warnings
 
 import numpy as np
+import retworkx as rx
 import scipy.sparse as sp
 import scipy.sparse.csgraph as cs
-import retworkx as rx
 
-from qiskit.transpiler.exceptions import CouplingError
 from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.transpiler.exceptions import CouplingError
 
 
 class CouplingMap:

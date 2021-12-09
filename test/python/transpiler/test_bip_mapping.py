@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import QuantumRegister, QuantumCircuit, ClassicalRegister
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.circuit import Barrier
 from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.converters import circuit_to_dag

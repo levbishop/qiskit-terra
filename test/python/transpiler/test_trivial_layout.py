@@ -16,12 +16,12 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
-from qiskit.transpiler import CouplingMap, TranspilerError
-from qiskit.transpiler.passes import TrivialLayout
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeTenerife, FakeRueschlikon
+from qiskit.test.mock import FakeRueschlikon, FakeTenerife
+from qiskit.transpiler import CouplingMap, TranspilerError
+from qiskit.transpiler.passes import TrivialLayout
 
 
 class TestTrivialLayout(QiskitTestCase):

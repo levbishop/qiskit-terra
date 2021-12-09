@@ -20,13 +20,13 @@ import numpy as np
 
 from qiskit.exceptions import QiskitError
 from qiskit.providers.models import (
-    PulseBackendConfiguration,
     BackendProperties,
-    PulseDefaults,
     Command,
+    PulseBackendConfiguration,
+    PulseDefaults,
     UchannelLO,
 )
-from qiskit.providers.models.backendproperties import Nduv, Gate
+from qiskit.providers.models.backendproperties import Gate, Nduv
 from qiskit.qobj import PulseQobjInstruction
 from qiskit.test.mock.fake_backend import FakeBackend
 

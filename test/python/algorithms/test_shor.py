@@ -14,16 +14,16 @@
 
 from __future__ import annotations
 
-import unittest
 import math
+import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
-from ddt import ddt, data, idata, unpack
+from ddt import data, ddt, idata, unpack
 
 from qiskit import Aer, ClassicalRegister
-from qiskit.utils import QuantumInstance
 from qiskit.algorithms import Shor
 from qiskit.test import slow_test
+from qiskit.utils import QuantumInstance
 
 
 @unittest.skipUnless(Aer, "qiskit-aer is required for these tests")

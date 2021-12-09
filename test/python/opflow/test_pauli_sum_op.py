@@ -32,13 +32,13 @@ from qiskit.opflow import (
     I,
     One,
     OperatorStateFn,
+    OpflowError,
     PauliSumOp,
     SummedOp,
     X,
     Y,
     Z,
     Zero,
-    OpflowError,
 )
 from qiskit.quantum_info import Pauli, PauliTable, SparsePauliOp
 

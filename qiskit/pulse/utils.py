@@ -19,7 +19,7 @@ import warnings
 import numpy as np
 
 from qiskit.circuit.parameterexpression import ParameterExpression
-from qiskit.pulse.exceptions import UnassignedDurationError, QiskitError
+from qiskit.pulse.exceptions import QiskitError, UnassignedDurationError
 
 
 def format_meas_map(meas_map: list[list[int]]) -> dict[int, list[int]]:

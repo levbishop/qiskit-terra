@@ -14,20 +14,20 @@
 
 from __future__ import annotations
 
-import unittest
 import logging
+import unittest
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 from numpy.testing import assert_allclose
 
-from qiskit.test import QiskitTestCase
-from qiskit import QiskitError, QuantumRegister, QuantumCircuit
-from qiskit.circuit.library import HGate, QFT
-from qiskit.quantum_info.random import random_unitary, random_density_matrix, random_pauli
-from qiskit.quantum_info.states import DensityMatrix, Statevector
+from qiskit import QiskitError, QuantumCircuit, QuantumRegister
+from qiskit.circuit.library import QFT, HGate
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.symplectic import Pauli, SparsePauliOp
+from qiskit.quantum_info.random import random_density_matrix, random_pauli, random_unitary
+from qiskit.quantum_info.states import DensityMatrix, Statevector
+from qiskit.test import QiskitTestCase
 
 logger = logging.getLogger(__name__)
 

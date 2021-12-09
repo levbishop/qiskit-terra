@@ -15,7 +15,7 @@ Configurations for pulse experiments.
 """
 from __future__ import annotations
 
-from qiskit.pulse.channels import PulseChannel, DriveChannel, MeasureChannel
+from qiskit.pulse.channels import DriveChannel, MeasureChannel, PulseChannel
 from qiskit.pulse.exceptions import PulseError
 
 

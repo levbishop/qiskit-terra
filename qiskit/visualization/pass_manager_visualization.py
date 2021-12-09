@@ -16,8 +16,8 @@ flow controller, and coloured based on the type of pass.
 """
 from __future__ import annotations
 
-import os
 import inspect
+import os
 import tempfile
 
 try:
@@ -27,10 +27,10 @@ try:
 except ImportError:
     HAS_PIL = False
 
-from qiskit.visualization import utils
-from qiskit.visualization.exceptions import VisualizationError
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.transpiler.basepasses import AnalysisPass, TransformationPass
+from qiskit.visualization import utils
+from qiskit.visualization.exceptions import VisualizationError
 
 DEFAULT_STYLE = {AnalysisPass: "red", TransformationPass: "blue"}
 

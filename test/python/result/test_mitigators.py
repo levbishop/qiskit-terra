@@ -18,21 +18,21 @@ from __future__ import annotations
 import unittest
 
 import numpy as np
+from ddt import data, ddt, unpack
 from numpy import array
-from ddt import ddt, data, unpack
 
 from qiskit import QiskitError
-from qiskit.test import QiskitTestCase
-from qiskit.result import Counts, CorrelatedReadoutMitigator, LocalReadoutMitigator
+from qiskit.quantum_info.operators.predicates import matrix_equal
+from qiskit.result import CorrelatedReadoutMitigator, Counts, LocalReadoutMitigator
 from qiskit.result.mitigation.utils import (
-    z_diagonal,
     counts_probability_vector,
-    str2diag,
     expval_with_stddev,
     stddev,
+    str2diag,
+    z_diagonal,
 )
+from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeYorktown
-from qiskit.quantum_info.operators.predicates import matrix_equal
 
 
 @ddt

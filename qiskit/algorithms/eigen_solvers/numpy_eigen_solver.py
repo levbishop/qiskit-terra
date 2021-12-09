@@ -20,10 +20,10 @@ from typing import Callable
 import numpy as np
 from scipy import sparse as scisparse
 
+from qiskit.algorithms.eigen_solvers.eigen_solver import Eigensolver, EigensolverResult, ListOrDict
+from qiskit.algorithms.exceptions import AlgorithmError
 from qiskit.opflow import I, ListOp, OperatorBase, StateFn
 from qiskit.utils.validation import validate_min
-from qiskit.algorithms.exceptions import AlgorithmError
-from qiskit.algorithms.eigen_solvers.eigen_solver import Eigensolver, EigensolverResult, ListOrDict
 
 logger = logging.getLogger(__name__)
 

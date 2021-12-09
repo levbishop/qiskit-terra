@@ -18,12 +18,12 @@ from typing import Any, Callable
 
 import dill
 
-from qiskit.visualization import pass_manager_drawer
-from qiskit.tools.parallel import parallel_map
 from qiskit.circuit import QuantumCircuit
+from qiskit.tools.parallel import parallel_map
 from qiskit.transpiler.basepasses import BasePass
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.runningpassmanager import RunningPassManager, FlowController
+from qiskit.transpiler.runningpassmanager import FlowController, RunningPassManager
+from qiskit.visualization import pass_manager_drawer
 
 
 class PassManager:

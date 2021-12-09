@@ -17,12 +17,12 @@ from __future__ import annotations
 import unittest
 
 import numpy as np
-from ddt import ddt, data, unpack
+from ddt import data, ddt, unpack
 
-from qiskit.test.base import QiskitTestCase
 from qiskit.circuit import QuantumCircuit
-from qiskit.circuit.library import PauliFeatureMap, ZFeatureMap, ZZFeatureMap, HGate
+from qiskit.circuit.library import HGate, PauliFeatureMap, ZFeatureMap, ZZFeatureMap
 from qiskit.quantum_info import Operator
+from qiskit.test.base import QiskitTestCase
 
 
 @ddt

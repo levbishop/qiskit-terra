@@ -83,7 +83,7 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Iterator
 
-from qiskit import pulse, circuit
+from qiskit import circuit, pulse
 from qiskit.visualization.pulse_v2.types import PhaseFreqTuple, PulseInstruction
 
 

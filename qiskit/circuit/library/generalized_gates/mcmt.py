@@ -17,18 +17,18 @@ from __future__ import annotations
 import warnings
 from typing import Callable
 
-from qiskit.circuit import ControlledGate, Gate, Instruction, Qubit, QuantumRegister, QuantumCircuit
-from qiskit.exceptions import QiskitError
+from qiskit.circuit import ControlledGate, Gate, Instruction, QuantumCircuit, QuantumRegister, Qubit
 from qiskit.circuit.library.standard_gates import (
+    HGate,
+    SdgGate,
+    SGate,
+    TdgGate,
+    TGate,
     XGate,
     YGate,
     ZGate,
-    HGate,
-    TGate,
-    TdgGate,
-    SGate,
-    SdgGate,
 )
+from qiskit.exceptions import QiskitError
 
 
 class MCMT(QuantumCircuit):

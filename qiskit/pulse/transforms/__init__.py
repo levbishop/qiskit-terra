@@ -87,9 +87,9 @@ from qiskit.pulse.transforms.alignments import (
     AlignEquispaced,
     AlignFunc,
     AlignLeft,
+    AlignmentKind,
     AlignRight,
     AlignSequential,
-    AlignmentKind,
 )
 from qiskit.pulse.transforms.base_transforms import target_qobj_transform
 from qiskit.pulse.transforms.canonicalization import (

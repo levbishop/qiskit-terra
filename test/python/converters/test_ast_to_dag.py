@@ -17,8 +17,8 @@ from __future__ import annotations
 import os
 import unittest
 
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, qasm
 from qiskit.converters import ast_to_dag, circuit_to_dag
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, qasm
 from qiskit.test import QiskitTestCase
 
 

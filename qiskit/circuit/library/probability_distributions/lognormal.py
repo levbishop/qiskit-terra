@@ -19,11 +19,11 @@ import warnings
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit
-from qiskit.exceptions import QiskitError
 from qiskit.circuit.library.probability_distributions.normal import (
     _check_bounds_valid,
     _check_dimensions_match,
 )
+from qiskit.exceptions import QiskitError
 
 
 class LogNormalDistribution(QuantumCircuit):

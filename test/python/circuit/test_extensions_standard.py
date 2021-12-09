@@ -18,15 +18,15 @@ import unittest
 import warnings
 from inspect import signature
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, execute, BasicAer
-from qiskit.qasm import pi
-from qiskit.exceptions import QiskitError
+from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute
+from qiskit.circuit import ControlledGate, Gate
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.test import QiskitTestCase
-from qiskit.circuit import Gate, ControlledGate
-from qiskit.circuit.library import U1Gate, U2Gate, U3Gate, CU1Gate, CU3Gate
+from qiskit.circuit.library import CU1Gate, CU3Gate, U1Gate, U2Gate, U3Gate
+from qiskit.exceptions import QiskitError
+from qiskit.qasm import pi
 from qiskit.quantum_info import Pauli
-from qiskit.quantum_info.operators.predicates import matrix_equal, is_unitary_matrix
+from qiskit.quantum_info.operators.predicates import is_unitary_matrix, matrix_equal
+from qiskit.test import QiskitTestCase
 
 
 class TestStandard1Q(QiskitTestCase):
@@ -1368,9 +1368,9 @@ class TestStandardMethods(QiskitTestCase):
 
     def test_to_matrix(self):
         """test gates implementing to_matrix generate matrix which matches definition."""
-        from qiskit.circuit.library.pauli_evolution import PauliEvolutionGate
-        from qiskit.circuit.library.generalized_gates.pauli import PauliGate
         from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
+        from qiskit.circuit.library.generalized_gates.pauli import PauliGate
+        from qiskit.circuit.library.pauli_evolution import PauliEvolutionGate
 
         params = [0.1 * (i + 1) for i in range(10)]
         gate_class_list = Gate.__subclasses__() + ControlledGate.__subclasses__()
@@ -1414,11 +1414,11 @@ class TestStandardMethods(QiskitTestCase):
     def test_to_matrix_op(self):
         """test gates implementing to_matrix generate matrix which matches
         definition using Operator."""
-        from qiskit.quantum_info import Operator
-        from qiskit.circuit.library.standard_gates.ms import MSGate
+        from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
         from qiskit.circuit.library.generalized_gates.pauli import PauliGate
         from qiskit.circuit.library.pauli_evolution import PauliEvolutionGate
-        from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
+        from qiskit.circuit.library.standard_gates.ms import MSGate
+        from qiskit.quantum_info import Operator
 
         params = [0.1 * i for i in range(1, 11)]
         gate_class_list = Gate.__subclasses__() + ControlledGate.__subclasses__()

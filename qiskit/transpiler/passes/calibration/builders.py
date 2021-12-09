@@ -14,29 +14,29 @@
 
 from __future__ import annotations
 
-import warnings
 import math
+import warnings
 from abc import abstractmethod
 
 import numpy as np
 
-from qiskit.providers.basebackend import BaseBackend
-from qiskit.providers.backend import BackendV1
 from qiskit.circuit import Instruction as CircuitInst
 from qiskit.circuit.library.standard_gates import RZXGate
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.exceptions import QiskitError
+from qiskit.providers.backend import BackendV1
+from qiskit.providers.basebackend import BaseBackend
 from qiskit.pulse import (
-    Play,
-    Delay,
-    ShiftPhase,
-    Schedule,
-    ScheduleBlock,
     ControlChannel,
+    Delay,
     DriveChannel,
     GaussianSquare,
+    Play,
+    Schedule,
+    ScheduleBlock,
+    ShiftPhase,
 )
-from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap, CalibrationPublisher
+from qiskit.pulse.instruction_schedule_map import CalibrationPublisher, InstructionScheduleMap
 from qiskit.pulse.instructions.instruction import Instruction as PulseInst
 from qiskit.transpiler.basepasses import TransformationPass
 

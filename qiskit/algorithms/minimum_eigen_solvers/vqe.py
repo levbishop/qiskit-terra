@@ -19,37 +19,37 @@ from __future__ import annotations
 
 import logging
 import warnings
-from typing import Callable, Dict, Optional
 from time import time
+from typing import Callable, Dict, Optional
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, Parameter
-from qiskit.circuit.library import RealAmplitudes
-from qiskit.providers import BaseBackend, Backend
-from qiskit.opflow import (
-    OperatorBase,
-    ExpectationBase,
-    ExpectationFactory,
-    StateFn,
-    CircuitStateFn,
-    ListOp,
-    CircuitSampler,
-    PauliSumOp,
-)
-from qiskit.opflow.gradients import GradientBase
-from qiskit.utils.validation import validate_min
-from qiskit.utils.backend_utils import is_aer_provider
-from qiskit.utils.deprecation import deprecate_function
-from qiskit.utils import QuantumInstance, algorithm_globals
-from qiskit.algorithms.optimizers import Optimizer, SLSQP
-from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
+from qiskit.algorithms.exceptions import AlgorithmError
 from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import (
+    ListOrDict,
     MinimumEigensolver,
     MinimumEigensolverResult,
-    ListOrDict,
 )
-from qiskit.algorithms.exceptions import AlgorithmError
+from qiskit.algorithms.optimizers import SLSQP, Optimizer
+from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
+from qiskit.circuit import Parameter, QuantumCircuit
+from qiskit.circuit.library import RealAmplitudes
+from qiskit.opflow import (
+    CircuitSampler,
+    CircuitStateFn,
+    ExpectationBase,
+    ExpectationFactory,
+    ListOp,
+    OperatorBase,
+    PauliSumOp,
+    StateFn,
+)
+from qiskit.opflow.gradients import GradientBase
+from qiskit.providers import Backend, BaseBackend
+from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit.utils.backend_utils import is_aer_provider
+from qiskit.utils.deprecation import deprecate_function
+from qiskit.utils.validation import validate_min
 
 logger = logging.getLogger(__name__)
 

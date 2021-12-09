@@ -18,11 +18,11 @@ import numpy as np
 from scipy.sparse import diags
 
 from qiskit import QuantumCircuit
-from qiskit.quantum_info import Statevector
-from qiskit.opflow import I, Z, TensoredOp
 from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
     LinearSystemObservable,
 )
+from qiskit.opflow import I, TensoredOp, Z
+from qiskit.quantum_info import Statevector
 
 
 class MatrixFunctional(LinearSystemObservable):

@@ -16,8 +16,8 @@ from __future__ import annotations
 
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.parameterexpression import ParameterExpression
-from qiskit.synthesis import EvolutionSynthesis, LieTrotter
 from qiskit.quantum_info import Pauli, SparsePauliOp
+from qiskit.synthesis import EvolutionSynthesis, LieTrotter
 
 
 class PauliEvolutionGate(Gate):
@@ -99,7 +99,7 @@ def _to_sparse_pauli_op(operator):
     coefficients of the SparsePauliOp.
     """
     # pylint: disable=cyclic-import
-    from qiskit.opflow import PauliSumOp, PauliOp
+    from qiskit.opflow import PauliOp, PauliSumOp
 
     if isinstance(operator, PauliSumOp):
         sparse_pauli = operator.primitive

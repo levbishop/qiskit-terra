@@ -28,7 +28,7 @@
 
 from __future__ import annotations
 
-from typing import TypeVar, Dict, Tuple, NamedTuple, Union
+from typing import Dict, NamedTuple, Tuple, TypeVar, Union
 
 from qiskit.circuit import Qubit
 from qiskit.dagcircuit import DAGCircuit

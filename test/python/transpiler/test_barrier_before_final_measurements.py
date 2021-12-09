@@ -16,10 +16,10 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
-from qiskit import QuantumRegister, QuantumCircuit, ClassicalRegister
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
 
 
 class TestBarrierBeforeFinalMeasurements(QiskitTestCase):

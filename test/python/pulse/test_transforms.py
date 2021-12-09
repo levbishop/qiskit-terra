@@ -19,19 +19,19 @@ import numpy as np
 
 from qiskit import pulse
 from qiskit.pulse import (
-    Play,
-    Delay,
     Acquire,
-    Schedule,
-    Waveform,
+    Constant,
+    Delay,
     Drag,
     Gaussian,
     GaussianSquare,
-    Constant,
-    transforms,
+    Play,
+    Schedule,
+    Waveform,
     instructions,
+    transforms,
 )
-from qiskit.pulse.channels import MemorySlot, DriveChannel, AcquireChannel
+from qiskit.pulse.channels import AcquireChannel, DriveChannel, MemorySlot
 from qiskit.pulse.instructions import directives
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeOpenPulse2Q

@@ -73,8 +73,8 @@ class YGate(Gate):
 
     def _define(self):
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.u3 import U3Gate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(1, "q")
         qc = QuantumCircuit(q, name=self.name)
@@ -185,9 +185,9 @@ class CYGate(ControlledGate):
         gate cy a,b { sdg b; cx a,b; s b; }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
-        from qiskit.circuit.library.standard_gates.s import SGate, SdgGate
+        from qiskit.circuit.library.standard_gates.s import SdgGate, SGate
         from qiskit.circuit.library.standard_gates.x import CXGate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)

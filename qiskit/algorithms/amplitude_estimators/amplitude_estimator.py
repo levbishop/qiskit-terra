@@ -19,8 +19,8 @@ from typing import Callable
 
 import numpy as np
 
-from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 from qiskit.algorithms.algorithm_result import AlgorithmResult
+from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 
 
 class AmplitudeEstimator:

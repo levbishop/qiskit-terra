@@ -17,15 +17,15 @@ from __future__ import annotations
 
 from numpy import pi
 
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
-from qiskit.extensions.simulator import Snapshot
-from qiskit.transpiler.passes import Unroller
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import Parameter
+from qiskit.circuit.library import CU1Gate, CU3Gate, U1Gate, U2Gate, U3Gate
 from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit.exceptions import QiskitError
+from qiskit.extensions.simulator import Snapshot
 from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
-from qiskit.exceptions import QiskitError
-from qiskit.circuit import Parameter
-from qiskit.circuit.library import U1Gate, U2Gate, U3Gate, CU1Gate, CU3Gate
+from qiskit.transpiler.passes import Unroller
 
 
 class TestUnroller(QiskitTestCase):

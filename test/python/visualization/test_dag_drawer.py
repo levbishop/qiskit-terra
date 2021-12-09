@@ -16,11 +16,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import QuantumRegister, QuantumCircuit
+from qiskit import QuantumCircuit, QuantumRegister
+from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
 from qiskit.tools.visualization import dag_drawer
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.converters import circuit_to_dag
 
 
 class TestDagDrawer(QiskitTestCase):

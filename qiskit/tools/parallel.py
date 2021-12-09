@@ -54,10 +54,10 @@ import os
 import sys
 from concurrent.futures import ProcessPoolExecutor
 
-from qiskit.exceptions import QiskitError
-from qiskit.utils.multiprocessing import local_hardware_info
-from qiskit.tools.events.pubsub import Publisher
 from qiskit import user_config
+from qiskit.exceptions import QiskitError
+from qiskit.tools.events.pubsub import Publisher
+from qiskit.utils.multiprocessing import local_hardware_info
 
 CONFIG = user_config.get_config()
 

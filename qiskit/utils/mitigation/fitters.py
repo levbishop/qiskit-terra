@@ -26,8 +26,8 @@ import re
 import numpy as np
 
 from qiskit import QiskitError
-from qiskit.utils.mitigation.circuits import count_keys
 from qiskit.utils.mitigation._filters import MeasurementFilter, TensoredFilter
+from qiskit.utils.mitigation.circuits import count_keys
 
 
 class CompleteMeasFitter:

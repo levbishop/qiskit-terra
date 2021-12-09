@@ -18,16 +18,16 @@ import unittest
 from collections import defaultdict
 
 import numpy as np
-from ddt import ddt, data, unpack
+from ddt import data, ddt, unpack
 
-from qiskit.test.base import QiskitTestCase
 from qiskit import BasicAer, execute
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import (
     LinearPauliRotations,
-    PolynomialPauliRotations,
     PiecewiseLinearPauliRotations,
+    PolynomialPauliRotations,
 )
+from qiskit.test.base import QiskitTestCase
 
 
 @ddt

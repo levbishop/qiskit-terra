@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from qiskit import pulse
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.pulse_v2 import layouts, device_info
+from qiskit.visualization.pulse_v2 import device_info, layouts
 
 
 class TestChannelArrangement(QiskitTestCase):

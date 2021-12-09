@@ -14,28 +14,28 @@
 
 from __future__ import annotations
 
-import sys
-import logging
-import time
 import copy
+import logging
 import os
+import sys
+import time
 import uuid
 from typing import Callable
 
 import numpy as np
 
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-from qiskit.providers import Backend, BaseBackend, JobStatus, JobError, BaseJob
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit.exceptions import MissingOptionalLibraryError, QiskitError
+from qiskit.providers import Backend, BaseBackend, BaseJob, JobError, JobStatus
 from qiskit.providers.jobstatus import JOB_FINAL_STATES
-from qiskit.result import Result
 from qiskit.qobj import QasmQobj
-from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
+from qiskit.result import Result
 from qiskit.utils.backend_utils import (
     is_aer_provider,
     is_basicaer_provider,
-    is_simulator_backend,
-    is_local_backend,
     is_ibmq_provider,
+    is_local_backend,
+    is_simulator_backend,
 )
 
 MAX_CIRCUITS_PER_JOB = os.environ.get("QISKIT_AQUA_MAX_CIRCUITS_PER_JOB", None)

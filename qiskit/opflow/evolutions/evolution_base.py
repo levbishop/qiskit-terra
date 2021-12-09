@@ -16,8 +16,8 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.converters.converter_base import ConverterBase
+from qiskit.opflow.operator_base import OperatorBase
 
 
 class EvolutionBase(ConverterBase, ABC):

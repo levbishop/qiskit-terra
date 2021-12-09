@@ -17,11 +17,11 @@ from __future__ import annotations
 import unittest
 from os import path
 
-from ddt import ddt, unpack, data
+from ddt import data, ddt, unpack
 
-from qiskit.test.base import QiskitTestCase
-from qiskit import execute, BasicAer
+from qiskit import BasicAer, execute
 from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
+from qiskit.test.base import QiskitTestCase
 
 
 @ddt

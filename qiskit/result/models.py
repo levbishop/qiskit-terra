@@ -16,9 +16,9 @@ from __future__ import annotations
 
 import copy
 
-from qiskit.qobj.utils import MeasReturnType, MeasLevel
-from qiskit.qobj import QobjExperimentHeader
 from qiskit.exceptions import QiskitError
+from qiskit.qobj import QobjExperimentHeader
+from qiskit.qobj.utils import MeasLevel, MeasReturnType
 
 
 class ExperimentResultData:

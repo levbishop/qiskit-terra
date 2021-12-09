@@ -16,12 +16,12 @@ from __future__ import annotations
 
 import unittest
 
-from ddt import ddt, data
+from ddt import data, ddt
 
 from qiskit import QuantumCircuit
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler.instruction_durations import InstructionDurations
-from qiskit.transpiler.passes import ASAPSchedule, ALAPSchedule
+from qiskit.transpiler.passes import ALAPSchedule, ASAPSchedule
 from qiskit.transpiler.passmanager import PassManager
 
 

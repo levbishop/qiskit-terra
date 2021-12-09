@@ -57,11 +57,11 @@ These are all instances of the same base class:
 from __future__ import annotations
 
 from qiskit.pulse.instructions.acquire import Acquire
+from qiskit.pulse.instructions.call import Call
 from qiskit.pulse.instructions.delay import Delay
 from qiskit.pulse.instructions.directives import Directive, RelativeBarrier
-from qiskit.pulse.instructions.call import Call
-from qiskit.pulse.instructions.instruction import Instruction
 from qiskit.pulse.instructions.frequency import SetFrequency, ShiftFrequency
-from qiskit.pulse.instructions.phase import ShiftPhase, SetPhase
+from qiskit.pulse.instructions.instruction import Instruction
+from qiskit.pulse.instructions.phase import SetPhase, ShiftPhase
 from qiskit.pulse.instructions.play import Play
 from qiskit.pulse.instructions.snapshot import Snapshot

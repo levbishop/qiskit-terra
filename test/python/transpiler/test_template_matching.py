@@ -19,17 +19,17 @@ import unittest
 
 import numpy as np
 
-from qiskit import QuantumRegister, QuantumCircuit
-from qiskit.circuit import Parameter, Gate
-from qiskit.extensions import UnitaryGate
-from qiskit.quantum_info import Operator
+from qiskit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import Gate, Parameter
 from qiskit.circuit.library.templates import template_nct_2a_2, template_nct_5a_3
 from qiskit.converters.circuit_to_dag import circuit_to_dag
 from qiskit.converters.circuit_to_dagdependency import circuit_to_dagdependency
-from qiskit.transpiler import PassManager
-from qiskit.transpiler.passes import TemplateOptimization
+from qiskit.extensions import UnitaryGate
+from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler import PassManager
 from qiskit.transpiler.exceptions import TranspilerError
+from qiskit.transpiler.passes import TemplateOptimization
 
 
 class TestTemplateMatching(QiskitTestCase):

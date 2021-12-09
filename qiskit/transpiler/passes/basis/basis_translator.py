@@ -14,12 +14,12 @@
 
 from __future__ import annotations
 
-import time
 import logging
-from heapq import heappush, heappop
-from itertools import zip_longest
-from itertools import count as iter_count
+import time
 from collections import defaultdict
+from heapq import heappop, heappush
+from itertools import count as iter_count
+from itertools import zip_longest
 
 import numpy as np
 
@@ -245,7 +245,7 @@ class BasisTranslator(TransformationPass):
                 if node.op.params:
                     # Convert target to circ and back to assign_parameters, since
                     # DAGCircuits won't have a ParameterTable.
-                    from qiskit.converters import dag_to_circuit, circuit_to_dag
+                    from qiskit.converters import circuit_to_dag, dag_to_circuit
 
                     target_circuit = dag_to_circuit(target_dag)
 

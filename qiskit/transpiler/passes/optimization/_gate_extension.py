@@ -21,31 +21,31 @@ If a gate has no `_postconditions`, then is assumed to have unknown post-conditi
 from __future__ import annotations
 
 try:
-    from z3 import Not, And
+    from z3 import And, Not
 
     HAS_Z3 = True
 except ImportError:
     HAS_Z3 = False
 from qiskit.circuit.library.standard_gates import (
+    CCXGate,
+    CRZGate,
+    CSwapGate,
+    CU1Gate,
+    CXGate,
+    CYGate,
+    CZGate,
     IGate,
+    MCU1Gate,
+    RZGate,
+    SdgGate,
+    SGate,
+    SwapGate,
+    TdgGate,
+    TGate,
+    U1Gate,
     XGate,
     YGate,
     ZGate,
-    CXGate,
-    CCXGate,
-    CYGate,
-    CZGate,
-    TGate,
-    TdgGate,
-    SGate,
-    SdgGate,
-    RZGate,
-    U1Gate,
-    SwapGate,
-    CSwapGate,
-    CRZGate,
-    CU1Gate,
-    MCU1Gate,
 )
 
 if HAS_Z3:

@@ -18,30 +18,30 @@ import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np
-from ddt import ddt, data, unpack
+from ddt import data, ddt, unpack
 from scipy.optimize import rosen, rosen_der
 
 from qiskit.algorithms.optimizers import (
     ADAM,
     AQGD,
     BOBYQA,
-    IMFIL,
     CG,
-    CRS,
     COBYLA,
+    CRS,
     DIRECT_L,
     DIRECT_L_RAND,
     GSLS,
-    GradientDescent,
+    IMFIL,
     L_BFGS_B,
     NELDER_MEAD,
-    Optimizer,
     P_BFGS,
     POWELL,
+    QNSPSA,
     SLSQP,
     SPSA,
-    QNSPSA,
     TNC,
+    GradientDescent,
+    Optimizer,
     SciPyOptimizer,
 )
 from qiskit.circuit.library import RealAmplitudes

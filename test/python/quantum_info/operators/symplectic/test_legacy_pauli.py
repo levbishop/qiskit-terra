@@ -19,8 +19,8 @@ from copy import deepcopy
 
 import numpy as np
 
-from qiskit.quantum_info.operators import Pauli
 from qiskit.quantum_info import pauli_group
+from qiskit.quantum_info.operators import Pauli
 from qiskit.test import QiskitTestCase
 
 

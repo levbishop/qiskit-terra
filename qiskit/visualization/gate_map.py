@@ -18,9 +18,9 @@ import math
 
 import numpy as np
 
-from qiskit.exceptions import QiskitError, MissingOptionalLibraryError
-from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
+from qiskit.exceptions import MissingOptionalLibraryError, QiskitError
 from qiskit.visualization.exceptions import VisualizationError
+from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.visualization.utils import matplotlib_close_if_inline
 
 
@@ -434,8 +434,8 @@ def plot_coupling_map(
             name="plot_coupling_map",
             pip_install="pip install matplotlib",
         )
-    import matplotlib.pyplot as plt
     import matplotlib.patches as mpatches
+    import matplotlib.pyplot as plt
 
     input_axes = False
     if ax:

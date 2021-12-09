@@ -57,11 +57,11 @@ Symmetries
 
 from __future__ import annotations
 
-from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
-from qiskit.opflow.primitive_ops.pauli_op import PauliOp
-from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
 from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
+from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
+from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
+from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
 from qiskit.opflow.primitive_ops.tapered_pauli_sum_op import TaperedPauliSumOp, Z2Symmetries
 
 __all__ = [

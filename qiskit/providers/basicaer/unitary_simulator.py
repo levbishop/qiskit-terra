@@ -29,27 +29,27 @@ circuit's unitary matrix.
 from __future__ import annotations
 
 import logging
-import uuid
 import time
+import uuid
 import warnings
 from math import log2, sqrt
 
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.utils.multiprocessing import local_hardware_info
-from qiskit.providers.models import QasmBackendConfiguration
 from qiskit.providers.backend import BackendV1
-from qiskit.providers.options import Options
 from qiskit.providers.basicaer.basicaerjob import BasicAerJob
-from qiskit.result import Result
-from qiskit.providers.basicaer.exceptions import BasicAerError
 from qiskit.providers.basicaer.basicaertools import (
-    single_gate_matrix,
     SINGLE_QUBIT_GATES,
     cx_gate_matrix,
     einsum_matmul_index,
+    single_gate_matrix,
 )
+from qiskit.providers.basicaer.exceptions import BasicAerError
+from qiskit.providers.models import QasmBackendConfiguration
+from qiskit.providers.options import Options
+from qiskit.result import Result
+from qiskit.utils.multiprocessing import local_hardware_info
 
 logger = logging.getLogger(__name__)
 

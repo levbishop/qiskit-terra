@@ -19,7 +19,7 @@ from math import pi
 import numpy as np
 
 from qiskit import circuit, compiler, pulse
-from qiskit.pulse import builder, exceptions, macros, library, instructions
+from qiskit.pulse import builder, exceptions, instructions, library, macros
 from qiskit.pulse.instructions import directives
 from qiskit.pulse.transforms import target_qobj_transform
 from qiskit.test import QiskitTestCase

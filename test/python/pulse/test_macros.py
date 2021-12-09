@@ -15,19 +15,19 @@
 from __future__ import annotations
 
 from qiskit.pulse import (
-    Schedule,
-    AcquireChannel,
     Acquire,
+    AcquireChannel,
+    GaussianSquare,
     InstructionScheduleMap,
     MeasureChannel,
     MemorySlot,
-    GaussianSquare,
     Play,
+    Schedule,
     macros,
 )
 from qiskit.pulse.exceptions import PulseError
-from qiskit.test.mock import FakeOpenPulse2Q
 from qiskit.test import QiskitTestCase
+from qiskit.test.mock import FakeOpenPulse2Q
 
 
 class TestMeasure(QiskitTestCase):

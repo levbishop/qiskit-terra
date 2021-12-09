@@ -14,10 +14,6 @@
 
 from __future__ import annotations
 
-from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator
-from qiskit.algorithms.phase_estimators.phase_estimation import PhaseEstimation
-from qiskit.algorithms.phase_estimators.phase_estimation_result import PhaseEstimationResult
-from qiskit.algorithms.phase_estimators.phase_estimation_scale import PhaseEstimationScale
 from qiskit.algorithms.phase_estimators.hamiltonian_phase_estimation import (
     HamiltonianPhaseEstimation,
 )
@@ -25,6 +21,10 @@ from qiskit.algorithms.phase_estimators.hamiltonian_phase_estimation_result impo
     HamiltonianPhaseEstimationResult,
 )
 from qiskit.algorithms.phase_estimators.ipe import IterativePhaseEstimation
+from qiskit.algorithms.phase_estimators.phase_estimation import PhaseEstimation
+from qiskit.algorithms.phase_estimators.phase_estimation_result import PhaseEstimationResult
+from qiskit.algorithms.phase_estimators.phase_estimation_scale import PhaseEstimationScale
+from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator
 
 __all__ = [
     "PhaseEstimator",

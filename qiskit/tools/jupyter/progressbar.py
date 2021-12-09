@@ -57,8 +57,8 @@ except ImportError:
     HAS_IPYWIDGETS = False
 from IPython.display import display
 
-from qiskit.tools.events.progressbar import BaseProgressBar
 from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.tools.events.progressbar import BaseProgressBar
 
 
 class HTMLProgressBar(BaseProgressBar):

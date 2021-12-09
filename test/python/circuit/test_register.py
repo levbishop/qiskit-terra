@@ -18,9 +18,9 @@ from __future__ import annotations
 
 from ddt import data, ddt
 
-from qiskit.test import QiskitTestCase
-from qiskit.circuit import bit, QuantumRegister, AncillaRegister, ClassicalRegister
+from qiskit.circuit import AncillaRegister, ClassicalRegister, QuantumRegister, bit
 from qiskit.circuit.exceptions import CircuitError
+from qiskit.test import QiskitTestCase
 
 
 @ddt

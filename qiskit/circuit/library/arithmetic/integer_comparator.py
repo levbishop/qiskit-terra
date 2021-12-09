@@ -19,10 +19,10 @@ import warnings
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, AncillaRegister
+from qiskit.circuit import AncillaRegister, QuantumCircuit, QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library.boolean_logic import OR
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
+from qiskit.circuit.library.boolean_logic import OR
 
 
 class IntegerComparator(BlueprintCircuit):

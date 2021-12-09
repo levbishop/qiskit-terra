@@ -18,11 +18,11 @@ import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 from qiskit import BasicAer
-from qiskit.circuit.library import RealAmplitudes
-from qiskit.utils import QuantumInstance, algorithm_globals
-from qiskit.opflow import PauliSumOp
-from qiskit.algorithms.optimizers import NFT
 from qiskit.algorithms import VQE
+from qiskit.algorithms.optimizers import NFT
+from qiskit.circuit.library import RealAmplitudes
+from qiskit.opflow import PauliSumOp
+from qiskit.utils import QuantumInstance, algorithm_globals
 
 
 class TestOptimizerNFT(QiskitAlgorithmsTestCase):

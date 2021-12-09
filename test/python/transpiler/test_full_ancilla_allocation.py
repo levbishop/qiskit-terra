@@ -16,12 +16,12 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.circuit import QuantumRegister, QuantumCircuit
+from qiskit.circuit import QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
-from qiskit.transpiler import CouplingMap, Layout
-from qiskit.transpiler.passes import FullAncillaAllocation
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler import CouplingMap, Layout
 from qiskit.transpiler.exceptions import TranspilerError
+from qiskit.transpiler.passes import FullAncillaAllocation
 
 
 class TestFullAncillaAllocation(QiskitTestCase):

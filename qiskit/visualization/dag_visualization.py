@@ -22,7 +22,7 @@ import os
 import sys
 import tempfile
 
-from qiskit.dagcircuit.dagnode import DAGOpNode, DAGInNode, DAGOutNode
+from qiskit.dagcircuit.dagnode import DAGInNode, DAGOpNode, DAGOutNode
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.visualization.exceptions import VisualizationError
 

@@ -129,15 +129,15 @@ still seeing the signature for the continuous pulse function and all of its argu
 from __future__ import annotations
 
 import functools
-import textwrap
 import pydoc
+import textwrap
 from typing import Callable
 
 import numpy as np
 
 from qiskit.pulse.exceptions import PulseError
-from qiskit.pulse.library.waveform import Waveform
 from qiskit.pulse.library.samplers import strategies
+from qiskit.pulse.library.waveform import Waveform
 
 
 def functional_pulse(func: Callable) -> Callable:

@@ -17,7 +17,7 @@ from __future__ import annotations
 import unittest
 from test.python.opflow import QiskitOpflowTestCase
 
-from qiskit.opflow import PauliExpectation, AerPauliExpectation, ExpectationFactory, Z, I, X
+from qiskit.opflow import AerPauliExpectation, ExpectationFactory, I, PauliExpectation, X, Z
 from qiskit.utils import has_aer
 
 if has_aer():

@@ -18,12 +18,12 @@ import unittest
 
 import numpy as np
 
+from qiskit import QuantumCircuit, QuantumRegister
+from qiskit.circuit.library import RZGate, U1Gate
+from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
-from qiskit import QuantumRegister, QuantumCircuit
-from qiskit.circuit.library import U1Gate, RZGate
 from qiskit.transpiler import PassManager, PropertySet
 from qiskit.transpiler.passes import CommutationAnalysis, CommutativeCancellation, FixedPoint, Size
-from qiskit.quantum_info import Operator
 
 
 class TestCommutativeCancellation(QiskitTestCase):

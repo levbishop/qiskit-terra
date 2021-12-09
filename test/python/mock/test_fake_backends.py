@@ -16,13 +16,13 @@ from __future__ import annotations
 import math
 import unittest
 
-from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, schedule, transpile, assemble
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, assemble, schedule, transpile
 from qiskit.pulse import Schedule
 from qiskit.qobj import PulseQobj
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock.utils import ConfigurableFakeBackend
 from qiskit.test.mock import FakeAthens
 from qiskit.test.mock.fake_backend import HAS_AER
+from qiskit.test.mock.utils import ConfigurableFakeBackend
 
 
 def get_test_circuit():

@@ -23,7 +23,7 @@ import numpy as np
 import scipy.linalg as la
 
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info.operators.predicates import is_hermitian_matrix, ATOL_DEFAULT
+from qiskit.quantum_info.operators.predicates import ATOL_DEFAULT, is_hermitian_matrix
 
 
 def _transform_rep(input_rep, output_rep, data, input_dim, output_dim):

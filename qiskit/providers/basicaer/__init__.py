@@ -64,12 +64,12 @@ Exceptions
 
 from __future__ import annotations
 
-from qiskit.providers.basicaer.basicaerprovider import BasicAerProvider
 from qiskit.providers.basicaer.basicaerjob import BasicAerJob
+from qiskit.providers.basicaer.basicaerprovider import BasicAerProvider
+from qiskit.providers.basicaer.exceptions import BasicAerError
 from qiskit.providers.basicaer.qasm_simulator import QasmSimulatorPy
 from qiskit.providers.basicaer.statevector_simulator import StatevectorSimulatorPy
 from qiskit.providers.basicaer.unitary_simulator import UnitarySimulatorPy
-from qiskit.providers.basicaer.exceptions import BasicAerError
 
 # Global instance to be used as the entry point for convenience.
 BasicAer = BasicAerProvider()

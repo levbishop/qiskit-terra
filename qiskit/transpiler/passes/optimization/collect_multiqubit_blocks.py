@@ -14,9 +14,9 @@
 
 from __future__ import annotations
 
-from qiskit.transpiler.basepasses import AnalysisPass
 from qiskit.circuit import Gate
-from qiskit.dagcircuit import DAGOpNode, DAGInNode
+from qiskit.dagcircuit import DAGInNode, DAGOpNode
+from qiskit.transpiler.basepasses import AnalysisPass
 
 
 class CollectMultiQBlocks(AnalysisPass):

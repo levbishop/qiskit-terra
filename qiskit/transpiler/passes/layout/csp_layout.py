@@ -20,10 +20,10 @@ from __future__ import annotations
 import random
 from time import time
 
-from constraint import Problem, RecursiveBacktrackingSolver, AllDifferentConstraint
+from constraint import AllDifferentConstraint, Problem, RecursiveBacktrackingSolver
 
-from qiskit.transpiler.layout import Layout
 from qiskit.transpiler.basepasses import AnalysisPass
+from qiskit.transpiler.layout import Layout
 
 
 class CustomSolver(RecursiveBacktrackingSolver):

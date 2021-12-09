@@ -161,87 +161,87 @@ Exceptions
 # New Operators
 from __future__ import annotations
 
-from qiskit.opflow.operator_base import OperatorBase
-from qiskit.opflow.primitive_ops import (
-    PrimitiveOp,
-    PauliOp,
-    MatrixOp,
-    CircuitOp,
-    PauliSumOp,
-    TaperedPauliSumOp,
-    Z2Symmetries,
-)
-from qiskit.opflow.state_fns import (
-    StateFn,
-    DictStateFn,
-    VectorStateFn,
-    CVaRMeasurement,
-    CircuitStateFn,
-    OperatorStateFn,
-    SparseVectorStateFn,
-)
-from qiskit.opflow.list_ops import ListOp, SummedOp, ComposedOp, TensoredOp
 from qiskit.opflow.converters import (
-    ConverterBase,
-    CircuitSampler,
-    PauliBasisChange,
-    DictToCircuitSum,
     AbelianGrouper,
+    CircuitSampler,
+    ConverterBase,
+    DictToCircuitSum,
+    PauliBasisChange,
     TwoQubitReduction,
-)
-from qiskit.opflow.expectations import (
-    ExpectationBase,
-    ExpectationFactory,
-    PauliExpectation,
-    MatrixExpectation,
-    AerPauliExpectation,
-    CVaRExpectation,
 )
 from qiskit.opflow.evolutions import (
     EvolutionBase,
     EvolutionFactory,
     EvolvedOp,
-    PauliTrotterEvolution,
     MatrixEvolution,
+    PauliTrotterEvolution,
+    QDrift,
+    Suzuki,
+    Trotter,
     TrotterizationBase,
     TrotterizationFactory,
-    Trotter,
-    Suzuki,
-    QDrift,
 )
-from qiskit.opflow.utils import commutator, anti_commutator, double_commutator
+from qiskit.opflow.expectations import (
+    AerPauliExpectation,
+    CVaRExpectation,
+    ExpectationBase,
+    ExpectationFactory,
+    MatrixExpectation,
+    PauliExpectation,
+)
+from qiskit.opflow.list_ops import ComposedOp, ListOp, SummedOp, TensoredOp
+from qiskit.opflow.operator_base import OperatorBase
+from qiskit.opflow.primitive_ops import (
+    CircuitOp,
+    MatrixOp,
+    PauliOp,
+    PauliSumOp,
+    PrimitiveOp,
+    TaperedPauliSumOp,
+    Z2Symmetries,
+)
+from qiskit.opflow.state_fns import (
+    CircuitStateFn,
+    CVaRMeasurement,
+    DictStateFn,
+    OperatorStateFn,
+    SparseVectorStateFn,
+    StateFn,
+    VectorStateFn,
+)
+from qiskit.opflow.utils import anti_commutator, commutator, double_commutator
 
 # Convenience immutable instances
 from qiskit.opflow.operator_globals import (
+    CX,
+    CZ,
     EVAL_SIG_DIGITS,
+    H,
+    I,
+    Minus,
+    One,
+    Plus,
+    S,
+    Swap,
+    T,
     X,
     Y,
     Z,
-    I,
-    CX,
-    S,
-    H,
-    T,
-    Swap,
-    CZ,
     Zero,
-    One,
-    Plus,
-    Minus,
 )
 
 # Gradients
 from qiskit.opflow.gradients import (
-    DerivativeBase,
-    GradientBase,
-    Gradient,
-    NaturalGradient,
-    HessianBase,
-    Hessian,
-    QFIBase,
     QFI,
     CircuitGradient,
     CircuitQFI,
+    DerivativeBase,
+    Gradient,
+    GradientBase,
+    Hessian,
+    HessianBase,
+    NaturalGradient,
+    QFIBase,
 )
 
 # Exceptions

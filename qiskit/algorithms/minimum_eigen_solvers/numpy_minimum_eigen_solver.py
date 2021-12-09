@@ -19,13 +19,13 @@ from typing import Callable
 
 import numpy as np
 
-from qiskit.opflow import OperatorBase
 from qiskit.algorithms.eigen_solvers.numpy_eigen_solver import NumPyEigensolver
 from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import (
+    ListOrDict,
     MinimumEigensolver,
     MinimumEigensolverResult,
-    ListOrDict,
 )
+from qiskit.opflow import OperatorBase
 
 logger = logging.getLogger(__name__)
 

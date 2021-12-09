@@ -64,8 +64,8 @@ from typing import Any
 import numpy as np
 
 from qiskit.pulse.channels import Channel
-from qiskit.visualization.pulse_v2 import types
 from qiskit.visualization.exceptions import VisualizationError
+from qiskit.visualization.pulse_v2 import types
 
 
 class ElementaryData(ABC):

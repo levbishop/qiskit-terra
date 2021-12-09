@@ -14,18 +14,18 @@
 
 from __future__ import annotations
 
-import unittest
 import itertools
+import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 
 from qiskit import BasicAer, QuantumCircuit
-from qiskit.utils import QuantumInstance
-from qiskit.algorithms import Grover, AmplificationProblem
+from qiskit.algorithms import AmplificationProblem, Grover
 from qiskit.circuit.library import GroverOperator, PhaseOracle
 from qiskit.quantum_info import Operator, Statevector
+from qiskit.utils import QuantumInstance
 
 
 @ddt

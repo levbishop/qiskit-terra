@@ -19,7 +19,7 @@ import sys
 from logging import StreamHandler, getLogger
 
 from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.compiler import transpile, assemble
+from qiskit.compiler import assemble, transpile
 from qiskit.qobj import QobjHeader
 from qiskit.test import QiskitTestCase
 

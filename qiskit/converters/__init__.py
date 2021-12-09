@@ -33,14 +33,14 @@ Circuit Converters (:mod:`qiskit.converters`)
 
 from __future__ import annotations
 
-from qiskit.converters.circuit_to_dag import circuit_to_dag
-from qiskit.converters.dag_to_circuit import dag_to_circuit
-from qiskit.converters.circuit_to_instruction import circuit_to_instruction
-from qiskit.converters.circuit_to_gate import circuit_to_gate
 from qiskit.converters.ast_to_dag import ast_to_dag
+from qiskit.converters.circuit_to_dag import circuit_to_dag
 from qiskit.converters.circuit_to_dagdependency import circuit_to_dagdependency
-from qiskit.converters.dagdependency_to_circuit import dagdependency_to_circuit
+from qiskit.converters.circuit_to_gate import circuit_to_gate
+from qiskit.converters.circuit_to_instruction import circuit_to_instruction
+from qiskit.converters.dag_to_circuit import dag_to_circuit
 from qiskit.converters.dag_to_dagdependency import dag_to_dagdependency
+from qiskit.converters.dagdependency_to_circuit import dagdependency_to_circuit
 from qiskit.converters.dagdependency_to_dag import dagdependency_to_dag
 
 

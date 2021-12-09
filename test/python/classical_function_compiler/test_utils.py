@@ -15,8 +15,8 @@ from __future__ import annotations
 
 from qiskit.test import QiskitTestCase
 
-from .utils import get_truthtable_from_function
 from .examples import grover_oracle
+from .utils import get_truthtable_from_function
 
 
 class TestGetTruthtableFromFunction(QiskitTestCase):

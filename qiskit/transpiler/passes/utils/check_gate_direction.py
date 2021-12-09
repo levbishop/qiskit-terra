@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.transpiler.layout import Layout
 from qiskit.transpiler.basepasses import AnalysisPass
+from qiskit.transpiler.layout import Layout
 
 
 class CheckGateDirection(AnalysisPass):

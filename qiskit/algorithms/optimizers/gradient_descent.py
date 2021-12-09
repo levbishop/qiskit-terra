@@ -14,16 +14,16 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Iterator
 from functools import partial
+from typing import Any, Callable, Iterator
 
 import numpy as np
 
 from qiskit.algorithms.optimizers.optimizer import (
-    Optimizer,
-    OptimizerSupportLevel,
-    OptimizerResult,
     POINT,
+    Optimizer,
+    OptimizerResult,
+    OptimizerSupportLevel,
 )
 
 CALLBACK = Callable[[int, np.ndarray, float, float], None]

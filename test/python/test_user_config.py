@@ -14,10 +14,10 @@
 
 from __future__ import annotations
 
-import os
 import configparser as cp
-from uuid import uuid4
+import os
 from unittest import mock
+from uuid import uuid4
 
 from qiskit import exceptions, user_config
 from qiskit.test import QiskitTestCase

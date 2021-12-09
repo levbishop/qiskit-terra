@@ -18,12 +18,12 @@ from typing import Callable
 import numpy as np
 from numpy.polynomial.chebyshev import Chebyshev
 
-from qiskit.circuit import QuantumRegister, AncillaRegister
-from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
+from qiskit.circuit import AncillaRegister, QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.arithmetic.piecewise_polynomial_pauli_rotations import (
     PiecewisePolynomialPauliRotations,
 )
+from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 
 
 class PiecewiseChebyshev(BlueprintCircuit):

@@ -47,12 +47,12 @@ Mitigation
 
 from __future__ import annotations
 
-from qiskit.result.result import Result
-from qiskit.result.exceptions import ResultError
-from qiskit.result.utils import marginal_counts
 from qiskit.result.counts import Counts
 from qiskit.result.distributions.probability import ProbDistribution
 from qiskit.result.distributions.quasi import QuasiDistribution
+from qiskit.result.exceptions import ResultError
 from qiskit.result.mitigation.base_readout_mitigator import BaseReadoutMitigator
 from qiskit.result.mitigation.correlated_readout_mitigator import CorrelatedReadoutMitigator
 from qiskit.result.mitigation.local_readout_mitigator import LocalReadoutMitigator
+from qiskit.result.result import Result
+from qiskit.result.utils import marginal_counts

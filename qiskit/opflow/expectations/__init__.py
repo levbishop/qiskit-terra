@@ -58,12 +58,12 @@ Expectations
 
 from __future__ import annotations
 
+from qiskit.opflow.expectations.aer_pauli_expectation import AerPauliExpectation
+from qiskit.opflow.expectations.cvar_expectation import CVaRExpectation
 from qiskit.opflow.expectations.expectation_base import ExpectationBase
 from qiskit.opflow.expectations.expectation_factory import ExpectationFactory
-from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
-from qiskit.opflow.expectations.aer_pauli_expectation import AerPauliExpectation
 from qiskit.opflow.expectations.matrix_expectation import MatrixExpectation
-from qiskit.opflow.expectations.cvar_expectation import CVaRExpectation
+from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
 
 __all__ = [
     "ExpectationBase",

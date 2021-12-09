@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import logging
 import unittest
-from test.python.algorithms import QiskitAlgorithmsTestCase
 from functools import partial
+from test.python.algorithms import QiskitAlgorithmsTestCase
 
 import numpy as np
 from ddt import data, ddt, unpack

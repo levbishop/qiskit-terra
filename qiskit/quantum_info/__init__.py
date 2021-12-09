@@ -125,58 +125,58 @@ Synthesis
 
 from __future__ import annotations
 
+from qiskit.quantum_info.analysis import hellinger_distance, hellinger_fidelity
 from qiskit.quantum_info.operators import (
-    Operator,
-    ScalarOp,
-    Pauli,
     Clifford,
-    SparsePauliOp,
+    Operator,
+    Pauli,
     PauliList,
     PauliTable,
+    ScalarOp,
+    SparsePauliOp,
     StabilizerTable,
     pauli_basis,
     pauli_group,
 )
-from qiskit.quantum_info.operators.channel import Choi, SuperOp, Kraus, Stinespring, Chi, PTM
-from qiskit.quantum_info.operators.measures import (
-    process_fidelity,
-    average_gate_fidelity,
-    gate_error,
-    diamond_norm,
-)
+from qiskit.quantum_info.operators.channel import PTM, Chi, Choi, Kraus, Stinespring, SuperOp
 from qiskit.quantum_info.operators.dihedral import CNOTDihedral
-from qiskit.quantum_info.states import (
-    Statevector,
-    DensityMatrix,
-    StabilizerState,
-    partial_trace,
-    state_fidelity,
-    purity,
-    entropy,
-    concurrence,
-    entanglement_of_formation,
-    mutual_information,
-    shannon_entropy,
+from qiskit.quantum_info.operators.measures import (
+    average_gate_fidelity,
+    diamond_norm,
+    gate_error,
+    process_fidelity,
 )
 from qiskit.quantum_info.random import (
-    random_quantum_channel,
-    random_unitary,
     random_clifford,
-    random_pauli,
-    random_pauli_table,
-    random_pauli_list,
-    random_stabilizer_table,
-    random_hermitian,
-    random_statevector,
-    random_density_matrix,
     random_cnotdihedral,
+    random_density_matrix,
+    random_hermitian,
+    random_pauli,
+    random_pauli_list,
+    random_pauli_table,
+    random_quantum_channel,
+    random_stabilizer_table,
+    random_statevector,
+    random_unitary,
+)
+from qiskit.quantum_info.states import (
+    DensityMatrix,
+    StabilizerState,
+    Statevector,
+    concurrence,
+    entanglement_of_formation,
+    entropy,
+    mutual_information,
+    partial_trace,
+    purity,
+    shannon_entropy,
+    state_fidelity,
 )
 from qiskit.quantum_info.synthesis import (
     OneQubitEulerDecomposer,
-    TwoQubitBasisDecomposer,
-    two_qubit_cnot_decompose,
     Quaternion,
-    decompose_clifford,
+    TwoQubitBasisDecomposer,
     XXDecomposer,
+    decompose_clifford,
+    two_qubit_cnot_decompose,
 )
-from qiskit.quantum_info.analysis import hellinger_distance, hellinger_fidelity

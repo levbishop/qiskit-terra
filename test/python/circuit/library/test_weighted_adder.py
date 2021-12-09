@@ -18,12 +18,12 @@ import unittest
 from collections import defaultdict
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 
-from qiskit.test.base import QiskitTestCase
 from qiskit import BasicAer, execute
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import WeightedAdder
+from qiskit.test.base import QiskitTestCase
 
 
 @ddt

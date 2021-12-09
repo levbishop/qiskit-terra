@@ -20,15 +20,15 @@ import math
 
 import numpy as np
 
-from qiskit.exceptions import QiskitError
-from qiskit.circuit import QuantumCircuit, QuantumRegister, Instruction
+from qiskit.circuit import Instruction, QuantumCircuit, QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library.standard_gates.x import CXGate, XGate
 from qiskit.circuit.library.standard_gates.h import HGate
-from qiskit.circuit.library.standard_gates.s import SGate, SdgGate
 from qiskit.circuit.library.standard_gates.ry import RYGate
 from qiskit.circuit.library.standard_gates.rz import RZGate
+from qiskit.circuit.library.standard_gates.s import SdgGate, SGate
+from qiskit.circuit.library.standard_gates.x import CXGate, XGate
 from qiskit.circuit.reset import Reset
+from qiskit.exceptions import QiskitError
 
 _EPS = 1e-10  # global variable used to chop very small numbers to zero
 

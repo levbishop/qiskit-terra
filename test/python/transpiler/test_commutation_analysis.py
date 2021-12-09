@@ -17,11 +17,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.circuit import QuantumRegister, QuantumCircuit, Qubit
-from qiskit.transpiler import PropertySet
-from qiskit.transpiler.passes import CommutationAnalysis
+from qiskit.circuit import QuantumCircuit, QuantumRegister, Qubit
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler import PropertySet
+from qiskit.transpiler.passes import CommutationAnalysis
 
 
 class TestCommutationAnalysis(QiskitTestCase):

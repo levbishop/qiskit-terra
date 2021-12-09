@@ -15,10 +15,10 @@ SpecialPolynomial class.
 
 from __future__ import annotations
 
-import itertools
 import copy
-from itertools import combinations
+import itertools
 from functools import reduce
+from itertools import combinations
 from operator import mul
 
 import numpy as np

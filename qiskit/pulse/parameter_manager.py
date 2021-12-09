@@ -52,12 +52,12 @@ and thus this parameter framework gives greater scalability to the pulse module.
 """
 from __future__ import annotations
 
-from copy import deepcopy, copy
+from copy import copy, deepcopy
 from typing import Any
 
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
-from qiskit.pulse import instructions, channels
+from qiskit.pulse import channels, instructions
 from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse.library import ParametricPulse, Waveform
 from qiskit.pulse.schedule import Schedule, ScheduleBlock

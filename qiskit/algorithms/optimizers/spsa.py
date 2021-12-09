@@ -19,20 +19,20 @@ from __future__ import annotations
 
 import logging
 import warnings
-from typing import Any, Callable, Iterator
-from time import time
 from collections import deque
+from time import time
+from typing import Any, Callable, Iterator
 
-import scipy
 import numpy as np
+import scipy
 
-from qiskit.utils import algorithm_globals
 from qiskit.algorithms.optimizers.optimizer import (
-    Optimizer,
-    OptimizerSupportLevel,
-    OptimizerResult,
     POINT,
+    Optimizer,
+    OptimizerResult,
+    OptimizerSupportLevel,
 )
+from qiskit.utils import algorithm_globals
 
 # number of function evaluations, parameters, loss, stepsize, accepted
 CALLBACK = Callable[[int, np.ndarray, float, float, bool], None]

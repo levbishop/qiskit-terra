@@ -75,8 +75,8 @@ from typing import Any
 import numpy as np
 
 from qiskit import circuit
-from qiskit.visualization.timeline import types
 from qiskit.visualization.exceptions import VisualizationError
+from qiskit.visualization.timeline import types
 
 
 class ElementaryData(ABC):

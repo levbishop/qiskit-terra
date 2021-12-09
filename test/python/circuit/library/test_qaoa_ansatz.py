@@ -15,12 +15,12 @@
 from __future__ import annotations
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 
-from qiskit.circuit import QuantumCircuit, Parameter
-from qiskit.circuit.library import HGate, RXGate, YGate, RYGate, RZGate
+from qiskit.circuit import Parameter, QuantumCircuit
+from qiskit.circuit.library import HGate, RXGate, RYGate, RZGate, YGate
 from qiskit.circuit.library.n_local.qaoa_ansatz import QAOAAnsatz
-from qiskit.opflow import I, Y, Z, PauliSumOp
+from qiskit.opflow import I, PauliSumOp, Y, Z
 from qiskit.test import QiskitTestCase
 
 

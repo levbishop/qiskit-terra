@@ -94,10 +94,10 @@ class iSwapGate(Gate):
         }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
         from qiskit.circuit.library.standard_gates.h import HGate
         from qiskit.circuit.library.standard_gates.s import SGate
         from qiskit.circuit.library.standard_gates.x import CXGate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(2, "q")
         qc = QuantumCircuit(q, name=self.name)

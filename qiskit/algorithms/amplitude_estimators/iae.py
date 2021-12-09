@@ -20,14 +20,14 @@ import numpy as np
 from scipy.stats import beta
 
 from qiskit import ClassicalRegister, QuantumCircuit
-from qiskit.providers import BaseBackend, Backend
-from qiskit.utils import QuantumInstance
 from qiskit.algorithms.amplitude_estimators.amplitude_estimator import (
     AmplitudeEstimator,
     AmplitudeEstimatorResult,
 )
 from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 from qiskit.algorithms.exceptions import AlgorithmError
+from qiskit.providers import Backend, BaseBackend
+from qiskit.utils import QuantumInstance
 
 
 class IterativeAmplitudeEstimation(AmplitudeEstimator):

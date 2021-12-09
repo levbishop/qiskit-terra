@@ -20,8 +20,8 @@ import copy
 from abc import ABC
 
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info.operators.op_shape import OpShape
 from qiskit.quantum_info.operators.mixins import GroupMixin
+from qiskit.quantum_info.operators.op_shape import OpShape
 
 
 class BaseOperator(GroupMixin, ABC):

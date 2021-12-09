@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import ipywidgets as widgets
-from IPython.display import display, Javascript
+from IPython.display import Javascript, display
 
 
 def make_clear_button(watcher):

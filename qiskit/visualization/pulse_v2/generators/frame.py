@@ -46,7 +46,7 @@ import numpy as np
 
 from qiskit.pulse import instructions
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.pulse_v2 import drawings, types, device_info
+from qiskit.visualization.pulse_v2 import device_info, drawings, types
 
 
 def gen_formatted_phase(

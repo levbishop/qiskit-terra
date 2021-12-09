@@ -17,18 +17,18 @@ Tests for uniformly controlled single-qubit unitaries.
 
 from __future__ import annotations
 
-import unittest
 import itertools
+import unittest
 
 import numpy as np
 from scipy.linalg import block_diag
 
-from qiskit.extensions.quantum_initializer.uc import UCGate
-from qiskit import QuantumCircuit, QuantumRegister, BasicAer, execute
-from qiskit.test import QiskitTestCase
-from qiskit.quantum_info.random import random_unitary
+from qiskit import BasicAer, QuantumCircuit, QuantumRegister, execute
 from qiskit.compiler import transpile
+from qiskit.extensions.quantum_initializer.uc import UCGate
 from qiskit.quantum_info.operators.predicates import matrix_equal
+from qiskit.quantum_info.random import random_unitary
+from qiskit.test import QiskitTestCase
 
 _id = np.eye(2, 2)
 _not = np.matrix([[0, 1], [1, 0]])

@@ -15,19 +15,19 @@
 
 from __future__ import annotations
 
-import math
 import heapq
+import math
 from collections import OrderedDict, defaultdict
 
 import numpy as np
 import retworkx as rx
 
-from qiskit.circuit.quantumregister import QuantumRegister, Qubit
 from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
-from qiskit.dagcircuit.exceptions import DAGDependencyError
+from qiskit.circuit.quantumregister import QuantumRegister, Qubit
 from qiskit.dagcircuit.dagdepnode import DAGDepNode
-from qiskit.quantum_info.operators import Operator
+from qiskit.dagcircuit.exceptions import DAGDependencyError
 from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.quantum_info.operators import Operator
 
 
 class DAGDependency:

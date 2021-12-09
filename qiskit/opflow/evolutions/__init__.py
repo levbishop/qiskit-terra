@@ -79,14 +79,14 @@ from __future__ import annotations
 from qiskit.opflow.evolutions.evolution_base import EvolutionBase
 from qiskit.opflow.evolutions.evolution_factory import EvolutionFactory
 from qiskit.opflow.evolutions.evolved_op import EvolvedOp
-from qiskit.opflow.evolutions.pauli_trotter_evolution import PauliTrotterEvolution
 from qiskit.opflow.evolutions.matrix_evolution import MatrixEvolution
+from qiskit.opflow.evolutions.pauli_trotter_evolution import PauliTrotterEvolution
 from qiskit.opflow.evolutions.trotterizations import (
+    QDrift,
+    Suzuki,
+    Trotter,
     TrotterizationBase,
     TrotterizationFactory,
-    Trotter,
-    Suzuki,
-    QDrift,
 )
 
 # TODO co-diagonalization of Abelian groups in PauliTrotterEvolution

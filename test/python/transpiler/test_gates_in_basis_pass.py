@@ -16,9 +16,9 @@ from __future__ import annotations
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.equivalence_library import SessionEquivalenceLibrary
+from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
 from qiskit.transpiler.passes import BasisTranslator, GatesInBasis
-from qiskit.test import QiskitTestCase
 
 
 class TestGatesInBasisPass(QiskitTestCase):

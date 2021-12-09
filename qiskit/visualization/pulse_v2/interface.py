@@ -25,12 +25,12 @@ from __future__ import annotations
 
 from typing import Any
 
+from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.providers import BaseBackend
-from qiskit.pulse import Waveform, ParametricPulse, Schedule, ScheduleBlock
+from qiskit.pulse import ParametricPulse, Schedule, ScheduleBlock, Waveform
 from qiskit.pulse.channels import Channel
 from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.pulse_v2 import core, device_info, stylesheet, types
-from qiskit.exceptions import MissingOptionalLibraryError
 
 
 def draw(

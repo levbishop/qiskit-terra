@@ -22,12 +22,12 @@ import numpy as np
 from qiskit.circuit import (
     BooleanExpression,
     Clbit,
+    ControlFlowOp,
     ControlledGate,
     Delay,
     Gate,
     Instruction,
     Measure,
-    ControlFlowOp,
 )
 from qiskit.circuit.library import PauliEvolutionGate
 from qiskit.circuit.tools import pi_check

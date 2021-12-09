@@ -14,10 +14,10 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, Parameter
-from qiskit.circuit.library import HGate, XGate, CXGate, RXGate
-from qiskit.test import QiskitTestCase
+from qiskit.circuit import Parameter, QuantumCircuit, QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
+from qiskit.circuit.library import CXGate, HGate, RXGate, XGate
+from qiskit.test import QiskitTestCase
 
 
 class TestQuantumCircuitInstructionData(QiskitTestCase):

@@ -112,8 +112,8 @@ class BIPMapping(TransformationPass):
             TranspilerError: if invalid options are specified.
         """
         try:
-            import docplex  # pylint: disable=unused-import
             import cplex  # pylint: disable=unused-import
+            import docplex  # pylint: disable=unused-import
         except ImportError as error:
             raise MissingOptionalLibraryError(
                 libname="bip-mapper",

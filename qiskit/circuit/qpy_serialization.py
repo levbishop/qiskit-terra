@@ -396,19 +396,19 @@ from collections import namedtuple
 
 import numpy as np
 
-from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.circuit.quantumregister import QuantumRegister, Qubit
-from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
-from qiskit.circuit.parameter import Parameter
-from qiskit.circuit.parameterexpression import ParameterExpression
-from qiskit.circuit.gate import Gate
-from qiskit.circuit.instruction import Instruction
-from qiskit.circuit import library
 from qiskit import circuit as circuit_mod
 from qiskit import extensions
+from qiskit.circuit import library
+from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.gate import Gate
+from qiskit.circuit.instruction import Instruction
+from qiskit.circuit.parameter import Parameter
+from qiskit.circuit.parameterexpression import ParameterExpression
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.circuit.quantumregister import QuantumRegister, Qubit
+from qiskit.exceptions import QiskitError
 from qiskit.extensions import quantum_initializer
 from qiskit.version import __version__
-from qiskit.exceptions import QiskitError
 
 try:
     import symengine

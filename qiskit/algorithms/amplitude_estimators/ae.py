@@ -17,18 +17,18 @@ from __future__ import annotations
 from collections import OrderedDict
 
 import numpy as np
-from scipy.stats import chi2, norm
 from scipy.optimize import bisect
+from scipy.stats import chi2, norm
 
-from qiskit import QuantumCircuit, ClassicalRegister
-from qiskit.providers import BaseBackend, Backend
-from qiskit.utils import QuantumInstance
+from qiskit import ClassicalRegister, QuantumCircuit
+from qiskit.algorithms.amplitude_estimators.ae_utils import bisect_max, derivative_log_pdf_a, pdf_a
 from qiskit.algorithms.amplitude_estimators.amplitude_estimator import (
     AmplitudeEstimator,
     AmplitudeEstimatorResult,
 )
-from qiskit.algorithms.amplitude_estimators.ae_utils import pdf_a, derivative_log_pdf_a, bisect_max
 from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
+from qiskit.providers import Backend, BaseBackend
+from qiskit.utils import QuantumInstance
 
 
 class AmplitudeEstimation(AmplitudeEstimator):

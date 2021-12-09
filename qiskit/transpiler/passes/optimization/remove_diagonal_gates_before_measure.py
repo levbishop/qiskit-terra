@@ -16,17 +16,17 @@ from __future__ import annotations
 
 from qiskit.circuit import Measure
 from qiskit.circuit.library.standard_gates import (
-    RZGate,
-    ZGate,
-    TGate,
-    SGate,
-    TdgGate,
-    SdgGate,
-    U1Gate,
-    CZGate,
     CRZGate,
     CU1Gate,
+    CZGate,
+    RZGate,
     RZZGate,
+    SdgGate,
+    SGate,
+    TdgGate,
+    TGate,
+    U1Gate,
+    ZGate,
 )
 from qiskit.dagcircuit import DAGOpNode
 from qiskit.transpiler.basepasses import TransformationPass

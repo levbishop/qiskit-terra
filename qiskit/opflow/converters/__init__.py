@@ -63,11 +63,11 @@ frequently around the Operator flow.
 
 from __future__ import annotations
 
-from qiskit.opflow.converters.converter_base import ConverterBase
-from qiskit.opflow.converters.circuit_sampler import CircuitSampler
-from qiskit.opflow.converters.pauli_basis_change import PauliBasisChange
-from qiskit.opflow.converters.dict_to_circuit_sum import DictToCircuitSum
 from qiskit.opflow.converters.abelian_grouper import AbelianGrouper
+from qiskit.opflow.converters.circuit_sampler import CircuitSampler
+from qiskit.opflow.converters.converter_base import ConverterBase
+from qiskit.opflow.converters.dict_to_circuit_sum import DictToCircuitSum
+from qiskit.opflow.converters.pauli_basis_change import PauliBasisChange
 from qiskit.opflow.converters.two_qubit_reduction import TwoQubitReduction
 
 __all__ = [

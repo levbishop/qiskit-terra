@@ -15,10 +15,10 @@ from __future__ import annotations
 
 import unittest
 
-from hypothesis import given, strategies, settings
+from hypothesis import given, settings, strategies
 
-from qiskit.quantum_info.random import random_clifford
 from qiskit.quantum_info import Clifford
+from qiskit.quantum_info.random import random_clifford
 
 
 class TestClifford(unittest.TestCase):

@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.transpiler import PropertySet
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler import PropertySet
 
 
 class TestPropertySet(QiskitTestCase):

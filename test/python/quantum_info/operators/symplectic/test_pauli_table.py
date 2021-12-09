@@ -22,8 +22,8 @@ from ddt import ddt
 from scipy.sparse import csr_matrix
 
 from qiskit import QiskitError
-from qiskit.test import QiskitTestCase
 from qiskit.quantum_info.operators.symplectic import PauliTable
+from qiskit.test import QiskitTestCase
 
 
 def pauli_mat(label):

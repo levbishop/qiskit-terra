@@ -15,4 +15,4 @@
 
 from __future__ import annotations
 
-from qiskit.transpiler.synthesis.graysynth import graysynth, cnot_synth
+from qiskit.transpiler.synthesis.graysynth import cnot_synth, graysynth

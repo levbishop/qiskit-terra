@@ -28,8 +28,8 @@ import inspect
 import logging
 import os
 import sys
-import warnings
 import unittest
+import warnings
 from unittest.util import safe_repr
 
 try:

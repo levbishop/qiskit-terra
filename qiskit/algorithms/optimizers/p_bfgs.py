@@ -22,10 +22,10 @@ from typing import Callable
 
 import numpy as np
 
+from qiskit.algorithms.optimizers.optimizer import POINT, OptimizerResult
+from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 from qiskit.utils import algorithm_globals
 from qiskit.utils.validation import validate_min
-from qiskit.algorithms.optimizers.optimizer import OptimizerResult, POINT
-from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 
 logger = logging.getLogger(__name__)
 

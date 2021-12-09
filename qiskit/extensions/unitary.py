@@ -20,16 +20,16 @@ from collections import OrderedDict
 
 import numpy
 
-from qiskit.circuit import Gate, ControlledGate, QuantumCircuit, QuantumRegister, Qubit
-from qiskit.circuit.exceptions import CircuitError
+from qiskit.circuit import ControlledGate, Gate, QuantumCircuit, QuantumRegister, Qubit
 from qiskit.circuit._utils import _compute_control_matrix
-from qiskit.circuit.quantumcircuit import _qasm_escape_gate_name
+from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.standard_gates import U3Gate
+from qiskit.circuit.quantumcircuit import _qasm_escape_gate_name
+from qiskit.extensions.exceptions import ExtensionError
 from qiskit.extensions.quantum_initializer import isometry
-from qiskit.quantum_info.operators.predicates import matrix_equal, is_unitary_matrix
+from qiskit.quantum_info.operators.predicates import is_unitary_matrix, matrix_equal
 from qiskit.quantum_info.synthesis.one_qubit_decompose import OneQubitEulerDecomposer
 from qiskit.quantum_info.synthesis.two_qubit_decompose import two_qubit_cnot_decompose
-from qiskit.extensions.exceptions import ExtensionError
 
 _DECOMPOSER1Q = OneQubitEulerDecomposer("U3")
 

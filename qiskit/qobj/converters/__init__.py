@@ -16,8 +16,8 @@ Helper modules to convert qiskit frontend object to proper qobj model.
 
 from __future__ import annotations
 
+from qiskit.qobj.converters.lo_config import LoConfigConverter
 from qiskit.qobj.converters.pulse_instruction import (
     InstructionToQobjConverter,
     QobjToInstructionConverter,
 )
-from qiskit.qobj.converters.lo_config import LoConfigConverter

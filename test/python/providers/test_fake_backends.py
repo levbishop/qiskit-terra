@@ -18,14 +18,14 @@ from __future__ import annotations
 import operator
 from test import combine
 
-from ddt import ddt, data
+from ddt import data, ddt
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.compiler import assemble, transpile
 from qiskit.exceptions import QiskitError
 from qiskit.execute_function import execute
 from qiskit.test.base import QiskitTestCase
-from qiskit.test.mock import FakeProvider, FakeLegacyProvider
+from qiskit.test.mock import FakeLegacyProvider, FakeProvider
 from qiskit.test.mock.fake_backend import HAS_AER
 
 FAKE_PROVIDER = FakeProvider()

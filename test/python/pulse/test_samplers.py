@@ -17,9 +17,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.test import QiskitTestCase
 from qiskit.pulse import library
 from qiskit.pulse.library import samplers
+from qiskit.test import QiskitTestCase
 
 
 def linear(times: np.ndarray, m: float, b: float = 0.1) -> np.ndarray:

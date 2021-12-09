@@ -19,16 +19,16 @@ import itertools
 
 import numpy as np
 
+from qiskit.circuit import Instruction, QuantumCircuit
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.base_operator import BaseOperator
+from qiskit.quantum_info.operators.dihedral.dihedral_circuits import _append_circuit
+from qiskit.quantum_info.operators.dihedral.polynomial import SpecialPolynomial
+from qiskit.quantum_info.operators.mixins import AdjointMixin, generate_apidocs
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.pauli import Pauli
 from qiskit.quantum_info.operators.scalar_op import ScalarOp
 from qiskit.quantum_info.synthesis.cnotdihedral_decompose import decompose_cnotdihedral
-from qiskit.quantum_info.operators.mixins import generate_apidocs, AdjointMixin
-from qiskit.circuit import QuantumCircuit, Instruction
-from qiskit.quantum_info.operators.dihedral.dihedral_circuits import _append_circuit
-from qiskit.quantum_info.operators.dihedral.polynomial import SpecialPolynomial
 
 
 class CNOTDihedral(BaseOperator, AdjointMixin):

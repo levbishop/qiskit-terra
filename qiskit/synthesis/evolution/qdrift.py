@@ -19,10 +19,10 @@ from typing import Callable
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.quantum_info.operators import SparsePauliOp, Pauli
-from qiskit.utils import algorithm_globals
-from qiskit.synthesis.evolution.product_formula import ProductFormula
+from qiskit.quantum_info.operators import Pauli, SparsePauliOp
 from qiskit.synthesis.evolution.lie_trotter import LieTrotter
+from qiskit.synthesis.evolution.product_formula import ProductFormula
+from qiskit.utils import algorithm_globals
 
 
 class QDrift(ProductFormula):

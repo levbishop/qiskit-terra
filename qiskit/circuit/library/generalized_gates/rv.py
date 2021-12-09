@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import numpy
 
-from qiskit.circuit.gate import Gate
 from qiskit.circuit.exceptions import CircuitError
+from qiskit.circuit.gate import Gate
 
 
 class RVGate(Gate):

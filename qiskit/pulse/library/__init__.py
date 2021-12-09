@@ -42,11 +42,11 @@ from __future__ import annotations
 
 from qiskit.pulse.library.discrete import *
 from qiskit.pulse.library.parametric_pulses import (
-    ParametricPulse,
+    Constant,
+    Drag,
     Gaussian,
     GaussianSquare,
-    Drag,
-    Constant,
+    ParametricPulse,
 )
 from qiskit.pulse.library.pulse import Pulse
 from qiskit.pulse.library.waveform import Waveform

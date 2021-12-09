@@ -41,12 +41,12 @@ from __future__ import annotations
 
 from qiskit.providers.models.backendconfiguration import (
     BackendConfiguration,
+    GateConfig,
     PulseBackendConfiguration,
     QasmBackendConfiguration,
     UchannelLO,
-    GateConfig,
 )
 from qiskit.providers.models.backendproperties import BackendProperties
 from qiskit.providers.models.backendstatus import BackendStatus
 from qiskit.providers.models.jobstatus import JobStatus
-from qiskit.providers.models.pulsedefaults import PulseDefaults, Command
+from qiskit.providers.models.pulsedefaults import Command, PulseDefaults

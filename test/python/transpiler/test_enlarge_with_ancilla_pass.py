@@ -16,11 +16,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import QuantumRegister, QuantumCircuit
-from qiskit.transpiler import Layout
-from qiskit.transpiler.passes import EnlargeWithAncilla
+from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler import Layout
+from qiskit.transpiler.passes import EnlargeWithAncilla
 
 
 class TestEnlargeWithAncilla(QiskitTestCase):

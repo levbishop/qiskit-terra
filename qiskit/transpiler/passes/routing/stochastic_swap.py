@@ -15,16 +15,16 @@
 from __future__ import annotations
 
 import logging
-from math import inf
 from collections import OrderedDict
+from math import inf
 
 import numpy as np
 
+from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.dagcircuit import DAGCircuit
-from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.transpiler.layout import Layout
 
 # pylint: disable=no-name-in-module

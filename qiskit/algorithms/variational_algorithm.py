@@ -28,20 +28,20 @@ overridden to opt-out of this infrastructure but still meet the interface requir
 
 from __future__ import annotations
 
-import warnings
-import time
 import logging
-from typing import Callable
+import time
+import warnings
 from abc import abstractmethod
+from typing import Callable
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit
-from qiskit.providers import BaseBackend, Backend
-from qiskit.opflow.gradients import GradientBase
-from qiskit.utils import QuantumInstance, algorithm_globals, deprecate_function
 from qiskit.algorithms.algorithm_result import AlgorithmResult
-from qiskit.algorithms.optimizers import Optimizer, SLSQP
+from qiskit.algorithms.optimizers import SLSQP, Optimizer
+from qiskit.circuit import QuantumCircuit
+from qiskit.opflow.gradients import GradientBase
+from qiskit.providers import Backend, BaseBackend
+from qiskit.utils import QuantumInstance, algorithm_globals, deprecate_function
 
 logger = logging.getLogger(__name__)
 

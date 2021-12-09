@@ -16,11 +16,11 @@
 from __future__ import annotations
 
 import unittest
-from test.python.opflow import QiskitOpflowTestCase
 from itertools import product
+from test.python.opflow import QiskitOpflowTestCase
 
 import numpy as np
-from ddt import ddt, data, idata, unpack
+from ddt import data, ddt, idata, unpack
 
 try:
     import jax.numpy as jnp
@@ -29,29 +29,29 @@ try:
 except ImportError:
     _HAS_JAX = False
 
-from qiskit import QuantumCircuit, QuantumRegister, BasicAer
-from qiskit.test import slow_test
-from qiskit.utils import QuantumInstance, algorithm_globals
-from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit import BasicAer, QuantumCircuit, QuantumRegister
 from qiskit.algorithms import VQE
 from qiskit.algorithms.optimizers import CG
+from qiskit.circuit import Parameter, ParameterVector
+from qiskit.circuit.library import EfficientSU2, RealAmplitudes
+from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.opflow import (
+    CircuitSampler,
+    CircuitStateFn,
     I,
+    ListOp,
+    StateFn,
+    SummedOp,
+    TensoredOp,
     X,
     Y,
     Z,
-    StateFn,
-    CircuitStateFn,
-    ListOp,
-    CircuitSampler,
-    TensoredOp,
-    SummedOp,
 )
-from qiskit.opflow.gradients import Gradient, NaturalGradient, Hessian
-from qiskit.opflow.gradients.qfi import QFI
+from qiskit.opflow.gradients import Gradient, Hessian, NaturalGradient
 from qiskit.opflow.gradients.circuit_qfis import LinCombFull, OverlapBlockDiag, OverlapDiag
-from qiskit.circuit import Parameter, ParameterVector
-from qiskit.circuit.library import RealAmplitudes, EfficientSU2
+from qiskit.opflow.gradients.qfi import QFI
+from qiskit.test import slow_test
+from qiskit.utils import QuantumInstance, algorithm_globals
 
 
 @ddt

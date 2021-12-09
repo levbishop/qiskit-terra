@@ -19,9 +19,9 @@ from typing import Optional
 
 import numpy as np
 
+from qiskit.exceptions import QiskitError
 from qiskit.tools import parallel
 from qiskit.user_config import get_config
-from qiskit.exceptions import QiskitError
 
 logger = logging.getLogger(__name__)
 

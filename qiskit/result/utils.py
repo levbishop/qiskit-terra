@@ -18,8 +18,8 @@ from collections import Counter
 from copy import deepcopy
 
 from qiskit.exceptions import QiskitError
-from qiskit.result.result import Result
 from qiskit.result.postprocess import _bin_to_hex
+from qiskit.result.result import Result
 
 
 def marginal_counts(result, indices=None, inplace=False, format_marginal=False):

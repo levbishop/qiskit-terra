@@ -14,14 +14,14 @@
 
 from __future__ import annotations
 
-from typing import Callable
 from functools import reduce
+from typing import Callable
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, Parameter, ParameterVector
-from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit import Parameter, ParameterVector, QuantumCircuit
 from qiskit.circuit.library.n_local.n_local import NLocal
+from qiskit.circuit.library.standard_gates import HGate
 
 
 class PauliFeatureMap(NLocal):

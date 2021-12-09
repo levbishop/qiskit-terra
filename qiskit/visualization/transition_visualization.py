@@ -16,7 +16,7 @@ Visualization function for animation of state transitions by applying gates to s
 from __future__ import annotations
 
 import sys
-from math import sin, cos, acos, sqrt
+from math import acos, cos, sin, sqrt
 
 import numpy as np
 
@@ -162,8 +162,8 @@ def visualize_transition(circuit, trace=False, saveas=None, fpg=100, spg=2):
 
     try:
         import matplotlib
-        from matplotlib import pyplot as plt
         from matplotlib import animation
+        from matplotlib import pyplot as plt
         from mpl_toolkits.mplot3d import Axes3D
 
         from qiskit.visualization.bloch import Bloch

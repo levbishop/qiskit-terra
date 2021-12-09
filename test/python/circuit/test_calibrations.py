@@ -16,9 +16,9 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.pulse import Schedule
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import RZXGate
+from qiskit.pulse import Schedule
 from qiskit.test import QiskitTestCase
 
 

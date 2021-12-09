@@ -18,9 +18,9 @@ import unittest
 
 import numpy as np
 
-from qiskit.test.base import QiskitTestCase
 from qiskit.circuit import QuantumCircuit, QuantumRegister
 from qiskit.circuit.library import PauliTwoDesign
+from qiskit.test.base import QiskitTestCase
 
 
 class TestPauliTwoDesign(QiskitTestCase):

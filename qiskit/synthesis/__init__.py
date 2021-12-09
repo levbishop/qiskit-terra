@@ -35,9 +35,9 @@ from __future__ import annotations
 
 from qiskit.synthesis.evolution import (
     EvolutionSynthesis,
-    ProductFormula,
     LieTrotter,
-    SuzukiTrotter,
     MatrixExponential,
+    ProductFormula,
     QDrift,
+    SuzukiTrotter,
 )

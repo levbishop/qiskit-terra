@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.transpiler import Layout, CouplingMap
+from qiskit.transpiler import CouplingMap, Layout
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.passes.routing.algorithms import ApproximateTokenSwapper

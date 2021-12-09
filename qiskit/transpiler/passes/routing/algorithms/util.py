@@ -31,9 +31,9 @@ from __future__ import annotations
 from typing import Iterable, MutableMapping, TypeVar
 
 from qiskit.circuit import QuantumRegister
-from qiskit.dagcircuit import DAGCircuit
 from qiskit.circuit.library.standard_gates import SwapGate
-from qiskit.transpiler.passes.routing.algorithms.types import Swap, PermutationCircuit
+from qiskit.dagcircuit import DAGCircuit
+from qiskit.transpiler.passes.routing.algorithms.types import PermutationCircuit, Swap
 
 _K = TypeVar("_K")
 _V = TypeVar("_V")

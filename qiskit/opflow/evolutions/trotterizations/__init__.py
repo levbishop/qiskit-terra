@@ -17,10 +17,10 @@ Trotterization methods - Algorithms for approximating Exponentials of Operator S
 
 from __future__ import annotations
 
+from qiskit.opflow.evolutions.trotterizations.qdrift import QDrift
+from qiskit.opflow.evolutions.trotterizations.suzuki import Suzuki
+from qiskit.opflow.evolutions.trotterizations.trotter import Trotter
 from qiskit.opflow.evolutions.trotterizations.trotterization_base import TrotterizationBase
 from qiskit.opflow.evolutions.trotterizations.trotterization_factory import TrotterizationFactory
-from qiskit.opflow.evolutions.trotterizations.trotter import Trotter
-from qiskit.opflow.evolutions.trotterizations.suzuki import Suzuki
-from qiskit.opflow.evolutions.trotterizations.qdrift import QDrift
 
 __all__ = ["TrotterizationBase", "TrotterizationFactory", "Trotter", "Suzuki", "QDrift"]

@@ -16,9 +16,9 @@ from __future__ import annotations
 
 import numpy
 
-from qiskit.utils.deprecation import deprecate_function
-from qiskit.result import Result
 from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimatorResult
+from qiskit.result import Result
+from qiskit.utils.deprecation import deprecate_function
 
 
 class PhaseEstimationResult(PhaseEstimatorResult):

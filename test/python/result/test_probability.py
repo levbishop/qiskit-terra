@@ -13,8 +13,8 @@
 """Test conversion to probability distribution"""
 from __future__ import annotations
 
-from qiskit.test import QiskitTestCase
 from qiskit.result import ProbDistribution
+from qiskit.test import QiskitTestCase
 
 
 class TestProbDistribution(QiskitTestCase):

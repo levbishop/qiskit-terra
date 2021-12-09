@@ -15,8 +15,8 @@
 from __future__ import annotations
 
 from qiskit.circuit.gate import Gate
-from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.parameterexpression import ParameterValueType
+from qiskit.circuit.quantumregister import QuantumRegister
 
 
 class RZZGate(Gate):
@@ -91,9 +91,9 @@ class RZZGate(Gate):
         gate rzz(theta) a, b { cx a, b; u1(theta) b; cx a, b; }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.quantumcircuit import QuantumCircuit
-        from qiskit.circuit.library.standard_gates.x import CXGate
         from qiskit.circuit.library.standard_gates.rz import RZGate
+        from qiskit.circuit.library.standard_gates.x import CXGate
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
         q = QuantumRegister(2, "q")
         theta = self.params[0]

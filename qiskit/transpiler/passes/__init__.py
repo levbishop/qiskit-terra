@@ -152,70 +152,70 @@ Additional Passes
 from __future__ import annotations
 
 from qiskit.transpiler.passes.layout import (
-    SetLayout,
-    TrivialLayout,
-    DenseLayout,
-    NoiseAdaptiveLayout,
-    SabreLayout,
-    CSPLayout,
-    VF2Layout,
     ApplyLayout,
-    Layout2qDistance,
+    CSPLayout,
+    DenseLayout,
     EnlargeWithAncilla,
     FullAncillaAllocation,
+    Layout2qDistance,
+    NoiseAdaptiveLayout,
+    SabreLayout,
+    SetLayout,
+    TrivialLayout,
+    VF2Layout,
 )
 
 # routing
 from qiskit.transpiler.passes.routing import (
     BasicSwap,
+    BIPMapping,
     LayoutTransformation,
     LookaheadSwap,
-    StochasticSwap,
     SabreSwap,
-    BIPMapping,
+    StochasticSwap,
 )
 
 # basis change
 from qiskit.transpiler.passes.basis import (
-    Decompose,
-    Unroller,
-    UnrollCustomDefinitions,
-    Unroll3qOrMore,
     BasisTranslator,
+    Decompose,
+    Unroll3qOrMore,
+    UnrollCustomDefinitions,
+    Unroller,
 )
 
 # optimization
 from qiskit.transpiler.passes.optimization import (
-    Optimize1qGates,
-    Optimize1qGatesDecomposition,
-    Collect2qBlocks,
     Collect1qRuns,
+    Collect2qBlocks,
     CollectMultiQBlocks,
-    ConsolidateBlocks,
     CommutationAnalysis,
     CommutativeCancellation,
+    ConsolidateBlocks,
+    CrosstalkAdaptiveSchedule,
     CXCancellation,
+    EchoRZXWeylDecomposition,
+    HoareOptimizer,
+    InverseCancellation,
+    Optimize1qGates,
+    Optimize1qGatesDecomposition,
     Optimize1qGatesSimpleCommutation,
     OptimizeSwapBeforeMeasure,
-    RemoveResetInZeroState,
     RemoveDiagonalGatesBeforeMeasure,
-    CrosstalkAdaptiveSchedule,
-    HoareOptimizer,
+    RemoveResetInZeroState,
     TemplateOptimization,
-    InverseCancellation,
-    EchoRZXWeylDecomposition,
 )
 
 # circuit analysis
 from qiskit.transpiler.passes.analysis import (
-    ResourceEstimation,
-    Depth,
-    Size,
-    Width,
     CountOps,
     CountOpsLongestPath,
-    NumTensorFactors,
     DAGLongestPath,
+    Depth,
+    NumTensorFactors,
+    ResourceEstimation,
+    Size,
+    Width,
 )
 
 # synthesis
@@ -230,11 +230,11 @@ from qiskit.transpiler.passes.calibration import (
 
 # circuit scheduling
 from qiskit.transpiler.passes.scheduling import (
-    TimeUnitConversion,
     ALAPSchedule,
+    AlignMeasures,
     ASAPSchedule,
     DynamicalDecoupling,
-    AlignMeasures,
+    TimeUnitConversion,
     ValidatePulseGates,
 )
 
@@ -242,16 +242,16 @@ from qiskit.transpiler.passes.scheduling import (
 from qiskit.transpiler.passes.utils import CheckCXDirection  # Deprecated
 from qiskit.transpiler.passes.utils import CXDirection  # Deprecated
 from qiskit.transpiler.passes.utils import (
-    CheckMap,
-    CheckGateDirection,
-    GateDirection,
     BarrierBeforeFinalMeasurements,
-    RemoveFinalMeasurements,
-    MergeAdjacentBarriers,
-    DAGFixedPoint,
-    FixedPoint,
-    Error,
-    RemoveBarriers,
+    CheckGateDirection,
+    CheckMap,
     ContainsInstruction,
+    DAGFixedPoint,
+    Error,
+    FixedPoint,
+    GateDirection,
     GatesInBasis,
+    MergeAdjacentBarriers,
+    RemoveBarriers,
+    RemoveFinalMeasurements,
 )

@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
+from qiskit.circuit.quantumcircuit import QuantumCircuit
 
 
 class HiddenLinearFunction(QuantumCircuit):

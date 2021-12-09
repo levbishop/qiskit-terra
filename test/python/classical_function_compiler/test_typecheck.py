@@ -13,11 +13,11 @@
 """Tests classicalfunction compiler type checker."""
 from __future__ import annotations
 
-from qiskit.test import QiskitTestCase
 from qiskit.circuit.classicalfunction import ClassicalFunctionCompilerTypeError
 from qiskit.circuit.classicalfunction import classical_function as compile_classical_function
+from qiskit.test import QiskitTestCase
 
-from . import examples, bad_examples
+from . import bad_examples, examples
 
 
 class TestTypeCheck(QiskitTestCase):

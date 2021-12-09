@@ -42,7 +42,7 @@ Exceptions
 from __future__ import annotations
 
 from qiskit.dagcircuit.dagcircuit import DAGCircuit
-from qiskit.dagcircuit.dagnode import DAGNode, DAGOpNode, DAGInNode, DAGOutNode
-from qiskit.dagcircuit.dagdepnode import DAGDepNode
-from qiskit.dagcircuit.exceptions import DAGCircuitError
 from qiskit.dagcircuit.dagdependency import DAGDependency
+from qiskit.dagcircuit.dagdepnode import DAGDepNode
+from qiskit.dagcircuit.dagnode import DAGInNode, DAGNode, DAGOpNode, DAGOutNode
+from qiskit.dagcircuit.exceptions import DAGCircuitError

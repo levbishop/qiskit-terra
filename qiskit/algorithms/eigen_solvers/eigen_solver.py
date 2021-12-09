@@ -19,8 +19,8 @@ from typing import Dict, List, Optional, TypeVar, Union
 
 import numpy as np
 
-from qiskit.opflow import OperatorBase
 from qiskit.algorithms.algorithm_result import AlgorithmResult
+from qiskit.opflow import OperatorBase
 
 # Introduced new type to maintain readability.
 _T = TypeVar("_T")  # Pylint does not allow single character class names.

@@ -19,7 +19,7 @@ from __future__ import annotations
 from abc import ABC
 
 from qiskit.quantum_info.operators.base_operator import BaseOperator
-from qiskit.quantum_info.operators.mixins import LinearMixin, AdjointMixin, TolerancesMixin
+from qiskit.quantum_info.operators.mixins import AdjointMixin, LinearMixin, TolerancesMixin
 
 
 class LinearOp(BaseOperator, AdjointMixin, LinearMixin, TolerancesMixin, ABC):

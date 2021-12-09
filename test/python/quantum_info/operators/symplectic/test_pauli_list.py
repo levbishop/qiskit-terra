@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import unittest
 import itertools
+import unittest
 from test import combine
 
 import numpy as np

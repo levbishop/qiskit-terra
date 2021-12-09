@@ -169,8 +169,8 @@ class PauliOp(PrimitiveOp):
             )
 
         # pylint: disable=cyclic-import
-        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
         from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
+        from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
         if isinstance(other, (CircuitOp, CircuitStateFn)):
             return new_self.to_circuit_op().compose(other)
@@ -208,10 +208,10 @@ class PauliOp(PrimitiveOp):
 
         # pylint: disable=cyclic-import
         from qiskit.opflow.list_ops.list_op import ListOp
+        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
         from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
         from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
         from qiskit.opflow.state_fns.state_fn import StateFn
-        from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 
         new_front = None
 

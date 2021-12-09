@@ -14,11 +14,11 @@
 
 from __future__ import annotations
 
-import warnings
 import logging
-from typing import Any, Callable, Union
-from enum import IntEnum
+import warnings
 from abc import ABC, abstractmethod
+from enum import IntEnum
+from typing import Any, Callable, Union
 
 import numpy as np
 

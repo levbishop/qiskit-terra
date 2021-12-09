@@ -19,12 +19,12 @@ import hashlib
 from collections import defaultdict
 from typing import Any
 
-from qiskit import qobj, pulse
+from qiskit import pulse, qobj
 from qiskit.assembler.run_config import RunConfig
 from qiskit.exceptions import QiskitError
-from qiskit.pulse import instructions, transforms, library, schedule, channels
-from qiskit.qobj import utils as qobj_utils
+from qiskit.pulse import channels, instructions, library, schedule, transforms
 from qiskit.qobj import converters
+from qiskit.qobj import utils as qobj_utils
 from qiskit.qobj.converters.pulse_instruction import ParametricPulseShapes
 
 

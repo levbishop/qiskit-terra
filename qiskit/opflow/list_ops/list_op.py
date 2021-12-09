@@ -421,8 +421,8 @@ class ListOp(OperatorBase):
         """
         # pylint: disable=cyclic-import
         from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
-        from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
         from qiskit.opflow.state_fns.sparse_vector_state_fn import SparseVectorStateFn
+        from qiskit.opflow.state_fns.vector_state_fn import VectorStateFn
 
         # The below code only works for distributive ListOps, e.g. ListOp and SummedOp
         if not self.distributive:

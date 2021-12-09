@@ -14,15 +14,15 @@
 
 from __future__ import annotations
 
-import time
 import threading
+import time
 import types
 
-import matplotlib.pyplot as plt
 import ipywidgets as widgets
-from IPython.display import display
-from IPython.core.magic import line_magic, Magics, magics_class
+import matplotlib.pyplot as plt
 from IPython.core import magic_arguments
+from IPython.core.magic import Magics, line_magic, magics_class
+from IPython.display import display
 
 from qiskit.tools.monitor.overview import get_unique_backends
 from qiskit.visualization.gate_map import plot_gate_map

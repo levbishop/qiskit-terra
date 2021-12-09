@@ -19,12 +19,12 @@ import warnings
 from typing import Callable
 
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.pulse import Schedule, Instruction, Waveform
+from qiskit.pulse import Instruction, Schedule, Waveform
 from qiskit.pulse.channels import Channel
-from qiskit.visualization.pulse.qcstyle import PulseStyle, SchedStyle
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.pulse import matplotlib as _matplotlib
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
+from qiskit.visualization.pulse import matplotlib as _matplotlib
+from qiskit.visualization.pulse.qcstyle import PulseStyle, SchedStyle
 from qiskit.visualization.utils import matplotlib_close_if_inline
 
 

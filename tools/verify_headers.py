@@ -18,8 +18,8 @@ from __future__ import annotations
 import argparse
 import multiprocessing
 import os
-import sys
 import re
+import sys
 
 # regex for character encoding from PEP 263
 pep263 = re.compile(r"^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)")

@@ -18,13 +18,13 @@ from typing import Any, Callable
 
 import numpy as np
 
-from qiskit.utils import algorithm_globals
 from qiskit.algorithms.optimizers.optimizer import (
-    Optimizer,
-    OptimizerSupportLevel,
-    OptimizerResult,
     POINT,
+    Optimizer,
+    OptimizerResult,
+    OptimizerSupportLevel,
 )
+from qiskit.utils import algorithm_globals
 
 
 class GSLS(Optimizer):

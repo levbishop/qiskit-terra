@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.dagcircuit import DAGOpNode
+from qiskit.transpiler.basepasses import TransformationPass
 
 
 class RemoveFinalMeasurements(TransformationPass):

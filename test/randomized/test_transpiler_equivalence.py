@@ -18,33 +18,33 @@ from __future__ import annotations
 from math import pi
 
 import hypothesis.strategies as st
-from hypothesis import assume, settings, HealthCheck
+from hypothesis import HealthCheck, assume, settings
 from hypothesis.stateful import (
-    multiple,
-    rule,
-    precondition,
-    invariant,
     Bundle,
     RuleBasedStateMachine,
+    invariant,
+    multiple,
+    precondition,
+    rule,
 )
 
-from qiskit import execute, transpile, Aer, QuantumCircuit, QuantumRegister, ClassicalRegister
-from qiskit.circuit import Measure, Reset, Gate, Barrier
-from qiskit.test.mock import (
-    FakeYorktown,
-    FakeTenerife,
-    FakeOurense,
-    FakeVigo,
-    FakeMelbourne,
-    FakeRueschlikon,
-    FakeTokyo,
-    FakePoughkeepsie,
-    FakeAlmaden,
-    FakeSingapore,
-    FakeJohannesburg,
-    FakeBoeblingen,
-)
+from qiskit import Aer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute, transpile
+from qiskit.circuit import Barrier, Gate, Measure, Reset
 from qiskit.test.base import dicts_almost_equal
+from qiskit.test.mock import (
+    FakeAlmaden,
+    FakeBoeblingen,
+    FakeJohannesburg,
+    FakeMelbourne,
+    FakeOurense,
+    FakePoughkeepsie,
+    FakeRueschlikon,
+    FakeSingapore,
+    FakeTenerife,
+    FakeTokyo,
+    FakeVigo,
+    FakeYorktown,
+)
 
 # pylint: disable=wildcard-import,unused-wildcard-import
 from qiskit.circuit.library.standard_gates import *

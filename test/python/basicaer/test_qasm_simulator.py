@@ -14,16 +14,16 @@
 
 from __future__ import annotations
 
-import os
-import unittest
 import io
+import os
 import sys
+import unittest
 from logging import StreamHandler, getLogger
 
 import numpy as np
 
-from qiskit import execute, ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.compiler import transpile, assemble
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, execute
+from qiskit.compiler import assemble, transpile
 from qiskit.providers.basicaer import QasmSimulatorPy
 from qiskit.test import providers
 

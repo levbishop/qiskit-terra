@@ -17,8 +17,8 @@ Style sheets for pulse visualization.
 """
 from __future__ import annotations
 
-import warnings
 import logging
+import warnings
 from collections import namedtuple
 
 logger = logging.getLogger(__name__)

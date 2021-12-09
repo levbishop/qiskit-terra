@@ -18,21 +18,21 @@ import copy
 import logging
 import time
 import warnings
-from typing import Callable
 from enum import Enum
+from typing import Callable
 
 import numpy as np
 
+from qiskit.exceptions import QiskitError
 from qiskit.qobj import Qobj
 from qiskit.utils import circuit_utils
-from qiskit.exceptions import QiskitError
 from qiskit.utils.backend_utils import (
-    is_ibmq_provider,
-    is_statevector_backend,
-    is_simulator_backend,
-    is_local_backend,
     is_aer_qasm,
     is_basicaer_provider,
+    is_ibmq_provider,
+    is_local_backend,
+    is_simulator_backend,
+    is_statevector_backend,
     support_backend_options,
 )
 from qiskit.utils.mitigation import CompleteMeasFitter, TensoredMeasFitter
@@ -245,8 +245,8 @@ class QuantumInstance:
 
         # if the shots are none, try to get them from the backend
         if shots is None:
-            from qiskit.providers.basebackend import BaseBackend  # pylint: disable=cyclic-import
             from qiskit.providers.backend import BackendV1  # pylint: disable=cyclic-import
+            from qiskit.providers.basebackend import BaseBackend  # pylint: disable=cyclic-import
 
             if isinstance(backend, (BaseBackend, BackendV1)):
                 if hasattr(backend, "options"):  # should always be true for V1
@@ -475,13 +475,13 @@ class QuantumInstance:
         TODO: Maybe we can combine the circuits for the main ones and calibration circuits before
               assembling to the qobj.
         """
-        from qiskit.utils.run_circuits import run_qobj, run_circuits
         from qiskit.utils.measurement_error_mitigation import (
-            get_measured_qubits_from_qobj,
-            get_measured_qubits,
             build_measurement_error_mitigation_circuits,
             build_measurement_error_mitigation_qobj,
+            get_measured_qubits,
+            get_measured_qubits_from_qobj,
         )
+        from qiskit.utils.run_circuits import run_circuits, run_qobj
 
         # maybe compile
         if not had_transpiled:

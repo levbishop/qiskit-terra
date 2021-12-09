@@ -17,10 +17,10 @@ Fake backend supporting OpenPulse.
 from __future__ import annotations
 
 from qiskit.providers.models import (
+    Command,
     GateConfig,
     PulseBackendConfiguration,
     PulseDefaults,
-    Command,
     UchannelLO,
 )
 from qiskit.qobj import PulseQobjInstruction

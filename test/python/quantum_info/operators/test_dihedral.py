@@ -21,19 +21,19 @@ import unittest
 import numpy as np
 from ddt import ddt
 
-from qiskit.circuit import QuantumCircuit, Gate
+from qiskit.circuit import Gate, QuantumCircuit
 from qiskit.circuit.library import (
+    CXGate,
+    CZGate,
     IGate,
+    SdgGate,
+    SGate,
+    SwapGate,
+    TdgGate,
+    TGate,
     XGate,
     YGate,
     ZGate,
-    TGate,
-    TdgGate,
-    SGate,
-    SdgGate,
-    CXGate,
-    CZGate,
-    SwapGate,
 )
 from qiskit.quantum_info.operators import Operator, random
 from qiskit.quantum_info.operators.dihedral import CNOTDihedral

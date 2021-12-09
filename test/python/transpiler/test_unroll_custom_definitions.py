@@ -14,11 +14,11 @@
 
 from __future__ import annotations
 
-from qiskit.transpiler.passes.basis import UnrollCustomDefinitions
-from qiskit.test import QiskitTestCase
 from qiskit.circuit import EquivalenceLibrary, Gate, QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.exceptions import QiskitError
+from qiskit.test import QiskitTestCase
+from qiskit.transpiler.passes.basis import UnrollCustomDefinitions
 
 
 class TestGate(Gate):

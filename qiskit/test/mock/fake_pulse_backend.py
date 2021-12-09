@@ -16,9 +16,9 @@ Fake backend abstract class for mock backends supporting OpenPulse.
 
 from __future__ import annotations
 
+from qiskit.exceptions import QiskitError
 from qiskit.providers.models import PulseBackendConfiguration, PulseDefaults
 from qiskit.test.mock.fake_qasm_backend import FakeQasmBackend, FakeQasmLegacyBackend
-from qiskit.exceptions import QiskitError
 from qiskit.test.mock.utils.json_decoder import decode_pulse_defaults
 
 

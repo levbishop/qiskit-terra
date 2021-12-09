@@ -19,11 +19,11 @@ from __future__ import annotations
 import numpy as np
 
 from qiskit import QuantumCircuit
+from qiskit.circuit.library import CXGate, HGate, PhaseGate, RXGate, XGate
+from qiskit.test import QiskitTestCase
+from qiskit.transpiler import PassManager
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.passes import InverseCancellation
-from qiskit.transpiler import PassManager
-from qiskit.test import QiskitTestCase
-from qiskit.circuit.library import RXGate, HGate, CXGate, PhaseGate, XGate
 
 
 class TestInverseCancellation(QiskitTestCase):

@@ -16,11 +16,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.test.base import QiskitTestCase
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import QuantumVolume
 from qiskit.quantum_info import Operator
 from qiskit.quantum_info.random import random_unitary
+from qiskit.test.base import QiskitTestCase
 
 
 class TestQuantumVolumeLibrary(QiskitTestCase):

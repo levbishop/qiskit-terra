@@ -19,8 +19,8 @@ from __future__ import annotations
 
 import io
 import logging
-from collections.abc import Mapping
 from collections import defaultdict
+from collections.abc import Mapping
 
 import retworkx as rx
 

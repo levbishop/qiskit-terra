@@ -15,9 +15,9 @@ Test the BackendStatus.
 
 from __future__ import annotations
 
+from qiskit.providers.models import BackendStatus
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeLondon
-from qiskit.providers.models import BackendStatus
 
 
 class TestBackendConfiguration(QiskitTestCase):

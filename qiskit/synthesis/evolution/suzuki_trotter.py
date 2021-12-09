@@ -19,7 +19,7 @@ from typing import Callable
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.quantum_info.operators import SparsePauliOp, Pauli
+from qiskit.quantum_info.operators import Pauli, SparsePauliOp
 from qiskit.synthesis.evolution.product_formula import ProductFormula
 
 

@@ -17,8 +17,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.test import QiskitTestCase
 from qiskit.pulse.library import continuous
+from qiskit.test import QiskitTestCase
 
 
 class TestContinuousPulses(QiskitTestCase):

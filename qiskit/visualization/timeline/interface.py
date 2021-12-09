@@ -28,7 +28,7 @@ from typing import Any
 from qiskit import circuit
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.timeline import types, core, stylesheet
+from qiskit.visualization.timeline import core, stylesheet, types
 
 
 def draw(

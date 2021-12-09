@@ -104,17 +104,17 @@ import warnings
 from IPython import get_ipython
 
 from qiskit.test.mock import FakeBackend
-from qiskit.tools.visualization import HAS_MATPLOTLIB
+from qiskit.tools.jupyter.copyright import Copyright
+from qiskit.tools.jupyter.job_watcher import JobWatcher, JobWatcherMagic
 from qiskit.tools.jupyter.jupyter_magics import ProgressBarMagic, StatusMagic
+from qiskit.tools.jupyter.monospace import MonospacedOutput
 from qiskit.tools.jupyter.progressbar import HTMLProgressBar
 from qiskit.tools.jupyter.version_table import VersionTable
-from qiskit.tools.jupyter.copyright import Copyright
-from qiskit.tools.jupyter.monospace import MonospacedOutput
-from qiskit.tools.jupyter.job_watcher import JobWatcher, JobWatcherMagic
+from qiskit.tools.visualization import HAS_MATPLOTLIB
 
 if HAS_MATPLOTLIB:
-    from qiskit.tools.jupyter.backend_overview import BackendOverview
     from qiskit.tools.jupyter.backend_monitor import _backend_monitor
+    from qiskit.tools.jupyter.backend_overview import BackendOverview
 
 try:
     from qiskit.providers.ibmq.ibmqbackend import IBMQBackend

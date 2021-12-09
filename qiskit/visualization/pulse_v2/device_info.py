@@ -40,7 +40,7 @@ from abc import ABC, abstractmethod
 from collections import defaultdict
 
 from qiskit import pulse
-from qiskit.providers import BaseBackend, BackendConfigurationError
+from qiskit.providers import BackendConfigurationError, BaseBackend
 
 
 class DrawerBackendInfo(ABC):

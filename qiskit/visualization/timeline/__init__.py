@@ -20,4 +20,4 @@ from __future__ import annotations
 from qiskit.visualization.timeline.interface import draw
 
 # stylesheets
-from qiskit.visualization.timeline.stylesheet import IQXStandard, IQXSimple, IQXDebugging
+from qiskit.visualization.timeline.stylesheet import IQXDebugging, IQXSimple, IQXStandard

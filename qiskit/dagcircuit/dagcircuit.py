@@ -30,13 +30,13 @@ from collections import OrderedDict, defaultdict
 import numpy as np
 import retworkx as rx
 
-from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.quantumregister import QuantumRegister, Qubit
 from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.parameterexpression import ParameterExpression
+from qiskit.circuit.quantumregister import QuantumRegister, Qubit
+from qiskit.dagcircuit.dagnode import DAGInNode, DAGNode, DAGOpNode, DAGOutNode
 from qiskit.dagcircuit.exceptions import DAGCircuitError
-from qiskit.dagcircuit.dagnode import DAGNode, DAGOpNode, DAGInNode, DAGOutNode
 from qiskit.exceptions import MissingOptionalLibraryError
 
 
@@ -841,7 +841,7 @@ class DAGCircuit:
         """
         # TODO: speed up
         # pylint: disable=cyclic-import
-        from qiskit.converters import dag_to_circuit, circuit_to_dag
+        from qiskit.converters import circuit_to_dag, dag_to_circuit
 
         qc = dag_to_circuit(self)
         reversed_qc = qc.reverse_ops()

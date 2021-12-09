@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
+from qiskit.circuit.library.boolean_logic.inner_product import InnerProduct
 from qiskit.circuit.library.boolean_logic.quantum_and import AND
 from qiskit.circuit.library.boolean_logic.quantum_or import OR
 from qiskit.circuit.library.boolean_logic.quantum_xor import XOR
-from qiskit.circuit.library.boolean_logic.inner_product import InnerProduct

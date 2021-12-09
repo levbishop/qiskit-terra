@@ -18,9 +18,9 @@ from __future__ import annotations
 
 import copy
 from functools import reduce
-from operator import mul
 from math import log2
 from numbers import Integral
+from operator import mul
 
 from qiskit.exceptions import QiskitError
 

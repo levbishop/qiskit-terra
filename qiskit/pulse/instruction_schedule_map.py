@@ -28,8 +28,8 @@ An instance of this class is instantiated by Pulse-enabled backends and populate
 """
 from __future__ import annotations
 
-import inspect
 import functools
+import inspect
 import warnings
 from collections import defaultdict
 from enum import IntEnum
@@ -38,7 +38,7 @@ from typing import Callable, Iterable, NamedTuple, Union
 from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse.exceptions import PulseError
-from qiskit.pulse.schedule import Schedule, ScheduleBlock, ParameterizedSchedule
+from qiskit.pulse.schedule import ParameterizedSchedule, Schedule, ScheduleBlock
 
 Generator = NamedTuple(
     "Generator",

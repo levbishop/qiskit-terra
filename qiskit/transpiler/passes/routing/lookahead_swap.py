@@ -17,12 +17,12 @@ from __future__ import annotations
 import logging
 from copy import deepcopy
 
-from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.dagcircuit import DAGOpNode
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.layout import Layout
-from qiskit.dagcircuit import DAGOpNode
 
 logger = logging.getLogger(__name__)
 

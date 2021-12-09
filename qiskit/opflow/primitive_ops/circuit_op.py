@@ -98,8 +98,8 @@ class CircuitOp(PrimitiveOp):
 
     def tensor(self, other: OperatorBase) -> CircuitOp | TensoredOp:
         # pylint: disable=cyclic-import
-        from qiskit.opflow.primitive_ops.pauli_op import PauliOp
         from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
+        from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 
         if isinstance(other, (PauliOp, CircuitOp, MatrixOp)):
             other = other.to_circuit_op()
@@ -127,9 +127,9 @@ class CircuitOp(PrimitiveOp):
             return other.compose(new_self)
         # pylint: disable=cyclic-import
         from qiskit.opflow.operator_globals import Zero
-        from qiskit.opflow.state_fns import CircuitStateFn
-        from qiskit.opflow.primitive_ops.pauli_op import PauliOp
         from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
+        from qiskit.opflow.primitive_ops.pauli_op import PauliOp
+        from qiskit.opflow.state_fns import CircuitStateFn
 
         if other == Zero ^ new_self.num_qubits:
             return CircuitStateFn(new_self.primitive, coeff=new_self.coeff)
@@ -189,10 +189,10 @@ class CircuitOp(PrimitiveOp):
         self,
         front: None | (str | dict[str, complex] | np.ndarray | OperatorBase | Statevector) = None,
     ) -> OperatorBase | complex:
-        from qiskit.opflow.state_fns import CircuitStateFn
         from qiskit.opflow.list_ops import ListOp
-        from qiskit.opflow.primitive_ops.pauli_op import PauliOp
         from qiskit.opflow.primitive_ops.matrix_op import MatrixOp
+        from qiskit.opflow.primitive_ops.pauli_op import PauliOp
+        from qiskit.opflow.state_fns import CircuitStateFn
 
         if isinstance(front, ListOp) and front.distributive:
             return front.combo_fn(

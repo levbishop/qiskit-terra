@@ -203,9 +203,9 @@ class VectorStateFn(StateFn):
 
         # pylint: disable=cyclic-import
         from qiskit.opflow.operator_globals import EVAL_SIG_DIGITS
-        from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
         from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
         from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
+        from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
 
         if isinstance(front, DictStateFn):
             return np.round(

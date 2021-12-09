@@ -16,12 +16,12 @@ from __future__ import annotations
 
 import functools
 
-from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.circuit import ParameterExpression, ParameterVector
-from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
-from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 from qiskit.opflow.gradients.qfi_base import QFIBase
+from qiskit.opflow.list_ops.list_op import ListOp
+from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 
 
 class QFI(QFIBase):

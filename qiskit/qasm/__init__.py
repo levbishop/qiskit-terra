@@ -43,8 +43,8 @@ from __future__ import annotations
 
 from numpy import pi
 
-from qiskit.qasm.qasm import Qasm
 from qiskit.qasm.exceptions import QasmError
+from qiskit.qasm.qasm import Qasm
 
 try:
     import pygments

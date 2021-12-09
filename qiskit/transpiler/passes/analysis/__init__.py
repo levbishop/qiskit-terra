@@ -14,12 +14,12 @@
 
 from __future__ import annotations
 
-from qiskit.transpiler.passes.analysis.resource_estimation import ResourceEstimation
-from qiskit.transpiler.passes.analysis.depth import Depth
-from qiskit.transpiler.passes.analysis.width import Width
-from qiskit.transpiler.passes.analysis.size import Size
 from qiskit.transpiler.passes.analysis.count_ops import CountOps
 from qiskit.transpiler.passes.analysis.count_ops_longest_path import CountOpsLongestPath
-from qiskit.transpiler.passes.analysis.num_tensor_factors import NumTensorFactors
-from qiskit.transpiler.passes.analysis.num_qubits import NumQubits
 from qiskit.transpiler.passes.analysis.dag_longest_path import DAGLongestPath
+from qiskit.transpiler.passes.analysis.depth import Depth
+from qiskit.transpiler.passes.analysis.num_qubits import NumQubits
+from qiskit.transpiler.passes.analysis.num_tensor_factors import NumTensorFactors
+from qiskit.transpiler.passes.analysis.resource_estimation import ResourceEstimation
+from qiskit.transpiler.passes.analysis.size import Size
+from qiskit.transpiler.passes.analysis.width import Width

@@ -34,8 +34,8 @@ import unittest
 import numpy as np
 
 import qiskit
-from qiskit.test import QiskitTestCase
 from qiskit.result.result import Result
+from qiskit.test import QiskitTestCase
 from qiskit.utils.mitigation import (
     CompleteMeasFitter,
     TensoredMeasFitter,

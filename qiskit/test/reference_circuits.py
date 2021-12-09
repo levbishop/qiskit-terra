@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit.circuit import ClassicalRegister, QuantumCircuit, QuantumRegister
 
 
 class ReferenceCircuits:

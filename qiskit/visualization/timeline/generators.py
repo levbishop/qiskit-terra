@@ -96,7 +96,7 @@ import warnings
 from typing import Any
 
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.visualization.timeline import types, drawings
+from qiskit.visualization.timeline import drawings, types
 
 
 def gen_sched_gate(

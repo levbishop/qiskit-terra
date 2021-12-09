@@ -15,10 +15,10 @@
 
 from __future__ import annotations
 
-from IPython.core.magic import line_magic, Magics, magics_class
+from IPython.core.magic import Magics, line_magic, magics_class
 
-from qiskit.tools.events.pubsub import Subscriber
 from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.tools.events.pubsub import Subscriber
 
 try:
     from qiskit.providers.ibmq.job.exceptions import IBMQJobApiError
@@ -28,9 +28,9 @@ except ImportError:
     HAS_IBMQ = False
 from qiskit.tools.jupyter.job_widgets import (
     build_job_viewer,
+    create_job_widget,
     make_clear_button,
     make_labels,
-    create_job_widget,
 )
 from qiskit.tools.jupyter.watcher_monitor import _job_monitor
 

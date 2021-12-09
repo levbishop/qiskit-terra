@@ -18,32 +18,32 @@ import unittest
 from collections import Counter
 
 import retworkx as rx
-from ddt import ddt, data
+from ddt import data, ddt
 from numpy import pi
 
-from qiskit.dagcircuit import DAGCircuit, DAGOpNode, DAGInNode, DAGOutNode
 from qiskit.circuit import (
-    QuantumRegister,
     ClassicalRegister,
     Clbit,
-    QuantumCircuit,
-    Qubit,
-    Measure,
-    Reset,
     Delay,
     Gate,
     Instruction,
+    Measure,
     Parameter,
+    QuantumCircuit,
+    QuantumRegister,
+    Qubit,
+    Reset,
 )
-from qiskit.circuit.library.standard_gates.i import IGate
-from qiskit.circuit.library.standard_gates.h import HGate
-from qiskit.circuit.library.standard_gates.x import CXGate, XGate
-from qiskit.circuit.library.standard_gates.z import CZGate
-from qiskit.circuit.library.standard_gates.y import YGate
-from qiskit.circuit.library.standard_gates.u1 import U1Gate
 from qiskit.circuit.barrier import Barrier
-from qiskit.dagcircuit.exceptions import DAGCircuitError
+from qiskit.circuit.library.standard_gates.h import HGate
+from qiskit.circuit.library.standard_gates.i import IGate
+from qiskit.circuit.library.standard_gates.u1 import U1Gate
+from qiskit.circuit.library.standard_gates.x import CXGate, XGate
+from qiskit.circuit.library.standard_gates.y import YGate
+from qiskit.circuit.library.standard_gates.z import CZGate
 from qiskit.converters import circuit_to_dag
+from qiskit.dagcircuit import DAGCircuit, DAGInNode, DAGOpNode, DAGOutNode
+from qiskit.dagcircuit.exceptions import DAGCircuitError
 from qiskit.test import QiskitTestCase
 
 
@@ -1261,8 +1261,8 @@ class TestDagEquivalence(QiskitTestCase):
 
     def test_dag_from_networkx(self):
         """Test DAG from networkx creates an expected DAGCircuit object."""
-        from copy import deepcopy
         from collections import OrderedDict
+        from copy import deepcopy
 
         nx_graph = self.dag1.to_networkx()
         from_nx_dag = DAGCircuit.from_networkx(nx_graph)

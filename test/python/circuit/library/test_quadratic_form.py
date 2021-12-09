@@ -17,12 +17,12 @@ from __future__ import annotations
 import unittest
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 
-from qiskit.test.base import QiskitTestCase
-from qiskit.circuit import QuantumCircuit, ParameterVector
+from qiskit.circuit import ParameterVector, QuantumCircuit
 from qiskit.circuit.library import QuadraticForm
 from qiskit.quantum_info import Statevector
+from qiskit.test.base import QiskitTestCase
 
 
 @ddt

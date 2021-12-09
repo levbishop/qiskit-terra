@@ -16,10 +16,10 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.transpiler.passes import MergeAdjacentBarriers
+from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
-from qiskit import QuantumRegister, QuantumCircuit
 from qiskit.test import QiskitTestCase
+from qiskit.transpiler.passes import MergeAdjacentBarriers
 
 
 class TestMergeAdjacentBarriers(QiskitTestCase):

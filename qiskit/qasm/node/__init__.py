@@ -22,6 +22,7 @@ from qiskit.qasm.node.creg import Creg
 from qiskit.qasm.node.customunitary import CustomUnitary
 from qiskit.qasm.node.expressionlist import ExpressionList
 from qiskit.qasm.node.external import External
+from qiskit.qasm.node.format import Format
 from qiskit.qasm.node.gate import Gate
 from qiskit.qasm.node.gatebody import GateBody
 from qiskit.qasm.node.id import Id
@@ -29,8 +30,8 @@ from qiskit.qasm.node.idlist import IdList
 from qiskit.qasm.node.if_ import If
 from qiskit.qasm.node.indexedid import IndexedId
 from qiskit.qasm.node.intnode import Int
-from qiskit.qasm.node.format import Format
 from qiskit.qasm.node.measure import Measure
+from qiskit.qasm.node.nodeexception import NodeException
 from qiskit.qasm.node.opaque import Opaque
 from qiskit.qasm.node.prefix import Prefix
 from qiskit.qasm.node.primarylist import PrimaryList
@@ -40,4 +41,3 @@ from qiskit.qasm.node.real import Real
 from qiskit.qasm.node.reset import Reset
 from qiskit.qasm.node.unaryoperator import UnaryOperator
 from qiskit.qasm.node.universalunitary import UniversalUnitary
-from qiskit.qasm.node.nodeexception import NodeException

@@ -14,4 +14,4 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.rochester.fake_rochester import FakeRochester, FakeLegacyRochester
+from qiskit.test.mock.backends.rochester.fake_rochester import FakeLegacyRochester, FakeRochester

@@ -180,46 +180,46 @@ Exceptions
 from __future__ import annotations
 
 from qiskit.algorithms.algorithm_result import AlgorithmResult
-from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
-from qiskit.algorithms.amplitude_amplifiers import Grover, GroverResult, AmplificationProblem
+from qiskit.algorithms.amplitude_amplifiers import AmplificationProblem, Grover, GroverResult
 from qiskit.algorithms.amplitude_estimators import (
-    AmplitudeEstimator,
-    AmplitudeEstimatorResult,
     AmplitudeEstimation,
     AmplitudeEstimationResult,
+    AmplitudeEstimator,
+    AmplitudeEstimatorResult,
+    EstimationProblem,
     FasterAmplitudeEstimation,
     FasterAmplitudeEstimationResult,
     IterativeAmplitudeEstimation,
     IterativeAmplitudeEstimationResult,
     MaximumLikelihoodAmplitudeEstimation,
     MaximumLikelihoodAmplitudeEstimationResult,
-    EstimationProblem,
 )
-from qiskit.algorithms.eigen_solvers import NumPyEigensolver, Eigensolver, EigensolverResult
+from qiskit.algorithms.eigen_solvers import Eigensolver, EigensolverResult, NumPyEigensolver
+from qiskit.algorithms.exceptions import AlgorithmError
 from qiskit.algorithms.factorizers import Shor, ShorResult
 from qiskit.algorithms.linear_solvers import (
     HHL,
     LinearSolver,
-    NumPyLinearSolver,
     LinearSolverResult,
+    NumPyLinearSolver,
 )
 from qiskit.algorithms.minimum_eigen_solvers import (
-    VQE,
-    VQEResult,
     QAOA,
-    NumPyMinimumEigensolver,
+    VQE,
     MinimumEigensolver,
     MinimumEigensolverResult,
+    NumPyMinimumEigensolver,
+    VQEResult,
 )
 from qiskit.algorithms.phase_estimators import (
     HamiltonianPhaseEstimation,
     HamiltonianPhaseEstimationResult,
-    PhaseEstimationScale,
+    IterativePhaseEstimation,
     PhaseEstimation,
     PhaseEstimationResult,
-    IterativePhaseEstimation,
+    PhaseEstimationScale,
 )
-from qiskit.algorithms.exceptions import AlgorithmError
+from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
 
 __all__ = [
     "AlgorithmResult",

@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from qiskit.circuit.library.standard_gates.equivalence_library import StandardEquivalenceLibrary
 from qiskit.circuit.equivalence import EquivalenceLibrary
+from qiskit.circuit.library.standard_gates.equivalence_library import StandardEquivalenceLibrary
 
 SessionEquivalenceLibrary = EquivalenceLibrary(base=StandardEquivalenceLibrary)

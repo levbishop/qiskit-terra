@@ -21,10 +21,10 @@ from typing import Callable, Iterable
 import numpy as np
 
 from qiskit.exceptions import QiskitError
-from qiskit.result.distributions.quasi import QuasiDistribution
 from qiskit.result.counts import Counts
+from qiskit.result.distributions.quasi import QuasiDistribution
 from qiskit.result.mitigation.base_readout_mitigator import BaseReadoutMitigator
-from qiskit.result.mitigation.utils import counts_probability_vector, z_diagonal, str2diag
+from qiskit.result.mitigation.utils import counts_probability_vector, str2diag, z_diagonal
 
 
 class LocalReadoutMitigator(BaseReadoutMitigator):

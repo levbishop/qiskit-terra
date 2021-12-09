@@ -29,18 +29,18 @@ except ImportError:
     HAS_PYLATEX = False
 
 from qiskit.circuit import ControlledGate, Measure
-from qiskit.circuit.library.standard_gates import SwapGate, RZZGate, U1Gate, PhaseGate, XGate, ZGate
+from qiskit.circuit.library.standard_gates import PhaseGate, RZZGate, SwapGate, U1Gate, XGate, ZGate
+from qiskit.circuit.tools.pi_check import pi_check
+from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.extensions import Initialize
 from qiskit.visualization.qcstyle import load_style
 from qiskit.visualization.utils import (
-    get_gate_ctrl_text,
-    get_param_str,
     get_bit_label,
     get_condition_label,
+    get_gate_ctrl_text,
+    get_param_str,
     matplotlib_close_if_inline,
 )
-from qiskit.circuit.tools.pi_check import pi_check
-from qiskit.exceptions import MissingOptionalLibraryError
 
 # Default gate width and height
 WID = 0.65

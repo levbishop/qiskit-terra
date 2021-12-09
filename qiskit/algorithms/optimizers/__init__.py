@@ -109,8 +109,8 @@ from qiskit.algorithms.optimizers.aqgd import AQGD
 from qiskit.algorithms.optimizers.bobyqa import BOBYQA
 from qiskit.algorithms.optimizers.cg import CG
 from qiskit.algorithms.optimizers.cobyla import COBYLA
-from qiskit.algorithms.optimizers.gsls import GSLS
 from qiskit.algorithms.optimizers.gradient_descent import GradientDescent
+from qiskit.algorithms.optimizers.gsls import GSLS
 from qiskit.algorithms.optimizers.imfil import IMFIL
 from qiskit.algorithms.optimizers.l_bfgs_b import L_BFGS_B
 from qiskit.algorithms.optimizers.nelder_mead import NELDER_MEAD

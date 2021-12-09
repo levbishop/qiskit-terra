@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import Parameter, QuantumRegister, QuantumCircuit
+from qiskit.circuit import Parameter, QuantumCircuit, QuantumRegister
 from qiskit.circuit.library.n_local.n_local import NLocal
 
 

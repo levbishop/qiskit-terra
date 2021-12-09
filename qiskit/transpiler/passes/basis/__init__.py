@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.transpiler.passes.basis.decompose import Decompose
-from qiskit.transpiler.passes.basis.unroller import Unroller
-from qiskit.transpiler.passes.basis.unroll_custom_definitions import UnrollCustomDefinitions
-from qiskit.transpiler.passes.basis.unroll_3q_or_more import Unroll3qOrMore
 from qiskit.transpiler.passes.basis.basis_translator import BasisTranslator
+from qiskit.transpiler.passes.basis.decompose import Decompose
+from qiskit.transpiler.passes.basis.unroll_3q_or_more import Unroll3qOrMore
+from qiskit.transpiler.passes.basis.unroll_custom_definitions import UnrollCustomDefinitions
+from qiskit.transpiler.passes.basis.unroller import Unroller

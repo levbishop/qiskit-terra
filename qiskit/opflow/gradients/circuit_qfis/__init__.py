@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
 from qiskit.opflow.gradients.circuit_qfis.lin_comb_full import LinCombFull
-from qiskit.opflow.gradients.circuit_qfis.overlap_diag import OverlapDiag
 from qiskit.opflow.gradients.circuit_qfis.overlap_block_diag import OverlapBlockDiag
+from qiskit.opflow.gradients.circuit_qfis.overlap_diag import OverlapDiag
 
 __all__ = ["CircuitQFI", "LinCombFull", "OverlapDiag", "OverlapBlockDiag"]

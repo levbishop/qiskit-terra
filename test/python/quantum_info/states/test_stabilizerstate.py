@@ -15,19 +15,19 @@
 
 from __future__ import annotations
 
-import unittest
 import logging
+import unittest
 from test import combine
 
 import numpy as np
 from ddt import ddt
 
-from qiskit.test import QiskitTestCase
 from qiskit import QuantumCircuit
+from qiskit.circuit.library import HGate, IGate, XGate
+from qiskit.quantum_info.operators import Clifford, Operator, Pauli
 from qiskit.quantum_info.random import random_clifford, random_pauli
 from qiskit.quantum_info.states import StabilizerState, Statevector
-from qiskit.circuit.library import IGate, XGate, HGate
-from qiskit.quantum_info.operators import Clifford, Pauli, Operator
+from qiskit.test import QiskitTestCase
 
 logger = logging.getLogger(__name__)
 

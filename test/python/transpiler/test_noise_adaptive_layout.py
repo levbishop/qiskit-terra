@@ -17,12 +17,12 @@ from __future__ import annotations
 import unittest
 from datetime import datetime
 
-from qiskit.transpiler.passes import NoiseAdaptiveLayout
+from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.converters import circuit_to_dag
-from qiskit import QuantumRegister, QuantumCircuit
-from qiskit.test import QiskitTestCase
 from qiskit.providers.models import BackendProperties
-from qiskit.providers.models.backendproperties import Nduv, Gate
+from qiskit.providers.models.backendproperties import Gate, Nduv
+from qiskit.test import QiskitTestCase
+from qiskit.transpiler.passes import NoiseAdaptiveLayout
 
 
 def make_qubit_with_error(readout_error):

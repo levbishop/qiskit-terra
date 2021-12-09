@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from concurrent import futures
 
-from qiskit.providers import JobV1, BaseJob
+from qiskit.providers import BaseJob, JobV1
 from qiskit.providers.jobstatus import JobStatus
 
 

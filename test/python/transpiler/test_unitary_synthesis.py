@@ -18,36 +18,36 @@ from __future__ import annotations
 
 import unittest
 
-from ddt import ddt, data
+from ddt import data, ddt
 
 from qiskit import transpile
-from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeVigo
 from qiskit.circuit import QuantumCircuit, QuantumRegister
 from qiskit.circuit.library import QuantumVolume
 from qiskit.converters import circuit_to_dag
-from qiskit.transpiler.passes import (
-    UnitarySynthesis,
-    Collect2qBlocks,
-    ConsolidateBlocks,
-    Optimize1qGates,
-    SabreLayout,
-    Depth,
-    FixedPoint,
-    FullAncillaAllocation,
-    EnlargeWithAncilla,
-    ApplyLayout,
-    Unroll3qOrMore,
-    CheckMap,
-    BarrierBeforeFinalMeasurements,
-    SabreSwap,
-    TrivialLayout,
-)
+from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.random import random_unitary
-from qiskit.transpiler import PassManager, CouplingMap
+from qiskit.test import QiskitTestCase
+from qiskit.test.mock import FakeVigo
+from qiskit.transpiler import CouplingMap, PassManager
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.exceptions import QiskitError
+from qiskit.transpiler.passes import (
+    ApplyLayout,
+    BarrierBeforeFinalMeasurements,
+    CheckMap,
+    Collect2qBlocks,
+    ConsolidateBlocks,
+    Depth,
+    EnlargeWithAncilla,
+    FixedPoint,
+    FullAncillaAllocation,
+    Optimize1qGates,
+    SabreLayout,
+    SabreSwap,
+    TrivialLayout,
+    UnitarySynthesis,
+    Unroll3qOrMore,
+)
 
 
 @ddt

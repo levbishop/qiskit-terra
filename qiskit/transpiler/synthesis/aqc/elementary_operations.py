@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit.library import RXGate, RZGate, RYGate
+from qiskit.circuit.library import RXGate, RYGate, RZGate
 
 
 def place_unitary(unitary: np.ndarray, n: int, j: int) -> np.ndarray:

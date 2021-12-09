@@ -19,15 +19,15 @@ from __future__ import annotations
 import unittest
 from datetime import datetime
 
-from qiskit import QuantumRegister, QuantumCircuit
+from qiskit import QuantumCircuit, QuantumRegister
+from qiskit.compiler import transpile
+from qiskit.converters import circuit_to_dag
+from qiskit.providers.models import BackendProperties
+from qiskit.providers.models.backendproperties import Gate, Nduv
+from qiskit.test import QiskitTestCase
 from qiskit.transpiler import Layout
 from qiskit.transpiler.passes.optimization import CrosstalkAdaptiveSchedule
 from qiskit.transpiler.passes.optimization.crosstalk_adaptive_schedule import HAS_Z3
-from qiskit.converters import circuit_to_dag
-from qiskit.test import QiskitTestCase
-from qiskit.compiler import transpile
-from qiskit.providers.models import BackendProperties
-from qiskit.providers.models.backendproperties import Nduv, Gate
 
 
 def make_noisy_qubit(t_1=50.0, t_2=50.0):

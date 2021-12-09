@@ -18,8 +18,8 @@ from qiskit.test import QiskitTestCase
 
 from .faulty_backends import (
     FakeOurenseFaultyCX01CX10,
-    FakeOurenseFaultyQ1,
     FakeOurenseFaultyCX13CX31,
+    FakeOurenseFaultyQ1,
 )
 
 

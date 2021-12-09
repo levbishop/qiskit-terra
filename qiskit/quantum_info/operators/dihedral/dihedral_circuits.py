@@ -17,8 +17,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.exceptions import QiskitError
 from qiskit.circuit import QuantumCircuit
+from qiskit.exceptions import QiskitError
 
 
 def _append_circuit(elem, circuit, qargs=None):

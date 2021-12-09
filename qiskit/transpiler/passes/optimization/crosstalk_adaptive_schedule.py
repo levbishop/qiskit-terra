@@ -35,16 +35,16 @@ import operator
 from itertools import chain, combinations
 
 try:
-    from z3 import Real, Bool, Sum, Implies, And, Or, Not, Optimize
+    from z3 import And, Bool, Implies, Not, Optimize, Or, Real, Sum
 
     HAS_Z3 = True
 except ImportError:
     HAS_Z3 = False
-from qiskit.transpiler.basepasses import TransformationPass
-from qiskit.dagcircuit import DAGCircuit, DAGOpNode
-from qiskit.circuit.library.standard_gates import U1Gate, U2Gate, U3Gate, CXGate
 from qiskit.circuit import Measure
 from qiskit.circuit.barrier import Barrier
+from qiskit.circuit.library.standard_gates import CXGate, U1Gate, U2Gate, U3Gate
+from qiskit.dagcircuit import DAGCircuit, DAGOpNode
+from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 
 NUM_PREC = 10

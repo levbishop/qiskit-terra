@@ -13,12 +13,12 @@
 """Backend Configuration Classes."""
 from __future__ import annotations
 
-import re
 import copy
 import numbers
+import re
 import warnings
-from typing import Any, Iterable
 from collections import defaultdict
+from typing import Any, Iterable
 
 from qiskit.exceptions import QiskitError
 from qiskit.providers.exceptions import BackendConfigurationError

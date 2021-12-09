@@ -17,14 +17,14 @@ from __future__ import annotations
 import unittest
 
 import numpy as np
-from ddt import ddt, data
+from ddt import data, ddt
 
-from qiskit.test.base import QiskitTestCase
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library import Permutation
 from qiskit.circuit.library.generalized_gates.permutation import _get_ordered_swap
 from qiskit.quantum_info import Operator
+from qiskit.test.base import QiskitTestCase
 
 
 @ddt

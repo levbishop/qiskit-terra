@@ -52,10 +52,10 @@ the lookup table of the handler and the drawings by using this data key.
 from __future__ import annotations
 
 from copy import deepcopy
+from enum import Enum
 from functools import partial
 from itertools import chain
 from typing import Iterator
-from enum import Enum
 
 import numpy as np
 

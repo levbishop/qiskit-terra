@@ -167,13 +167,13 @@ from __future__ import annotations
 from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
 from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
 from qiskit.opflow.gradients.derivative_base import DerivativeBase
-from qiskit.opflow.gradients.gradient_base import GradientBase
 from qiskit.opflow.gradients.gradient import Gradient
-from qiskit.opflow.gradients.natural_gradient import NaturalGradient
-from qiskit.opflow.gradients.hessian_base import HessianBase
+from qiskit.opflow.gradients.gradient_base import GradientBase
 from qiskit.opflow.gradients.hessian import Hessian
-from qiskit.opflow.gradients.qfi_base import QFIBase
+from qiskit.opflow.gradients.hessian_base import HessianBase
+from qiskit.opflow.gradients.natural_gradient import NaturalGradient
 from qiskit.opflow.gradients.qfi import QFI
+from qiskit.opflow.gradients.qfi_base import QFIBase
 
 __all__ = [
     "DerivativeBase",

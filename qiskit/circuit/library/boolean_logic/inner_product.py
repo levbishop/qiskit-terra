@@ -16,7 +16,7 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import QuantumRegister, QuantumCircuit
+from qiskit.circuit import QuantumCircuit, QuantumRegister
 
 
 class InnerProduct(QuantumCircuit):
