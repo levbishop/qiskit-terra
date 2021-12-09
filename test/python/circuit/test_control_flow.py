@@ -16,19 +16,23 @@ from __future__ import annotations
 
 import math
 
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 
-from qiskit.circuit import ClassicalRegister, Clbit, Instruction, Parameter, QuantumCircuit
-from qiskit.circuit.controlflow import (
-    BreakLoopOp,
-    ContinueLoopOp,
-    ControlFlowOp,
-    ForLoopOp,
-    IfElseOp,
-    WhileLoopOp,
-)
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.controlflow import BreakLoopOp
+from qiskit.circuit.controlflow import ContinueLoopOp
+from qiskit.circuit.controlflow import ControlFlowOp
+from qiskit.circuit.controlflow import ForLoopOp
+from qiskit.circuit.controlflow import IfElseOp
+from qiskit.circuit.controlflow import WhileLoopOp
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library import RXGate, XGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import XGate
 from qiskit.test import QiskitTestCase
 
 

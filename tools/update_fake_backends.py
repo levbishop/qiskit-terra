@@ -17,9 +17,9 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import json
 import os
-from datetime import datetime
 
 from qiskit import IBMQ
 from qiskit.circuit.parameterexpression import ParameterExpression

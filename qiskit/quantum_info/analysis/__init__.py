@@ -14,4 +14,5 @@
 from __future__ import annotations
 
 from qiskit.quantum_info.analysis.average import average_data
-from qiskit.quantum_info.analysis.distance import hellinger_distance, hellinger_fidelity
+from qiskit.quantum_info.analysis.distance import hellinger_distance
+from qiskit.quantum_info.analysis.distance import hellinger_fidelity

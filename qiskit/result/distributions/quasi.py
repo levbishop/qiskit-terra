@@ -13,8 +13,8 @@
 
 from __future__ import annotations
 
-import re
 from math import sqrt
+import re
 
 from qiskit.result.distributions.probability import ProbDistribution
 

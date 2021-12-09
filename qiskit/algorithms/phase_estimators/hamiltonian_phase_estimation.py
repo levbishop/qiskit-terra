@@ -20,16 +20,14 @@ from qiskit.algorithms.phase_estimators.hamiltonian_phase_estimation_result impo
 )
 from qiskit.algorithms.phase_estimators.phase_estimation import PhaseEstimation
 from qiskit.algorithms.phase_estimators.phase_estimation_scale import PhaseEstimationScale
-from qiskit.opflow import (
-    EvolutionBase,
-    MatrixOp,
-    OperatorBase,
-    PauliOp,
-    PauliSumOp,
-    PauliTrotterEvolution,
-    StateFn,
-    SummedOp,
-)
+from qiskit.opflow import EvolutionBase
+from qiskit.opflow import MatrixOp
+from qiskit.opflow import OperatorBase
+from qiskit.opflow import PauliOp
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import PauliTrotterEvolution
+from qiskit.opflow import StateFn
+from qiskit.opflow import SummedOp
 from qiskit.providers import BaseBackend
 from qiskit.utils import QuantumInstance
 

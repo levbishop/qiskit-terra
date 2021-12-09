@@ -14,17 +14,19 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
 from qiskit import Aer
-from qiskit.algorithms import VQE, AlgorithmError
+from qiskit.algorithms import AlgorithmError
+from qiskit.algorithms import VQE
 from qiskit.algorithms.optimizers import AQGD
 from qiskit.circuit.library import RealAmplitudes
 from qiskit.opflow import PauliSumOp
 from qiskit.opflow.gradients import Gradient
 from qiskit.test import slow_test
-from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit.utils import algorithm_globals
+from qiskit.utils import QuantumInstance
 
 
 @unittest.skipUnless(Aer, "Aer is required to run these tests")

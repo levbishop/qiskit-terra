@@ -14,12 +14,14 @@
 
 from __future__ import annotations
 
-from functools import partial, reduce
-from typing import Union, cast
+from functools import partial
+from functools import reduce
+from typing import cast, Union
 
 import numpy as np
 
-from qiskit.circuit import ParameterExpression, QuantumCircuit
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import QuantumCircuit
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.operator_base import OperatorBase

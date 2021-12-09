@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.tokyo.fake_tokyo import FakeLegacyTokyo, FakeTokyo
+from qiskit.test.mock.backends.tokyo.fake_tokyo import FakeLegacyTokyo
+from qiskit.test.mock.backends.tokyo.fake_tokyo import FakeTokyo

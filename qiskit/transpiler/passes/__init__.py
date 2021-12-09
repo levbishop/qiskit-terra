@@ -151,107 +151,92 @@ Additional Passes
 # layout selection (placement)
 from __future__ import annotations
 
-from qiskit.transpiler.passes.layout import (
-    ApplyLayout,
-    CSPLayout,
-    DenseLayout,
-    EnlargeWithAncilla,
-    FullAncillaAllocation,
-    Layout2qDistance,
-    NoiseAdaptiveLayout,
-    SabreLayout,
-    SetLayout,
-    TrivialLayout,
-    VF2Layout,
-)
+from qiskit.transpiler.passes.layout import ApplyLayout
+from qiskit.transpiler.passes.layout import CSPLayout
+from qiskit.transpiler.passes.layout import DenseLayout
+from qiskit.transpiler.passes.layout import EnlargeWithAncilla
+from qiskit.transpiler.passes.layout import FullAncillaAllocation
+from qiskit.transpiler.passes.layout import Layout2qDistance
+from qiskit.transpiler.passes.layout import NoiseAdaptiveLayout
+from qiskit.transpiler.passes.layout import SabreLayout
+from qiskit.transpiler.passes.layout import SetLayout
+from qiskit.transpiler.passes.layout import TrivialLayout
+from qiskit.transpiler.passes.layout import VF2Layout
 
 # routing
-from qiskit.transpiler.passes.routing import (
-    BasicSwap,
-    BIPMapping,
-    LayoutTransformation,
-    LookaheadSwap,
-    SabreSwap,
-    StochasticSwap,
-)
+from qiskit.transpiler.passes.routing import BasicSwap
+from qiskit.transpiler.passes.routing import BIPMapping
+from qiskit.transpiler.passes.routing import LayoutTransformation
+from qiskit.transpiler.passes.routing import LookaheadSwap
+from qiskit.transpiler.passes.routing import SabreSwap
+from qiskit.transpiler.passes.routing import StochasticSwap
 
 # basis change
-from qiskit.transpiler.passes.basis import (
-    BasisTranslator,
-    Decompose,
-    Unroll3qOrMore,
-    UnrollCustomDefinitions,
-    Unroller,
-)
+from qiskit.transpiler.passes.basis import BasisTranslator
+from qiskit.transpiler.passes.basis import Decompose
+from qiskit.transpiler.passes.basis import Unroll3qOrMore
+from qiskit.transpiler.passes.basis import UnrollCustomDefinitions
+from qiskit.transpiler.passes.basis import Unroller
 
 # optimization
-from qiskit.transpiler.passes.optimization import (
-    Collect1qRuns,
-    Collect2qBlocks,
-    CollectMultiQBlocks,
-    CommutationAnalysis,
-    CommutativeCancellation,
-    ConsolidateBlocks,
-    CrosstalkAdaptiveSchedule,
-    CXCancellation,
-    EchoRZXWeylDecomposition,
-    HoareOptimizer,
-    InverseCancellation,
-    Optimize1qGates,
-    Optimize1qGatesDecomposition,
-    Optimize1qGatesSimpleCommutation,
-    OptimizeSwapBeforeMeasure,
-    RemoveDiagonalGatesBeforeMeasure,
-    RemoveResetInZeroState,
-    TemplateOptimization,
-)
+from qiskit.transpiler.passes.optimization import Collect1qRuns
+from qiskit.transpiler.passes.optimization import Collect2qBlocks
+from qiskit.transpiler.passes.optimization import CollectMultiQBlocks
+from qiskit.transpiler.passes.optimization import CommutationAnalysis
+from qiskit.transpiler.passes.optimization import CommutativeCancellation
+from qiskit.transpiler.passes.optimization import ConsolidateBlocks
+from qiskit.transpiler.passes.optimization import CrosstalkAdaptiveSchedule
+from qiskit.transpiler.passes.optimization import CXCancellation
+from qiskit.transpiler.passes.optimization import EchoRZXWeylDecomposition
+from qiskit.transpiler.passes.optimization import HoareOptimizer
+from qiskit.transpiler.passes.optimization import InverseCancellation
+from qiskit.transpiler.passes.optimization import Optimize1qGates
+from qiskit.transpiler.passes.optimization import Optimize1qGatesDecomposition
+from qiskit.transpiler.passes.optimization import Optimize1qGatesSimpleCommutation
+from qiskit.transpiler.passes.optimization import OptimizeSwapBeforeMeasure
+from qiskit.transpiler.passes.optimization import RemoveDiagonalGatesBeforeMeasure
+from qiskit.transpiler.passes.optimization import RemoveResetInZeroState
+from qiskit.transpiler.passes.optimization import TemplateOptimization
 
 # circuit analysis
-from qiskit.transpiler.passes.analysis import (
-    CountOps,
-    CountOpsLongestPath,
-    DAGLongestPath,
-    Depth,
-    NumTensorFactors,
-    ResourceEstimation,
-    Size,
-    Width,
-)
+from qiskit.transpiler.passes.analysis import CountOps
+from qiskit.transpiler.passes.analysis import CountOpsLongestPath
+from qiskit.transpiler.passes.analysis import DAGLongestPath
+from qiskit.transpiler.passes.analysis import Depth
+from qiskit.transpiler.passes.analysis import NumTensorFactors
+from qiskit.transpiler.passes.analysis import ResourceEstimation
+from qiskit.transpiler.passes.analysis import Size
+from qiskit.transpiler.passes.analysis import Width
 
 # synthesis
-from qiskit.transpiler.passes.synthesis import UnitarySynthesis, unitary_synthesis_plugin_names
+from qiskit.transpiler.passes.synthesis import unitary_synthesis_plugin_names
+from qiskit.transpiler.passes.synthesis import UnitarySynthesis
 
 # calibration
-from qiskit.transpiler.passes.calibration import (
-    PulseGates,
-    RZXCalibrationBuilder,
-    RZXCalibrationBuilderNoEcho,
-)
+from qiskit.transpiler.passes.calibration import PulseGates
+from qiskit.transpiler.passes.calibration import RZXCalibrationBuilder
+from qiskit.transpiler.passes.calibration import RZXCalibrationBuilderNoEcho
 
 # circuit scheduling
-from qiskit.transpiler.passes.scheduling import (
-    ALAPSchedule,
-    AlignMeasures,
-    ASAPSchedule,
-    DynamicalDecoupling,
-    TimeUnitConversion,
-    ValidatePulseGates,
-)
+from qiskit.transpiler.passes.scheduling import ALAPSchedule
+from qiskit.transpiler.passes.scheduling import AlignMeasures
+from qiskit.transpiler.passes.scheduling import ASAPSchedule
+from qiskit.transpiler.passes.scheduling import DynamicalDecoupling
+from qiskit.transpiler.passes.scheduling import TimeUnitConversion
+from qiskit.transpiler.passes.scheduling import ValidatePulseGates
 
 # additional utility passes
+from qiskit.transpiler.passes.utils import BarrierBeforeFinalMeasurements
 from qiskit.transpiler.passes.utils import CheckCXDirection  # Deprecated
+from qiskit.transpiler.passes.utils import CheckGateDirection
+from qiskit.transpiler.passes.utils import CheckMap
+from qiskit.transpiler.passes.utils import ContainsInstruction
 from qiskit.transpiler.passes.utils import CXDirection  # Deprecated
-from qiskit.transpiler.passes.utils import (
-    BarrierBeforeFinalMeasurements,
-    CheckGateDirection,
-    CheckMap,
-    ContainsInstruction,
-    DAGFixedPoint,
-    Error,
-    FixedPoint,
-    GateDirection,
-    GatesInBasis,
-    MergeAdjacentBarriers,
-    RemoveBarriers,
-    RemoveFinalMeasurements,
-)
+from qiskit.transpiler.passes.utils import DAGFixedPoint
+from qiskit.transpiler.passes.utils import Error
+from qiskit.transpiler.passes.utils import FixedPoint
+from qiskit.transpiler.passes.utils import GateDirection
+from qiskit.transpiler.passes.utils import GatesInBasis
+from qiskit.transpiler.passes.utils import MergeAdjacentBarriers
+from qiskit.transpiler.passes.utils import RemoveBarriers
+from qiskit.transpiler.passes.utils import RemoveFinalMeasurements

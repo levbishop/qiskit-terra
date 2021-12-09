@@ -14,16 +14,15 @@
 
 from __future__ import annotations
 
-from qiskit import QuantumCircuit, pulse
+from qiskit import pulse
+from qiskit import QuantumCircuit
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import InstructionDurations
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.passes import (
-    ALAPSchedule,
-    AlignMeasures,
-    TimeUnitConversion,
-    ValidatePulseGates,
-)
+from qiskit.transpiler.passes import ALAPSchedule
+from qiskit.transpiler.passes import AlignMeasures
+from qiskit.transpiler.passes import TimeUnitConversion
+from qiskit.transpiler.passes import ValidatePulseGates
 
 
 class TestAlignMeasures(QiskitTestCase):

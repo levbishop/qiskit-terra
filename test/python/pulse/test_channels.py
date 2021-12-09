@@ -16,17 +16,15 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.pulse.channels import (
-    AcquireChannel,
-    Channel,
-    ControlChannel,
-    DriveChannel,
-    MeasureChannel,
-    MemorySlot,
-    PulseChannel,
-    RegisterSlot,
-    SnapshotChannel,
-)
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import Channel
+from qiskit.pulse.channels import ControlChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MeasureChannel
+from qiskit.pulse.channels import MemorySlot
+from qiskit.pulse.channels import PulseChannel
+from qiskit.pulse.channels import RegisterSlot
+from qiskit.pulse.channels import SnapshotChannel
 from qiskit.test import QiskitTestCase
 
 

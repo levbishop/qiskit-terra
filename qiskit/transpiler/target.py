@@ -17,10 +17,10 @@ from a backend
 
 from __future__ import annotations
 
-import io
-import logging
 from collections import defaultdict
 from collections.abc import Mapping
+import io
+import logging
 
 import retworkx as rx
 

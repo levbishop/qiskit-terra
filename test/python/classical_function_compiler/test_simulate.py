@@ -13,12 +13,14 @@
 """Tests LogicNetwork.simulate method."""
 from __future__ import annotations
 
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 
 from qiskit.circuit.classicalfunction import classical_function as compile_classical_function
 from qiskit.test import QiskitTestCase
 
-from .utils import example_list, get_truthtable_from_function
+from .utils import example_list
+from .utils import get_truthtable_from_function
 
 
 @ddt

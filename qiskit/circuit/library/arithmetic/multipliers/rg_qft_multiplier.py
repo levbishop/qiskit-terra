@@ -16,7 +16,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library.arithmetic.multipliers.multiplier import Multiplier
 from qiskit.circuit.library.basis_change import QFT
 from qiskit.circuit.library.standard_gates import PhaseGate

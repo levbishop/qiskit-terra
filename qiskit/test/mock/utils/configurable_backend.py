@@ -13,20 +13,19 @@
 """Configurable backend."""
 from __future__ import annotations
 
-import itertools
 from datetime import datetime
+import itertools
 
 import numpy as np
 
 from qiskit.exceptions import QiskitError
-from qiskit.providers.models import (
-    BackendProperties,
-    Command,
-    PulseBackendConfiguration,
-    PulseDefaults,
-    UchannelLO,
-)
-from qiskit.providers.models.backendproperties import Gate, Nduv
+from qiskit.providers.models import BackendProperties
+from qiskit.providers.models import Command
+from qiskit.providers.models import PulseBackendConfiguration
+from qiskit.providers.models import PulseDefaults
+from qiskit.providers.models import UchannelLO
+from qiskit.providers.models.backendproperties import Gate
+from qiskit.providers.models.backendproperties import Nduv
 from qiskit.qobj import PulseQobjInstruction
 from qiskit.test.mock.fake_backend import FakeBackend
 

@@ -16,36 +16,37 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import ClassicalRegister, QuantumCircuit, QuantumRegister, Reset
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Reset
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library.standard_gates import (
-    CCXGate,
-    CHGate,
-    CRZGate,
-    CSwapGate,
-    CU1Gate,
-    CU3Gate,
-    CXGate,
-    CYGate,
-    CZGate,
-    HGate,
-    IGate,
-    RXGate,
-    RYGate,
-    RZGate,
-    RZZGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    TdgGate,
-    TGate,
-    U1Gate,
-    U2Gate,
-    U3Gate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit.library.standard_gates import CCXGate
+from qiskit.circuit.library.standard_gates import CHGate
+from qiskit.circuit.library.standard_gates import CRZGate
+from qiskit.circuit.library.standard_gates import CSwapGate
+from qiskit.circuit.library.standard_gates import CU1Gate
+from qiskit.circuit.library.standard_gates import CU3Gate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import CYGate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import IGate
+from qiskit.circuit.library.standard_gates import RXGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import RZZGate
+from qiskit.circuit.library.standard_gates import SdgGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.library.standard_gates import TdgGate
+from qiskit.circuit.library.standard_gates import TGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import U2Gate
+from qiskit.circuit.library.standard_gates import U3Gate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 
 
 def random_circuit(

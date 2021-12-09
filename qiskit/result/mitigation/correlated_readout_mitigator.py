@@ -23,7 +23,9 @@ from qiskit.exceptions import QiskitError
 from qiskit.result.counts import Counts
 from qiskit.result.distributions.quasi import QuasiDistribution
 from qiskit.result.mitigation.base_readout_mitigator import BaseReadoutMitigator
-from qiskit.result.mitigation.utils import counts_probability_vector, str2diag, z_diagonal
+from qiskit.result.mitigation.utils import counts_probability_vector
+from qiskit.result.mitigation.utils import str2diag
+from qiskit.result.mitigation.utils import z_diagonal
 
 
 class CorrelatedReadoutMitigator(BaseReadoutMitigator):

@@ -19,10 +19,14 @@ from __future__ import annotations
 import pkgutil
 
 # qiskit errors operator
-from qiskit.exceptions import MissingOptionalLibraryError, QiskitError
+from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.exceptions import QiskitError
 
 # The main qiskit operators
-from qiskit.circuit import AncillaRegister, ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 
 # user config
 from qiskit import user_config as _user_config
@@ -45,10 +49,13 @@ _config = _user_config.get_config()
 
 # Moved to after IBMQ and Aer imports due to import issues
 # with other modules that check for IBMQ (tools)
-from qiskit.compiler import assemble, schedule, sequence, transpile  # noqa
+from qiskit.compiler import assemble  # noqa
+from qiskit.compiler import schedule
+from qiskit.compiler import sequence
+from qiskit.compiler import transpile
 from qiskit.execute_function import execute  # noqa
-from qiskit.version import QiskitVersion  # noqa
 from qiskit.version import __version__  # noqa
+from qiskit.version import QiskitVersion  # noqa
 
 __qiskit_version__ = QiskitVersion()
 

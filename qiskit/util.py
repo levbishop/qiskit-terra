@@ -16,8 +16,10 @@ from __future__ import annotations
 
 import warnings
 
-from qiskit.utils.deprecation import deprecate_arguments, deprecate_function
-from qiskit.utils.multiprocessing import is_main_process, local_hardware_info
+from qiskit.utils.deprecation import deprecate_arguments
+from qiskit.utils.deprecation import deprecate_function
+from qiskit.utils.multiprocessing import is_main_process
+from qiskit.utils.multiprocessing import local_hardware_info
 from qiskit.utils.units import apply_prefix
 
 __all__ = [

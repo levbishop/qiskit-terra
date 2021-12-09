@@ -180,46 +180,44 @@ Exceptions
 from __future__ import annotations
 
 from qiskit.algorithms.algorithm_result import AlgorithmResult
-from qiskit.algorithms.amplitude_amplifiers import AmplificationProblem, Grover, GroverResult
-from qiskit.algorithms.amplitude_estimators import (
-    AmplitudeEstimation,
-    AmplitudeEstimationResult,
-    AmplitudeEstimator,
-    AmplitudeEstimatorResult,
-    EstimationProblem,
-    FasterAmplitudeEstimation,
-    FasterAmplitudeEstimationResult,
-    IterativeAmplitudeEstimation,
-    IterativeAmplitudeEstimationResult,
-    MaximumLikelihoodAmplitudeEstimation,
-    MaximumLikelihoodAmplitudeEstimationResult,
-)
-from qiskit.algorithms.eigen_solvers import Eigensolver, EigensolverResult, NumPyEigensolver
+from qiskit.algorithms.amplitude_amplifiers import AmplificationProblem
+from qiskit.algorithms.amplitude_amplifiers import Grover
+from qiskit.algorithms.amplitude_amplifiers import GroverResult
+from qiskit.algorithms.amplitude_estimators import AmplitudeEstimation
+from qiskit.algorithms.amplitude_estimators import AmplitudeEstimationResult
+from qiskit.algorithms.amplitude_estimators import AmplitudeEstimator
+from qiskit.algorithms.amplitude_estimators import AmplitudeEstimatorResult
+from qiskit.algorithms.amplitude_estimators import EstimationProblem
+from qiskit.algorithms.amplitude_estimators import FasterAmplitudeEstimation
+from qiskit.algorithms.amplitude_estimators import FasterAmplitudeEstimationResult
+from qiskit.algorithms.amplitude_estimators import IterativeAmplitudeEstimation
+from qiskit.algorithms.amplitude_estimators import IterativeAmplitudeEstimationResult
+from qiskit.algorithms.amplitude_estimators import MaximumLikelihoodAmplitudeEstimation
+from qiskit.algorithms.amplitude_estimators import MaximumLikelihoodAmplitudeEstimationResult
+from qiskit.algorithms.eigen_solvers import Eigensolver
+from qiskit.algorithms.eigen_solvers import EigensolverResult
+from qiskit.algorithms.eigen_solvers import NumPyEigensolver
 from qiskit.algorithms.exceptions import AlgorithmError
-from qiskit.algorithms.factorizers import Shor, ShorResult
-from qiskit.algorithms.linear_solvers import (
-    HHL,
-    LinearSolver,
-    LinearSolverResult,
-    NumPyLinearSolver,
-)
-from qiskit.algorithms.minimum_eigen_solvers import (
-    QAOA,
-    VQE,
-    MinimumEigensolver,
-    MinimumEigensolverResult,
-    NumPyMinimumEigensolver,
-    VQEResult,
-)
-from qiskit.algorithms.phase_estimators import (
-    HamiltonianPhaseEstimation,
-    HamiltonianPhaseEstimationResult,
-    IterativePhaseEstimation,
-    PhaseEstimation,
-    PhaseEstimationResult,
-    PhaseEstimationScale,
-)
-from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
+from qiskit.algorithms.factorizers import Shor
+from qiskit.algorithms.factorizers import ShorResult
+from qiskit.algorithms.linear_solvers import HHL
+from qiskit.algorithms.linear_solvers import LinearSolver
+from qiskit.algorithms.linear_solvers import LinearSolverResult
+from qiskit.algorithms.linear_solvers import NumPyLinearSolver
+from qiskit.algorithms.minimum_eigen_solvers import MinimumEigensolver
+from qiskit.algorithms.minimum_eigen_solvers import MinimumEigensolverResult
+from qiskit.algorithms.minimum_eigen_solvers import NumPyMinimumEigensolver
+from qiskit.algorithms.minimum_eigen_solvers import QAOA
+from qiskit.algorithms.minimum_eigen_solvers import VQE
+from qiskit.algorithms.minimum_eigen_solvers import VQEResult
+from qiskit.algorithms.phase_estimators import HamiltonianPhaseEstimation
+from qiskit.algorithms.phase_estimators import HamiltonianPhaseEstimationResult
+from qiskit.algorithms.phase_estimators import IterativePhaseEstimation
+from qiskit.algorithms.phase_estimators import PhaseEstimation
+from qiskit.algorithms.phase_estimators import PhaseEstimationResult
+from qiskit.algorithms.phase_estimators import PhaseEstimationScale
+from qiskit.algorithms.variational_algorithm import VariationalAlgorithm
+from qiskit.algorithms.variational_algorithm import VariationalResult
 
 __all__ = [
     "AlgorithmResult",

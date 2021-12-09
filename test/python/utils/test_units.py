@@ -14,10 +14,12 @@
 
 from __future__ import annotations
 
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 
 from qiskit.test import QiskitTestCase
-from qiskit.utils import apply_prefix, detach_prefix
+from qiskit.utils import apply_prefix
+from qiskit.utils import detach_prefix
 
 
 @ddt

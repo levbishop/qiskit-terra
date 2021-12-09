@@ -110,7 +110,8 @@ class BasePass(metaclass=MetaPass):
             QuantumCircuit: If on transformation pass, the resulting QuantumCircuit. If analysis
                    pass, the input circuit.
         """
-        from qiskit.converters import circuit_to_dag, dag_to_circuit
+        from qiskit.converters import circuit_to_dag
+        from qiskit.converters import dag_to_circuit
         from qiskit.dagcircuit.dagcircuit import DAGCircuit
 
         property_set_ = None

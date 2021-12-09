@@ -14,18 +14,28 @@
 
 from __future__ import annotations
 
+from inspect import signature
 import unittest
 import warnings
-from inspect import signature
 
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute
-from qiskit.circuit import ControlledGate, Gate
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import ControlledGate
+from qiskit.circuit import Gate
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library import CU1Gate, CU3Gate, U1Gate, U2Gate, U3Gate
+from qiskit.circuit.library import CU1Gate
+from qiskit.circuit.library import CU3Gate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
 from qiskit.exceptions import QiskitError
 from qiskit.qasm import pi
 from qiskit.quantum_info import Pauli
-from qiskit.quantum_info.operators.predicates import is_unitary_matrix, matrix_equal
+from qiskit.quantum_info.operators.predicates import is_unitary_matrix
+from qiskit.quantum_info.operators.predicates import matrix_equal
 from qiskit.test import QiskitTestCase
 
 

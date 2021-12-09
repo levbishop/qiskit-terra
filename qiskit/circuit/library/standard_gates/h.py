@@ -18,8 +18,10 @@ import numpy
 
 from qiskit.circuit.controlledgate import ControlledGate
 from qiskit.circuit.gate import Gate
-from qiskit.circuit.library.standard_gates.s import SdgGate, SGate
-from qiskit.circuit.library.standard_gates.t import TdgGate, TGate
+from qiskit.circuit.library.standard_gates.s import SdgGate
+from qiskit.circuit.library.standard_gates.s import SGate
+from qiskit.circuit.library.standard_gates.t import TdgGate
+from qiskit.circuit.library.standard_gates.t import TGate
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.qasm import pi
 

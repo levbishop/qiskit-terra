@@ -18,26 +18,28 @@ import pickle
 
 import numpy as np
 
-from qiskit.circuit.library.standard_gates import CXGate, U1Gate, U3Gate, XGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import U3Gate
+from qiskit.circuit.library.standard_gates import XGate
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.parameterexpression import ParameterExpression
-from qiskit.pulse import (
-    Constant,
-    InstructionScheduleMap,
-    Play,
-    PulseError,
-    Schedule,
-    ScheduleBlock,
-    ShiftPhase,
-    Waveform,
-    library,
-)
+from qiskit.pulse import Constant
+from qiskit.pulse import InstructionScheduleMap
+from qiskit.pulse import library
+from qiskit.pulse import Play
+from qiskit.pulse import PulseError
+from qiskit.pulse import Schedule
+from qiskit.pulse import ScheduleBlock
+from qiskit.pulse import ShiftPhase
+from qiskit.pulse import Waveform
 from qiskit.pulse.channels import DriveChannel
 from qiskit.pulse.instruction_schedule_map import CalibrationPublisher
 from qiskit.qobj import PulseQobjInstruction
 from qiskit.qobj.converters import QobjToInstructionConverter
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeAthens, FakeOpenPulse2Q
+from qiskit.test.mock import FakeAthens
+from qiskit.test.mock import FakeOpenPulse2Q
 
 
 class TestInstructionScheduleMap(QiskitTestCase):

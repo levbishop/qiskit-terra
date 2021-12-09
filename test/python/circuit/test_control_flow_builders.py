@@ -18,16 +18,18 @@ import math
 
 import ddt
 
-from qiskit.circuit import (
-    ClassicalRegister,
-    Clbit,
-    Measure,
-    Parameter,
-    QuantumCircuit,
-    QuantumRegister,
-    Qubit,
-)
-from qiskit.circuit.controlflow import BreakLoopOp, ContinueLoopOp, ForLoopOp, IfElseOp, WhileLoopOp
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Measure
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
+from qiskit.circuit.controlflow import BreakLoopOp
+from qiskit.circuit.controlflow import ContinueLoopOp
+from qiskit.circuit.controlflow import ForLoopOp
+from qiskit.circuit.controlflow import IfElseOp
+from qiskit.circuit.controlflow import WhileLoopOp
 from qiskit.circuit.controlflow.builder import ControlFlowBuilderBlock
 from qiskit.circuit.controlflow.if_else import IfElsePlaceholder
 from qiskit.circuit.exceptions import CircuitError

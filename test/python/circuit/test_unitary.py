@@ -20,8 +20,11 @@ import numpy
 from numpy.testing import assert_allclose
 
 import qiskit
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
 from qiskit.extensions.unitary import UnitaryGate
 from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.random import random_unitary

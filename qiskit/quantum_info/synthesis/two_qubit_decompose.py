@@ -30,19 +30,25 @@ import cmath
 import io
 import logging
 import math
-import warnings
 from typing import ClassVar
+import warnings
 
 import numpy as np
 import scipy.linalg as la
 
-from qiskit.circuit.library.standard_gates import CXGate, RXGate, RYGate, RZGate
-from qiskit.circuit.quantumcircuit import Gate, QuantumCircuit
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import RXGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.quantumcircuit import Gate
+from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators import Operator
-from qiskit.quantum_info.synthesis.one_qubit_decompose import DEFAULT_ATOL, OneQubitEulerDecomposer
-from qiskit.quantum_info.synthesis.weyl import transform_to_magic_basis, weyl_coordinates
+from qiskit.quantum_info.synthesis.one_qubit_decompose import DEFAULT_ATOL
+from qiskit.quantum_info.synthesis.one_qubit_decompose import OneQubitEulerDecomposer
+from qiskit.quantum_info.synthesis.weyl import transform_to_magic_basis
+from qiskit.quantum_info.synthesis.weyl import weyl_coordinates
 
 logger = logging.getLogger(__name__)
 

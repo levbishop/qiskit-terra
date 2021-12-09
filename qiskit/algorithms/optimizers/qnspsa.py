@@ -18,9 +18,15 @@ from typing import Any, Callable, Iterator
 
 import numpy as np
 
-from qiskit.algorithms.optimizers.spsa import CALLBACK, SPSA, TERMINATIONCHECKER, _batch_evaluate
-from qiskit.circuit import ParameterVector, QuantumCircuit
-from qiskit.opflow import CircuitSampler, ExpectationBase, StateFn
+from qiskit.algorithms.optimizers.spsa import _batch_evaluate
+from qiskit.algorithms.optimizers.spsa import CALLBACK
+from qiskit.algorithms.optimizers.spsa import SPSA
+from qiskit.algorithms.optimizers.spsa import TERMINATIONCHECKER
+from qiskit.circuit import ParameterVector
+from qiskit.circuit import QuantumCircuit
+from qiskit.opflow import CircuitSampler
+from qiskit.opflow import ExpectationBase
+from qiskit.opflow import StateFn
 from qiskit.providers import Backend
 from qiskit.utils import QuantumInstance
 

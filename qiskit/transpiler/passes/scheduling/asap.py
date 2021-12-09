@@ -13,10 +13,11 @@
 """ASAP Scheduling."""
 from __future__ import annotations
 
-import itertools
 from collections import defaultdict
+import itertools
 
-from qiskit.circuit import Delay, Measure
+from qiskit.circuit import Delay
+from qiskit.circuit import Measure
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.basepasses import TransformationPass

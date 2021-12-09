@@ -20,8 +20,8 @@ import inspect
 import os
 import socket
 import sys
-import unittest
 from typing import Callable, Iterable
+import unittest
 from warnings import warn
 
 from qiskit.test.testing_options import get_test_options
@@ -111,7 +111,8 @@ def _get_credentials():
         SkipTest: when credentials can't be found
     """
     try:
-        from qiskit.providers.ibmq.credentials import Credentials, discover_credentials
+        from qiskit.providers.ibmq.credentials import Credentials
+        from qiskit.providers.ibmq.credentials import discover_credentials
     except ImportError as ex:
         raise unittest.SkipTest(
             "qiskit-ibmq-provider could not be found, "

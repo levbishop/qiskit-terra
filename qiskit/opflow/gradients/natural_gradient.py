@@ -14,13 +14,14 @@
 
 from __future__ import annotations
 
-import functools
 from collections.abc import Iterable
+import functools
 from typing import Callable
 
 import numpy as np
 
-from qiskit.circuit import ParameterExpression, ParameterVector
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.opflow.gradients.circuit_gradients import CircuitGradient

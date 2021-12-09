@@ -24,12 +24,16 @@ from __future__ import annotations
 import logging
 from time import time
 
-from qiskit.compiler import assemble, schedule, transpile
+from qiskit.compiler import assemble
+from qiskit.compiler import schedule
+from qiskit.compiler import transpile
 from qiskit.exceptions import QiskitError
 from qiskit.providers import BaseBackend
 from qiskit.providers.backend import Backend
-from qiskit.pulse import Schedule, ScheduleBlock
-from qiskit.qobj.utils import MeasLevel, MeasReturnType
+from qiskit.pulse import Schedule
+from qiskit.pulse import ScheduleBlock
+from qiskit.qobj.utils import MeasLevel
+from qiskit.qobj.utils import MeasReturnType
 
 logger = logging.getLogger(__name__)
 

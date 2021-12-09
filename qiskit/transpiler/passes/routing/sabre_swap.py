@@ -14,9 +14,10 @@
 
 from __future__ import annotations
 
-import logging
 from collections import defaultdict
-from copy import copy, deepcopy
+from copy import copy
+from copy import deepcopy
+import logging
 
 import numpy as np
 

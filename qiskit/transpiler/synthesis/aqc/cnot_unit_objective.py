@@ -17,17 +17,15 @@ from __future__ import annotations
 
 from abc import ABC
 
-import numpy as np
 from numpy import linalg as la
+import numpy as np
 
 from qiskit.transpiler.synthesis.aqc.approximate import ApproximatingObjective
-from qiskit.transpiler.synthesis.aqc.elementary_operations import (
-    place_cnot,
-    place_unitary,
-    rx_matrix,
-    ry_matrix,
-    rz_matrix,
-)
+from qiskit.transpiler.synthesis.aqc.elementary_operations import place_cnot
+from qiskit.transpiler.synthesis.aqc.elementary_operations import place_unitary
+from qiskit.transpiler.synthesis.aqc.elementary_operations import rx_matrix
+from qiskit.transpiler.synthesis.aqc.elementary_operations import ry_matrix
+from qiskit.transpiler.synthesis.aqc.elementary_operations import rz_matrix
 
 
 class CNOTUnitObjective(ApproximatingObjective, ABC):

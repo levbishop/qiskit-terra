@@ -14,8 +14,10 @@
 
 from __future__ import annotations
 
-from qiskit import QuantumCircuit, QuantumRegister
-from qiskit.circuit import Gate, Qubit
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import Gate
+from qiskit.circuit import Qubit
 from qiskit.exceptions import QiskitError
 from qiskit.test import QiskitTestCase
 

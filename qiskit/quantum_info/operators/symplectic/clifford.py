@@ -18,11 +18,18 @@ import re
 
 import numpy as np
 
-from qiskit.circuit import Instruction, QuantumCircuit
-from qiskit.circuit.library.standard_gates import HGate, IGate, SGate, XGate, YGate, ZGate
+from qiskit.circuit import Instruction
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import IGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.base_operator import BaseOperator
-from qiskit.quantum_info.operators.mixins import AdjointMixin, generate_apidocs
+from qiskit.quantum_info.operators.mixins import AdjointMixin
+from qiskit.quantum_info.operators.mixins import generate_apidocs
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.scalar_op import ScalarOp
 from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_circuit

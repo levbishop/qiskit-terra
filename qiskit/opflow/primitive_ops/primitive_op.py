@@ -21,9 +21,13 @@ import scipy.linalg
 from scipy.sparse import spmatrix
 
 from qiskit import QuantumCircuit
-from qiskit.circuit import Instruction, ParameterExpression
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
 from qiskit.opflow.operator_base import OperatorBase
-from qiskit.quantum_info import Operator, Pauli, SparsePauliOp, Statevector
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
+from qiskit.quantum_info import Statevector
 
 
 class PrimitiveOp(OperatorBase):

@@ -14,12 +14,20 @@
 
 from __future__ import annotations
 
-from math import ceil, erf, pi
+from math import ceil
+from math import erf
+from math import pi
 
 import numpy as np
 
-from qiskit import circuit, schedule
-from qiskit.pulse import ControlChannel, Delay, DriveChannel, GaussianSquare, Play, ShiftPhase
+from qiskit import circuit
+from qiskit import schedule
+from qiskit.pulse import ControlChannel
+from qiskit.pulse import Delay
+from qiskit.pulse import DriveChannel
+from qiskit.pulse import GaussianSquare
+from qiskit.pulse import Play
+from qiskit.pulse import ShiftPhase
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeAthens
 from qiskit.transpiler import PassManager

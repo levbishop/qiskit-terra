@@ -21,10 +21,14 @@ import re
 
 import numpy as np
 
-from qiskit.circuit import Instruction, QuantumCircuit
+from qiskit.circuit import Instruction
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.barrier import Barrier
 from qiskit.circuit.library.generalized_gates import PauliGate
-from qiskit.circuit.library.standard_gates import IGate, XGate, YGate, ZGate
+from qiskit.circuit.library.standard_gates import IGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.mixins import generate_apidocs
 from qiskit.quantum_info.operators.scalar_op import ScalarOp

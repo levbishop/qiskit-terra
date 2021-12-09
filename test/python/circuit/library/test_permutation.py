@@ -16,8 +16,9 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError

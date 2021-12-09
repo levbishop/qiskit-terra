@@ -18,12 +18,16 @@ import copy
 
 import numpy as np
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit.library import U2Gate
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
-from qiskit.transpiler import PassManager, PropertySet
-from qiskit.transpiler.passes import CommutativeCancellation, Optimize1qGates, Unroller
+from qiskit.transpiler import PassManager
+from qiskit.transpiler import PropertySet
+from qiskit.transpiler.passes import CommutativeCancellation
+from qiskit.transpiler.passes import Optimize1qGates
+from qiskit.transpiler.passes import Unroller
 
 
 class TestPassManager(QiskitTestCase):

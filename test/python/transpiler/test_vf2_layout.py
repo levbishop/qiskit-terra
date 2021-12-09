@@ -19,13 +19,19 @@ import unittest
 import numpy
 import retworkx
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit.library import GraphState
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeManhattan, FakeRueschlikon, FakeTenerife, FakeYorktown
-from qiskit.transpiler import CouplingMap, Layout
-from qiskit.transpiler.passes.layout.vf2_layout import VF2Layout, VF2LayoutStopReason
+from qiskit.test.mock import FakeManhattan
+from qiskit.test.mock import FakeRueschlikon
+from qiskit.test.mock import FakeTenerife
+from qiskit.test.mock import FakeYorktown
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import Layout
+from qiskit.transpiler.passes.layout.vf2_layout import VF2Layout
+from qiskit.transpiler.passes.layout.vf2_layout import VF2LayoutStopReason
 
 
 class LayoutTestCase(QiskitTestCase):

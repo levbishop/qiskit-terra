@@ -62,78 +62,87 @@ Exceptions
 # Construction methods:
 from __future__ import annotations
 
-from qiskit.pulse.builder import (
-    active_backend,
-    active_circuit_scheduler_settings,
-    active_transpiler_settings,
-    build,
-    num_qubits,
-    qubit_channels,
-    samples_to_seconds,
-    seconds_to_samples,
-)
+from qiskit.pulse.builder import active_backend
+from qiskit.pulse.builder import active_circuit_scheduler_settings
+from qiskit.pulse.builder import active_transpiler_settings
+from qiskit.pulse.builder import build
+from qiskit.pulse.builder import num_qubits
+from qiskit.pulse.builder import qubit_channels
+from qiskit.pulse.builder import samples_to_seconds
+from qiskit.pulse.builder import seconds_to_samples
 
 # Instructions:
-from qiskit.pulse.builder import (
-    acquire,
-    barrier,
-    call,
-    delay,
-    play,
-    set_frequency,
-    set_phase,
-    shift_frequency,
-    shift_phase,
-    snapshot,
-)
+from qiskit.pulse.builder import acquire
+from qiskit.pulse.builder import barrier
+from qiskit.pulse.builder import call
+from qiskit.pulse.builder import delay
+from qiskit.pulse.builder import play
+from qiskit.pulse.builder import set_frequency
+from qiskit.pulse.builder import set_phase
+from qiskit.pulse.builder import shift_frequency
+from qiskit.pulse.builder import shift_phase
+from qiskit.pulse.builder import snapshot
 
 # Channels:
-from qiskit.pulse.builder import acquire_channel, control_channels, drive_channel, measure_channel
+from qiskit.pulse.builder import acquire_channel
+from qiskit.pulse.builder import control_channels
+from qiskit.pulse.builder import drive_channel
+from qiskit.pulse.builder import measure_channel
 
 # Contexts:
-from qiskit.pulse.builder import (
-    align_equispaced,
-    align_func,
-    align_left,
-    align_right,
-    align_sequential,
-    circuit_scheduler_settings,
-    frequency_offset,
-    inline,
-    pad,
-    phase_offset,
-    transpiler_settings,
-)
+from qiskit.pulse.builder import align_equispaced
+from qiskit.pulse.builder import align_func
+from qiskit.pulse.builder import align_left
+from qiskit.pulse.builder import align_right
+from qiskit.pulse.builder import align_sequential
+from qiskit.pulse.builder import circuit_scheduler_settings
+from qiskit.pulse.builder import frequency_offset
+from qiskit.pulse.builder import inline
+from qiskit.pulse.builder import pad
+from qiskit.pulse.builder import phase_offset
+from qiskit.pulse.builder import transpiler_settings
 
 # Macros:
-from qiskit.pulse.builder import delay_qubits, macro, measure, measure_all
+from qiskit.pulse.builder import delay_qubits
+from qiskit.pulse.builder import macro
+from qiskit.pulse.builder import measure
+from qiskit.pulse.builder import measure_all
 
 # Circuit instructions:
-from qiskit.pulse.builder import cx, u1, u2, u3, x
-from qiskit.pulse.channels import (
-    AcquireChannel,
-    ControlChannel,
-    DriveChannel,
-    MeasureChannel,
-    MemorySlot,
-    RegisterSlot,
-    SnapshotChannel,
-)
-from qiskit.pulse.configuration import Discriminator, Kernel, LoConfig, LoRange
+from qiskit.pulse.builder import cx
+from qiskit.pulse.builder import u1
+from qiskit.pulse.builder import u2
+from qiskit.pulse.builder import u3
+from qiskit.pulse.builder import x
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import ControlChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MeasureChannel
+from qiskit.pulse.channels import MemorySlot
+from qiskit.pulse.channels import RegisterSlot
+from qiskit.pulse.channels import SnapshotChannel
+from qiskit.pulse.configuration import Discriminator
+from qiskit.pulse.configuration import Kernel
+from qiskit.pulse.configuration import LoConfig
+from qiskit.pulse.configuration import LoRange
 from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
-from qiskit.pulse.instructions import (
-    Acquire,
-    Call,
-    Delay,
-    Instruction,
-    Play,
-    SetFrequency,
-    SetPhase,
-    ShiftFrequency,
-    ShiftPhase,
-    Snapshot,
-)
-from qiskit.pulse.library import Constant, Drag, Gaussian, GaussianSquare, ParametricPulse, Waveform
+from qiskit.pulse.instructions import Acquire
+from qiskit.pulse.instructions import Call
+from qiskit.pulse.instructions import Delay
+from qiskit.pulse.instructions import Instruction
+from qiskit.pulse.instructions import Play
+from qiskit.pulse.instructions import SetFrequency
+from qiskit.pulse.instructions import SetPhase
+from qiskit.pulse.instructions import ShiftFrequency
+from qiskit.pulse.instructions import ShiftPhase
+from qiskit.pulse.instructions import Snapshot
+from qiskit.pulse.library import Constant
+from qiskit.pulse.library import Drag
+from qiskit.pulse.library import Gaussian
+from qiskit.pulse.library import GaussianSquare
+from qiskit.pulse.library import ParametricPulse
+from qiskit.pulse.library import Waveform
 from qiskit.pulse.library.samplers.decorators import functional_pulse
-from qiskit.pulse.schedule import Schedule, ScheduleBlock
+from qiskit.pulse.schedule import Schedule
+from qiskit.pulse.schedule import ScheduleBlock

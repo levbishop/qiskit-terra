@@ -14,9 +14,9 @@
 
 from __future__ import annotations
 
+from abc import abstractmethod
 import math
 import warnings
-from abc import abstractmethod
 
 import numpy as np
 
@@ -26,17 +26,16 @@ from qiskit.dagcircuit import DAGCircuit
 from qiskit.exceptions import QiskitError
 from qiskit.providers.backend import BackendV1
 from qiskit.providers.basebackend import BaseBackend
-from qiskit.pulse import (
-    ControlChannel,
-    Delay,
-    DriveChannel,
-    GaussianSquare,
-    Play,
-    Schedule,
-    ScheduleBlock,
-    ShiftPhase,
-)
-from qiskit.pulse.instruction_schedule_map import CalibrationPublisher, InstructionScheduleMap
+from qiskit.pulse import ControlChannel
+from qiskit.pulse import Delay
+from qiskit.pulse import DriveChannel
+from qiskit.pulse import GaussianSquare
+from qiskit.pulse import Play
+from qiskit.pulse import Schedule
+from qiskit.pulse import ScheduleBlock
+from qiskit.pulse import ShiftPhase
+from qiskit.pulse.instruction_schedule_map import CalibrationPublisher
+from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
 from qiskit.pulse.instructions.instruction import Instruction as PulseInst
 from qiskit.transpiler.basepasses import TransformationPass
 

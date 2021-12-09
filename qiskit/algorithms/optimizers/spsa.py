@@ -17,21 +17,19 @@ This implementation allows both, standard first-order as well as second-order SP
 
 from __future__ import annotations
 
-import logging
-import warnings
 from collections import deque
+import logging
 from time import time
 from typing import Any, Callable, Iterator
+import warnings
 
 import numpy as np
 import scipy
 
-from qiskit.algorithms.optimizers.optimizer import (
-    POINT,
-    Optimizer,
-    OptimizerResult,
-    OptimizerSupportLevel,
-)
+from qiskit.algorithms.optimizers.optimizer import Optimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerSupportLevel
+from qiskit.algorithms.optimizers.optimizer import POINT
 from qiskit.utils import algorithm_globals
 
 # number of function evaluations, parameters, loss, stepsize, accepted

@@ -15,29 +15,27 @@
 from __future__ import annotations
 
 import itertools
-import unittest
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
 import numpy as np
 
 from qiskit import BasicAer
-from qiskit.opflow import (
-    CX,
-    CircuitSampler,
-    H,
-    I,
-    ListOp,
-    MatrixExpectation,
-    Minus,
-    One,
-    Plus,
-    S,
-    StateFn,
-    X,
-    Y,
-    Z,
-    Zero,
-)
+from qiskit.opflow import CircuitSampler
+from qiskit.opflow import CX
+from qiskit.opflow import H
+from qiskit.opflow import I
+from qiskit.opflow import ListOp
+from qiskit.opflow import MatrixExpectation
+from qiskit.opflow import Minus
+from qiskit.opflow import One
+from qiskit.opflow import Plus
+from qiskit.opflow import S
+from qiskit.opflow import StateFn
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.opflow import Zero
 from qiskit.utils import QuantumInstance
 
 

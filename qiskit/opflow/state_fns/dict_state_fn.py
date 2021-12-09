@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import itertools
-from typing import Union, cast
+from typing import cast, Union
 
 import numpy as np
 from scipy import sparse

@@ -17,12 +17,13 @@ from __future__ import annotations
 import logging
 import multiprocessing
 import platform
-import warnings
 from typing import Callable
+import warnings
 
 import numpy as np
 
-from qiskit.algorithms.optimizers.optimizer import POINT, OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import POINT
 from qiskit.algorithms.optimizers.scipy_optimizer import SciPyOptimizer
 from qiskit.utils import algorithm_globals
 from qiskit.utils.validation import validate_min

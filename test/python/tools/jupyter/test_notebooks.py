@@ -18,10 +18,12 @@ import os
 import sys
 import unittest
 
-import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
+import nbformat
 
-from qiskit.test import Path, QiskitTestCase, slow_test
+from qiskit.test import Path
+from qiskit.test import QiskitTestCase
+from qiskit.test import slow_test
 from qiskit.tools.visualization import HAS_MATPLOTLIB
 
 # Timeout (in seconds) for a single notebook.

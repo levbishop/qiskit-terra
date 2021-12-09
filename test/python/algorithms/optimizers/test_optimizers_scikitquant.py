@@ -14,16 +14,19 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
 from qiskit import BasicAer
 from qiskit.algorithms import VQE
-from qiskit.algorithms.optimizers import BOBYQA, IMFIL, SNOBFIT
+from qiskit.algorithms.optimizers import BOBYQA
+from qiskit.algorithms.optimizers import IMFIL
+from qiskit.algorithms.optimizers import SNOBFIT
 from qiskit.circuit.library import RealAmplitudes
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.opflow import PauliSumOp
-from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit.utils import algorithm_globals
+from qiskit.utils import QuantumInstance
 
 
 class TestOptimizers(QiskitAlgorithmsTestCase):

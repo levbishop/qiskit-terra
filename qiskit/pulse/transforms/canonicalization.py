@@ -13,18 +13,22 @@
 
 from __future__ import annotations
 
-import warnings
 from collections import defaultdict
 from typing import Iterable
+import warnings
 
 import numpy as np
 
 from qiskit.pulse import channels as chans
-from qiskit.pulse import exceptions, instructions
-from qiskit.pulse.exceptions import PulseError, UnassignedDurationError
+from qiskit.pulse import exceptions
+from qiskit.pulse import instructions
+from qiskit.pulse.exceptions import PulseError
+from qiskit.pulse.exceptions import UnassignedDurationError
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
 from qiskit.pulse.instructions import directives
-from qiskit.pulse.schedule import Schedule, ScheduleBlock, ScheduleComponent
+from qiskit.pulse.schedule import Schedule
+from qiskit.pulse.schedule import ScheduleBlock
+from qiskit.pulse.schedule import ScheduleComponent
 
 
 def block_to_schedule(block: ScheduleBlock) -> Schedule:

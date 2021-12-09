@@ -18,21 +18,21 @@ import os
 import unittest
 
 from qiskit import QuantumRegister
-from qiskit.transpiler import CouplingMap, Layout
-from qiskit.transpiler.passes import (
-    BarrierBeforeFinalMeasurements,
-    CheckMap,
-    CXDirection,
-    EnlargeWithAncilla,
-    FullAncillaAllocation,
-    RemoveResetInZeroState,
-    SetLayout,
-    TrivialLayout,
-    Unroller,
-)
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import Layout
+from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
+from qiskit.transpiler.passes import CheckMap
+from qiskit.transpiler.passes import CXDirection
+from qiskit.transpiler.passes import EnlargeWithAncilla
+from qiskit.transpiler.passes import FullAncillaAllocation
+from qiskit.transpiler.passes import RemoveResetInZeroState
+from qiskit.transpiler.passes import SetLayout
+from qiskit.transpiler.passes import TrivialLayout
+from qiskit.transpiler.passes import Unroller
 from qiskit.transpiler.passmanager import PassManager
 
-from .visualization import QiskitVisualizationTestCase, path_to_diagram_reference
+from .visualization import path_to_diagram_reference
+from .visualization import QiskitVisualizationTestCase
 
 try:
     import subprocess

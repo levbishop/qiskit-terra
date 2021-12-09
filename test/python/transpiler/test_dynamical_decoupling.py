@@ -16,16 +16,22 @@ from __future__ import annotations
 
 import unittest
 
-import numpy as np
 from numpy import pi
+import numpy as np
 
-from qiskit.circuit import Delay, QuantumCircuit
-from qiskit.circuit.library import RXGate, UGate, XGate, YGate
+from qiskit.circuit import Delay
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import UGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
 from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.instruction_durations import InstructionDurations
-from qiskit.transpiler.passes import ALAPSchedule, ASAPSchedule, DynamicalDecoupling
+from qiskit.transpiler.passes import ALAPSchedule
+from qiskit.transpiler.passes import ASAPSchedule
+from qiskit.transpiler.passes import DynamicalDecoupling
 from qiskit.transpiler.passmanager import PassManager
 
 

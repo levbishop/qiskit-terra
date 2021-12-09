@@ -17,11 +17,14 @@ from __future__ import annotations
 import numpy as np
 from scipy.linalg import block_diag
 
-from qiskit.circuit import Parameter, ParameterExpression, ParameterVector
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
 from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
-from qiskit.opflow.gradients.circuit_qfis.overlap_diag import _get_generators, _partition_circuit
+from qiskit.opflow.gradients.circuit_qfis.overlap_diag import _get_generators
+from qiskit.opflow.gradients.circuit_qfis.overlap_diag import _partition_circuit
 from qiskit.opflow.gradients.derivative_base import _coeff_derivative
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.operator_globals import Zero

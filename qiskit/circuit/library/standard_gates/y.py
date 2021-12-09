@@ -185,7 +185,8 @@ class CYGate(ControlledGate):
         gate cy a,b { sdg b; cx a,b; s b; }
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.library.standard_gates.s import SdgGate, SGate
+        from qiskit.circuit.library.standard_gates.s import SdgGate
+        from qiskit.circuit.library.standard_gates.s import SGate
         from qiskit.circuit.library.standard_gates.x import CXGate
         from qiskit.circuit.quantumcircuit import QuantumCircuit
 

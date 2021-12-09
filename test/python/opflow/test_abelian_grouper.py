@@ -14,14 +14,26 @@
 
 from __future__ import annotations
 
+from itertools import combinations
+from itertools import product
 import random
-import unittest
-from itertools import combinations, product
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
-from ddt import data, ddt, unpack
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 
-from qiskit.opflow import AbelianGrouper, I, OpflowError, Plus, SummedOp, X, Y, Z, Zero, commutator
+from qiskit.opflow import AbelianGrouper
+from qiskit.opflow import commutator
+from qiskit.opflow import I
+from qiskit.opflow import OpflowError
+from qiskit.opflow import Plus
+from qiskit.opflow import SummedOp
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.opflow import Zero
 
 
 @ddt

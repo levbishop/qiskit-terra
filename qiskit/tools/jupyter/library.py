@@ -16,8 +16,8 @@
 
 from __future__ import annotations
 
-import ipywidgets as wid
 from IPython.display import display
+import ipywidgets as wid
 
 from qiskit import QuantumCircuit
 from qiskit.exceptions import MissingOptionalLibraryError
@@ -26,7 +26,8 @@ try:
     import pygments
     from pygments.formatters import HtmlFormatter
 
-    from qiskit.qasm.pygments import OpenQASMLexer, QasmHTMLStyle
+    from qiskit.qasm.pygments import OpenQASMLexer
+    from qiskit.qasm.pygments import QasmHTMLStyle
 
     HAS_PYGMENTS = True
 except Exception:  # pylint: disable=broad-except

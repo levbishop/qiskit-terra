@@ -15,12 +15,16 @@
 
 from __future__ import annotations
 
-from typing import List, cast
+from typing import cast, List
 
 import numpy as np
 
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, transpile
-from qiskit.circuit import Instruction, ParameterExpression
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import transpile
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library import IGate
 from qiskit.extensions import Initialize

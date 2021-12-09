@@ -16,8 +16,12 @@ from __future__ import annotations
 
 from test.python.opflow import QiskitOpflowTestCase
 
-from qiskit.opflow import PauliSumOp, TaperedPauliSumOp, TwoQubitReduction, Z2Symmetries
-from qiskit.quantum_info import Pauli, SparsePauliOp
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import TaperedPauliSumOp
+from qiskit.opflow import TwoQubitReduction
+from qiskit.opflow import Z2Symmetries
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
 
 
 class TestTwoQubitReduction(QiskitOpflowTestCase):

@@ -16,7 +16,12 @@ Operator Globals
 
 from __future__ import annotations
 
-from qiskit.circuit.library import CXGate, CZGate, HGate, SGate, SwapGate, TGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import TGate
 from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 from qiskit.opflow.state_fns.dict_state_fn import DictStateFn

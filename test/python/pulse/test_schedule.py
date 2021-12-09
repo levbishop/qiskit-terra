@@ -18,35 +18,34 @@ from unittest.mock import patch
 
 import numpy as np
 
-from qiskit.pulse import (
-    Acquire,
-    Constant,
-    Delay,
-    Drag,
-    Gaussian,
-    GaussianSquare,
-    Instruction,
-    Play,
-    SetFrequency,
-    SetPhase,
-    ShiftFrequency,
-    ShiftPhase,
-    Snapshot,
-    Waveform,
-    functional_pulse,
-    library,
-)
-from qiskit.pulse.channels import (
-    AcquireChannel,
-    ControlChannel,
-    DriveChannel,
-    MeasureChannel,
-    MemorySlot,
-    RegisterSlot,
-    SnapshotChannel,
-)
+from qiskit.pulse import Acquire
+from qiskit.pulse import Constant
+from qiskit.pulse import Delay
+from qiskit.pulse import Drag
+from qiskit.pulse import functional_pulse
+from qiskit.pulse import Gaussian
+from qiskit.pulse import GaussianSquare
+from qiskit.pulse import Instruction
+from qiskit.pulse import library
+from qiskit.pulse import Play
+from qiskit.pulse import SetFrequency
+from qiskit.pulse import SetPhase
+from qiskit.pulse import ShiftFrequency
+from qiskit.pulse import ShiftPhase
+from qiskit.pulse import Snapshot
+from qiskit.pulse import Waveform
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import ControlChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MeasureChannel
+from qiskit.pulse.channels import MemorySlot
+from qiskit.pulse.channels import RegisterSlot
+from qiskit.pulse.channels import SnapshotChannel
 from qiskit.pulse.exceptions import PulseError
-from qiskit.pulse.schedule import ParameterizedSchedule, Schedule, _find_insertion_index, _overlaps
+from qiskit.pulse.schedule import _find_insertion_index
+from qiskit.pulse.schedule import _overlaps
+from qiskit.pulse.schedule import ParameterizedSchedule
+from qiskit.pulse.schedule import Schedule
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeOpenPulse2Q
 

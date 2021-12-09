@@ -16,15 +16,13 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.circuit import (
-    ClassicalRegister,
-    Clbit,
-    Instruction,
-    Measure,
-    QuantumCircuit,
-    QuantumRegister,
-    Qubit,
-)
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Instruction
+from qiskit.circuit import Measure
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
 from qiskit.circuit.library.standard_gates.h import HGate
 from qiskit.converters import circuit_to_dagdependency
 from qiskit.dagcircuit import DAGDependency

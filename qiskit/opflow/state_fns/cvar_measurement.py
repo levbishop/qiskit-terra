@@ -21,7 +21,9 @@ import numpy as np
 
 from qiskit.circuit import ParameterExpression
 from qiskit.opflow.exceptions import OpflowError
-from qiskit.opflow.list_ops import ListOp, SummedOp, TensoredOp
+from qiskit.opflow.list_ops import ListOp
+from qiskit.opflow.list_ops import SummedOp
+from qiskit.opflow.list_ops import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.primitive_ops import PauliOp
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn

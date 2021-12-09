@@ -23,9 +23,11 @@ from qiskit.circuit.duration import convert_durations_to_dt
 from qiskit.circuit.measure import Measure
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
-from qiskit.pulse import Schedule
 from qiskit.pulse import instructions as pulse_inst
-from qiskit.pulse.channels import AcquireChannel, DriveChannel, MemorySlot
+from qiskit.pulse import Schedule
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MemorySlot
 from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse.macros import measure
 from qiskit.scheduler.config import ScheduleConfig

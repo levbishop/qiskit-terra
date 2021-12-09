@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from functools import partial, reduce
+from functools import partial
+from functools import reduce
 from typing import cast
 
 import numpy as np

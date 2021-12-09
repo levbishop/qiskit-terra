@@ -17,7 +17,11 @@ from __future__ import annotations
 from math import pi
 
 from qiskit.circuit import QuantumRegister
-from qiskit.circuit.library.standard_gates import CXGate, ECRGate, HGate, RYGate, RZXGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import ECRGate
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RZXGate
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError

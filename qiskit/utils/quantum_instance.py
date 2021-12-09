@@ -15,27 +15,26 @@
 from __future__ import annotations
 
 import copy
+from enum import Enum
 import logging
 import time
-import warnings
-from enum import Enum
 from typing import Callable
+import warnings
 
 import numpy as np
 
 from qiskit.exceptions import QiskitError
 from qiskit.qobj import Qobj
 from qiskit.utils import circuit_utils
-from qiskit.utils.backend_utils import (
-    is_aer_qasm,
-    is_basicaer_provider,
-    is_ibmq_provider,
-    is_local_backend,
-    is_simulator_backend,
-    is_statevector_backend,
-    support_backend_options,
-)
-from qiskit.utils.mitigation import CompleteMeasFitter, TensoredMeasFitter
+from qiskit.utils.backend_utils import is_aer_qasm
+from qiskit.utils.backend_utils import is_basicaer_provider
+from qiskit.utils.backend_utils import is_ibmq_provider
+from qiskit.utils.backend_utils import is_local_backend
+from qiskit.utils.backend_utils import is_simulator_backend
+from qiskit.utils.backend_utils import is_statevector_backend
+from qiskit.utils.backend_utils import support_backend_options
+from qiskit.utils.mitigation import CompleteMeasFitter
+from qiskit.utils.mitigation import TensoredMeasFitter
 
 logger = logging.getLogger(__name__)
 
@@ -477,11 +476,14 @@ class QuantumInstance:
         """
         from qiskit.utils.measurement_error_mitigation import (
             build_measurement_error_mitigation_circuits,
-            build_measurement_error_mitigation_qobj,
-            get_measured_qubits,
-            get_measured_qubits_from_qobj,
         )
-        from qiskit.utils.run_circuits import run_circuits, run_qobj
+        from qiskit.utils.measurement_error_mitigation import (
+            build_measurement_error_mitigation_qobj,
+        )
+        from qiskit.utils.measurement_error_mitigation import get_measured_qubits
+        from qiskit.utils.measurement_error_mitigation import get_measured_qubits_from_qobj
+        from qiskit.utils.run_circuits import run_circuits
+        from qiskit.utils.run_circuits import run_qobj
 
         # maybe compile
         if not had_transpiled:

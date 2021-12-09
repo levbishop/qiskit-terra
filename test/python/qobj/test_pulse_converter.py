@@ -18,38 +18,36 @@ import hashlib
 
 import numpy as np
 
-from qiskit.pulse import Discriminator, Kernel, LoConfig
-from qiskit.pulse.channels import (
-    AcquireChannel,
-    ControlChannel,
-    DriveChannel,
-    MeasureChannel,
-    MemorySlot,
-    RegisterSlot,
-)
-from qiskit.pulse.instructions import (
-    Acquire,
-    Delay,
-    Play,
-    SetFrequency,
-    SetPhase,
-    ShiftFrequency,
-    ShiftPhase,
-    Snapshot,
-)
-from qiskit.pulse.library import Constant, Drag, Gaussian, GaussianSquare, Waveform
+from qiskit.pulse import Discriminator
+from qiskit.pulse import Kernel
+from qiskit.pulse import LoConfig
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import ControlChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MeasureChannel
+from qiskit.pulse.channels import MemorySlot
+from qiskit.pulse.channels import RegisterSlot
+from qiskit.pulse.instructions import Acquire
+from qiskit.pulse.instructions import Delay
+from qiskit.pulse.instructions import Play
+from qiskit.pulse.instructions import SetFrequency
+from qiskit.pulse.instructions import SetPhase
+from qiskit.pulse.instructions import ShiftFrequency
+from qiskit.pulse.instructions import ShiftPhase
+from qiskit.pulse.instructions import Snapshot
+from qiskit.pulse.library import Constant
+from qiskit.pulse.library import Drag
+from qiskit.pulse.library import Gaussian
+from qiskit.pulse.library import GaussianSquare
+from qiskit.pulse.library import Waveform
 from qiskit.pulse.schedule import Schedule
-from qiskit.qobj import (
-    PulseLibraryItem,
-    PulseQobjExperimentConfig,
-    PulseQobjInstruction,
-    QobjMeasurementOption,
-)
-from qiskit.qobj.converters import (
-    InstructionToQobjConverter,
-    LoConfigConverter,
-    QobjToInstructionConverter,
-)
+from qiskit.qobj import PulseLibraryItem
+from qiskit.qobj import PulseQobjExperimentConfig
+from qiskit.qobj import PulseQobjInstruction
+from qiskit.qobj import QobjMeasurementOption
+from qiskit.qobj.converters import InstructionToQobjConverter
+from qiskit.qobj.converters import LoConfigConverter
+from qiskit.qobj.converters import QobjToInstructionConverter
 from qiskit.test import QiskitTestCase
 
 

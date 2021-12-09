@@ -15,7 +15,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, cast
+from typing import cast, Dict
 
 from qiskit.algorithms.algorithm_result import AlgorithmResult
 from qiskit.algorithms.phase_estimators.phase_estimation_result import PhaseEstimationResult

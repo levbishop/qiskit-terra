@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.armonk.fake_armonk import FakeArmonk, FakeLegacyArmonk
+from qiskit.test.mock.backends.armonk.fake_armonk import FakeArmonk
+from qiskit.test.mock.backends.armonk.fake_armonk import FakeLegacyArmonk

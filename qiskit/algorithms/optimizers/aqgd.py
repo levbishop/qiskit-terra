@@ -20,12 +20,10 @@ from typing import Any, Callable, List
 import numpy as np
 
 from qiskit.algorithms.exceptions import AlgorithmError
-from qiskit.algorithms.optimizers.optimizer import (
-    POINT,
-    Optimizer,
-    OptimizerResult,
-    OptimizerSupportLevel,
-)
+from qiskit.algorithms.optimizers.optimizer import Optimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerSupportLevel
+from qiskit.algorithms.optimizers.optimizer import POINT
 from qiskit.utils.validation import validate_range_exclusive_max
 
 logger = logging.getLogger(__name__)

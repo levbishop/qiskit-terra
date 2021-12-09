@@ -16,12 +16,10 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
-from qiskit.algorithms.optimizers.optimizer import (
-    POINT,
-    Optimizer,
-    OptimizerResult,
-    OptimizerSupportLevel,
-)
+from qiskit.algorithms.optimizers.optimizer import Optimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerSupportLevel
+from qiskit.algorithms.optimizers.optimizer import POINT
 from qiskit.exceptions import MissingOptionalLibraryError
 
 try:

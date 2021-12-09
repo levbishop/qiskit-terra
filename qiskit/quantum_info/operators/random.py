@@ -20,17 +20,16 @@ import numpy as np
 from numpy.random import default_rng
 
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info.operators import Operator, Stinespring
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info.operators import Stinespring
 
 # pylint: disable=unused-import
 from qiskit.quantum_info.operators.dihedral.random import random_cnotdihedral
-from qiskit.quantum_info.operators.symplectic.random import (
-    random_clifford,
-    random_pauli,
-    random_pauli_list,
-    random_pauli_table,
-    random_stabilizer_table,
-)
+from qiskit.quantum_info.operators.symplectic.random import random_clifford
+from qiskit.quantum_info.operators.symplectic.random import random_pauli
+from qiskit.quantum_info.operators.symplectic.random import random_pauli_list
+from qiskit.quantum_info.operators.symplectic.random import random_pauli_table
+from qiskit.quantum_info.operators.symplectic.random import random_stabilizer_table
 
 DEFAULT_RNG = default_rng()
 

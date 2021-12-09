@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.test import QiskitTestCase
 

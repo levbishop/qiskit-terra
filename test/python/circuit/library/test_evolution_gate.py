@@ -14,16 +14,29 @@
 
 from __future__ import annotations
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
 import scipy
-from ddt import data, ddt, unpack
 
-from qiskit.circuit import Parameter, QuantumCircuit
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import PauliEvolutionGate
 from qiskit.converters import circuit_to_dag
-from qiskit.opflow import I, PauliSumOp, X, Y, Z
-from qiskit.quantum_info import Operator, Pauli, SparsePauliOp, Statevector
-from qiskit.synthesis import LieTrotter, MatrixExponential, QDrift, SuzukiTrotter
+from qiskit.opflow import I
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
+from qiskit.quantum_info import Statevector
+from qiskit.synthesis import LieTrotter
+from qiskit.synthesis import MatrixExponential
+from qiskit.synthesis import QDrift
+from qiskit.synthesis import SuzukiTrotter
 from qiskit.test import QiskitTestCase
 from qiskit.utils import algorithm_globals
 

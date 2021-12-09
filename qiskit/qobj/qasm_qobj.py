@@ -19,8 +19,10 @@ import pprint
 from types import SimpleNamespace
 
 from qiskit.circuit.parameterexpression import ParameterExpression
-from qiskit.qobj.common import QobjDictField, QobjHeader
-from qiskit.qobj.pulse_qobj import PulseLibraryItem, PulseQobjInstruction
+from qiskit.qobj.common import QobjDictField
+from qiskit.qobj.common import QobjHeader
+from qiskit.qobj.pulse_qobj import PulseLibraryItem
+from qiskit.qobj.pulse_qobj import PulseQobjInstruction
 
 
 class QasmQobjInstruction:

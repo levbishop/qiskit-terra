@@ -20,4 +20,6 @@ from __future__ import annotations
 from qiskit.visualization.pulse_v2.interface import draw
 
 # stylesheets
-from qiskit.visualization.pulse_v2.stylesheet import IQXDebugging, IQXSimple, IQXStandard
+from qiskit.visualization.pulse_v2.stylesheet import IQXDebugging
+from qiskit.visualization.pulse_v2.stylesheet import IQXSimple
+from qiskit.visualization.pulse_v2.stylesheet import IQXStandard

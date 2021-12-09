@@ -17,8 +17,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import QuantumCircuit, pulse
-from qiskit.compiler import schedule, sequence, transpile
+from qiskit import pulse
+from qiskit import QuantumCircuit
+from qiskit.compiler import schedule
+from qiskit.compiler import sequence
+from qiskit.compiler import transpile
 from qiskit.pulse.transforms import pad
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeParis

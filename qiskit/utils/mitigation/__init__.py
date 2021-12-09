@@ -51,5 +51,7 @@ with the :class:`~qiskit.utils.QuantumInstance` class as part of
 # Measurement correction functions
 from __future__ import annotations
 
-from qiskit.utils.mitigation.circuits import complete_meas_cal, tensored_meas_cal
-from qiskit.utils.mitigation.fitters import CompleteMeasFitter, TensoredMeasFitter
+from qiskit.utils.mitigation.circuits import complete_meas_cal
+from qiskit.utils.mitigation.circuits import tensored_meas_cal
+from qiskit.utils.mitigation.fitters import CompleteMeasFitter
+from qiskit.utils.mitigation.fitters import TensoredMeasFitter

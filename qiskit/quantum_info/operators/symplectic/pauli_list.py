@@ -22,7 +22,8 @@ import retworkx as rx
 
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.custom_iterator import CustomIterator
-from qiskit.quantum_info.operators.mixins import GroupMixin, LinearMixin
+from qiskit.quantum_info.operators.mixins import GroupMixin
+from qiskit.quantum_info.operators.mixins import LinearMixin
 from qiskit.quantum_info.operators.symplectic.base_pauli import BasePauli
 from qiskit.quantum_info.operators.symplectic.pauli import Pauli
 from qiskit.quantum_info.operators.symplectic.pauli_table import PauliTable
@@ -884,7 +885,8 @@ class PauliList(BasePauli, LinearMixin, GroupMixin):
         Raises:
             QiskitError: if the Clifford number of qubits and qargs don't match.
         """
-        from qiskit.circuit import Instruction, QuantumCircuit
+        from qiskit.circuit import Instruction
+        from qiskit.circuit import QuantumCircuit
         from qiskit.quantum_info.operators.symplectic.clifford import Clifford
 
         if qargs is None:

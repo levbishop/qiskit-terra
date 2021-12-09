@@ -25,7 +25,8 @@ import numpy as np
 
 from qiskit.circuit import Gate
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.quantumcircuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.circuit.quantumcircuit import QuantumRegister
 from qiskit.exceptions import QiskitError
 from qiskit.extensions.quantum_initializer.uc import UCGate
 from qiskit.quantum_info.operators.predicates import is_isometry

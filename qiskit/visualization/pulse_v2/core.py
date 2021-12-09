@@ -78,7 +78,10 @@ import numpy as np
 from qiskit import pulse
 from qiskit.pulse.transforms import target_qobj_transform
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.pulse_v2 import device_info, drawings, events, types
+from qiskit.visualization.pulse_v2 import device_info
+from qiskit.visualization.pulse_v2 import drawings
+from qiskit.visualization.pulse_v2 import events
+from qiskit.visualization.pulse_v2 import types
 from qiskit.visualization.pulse_v2.stylesheet import QiskitPulseStyle
 
 

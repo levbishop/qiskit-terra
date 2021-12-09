@@ -226,10 +226,14 @@ Random Circuits
 """
 from __future__ import annotations
 
-from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit.classicalregister import Clbit
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.circuit.quantumregister import AncillaQubit, AncillaRegister, QuantumRegister, Qubit
+from qiskit.circuit.quantumregister import AncillaQubit
+from qiskit.circuit.quantumregister import AncillaRegister
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.quantumregister import Qubit
 
 # pylint: disable=cyclic-import
 from qiskit.circuit.barrier import Barrier
@@ -245,13 +249,13 @@ from qiskit.circuit.parametervector import ParameterVector
 from qiskit.circuit.reset import Reset
 
 # These must be last to avoid cyclic import problems?
-from qiskit.circuit.classicalfunction import BooleanExpression, classical_function
-from qiskit.circuit.classicalfunction.types import Int1, Int2
-from qiskit.circuit.controlflow import (
-    BreakLoopOp,
-    ContinueLoopOp,
-    ControlFlowOp,
-    ForLoopOp,
-    IfElseOp,
-    WhileLoopOp,
-)
+from qiskit.circuit.classicalfunction import BooleanExpression
+from qiskit.circuit.classicalfunction import classical_function
+from qiskit.circuit.classicalfunction.types import Int1
+from qiskit.circuit.classicalfunction.types import Int2
+from qiskit.circuit.controlflow import BreakLoopOp
+from qiskit.circuit.controlflow import ContinueLoopOp
+from qiskit.circuit.controlflow import ControlFlowOp
+from qiskit.circuit.controlflow import ForLoopOp
+from qiskit.circuit.controlflow import IfElseOp
+from qiskit.circuit.controlflow import WhileLoopOp

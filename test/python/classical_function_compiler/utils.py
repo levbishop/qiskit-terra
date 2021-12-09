@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from inspect import getfullargspec, isfunction
+from inspect import getfullargspec
+from inspect import isfunction
 
 from . import examples
 

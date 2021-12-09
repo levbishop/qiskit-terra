@@ -15,10 +15,12 @@
 from __future__ import annotations
 
 import qiskit
-from qiskit import QuantumCircuit, transpile
+from qiskit import QuantumCircuit
+from qiskit import transpile
 from qiskit.circuit import library
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.timeline import events, types
+from qiskit.visualization.timeline import events
+from qiskit.visualization.timeline import types
 
 
 class TestLoadScheduledCircuit(QiskitTestCase):

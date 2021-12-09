@@ -14,31 +14,27 @@
 
 from __future__ import annotations
 
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
-from qiskit.quantum_info import (
-    Choi,
-    Clifford,
-    Operator,
-    PauliList,
-    PauliTable,
-    StabilizerTable,
-    Stinespring,
-)
+from qiskit.quantum_info import Choi
+from qiskit.quantum_info import Clifford
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import PauliList
+from qiskit.quantum_info import PauliTable
+from qiskit.quantum_info import StabilizerTable
+from qiskit.quantum_info import Stinespring
 from qiskit.quantum_info.operators.predicates import is_hermitian_matrix
-from qiskit.quantum_info.random import (
-    random_clifford,
-    random_hermitian,
-    random_pauli_list,
-    random_pauli_table,
-    random_quantum_channel,
-    random_stabilizer_table,
-    random_unitary,
-)
+from qiskit.quantum_info.random import random_clifford
+from qiskit.quantum_info.random import random_hermitian
+from qiskit.quantum_info.random import random_pauli_list
+from qiskit.quantum_info.random import random_pauli_table
+from qiskit.quantum_info.random import random_quantum_channel
+from qiskit.quantum_info.random import random_stabilizer_table
+from qiskit.quantum_info.random import random_unitary
 from qiskit.test import QiskitTestCase
 
 

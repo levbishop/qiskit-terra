@@ -17,23 +17,23 @@ from __future__ import annotations
 
 import copy
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.compiler import assemble
-from qiskit.qobj import (
-    GateCalibration,
-    PulseLibraryItem,
-    PulseQobj,
-    PulseQobjConfig,
-    PulseQobjExperiment,
-    PulseQobjInstruction,
-    QasmExperimentCalibrations,
-    QasmQobj,
-    QasmQobjConfig,
-    QasmQobjExperiment,
-    QasmQobjInstruction,
-    QobjHeader,
-    QobjMeasurementOption,
-)
+from qiskit.qobj import GateCalibration
+from qiskit.qobj import PulseLibraryItem
+from qiskit.qobj import PulseQobj
+from qiskit.qobj import PulseQobjConfig
+from qiskit.qobj import PulseQobjExperiment
+from qiskit.qobj import PulseQobjInstruction
+from qiskit.qobj import QasmExperimentCalibrations
+from qiskit.qobj import QasmQobj
+from qiskit.qobj import QasmQobjConfig
+from qiskit.qobj import QasmQobjExperiment
+from qiskit.qobj import QasmQobjInstruction
+from qiskit.qobj import QobjHeader
+from qiskit.qobj import QobjMeasurementOption
 from qiskit.test import QiskitTestCase
 
 

@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
+from qiskit.circuit.parameterexpression import ParameterExpression
+from qiskit.circuit.parameterexpression import ParameterValueType
 from qiskit.pulse.channels import Channel
 from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse.instructions import instruction
@@ -49,7 +50,8 @@ class Call(instruction.Instruction):
         Raises:
             PulseError: If subroutine is not valid data format.
         """
-        from qiskit.pulse.schedule import Schedule, ScheduleBlock
+        from qiskit.pulse.schedule import Schedule
+        from qiskit.pulse.schedule import ScheduleBlock
 
         if not isinstance(subroutine, (ScheduleBlock, Schedule)):
             raise PulseError(f"Subroutine type {subroutine.__class__.__name__} cannot be called.")

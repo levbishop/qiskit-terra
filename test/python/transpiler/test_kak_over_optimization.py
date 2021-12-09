@@ -18,7 +18,9 @@ import unittest
 
 import numpy as np
 
-from qiskit import QuantumCircuit, QuantumRegister, transpile
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
 from qiskit.circuit.library import CU1Gate
 from qiskit.test import QiskitTestCase
 

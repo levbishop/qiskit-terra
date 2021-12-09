@@ -14,9 +14,10 @@ Look-up table for variable parameters in QuantumCircuit.
 """
 from __future__ import annotations
 
+from collections.abc import MappingView
+from collections.abc import MutableMapping
 import functools
 import warnings
-from collections.abc import MappingView, MutableMapping
 
 from qiskit.circuit.instruction import Instruction
 

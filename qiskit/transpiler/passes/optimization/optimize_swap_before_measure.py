@@ -17,7 +17,9 @@ from __future__ import annotations
 
 from qiskit.circuit import Measure
 from qiskit.circuit.library.standard_gates import SwapGate
-from qiskit.dagcircuit import DAGCircuit, DAGOpNode, DAGOutNode
+from qiskit.dagcircuit import DAGCircuit
+from qiskit.dagcircuit import DAGOpNode
+from qiskit.dagcircuit import DAGOutNode
 from qiskit.transpiler.basepasses import TransformationPass
 
 

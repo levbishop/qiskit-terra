@@ -16,9 +16,14 @@ from __future__ import annotations
 
 import unittest
 
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 
-from qiskit.circuit import Gate, Instruction, Parameter, QuantumCircuit, QuantumRegister
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library import BlueprintCircuit
 from qiskit.test.base import QiskitTestCase
 

@@ -18,7 +18,10 @@ import collections
 import copy
 
 from qiskit.providers import BackendConfigurationError
-from qiskit.pulse.channels import AcquireChannel, ControlChannel, DriveChannel, MeasureChannel
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import ControlChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MeasureChannel
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeProvider
 

@@ -16,11 +16,16 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
 from qiskit.circuit import QuantumCircuit
-from qiskit.circuit.library import HGate, PauliFeatureMap, ZFeatureMap, ZZFeatureMap
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import PauliFeatureMap
+from qiskit.circuit.library import ZFeatureMap
+from qiskit.circuit.library import ZZFeatureMap
 from qiskit.quantum_info import Operator
 from qiskit.test.base import QiskitTestCase
 

@@ -14,16 +14,20 @@
 
 from __future__ import annotations
 
+from io import StringIO
 import sys
 import unittest
-from io import StringIO
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
+from unittest.mock import patch
 
 import qiskit
 from qiskit import providers
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeBackend, FakeProviderFactory, FakeVigo
-from qiskit.tools.monitor import backend_monitor, backend_overview
+from qiskit.test.mock import FakeBackend
+from qiskit.test.mock import FakeProviderFactory
+from qiskit.test.mock import FakeVigo
+from qiskit.tools.monitor import backend_monitor
+from qiskit.tools.monitor import backend_overview
 
 
 class TestBackendOverview(QiskitTestCase):

@@ -16,16 +16,14 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import (
-    AncillaQubit,
-    AncillaRegister,
-    ClassicalRegister,
-    Clbit,
-    Gate,
-    QuantumCircuit,
-    QuantumRegister,
-    Qubit,
-)
+from qiskit.circuit import AncillaQubit
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.test import QiskitTestCase
 

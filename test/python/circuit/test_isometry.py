@@ -16,10 +16,14 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
-from qiskit import BasicAer, QuantumCircuit, QuantumRegister, execute
+from qiskit import BasicAer
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.compiler import transpile
 from qiskit.extensions.quantum_initializer.isometry import Isometry
 from qiskit.quantum_info import Operator

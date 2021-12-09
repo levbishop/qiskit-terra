@@ -14,32 +14,31 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
 import numpy as np
 import scipy.linalg
 
 import qiskit
-from qiskit.circuit import Parameter, ParameterVector
-from qiskit.opflow import (
-    CX,
-    CircuitOp,
-    EvolutionFactory,
-    EvolvedOp,
-    H,
-    I,
-    ListOp,
-    PauliTrotterEvolution,
-    QDrift,
-    SummedOp,
-    Suzuki,
-    Trotter,
-    X,
-    Y,
-    Z,
-    Zero,
-)
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterVector
+from qiskit.opflow import CircuitOp
+from qiskit.opflow import CX
+from qiskit.opflow import EvolutionFactory
+from qiskit.opflow import EvolvedOp
+from qiskit.opflow import H
+from qiskit.opflow import I
+from qiskit.opflow import ListOp
+from qiskit.opflow import PauliTrotterEvolution
+from qiskit.opflow import QDrift
+from qiskit.opflow import SummedOp
+from qiskit.opflow import Suzuki
+from qiskit.opflow import Trotter
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.opflow import Zero
 
 
 class TestEvolution(QiskitOpflowTestCase):

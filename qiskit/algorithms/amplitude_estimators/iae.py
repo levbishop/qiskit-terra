@@ -14,19 +14,19 @@
 
 from __future__ import annotations
 
-from typing import List, cast
+from typing import cast, List
 
 import numpy as np
 from scipy.stats import beta
 
-from qiskit import ClassicalRegister, QuantumCircuit
-from qiskit.algorithms.amplitude_estimators.amplitude_estimator import (
-    AmplitudeEstimator,
-    AmplitudeEstimatorResult,
-)
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit.algorithms.amplitude_estimators.amplitude_estimator import AmplitudeEstimator
+from qiskit.algorithms.amplitude_estimators.amplitude_estimator import AmplitudeEstimatorResult
 from qiskit.algorithms.amplitude_estimators.estimation_problem import EstimationProblem
 from qiskit.algorithms.exceptions import AlgorithmError
-from qiskit.providers import Backend, BaseBackend
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
 from qiskit.utils import QuantumInstance
 
 

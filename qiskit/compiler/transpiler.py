@@ -15,33 +15,39 @@ from __future__ import annotations
 
 import datetime
 import logging
-import warnings
 from time import time
 from typing import Any, Callable, Iterable
+import warnings
 
 from qiskit import user_config
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import Qubit
-from qiskit.converters import circuit_to_dag, dag_to_circuit, isinstanceint, isinstancelist
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
+from qiskit.converters import isinstanceint
+from qiskit.converters import isinstancelist
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.providers import BaseBackend
 from qiskit.providers.backend import Backend
 from qiskit.providers.models import BackendProperties
 from qiskit.providers.models.backendproperties import Gate
-from qiskit.pulse import InstructionScheduleMap, Schedule
+from qiskit.pulse import InstructionScheduleMap
+from qiskit.pulse import Schedule
 from qiskit.tools.parallel import parallel_map
-from qiskit.transpiler import CouplingMap, Layout, PassManager, PropertySet
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import Layout
+from qiskit.transpiler import PassManager
+from qiskit.transpiler import PropertySet
 from qiskit.transpiler.basepasses import BasePass
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.instruction_durations import InstructionDurations, InstructionDurationsType
+from qiskit.transpiler.instruction_durations import InstructionDurations
+from qiskit.transpiler.instruction_durations import InstructionDurationsType
 from qiskit.transpiler.passes import ApplyLayout
 from qiskit.transpiler.passmanager_config import PassManagerConfig
-from qiskit.transpiler.preset_passmanagers import (
-    level_0_pass_manager,
-    level_1_pass_manager,
-    level_2_pass_manager,
-    level_3_pass_manager,
-)
+from qiskit.transpiler.preset_passmanagers import level_0_pass_manager
+from qiskit.transpiler.preset_passmanagers import level_1_pass_manager
+from qiskit.transpiler.preset_passmanagers import level_2_pass_manager
+from qiskit.transpiler.preset_passmanagers import level_3_pass_manager
 from qiskit.transpiler.target import Target
 from qiskit.transpiler.timing_constraints import TimingConstraints
 

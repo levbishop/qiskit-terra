@@ -36,12 +36,10 @@ import numpy as np
 import qiskit
 from qiskit.result.result import Result
 from qiskit.test import QiskitTestCase
-from qiskit.utils.mitigation import (
-    CompleteMeasFitter,
-    TensoredMeasFitter,
-    complete_meas_cal,
-    tensored_meas_cal,
-)
+from qiskit.utils.mitigation import complete_meas_cal
+from qiskit.utils.mitigation import CompleteMeasFitter
+from qiskit.utils.mitigation import tensored_meas_cal
+from qiskit.utils.mitigation import TensoredMeasFitter
 from qiskit.utils.mitigation._filters import MeasurementFilter
 from qiskit.utils.mitigation.circuits import count_keys
 

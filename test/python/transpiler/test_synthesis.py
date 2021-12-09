@@ -14,11 +14,13 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.extensions.unitary import UnitaryGate
 from qiskit.quantum_info.operators import Operator
 from qiskit.test import QiskitTestCase
-from qiskit.transpiler.synthesis import cnot_synth, graysynth
+from qiskit.transpiler.synthesis import cnot_synth
+from qiskit.transpiler.synthesis import graysynth
 
 
 class TestGraySynth(QiskitTestCase):

@@ -18,14 +18,21 @@ import unittest
 
 import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit import Parameter
-from qiskit.circuit.library import PhaseGate, U1Gate, U2Gate, U3Gate, UGate
+from qiskit.circuit.library import PhaseGate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
+from qiskit.circuit.library import UGate
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.passes import Optimize1qGates, Unroller
+from qiskit.transpiler.passes import Optimize1qGates
+from qiskit.transpiler.passes import Unroller
 
 
 class TestOptimize1qGates(QiskitTestCase):

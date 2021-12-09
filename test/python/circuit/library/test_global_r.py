@@ -19,7 +19,12 @@ import unittest
 import numpy as np
 
 from qiskit.circuit import QuantumCircuit
-from qiskit.circuit.library import GR, GRX, GRY, GRZ, RGate, RZGate
+from qiskit.circuit.library import GR
+from qiskit.circuit.library import GRX
+from qiskit.circuit.library import GRY
+from qiskit.circuit.library import GRZ
+from qiskit.circuit.library import RGate
+from qiskit.circuit.library import RZGate
 from qiskit.test.base import QiskitTestCase
 
 

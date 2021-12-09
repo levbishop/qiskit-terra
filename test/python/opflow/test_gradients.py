@@ -15,12 +15,15 @@
 
 from __future__ import annotations
 
-import unittest
 from itertools import product
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import idata
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, idata, unpack
 
 try:
     import jax.numpy as jnp
@@ -29,29 +32,36 @@ try:
 except ImportError:
     _HAS_JAX = False
 
-from qiskit import BasicAer, QuantumCircuit, QuantumRegister
+from qiskit import BasicAer
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.algorithms import VQE
 from qiskit.algorithms.optimizers import CG
-from qiskit.circuit import Parameter, ParameterVector
-from qiskit.circuit.library import EfficientSU2, RealAmplitudes
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterVector
+from qiskit.circuit.library import EfficientSU2
+from qiskit.circuit.library import RealAmplitudes
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.opflow import (
-    CircuitSampler,
-    CircuitStateFn,
-    I,
-    ListOp,
-    StateFn,
-    SummedOp,
-    TensoredOp,
-    X,
-    Y,
-    Z,
-)
-from qiskit.opflow.gradients import Gradient, Hessian, NaturalGradient
-from qiskit.opflow.gradients.circuit_qfis import LinCombFull, OverlapBlockDiag, OverlapDiag
+from qiskit.opflow import CircuitSampler
+from qiskit.opflow import CircuitStateFn
+from qiskit.opflow import I
+from qiskit.opflow import ListOp
+from qiskit.opflow import StateFn
+from qiskit.opflow import SummedOp
+from qiskit.opflow import TensoredOp
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.opflow.gradients import Gradient
+from qiskit.opflow.gradients import Hessian
+from qiskit.opflow.gradients import NaturalGradient
+from qiskit.opflow.gradients.circuit_qfis import LinCombFull
+from qiskit.opflow.gradients.circuit_qfis import OverlapBlockDiag
+from qiskit.opflow.gradients.circuit_qfis import OverlapDiag
 from qiskit.opflow.gradients.qfi import QFI
 from qiskit.test import slow_test
-from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit.utils import algorithm_globals
+from qiskit.utils import QuantumInstance
 
 
 @ddt

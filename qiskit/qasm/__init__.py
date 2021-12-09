@@ -55,6 +55,8 @@ except ImportError:
 
 if HAS_PYGMENTS:
     try:
-        from qiskit.qasm.pygments import OpenQASMLexer, QasmHTMLStyle, QasmTerminalStyle
+        from qiskit.qasm.pygments import OpenQASMLexer
+        from qiskit.qasm.pygments import QasmHTMLStyle
+        from qiskit.qasm.pygments import QasmTerminalStyle
     except Exception:  # pylint: disable=broad-except
         HAS_PYGMENTS = False

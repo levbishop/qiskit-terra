@@ -14,10 +14,10 @@
 
 from __future__ import annotations
 
+from qiskit.transpiler.passes.optimization.template_matching.backward_match import BackwardMatch
+from qiskit.transpiler.passes.optimization.template_matching.backward_match import Match
+from qiskit.transpiler.passes.optimization.template_matching.backward_match import MatchingScenarios
 from qiskit.transpiler.passes.optimization.template_matching.backward_match import (
-    BackwardMatch,
-    Match,
-    MatchingScenarios,
     MatchingScenariosList,
 )
 from qiskit.transpiler.passes.optimization.template_matching.forward_match import ForwardMatch
@@ -27,5 +27,7 @@ from qiskit.transpiler.passes.optimization.template_matching.template_matching i
 )
 from qiskit.transpiler.passes.optimization.template_matching.template_substitution import (
     SubstitutionConfig,
+)
+from qiskit.transpiler.passes.optimization.template_matching.template_substitution import (
     TemplateSubstitution,
 )

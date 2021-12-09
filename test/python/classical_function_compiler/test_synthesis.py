@@ -13,7 +13,8 @@
 """Tests classicalfunction compiler synthesis."""
 from __future__ import annotations
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit.classicalfunction import classical_function as compile_classical_function
 from qiskit.circuit.library.standard_gates import XGate
 from qiskit.test import QiskitTestCase

@@ -23,7 +23,8 @@ For example::
 """
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 from typing import Callable, Iterable
 
 from qiskit.pulse.channels import Channel

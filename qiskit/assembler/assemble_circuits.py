@@ -13,8 +13,8 @@
 """Assemble function for converting a list of circuits into a qobj."""
 from __future__ import annotations
 
-import copy
 from collections import defaultdict
+import copy
 from typing import Dict, List
 
 from qiskit.assembler.assemble_schedules import _assemble_instructions as _assemble_schedule
@@ -22,20 +22,18 @@ from qiskit.assembler.run_config import RunConfig
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.classicalregister import Clbit
 from qiskit.exceptions import QiskitError
-from qiskit.qobj import (
-    GateCalibration,
-    PulseLibraryItem,
-    PulseQobjInstruction,
-    QasmExperimentCalibrations,
-    QasmQobj,
-    QasmQobjConfig,
-    QasmQobjExperiment,
-    QasmQobjExperimentConfig,
-    QasmQobjInstruction,
-    QobjExperimentHeader,
-    QobjHeader,
-    converters,
-)
+from qiskit.qobj import converters
+from qiskit.qobj import GateCalibration
+from qiskit.qobj import PulseLibraryItem
+from qiskit.qobj import PulseQobjInstruction
+from qiskit.qobj import QasmExperimentCalibrations
+from qiskit.qobj import QasmQobj
+from qiskit.qobj import QasmQobjConfig
+from qiskit.qobj import QasmQobjExperiment
+from qiskit.qobj import QasmQobjExperimentConfig
+from qiskit.qobj import QasmQobjInstruction
+from qiskit.qobj import QobjExperimentHeader
+from qiskit.qobj import QobjHeader
 from qiskit.tools.parallel import parallel_map
 
 PulseLibrary = Dict[str, List[complex]]

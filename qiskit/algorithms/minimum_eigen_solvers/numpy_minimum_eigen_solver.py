@@ -20,11 +20,9 @@ from typing import Callable
 import numpy as np
 
 from qiskit.algorithms.eigen_solvers.numpy_eigen_solver import NumPyEigensolver
-from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import (
-    ListOrDict,
-    MinimumEigensolver,
-    MinimumEigensolverResult,
-)
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import ListOrDict
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import MinimumEigensolver
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import MinimumEigensolverResult
 from qiskit.opflow import OperatorBase
 
 logger = logging.getLogger(__name__)

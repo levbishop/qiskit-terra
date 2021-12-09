@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit import circuit, pulse
+from qiskit import circuit
+from qiskit import pulse
 from qiskit.test import QiskitTestCase
 from qiskit.visualization.pulse_v2 import events
 

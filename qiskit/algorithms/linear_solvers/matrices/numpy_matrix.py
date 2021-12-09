@@ -17,7 +17,8 @@ from __future__ import annotations
 import numpy as np
 import scipy as sp
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.algorithms.linear_solvers.matrices.linear_system_matrix import LinearSystemMatrix
 
 

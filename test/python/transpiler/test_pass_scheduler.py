@@ -15,31 +15,30 @@
 from __future__ import annotations
 
 import io
+from logging import getLogger
+from logging import StreamHandler
 import sys
 import unittest.mock
-from logging import StreamHandler, getLogger
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.test import QiskitTestCase
-from qiskit.transpiler import PassManager, TranspilerError
-from qiskit.transpiler.runningpassmanager import (
-    ConditionalController,
-    DoWhileController,
-    FlowController,
-)
+from qiskit.transpiler import PassManager
+from qiskit.transpiler import TranspilerError
+from qiskit.transpiler.runningpassmanager import ConditionalController
+from qiskit.transpiler.runningpassmanager import DoWhileController
+from qiskit.transpiler.runningpassmanager import FlowController
 
-from ._dummy_passes import (
-    PassA_TP_NR_NP,
-    PassB_TP_RA_PA,
-    PassC_TP_RA_PA,
-    PassD_TP_NR_NP,
-    PassE_AP_NR_NP,
-    PassF_reduce_dag_property,
-    PassI_Bad_AP,
-    PassJ_Bad_NoReturn,
-    PassK_check_fixed_point_property,
-    PassM_AP_NR_NP,
-)
+from ._dummy_passes import PassA_TP_NR_NP
+from ._dummy_passes import PassB_TP_RA_PA
+from ._dummy_passes import PassC_TP_RA_PA
+from ._dummy_passes import PassD_TP_NR_NP
+from ._dummy_passes import PassE_AP_NR_NP
+from ._dummy_passes import PassF_reduce_dag_property
+from ._dummy_passes import PassI_Bad_AP
+from ._dummy_passes import PassJ_Bad_NoReturn
+from ._dummy_passes import PassK_check_fixed_point_property
+from ._dummy_passes import PassM_AP_NR_NP
 
 
 class SchedulerTestCase(QiskitTestCase):

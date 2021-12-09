@@ -17,52 +17,53 @@ from __future__ import annotations
 
 import warnings
 
-from qiskit.circuit import EquivalenceLibrary, Parameter, QuantumCircuit, QuantumRegister
-from qiskit.circuit.library.standard_gates import (
-    CCXGate,
-    CHGate,
-    CPhaseGate,
-    CRXGate,
-    CRYGate,
-    CRZGate,
-    CSwapGate,
-    CSXGate,
-    CU1Gate,
-    CU3Gate,
-    CUGate,
-    CXGate,
-    CYGate,
-    CZGate,
-    DCXGate,
-    ECRGate,
-    HGate,
-    MSGate,
-    PhaseGate,
-    RCCXGate,
-    RGate,
-    RXGate,
-    RXXGate,
-    RYGate,
-    RYYGate,
-    RZGate,
-    RZXGate,
-    RZZGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    SXdgGate,
-    SXGate,
-    TdgGate,
-    TGate,
-    U1Gate,
-    U2Gate,
-    U3Gate,
-    UGate,
-    XGate,
-    YGate,
-    ZGate,
-    iSwapGate,
-)
+from qiskit.circuit import EquivalenceLibrary
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit.library.standard_gates import CCXGate
+from qiskit.circuit.library.standard_gates import CHGate
+from qiskit.circuit.library.standard_gates import CPhaseGate
+from qiskit.circuit.library.standard_gates import CRXGate
+from qiskit.circuit.library.standard_gates import CRYGate
+from qiskit.circuit.library.standard_gates import CRZGate
+from qiskit.circuit.library.standard_gates import CSwapGate
+from qiskit.circuit.library.standard_gates import CSXGate
+from qiskit.circuit.library.standard_gates import CU1Gate
+from qiskit.circuit.library.standard_gates import CU3Gate
+from qiskit.circuit.library.standard_gates import CUGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import CYGate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import DCXGate
+from qiskit.circuit.library.standard_gates import ECRGate
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import iSwapGate
+from qiskit.circuit.library.standard_gates import MSGate
+from qiskit.circuit.library.standard_gates import PhaseGate
+from qiskit.circuit.library.standard_gates import RCCXGate
+from qiskit.circuit.library.standard_gates import RGate
+from qiskit.circuit.library.standard_gates import RXGate
+from qiskit.circuit.library.standard_gates import RXXGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RYYGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import RZXGate
+from qiskit.circuit.library.standard_gates import RZZGate
+from qiskit.circuit.library.standard_gates import SdgGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.library.standard_gates import SXdgGate
+from qiskit.circuit.library.standard_gates import SXGate
+from qiskit.circuit.library.standard_gates import TdgGate
+from qiskit.circuit.library.standard_gates import TGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import U2Gate
+from qiskit.circuit.library.standard_gates import U3Gate
+from qiskit.circuit.library.standard_gates import UGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.qasm import pi
 from qiskit.quantum_info.synthesis.ion_decompose import cnot_rxx_decompose
 

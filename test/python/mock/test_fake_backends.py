@@ -16,7 +16,12 @@ from __future__ import annotations
 import math
 import unittest
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, assemble, schedule, transpile
+from qiskit import assemble
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import schedule
+from qiskit import transpile
 from qiskit.pulse import Schedule
 from qiskit.qobj import PulseQobj
 from qiskit.test import QiskitTestCase

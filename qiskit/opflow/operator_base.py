@@ -14,17 +14,21 @@
 
 from __future__ import annotations
 
-import itertools
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 from copy import deepcopy
+import itertools
 from typing import cast
 
 import numpy as np
-from scipy.sparse import csr_matrix, spmatrix
+from scipy.sparse import csr_matrix
+from scipy.sparse import spmatrix
 
-from qiskit.circuit import ParameterExpression, ParameterVector
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.opflow.exceptions import OpflowError
-from qiskit.opflow.mixins import StarAlgebraMixin, TensorMixin
+from qiskit.opflow.mixins import StarAlgebraMixin
+from qiskit.opflow.mixins import TensorMixin
 from qiskit.quantum_info import Statevector
 from qiskit.utils import algorithm_globals
 

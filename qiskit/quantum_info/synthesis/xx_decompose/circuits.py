@@ -24,24 +24,25 @@ Output:
 
 from __future__ import annotations
 
-import math
 from functools import reduce
+import math
 from operator import itemgetter
 
 import numpy as np
 
-from qiskit.circuit.library.standard_gates import RXXGate, RYYGate, RZGate
+from qiskit.circuit.library.standard_gates import RXXGate
+from qiskit.circuit.library.standard_gates import RYYGate
+from qiskit.circuit.library.standard_gates import RZGate
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.synthesis.xx_decompose.paths import decomposition_hop
-from qiskit.quantum_info.synthesis.xx_decompose.utilities import EPSILON, safe_arccos
-from qiskit.quantum_info.synthesis.xx_decompose.weyl import (
-    apply_reflection,
-    apply_shift,
-    canonical_rotation_circuit,
-    reflection_options,
-    shift_options,
-)
+from qiskit.quantum_info.synthesis.xx_decompose.utilities import EPSILON
+from qiskit.quantum_info.synthesis.xx_decompose.utilities import safe_arccos
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import apply_reflection
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import apply_shift
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import canonical_rotation_circuit
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import reflection_options
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import shift_options
 
 # pylint:disable=invalid-name
 def decompose_xxyy_into_xxyy_xx(a_target, b_target, a_source, b_source, interaction):

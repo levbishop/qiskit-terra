@@ -22,14 +22,13 @@ import numpy
 
 import qiskit
 from qiskit import circuit
-from qiskit.algorithms.phase_estimators.phase_estimation_result import (
-    PhaseEstimationResult,
-    _sort_phases,
-)
+from qiskit.algorithms.phase_estimators.phase_estimation_result import _sort_phases
+from qiskit.algorithms.phase_estimators.phase_estimation_result import PhaseEstimationResult
 from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.classicalregister import ClassicalRegister
-from qiskit.providers import Backend, BaseBackend
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
 from qiskit.result import Result
 from qiskit.utils import QuantumInstance
 

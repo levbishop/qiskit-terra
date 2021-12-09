@@ -17,10 +17,14 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import EquivalenceLibrary, Gate, Parameter, QuantumCircuit
+from qiskit.circuit import EquivalenceLibrary
+from qiskit.circuit import Gate
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library import U2Gate
-from qiskit.converters import circuit_to_gate, circuit_to_instruction
+from qiskit.converters import circuit_to_gate
+from qiskit.converters import circuit_to_instruction
 from qiskit.test import QiskitTestCase
 
 

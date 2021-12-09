@@ -23,17 +23,16 @@ from typing import Callable
 
 import numpy as np
 
-from qiskit.circuit.library.standard_gates import RXXGate, RZXGate
+from qiskit.circuit.library.standard_gates import RXXGate
+from qiskit.circuit.library.standard_gates import RZXGate
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.synthesis.one_qubit_decompose import ONE_QUBIT_EULER_BASIS_GATES
 from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylDecomposition
-from qiskit.quantum_info.synthesis.xx_decompose.circuits import (
-    apply_reflection,
-    apply_shift,
-    canonical_xx_circuit,
-)
+from qiskit.quantum_info.synthesis.xx_decompose.circuits import apply_reflection
+from qiskit.quantum_info.synthesis.xx_decompose.circuits import apply_shift
+from qiskit.quantum_info.synthesis.xx_decompose.circuits import canonical_xx_circuit
 from qiskit.quantum_info.synthesis.xx_decompose.polytopes import XXPolytope
 from qiskit.quantum_info.synthesis.xx_decompose.utilities import EPSILON
 

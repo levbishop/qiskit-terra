@@ -14,12 +14,13 @@
 
 from __future__ import annotations
 
-import warnings
 from typing import Callable
+import warnings
 
 import numpy
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library import GroverOperator
 
 

@@ -13,12 +13,14 @@
 """VF2Layout pass to find a layout using subgraph isomorphism"""
 from __future__ import annotations
 
+from enum import Enum
 import logging
 import random
 import time
-from enum import Enum
 
-from retworkx import PyDiGraph, PyGraph, vf2_mapping
+from retworkx import PyDiGraph
+from retworkx import PyGraph
+from retworkx import vf2_mapping
 
 from qiskit.providers.exceptions import BackendPropertyError
 from qiskit.transpiler.basepasses import AnalysisPass

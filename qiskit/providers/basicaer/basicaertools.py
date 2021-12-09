@@ -16,7 +16,8 @@
 
 from __future__ import annotations
 
-from string import ascii_lowercase, ascii_uppercase
+from string import ascii_lowercase
+from string import ascii_uppercase
 
 import numpy as np
 

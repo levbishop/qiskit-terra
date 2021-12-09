@@ -16,15 +16,13 @@ Base Fake Qobj.
 
 from __future__ import annotations
 
-from qiskit.qobj import (
-    QasmQobj,
-    QasmQobjConfig,
-    QasmQobjExperiment,
-    QasmQobjExperimentConfig,
-    QasmQobjInstruction,
-    QobjExperimentHeader,
-    QobjHeader,
-)
+from qiskit.qobj import QasmQobj
+from qiskit.qobj import QasmQobjConfig
+from qiskit.qobj import QasmQobjExperiment
+from qiskit.qobj import QasmQobjExperimentConfig
+from qiskit.qobj import QasmQobjInstruction
+from qiskit.qobj import QobjExperimentHeader
+from qiskit.qobj import QobjHeader
 from qiskit.test.mock.fake_qasm_simulator import FakeQasmSimulator
 
 

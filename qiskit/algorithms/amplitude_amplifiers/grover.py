@@ -20,13 +20,13 @@ from typing import Iterator
 
 import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
 from qiskit.algorithms.amplitude_amplifiers.amplification_problem import AmplificationProblem
-from qiskit.algorithms.amplitude_amplifiers.amplitude_amplifier import (
-    AmplitudeAmplifier,
-    AmplitudeAmplifierResult,
-)
-from qiskit.providers import Backend, BaseBackend
+from qiskit.algorithms.amplitude_amplifiers.amplitude_amplifier import AmplitudeAmplifier
+from qiskit.algorithms.amplitude_amplifiers.amplitude_amplifier import AmplitudeAmplifierResult
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
 from qiskit.quantum_info import partial_trace
 from qiskit.utils import QuantumInstance
 

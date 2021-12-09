@@ -15,12 +15,16 @@
 from __future__ import annotations
 
 import math
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
-from ddt import data, ddt, idata, unpack
+from ddt import data
+from ddt import ddt
+from ddt import idata
+from ddt import unpack
 
-from qiskit import Aer, ClassicalRegister
+from qiskit import Aer
+from qiskit import ClassicalRegister
 from qiskit.algorithms import Shor
 from qiskit.test import slow_test
 from qiskit.utils import QuantumInstance

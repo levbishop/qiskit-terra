@@ -20,8 +20,8 @@ import random
 import unittest
 
 import ddt
-import numpy as np
 from numpy import pi
+import numpy as np
 
 from qiskit.quantum_info.synthesis.xx_decompose.polytopes import XXPolytope
 

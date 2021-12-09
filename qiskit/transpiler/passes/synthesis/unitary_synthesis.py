@@ -15,16 +15,15 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from math import inf, pi
+from math import inf
+from math import pi
 
-from qiskit.circuit.library.standard_gates import (
-    CXGate,
-    CZGate,
-    ECRGate,
-    RXXGate,
-    RZXGate,
-    iSwapGate,
-)
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import ECRGate
+from qiskit.circuit.library.standard_gates import iSwapGate
+from qiskit.circuit.library.standard_gates import RXXGate
+from qiskit.circuit.library.standard_gates import RZXGate
 from qiskit.converters import circuit_to_dag
 from qiskit.dagcircuit.dagcircuit import DAGCircuit
 from qiskit.extensions.quantum_initializer import isometry

@@ -14,22 +14,26 @@
 
 from __future__ import annotations
 
-import warnings
 from abc import abstractmethod
 from typing import Callable, Iterable, Union
+import warnings
 
 import numpy as np
 
-from qiskit.circuit import ParameterExpression, ParameterVector
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.opflow.converters.converter_base import ConverterBase
-from qiskit.opflow.expectations import ExpectationBase, PauliExpectation
+from qiskit.opflow.expectations import ExpectationBase
+from qiskit.opflow.expectations import PauliExpectation
 from qiskit.opflow.list_ops.composed_op import ComposedOp
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.list_ops.tensored_op import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
-from qiskit.opflow.state_fns import OperatorStateFn, StateFn
-from qiskit.providers import Backend, BaseBackend
+from qiskit.opflow.state_fns import OperatorStateFn
+from qiskit.opflow.state_fns import StateFn
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
 from qiskit.utils.quantum_instance import QuantumInstance
 
 OperatorType = Union[StateFn, PrimitiveOp, ListOp]

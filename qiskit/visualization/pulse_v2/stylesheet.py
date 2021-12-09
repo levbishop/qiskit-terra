@@ -33,10 +33,11 @@ the appearance of the output image.
 
 from __future__ import annotations
 
-import warnings
 from typing import Any, Mapping
+import warnings
 
-from qiskit.visualization.pulse_v2 import generators, layouts
+from qiskit.visualization.pulse_v2 import generators
+from qiskit.visualization.pulse_v2 import layouts
 
 
 class QiskitPulseStyle(dict):

@@ -15,8 +15,11 @@ Visualization function for animation of state transitions by applying gates to s
 """
 from __future__ import annotations
 
+from math import acos
+from math import cos
+from math import sin
+from math import sqrt
 import sys
-from math import acos, cos, sin, sqrt
 
 import numpy as np
 

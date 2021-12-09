@@ -17,7 +17,8 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.quantum_info.operators.symplectic import PauliTable, pauli_basis
+from qiskit.quantum_info.operators.symplectic import pauli_basis
+from qiskit.quantum_info.operators.symplectic import PauliTable
 from qiskit.test import QiskitTestCase
 
 

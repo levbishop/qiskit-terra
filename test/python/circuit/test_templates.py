@@ -14,15 +14,16 @@
 
 from __future__ import annotations
 
-import unittest
-from inspect import getmembers, isfunction
+from inspect import getmembers
+from inspect import isfunction
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
-import qiskit.circuit.library.templates as templib
 from qiskit import QuantumCircuit
+import qiskit.circuit.library.templates as templib
 from qiskit.quantum_info.operators import Operator
 from qiskit.test import QiskitTestCase
 

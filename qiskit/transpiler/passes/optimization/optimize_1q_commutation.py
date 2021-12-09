@@ -14,11 +14,12 @@
 
 from __future__ import annotations
 
-import logging
 from copy import copy
+import logging
 
 from qiskit.circuit import QuantumCircuit
-from qiskit.circuit.library.standard_gates import CXGate, RZXGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import RZXGate
 from qiskit.converters import circuit_to_dag
 from qiskit.dagcircuit import DAGOpNode
 from qiskit.transpiler.basepasses import TransformationPass

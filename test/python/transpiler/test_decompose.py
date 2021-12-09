@@ -16,8 +16,12 @@ from __future__ import annotations
 
 from numpy import pi
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.circuit.library import CCXGate, HGate, U2Gate
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit.library import CCXGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import U2Gate
 from qiskit.converters import circuit_to_dag
 from qiskit.quantum_info.operators import Operator
 from qiskit.test import QiskitTestCase

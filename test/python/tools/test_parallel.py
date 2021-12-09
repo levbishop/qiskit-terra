@@ -16,7 +16,9 @@ from __future__ import annotations
 import os
 import time
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.pulse import Schedule
 from qiskit.test import QiskitTestCase
 from qiskit.tools.parallel import parallel_map

@@ -20,7 +20,8 @@ import numpy as np
 from scipy.sparse import spmatrix
 
 from qiskit import QuantumCircuit
-from qiskit.circuit import Instruction, ParameterExpression
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
 from qiskit.extensions.hamiltonian_gate import HamiltonianGate
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.list_ops.summed_op import SummedOp
@@ -28,7 +29,8 @@ from qiskit.opflow.list_ops.tensored_op import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
-from qiskit.quantum_info import Operator, Statevector
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
 from qiskit.utils import arithmetic
 
 
@@ -196,7 +198,9 @@ class MatrixOp(PrimitiveOp):
 
         # pylint: disable=cyclic-import
         from qiskit.opflow.list_ops import ListOp
-        from qiskit.opflow.state_fns import OperatorStateFn, StateFn, VectorStateFn
+        from qiskit.opflow.state_fns import OperatorStateFn
+        from qiskit.opflow.state_fns import StateFn
+        from qiskit.opflow.state_fns import VectorStateFn
 
         new_front = None
 

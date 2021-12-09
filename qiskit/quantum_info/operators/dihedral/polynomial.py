@@ -16,8 +16,8 @@ SpecialPolynomial class.
 from __future__ import annotations
 
 import copy
-import itertools
 from functools import reduce
+import itertools
 from itertools import combinations
 from operator import mul
 

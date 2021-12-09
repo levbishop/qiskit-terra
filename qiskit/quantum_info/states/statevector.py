@@ -17,8 +17,8 @@ Statevector quantum state class.
 from __future__ import annotations
 
 import copy
-import re
 from numbers import Number
+import re
 
 import numpy as np
 
@@ -29,11 +29,13 @@ from qiskit.quantum_info.operators.mixins.tolerances import TolerancesMixin
 from qiskit.quantum_info.operators.op_shape import OpShape
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.predicates import matrix_equal
-from qiskit.quantum_info.operators.symplectic import Pauli, SparsePauliOp
+from qiskit.quantum_info.operators.symplectic import Pauli
+from qiskit.quantum_info.operators.symplectic import SparsePauliOp
 from qiskit.quantum_info.states.quantum_state import QuantumState
 
 # pylint: disable=no-name-in-module
-from qiskit.quantum_info.states.cython.exp_value import expval_pauli_no_x, expval_pauli_with_x
+from qiskit.quantum_info.states.cython.exp_value import expval_pauli_no_x
+from qiskit.quantum_info.states.cython.exp_value import expval_pauli_with_x
 
 
 class Statevector(QuantumState, TolerancesMixin):

@@ -24,7 +24,8 @@ from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.barrier import Barrier
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.base_operator import BaseOperator
-from qiskit.quantum_info.operators.mixins import AdjointMixin, MultiplyMixin
+from qiskit.quantum_info.operators.mixins import AdjointMixin
+from qiskit.quantum_info.operators.mixins import MultiplyMixin
 
 
 class BasePauli(BaseOperator, AdjointMixin, MultiplyMixin):

@@ -125,58 +125,54 @@ Synthesis
 
 from __future__ import annotations
 
-from qiskit.quantum_info.analysis import hellinger_distance, hellinger_fidelity
-from qiskit.quantum_info.operators import (
-    Clifford,
-    Operator,
-    Pauli,
-    PauliList,
-    PauliTable,
-    ScalarOp,
-    SparsePauliOp,
-    StabilizerTable,
-    pauli_basis,
-    pauli_group,
-)
-from qiskit.quantum_info.operators.channel import PTM, Chi, Choi, Kraus, Stinespring, SuperOp
+from qiskit.quantum_info.analysis import hellinger_distance
+from qiskit.quantum_info.analysis import hellinger_fidelity
+from qiskit.quantum_info.operators import Clifford
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info.operators import Pauli
+from qiskit.quantum_info.operators import pauli_basis
+from qiskit.quantum_info.operators import pauli_group
+from qiskit.quantum_info.operators import PauliList
+from qiskit.quantum_info.operators import PauliTable
+from qiskit.quantum_info.operators import ScalarOp
+from qiskit.quantum_info.operators import SparsePauliOp
+from qiskit.quantum_info.operators import StabilizerTable
+from qiskit.quantum_info.operators.channel import Chi
+from qiskit.quantum_info.operators.channel import Choi
+from qiskit.quantum_info.operators.channel import Kraus
+from qiskit.quantum_info.operators.channel import PTM
+from qiskit.quantum_info.operators.channel import Stinespring
+from qiskit.quantum_info.operators.channel import SuperOp
 from qiskit.quantum_info.operators.dihedral import CNOTDihedral
-from qiskit.quantum_info.operators.measures import (
-    average_gate_fidelity,
-    diamond_norm,
-    gate_error,
-    process_fidelity,
-)
-from qiskit.quantum_info.random import (
-    random_clifford,
-    random_cnotdihedral,
-    random_density_matrix,
-    random_hermitian,
-    random_pauli,
-    random_pauli_list,
-    random_pauli_table,
-    random_quantum_channel,
-    random_stabilizer_table,
-    random_statevector,
-    random_unitary,
-)
-from qiskit.quantum_info.states import (
-    DensityMatrix,
-    StabilizerState,
-    Statevector,
-    concurrence,
-    entanglement_of_formation,
-    entropy,
-    mutual_information,
-    partial_trace,
-    purity,
-    shannon_entropy,
-    state_fidelity,
-)
-from qiskit.quantum_info.synthesis import (
-    OneQubitEulerDecomposer,
-    Quaternion,
-    TwoQubitBasisDecomposer,
-    XXDecomposer,
-    decompose_clifford,
-    two_qubit_cnot_decompose,
-)
+from qiskit.quantum_info.operators.measures import average_gate_fidelity
+from qiskit.quantum_info.operators.measures import diamond_norm
+from qiskit.quantum_info.operators.measures import gate_error
+from qiskit.quantum_info.operators.measures import process_fidelity
+from qiskit.quantum_info.random import random_clifford
+from qiskit.quantum_info.random import random_cnotdihedral
+from qiskit.quantum_info.random import random_density_matrix
+from qiskit.quantum_info.random import random_hermitian
+from qiskit.quantum_info.random import random_pauli
+from qiskit.quantum_info.random import random_pauli_list
+from qiskit.quantum_info.random import random_pauli_table
+from qiskit.quantum_info.random import random_quantum_channel
+from qiskit.quantum_info.random import random_stabilizer_table
+from qiskit.quantum_info.random import random_statevector
+from qiskit.quantum_info.random import random_unitary
+from qiskit.quantum_info.states import concurrence
+from qiskit.quantum_info.states import DensityMatrix
+from qiskit.quantum_info.states import entanglement_of_formation
+from qiskit.quantum_info.states import entropy
+from qiskit.quantum_info.states import mutual_information
+from qiskit.quantum_info.states import partial_trace
+from qiskit.quantum_info.states import purity
+from qiskit.quantum_info.states import shannon_entropy
+from qiskit.quantum_info.states import StabilizerState
+from qiskit.quantum_info.states import state_fidelity
+from qiskit.quantum_info.states import Statevector
+from qiskit.quantum_info.synthesis import decompose_clifford
+from qiskit.quantum_info.synthesis import OneQubitEulerDecomposer
+from qiskit.quantum_info.synthesis import Quaternion
+from qiskit.quantum_info.synthesis import two_qubit_cnot_decompose
+from qiskit.quantum_info.synthesis import TwoQubitBasisDecomposer
+from qiskit.quantum_info.synthesis import XXDecomposer

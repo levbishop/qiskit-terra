@@ -23,4 +23,5 @@ Pulse scheduling methods.
 
 from __future__ import annotations
 
-from qiskit.scheduler.methods.basic import as_late_as_possible, as_soon_as_possible
+from qiskit.scheduler.methods.basic import as_late_as_possible
+from qiskit.scheduler.methods.basic import as_soon_as_possible

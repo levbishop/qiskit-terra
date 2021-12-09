@@ -14,28 +14,33 @@
 
 from __future__ import annotations
 
-import unittest
 from test import combine
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit import Qubit
-from qiskit.circuit.library import GraphState, U2Gate, U3Gate
-from qiskit.compiler import assemble, transpile
+from qiskit.circuit.library import GraphState
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
+from qiskit.compiler import assemble
+from qiskit.compiler import transpile
 from qiskit.converters import circuit_to_dag
 from qiskit.quantum_info import random_unitary
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import (
-    FakeJohannesburg,
-    FakeMelbourne,
-    FakePoughkeepsie,
-    FakeRueschlikon,
-    FakeTenerife,
-    FakeTokyo,
-)
-from qiskit.transpiler import CouplingMap, Layout
+from qiskit.test.mock import FakeJohannesburg
+from qiskit.test.mock import FakeMelbourne
+from qiskit.test.mock import FakePoughkeepsie
+from qiskit.test.mock import FakeRueschlikon
+from qiskit.test.mock import FakeTenerife
+from qiskit.test.mock import FakeTokyo
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import Layout
 
 
 def emptycircuit():

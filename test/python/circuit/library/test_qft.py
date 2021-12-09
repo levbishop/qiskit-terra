@@ -16,8 +16,10 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
 from qiskit import transpile
 from qiskit.circuit import QuantumCircuit

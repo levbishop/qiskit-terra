@@ -17,22 +17,23 @@ from __future__ import annotations
 from qiskit.quantum_info.operators.operator import Operator
 
 # These must come after to avoid cyclic import problems?
-from qiskit.quantum_info.operators.channel import PTM, Chi, Choi, Kraus, Stinespring, SuperOp
+from qiskit.quantum_info.operators.channel import Chi
+from qiskit.quantum_info.operators.channel import Choi
+from qiskit.quantum_info.operators.channel import Kraus
+from qiskit.quantum_info.operators.channel import PTM
+from qiskit.quantum_info.operators.channel import Stinespring
+from qiskit.quantum_info.operators.channel import SuperOp
 from qiskit.quantum_info.operators.dihedral import CNOTDihedral
-from qiskit.quantum_info.operators.measures import (
-    average_gate_fidelity,
-    diamond_norm,
-    gate_error,
-    process_fidelity,
-)
+from qiskit.quantum_info.operators.measures import average_gate_fidelity
+from qiskit.quantum_info.operators.measures import diamond_norm
+from qiskit.quantum_info.operators.measures import gate_error
+from qiskit.quantum_info.operators.measures import process_fidelity
 from qiskit.quantum_info.operators.pauli import pauli_group
 from qiskit.quantum_info.operators.scalar_op import ScalarOp
-from qiskit.quantum_info.operators.symplectic import (
-    Clifford,
-    Pauli,
-    PauliList,
-    PauliTable,
-    SparsePauliOp,
-    StabilizerTable,
-    pauli_basis,
-)
+from qiskit.quantum_info.operators.symplectic import Clifford
+from qiskit.quantum_info.operators.symplectic import Pauli
+from qiskit.quantum_info.operators.symplectic import pauli_basis
+from qiskit.quantum_info.operators.symplectic import PauliList
+from qiskit.quantum_info.operators.symplectic import PauliTable
+from qiskit.quantum_info.operators.symplectic import SparsePauliOp
+from qiskit.quantum_info.operators.symplectic import StabilizerTable

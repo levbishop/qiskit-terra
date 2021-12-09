@@ -18,7 +18,8 @@ from typing import Any, Callable
 
 from numpy import pi
 
-from qiskit.circuit import Parameter, QuantumCircuit
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library.n_local.two_local import TwoLocal
 from qiskit.circuit.library.standard_gates import RZGate
 

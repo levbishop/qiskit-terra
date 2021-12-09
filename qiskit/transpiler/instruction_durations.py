@@ -13,10 +13,14 @@
 """Durations of instructions, one of transpiler configurations."""
 from __future__ import annotations
 
-import warnings
 from typing import Iterable, List, Optional, Tuple, Union
+import warnings
 
-from qiskit.circuit import Barrier, Delay, Instruction, ParameterExpression, Qubit
+from qiskit.circuit import Barrier
+from qiskit.circuit import Delay
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import Qubit
 from qiskit.circuit.duration import duration_in_dt
 from qiskit.providers import BaseBackend
 from qiskit.transpiler.exceptions import TranspilerError

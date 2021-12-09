@@ -14,34 +14,48 @@
 
 from __future__ import annotations
 
-import logging
-import unittest
 from functools import partial
+import logging
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
-from qiskit import BasicAer, QuantumCircuit
-from qiskit.algorithms import VQE, AlgorithmError
-from qiskit.algorithms.optimizers import CG, COBYLA, L_BFGS_B, P_BFGS, QNSPSA, SLSQP, SPSA, TNC
-from qiskit.circuit.library import EfficientSU2, RealAmplitudes, TwoLocal
+from qiskit import BasicAer
+from qiskit import QuantumCircuit
+from qiskit.algorithms import AlgorithmError
+from qiskit.algorithms import VQE
+from qiskit.algorithms.optimizers import CG
+from qiskit.algorithms.optimizers import COBYLA
+from qiskit.algorithms.optimizers import L_BFGS_B
+from qiskit.algorithms.optimizers import P_BFGS
+from qiskit.algorithms.optimizers import QNSPSA
+from qiskit.algorithms.optimizers import SLSQP
+from qiskit.algorithms.optimizers import SPSA
+from qiskit.algorithms.optimizers import TNC
+from qiskit.circuit.library import EfficientSU2
+from qiskit.circuit.library import RealAmplitudes
+from qiskit.circuit.library import TwoLocal
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.opflow import (
-    AerPauliExpectation,
-    Gradient,
-    I,
-    MatrixExpectation,
-    PauliExpectation,
-    PauliSumOp,
-    PrimitiveOp,
-    TwoQubitReduction,
-    X,
-    Z,
-)
-from qiskit.transpiler import PassManager, PassManagerConfig
+from qiskit.opflow import AerPauliExpectation
+from qiskit.opflow import Gradient
+from qiskit.opflow import I
+from qiskit.opflow import MatrixExpectation
+from qiskit.opflow import PauliExpectation
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import PrimitiveOp
+from qiskit.opflow import TwoQubitReduction
+from qiskit.opflow import X
+from qiskit.opflow import Z
+from qiskit.transpiler import PassManager
+from qiskit.transpiler import PassManagerConfig
 from qiskit.transpiler.preset_passmanagers import level_1_pass_manager
-from qiskit.utils import QuantumInstance, algorithm_globals, has_aer
+from qiskit.utils import algorithm_globals
+from qiskit.utils import has_aer
+from qiskit.utils import QuantumInstance
 
 from ..transpiler._dummy_passes import DummyAP
 

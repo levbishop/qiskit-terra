@@ -20,7 +20,8 @@ import numpy as np
 
 import qiskit
 from qiskit import QuantumCircuit
-from qiskit.circuit import Instruction, ParameterExpression
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
 from qiskit.circuit.library import IGate
 from qiskit.opflow.list_ops.tensored_op import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase

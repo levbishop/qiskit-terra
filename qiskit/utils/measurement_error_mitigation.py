@@ -23,12 +23,10 @@ from qiskit.circuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
 from qiskit.providers import BaseBackend
 from qiskit.qobj import QasmQobj
-from qiskit.utils.mitigation import (
-    CompleteMeasFitter,
-    TensoredMeasFitter,
-    complete_meas_cal,
-    tensored_meas_cal,
-)
+from qiskit.utils.mitigation import complete_meas_cal
+from qiskit.utils.mitigation import CompleteMeasFitter
+from qiskit.utils.mitigation import tensored_meas_cal
+from qiskit.utils.mitigation import TensoredMeasFitter
 
 # pylint: disable=invalid-name
 

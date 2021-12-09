@@ -14,14 +14,16 @@
 
 from __future__ import annotations
 
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
-from qiskit.quantum_info import DensityMatrix, Statevector
-from qiskit.quantum_info.random import random_density_matrix, random_statevector
+from qiskit.quantum_info import DensityMatrix
+from qiskit.quantum_info import Statevector
+from qiskit.quantum_info.random import random_density_matrix
+from qiskit.quantum_info.random import random_statevector
 from qiskit.test import QiskitTestCase
 
 

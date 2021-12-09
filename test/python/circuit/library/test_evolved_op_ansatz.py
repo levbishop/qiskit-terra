@@ -17,7 +17,11 @@ from __future__ import annotations
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import EvolvedOperatorAnsatz
-from qiskit.opflow import I, MatrixEvolution, X, Y, Z
+from qiskit.opflow import I
+from qiskit.opflow import MatrixEvolution
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
 from qiskit.test import QiskitTestCase
 
 

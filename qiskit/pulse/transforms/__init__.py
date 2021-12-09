@@ -83,24 +83,20 @@ A sequence of transformations to generate a target code.
 
 from __future__ import annotations
 
-from qiskit.pulse.transforms.alignments import (
-    AlignEquispaced,
-    AlignFunc,
-    AlignLeft,
-    AlignmentKind,
-    AlignRight,
-    AlignSequential,
-)
+from qiskit.pulse.transforms.alignments import AlignEquispaced
+from qiskit.pulse.transforms.alignments import AlignFunc
+from qiskit.pulse.transforms.alignments import AlignLeft
+from qiskit.pulse.transforms.alignments import AlignmentKind
+from qiskit.pulse.transforms.alignments import AlignRight
+from qiskit.pulse.transforms.alignments import AlignSequential
 from qiskit.pulse.transforms.base_transforms import target_qobj_transform
-from qiskit.pulse.transforms.canonicalization import (
-    add_implicit_acquires,
-    align_measures,
-    block_to_schedule,
-    compress_pulses,
-    flatten,
-    inline_subroutines,
-    pad,
-    remove_directives,
-    remove_trivial_barriers,
-)
+from qiskit.pulse.transforms.canonicalization import add_implicit_acquires
+from qiskit.pulse.transforms.canonicalization import align_measures
+from qiskit.pulse.transforms.canonicalization import block_to_schedule
+from qiskit.pulse.transforms.canonicalization import compress_pulses
+from qiskit.pulse.transforms.canonicalization import flatten
+from qiskit.pulse.transforms.canonicalization import inline_subroutines
+from qiskit.pulse.transforms.canonicalization import pad
+from qiskit.pulse.transforms.canonicalization import remove_directives
+from qiskit.pulse.transforms.canonicalization import remove_trivial_barriers
 from qiskit.pulse.transforms.dag import block_to_dag

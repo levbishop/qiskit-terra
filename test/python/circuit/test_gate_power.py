@@ -17,11 +17,16 @@ from __future__ import annotations
 
 import unittest
 
-from ddt import data, ddt
-from numpy import array, eye
+from ddt import data
+from ddt import ddt
+from numpy import array
+from numpy import eye
 
-from qiskit.circuit import Gate, QuantumCircuit
-from qiskit.extensions import CXGate, SGate, UnitaryGate
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
+from qiskit.extensions import CXGate
+from qiskit.extensions import SGate
+from qiskit.extensions import UnitaryGate
 from qiskit.quantum_info.operators import Operator
 from qiskit.test import QiskitTestCase
 

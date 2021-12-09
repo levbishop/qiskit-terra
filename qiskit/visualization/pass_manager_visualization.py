@@ -28,7 +28,8 @@ except ImportError:
     HAS_PIL = False
 
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.transpiler.basepasses import AnalysisPass, TransformationPass
+from qiskit.transpiler.basepasses import AnalysisPass
+from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.visualization import utils
 from qiskit.visualization.exceptions import VisualizationError
 

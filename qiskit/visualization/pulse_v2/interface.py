@@ -27,10 +27,16 @@ from typing import Any
 
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.providers import BaseBackend
-from qiskit.pulse import ParametricPulse, Schedule, ScheduleBlock, Waveform
+from qiskit.pulse import ParametricPulse
+from qiskit.pulse import Schedule
+from qiskit.pulse import ScheduleBlock
+from qiskit.pulse import Waveform
 from qiskit.pulse.channels import Channel
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.pulse_v2 import core, device_info, stylesheet, types
+from qiskit.visualization.pulse_v2 import core
+from qiskit.visualization.pulse_v2 import device_info
+from qiskit.visualization.pulse_v2 import stylesheet
+from qiskit.visualization.pulse_v2 import types
 
 
 def draw(

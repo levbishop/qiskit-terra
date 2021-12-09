@@ -17,15 +17,24 @@
 
 from __future__ import annotations
 
-import unittest
 from io import StringIO
+import unittest
 
 import ddt
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
-from qiskit.circuit import Clbit, Instruction, Parameter, Qubit
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
+from qiskit.circuit import Clbit
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import Qubit
 from qiskit.qasm import pi
-from qiskit.qasm3 import Exporter, QASM3ExporterError, dump, dumps
+from qiskit.qasm3 import dump
+from qiskit.qasm3 import dumps
+from qiskit.qasm3 import Exporter
+from qiskit.qasm3 import QASM3ExporterError
 from qiskit.qasm3.exporter import QASM3Builder
 from qiskit.qasm3.printer import BasicPrinter
 from qiskit.test import QiskitTestCase

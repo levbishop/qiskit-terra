@@ -16,12 +16,13 @@ from __future__ import annotations
 
 from functools import reduce
 from numbers import Number
-from typing import Any, Callable, Iterator, Sequence, cast
+from typing import Any, Callable, cast, Iterator, Sequence
 
 import numpy as np
 from scipy.sparse import spmatrix
 
-from qiskit.circuit import ParameterExpression, QuantumCircuit
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import QuantumCircuit
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.quantum_info import Statevector

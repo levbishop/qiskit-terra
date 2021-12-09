@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.singapore.fake_singapore import FakeLegacySingapore, FakeSingapore
+from qiskit.test.mock.backends.singapore.fake_singapore import FakeLegacySingapore
+from qiskit.test.mock.backends.singapore.fake_singapore import FakeSingapore

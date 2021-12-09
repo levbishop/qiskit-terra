@@ -15,34 +15,33 @@
 
 from __future__ import annotations
 
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
-from qiskit.circuit import Gate, QuantumCircuit, QuantumRegister
-from qiskit.circuit.library import (
-    CXGate,
-    CZGate,
-    HGate,
-    IGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import SdgGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info import random_clifford
-from qiskit.quantum_info.operators import Clifford, Operator
+from qiskit.quantum_info.operators import Clifford
+from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_circuit
-from qiskit.quantum_info.synthesis.clifford_decompose import (
-    decompose_clifford_ag,
-    decompose_clifford_bm,
-    decompose_clifford_greedy,
-)
+from qiskit.quantum_info.synthesis.clifford_decompose import decompose_clifford_ag
+from qiskit.quantum_info.synthesis.clifford_decompose import decompose_clifford_bm
+from qiskit.quantum_info.synthesis.clifford_decompose import decompose_clifford_greedy
 from qiskit.test import QiskitTestCase
 
 

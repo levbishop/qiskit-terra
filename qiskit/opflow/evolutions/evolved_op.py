@@ -14,12 +14,13 @@
 
 from __future__ import annotations
 
-from typing import Union, cast
+from typing import cast, Union
 
 import numpy as np
 import scipy
 
-from qiskit.circuit import Instruction, ParameterExpression
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.list_ops.composed_op import ComposedOp
 from qiskit.opflow.list_ops.list_op import ListOp

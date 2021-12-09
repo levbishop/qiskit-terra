@@ -16,8 +16,8 @@ Abstract BaseOperator class.
 
 from __future__ import annotations
 
-import copy
 from abc import ABC
+import copy
 
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.mixins import GroupMixin

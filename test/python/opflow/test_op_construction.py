@@ -16,48 +16,54 @@
 from __future__ import annotations
 
 import itertools
-import unittest
 from math import pi
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
 import scipy
-from ddt import data, ddt
 from scipy.stats import unitary_group
 
 from qiskit import QiskitError
-from qiskit.circuit import Instruction, Parameter, ParameterVector, QuantumCircuit, QuantumRegister
-from qiskit.circuit.library import CZGate, ZGate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterVector
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import ZGate
 from qiskit.extensions.exceptions import ExtensionError
-from qiskit.opflow import (
-    CX,
-    CircuitOp,
-    CircuitStateFn,
-    ComposedOp,
-    DictStateFn,
-    EvolvedOp,
-    H,
-    I,
-    ListOp,
-    MatrixOp,
-    Minus,
-    OperatorBase,
-    OperatorStateFn,
-    OpflowError,
-    PauliOp,
-    PrimitiveOp,
-    SparseVectorStateFn,
-    StateFn,
-    SummedOp,
-    T,
-    TensoredOp,
-    VectorStateFn,
-    X,
-    Y,
-    Z,
-    Zero,
-)
-from qiskit.quantum_info import Operator, Pauli, Statevector
+from qiskit.opflow import CircuitOp
+from qiskit.opflow import CircuitStateFn
+from qiskit.opflow import ComposedOp
+from qiskit.opflow import CX
+from qiskit.opflow import DictStateFn
+from qiskit.opflow import EvolvedOp
+from qiskit.opflow import H
+from qiskit.opflow import I
+from qiskit.opflow import ListOp
+from qiskit.opflow import MatrixOp
+from qiskit.opflow import Minus
+from qiskit.opflow import OperatorBase
+from qiskit.opflow import OperatorStateFn
+from qiskit.opflow import OpflowError
+from qiskit.opflow import PauliOp
+from qiskit.opflow import PrimitiveOp
+from qiskit.opflow import SparseVectorStateFn
+from qiskit.opflow import StateFn
+from qiskit.opflow import SummedOp
+from qiskit.opflow import T
+from qiskit.opflow import TensoredOp
+from qiskit.opflow import VectorStateFn
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.opflow import Zero
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import Statevector
 
 # pylint: disable=invalid-name
 

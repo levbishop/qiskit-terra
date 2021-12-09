@@ -17,7 +17,9 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.converters.circuit_to_dagdependency import circuit_to_dagdependency
 from qiskit.converters.dagdependency_to_circuit import dagdependency_to_circuit
 from qiskit.test import QiskitTestCase

@@ -18,7 +18,8 @@ from typing import Callable
 import numpy as np
 from numpy.polynomial.chebyshev import Chebyshev
 
-from qiskit.circuit import AncillaRegister, QuantumRegister
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.arithmetic.piecewise_polynomial_pauli_rotations import (
     PiecewisePolynomialPauliRotations,

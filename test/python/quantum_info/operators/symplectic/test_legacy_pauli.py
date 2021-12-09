@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import unittest
 from copy import deepcopy
+import unittest
 
 import numpy as np
 

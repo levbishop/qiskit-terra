@@ -15,29 +15,51 @@
 from __future__ import annotations
 
 import io
+from logging import getLogger
+from logging import StreamHandler
 import math
 import os
 import sys
-from logging import StreamHandler, getLogger
 from test import combine  # pylint: disable=wrong-import-order
 from unittest.mock import patch
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, pulse
-from qiskit.circuit import Clbit, Gate, Parameter, Qubit
-from qiskit.circuit.library import CXGate, RXGate, RYGate, RZGate, U1Gate, U2Gate, U3Gate
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import pulse
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Gate
+from qiskit.circuit import Parameter
+from qiskit.circuit import Qubit
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
 from qiskit.compiler import transpile
 from qiskit.converters import circuit_to_dag
 from qiskit.dagcircuit import DAGOutNode
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info import Operator, random_unitary
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import random_unitary
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeAlmaden, FakeMelbourne, FakeRueschlikon
-from qiskit.transpiler import CouplingMap, Layout, PassManager
+from qiskit.test.mock import FakeAlmaden
+from qiskit.test.mock import FakeMelbourne
+from qiskit.test.mock import FakeRueschlikon
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import Layout
+from qiskit.transpiler import PassManager
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements, GateDirection
+from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
+from qiskit.transpiler.passes import GateDirection
 from qiskit.transpiler.passmanager_config import PassManagerConfig
 from qiskit.transpiler.preset_passmanagers import level_0_pass_manager
 

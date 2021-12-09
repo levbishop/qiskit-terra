@@ -14,15 +14,19 @@
 
 from __future__ import annotations
 
-import unittest
 from copy import deepcopy
+import unittest
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.circuit.library import CU1Gate, U1Gate
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit.library import CU1Gate
+from qiskit.circuit.library import U1Gate
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
-from qiskit.transpiler.passes import DAGFixedPoint, RemoveDiagonalGatesBeforeMeasure
+from qiskit.transpiler.passes import DAGFixedPoint
+from qiskit.transpiler.passes import RemoveDiagonalGatesBeforeMeasure
 
 
 class TesRemoveDiagonalGatesBeforeMeasure(QiskitTestCase):

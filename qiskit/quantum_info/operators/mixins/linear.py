@@ -16,7 +16,8 @@ Mixin for linear operator interface.
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 
 from qiskit.quantum_info.operators.mixins.multiply import MultiplyMixin
 

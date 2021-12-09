@@ -31,4 +31,5 @@ from __future__ import annotations
 
 from qiskit.scheduler import schedule_circuit
 from qiskit.scheduler.config import ScheduleConfig
-from qiskit.scheduler.utils import measure, measure_all
+from qiskit.scheduler.utils import measure
+from qiskit.scheduler.utils import measure_all

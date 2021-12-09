@@ -21,7 +21,12 @@ import numpy as np
 from qiskit import pulse
 from qiskit.test import QiskitTestCase
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.pulse_v2 import core, device_info, drawings, layouts, stylesheet, types
+from qiskit.visualization.pulse_v2 import core
+from qiskit.visualization.pulse_v2 import device_info
+from qiskit.visualization.pulse_v2 import drawings
+from qiskit.visualization.pulse_v2 import layouts
+from qiskit.visualization.pulse_v2 import stylesheet
+from qiskit.visualization.pulse_v2 import types
 
 
 class TestChart(QiskitTestCase):

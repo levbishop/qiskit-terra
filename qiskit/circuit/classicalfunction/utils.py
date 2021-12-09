@@ -18,17 +18,15 @@ from tweedledum.ir import Qubit
 from tweedledum.passes import parity_decomp
 
 from qiskit.circuit import QuantumCircuit
-from qiskit.circuit.library.standard_gates import (
-    HGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    TdgGate,
-    TGate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import SdgGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.library.standard_gates import TdgGate
+from qiskit.circuit.library.standard_gates import TGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 
 _QISKIT_OPS = {
     "std.h": HGate,

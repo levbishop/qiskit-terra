@@ -14,29 +14,32 @@
 
 from __future__ import annotations
 
+from contextlib import contextmanager
 import json
 import math
 import os
 import unittest
-from contextlib import contextmanager
 
-import numpy as np
 from numpy import pi
+import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
-from qiskit.circuit import Clbit, Parameter, Qubit
-from qiskit.circuit.library import (
-    IQP,
-    DCXGate,
-    HGate,
-    MCXGate,
-    MCXVChain,
-    RZZGate,
-    SGate,
-    SwapGate,
-    XGate,
-    ZGate,
-)
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
+from qiskit.circuit import Clbit
+from qiskit.circuit import Parameter
+from qiskit.circuit import Qubit
+from qiskit.circuit.library import DCXGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import IQP
+from qiskit.circuit.library import MCXGate
+from qiskit.circuit.library import MCXVChain
+from qiskit.circuit.library import RZZGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import ZGate
 from qiskit.extensions import HamiltonianGate
 from qiskit.quantum_info.random import random_unitary
 from qiskit.test import QiskitTestCase

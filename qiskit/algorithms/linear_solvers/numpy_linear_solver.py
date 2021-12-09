@@ -18,11 +18,13 @@ from typing import Callable
 import numpy as np
 
 from qiskit import QuantumCircuit
-from qiskit.algorithms.linear_solvers.linear_solver import LinearSolver, LinearSolverResult
+from qiskit.algorithms.linear_solvers.linear_solver import LinearSolver
+from qiskit.algorithms.linear_solvers.linear_solver import LinearSolverResult
 from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
     LinearSystemObservable,
 )
-from qiskit.quantum_info import Operator, Statevector
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
 from qiskit.quantum_info.operators.base_operator import BaseOperator
 
 

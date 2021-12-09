@@ -18,13 +18,17 @@ from __future__ import annotations
 import math
 from test import combine
 
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 
-from qiskit.circuit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.compiler import transpile
 from qiskit.quantum_info import Operator
 from qiskit.test.base import QiskitTestCase
-from qiskit.test.mock.fake_backend_v2 import FakeBackend5QV2, FakeBackendV2
+from qiskit.test.mock.fake_backend_v2 import FakeBackend5QV2
+from qiskit.test.mock.fake_backend_v2 import FakeBackendV2
 from qiskit.test.mock.fake_mumbai_v2 import FakeMumbaiV2
 
 

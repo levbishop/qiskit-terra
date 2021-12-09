@@ -14,7 +14,9 @@
 
 from __future__ import annotations
 
-from qiskit import circuit, pulse, transpile
+from qiskit import circuit
+from qiskit import pulse
+from qiskit import transpile
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeAthens
 

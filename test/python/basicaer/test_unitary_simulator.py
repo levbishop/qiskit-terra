@@ -18,12 +18,17 @@ import unittest
 
 import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, execute
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.providers.basicaer import UnitarySimulatorPy
-from qiskit.quantum_info import Operator, process_fidelity
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import process_fidelity
 from qiskit.quantum_info.operators.predicates import matrix_equal
 from qiskit.quantum_info.random import random_unitary
-from qiskit.test import ReferenceCircuits, providers
+from qiskit.test import providers
+from qiskit.test import ReferenceCircuits
 
 
 class BasicAerUnitarySimulatorPyTest(providers.BackendTestCase):

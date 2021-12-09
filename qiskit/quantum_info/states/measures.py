@@ -21,12 +21,10 @@ import scipy.linalg as la
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.states.densitymatrix import DensityMatrix
 from qiskit.quantum_info.states.statevector import Statevector
-from qiskit.quantum_info.states.utils import (
-    _format_state,
-    _funm_svd,
-    partial_trace,
-    shannon_entropy,
-)
+from qiskit.quantum_info.states.utils import _format_state
+from qiskit.quantum_info.states.utils import _funm_svd
+from qiskit.quantum_info.states.utils import partial_trace
+from qiskit.quantum_info.states.utils import shannon_entropy
 
 
 def state_fidelity(state1, state2, validate=True):

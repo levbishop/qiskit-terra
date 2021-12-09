@@ -17,12 +17,19 @@ from __future__ import annotations
 import os
 import unittest
 
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute
-from qiskit.circuit.library import U1Gate, U2Gate
-from qiskit.compiler import assemble, transpile
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.compiler import assemble
+from qiskit.compiler import transpile
 from qiskit.qobj import QasmQobj
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeRueschlikon, FakeTenerife
+from qiskit.test.mock import FakeRueschlikon
+from qiskit.test.mock import FakeTenerife
 from qiskit.transpiler import PassManager
 
 

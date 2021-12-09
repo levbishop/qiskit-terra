@@ -18,10 +18,12 @@ from __future__ import annotations
 
 import unittest
 
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 
 from qiskit import transpile
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library import QuantumVolume
 from qiskit.converters import circuit_to_dag
 from qiskit.exceptions import QiskitError
@@ -29,25 +31,24 @@ from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.random import random_unitary
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeVigo
-from qiskit.transpiler import CouplingMap, PassManager
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import PassManager
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.passes import (
-    ApplyLayout,
-    BarrierBeforeFinalMeasurements,
-    CheckMap,
-    Collect2qBlocks,
-    ConsolidateBlocks,
-    Depth,
-    EnlargeWithAncilla,
-    FixedPoint,
-    FullAncillaAllocation,
-    Optimize1qGates,
-    SabreLayout,
-    SabreSwap,
-    TrivialLayout,
-    UnitarySynthesis,
-    Unroll3qOrMore,
-)
+from qiskit.transpiler.passes import ApplyLayout
+from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
+from qiskit.transpiler.passes import CheckMap
+from qiskit.transpiler.passes import Collect2qBlocks
+from qiskit.transpiler.passes import ConsolidateBlocks
+from qiskit.transpiler.passes import Depth
+from qiskit.transpiler.passes import EnlargeWithAncilla
+from qiskit.transpiler.passes import FixedPoint
+from qiskit.transpiler.passes import FullAncillaAllocation
+from qiskit.transpiler.passes import Optimize1qGates
+from qiskit.transpiler.passes import SabreLayout
+from qiskit.transpiler.passes import SabreSwap
+from qiskit.transpiler.passes import TrivialLayout
+from qiskit.transpiler.passes import UnitarySynthesis
+from qiskit.transpiler.passes import Unroll3qOrMore
 
 
 @ddt

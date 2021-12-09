@@ -14,12 +14,15 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
 from qiskit.circuit import Parameter
-from qiskit.opflow import PauliSumOp, TaperedPauliSumOp, Z2Symmetries
-from qiskit.quantum_info import Pauli, SparsePauliOp
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import TaperedPauliSumOp
+from qiskit.opflow import Z2Symmetries
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
 
 
 class TestZ2Symmetries(QiskitOpflowTestCase):

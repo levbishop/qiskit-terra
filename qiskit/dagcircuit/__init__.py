@@ -44,5 +44,8 @@ from __future__ import annotations
 from qiskit.dagcircuit.dagcircuit import DAGCircuit
 from qiskit.dagcircuit.dagdependency import DAGDependency
 from qiskit.dagcircuit.dagdepnode import DAGDepNode
-from qiskit.dagcircuit.dagnode import DAGInNode, DAGNode, DAGOpNode, DAGOutNode
+from qiskit.dagcircuit.dagnode import DAGInNode
+from qiskit.dagcircuit.dagnode import DAGNode
+from qiskit.dagcircuit.dagnode import DAGOpNode
+from qiskit.dagcircuit.dagnode import DAGOutNode
 from qiskit.dagcircuit.exceptions import DAGCircuitError

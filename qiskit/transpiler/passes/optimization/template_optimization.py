@@ -24,7 +24,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit.library.templates import template_nct_2a_1, template_nct_2a_2, template_nct_2a_3
+from qiskit.circuit.library.templates import template_nct_2a_1
+from qiskit.circuit.library.templates import template_nct_2a_2
+from qiskit.circuit.library.templates import template_nct_2a_3
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.converters.circuit_to_dagdependency import circuit_to_dagdependency
 from qiskit.converters.dag_to_dagdependency import dag_to_dagdependency
@@ -34,11 +36,9 @@ from qiskit.dagcircuit import DAGDependency
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.passes.optimization.template_matching import (
-    MaximalMatches,
-    TemplateMatching,
-    TemplateSubstitution,
-)
+from qiskit.transpiler.passes.optimization.template_matching import MaximalMatches
+from qiskit.transpiler.passes.optimization.template_matching import TemplateMatching
+from qiskit.transpiler.passes.optimization.template_matching import TemplateSubstitution
 
 
 class TemplateOptimization(TransformationPass):

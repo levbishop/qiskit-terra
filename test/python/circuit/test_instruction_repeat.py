@@ -19,10 +19,16 @@ import unittest
 
 from numpy import pi
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.circuit import Gate, Instruction, Measure
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Measure
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library import CXGate, SGate, U3Gate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import U3Gate
 from qiskit.extensions import UnitaryGate
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager

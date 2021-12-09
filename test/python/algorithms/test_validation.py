@@ -14,20 +14,18 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
-from qiskit.utils.validation import (
-    validate_in_set,
-    validate_max,
-    validate_max_exclusive,
-    validate_min,
-    validate_min_exclusive,
-    validate_range,
-    validate_range_exclusive,
-    validate_range_exclusive_max,
-    validate_range_exclusive_min,
-)
+from qiskit.utils.validation import validate_in_set
+from qiskit.utils.validation import validate_max
+from qiskit.utils.validation import validate_max_exclusive
+from qiskit.utils.validation import validate_min
+from qiskit.utils.validation import validate_min_exclusive
+from qiskit.utils.validation import validate_range
+from qiskit.utils.validation import validate_range_exclusive
+from qiskit.utils.validation import validate_range_exclusive_max
+from qiskit.utils.validation import validate_range_exclusive_min
 
 
 class TestValidation(QiskitAlgorithmsTestCase):

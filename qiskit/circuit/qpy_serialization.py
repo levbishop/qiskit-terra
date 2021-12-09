@@ -387,25 +387,27 @@ Finally, if type is ``i`` it represents an integer which is an ``int64_t``.
 """
 from __future__ import annotations
 
+from collections import namedtuple
 import io
 import json
 import struct
 import uuid
 import warnings
-from collections import namedtuple
 
 import numpy as np
 
 from qiskit import circuit as circuit_mod
 from qiskit import extensions
 from qiskit.circuit import library
-from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit.classicalregister import Clbit
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.circuit.quantumregister import QuantumRegister, Qubit
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.quantumregister import Qubit
 from qiskit.exceptions import QiskitError
 from qiskit.extensions import quantum_initializer
 from qiskit.version import __version__
@@ -793,7 +795,8 @@ def _write_parameter(file_obj, param):
 
 
 def _write_parameter_expression(file_obj, param):
-    from sympy import srepr, sympify
+    from sympy import srepr
+    from sympy import sympify
 
     expr_bytes = srepr(sympify(param._symbol_expr)).encode("utf8")
     param_expr_header_raw = struct.pack(

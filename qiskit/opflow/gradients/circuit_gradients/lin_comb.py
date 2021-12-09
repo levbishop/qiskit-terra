@@ -22,33 +22,31 @@ from itertools import product
 import numpy as np
 import scipy
 
-from qiskit.circuit import (
-    Gate,
-    Instruction,
-    Parameter,
-    ParameterExpression,
-    ParameterVector,
-    QuantumCircuit,
-    QuantumRegister,
-)
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.controlledgate import ControlledGate
-from qiskit.circuit.library import SdgGate, SGate, XGate
-from qiskit.circuit.library.standard_gates import (
-    CXGate,
-    CYGate,
-    CZGate,
-    IGate,
-    PhaseGate,
-    RXGate,
-    RXXGate,
-    RYGate,
-    RYYGate,
-    RZGate,
-    RZXGate,
-    RZZGate,
-    UGate,
-    ZGate,
-)
+from qiskit.circuit.library import SdgGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import CYGate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import IGate
+from qiskit.circuit.library.standard_gates import PhaseGate
+from qiskit.circuit.library.standard_gates import RXGate
+from qiskit.circuit.library.standard_gates import RXXGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RYYGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import RZXGate
+from qiskit.circuit.library.standard_gates import RZZGate
+from qiskit.circuit.library.standard_gates import UGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.circuit.parametertable import ParameterTable
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
@@ -56,7 +54,10 @@ from qiskit.opflow.list_ops.composed_op import ComposedOp
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.list_ops.summed_op import SummedOp
 from qiskit.opflow.operator_base import OperatorBase
-from qiskit.opflow.operator_globals import I, One, Z, Zero
+from qiskit.opflow.operator_globals import I
+from qiskit.opflow.operator_globals import One
+from qiskit.opflow.operator_globals import Z
+from qiskit.opflow.operator_globals import Zero
 from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 from qiskit.opflow.state_fns.dict_state_fn import DictStateFn

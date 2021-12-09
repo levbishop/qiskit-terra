@@ -16,12 +16,17 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import ParameterExpression, ParameterVector, QuantumCircuit, QuantumRegister
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.opflow.gradients.circuit_gradients.lin_comb import LinComb
 from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.list_ops.summed_op import SummedOp
-from qiskit.opflow.operator_globals import I, Y, Z
+from qiskit.opflow.operator_globals import I
+from qiskit.opflow.operator_globals import Y
+from qiskit.opflow.operator_globals import Z
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 from qiskit.opflow.state_fns.state_fn import StateFn
 from qiskit.utils.arithmetic import triu_to_dense

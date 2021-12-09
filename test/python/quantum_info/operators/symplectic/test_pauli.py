@@ -16,31 +16,34 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
 import itertools as it
 import unittest
-from functools import lru_cache
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
-from qiskit.circuit.library import (
-    CXGate,
-    CYGate,
-    CZGate,
-    HGate,
-    IGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CYGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import SdgGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
 from qiskit.circuit.library.generalized_gates import PauliGate
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info.operators import Operator, Pauli
-from qiskit.quantum_info.operators.symplectic.pauli import _phase_from_label, _split_pauli_label
-from qiskit.quantum_info.random import random_clifford, random_pauli
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info.operators import Pauli
+from qiskit.quantum_info.operators.symplectic.pauli import _phase_from_label
+from qiskit.quantum_info.operators.symplectic.pauli import _split_pauli_label
+from qiskit.quantum_info.random import random_clifford
+from qiskit.quantum_info.random import random_pauli
 from qiskit.test import QiskitTestCase
 
 

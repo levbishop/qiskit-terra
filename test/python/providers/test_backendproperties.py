@@ -18,7 +18,8 @@ import copy
 
 from qiskit.providers.exceptions import BackendPropertyError
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeOurense, FakeProvider
+from qiskit.test.mock import FakeOurense
+from qiskit.test.mock import FakeProvider
 
 
 class BackendpropertiesTestCase(QiskitTestCase):

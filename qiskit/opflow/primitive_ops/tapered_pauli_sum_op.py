@@ -14,9 +14,9 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 import itertools
 import logging
-from copy import deepcopy
 from typing import cast
 
 import numpy as np
@@ -28,7 +28,8 @@ from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
 from qiskit.opflow.utils import commutator
-from qiskit.quantum_info import Pauli, SparsePauliOp
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
 
 logger = logging.getLogger(__name__)
 

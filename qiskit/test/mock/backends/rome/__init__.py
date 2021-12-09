@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.rome.fake_rome import FakeLegacyRome, FakeRome
+from qiskit.test.mock.backends.rome.fake_rome import FakeLegacyRome
+from qiskit.test.mock.backends.rome.fake_rome import FakeRome

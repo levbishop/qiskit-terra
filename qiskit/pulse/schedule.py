@@ -39,13 +39,14 @@ import functools
 import itertools
 import multiprocessing as mp
 import sys
-import warnings
 from typing import Any, Callable, Dict, Iterable, List, Tuple, Union
+import warnings
 
 import numpy as np
 
 from qiskit.circuit.parameter import Parameter
-from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
+from qiskit.circuit.parameterexpression import ParameterExpression
+from qiskit.circuit.parameterexpression import ParameterValueType
 from qiskit.pulse.channels import Channel
 from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse.instructions import Instruction
@@ -472,7 +473,8 @@ class Schedule:
             check_subroutine: Set `True` to individually filter instructions inside of a subroutine
                 defined by the :py:class:`~qiskit.pulse.instructions.Call` instruction.
         """
-        from qiskit.pulse.filters import composite_filter, filter_instructions
+        from qiskit.pulse.filters import composite_filter
+        from qiskit.pulse.filters import filter_instructions
 
         filters = composite_filter(channels, instruction_types, time_ranges, intervals)
         filters.extend(filter_funcs)
@@ -506,7 +508,8 @@ class Schedule:
             check_subroutine: Set `True` to individually filter instructions inside of a subroutine
                 defined by the :py:class:`~qiskit.pulse.instructions.Call` instruction.
         """
-        from qiskit.pulse.filters import composite_filter, filter_instructions
+        from qiskit.pulse.filters import composite_filter
+        from qiskit.pulse.filters import filter_instructions
 
         filters = composite_filter(channels, instruction_types, time_ranges, intervals)
         filters.extend(filter_funcs)

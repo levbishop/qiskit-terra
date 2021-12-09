@@ -29,19 +29,16 @@ from qiskit.quantum_info.operators.channel.superop import SuperOp
 from qiskit.quantum_info.operators.mixins.tolerances import TolerancesMixin
 from qiskit.quantum_info.operators.op_shape import OpShape
 from qiskit.quantum_info.operators.operator import Operator
-from qiskit.quantum_info.operators.predicates import (
-    is_hermitian_matrix,
-    is_positive_semidefinite_matrix,
-)
+from qiskit.quantum_info.operators.predicates import is_hermitian_matrix
+from qiskit.quantum_info.operators.predicates import is_positive_semidefinite_matrix
 from qiskit.quantum_info.operators.scalar_op import ScalarOp
-from qiskit.quantum_info.operators.symplectic import Pauli, SparsePauliOp
+from qiskit.quantum_info.operators.symplectic import Pauli
+from qiskit.quantum_info.operators.symplectic import SparsePauliOp
 from qiskit.quantum_info.states.quantum_state import QuantumState
 
 # pylint: disable=no-name-in-module
-from qiskit.quantum_info.states.cython.exp_value import (
-    density_expval_pauli_no_x,
-    density_expval_pauli_with_x,
-)
+from qiskit.quantum_info.states.cython.exp_value import density_expval_pauli_no_x
+from qiskit.quantum_info.states.cython.exp_value import density_expval_pauli_with_x
 
 
 class DensityMatrix(QuantumState, TolerancesMixin):

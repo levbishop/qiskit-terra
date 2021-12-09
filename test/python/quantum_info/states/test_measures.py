@@ -19,15 +19,15 @@ import unittest
 import numpy as np
 
 from qiskit import QiskitError
-from qiskit.quantum_info import (
-    concurrence,
-    entanglement_of_formation,
-    entropy,
-    mutual_information,
-    purity,
-    state_fidelity,
-)
-from qiskit.quantum_info.states import DensityMatrix, Statevector, shannon_entropy
+from qiskit.quantum_info import concurrence
+from qiskit.quantum_info import entanglement_of_formation
+from qiskit.quantum_info import entropy
+from qiskit.quantum_info import mutual_information
+from qiskit.quantum_info import purity
+from qiskit.quantum_info import state_fidelity
+from qiskit.quantum_info.states import DensityMatrix
+from qiskit.quantum_info.states import shannon_entropy
+from qiskit.quantum_info.states import Statevector
 from qiskit.test import QiskitTestCase
 
 

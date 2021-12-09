@@ -18,35 +18,36 @@ See https://arxiv.org/abs/1304.3061
 from __future__ import annotations
 
 import logging
-import warnings
 from time import time
 from typing import Callable, Dict, Optional
+import warnings
 
 import numpy as np
 
 from qiskit.algorithms.exceptions import AlgorithmError
-from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import (
-    ListOrDict,
-    MinimumEigensolver,
-    MinimumEigensolverResult,
-)
-from qiskit.algorithms.optimizers import SLSQP, Optimizer
-from qiskit.algorithms.variational_algorithm import VariationalAlgorithm, VariationalResult
-from qiskit.circuit import Parameter, QuantumCircuit
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import ListOrDict
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import MinimumEigensolver
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import MinimumEigensolverResult
+from qiskit.algorithms.optimizers import Optimizer
+from qiskit.algorithms.optimizers import SLSQP
+from qiskit.algorithms.variational_algorithm import VariationalAlgorithm
+from qiskit.algorithms.variational_algorithm import VariationalResult
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import RealAmplitudes
-from qiskit.opflow import (
-    CircuitSampler,
-    CircuitStateFn,
-    ExpectationBase,
-    ExpectationFactory,
-    ListOp,
-    OperatorBase,
-    PauliSumOp,
-    StateFn,
-)
+from qiskit.opflow import CircuitSampler
+from qiskit.opflow import CircuitStateFn
+from qiskit.opflow import ExpectationBase
+from qiskit.opflow import ExpectationFactory
+from qiskit.opflow import ListOp
+from qiskit.opflow import OperatorBase
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import StateFn
 from qiskit.opflow.gradients import GradientBase
-from qiskit.providers import Backend, BaseBackend
-from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
+from qiskit.utils import algorithm_globals
+from qiskit.utils import QuantumInstance
 from qiskit.utils.backend_utils import is_aer_provider
 from qiskit.utils.deprecation import deprecate_function
 from qiskit.utils.validation import validate_min

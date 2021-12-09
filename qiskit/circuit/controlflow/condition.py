@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit.classicalregister import Clbit
 from qiskit.circuit.exceptions import CircuitError
 
 

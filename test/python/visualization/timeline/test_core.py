@@ -14,9 +14,13 @@
 
 from __future__ import annotations
 
-from qiskit import QuantumCircuit, transpile
+from qiskit import QuantumCircuit
+from qiskit import transpile
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.timeline import core, generators, layouts, stylesheet
+from qiskit.visualization.timeline import core
+from qiskit.visualization.timeline import generators
+from qiskit.visualization.timeline import layouts
+from qiskit.visualization.timeline import stylesheet
 
 
 class TestCanvas(QiskitTestCase):

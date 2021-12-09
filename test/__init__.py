@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from ddt import data, unpack
+from ddt import data
+from ddt import unpack
 
 from qiskit.test.utils import generate_cases
 

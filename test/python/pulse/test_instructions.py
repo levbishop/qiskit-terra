@@ -16,9 +16,15 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit import circuit, pulse
-from qiskit.pulse import channels, configuration, exceptions, instructions, library
-from qiskit.pulse.transforms import inline_subroutines, target_qobj_transform
+from qiskit import circuit
+from qiskit import pulse
+from qiskit.pulse import channels
+from qiskit.pulse import configuration
+from qiskit.pulse import exceptions
+from qiskit.pulse import instructions
+from qiskit.pulse import library
+from qiskit.pulse.transforms import inline_subroutines
+from qiskit.pulse.transforms import target_qobj_transform
 from qiskit.test import QiskitTestCase
 
 

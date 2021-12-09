@@ -16,6 +16,9 @@
 
 from __future__ import annotations
 
+from collections import defaultdict
+from collections import namedtuple
+from collections import OrderedDict
 import copy
 import functools
 import itertools
@@ -23,13 +26,13 @@ import multiprocessing as mp
 import re
 import string
 import typing
-from collections import OrderedDict, defaultdict, namedtuple
 from typing import Callable, Iterable, List, Mapping, Sequence, Tuple, TypeVar, Union
 
 import numpy as np
 
 from qiskit.circuit.bit import Bit
-from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit.classicalregister import Clbit
 from qiskit.circuit.delay import Delay
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.gate import Gate
@@ -37,14 +40,21 @@ from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.instructionset import InstructionSet
 from qiskit.circuit.measure import Measure
 from qiskit.circuit.parameter import Parameter
-from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
-from qiskit.circuit.parametertable import ParameterTable, ParameterView
-from qiskit.circuit.parametervector import ParameterVector, ParameterVectorElement
+from qiskit.circuit.parameterexpression import ParameterExpression
+from qiskit.circuit.parameterexpression import ParameterValueType
+from qiskit.circuit.parametertable import ParameterTable
+from qiskit.circuit.parametertable import ParameterView
+from qiskit.circuit.parametervector import ParameterVector
+from qiskit.circuit.parametervector import ParameterVectorElement
 from qiskit.circuit.quantumcircuitdata import QuantumCircuitData
-from qiskit.circuit.quantumregister import AncillaQubit, AncillaRegister, QuantumRegister, Qubit
+from qiskit.circuit.quantumregister import AncillaQubit
+from qiskit.circuit.quantumregister import AncillaRegister
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.quantumregister import Qubit
 from qiskit.circuit.register import Register
 from qiskit.circuit.reset import Reset
-from qiskit.exceptions import MissingOptionalLibraryError, QiskitError
+from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.exceptions import QiskitError
 from qiskit.qasm.exceptions import QasmError
 from qiskit.qasm.qasm import Qasm
 from qiskit.utils.deprecation import deprecate_function
@@ -3852,7 +3862,9 @@ class QuantumCircuit:
             ValueError: if the given mode is not known, or if too few ancilla qubits are passed.
             AttributeError: if no ancilla qubits are passed, but some are needed.
         """
-        from qiskit.circuit.library.standard_gates.x import MCXGrayCode, MCXRecursive, MCXVChain
+        from qiskit.circuit.library.standard_gates.x import MCXGrayCode
+        from qiskit.circuit.library.standard_gates.x import MCXRecursive
+        from qiskit.circuit.library.standard_gates.x import MCXVChain
 
         num_ctrl_qubits = len(control_qubits)
 
@@ -4200,7 +4212,8 @@ class QuantumCircuit:
             CircuitError: if an incorrect calling convention is used.
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.controlflow.while_loop import WhileLoopContext, WhileLoopOp
+        from qiskit.circuit.controlflow.while_loop import WhileLoopContext
+        from qiskit.circuit.controlflow.while_loop import WhileLoopOp
 
         if body is None:
             if qubits is not None or clbits is not None:
@@ -4295,7 +4308,8 @@ class QuantumCircuit:
             CircuitError: if an incorrect calling convention is used.
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.controlflow.for_loop import ForLoopContext, ForLoopOp
+        from qiskit.circuit.controlflow.for_loop import ForLoopContext
+        from qiskit.circuit.controlflow.for_loop import ForLoopOp
 
         if body is None:
             if qubits is not None or clbits is not None:
@@ -4403,7 +4417,8 @@ class QuantumCircuit:
             A handle to the instruction created.
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.controlflow.if_else import IfContext, IfElseOp
+        from qiskit.circuit.controlflow.if_else import IfContext
+        from qiskit.circuit.controlflow.if_else import IfElseOp
 
         condition = (self._resolve_classical_resource(condition[0]), condition[1])
 
@@ -4496,7 +4511,8 @@ class QuantumCircuit:
                 within a loop.
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.controlflow.break_loop import BreakLoopOp, BreakLoopPlaceholder
+        from qiskit.circuit.controlflow.break_loop import BreakLoopOp
+        from qiskit.circuit.controlflow.break_loop import BreakLoopPlaceholder
 
         if self._control_flow_scopes:
             operation = BreakLoopPlaceholder()
@@ -4525,7 +4541,8 @@ class QuantumCircuit:
                 within a loop.
         """
         # pylint: disable=cyclic-import
-        from qiskit.circuit.controlflow.continue_loop import ContinueLoopOp, ContinueLoopPlaceholder
+        from qiskit.circuit.controlflow.continue_loop import ContinueLoopOp
+        from qiskit.circuit.controlflow.continue_loop import ContinueLoopPlaceholder
 
         if self._control_flow_scopes:
             operation = ContinueLoopPlaceholder()
@@ -4661,7 +4678,8 @@ class QuantumCircuit:
 
 def _circuit_from_qasm(qasm: Qasm) -> QuantumCircuit:
     # pylint: disable=cyclic-import
-    from qiskit.converters import ast_to_dag, dag_to_circuit
+    from qiskit.converters import ast_to_dag
+    from qiskit.converters import dag_to_circuit
 
     ast = qasm.parse()
     dag = ast_to_dag(ast)

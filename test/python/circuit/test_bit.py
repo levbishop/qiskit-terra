@@ -18,7 +18,8 @@ from __future__ import annotations
 
 from unittest import mock
 
-from qiskit.circuit import QuantumRegister, bit
+from qiskit.circuit import bit
+from qiskit.circuit import QuantumRegister
 from qiskit.test import QiskitTestCase
 
 

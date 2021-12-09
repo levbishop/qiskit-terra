@@ -14,31 +14,31 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
 import numpy as np
 
-from qiskit import BasicAer, QuantumCircuit, execute
+from qiskit import BasicAer
+from qiskit import execute
+from qiskit import QuantumCircuit
 from qiskit.circuit import ParameterVector
-from qiskit.opflow import (
-    CX,
-    CircuitOp,
-    CircuitStateFn,
-    DictToCircuitSum,
-    H,
-    I,
-    Minus,
-    One,
-    Plus,
-    PrimitiveOp,
-    StateFn,
-    SummedOp,
-    X,
-    Y,
-    Z,
-    Zero,
-)
+from qiskit.opflow import CircuitOp
+from qiskit.opflow import CircuitStateFn
+from qiskit.opflow import CX
+from qiskit.opflow import DictToCircuitSum
+from qiskit.opflow import H
+from qiskit.opflow import I
+from qiskit.opflow import Minus
+from qiskit.opflow import One
+from qiskit.opflow import Plus
+from qiskit.opflow import PrimitiveOp
+from qiskit.opflow import StateFn
+from qiskit.opflow import SummedOp
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.opflow import Zero
 from qiskit.quantum_info import Statevector
 
 

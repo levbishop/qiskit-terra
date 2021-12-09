@@ -19,15 +19,24 @@ import unittest
 import ddt
 import numpy as np
 
-from qiskit.circuit import ClassicalRegister, Parameter, QuantumCircuit, QuantumRegister
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.equivalence_library import SessionEquivalenceLibrary as sel
-from qiskit.circuit.library.standard_gates import PhaseGate, SXGate, U1Gate, U2Gate, U3Gate, UGate
+from qiskit.circuit.library.standard_gates import PhaseGate
+from qiskit.circuit.library.standard_gates import SXGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import U2Gate
+from qiskit.circuit.library.standard_gates import U3Gate
+from qiskit.circuit.library.standard_gates import UGate
 from qiskit.circuit.random import random_circuit
 from qiskit.compiler import transpile
 from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
-from qiskit.transpiler.passes import BasisTranslator, Optimize1qGatesDecomposition
+from qiskit.transpiler.passes import BasisTranslator
+from qiskit.transpiler.passes import Optimize1qGatesDecomposition
 
 
 @ddt.ddt

@@ -14,36 +14,37 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
-from scipy.optimize import rosen, rosen_der
+from scipy.optimize import rosen
+from scipy.optimize import rosen_der
 
-from qiskit.algorithms.optimizers import (
-    ADAM,
-    AQGD,
-    BOBYQA,
-    CG,
-    COBYLA,
-    CRS,
-    DIRECT_L,
-    DIRECT_L_RAND,
-    GSLS,
-    IMFIL,
-    L_BFGS_B,
-    NELDER_MEAD,
-    P_BFGS,
-    POWELL,
-    QNSPSA,
-    SLSQP,
-    SPSA,
-    TNC,
-    GradientDescent,
-    Optimizer,
-    SciPyOptimizer,
-)
+from qiskit.algorithms.optimizers import ADAM
+from qiskit.algorithms.optimizers import AQGD
+from qiskit.algorithms.optimizers import BOBYQA
+from qiskit.algorithms.optimizers import CG
+from qiskit.algorithms.optimizers import COBYLA
+from qiskit.algorithms.optimizers import CRS
+from qiskit.algorithms.optimizers import DIRECT_L
+from qiskit.algorithms.optimizers import DIRECT_L_RAND
+from qiskit.algorithms.optimizers import GradientDescent
+from qiskit.algorithms.optimizers import GSLS
+from qiskit.algorithms.optimizers import IMFIL
+from qiskit.algorithms.optimizers import L_BFGS_B
+from qiskit.algorithms.optimizers import NELDER_MEAD
+from qiskit.algorithms.optimizers import Optimizer
+from qiskit.algorithms.optimizers import P_BFGS
+from qiskit.algorithms.optimizers import POWELL
+from qiskit.algorithms.optimizers import QNSPSA
+from qiskit.algorithms.optimizers import SciPyOptimizer
+from qiskit.algorithms.optimizers import SLSQP
+from qiskit.algorithms.optimizers import SPSA
+from qiskit.algorithms.optimizers import TNC
 from qiskit.circuit.library import RealAmplitudes
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.utils import algorithm_globals

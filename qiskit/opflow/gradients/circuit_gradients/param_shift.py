@@ -22,7 +22,9 @@ import numpy as np
 import scipy
 
 from qiskit import QuantumCircuit
-from qiskit.circuit import Parameter, ParameterExpression, ParameterVector
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.gradients.circuit_gradients.circuit_gradient import CircuitGradient
 from qiskit.opflow.gradients.derivative_base import _coeff_derivative
@@ -30,7 +32,8 @@ from qiskit.opflow.list_ops.composed_op import ComposedOp
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.list_ops.summed_op import SummedOp
 from qiskit.opflow.operator_base import OperatorBase
-from qiskit.opflow.operator_globals import One, Zero
+from qiskit.opflow.operator_globals import One
+from qiskit.opflow.operator_globals import Zero
 from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 from qiskit.opflow.state_fns.dict_state_fn import DictStateFn

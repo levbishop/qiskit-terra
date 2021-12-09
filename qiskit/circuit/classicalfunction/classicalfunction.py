@@ -20,7 +20,8 @@ from typing import Callable
 from tweedledum.classical import simulate
 from tweedledum.synthesis import pkrm_synth
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.classicalfunction.classical_element import ClassicalElement
 from qiskit.circuit.classicalfunction.classical_function_visitor import ClassicalFunctionVisitor
 from qiskit.circuit.classicalfunction.utils import tweedledum2qiskit

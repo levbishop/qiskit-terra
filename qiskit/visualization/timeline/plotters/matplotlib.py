@@ -17,13 +17,15 @@
 from __future__ import annotations
 
 import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
 from matplotlib.collections import PatchCollection
 from matplotlib.patches import Rectangle
+import matplotlib.pyplot as plt
+import numpy as np
 
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.timeline import core, drawings, types
+from qiskit.visualization.timeline import core
+from qiskit.visualization.timeline import drawings
+from qiskit.visualization.timeline import types
 from qiskit.visualization.timeline.plotters.base_plotter import BasePlotter
 from qiskit.visualization.utils import matplotlib_close_if_inline
 

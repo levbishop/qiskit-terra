@@ -53,11 +53,12 @@ __all__ = ["Bloch"]
 import os
 
 import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
 from matplotlib.patches import FancyArrowPatch
-from mpl_toolkits.mplot3d import Axes3D, proj3d
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.mplot3d import proj3d
 from mpl_toolkits.mplot3d.art3d import Patch3D
+import numpy as np
 
 from qiskit.visualization.utils import matplotlib_close_if_inline
 

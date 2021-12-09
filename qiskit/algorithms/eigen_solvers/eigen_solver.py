@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 from typing import Dict, List, Optional, TypeVar, Union
 
 import numpy as np

@@ -16,12 +16,16 @@ from __future__ import annotations
 
 from test.python.algorithms import QiskitAlgorithmsTestCase
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
-from qiskit.algorithms.optimizers import QNSPSA, SPSA
+from qiskit.algorithms.optimizers import QNSPSA
+from qiskit.algorithms.optimizers import SPSA
 from qiskit.circuit.library import PauliTwoDesign
-from qiskit.opflow import I, StateFn, Z
+from qiskit.opflow import I
+from qiskit.opflow import StateFn
+from qiskit.opflow import Z
 from qiskit.utils import algorithm_globals
 
 

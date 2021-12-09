@@ -19,7 +19,10 @@ import unittest
 
 import numpy as np
 
-from qiskit import BasicAer, QuantumCircuit, QuantumRegister, execute
+from qiskit import BasicAer
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.compiler import transpile
 from qiskit.quantum_info.operators.predicates import matrix_equal
 from qiskit.test import QiskitTestCase

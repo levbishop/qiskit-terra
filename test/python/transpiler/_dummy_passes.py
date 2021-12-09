@@ -18,7 +18,8 @@ from __future__ import annotations
 
 import logging
 
-from qiskit.transpiler import AnalysisPass, TransformationPass
+from qiskit.transpiler import AnalysisPass
+from qiskit.transpiler import TransformationPass
 from qiskit.transpiler.passes import FixedPoint
 
 logger = "LocalLogger"

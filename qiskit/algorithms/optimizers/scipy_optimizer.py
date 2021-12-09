@@ -19,12 +19,10 @@ from typing import Any, Callable
 import numpy as np
 from scipy.optimize import minimize
 
-from qiskit.algorithms.optimizers.optimizer import (
-    POINT,
-    Optimizer,
-    OptimizerResult,
-    OptimizerSupportLevel,
-)
+from qiskit.algorithms.optimizers.optimizer import Optimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerSupportLevel
+from qiskit.algorithms.optimizers.optimizer import POINT
 from qiskit.utils.validation import validate_min
 
 

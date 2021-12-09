@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.pulse import PulseError, Waveform, library
+from qiskit.pulse import library
+from qiskit.pulse import PulseError
+from qiskit.pulse import Waveform
 from qiskit.pulse.library import continuous
 from qiskit.test import QiskitTestCase
 

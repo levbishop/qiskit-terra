@@ -14,33 +14,36 @@
 
 from __future__ import annotations
 
-import unittest
 from itertools import product
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
 import numpy as np
 from scipy.sparse import csr_matrix
 from sympy import Symbol
 
-from qiskit import QuantumCircuit, transpile
-from qiskit.circuit import Parameter, ParameterExpression, ParameterVector
-from qiskit.opflow import (
-    CX,
-    CircuitStateFn,
-    DictStateFn,
-    H,
-    I,
-    One,
-    OperatorStateFn,
-    OpflowError,
-    PauliSumOp,
-    SummedOp,
-    X,
-    Y,
-    Z,
-    Zero,
-)
-from qiskit.quantum_info import Pauli, PauliTable, SparsePauliOp
+from qiskit import QuantumCircuit
+from qiskit import transpile
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
+from qiskit.opflow import CircuitStateFn
+from qiskit.opflow import CX
+from qiskit.opflow import DictStateFn
+from qiskit.opflow import H
+from qiskit.opflow import I
+from qiskit.opflow import One
+from qiskit.opflow import OperatorStateFn
+from qiskit.opflow import OpflowError
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import SummedOp
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
+from qiskit.opflow import Zero
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import PauliTable
+from qiskit.quantum_info import SparsePauliOp
 
 
 class TestPauliSumOp(QiskitOpflowTestCase):

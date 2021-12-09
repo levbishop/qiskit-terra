@@ -17,10 +17,17 @@ from __future__ import annotations
 
 from numpy import pi
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit import Parameter
-from qiskit.circuit.library import CU1Gate, CU3Gate, U1Gate, U2Gate, U3Gate
-from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit.circuit.library import CU1Gate
+from qiskit.circuit.library import CU3Gate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
 from qiskit.exceptions import QiskitError
 from qiskit.extensions.simulator import Snapshot
 from qiskit.quantum_info import Operator

@@ -15,14 +15,17 @@
 from __future__ import annotations
 
 import itertools as it
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
 from qiskit import QiskitError
-from qiskit.quantum_info.operators import Operator, PauliList, PauliTable, SparsePauliOp
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info.operators import PauliList
+from qiskit.quantum_info.operators import PauliTable
+from qiskit.quantum_info.operators import SparsePauliOp
 from qiskit.test import QiskitTestCase
 
 

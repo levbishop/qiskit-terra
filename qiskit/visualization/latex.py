@@ -22,17 +22,20 @@ import numpy as np
 
 from qiskit.circuit import Clbit
 from qiskit.circuit.controlledgate import ControlledGate
-from qiskit.circuit.library.standard_gates import PhaseGate, RZZGate, SwapGate, U1Gate, XGate, ZGate
+from qiskit.circuit.library.standard_gates import PhaseGate
+from qiskit.circuit.library.standard_gates import RZZGate
+from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.circuit.measure import Measure
 from qiskit.circuit.tools.pi_check import pi_check
 from qiskit.visualization.qcstyle import load_style
-from qiskit.visualization.utils import (
-    generate_latex_label,
-    get_bit_label,
-    get_condition_label,
-    get_gate_ctrl_text,
-    get_param_str,
-)
+from qiskit.visualization.utils import generate_latex_label
+from qiskit.visualization.utils import get_bit_label
+from qiskit.visualization.utils import get_condition_label
+from qiskit.visualization.utils import get_gate_ctrl_text
+from qiskit.visualization.utils import get_param_str
 
 
 class QCircuitImage:

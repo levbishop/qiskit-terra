@@ -15,11 +15,16 @@
 from __future__ import annotations
 
 import io
+from logging import getLogger
+from logging import StreamHandler
 import sys
-from logging import StreamHandler, getLogger
 
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.compiler import assemble, transpile
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.compiler import assemble
+from qiskit.compiler import transpile
 from qiskit.qobj import QobjHeader
 from qiskit.test import QiskitTestCase
 

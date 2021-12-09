@@ -16,7 +16,8 @@ from __future__ import annotations
 
 from qiskit import pulse
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.pulse_v2 import drawings, types
+from qiskit.visualization.pulse_v2 import drawings
+from qiskit.visualization.pulse_v2 import types
 
 
 class TestDrawingObjects(QiskitTestCase):

@@ -14,17 +14,19 @@
 
 from __future__ import annotations
 
-import warnings
 from math import ceil
+import warnings
 
 import numpy
 
-from qiskit.circuit._utils import _compute_control_matrix, _ctrl_state_to_int
+from qiskit.circuit._utils import _compute_control_matrix
+from qiskit.circuit._utils import _ctrl_state_to_int
 from qiskit.circuit.controlledgate import ControlledGate
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.library.standard_gates.h import HGate
 from qiskit.circuit.library.standard_gates.sx import SXGate
-from qiskit.circuit.library.standard_gates.t import TdgGate, TGate
+from qiskit.circuit.library.standard_gates.t import TdgGate
+from qiskit.circuit.library.standard_gates.t import TGate
 from qiskit.circuit.library.standard_gates.u1 import U1Gate
 from qiskit.circuit.library.standard_gates.u2 import U2Gate
 from qiskit.circuit.parameterexpression import ParameterValueType
@@ -193,17 +195,15 @@ class CXGate(ControlledGate):
         )
 
     def _define_qasm3(self):
-        from qiskit.qasm3.ast import (
-            Constant,
-            Identifier,
-            Integer,
-            QuantumBlock,
-            QuantumGateCall,
-            QuantumGateDefinition,
-            QuantumGateModifier,
-            QuantumGateModifierName,
-            QuantumGateSignature,
-        )
+        from qiskit.qasm3.ast import Constant
+        from qiskit.qasm3.ast import Identifier
+        from qiskit.qasm3.ast import Integer
+        from qiskit.qasm3.ast import QuantumBlock
+        from qiskit.qasm3.ast import QuantumGateCall
+        from qiskit.qasm3.ast import QuantumGateDefinition
+        from qiskit.qasm3.ast import QuantumGateModifier
+        from qiskit.qasm3.ast import QuantumGateModifierName
+        from qiskit.qasm3.ast import QuantumGateSignature
 
         control, target = Identifier("c"), Identifier("t")
         call = QuantumGateCall(

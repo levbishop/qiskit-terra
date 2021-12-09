@@ -20,13 +20,19 @@ import datetime
 
 import numpy as np
 
-from qiskit.circuit.library.standard_gates import CXGate, RZGate, RZXGate, SXGate, XGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import RZXGate
+from qiskit.circuit.library.standard_gates import SXGate
+from qiskit.circuit.library.standard_gates import XGate
 from qiskit.circuit.measure import Measure
 from qiskit.circuit.parameter import Parameter
 from qiskit.circuit.reset import Reset
-from qiskit.providers.backend import BackendV2, QubitProperties
+from qiskit.providers.backend import BackendV2
+from qiskit.providers.backend import QubitProperties
 from qiskit.providers.options import Options
-from qiskit.transpiler import InstructionProperties, Target
+from qiskit.transpiler import InstructionProperties
+from qiskit.transpiler import Target
 
 
 class FakeMumbaiV2(BackendV2):

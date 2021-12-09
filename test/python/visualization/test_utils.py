@@ -18,10 +18,14 @@ import unittest
 
 import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.circuit import Clbit, Qubit
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Qubit
 from qiskit.test import QiskitTestCase
-from qiskit.visualization import array_to_latex, utils
+from qiskit.visualization import array_to_latex
+from qiskit.visualization import utils
 
 
 class TestVisualizationUtils(QiskitTestCase):

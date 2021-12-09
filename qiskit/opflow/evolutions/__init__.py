@@ -81,13 +81,11 @@ from qiskit.opflow.evolutions.evolution_factory import EvolutionFactory
 from qiskit.opflow.evolutions.evolved_op import EvolvedOp
 from qiskit.opflow.evolutions.matrix_evolution import MatrixEvolution
 from qiskit.opflow.evolutions.pauli_trotter_evolution import PauliTrotterEvolution
-from qiskit.opflow.evolutions.trotterizations import (
-    QDrift,
-    Suzuki,
-    Trotter,
-    TrotterizationBase,
-    TrotterizationFactory,
-)
+from qiskit.opflow.evolutions.trotterizations import QDrift
+from qiskit.opflow.evolutions.trotterizations import Suzuki
+from qiskit.opflow.evolutions.trotterizations import Trotter
+from qiskit.opflow.evolutions.trotterizations import TrotterizationBase
+from qiskit.opflow.evolutions.trotterizations import TrotterizationFactory
 
 # TODO co-diagonalization of Abelian groups in PauliTrotterEvolution
 # TODO quantum signal processing/qubitization

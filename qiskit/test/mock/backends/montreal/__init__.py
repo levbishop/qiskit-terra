@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.montreal.fake_montreal import FakeLegacyMontreal, FakeMontreal
+from qiskit.test.mock.backends.montreal.fake_montreal import FakeLegacyMontreal
+from qiskit.test.mock.backends.montreal.fake_montreal import FakeMontreal

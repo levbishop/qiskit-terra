@@ -17,8 +17,11 @@ from __future__ import annotations
 
 import os
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.circuit import Gate, Parameter
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import Gate
+from qiskit.circuit import Parameter
 from qiskit.converters.circuit_to_dag import circuit_to_dag
 from qiskit.exceptions import QiskitError
 from qiskit.test import QiskitTestCase
@@ -58,7 +61,12 @@ class LoadFromQasmTest(QiskitTestCase):
 
     def test_loading_all_qelib1_gates(self):
         """Test setting up a circuit with all gates defined in qiskit/qasm/libs/qelib1.inc."""
-        from qiskit.circuit.library import CU1Gate, CU3Gate, U1Gate, U2Gate, U3Gate, UGate
+        from qiskit.circuit.library import CU1Gate
+        from qiskit.circuit.library import CU3Gate
+        from qiskit.circuit.library import U1Gate
+        from qiskit.circuit.library import U2Gate
+        from qiskit.circuit.library import U3Gate
+        from qiskit.circuit.library import UGate
 
         all_gates_qasm = os.path.join(self.qasm_dir, "all_gates.qasm")
         qasm_circuit = QuantumCircuit.from_qasm_file(all_gates_qasm)

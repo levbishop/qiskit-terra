@@ -17,8 +17,8 @@ from __future__ import annotations
 import math
 
 import numpy as np
-import scipy.linalg as la
 from numpy.testing import assert_allclose
+import scipy.linalg as la
 
 from qiskit.quantum_info.synthesis.quaternion import Quaternion
 from qiskit.test import QiskitTestCase

@@ -28,19 +28,23 @@ try:
 except ImportError:
     HAS_PYLATEX = False
 
-from qiskit.circuit import ControlledGate, Measure
-from qiskit.circuit.library.standard_gates import PhaseGate, RZZGate, SwapGate, U1Gate, XGate, ZGate
+from qiskit.circuit import ControlledGate
+from qiskit.circuit import Measure
+from qiskit.circuit.library.standard_gates import PhaseGate
+from qiskit.circuit.library.standard_gates import RZZGate
+from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.circuit.tools.pi_check import pi_check
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.extensions import Initialize
 from qiskit.visualization.qcstyle import load_style
-from qiskit.visualization.utils import (
-    get_bit_label,
-    get_condition_label,
-    get_gate_ctrl_text,
-    get_param_str,
-    matplotlib_close_if_inline,
-)
+from qiskit.visualization.utils import get_bit_label
+from qiskit.visualization.utils import get_condition_label
+from qiskit.visualization.utils import get_gate_ctrl_text
+from qiskit.visualization.utils import get_param_str
+from qiskit.visualization.utils import matplotlib_close_if_inline
 
 # Default gate width and height
 WID = 0.65
@@ -1419,7 +1423,8 @@ class HasMatplotlibWrapper:
     def __bool__(self):
         if not self.has_matplotlib:
             try:
-                from matplotlib import get_backend, patches
+                from matplotlib import get_backend
+                from matplotlib import patches
                 from matplotlib import pyplot as plt
 
                 self.has_matplotlib = True

@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.valencia.fake_valencia import FakeLegacyValencia, FakeValencia
+from qiskit.test.mock.backends.valencia.fake_valencia import FakeLegacyValencia
+from qiskit.test.mock.backends.valencia.fake_valencia import FakeValencia

@@ -18,8 +18,9 @@ Doing so requires that the required backend interface is implemented.
 
 from __future__ import annotations
 
+from abc import ABC
+from abc import abstractmethod
 import warnings
-from abc import ABC, abstractmethod
 
 from qiskit.providers.models import BackendStatus
 from qiskit.version import VERSION as __version__

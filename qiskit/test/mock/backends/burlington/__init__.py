@@ -14,7 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.burlington.fake_burlington import (
-    FakeBurlington,
-    FakeLegacyBurlington,
-)
+from qiskit.test.mock.backends.burlington.fake_burlington import FakeBurlington
+from qiskit.test.mock.backends.burlington.fake_burlington import FakeLegacyBurlington

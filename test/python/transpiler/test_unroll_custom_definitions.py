@@ -14,7 +14,10 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import EquivalenceLibrary, Gate, QuantumCircuit, QuantumRegister
+from qiskit.circuit import EquivalenceLibrary
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.exceptions import QiskitError
 from qiskit.test import QiskitTestCase

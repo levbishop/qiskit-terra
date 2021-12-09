@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.pulse import macros, utils
+from qiskit.pulse import macros
+from qiskit.pulse import utils
 from qiskit.utils.deprecation import deprecate_function
 
 format_meas_map = deprecate_function('"format_meas_map" has been moved to "qiskit.pulse.utils"')(

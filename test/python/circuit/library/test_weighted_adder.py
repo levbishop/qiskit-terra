@@ -14,13 +14,15 @@
 
 from __future__ import annotations
 
-import unittest
 from collections import defaultdict
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
-from qiskit import BasicAer, execute
+from qiskit import BasicAer
+from qiskit import execute
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import WeightedAdder
 from qiskit.test.base import QiskitTestCase

@@ -16,11 +16,16 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
 from qiskit.circuit import QuantumCircuit
-from qiskit.circuit.library import AND, OR, XOR, InnerProduct
+from qiskit.circuit.library import AND
+from qiskit.circuit.library import InnerProduct
+from qiskit.circuit.library import OR
+from qiskit.circuit.library import XOR
 from qiskit.quantum_info import Statevector
 from qiskit.test.base import QiskitTestCase
 

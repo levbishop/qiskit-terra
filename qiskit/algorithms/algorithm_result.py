@@ -16,9 +16,9 @@ This module implements the abstract base class for algorithm results.
 
 from __future__ import annotations
 
+from abc import ABC
 import inspect
 import pprint
-from abc import ABC
 
 
 class AlgorithmResult(ABC):

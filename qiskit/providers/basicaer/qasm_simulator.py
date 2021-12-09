@@ -30,24 +30,22 @@ field, which is a result of measurements for each shot.
 
 from __future__ import annotations
 
+from collections import Counter
 import logging
+from math import log2
 import time
 import uuid
 import warnings
-from collections import Counter
-from math import log2
 
 import numpy as np
 
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.providers.backend import BackendV1
 from qiskit.providers.basicaer.basicaerjob import BasicAerJob
-from qiskit.providers.basicaer.basicaertools import (
-    SINGLE_QUBIT_GATES,
-    cx_gate_matrix,
-    einsum_vecmul_index,
-    single_gate_matrix,
-)
+from qiskit.providers.basicaer.basicaertools import cx_gate_matrix
+from qiskit.providers.basicaer.basicaertools import einsum_vecmul_index
+from qiskit.providers.basicaer.basicaertools import single_gate_matrix
+from qiskit.providers.basicaer.basicaertools import SINGLE_QUBIT_GATES
 from qiskit.providers.basicaer.exceptions import BasicAerError
 from qiskit.providers.models import QasmBackendConfiguration
 from qiskit.providers.options import Options

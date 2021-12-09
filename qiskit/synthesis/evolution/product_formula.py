@@ -21,7 +21,8 @@ import numpy as np
 
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.circuit.quantumcircuit import QuantumCircuit
-from qiskit.quantum_info import Pauli, SparsePauliOp
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
 from qiskit.synthesis.evolution.evolution_synthesis import EvolutionSynthesis
 
 

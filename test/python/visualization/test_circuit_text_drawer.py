@@ -14,31 +14,36 @@
 
 from __future__ import annotations
 
-import os
-import unittest
 from codecs import encode
 from math import pi
+import os
+import unittest
 
 import numpy
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
-from qiskit.circuit import Clbit, Gate, Parameter, Qubit
-from qiskit.circuit.library import (
-    CPhaseGate,
-    CU1Gate,
-    CU3Gate,
-    CZGate,
-    HGate,
-    RZZGate,
-    SwapGate,
-    U1Gate,
-    U2Gate,
-    U3Gate,
-    XGate,
-    YGate,
-    ZGate,
-)
-from qiskit.extensions import HamiltonianGate, UnitaryGate
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
+from qiskit.circuit import Clbit
+from qiskit.circuit import Gate
+from qiskit.circuit import Parameter
+from qiskit.circuit import Qubit
+from qiskit.circuit.library import CPhaseGate
+from qiskit.circuit.library import CU1Gate
+from qiskit.circuit.library import CU3Gate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import RZZGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
+from qiskit.extensions import HamiltonianGate
+from qiskit.extensions import UnitaryGate
 from qiskit.extensions.quantum_initializer import UCGate
 from qiskit.quantum_info.operators import SuperOp
 from qiskit.quantum_info.random import random_unitary
@@ -48,7 +53,8 @@ from qiskit.transpiler.passes import ApplyLayout
 from qiskit.visualization import text as elements
 from qiskit.visualization.circuit_visualization import _text_circuit_drawer
 
-from .visualization import QiskitVisualizationTestCase, path_to_diagram_reference
+from .visualization import path_to_diagram_reference
+from .visualization import QiskitVisualizationTestCase
 
 
 class TestTextDrawerElement(QiskitTestCase):

@@ -14,13 +14,22 @@
 
 from __future__ import annotations
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
-from qiskit.circuit import Parameter, QuantumCircuit
-from qiskit.circuit.library import HGate, RXGate, RYGate, RZGate, YGate
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import YGate
 from qiskit.circuit.library.n_local.qaoa_ansatz import QAOAAnsatz
-from qiskit.opflow import I, PauliSumOp, Y, Z
+from qiskit.opflow import I
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import Y
+from qiskit.opflow import Z
 from qiskit.test import QiskitTestCase
 
 

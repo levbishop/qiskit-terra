@@ -16,28 +16,31 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
 from qiskit import transpile
-from qiskit.circuit import Parameter, ParameterExpression, ParameterVector, QuantumCircuit
-from qiskit.circuit.library import (
-    CCXGate,
-    CRXGate,
-    CXGate,
-    EfficientSU2,
-    ExcitationPreserving,
-    NLocal,
-    RealAmplitudes,
-    RXGate,
-    RXXGate,
-    RYGate,
-    RYYGate,
-    RZGate,
-    SwapGate,
-    TwoLocal,
-    XGate,
-)
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library import CCXGate
+from qiskit.circuit.library import CRXGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import EfficientSU2
+from qiskit.circuit.library import ExcitationPreserving
+from qiskit.circuit.library import NLocal
+from qiskit.circuit.library import RealAmplitudes
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RXXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RYYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import TwoLocal
+from qiskit.circuit.library import XGate
 from qiskit.circuit.random.utils import random_circuit
 from qiskit.converters.circuit_to_dag import circuit_to_dag
 from qiskit.test.base import QiskitTestCase

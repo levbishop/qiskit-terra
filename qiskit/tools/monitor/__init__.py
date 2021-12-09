@@ -16,4 +16,5 @@
 from __future__ import annotations
 
 from qiskit.tools.monitor.job_monitor import job_monitor
-from qiskit.tools.monitor.overview import backend_monitor, backend_overview
+from qiskit.tools.monitor.overview import backend_monitor
+from qiskit.tools.monitor.overview import backend_overview

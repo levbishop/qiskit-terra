@@ -16,10 +16,14 @@ from __future__ import annotations
 
 import numpy
 
-from qiskit.circuit import AncillaRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library.standard_gates import MCXGate
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info import DensityMatrix, Operator, Statevector
+from qiskit.quantum_info import DensityMatrix
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
 
 
 class GroverOperator(QuantumCircuit):

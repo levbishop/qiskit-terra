@@ -16,63 +16,62 @@ from __future__ import annotations
 
 import contextlib
 import logging
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
-from qiskit import QiskitError, execute
-from qiskit.circuit import QuantumCircuit, QuantumRegister
-from qiskit.circuit.library import (
-    CPhaseGate,
-    CRZGate,
-    CXGate,
-    CZGate,
-    HGate,
-    IGate,
-    RXGate,
-    RXXGate,
-    RYGate,
-    RYYGate,
-    RZGate,
-    RZXGate,
-    RZZGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    U3Gate,
-    UGate,
-    XGate,
-    YGate,
-    ZGate,
-    iSwapGate,
-)
-from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit import execute
+from qiskit import QiskitError
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit.library import CPhaseGate
+from qiskit.circuit.library import CRZGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import iSwapGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RXXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RYYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import RZXGate
+from qiskit.circuit.library import RZZGate
+from qiskit.circuit.library import SdgGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import U3Gate
+from qiskit.circuit.library import UGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
 from qiskit.extensions import UnitaryGate
 from qiskit.providers.basicaer import UnitarySimulatorPy
 from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.random import random_unitary
 from qiskit.quantum_info.synthesis.ion_decompose import cnot_rxx_decompose
 from qiskit.quantum_info.synthesis.one_qubit_decompose import OneQubitEulerDecomposer
-from qiskit.quantum_info.synthesis.two_qubit_decompose import (
-    TwoQubitBasisDecomposer,
-    TwoQubitControlledUDecomposer,
-    TwoQubitWeylControlledEquiv,
-    TwoQubitWeylDecomposition,
-    TwoQubitWeylfSimaabEquiv,
-    TwoQubitWeylfSimabbEquiv,
-    TwoQubitWeylfSimabmbEquiv,
-    TwoQubitWeylGeneral,
-    TwoQubitWeylIdEquiv,
-    TwoQubitWeylMirrorControlledEquiv,
-    TwoQubitWeylPartialSWAPEquiv,
-    TwoQubitWeylPartialSWAPFlipEquiv,
-    TwoQubitWeylSWAPEquiv,
-    Ud,
-    decompose_two_qubit_product_gate,
-    two_qubit_cnot_decompose,
-)
+from qiskit.quantum_info.synthesis.two_qubit_decompose import decompose_two_qubit_product_gate
+from qiskit.quantum_info.synthesis.two_qubit_decompose import two_qubit_cnot_decompose
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitBasisDecomposer
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitControlledUDecomposer
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylControlledEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylDecomposition
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylfSimaabEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylfSimabbEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylfSimabmbEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylGeneral
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylIdEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylMirrorControlledEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylPartialSWAPEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylPartialSWAPFlipEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylSWAPEquiv
+from qiskit.quantum_info.synthesis.two_qubit_decompose import Ud
 from qiskit.test import QiskitTestCase
 
 

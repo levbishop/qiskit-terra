@@ -92,11 +92,12 @@ the plotter API.
 
 from __future__ import annotations
 
-import warnings
 from typing import Any
+import warnings
 
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.visualization.timeline import drawings, types
+from qiskit.visualization.timeline import drawings
+from qiskit.visualization.timeline import types
 
 
 def gen_sched_gate(

@@ -33,12 +33,13 @@ The circuit itself keeps this context.
 from __future__ import annotations
 
 import copy
-import warnings
 from itertools import zip_longest
+import warnings
 
 import numpy
 
-from qiskit.circuit.classicalregister import ClassicalRegister, Clbit
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit.classicalregister import Clbit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.parameter import ParameterExpression
 from qiskit.circuit.quantumregister import QuantumRegister
@@ -376,7 +377,8 @@ class Instruction:
         if self.definition is None:
             raise CircuitError("inverse() not implemented for %s." % self.name)
 
-        from qiskit.circuit import Gate, QuantumCircuit  # pylint: disable=cyclic-import
+        from qiskit.circuit import Gate  # pylint: disable=cyclic-import
+        from qiskit.circuit import QuantumCircuit
 
         if self.name.endswith("_dg"):
             name = self.name[:-3]

@@ -15,7 +15,8 @@
 from __future__ import annotations
 
 from qiskit.test import QiskitTestCase
-from qiskit.tools.events.pubsub import Publisher, Subscriber
+from qiskit.tools.events.pubsub import Publisher
+from qiskit.tools.events.pubsub import Subscriber
 
 
 class DummySubscriber(Subscriber):

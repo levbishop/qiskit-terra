@@ -14,10 +14,12 @@
 
 from __future__ import annotations
 
-from os.path import basename, isfile
+from os.path import basename
+from os.path import isfile
 from typing import Callable
 
-from tweedledum import BitVec, BoolFunction
+from tweedledum import BitVec
+from tweedledum import BoolFunction
 from tweedledum.synthesis import pkrm_synth
 
 from qiskit.circuit import QuantumCircuit

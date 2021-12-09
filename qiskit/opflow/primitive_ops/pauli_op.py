@@ -21,15 +21,24 @@ import numpy as np
 from scipy.sparse import spmatrix
 
 from qiskit import QuantumCircuit
-from qiskit.circuit import Instruction, ParameterExpression
-from qiskit.circuit.library import IGate, RXGate, RYGate, RZGate, XGate, YGate, ZGate
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
 from qiskit.circuit.library.generalized_gates import PauliGate
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.list_ops.summed_op import SummedOp
 from qiskit.opflow.list_ops.tensored_op import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
-from qiskit.quantum_info import Pauli, SparsePauliOp, Statevector
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
+from qiskit.quantum_info import Statevector
 
 
 class PauliOp(PrimitiveOp):

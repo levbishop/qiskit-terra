@@ -17,14 +17,22 @@ import copy
 
 import numpy as np
 
-from qiskit.circuit import ParameterExpression, ParameterVector
-from qiskit.circuit.library import RXGate, RYGate, RZGate
-from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RZGate
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
 from qiskit.opflow.gradients.circuit_qfis.circuit_qfi import CircuitQFI
 from qiskit.opflow.gradients.derivative_base import _coeff_derivative
 from qiskit.opflow.list_ops.list_op import ListOp
-from qiskit.opflow.operator_globals import I, X, Y, Z, Zero
+from qiskit.opflow.operator_globals import I
+from qiskit.opflow.operator_globals import X
+from qiskit.opflow.operator_globals import Y
+from qiskit.opflow.operator_globals import Z
+from qiskit.opflow.operator_globals import Zero
 from qiskit.opflow.primitive_ops.circuit_op import CircuitOp
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 from qiskit.opflow.state_fns.state_fn import StateFn

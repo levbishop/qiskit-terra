@@ -14,13 +14,16 @@
 
 from __future__ import annotations
 
-import unittest
 from time import process_time
+import unittest
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeRueschlikon, FakeTenerife, FakeTokyo
+from qiskit.test.mock import FakeRueschlikon
+from qiskit.test.mock import FakeTenerife
+from qiskit.test.mock import FakeTokyo
 from qiskit.transpiler import CouplingMap
 from qiskit.transpiler.passes import CSPLayout
 

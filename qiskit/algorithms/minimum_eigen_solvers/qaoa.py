@@ -22,9 +22,11 @@ from qiskit.algorithms.minimum_eigen_solvers.vqe import VQE
 from qiskit.algorithms.optimizers import Optimizer
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library.n_local.qaoa_ansatz import QAOAAnsatz
-from qiskit.opflow import ExpectationBase, OperatorBase
+from qiskit.opflow import ExpectationBase
+from qiskit.opflow import OperatorBase
 from qiskit.opflow.gradients import GradientBase
-from qiskit.providers import Backend, BaseBackend
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
 from qiskit.utils.quantum_instance import QuantumInstance
 from qiskit.utils.validation import validate_min
 

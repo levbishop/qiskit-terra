@@ -16,7 +16,8 @@ from __future__ import annotations
 
 import warnings
 
-from qiskit.circuit.library.standard_gates import CXGate, U3Gate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import U3Gate
 from qiskit.converters import circuit_to_dag
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.synthesis.ion_decompose import cnot_rxx_decompose

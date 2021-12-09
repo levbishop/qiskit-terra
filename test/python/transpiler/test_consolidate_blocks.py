@@ -20,7 +20,8 @@ import unittest
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library import U2Gate
 from qiskit.converters import circuit_to_dag
 from qiskit.extensions import UnitaryGate
@@ -28,7 +29,9 @@ from qiskit.quantum_info.operators import Operator
 from qiskit.quantum_info.operators.measures import process_fidelity
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
-from qiskit.transpiler.passes import Collect1qRuns, Collect2qBlocks, ConsolidateBlocks
+from qiskit.transpiler.passes import Collect1qRuns
+from qiskit.transpiler.passes import Collect2qBlocks
+from qiskit.transpiler.passes import ConsolidateBlocks
 
 
 class TestConsolidateBlocks(QiskitTestCase):

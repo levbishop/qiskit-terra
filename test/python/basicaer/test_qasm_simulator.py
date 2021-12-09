@@ -15,15 +15,20 @@
 from __future__ import annotations
 
 import io
+from logging import getLogger
+from logging import StreamHandler
 import os
 import sys
 import unittest
-from logging import StreamHandler, getLogger
 
 import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, execute
-from qiskit.compiler import assemble, transpile
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.compiler import assemble
+from qiskit.compiler import transpile
 from qiskit.providers.basicaer import QasmSimulatorPy
 from qiskit.test import providers
 

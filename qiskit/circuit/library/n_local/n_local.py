@@ -14,13 +14,16 @@
 
 from __future__ import annotations
 
-import warnings
 from itertools import combinations
 from typing import Any, Callable, Sequence
+import warnings
 
 import numpy
 
-from qiskit.circuit import Instruction, Parameter, ParameterExpression, ParameterVector
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 from qiskit.circuit.parametertable import ParameterTable
 from qiskit.circuit.quantumcircuit import QuantumCircuit

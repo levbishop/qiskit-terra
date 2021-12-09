@@ -15,7 +15,9 @@
 from __future__ import annotations
 
 from qiskit.circuit import QuantumRegister
-from qiskit.circuit.library.standard_gates import HGate, RZXGate, XGate
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import RZXGate
+from qiskit.circuit.library.standard_gates import XGate
 from qiskit.converters import circuit_to_dag
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.transpiler.basepasses import TransformationPass

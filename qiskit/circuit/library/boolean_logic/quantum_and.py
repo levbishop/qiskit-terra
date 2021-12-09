@@ -15,7 +15,9 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import AncillaRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library.standard_gates import MCXGate
 
 

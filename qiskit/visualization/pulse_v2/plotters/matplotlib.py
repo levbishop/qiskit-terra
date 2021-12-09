@@ -17,12 +17,14 @@
 from __future__ import annotations
 
 import matplotlib
+from matplotlib.patches import Rectangle
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.patches import Rectangle
 
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.pulse_v2 import core, drawings, types
+from qiskit.visualization.pulse_v2 import core
+from qiskit.visualization.pulse_v2 import drawings
+from qiskit.visualization.pulse_v2 import types
 from qiskit.visualization.pulse_v2.plotters.base_plotter import BasePlotter
 from qiskit.visualization.utils import matplotlib_close_if_inline
 

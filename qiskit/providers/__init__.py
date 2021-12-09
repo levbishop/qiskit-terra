@@ -695,22 +695,25 @@ from __future__ import annotations
 import pkgutil
 
 # Providers interface
-from qiskit.providers.backend import Backend, BackendV1, BackendV2, QubitProperties
-from qiskit.providers.job import Job, JobV1
+from qiskit.providers.backend import Backend
+from qiskit.providers.backend import BackendV1
+from qiskit.providers.backend import BackendV2
+from qiskit.providers.backend import QubitProperties
+from qiskit.providers.job import Job
+from qiskit.providers.job import JobV1
 from qiskit.providers.options import Options
-from qiskit.providers.provider import Provider, ProviderV1
+from qiskit.providers.provider import Provider
+from qiskit.providers.provider import ProviderV1
 
 # Legacy providers interface
 from qiskit.providers.basebackend import BaseBackend
 from qiskit.providers.basejob import BaseJob
 from qiskit.providers.baseprovider import BaseProvider
-from qiskit.providers.exceptions import (
-    BackendConfigurationError,
-    BackendPropertyError,
-    JobError,
-    JobTimeoutError,
-    QiskitBackendNotFoundError,
-)
+from qiskit.providers.exceptions import BackendConfigurationError
+from qiskit.providers.exceptions import BackendPropertyError
+from qiskit.providers.exceptions import JobError
+from qiskit.providers.exceptions import JobTimeoutError
+from qiskit.providers.exceptions import QiskitBackendNotFoundError
 from qiskit.providers.jobstatus import JobStatus
 
 # Allow extending this namespace.

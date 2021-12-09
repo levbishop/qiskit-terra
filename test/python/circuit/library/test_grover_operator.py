@@ -21,7 +21,9 @@ import numpy as np
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import GroverOperator
 from qiskit.converters import circuit_to_dag
-from qiskit.quantum_info import DensityMatrix, Operator, Statevector
+from qiskit.quantum_info import DensityMatrix
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
 from qiskit.test.base import QiskitTestCase
 
 

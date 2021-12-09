@@ -18,13 +18,12 @@ from qiskit.quantum_info.states.statevector import Statevector
 
 # These must come later to avoid cyclic import problems?
 from qiskit.quantum_info.states.densitymatrix import DensityMatrix
-from qiskit.quantum_info.states.measures import (
-    concurrence,
-    entanglement_of_formation,
-    entropy,
-    mutual_information,
-    purity,
-    state_fidelity,
-)
+from qiskit.quantum_info.states.measures import concurrence
+from qiskit.quantum_info.states.measures import entanglement_of_formation
+from qiskit.quantum_info.states.measures import entropy
+from qiskit.quantum_info.states.measures import mutual_information
+from qiskit.quantum_info.states.measures import purity
+from qiskit.quantum_info.states.measures import state_fidelity
 from qiskit.quantum_info.states.stabilizerstate import StabilizerState
-from qiskit.quantum_info.states.utils import partial_trace, shannon_entropy
+from qiskit.quantum_info.states.utils import partial_trace
+from qiskit.quantum_info.states.utils import shannon_entropy

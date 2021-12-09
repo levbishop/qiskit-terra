@@ -16,11 +16,13 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
 from qiskit.circuit.library import Diagonal
-from qiskit.quantum_info import Operator, Statevector
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
 from qiskit.quantum_info.operators.predicates import matrix_equal
 from qiskit.test.base import QiskitTestCase
 

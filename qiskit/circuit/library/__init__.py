@@ -361,64 +361,61 @@ RZXGate template circuits
 from __future__ import annotations
 
 from qiskit.circuit.barrier import Barrier
-from qiskit.circuit.library.arithmetic import (
-    CDKMRippleCarryAdder,
-    DraperQFTAdder,
-    ExactReciprocal,
-    FunctionalPauliRotations,
-    HRSCumulativeMultiplier,
-    IntegerComparator,
-    LinearAmplitudeFunction,
-    LinearPauliRotations,
-    PiecewiseChebyshev,
-    PiecewiseLinearPauliRotations,
-    PiecewisePolynomialPauliRotations,
-    PolynomialPauliRotations,
-    QuadraticForm,
-    RGQFTMultiplier,
-    VBERippleCarryAdder,
-    WeightedAdder,
-)
+from qiskit.circuit.library.arithmetic import CDKMRippleCarryAdder
+from qiskit.circuit.library.arithmetic import DraperQFTAdder
+from qiskit.circuit.library.arithmetic import ExactReciprocal
+from qiskit.circuit.library.arithmetic import FunctionalPauliRotations
+from qiskit.circuit.library.arithmetic import HRSCumulativeMultiplier
+from qiskit.circuit.library.arithmetic import IntegerComparator
+from qiskit.circuit.library.arithmetic import LinearAmplitudeFunction
+from qiskit.circuit.library.arithmetic import LinearPauliRotations
+from qiskit.circuit.library.arithmetic import PiecewiseChebyshev
+from qiskit.circuit.library.arithmetic import PiecewiseLinearPauliRotations
+from qiskit.circuit.library.arithmetic import PiecewisePolynomialPauliRotations
+from qiskit.circuit.library.arithmetic import PolynomialPauliRotations
+from qiskit.circuit.library.arithmetic import QuadraticForm
+from qiskit.circuit.library.arithmetic import RGQFTMultiplier
+from qiskit.circuit.library.arithmetic import VBERippleCarryAdder
+from qiskit.circuit.library.arithmetic import WeightedAdder
 from qiskit.circuit.library.basis_change import QFT
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
-from qiskit.circuit.library.boolean_logic import AND, OR, XOR, InnerProduct
-from qiskit.circuit.library.data_preparation import PauliFeatureMap, ZFeatureMap, ZZFeatureMap
+from qiskit.circuit.library.boolean_logic import AND
+from qiskit.circuit.library.boolean_logic import InnerProduct
+from qiskit.circuit.library.boolean_logic import OR
+from qiskit.circuit.library.boolean_logic import XOR
+from qiskit.circuit.library.data_preparation import PauliFeatureMap
+from qiskit.circuit.library.data_preparation import ZFeatureMap
+from qiskit.circuit.library.data_preparation import ZZFeatureMap
 from qiskit.circuit.library.evolved_operator_ansatz import EvolvedOperatorAnsatz
 from qiskit.circuit.library.fourier_checking import FourierChecking
-from qiskit.circuit.library.generalized_gates import (
-    GMS,
-    GR,
-    GRX,
-    GRY,
-    GRZ,
-    MCMT,
-    Diagonal,
-    MCMTVChain,
-    PauliGate,
-    Permutation,
-    RVGate,
-)
+from qiskit.circuit.library.generalized_gates import Diagonal
+from qiskit.circuit.library.generalized_gates import GMS
+from qiskit.circuit.library.generalized_gates import GR
+from qiskit.circuit.library.generalized_gates import GRX
+from qiskit.circuit.library.generalized_gates import GRY
+from qiskit.circuit.library.generalized_gates import GRZ
+from qiskit.circuit.library.generalized_gates import MCMT
+from qiskit.circuit.library.generalized_gates import MCMTVChain
+from qiskit.circuit.library.generalized_gates import PauliGate
+from qiskit.circuit.library.generalized_gates import Permutation
+from qiskit.circuit.library.generalized_gates import RVGate
 from qiskit.circuit.library.graph_state import GraphState
 from qiskit.circuit.library.grover_operator import GroverOperator
 from qiskit.circuit.library.hidden_linear_function import HiddenLinearFunction
 from qiskit.circuit.library.iqp import IQP
-from qiskit.circuit.library.n_local import (
-    EfficientSU2,
-    ExcitationPreserving,
-    NLocal,
-    PauliTwoDesign,
-    QAOAAnsatz,
-    RealAmplitudes,
-    TwoLocal,
-)
+from qiskit.circuit.library.n_local import EfficientSU2
+from qiskit.circuit.library.n_local import ExcitationPreserving
+from qiskit.circuit.library.n_local import NLocal
+from qiskit.circuit.library.n_local import PauliTwoDesign
+from qiskit.circuit.library.n_local import QAOAAnsatz
+from qiskit.circuit.library.n_local import RealAmplitudes
+from qiskit.circuit.library.n_local import TwoLocal
 from qiskit.circuit.library.pauli_evolution import PauliEvolutionGate
 from qiskit.circuit.library.phase_estimation import PhaseEstimation
 from qiskit.circuit.library.phase_oracle import PhaseOracle
-from qiskit.circuit.library.probability_distributions import (
-    LogNormalDistribution,
-    NormalDistribution,
-    UniformDistribution,
-)
+from qiskit.circuit.library.probability_distributions import LogNormalDistribution
+from qiskit.circuit.library.probability_distributions import NormalDistribution
+from qiskit.circuit.library.probability_distributions import UniformDistribution
 from qiskit.circuit.library.quantum_volume import QuantumVolume
 from qiskit.circuit.library.standard_gates import *
 from qiskit.circuit.library.templates import *

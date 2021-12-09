@@ -14,8 +14,15 @@
 
 from __future__ import annotations
 
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute
-from qiskit.quantum_info import Operator, Statevector, process_fidelity, state_fidelity
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import process_fidelity
+from qiskit.quantum_info import state_fidelity
+from qiskit.quantum_info import Statevector
 from qiskit.test import QiskitTestCase
 
 

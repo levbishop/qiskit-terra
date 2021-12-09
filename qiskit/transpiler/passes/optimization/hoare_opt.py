@@ -13,9 +13,13 @@
 """ Pass for Hoare logic circuit optimization. """
 from __future__ import annotations
 
-from qiskit.circuit import ControlledGate, Gate, QuantumRegister
+from qiskit.circuit import ControlledGate
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library.standard_gates import CU1Gate, CZGate, MCU1Gate
+from qiskit.circuit.library.standard_gates import CU1Gate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import MCU1Gate
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.extensions.unitary import UnitaryGate
 from qiskit.quantum_info.operators.predicates import matrix_equal
@@ -24,7 +28,13 @@ from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.passes.optimization import _gate_extension  # pylint: disable=unused-import
 
 try:
-    from z3 import And, Bool, Implies, Not, Or, Solver, unsat
+    from z3 import And
+    from z3 import Bool
+    from z3 import Implies
+    from z3 import Not
+    from z3 import Or
+    from z3 import Solver
+    from z3 import unsat
 
     HAS_Z3 = True
 except ImportError:

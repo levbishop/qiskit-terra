@@ -17,7 +17,9 @@ from __future__ import annotations
 
 from math import pi
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, Qubit
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
 from qiskit.circuit.library.standard_gates.u3 import _generate_gray_code
 from qiskit.circuit.library.standard_gates.x import MCXGate
 from qiskit.circuit.parameterexpression import ParameterValueType

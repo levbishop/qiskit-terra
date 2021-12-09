@@ -20,7 +20,8 @@ import numpy as np
 from scipy.sparse import csr_matrix
 
 from qiskit import QiskitError
-from qiskit.quantum_info.operators.symplectic import PauliTable, StabilizerTable
+from qiskit.quantum_info.operators.symplectic import PauliTable
+from qiskit.quantum_info.operators.symplectic import StabilizerTable
 from qiskit.test import QiskitTestCase
 
 

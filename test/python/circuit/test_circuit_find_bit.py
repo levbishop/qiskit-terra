@@ -15,10 +15,16 @@
 
 from __future__ import annotations
 
-from ddt import data, ddt, unpack
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.circuit import AncillaRegister, Clbit, Qubit
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Qubit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.test import QiskitTestCase
 

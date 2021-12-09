@@ -33,7 +33,8 @@ from typing import Iterable, MutableMapping, TypeVar
 from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.dagcircuit import DAGCircuit
-from qiskit.transpiler.passes.routing.algorithms.types import PermutationCircuit, Swap
+from qiskit.transpiler.passes.routing.algorithms.types import PermutationCircuit
+from qiskit.transpiler.passes.routing.algorithms.types import Swap
 
 _K = TypeVar("_K")
 _V = TypeVar("_V")

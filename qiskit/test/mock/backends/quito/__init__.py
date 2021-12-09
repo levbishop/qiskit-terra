@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.quito.fake_quito import FakeLegacyQuito, FakeQuito
+from qiskit.test.mock.backends.quito.fake_quito import FakeLegacyQuito
+from qiskit.test.mock.backends.quito.fake_quito import FakeQuito

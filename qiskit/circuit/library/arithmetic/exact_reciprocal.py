@@ -17,7 +17,8 @@ from math import isclose
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.extensions.quantum_initializer import UCRYGate
 
 

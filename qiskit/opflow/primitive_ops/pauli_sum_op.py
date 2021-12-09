@@ -15,19 +15,22 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Union, cast
+from typing import cast, Union
 
 import numpy as np
 from scipy.sparse import spmatrix
 
-from qiskit.circuit import Instruction, ParameterExpression
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterExpression
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.list_ops.summed_op import SummedOp
 from qiskit.opflow.list_ops.tensored_op import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp
-from qiskit.quantum_info import Pauli, SparsePauliOp, Statevector
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
+from qiskit.quantum_info import Statevector
 from qiskit.quantum_info.operators.custom_iterator import CustomIterator
 
 

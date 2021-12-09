@@ -14,8 +14,9 @@
 
 from __future__ import annotations
 
+from abc import ABC
+from abc import abstractmethod
 import warnings
-from abc import ABC, abstractmethod
 
 from qiskit.providers.exceptions import QiskitBackendNotFoundError
 

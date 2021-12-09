@@ -18,7 +18,8 @@ import unittest
 
 import numpy as np
 
-from qiskit.circuit.library import GMS, RXXGate
+from qiskit.circuit.library import GMS
+from qiskit.circuit.library import RXXGate
 from qiskit.quantum_info import Operator
 from qiskit.test.base import QiskitTestCase
 

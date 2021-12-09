@@ -21,10 +21,8 @@ import numpy as np
 from numpy.testing import assert_allclose
 
 from qiskit.quantum_info.random import random_unitary
-from qiskit.quantum_info.synthesis.local_invariance import (
-    local_equivalence,
-    two_qubit_local_invariants,
-)
+from qiskit.quantum_info.synthesis.local_invariance import local_equivalence
+from qiskit.quantum_info.synthesis.local_invariance import two_qubit_local_invariants
 from qiskit.quantum_info.synthesis.weyl import weyl_coordinates
 from qiskit.test import QiskitTestCase
 

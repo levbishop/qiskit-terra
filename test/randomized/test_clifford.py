@@ -15,7 +15,9 @@ from __future__ import annotations
 
 import unittest
 
-from hypothesis import given, settings, strategies
+from hypothesis import given
+from hypothesis import settings
+from hypothesis import strategies
 
 from qiskit.quantum_info import Clifford
 from qiskit.quantum_info.random import random_clifford

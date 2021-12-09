@@ -14,14 +14,17 @@
 
 from __future__ import annotations
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit.library import ZGate
 from qiskit.exceptions import QiskitError
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PropertySet
 from qiskit.transpiler.passes import Unroller
 
-from ._dummy_passes import PassD_TP_NR_NP, PassE_AP_NR_NP, PassN_AP_NR_NP
+from ._dummy_passes import PassD_TP_NR_NP
+from ._dummy_passes import PassE_AP_NR_NP
+from ._dummy_passes import PassN_AP_NR_NP
 
 
 class TestPassCall(QiskitTestCase):

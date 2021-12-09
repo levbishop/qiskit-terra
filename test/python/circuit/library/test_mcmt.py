@@ -16,11 +16,20 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
-from qiskit.circuit.library import MCMT, CHGate, CXGate, CZGate, MCMTVChain, XGate, ZGate
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit.library import CHGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import MCMT
+from qiskit.circuit.library import MCMTVChain
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import ZGate
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info import Statevector
 from qiskit.quantum_info.states import state_fidelity

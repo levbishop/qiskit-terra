@@ -15,9 +15,14 @@
 from __future__ import annotations
 
 from qiskit.circuit.library.generalized_gates.diagonal import Diagonal
-from qiskit.circuit.library.generalized_gates.gms import GMS, MSGate
-from qiskit.circuit.library.generalized_gates.gr import GR, GRX, GRY, GRZ
-from qiskit.circuit.library.generalized_gates.mcmt import MCMT, MCMTVChain
+from qiskit.circuit.library.generalized_gates.gms import GMS
+from qiskit.circuit.library.generalized_gates.gms import MSGate
+from qiskit.circuit.library.generalized_gates.gr import GR
+from qiskit.circuit.library.generalized_gates.gr import GRX
+from qiskit.circuit.library.generalized_gates.gr import GRY
+from qiskit.circuit.library.generalized_gates.gr import GRZ
+from qiskit.circuit.library.generalized_gates.mcmt import MCMT
+from qiskit.circuit.library.generalized_gates.mcmt import MCMTVChain
 from qiskit.circuit.library.generalized_gates.pauli import PauliGate
 from qiskit.circuit.library.generalized_gates.permutation import Permutation
 from qiskit.circuit.library.generalized_gates.rv import RVGate

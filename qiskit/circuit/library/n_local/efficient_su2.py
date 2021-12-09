@@ -18,9 +18,12 @@ from typing import Any, Callable
 
 from numpy import pi
 
-from qiskit.circuit import Instruction, QuantumCircuit
+from qiskit.circuit import Instruction
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library.n_local.two_local import TwoLocal
-from qiskit.circuit.library.standard_gates import CXGate, RYGate, RZGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RZGate
 
 
 class EfficientSU2(TwoLocal):

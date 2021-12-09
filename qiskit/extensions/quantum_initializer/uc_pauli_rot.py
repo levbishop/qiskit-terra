@@ -27,7 +27,8 @@ import math
 
 import numpy as np
 
-from qiskit.circuit import Gate, QuantumCircuit
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.quantumcircuit import QuantumRegister
 from qiskit.exceptions import QiskitError
 

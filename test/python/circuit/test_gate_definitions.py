@@ -17,51 +17,54 @@ from __future__ import annotations
 
 import inspect
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
-from qiskit import QuantumCircuit, QuantumRegister
-from qiskit.circuit import ControlledGate, Gate, ParameterVector
-from qiskit.circuit.library import (
-    CCXGate,
-    CHGate,
-    CPhaseGate,
-    CRXGate,
-    CRYGate,
-    CRZGate,
-    CSwapGate,
-    CSXGate,
-    CU1Gate,
-    CU3Gate,
-    CUGate,
-    CXGate,
-    CYGate,
-    CZGate,
-    ECRGate,
-    HGate,
-    IGate,
-    PhaseGate,
-    RGate,
-    RVGate,
-    RXGate,
-    RYGate,
-    RYYGate,
-    RZGate,
-    SdgGate,
-    SGate,
-    SXdgGate,
-    SXGate,
-    TdgGate,
-    TGate,
-    U1Gate,
-    U2Gate,
-    U3Gate,
-    UGate,
-    XGate,
-    YGate,
-    ZGate,
-    standard_gates,
-)
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import ControlledGate
+from qiskit.circuit import Gate
+from qiskit.circuit import ParameterVector
+from qiskit.circuit.library import CCXGate
+from qiskit.circuit.library import CHGate
+from qiskit.circuit.library import CPhaseGate
+from qiskit.circuit.library import CRXGate
+from qiskit.circuit.library import CRYGate
+from qiskit.circuit.library import CRZGate
+from qiskit.circuit.library import CSwapGate
+from qiskit.circuit.library import CSXGate
+from qiskit.circuit.library import CU1Gate
+from qiskit.circuit.library import CU3Gate
+from qiskit.circuit.library import CUGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CYGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import ECRGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import PhaseGate
+from qiskit.circuit.library import RGate
+from qiskit.circuit.library import RVGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RYYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import SdgGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import standard_gates
+from qiskit.circuit.library import SXdgGate
+from qiskit.circuit.library import SXGate
+from qiskit.circuit.library import TdgGate
+from qiskit.circuit.library import TGate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
+from qiskit.circuit.library import UGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
 from qiskit.circuit.library.standard_gates.equivalence_library import (
     StandardEquivalenceLibrary as std_eqlib,
 )

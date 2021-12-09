@@ -16,21 +16,34 @@ from __future__ import annotations
 import cmath
 import copy
 import math
+from operator import add
+from operator import mul
+from operator import sub
+from operator import truediv
 import pickle
-import unittest
-from operator import add, mul, sub, truediv
 from test import combine
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy
-from ddt import data, ddt
 
 import qiskit
-import qiskit.circuit.library as circlib
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, pulse
-from qiskit.circuit import Gate, Instruction, Parameter, ParameterExpression, ParameterVector
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import pulse
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.circuit.exceptions import CircuitError
+import qiskit.circuit.library as circlib
 from qiskit.circuit.parametertable import ParameterView
-from qiskit.compiler import assemble, transpile
+from qiskit.compiler import assemble
+from qiskit.compiler import transpile
 from qiskit.execute_function import execute
 from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
@@ -847,7 +860,8 @@ class TestParameters(QiskitTestCase):
         """Verify circuits with repeated parameterized gates can be converted
         to DAG and back, maintaining consistency of circuit._parameter_table."""
 
-        from qiskit.converters import circuit_to_dag, dag_to_circuit
+        from qiskit.converters import circuit_to_dag
+        from qiskit.converters import dag_to_circuit
 
         qr = QuantumRegister(1)
         qc = QuantumCircuit(qr)

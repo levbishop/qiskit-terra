@@ -14,8 +14,9 @@
 
 from __future__ import annotations
 
-from functools import partial, reduce
-from typing import Callable, List, Optional, cast
+from functools import partial
+from functools import reduce
+from typing import Callable, cast, List, Optional
 
 import numpy as np
 
@@ -25,7 +26,9 @@ from qiskit.opflow.list_ops.composed_op import ComposedOp
 from qiskit.opflow.list_ops.list_op import ListOp
 from qiskit.opflow.list_ops.summed_op import SummedOp
 from qiskit.opflow.operator_base import OperatorBase
-from qiskit.opflow.operator_globals import H, I, S
+from qiskit.opflow.operator_globals import H
+from qiskit.opflow.operator_globals import I
+from qiskit.opflow.operator_globals import S
 from qiskit.opflow.primitive_ops.pauli_op import PauliOp
 from qiskit.opflow.primitive_ops.pauli_sum_op import PauliSumOp
 from qiskit.opflow.primitive_ops.primitive_op import PrimitiveOp

@@ -41,7 +41,9 @@ from __future__ import annotations
 
 from typing import Any
 
-from qiskit.visualization.pulse_v2 import device_info, drawings, types
+from qiskit.visualization.pulse_v2 import device_info
+from qiskit.visualization.pulse_v2 import drawings
+from qiskit.visualization.pulse_v2 import types
 
 
 def gen_baseline(

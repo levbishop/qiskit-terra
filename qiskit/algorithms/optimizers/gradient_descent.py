@@ -19,12 +19,10 @@ from typing import Any, Callable, Iterator
 
 import numpy as np
 
-from qiskit.algorithms.optimizers.optimizer import (
-    POINT,
-    Optimizer,
-    OptimizerResult,
-    OptimizerSupportLevel,
-)
+from qiskit.algorithms.optimizers.optimizer import Optimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerSupportLevel
+from qiskit.algorithms.optimizers.optimizer import POINT
 
 CALLBACK = Callable[[int, np.ndarray, float, float], None]
 

@@ -22,12 +22,17 @@ import sys
 
 import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.algorithms.algorithm_result import AlgorithmResult
 from qiskit.algorithms.exceptions import AlgorithmError
-from qiskit.circuit import Gate, Instruction, ParameterVector
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import ParameterVector
 from qiskit.circuit.library import QFT
-from qiskit.providers import Backend, BaseBackend
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
 from qiskit.quantum_info import partial_trace
 from qiskit.utils import summarize_circuits
 from qiskit.utils.arithmetic import is_power

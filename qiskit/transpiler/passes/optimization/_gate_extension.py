@@ -21,32 +21,31 @@ If a gate has no `_postconditions`, then is assumed to have unknown post-conditi
 from __future__ import annotations
 
 try:
-    from z3 import And, Not
+    from z3 import And
+    from z3 import Not
 
     HAS_Z3 = True
 except ImportError:
     HAS_Z3 = False
-from qiskit.circuit.library.standard_gates import (
-    CCXGate,
-    CRZGate,
-    CSwapGate,
-    CU1Gate,
-    CXGate,
-    CYGate,
-    CZGate,
-    IGate,
-    MCU1Gate,
-    RZGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    TdgGate,
-    TGate,
-    U1Gate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit.library.standard_gates import CCXGate
+from qiskit.circuit.library.standard_gates import CRZGate
+from qiskit.circuit.library.standard_gates import CSwapGate
+from qiskit.circuit.library.standard_gates import CU1Gate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import CYGate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import IGate
+from qiskit.circuit.library.standard_gates import MCU1Gate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import SdgGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.library.standard_gates import TdgGate
+from qiskit.circuit.library.standard_gates import TGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 
 if HAS_Z3:
     # FLIP GATES #

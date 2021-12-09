@@ -19,7 +19,9 @@ import warnings
 
 import numpy as np
 
-from qiskit.circuit import AncillaRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.blueprintcircuit import BlueprintCircuit
 from qiskit.circuit.library.boolean_logic import OR

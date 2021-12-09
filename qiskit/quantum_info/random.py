@@ -15,15 +15,14 @@
 # pylint: disable=unused-import
 from __future__ import annotations
 
-from qiskit.quantum_info.operators.random import (
-    random_clifford,
-    random_cnotdihedral,
-    random_hermitian,
-    random_pauli,
-    random_pauli_list,
-    random_pauli_table,
-    random_quantum_channel,
-    random_stabilizer_table,
-    random_unitary,
-)
-from qiskit.quantum_info.states.random import random_density_matrix, random_statevector
+from qiskit.quantum_info.operators.random import random_clifford
+from qiskit.quantum_info.operators.random import random_cnotdihedral
+from qiskit.quantum_info.operators.random import random_hermitian
+from qiskit.quantum_info.operators.random import random_pauli
+from qiskit.quantum_info.operators.random import random_pauli_list
+from qiskit.quantum_info.operators.random import random_pauli_table
+from qiskit.quantum_info.operators.random import random_quantum_channel
+from qiskit.quantum_info.operators.random import random_stabilizer_table
+from qiskit.quantum_info.operators.random import random_unitary
+from qiskit.quantum_info.states.random import random_density_matrix
+from qiskit.quantum_info.states.random import random_statevector

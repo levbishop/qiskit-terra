@@ -18,7 +18,8 @@ import math
 
 import numpy as np
 
-from qiskit.exceptions import MissingOptionalLibraryError, QiskitError
+from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.exceptions import QiskitError
 from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.visualization.utils import matplotlib_close_if_inline
@@ -726,8 +727,9 @@ def plot_error_map(backend, figsize=(12, 9), show_title=True):
             pip_install="pip install matplotlib",
         )
     import matplotlib
+    from matplotlib import gridspec
+    from matplotlib import ticker
     import matplotlib.pyplot as plt
-    from matplotlib import gridspec, ticker
 
     color_map = sns.cubehelix_palette(reverse=True, as_cmap=True)
 

@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import logging
 from copy import deepcopy
+import logging
 
 from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.circuit.quantumregister import QuantumRegister

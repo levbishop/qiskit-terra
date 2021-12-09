@@ -36,11 +36,13 @@ Reference:
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 from collections import defaultdict
 
 from qiskit import pulse
-from qiskit.providers import BackendConfigurationError, BaseBackend
+from qiskit.providers import BackendConfigurationError
+from qiskit.providers import BaseBackend
 
 
 class DrawerBackendInfo(ABC):

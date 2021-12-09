@@ -19,7 +19,11 @@ import time
 
 from IPython import get_ipython
 from IPython.core import magic_arguments
-from IPython.core.magic import Magics, cell_magic, line_magic, magics_class, register_line_magic
+from IPython.core.magic import cell_magic
+from IPython.core.magic import line_magic
+from IPython.core.magic import Magics
+from IPython.core.magic import magics_class
+from IPython.core.magic import register_line_magic
 from IPython.display import display
 
 from qiskit.exceptions import MissingOptionalLibraryError

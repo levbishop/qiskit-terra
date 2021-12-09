@@ -20,7 +20,8 @@ import numpy as np
 
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse.exceptions import PulseError
-from qiskit.pulse.schedule import Schedule, ScheduleComponent
+from qiskit.pulse.schedule import Schedule
+from qiskit.pulse.schedule import ScheduleComponent
 from qiskit.pulse.utils import instruction_duration_validation
 
 

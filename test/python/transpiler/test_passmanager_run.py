@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit.library import CXGate
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeMelbourne

@@ -22,9 +22,19 @@ import unittest
 
 import numpy as np
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
-from qiskit.circuit import Clbit, Parameter, Qubit
-from qiskit.circuit.library import IQP, DCXGate, MCXGate, RZZGate, SwapGate, XGate
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
+from qiskit.circuit import Clbit
+from qiskit.circuit import Parameter
+from qiskit.circuit import Qubit
+from qiskit.circuit.library import DCXGate
+from qiskit.circuit.library import IQP
+from qiskit.circuit.library import MCXGate
+from qiskit.circuit.library import RZZGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import XGate
 from qiskit.extensions import HamiltonianGate
 from qiskit.quantum_info.random import random_unitary
 from qiskit.test.mock import FakeTenerife
@@ -325,7 +335,11 @@ class TestLatexSourceGenerator(QiskitVisualizationTestCase):
     def test_u_gates(self):
         """Test U 1, 2, & 3 gates"""
         filename = self._get_resource_path("test_latex_u_gates.tex")
-        from qiskit.circuit.library import CU1Gate, CU3Gate, U1Gate, U2Gate, U3Gate
+        from qiskit.circuit.library import CU1Gate
+        from qiskit.circuit.library import CU3Gate
+        from qiskit.circuit.library import U1Gate
+        from qiskit.circuit.library import U2Gate
+        from qiskit.circuit.library import U3Gate
 
         qr = QuantumRegister(4, "q")
         circuit = QuantumCircuit(qr)

@@ -18,11 +18,13 @@ import threading
 import time
 import types
 
+from IPython.core import magic_arguments
+from IPython.core.magic import line_magic
+from IPython.core.magic import Magics
+from IPython.core.magic import magics_class
+from IPython.display import display
 import ipywidgets as widgets
 import matplotlib.pyplot as plt
-from IPython.core import magic_arguments
-from IPython.core.magic import Magics, line_magic, magics_class
-from IPython.display import display
 
 from qiskit.tools.monitor.overview import get_unique_backends
 from qiskit.visualization.gate_map import plot_gate_map

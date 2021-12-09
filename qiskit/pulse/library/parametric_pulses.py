@@ -38,8 +38,8 @@ by following the existing pattern:
 """
 from __future__ import annotations
 
-import math
 from abc import abstractmethod
+import math
 from typing import Any
 
 import numpy as np
@@ -47,7 +47,10 @@ import numpy as np
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.pulse.exceptions import PulseError
 from qiskit.pulse.library import continuous
-from qiskit.pulse.library.discrete import constant, drag, gaussian, gaussian_square
+from qiskit.pulse.library.discrete import constant
+from qiskit.pulse.library.discrete import drag
+from qiskit.pulse.library.discrete import gaussian
+from qiskit.pulse.library.discrete import gaussian_square
 from qiskit.pulse.library.pulse import Pulse
 from qiskit.pulse.library.waveform import Waveform
 

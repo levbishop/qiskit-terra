@@ -19,7 +19,10 @@ import unittest
 from numpy import pi
 
 from qiskit import QuantumCircuit
-from qiskit.circuit.library import CSwapGate, RZGate, SwapGate, XGate
+from qiskit.circuit.library import CSwapGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import XGate
 from qiskit.converters import circuit_to_dag
 from qiskit.dagcircuit import DAGOpNode
 from qiskit.quantum_info import Statevector

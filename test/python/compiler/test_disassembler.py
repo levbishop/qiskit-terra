@@ -19,21 +19,19 @@ import unittest
 import numpy as np
 from numpy.testing import assert_allclose
 
-import qiskit.quantum_info as qi
 from qiskit import pulse
 from qiskit.assembler.disassemble import disassemble
 from qiskit.assembler.run_config import RunConfig
-from qiskit.circuit import (
-    ClassicalRegister,
-    Gate,
-    Instruction,
-    Parameter,
-    QuantumCircuit,
-    QuantumRegister,
-)
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library import RXGate
 from qiskit.compiler.assembler import assemble
 from qiskit.pulse.transforms import target_qobj_transform
+import qiskit.quantum_info as qi
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeOpenPulse2Q
 

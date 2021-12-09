@@ -118,34 +118,32 @@ import os
 import sys
 
 from qiskit.visualization.array import array_to_latex
-from qiskit.visualization.circuit_visualization import (
-    HAS_PDFLATEX,
-    HAS_PDFTOCAIRO,
-    HAS_PIL,
-    circuit_drawer,
-)
+from qiskit.visualization.circuit_visualization import circuit_drawer
+from qiskit.visualization.circuit_visualization import HAS_PDFLATEX
+from qiskit.visualization.circuit_visualization import HAS_PDFTOCAIRO
+from qiskit.visualization.circuit_visualization import HAS_PIL
 from qiskit.visualization.counts_visualization import plot_histogram
 from qiskit.visualization.dag_visualization import dag_drawer
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.gate_map import (
-    plot_circuit_layout,
-    plot_coupling_map,
-    plot_error_map,
-    plot_gate_map,
-)
-from qiskit.visualization.matplotlib import HAS_MATPLOTLIB, HAS_PYLATEX
+from qiskit.visualization.gate_map import plot_circuit_layout
+from qiskit.visualization.gate_map import plot_coupling_map
+from qiskit.visualization.gate_map import plot_error_map
+from qiskit.visualization.gate_map import plot_gate_map
+from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
+from qiskit.visualization.matplotlib import HAS_PYLATEX
 from qiskit.visualization.pass_manager_visualization import pass_manager_drawer
-from qiskit.visualization.pulse.interpolation import cubic_spline, linear, step_wise
-from qiskit.visualization.pulse.qcstyle import PulseStyle, SchedStyle
+from qiskit.visualization.pulse.interpolation import cubic_spline
+from qiskit.visualization.pulse.interpolation import linear
+from qiskit.visualization.pulse.interpolation import step_wise
+from qiskit.visualization.pulse.qcstyle import PulseStyle
+from qiskit.visualization.pulse.qcstyle import SchedStyle
 from qiskit.visualization.pulse_v2 import draw as pulse_drawer_v2
 from qiskit.visualization.pulse_visualization import pulse_drawer
-from qiskit.visualization.state_visualization import (
-    plot_bloch_multivector,
-    plot_bloch_vector,
-    plot_state_city,
-    plot_state_hinton,
-    plot_state_paulivec,
-    plot_state_qsphere,
-)
+from qiskit.visualization.state_visualization import plot_bloch_multivector
+from qiskit.visualization.state_visualization import plot_bloch_vector
+from qiskit.visualization.state_visualization import plot_state_city
+from qiskit.visualization.state_visualization import plot_state_hinton
+from qiskit.visualization.state_visualization import plot_state_paulivec
+from qiskit.visualization.state_visualization import plot_state_qsphere
 from qiskit.visualization.timeline import draw as timeline_drawer
 from qiskit.visualization.transition_visualization import visualize_transition

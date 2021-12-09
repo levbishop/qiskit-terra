@@ -14,7 +14,10 @@
 
 from __future__ import annotations
 
-from qiskit.pulse import channels, exceptions, instructions, utils
+from qiskit.pulse import channels
+from qiskit.pulse import exceptions
+from qiskit.pulse import instructions
+from qiskit.pulse import utils
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
 from qiskit.pulse.schedule import Schedule
 

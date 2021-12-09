@@ -18,7 +18,8 @@ from __future__ import annotations
 
 import warnings
 
-from qiskit.transpiler.passes.calibration import RZXCalibrationBuilder, RZXCalibrationBuilderNoEcho
+from qiskit.transpiler.passes.calibration import RZXCalibrationBuilder
+from qiskit.transpiler.passes.calibration import RZXCalibrationBuilderNoEcho
 
 # TODO remove this import after sufficient deprecation period
 

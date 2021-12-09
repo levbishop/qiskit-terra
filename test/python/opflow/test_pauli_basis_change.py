@@ -14,17 +14,25 @@
 
 from __future__ import annotations
 
-import itertools
-import unittest
 from functools import reduce
+import itertools
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
 import numpy as np
 
 from qiskit import QuantumCircuit
-from qiskit.opflow import ComposedOp, I, OperatorStateFn, PauliSumOp, SummedOp, X, Y, Z
+from qiskit.opflow import ComposedOp
+from qiskit.opflow import I
+from qiskit.opflow import OperatorStateFn
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import SummedOp
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
 from qiskit.opflow.converters import PauliBasisChange
-from qiskit.quantum_info import Pauli, SparsePauliOp
+from qiskit.quantum_info import Pauli
+from qiskit.quantum_info import SparsePauliOp
 
 
 class TestPauliCoB(QiskitOpflowTestCase):

@@ -17,14 +17,26 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy
-from ddt import data, ddt
 
-from qiskit.circuit import Parameter, QuantumCircuit
-from qiskit.opflow import CircuitSampler, H, I, ListOp, Minus, One, Plus, StateFn, X, Z, Zero
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.opflow import CircuitSampler
+from qiskit.opflow import H
+from qiskit.opflow import I
+from qiskit.opflow import ListOp
+from qiskit.opflow import Minus
+from qiskit.opflow import One
+from qiskit.opflow import Plus
+from qiskit.opflow import StateFn
+from qiskit.opflow import X
+from qiskit.opflow import Z
+from qiskit.opflow import Zero
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.utils import QuantumInstance
 

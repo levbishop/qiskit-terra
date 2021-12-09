@@ -15,7 +15,8 @@
 from __future__ import annotations
 
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeMelbourne, FakeOpenPulse2Q
+from qiskit.test.mock import FakeMelbourne
+from qiskit.test.mock import FakeOpenPulse2Q
 
 
 class TestBackendAttrs(QiskitTestCase):

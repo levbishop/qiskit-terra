@@ -161,12 +161,11 @@ References:
 
 from __future__ import annotations
 
-from qiskit.transpiler.synthesis.aqc.approximate import ApproximateCircuit, ApproximatingObjective
+from qiskit.transpiler.synthesis.aqc.approximate import ApproximateCircuit
+from qiskit.transpiler.synthesis.aqc.approximate import ApproximatingObjective
 from qiskit.transpiler.synthesis.aqc.aqc import AQC
 from qiskit.transpiler.synthesis.aqc.aqc_plugin import AQCSynthesisPlugin
 from qiskit.transpiler.synthesis.aqc.cnot_structures import make_cnot_network
 from qiskit.transpiler.synthesis.aqc.cnot_unit_circuit import CNOTUnitCircuit
-from qiskit.transpiler.synthesis.aqc.cnot_unit_objective import (
-    CNOTUnitObjective,
-    DefaultCNOTUnitObjective,
-)
+from qiskit.transpiler.synthesis.aqc.cnot_unit_objective import CNOTUnitObjective
+from qiskit.transpiler.synthesis.aqc.cnot_unit_objective import DefaultCNOTUnitObjective

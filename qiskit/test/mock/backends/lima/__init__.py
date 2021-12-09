@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.lima.fake_lima import FakeLegacyLima, FakeLima
+from qiskit.test.mock.backends.lima.fake_lima import FakeLegacyLima
+from qiskit.test.mock.backends.lima.fake_lima import FakeLima

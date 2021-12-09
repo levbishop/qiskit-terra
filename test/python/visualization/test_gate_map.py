@@ -13,20 +13,25 @@
 """A test for visualizing device coupling maps"""
 from __future__ import annotations
 
+from io import BytesIO
 import sys
 import unittest
-from io import BytesIO
 
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 from PIL import Image
 
-from qiskit import QuantumCircuit, QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.test.mock import FakeProvider
 from qiskit.tools.visualization import HAS_MATPLOTLIB
 from qiskit.transpiler import Layout
-from qiskit.visualization.gate_map import plot_circuit_layout, plot_coupling_map, plot_gate_map
+from qiskit.visualization.gate_map import plot_circuit_layout
+from qiskit.visualization.gate_map import plot_coupling_map
+from qiskit.visualization.gate_map import plot_gate_map
 
-from .visualization import QiskitVisualizationTestCase, path_to_diagram_reference
+from .visualization import path_to_diagram_reference
+from .visualization import QiskitVisualizationTestCase
 
 if HAS_MATPLOTLIB:
     import matplotlib.pyplot as plt

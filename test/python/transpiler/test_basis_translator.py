@@ -19,30 +19,37 @@ import os
 
 from numpy import pi
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
-from qiskit.circuit import EquivalenceLibrary, Gate, Parameter
-from qiskit.circuit.library import (
-    CU1Gate,
-    CU3Gate,
-    CXGate,
-    RZGate,
-    SXGate,
-    U1Gate,
-    U2Gate,
-    U3Gate,
-    UGate,
-    XGate,
-)
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
+from qiskit.circuit import EquivalenceLibrary
+from qiskit.circuit import Gate
+from qiskit.circuit import Parameter
+from qiskit.circuit.library import CU1Gate
+from qiskit.circuit.library import CU3Gate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import SXGate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
+from qiskit.circuit.library import UGate
+from qiskit.circuit.library import XGate
 from qiskit.circuit.library.standard_gates.equivalence_library import (
     StandardEquivalenceLibrary as std_eqlib,
 )
-from qiskit.converters import circuit_to_dag, circuit_to_instruction, dag_to_circuit
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import circuit_to_instruction
+from qiskit.converters import dag_to_circuit
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info import Operator
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.passes.basis import BasisTranslator, UnrollCustomDefinitions
-from qiskit.transpiler.target import InstructionProperties, Target
+from qiskit.transpiler.passes.basis import BasisTranslator
+from qiskit.transpiler.passes.basis import UnrollCustomDefinitions
+from qiskit.transpiler.target import InstructionProperties
+from qiskit.transpiler.target import Target
 
 
 class OneQubitZeroParamGate(Gate):

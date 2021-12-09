@@ -16,8 +16,11 @@ from __future__ import annotations
 
 import unittest
 
-from ddt import data, ddt, unpack
-from numpy import isclose, sqrt
+from ddt import data
+from ddt import ddt
+from ddt import unpack
+from numpy import isclose
+from numpy import sqrt
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import PhaseOracle

@@ -14,14 +14,16 @@
 
 from __future__ import annotations
 
-import unittest
 from math import pi
+import unittest
 
 import numpy as np
 
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
 import qiskit.quantum_info as qi
-from qiskit import QuantumCircuit, QuantumRegister
-from qiskit.converters import circuit_to_dag, dag_to_circuit
 from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylDecomposition
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeParis

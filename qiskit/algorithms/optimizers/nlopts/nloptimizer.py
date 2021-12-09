@@ -14,19 +14,17 @@
 
 from __future__ import annotations
 
-import logging
 from abc import abstractmethod
 from enum import Enum
+import logging
 from typing import Callable
 
 import numpy as np
 
-from qiskit.algorithms.optimizers.optimizer import (
-    POINT,
-    Optimizer,
-    OptimizerResult,
-    OptimizerSupportLevel,
-)
+from qiskit.algorithms.optimizers.optimizer import Optimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerSupportLevel
+from qiskit.algorithms.optimizers.optimizer import POINT
 from qiskit.exceptions import MissingOptionalLibraryError
 
 logger = logging.getLogger(__name__)

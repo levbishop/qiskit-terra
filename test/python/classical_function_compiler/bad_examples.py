@@ -16,7 +16,8 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import Int1, Int2
+from qiskit.circuit import Int1
+from qiskit.circuit import Int2
 
 
 def id_no_type_arg(a) -> Int1:

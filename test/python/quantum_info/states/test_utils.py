@@ -18,7 +18,10 @@ import unittest
 
 import numpy as np
 
-from qiskit.quantum_info.states import DensityMatrix, Statevector, partial_trace, shannon_entropy
+from qiskit.quantum_info.states import DensityMatrix
+from qiskit.quantum_info.states import partial_trace
+from qiskit.quantum_info.states import shannon_entropy
+from qiskit.quantum_info.states import Statevector
 from qiskit.test import QiskitTestCase
 
 

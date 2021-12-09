@@ -17,9 +17,12 @@
 from __future__ import annotations
 
 import qiskit
-from qiskit.circuit import Delay, library
+from qiskit.circuit import Delay
+from qiskit.circuit import library
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.timeline import generators, stylesheet, types
+from qiskit.visualization.timeline import generators
+from qiskit.visualization.timeline import stylesheet
+from qiskit.visualization.timeline import types
 
 
 class TestGates(QiskitTestCase):

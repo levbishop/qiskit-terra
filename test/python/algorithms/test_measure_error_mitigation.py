@@ -14,22 +14,30 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
 import retworkx as rx
-from ddt import data, ddt
 
 from qiskit import QuantumCircuit
-from qiskit.algorithms import QAOA, VQE
-from qiskit.algorithms.optimizers import COBYLA, SPSA
+from qiskit.algorithms import QAOA
+from qiskit.algorithms import VQE
+from qiskit.algorithms.optimizers import COBYLA
+from qiskit.algorithms.optimizers import SPSA
 from qiskit.circuit.library import EfficientSU2
 from qiskit.exceptions import QiskitError
-from qiskit.opflow import I, PauliSumOp, X, Z
+from qiskit.opflow import I
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import X
+from qiskit.opflow import Z
 from qiskit.quantum_info import Pauli
-from qiskit.utils import QuantumInstance, algorithm_globals
-from qiskit.utils.mitigation import CompleteMeasFitter, TensoredMeasFitter
+from qiskit.utils import algorithm_globals
+from qiskit.utils import QuantumInstance
+from qiskit.utils.mitigation import CompleteMeasFitter
+from qiskit.utils.mitigation import TensoredMeasFitter
 
 try:
     from qiskit import Aer

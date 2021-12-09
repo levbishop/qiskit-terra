@@ -441,22 +441,30 @@ how the program is built.
 from __future__ import annotations
 
 import collections
+from contextlib import contextmanager
 import contextvars
 import functools
 import itertools
-import warnings
-from contextlib import contextmanager
 from typing import Any, Callable, ContextManager, Iterable, Mapping, NewType, TypeVar, Union
+import warnings
 
 import numpy as np
 
 from qiskit import circuit
 from qiskit.circuit.library import standard_gates as gates
-from qiskit.circuit.parameterexpression import ParameterExpression, ParameterValueType
+from qiskit.circuit.parameterexpression import ParameterExpression
+from qiskit.circuit.parameterexpression import ParameterValueType
 from qiskit.pulse import channels as chans
-from qiskit.pulse import configuration, exceptions, instructions, library, macros, transforms, utils
+from qiskit.pulse import configuration
+from qiskit.pulse import exceptions
+from qiskit.pulse import instructions
+from qiskit.pulse import library
+from qiskit.pulse import macros
+from qiskit.pulse import transforms
+from qiskit.pulse import utils
 from qiskit.pulse.instructions import directives
-from qiskit.pulse.schedule import Schedule, ScheduleBlock
+from qiskit.pulse.schedule import Schedule
+from qiskit.pulse.schedule import ScheduleBlock
 from qiskit.pulse.transforms.alignments import AlignmentKind
 
 #: contextvars.ContextVar[BuilderContext]: active builder

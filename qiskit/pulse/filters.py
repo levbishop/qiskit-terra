@@ -41,7 +41,8 @@ def filter_instructions(
     Returns:
         Filtered pulse schedule.
     """
-    from qiskit.pulse.transforms import flatten, inline_subroutines
+    from qiskit.pulse.transforms import flatten
+    from qiskit.pulse.transforms import inline_subroutines
 
     target_sched = flatten(sched)
     if recurse_subroutines:

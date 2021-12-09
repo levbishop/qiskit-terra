@@ -18,30 +18,28 @@ import collections
 import io
 import itertools
 import numbers
-from os.path import abspath, dirname, join
+from os.path import abspath
+from os.path import dirname
+from os.path import join
 from typing import Iterable, Sequence
 
-from qiskit.circuit import (
-    Barrier,
-    Clbit,
-    Gate,
-    Instruction,
-    Measure,
-    Parameter,
-    QuantumCircuit,
-    QuantumRegister,
-    Qubit,
-    Reset,
-)
+from qiskit.circuit import Barrier
+from qiskit.circuit import Clbit
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Measure
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
+from qiskit.circuit import Reset
 from qiskit.circuit.bit import Bit
-from qiskit.circuit.controlflow import (
-    BreakLoopOp,
-    ContinueLoopOp,
-    ControlFlowOp,
-    ForLoopOp,
-    IfElseOp,
-    WhileLoopOp,
-)
+from qiskit.circuit.controlflow import BreakLoopOp
+from qiskit.circuit.controlflow import ContinueLoopOp
+from qiskit.circuit.controlflow import ControlFlowOp
+from qiskit.circuit.controlflow import ForLoopOp
+from qiskit.circuit.controlflow import IfElseOp
+from qiskit.circuit.controlflow import WhileLoopOp
 from qiskit.circuit.library import standard_gates
 from qiskit.circuit.register import Register
 from qiskit.circuit.tools import pi_check

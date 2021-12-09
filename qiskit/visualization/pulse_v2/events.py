@@ -83,8 +83,10 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Iterator
 
-from qiskit import circuit, pulse
-from qiskit.visualization.pulse_v2.types import PhaseFreqTuple, PulseInstruction
+from qiskit import circuit
+from qiskit import pulse
+from qiskit.visualization.pulse_v2.types import PhaseFreqTuple
+from qiskit.visualization.pulse_v2.types import PulseInstruction
 
 
 class ChannelEvents:

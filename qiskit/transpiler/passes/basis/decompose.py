@@ -13,8 +13,8 @@
 """Expand a gate in a circuit using its decomposition rules."""
 from __future__ import annotations
 
-import warnings
 from fnmatch import fnmatch
+import warnings
 
 from qiskit.circuit.gate import Gate
 from qiskit.converters.circuit_to_dag import circuit_to_dag

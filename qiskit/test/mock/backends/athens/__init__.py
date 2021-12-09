@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.athens.fake_athens import FakeAthens, FakeLegacyAthens
+from qiskit.test.mock.backends.athens.fake_athens import FakeAthens
+from qiskit.test.mock.backends.athens.fake_athens import FakeLegacyAthens

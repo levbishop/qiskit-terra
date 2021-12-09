@@ -14,26 +14,25 @@
 
 from __future__ import annotations
 
-import re
 from collections import OrderedDict
+import re
 
 import numpy as np
 
-from qiskit.circuit import (
-    BooleanExpression,
-    Clbit,
-    ControlFlowOp,
-    ControlledGate,
-    Delay,
-    Gate,
-    Instruction,
-    Measure,
-)
+from qiskit.circuit import BooleanExpression
+from qiskit.circuit import Clbit
+from qiskit.circuit import ControlFlowOp
+from qiskit.circuit import ControlledGate
+from qiskit.circuit import Delay
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Measure
 from qiskit.circuit.library import PauliEvolutionGate
 from qiskit.circuit.tools import pi_check
 from qiskit.converters import circuit_to_dag
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.quantum_info.operators.symplectic import PauliList, SparsePauliOp
+from qiskit.quantum_info.operators.symplectic import PauliList
+from qiskit.quantum_info.operators.symplectic import SparsePauliOp
 from qiskit.quantum_info.states import DensityMatrix
 from qiskit.visualization.exceptions import VisualizationError
 

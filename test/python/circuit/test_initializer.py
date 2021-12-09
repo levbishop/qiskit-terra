@@ -21,17 +21,17 @@ import unittest
 
 import numpy as np
 
-from qiskit import (
-    BasicAer,
-    ClassicalRegister,
-    QuantumCircuit,
-    QuantumRegister,
-    assemble,
-    execute,
-    transpile,
-)
+from qiskit import assemble
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info import Operator, Statevector, state_fidelity
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import state_fidelity
+from qiskit.quantum_info import Statevector
 from qiskit.test import QiskitTestCase
 
 

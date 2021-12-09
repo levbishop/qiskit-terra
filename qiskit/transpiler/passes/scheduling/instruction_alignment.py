@@ -13,9 +13,9 @@
 """Align measurement instructions."""
 from __future__ import annotations
 
+from collections import defaultdict
 import itertools
 import warnings
-from collections import defaultdict
 
 from qiskit.circuit.delay import Delay
 from qiskit.circuit.instruction import Instruction
@@ -23,7 +23,8 @@ from qiskit.circuit.measure import Measure
 from qiskit.circuit.parameterexpression import ParameterExpression
 from qiskit.dagcircuit import DAGCircuit
 from qiskit.pulse import Play
-from qiskit.transpiler.basepasses import AnalysisPass, TransformationPass
+from qiskit.transpiler.basepasses import AnalysisPass
+from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 
 

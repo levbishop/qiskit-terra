@@ -14,27 +14,33 @@
 
 from __future__ import annotations
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, schedule
-from qiskit.circuit import Gate, Parameter
-from qiskit.circuit.library import U1Gate, U2Gate, U3Gate
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import schedule
+from qiskit.circuit import Gate
+from qiskit.circuit import Parameter
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U2Gate
+from qiskit.circuit.library import U3Gate
 from qiskit.exceptions import QiskitError
-from qiskit.pulse import (
-    Acquire,
-    AcquireChannel,
-    DriveChannel,
-    Gaussian,
-    InstructionScheduleMap,
-    MeasureChannel,
-    MemorySlot,
-    Play,
-    Schedule,
-    build,
-    macros,
-    play,
-    transforms,
-)
+from qiskit.pulse import Acquire
+from qiskit.pulse import AcquireChannel
+from qiskit.pulse import build
+from qiskit.pulse import DriveChannel
+from qiskit.pulse import Gaussian
+from qiskit.pulse import InstructionScheduleMap
+from qiskit.pulse import macros
+from qiskit.pulse import MeasureChannel
+from qiskit.pulse import MemorySlot
+from qiskit.pulse import Play
+from qiskit.pulse import play
+from qiskit.pulse import Schedule
+from qiskit.pulse import transforms
 from qiskit.test import QiskitTestCase
-from qiskit.test.mock import FakeBackend, FakeOpenPulse2Q, FakeOpenPulse3Q
+from qiskit.test.mock import FakeBackend
+from qiskit.test.mock import FakeOpenPulse2Q
+from qiskit.test.mock import FakeOpenPulse3Q
 
 
 class TestBasicSchedule(QiskitTestCase):

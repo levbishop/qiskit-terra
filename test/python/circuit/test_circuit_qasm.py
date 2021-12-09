@@ -14,11 +14,15 @@
 
 from __future__ import annotations
 
-import re
 from math import pi
+import re
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-from qiskit.circuit import Clbit, Parameter, Qubit
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Parameter
+from qiskit.circuit import Qubit
 from qiskit.qasm.exceptions import QasmError
 from qiskit.test import QiskitTestCase
 

@@ -21,11 +21,17 @@ import logging
 import unittest
 
 import numpy as np
-import scipy.linalg as la
 from numpy.testing import assert_allclose
+import scipy.linalg as la
 
-from qiskit import ClassicalRegister, QiskitError, QuantumCircuit, QuantumRegister
-from qiskit.circuit.library import QFT, CHGate, CXGate, HGate
+from qiskit import ClassicalRegister
+from qiskit import QiskitError
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit.library import CHGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import QFT
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.operators.predicates import matrix_equal
 from qiskit.test import QiskitTestCase

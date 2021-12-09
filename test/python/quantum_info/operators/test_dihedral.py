@@ -18,24 +18,24 @@ from __future__ import annotations
 
 import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
-from qiskit.circuit import Gate, QuantumCircuit
-from qiskit.circuit.library import (
-    CXGate,
-    CZGate,
-    IGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    TdgGate,
-    TGate,
-    XGate,
-    YGate,
-    ZGate,
-)
-from qiskit.quantum_info.operators import Operator, random
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import SdgGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import TdgGate
+from qiskit.circuit.library import TGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info.operators import random
 from qiskit.quantum_info.operators.dihedral import CNOTDihedral
 from qiskit.quantum_info.random import random_cnotdihedral
 

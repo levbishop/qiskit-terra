@@ -14,11 +14,11 @@
 
 from __future__ import annotations
 
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 from scipy.sparse import csr_matrix
 
 from qiskit import QiskitError

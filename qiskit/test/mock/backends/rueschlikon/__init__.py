@@ -14,7 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.rueschlikon.fake_rueschlikon import (
-    FakeLegacyRueschlikon,
-    FakeRueschlikon,
-)
+from qiskit.test.mock.backends.rueschlikon.fake_rueschlikon import FakeLegacyRueschlikon
+from qiskit.test.mock.backends.rueschlikon.fake_rueschlikon import FakeRueschlikon

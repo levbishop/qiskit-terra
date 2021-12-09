@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.manhattan.fake_manhattan import FakeLegacyManhattan, FakeManhattan
+from qiskit.test.mock.backends.manhattan.fake_manhattan import FakeLegacyManhattan
+from qiskit.test.mock.backends.manhattan.fake_manhattan import FakeManhattan

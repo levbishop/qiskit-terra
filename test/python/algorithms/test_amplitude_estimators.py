@@ -14,22 +14,27 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import idata
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, idata, unpack
 
-from qiskit import BasicAer, QuantumCircuit, QuantumRegister
-from qiskit.algorithms import (
-    AmplitudeEstimation,
-    EstimationProblem,
-    FasterAmplitudeEstimation,
-    IterativeAmplitudeEstimation,
-    MaximumLikelihoodAmplitudeEstimation,
-)
-from qiskit.circuit.library import QFT, GroverOperator
-from qiskit.quantum_info import Operator, Statevector
+from qiskit import BasicAer
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.algorithms import AmplitudeEstimation
+from qiskit.algorithms import EstimationProblem
+from qiskit.algorithms import FasterAmplitudeEstimation
+from qiskit.algorithms import IterativeAmplitudeEstimation
+from qiskit.algorithms import MaximumLikelihoodAmplitudeEstimation
+from qiskit.circuit.library import GroverOperator
+from qiskit.circuit.library import QFT
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
 from qiskit.utils import QuantumInstance
 
 

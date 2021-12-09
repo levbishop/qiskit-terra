@@ -99,11 +99,9 @@ from __future__ import annotations
 
 from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
 from qiskit.circuit.classicalfunction.classicalfunction import ClassicalFunction
-from qiskit.circuit.classicalfunction.exceptions import (
-    ClassicalFunctionCompilerError,
-    ClassicalFunctionCompilerTypeError,
-    ClassicalFunctionParseError,
-)
+from qiskit.circuit.classicalfunction.exceptions import ClassicalFunctionCompilerError
+from qiskit.circuit.classicalfunction.exceptions import ClassicalFunctionCompilerTypeError
+from qiskit.circuit.classicalfunction.exceptions import ClassicalFunctionParseError
 
 
 def classical_function(func):

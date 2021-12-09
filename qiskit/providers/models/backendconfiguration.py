@@ -13,22 +13,20 @@
 """Backend Configuration Classes."""
 from __future__ import annotations
 
+from collections import defaultdict
 import copy
 import numbers
 import re
-import warnings
-from collections import defaultdict
 from typing import Any, Iterable
+import warnings
 
 from qiskit.exceptions import QiskitError
 from qiskit.providers.exceptions import BackendConfigurationError
-from qiskit.pulse.channels import (
-    AcquireChannel,
-    Channel,
-    ControlChannel,
-    DriveChannel,
-    MeasureChannel,
-)
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import Channel
+from qiskit.pulse.channels import ControlChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MeasureChannel
 
 
 class GateConfig:

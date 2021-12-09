@@ -24,12 +24,17 @@ from __future__ import annotations
 
 from qiskit.test.mock.backends import *
 from qiskit.test.mock.fake_1q import Fake1Q
-from qiskit.test.mock.fake_backend import FakeBackend, FakeLegacyBackend
-from qiskit.test.mock.fake_backend_v2 import FakeBackend5QV2, FakeBackendV2
-from qiskit.test.mock.fake_job import FakeJob, FakeLegacyJob
+from qiskit.test.mock.fake_backend import FakeBackend
+from qiskit.test.mock.fake_backend import FakeLegacyBackend
+from qiskit.test.mock.fake_backend_v2 import FakeBackend5QV2
+from qiskit.test.mock.fake_backend_v2 import FakeBackendV2
+from qiskit.test.mock.fake_job import FakeJob
+from qiskit.test.mock.fake_job import FakeLegacyJob
 from qiskit.test.mock.fake_mumbai_v2 import FakeMumbaiV2
 from qiskit.test.mock.fake_openpulse_2q import FakeOpenPulse2Q
 from qiskit.test.mock.fake_openpulse_3q import FakeOpenPulse3Q
-from qiskit.test.mock.fake_provider import FakeLegacyProvider, FakeProvider, FakeProviderFactory
+from qiskit.test.mock.fake_provider import FakeLegacyProvider
+from qiskit.test.mock.fake_provider import FakeProvider
+from qiskit.test.mock.fake_provider import FakeProviderFactory
 from qiskit.test.mock.fake_qasm_simulator import FakeQasmSimulator
 from qiskit.test.mock.fake_qobj import FakeQobj

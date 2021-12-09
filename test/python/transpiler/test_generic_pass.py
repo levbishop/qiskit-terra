@@ -18,7 +18,11 @@ import unittest.mock
 
 from qiskit.test import QiskitTestCase
 
-from ._dummy_passes import DummyAP, DummyTP, PassA_TP_NR_NP, PassD_TP_NR_NP, PassE_AP_NR_NP
+from ._dummy_passes import DummyAP
+from ._dummy_passes import DummyTP
+from ._dummy_passes import PassA_TP_NR_NP
+from ._dummy_passes import PassD_TP_NR_NP
+from ._dummy_passes import PassE_AP_NR_NP
 
 
 class TestGenericPass(QiskitTestCase):

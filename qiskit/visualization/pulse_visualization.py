@@ -15,16 +15,19 @@ matplotlib pulse visualization.
 """
 from __future__ import annotations
 
-import warnings
 from typing import Callable
+import warnings
 
 from qiskit.exceptions import MissingOptionalLibraryError
-from qiskit.pulse import Instruction, Schedule, Waveform
+from qiskit.pulse import Instruction
+from qiskit.pulse import Schedule
+from qiskit.pulse import Waveform
 from qiskit.pulse.channels import Channel
 from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
 from qiskit.visualization.pulse import matplotlib as _matplotlib
-from qiskit.visualization.pulse.qcstyle import PulseStyle, SchedStyle
+from qiskit.visualization.pulse.qcstyle import PulseStyle
+from qiskit.visualization.pulse.qcstyle import SchedStyle
 from qiskit.visualization.utils import matplotlib_close_if_inline
 
 

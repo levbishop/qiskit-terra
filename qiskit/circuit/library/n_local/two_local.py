@@ -16,34 +16,34 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
-from qiskit.circuit import Gate, Instruction, Parameter
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Parameter
 from qiskit.circuit.library.n_local.n_local import NLocal
-from qiskit.circuit.library.standard_gates import (
-    CHGate,
-    CRXGate,
-    CRYGate,
-    CRZGate,
-    CXGate,
-    CYGate,
-    CZGate,
-    HGate,
-    IGate,
-    RXGate,
-    RXXGate,
-    RYGate,
-    RYYGate,
-    RZGate,
-    RZXGate,
-    RZZGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    TdgGate,
-    TGate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit.library.standard_gates import CHGate
+from qiskit.circuit.library.standard_gates import CRXGate
+from qiskit.circuit.library.standard_gates import CRYGate
+from qiskit.circuit.library.standard_gates import CRZGate
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import CYGate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import IGate
+from qiskit.circuit.library.standard_gates import RXGate
+from qiskit.circuit.library.standard_gates import RXXGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RYYGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import RZXGate
+from qiskit.circuit.library.standard_gates import RZZGate
+from qiskit.circuit.library.standard_gates import SdgGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import SwapGate
+from qiskit.circuit.library.standard_gates import TdgGate
+from qiskit.circuit.library.standard_gates import TGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 
 

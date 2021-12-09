@@ -16,7 +16,9 @@ Helper functions for the XXDecomposer test suite.
 
 from __future__ import annotations
 
-from qiskit.circuit.library import RXXGate, RYYGate, RZZGate
+from qiskit.circuit.library import RXXGate
+from qiskit.circuit.library import RYYGate
+from qiskit.circuit.library import RZZGate
 
 
 def canonical_matrix(a=0.0, b=0.0, c=0.0):

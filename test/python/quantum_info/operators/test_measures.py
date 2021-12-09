@@ -13,20 +13,18 @@
 
 from __future__ import annotations
 
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 
-from qiskit.quantum_info import (
-    Choi,
-    Operator,
-    average_gate_fidelity,
-    diamond_norm,
-    gate_error,
-    process_fidelity,
-)
+from qiskit.quantum_info import average_gate_fidelity
+from qiskit.quantum_info import Choi
+from qiskit.quantum_info import diamond_norm
+from qiskit.quantum_info import gate_error
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import process_fidelity
 from qiskit.test import QiskitTestCase
 
 

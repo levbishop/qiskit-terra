@@ -14,15 +14,14 @@
 
 from __future__ import annotations
 
-from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import (
-    MinimumEigensolver,
-    MinimumEigensolverResult,
-)
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import MinimumEigensolver
+from qiskit.algorithms.minimum_eigen_solvers.minimum_eigen_solver import MinimumEigensolverResult
 from qiskit.algorithms.minimum_eigen_solvers.numpy_minimum_eigen_solver import (
     NumPyMinimumEigensolver,
 )
 from qiskit.algorithms.minimum_eigen_solvers.qaoa import QAOA
-from qiskit.algorithms.minimum_eigen_solvers.vqe import VQE, VQEResult
+from qiskit.algorithms.minimum_eigen_solvers.vqe import VQE
+from qiskit.algorithms.minimum_eigen_solvers.vqe import VQEResult
 
 __all__ = [
     "VQE",

@@ -120,7 +120,9 @@ from qiskit.algorithms.optimizers.nlopts.direct_l import DIRECT_L
 from qiskit.algorithms.optimizers.nlopts.direct_l_rand import DIRECT_L_RAND
 from qiskit.algorithms.optimizers.nlopts.esch import ESCH
 from qiskit.algorithms.optimizers.nlopts.isres import ISRES
-from qiskit.algorithms.optimizers.optimizer import Optimizer, OptimizerResult, OptimizerSupportLevel
+from qiskit.algorithms.optimizers.optimizer import Optimizer
+from qiskit.algorithms.optimizers.optimizer import OptimizerResult
+from qiskit.algorithms.optimizers.optimizer import OptimizerSupportLevel
 from qiskit.algorithms.optimizers.p_bfgs import P_BFGS
 from qiskit.algorithms.optimizers.powell import POWELL
 from qiskit.algorithms.optimizers.qnspsa import QNSPSA

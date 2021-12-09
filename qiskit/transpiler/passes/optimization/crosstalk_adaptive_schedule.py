@@ -30,20 +30,32 @@ and may need to be revised for future device generations.
 
 from __future__ import annotations
 
+from itertools import chain
+from itertools import combinations
 import math
 import operator
-from itertools import chain, combinations
 
 try:
-    from z3 import And, Bool, Implies, Not, Optimize, Or, Real, Sum
+    from z3 import And
+    from z3 import Bool
+    from z3 import Implies
+    from z3 import Not
+    from z3 import Optimize
+    from z3 import Or
+    from z3 import Real
+    from z3 import Sum
 
     HAS_Z3 = True
 except ImportError:
     HAS_Z3 = False
 from qiskit.circuit import Measure
 from qiskit.circuit.barrier import Barrier
-from qiskit.circuit.library.standard_gates import CXGate, U1Gate, U2Gate, U3Gate
-from qiskit.dagcircuit import DAGCircuit, DAGOpNode
+from qiskit.circuit.library.standard_gates import CXGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import U2Gate
+from qiskit.circuit.library.standard_gates import U3Gate
+from qiskit.dagcircuit import DAGCircuit
+from qiskit.dagcircuit import DAGOpNode
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 

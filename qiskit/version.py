@@ -16,9 +16,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 import os
 import subprocess
-from collections.abc import Mapping
 
 import pkg_resources
 

@@ -17,7 +17,8 @@ from __future__ import annotations
 
 import math
 
-from qiskit.exceptions import MissingOptionalLibraryError, QiskitError
+from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.exceptions import QiskitError
 
 
 def get_unique_backends():

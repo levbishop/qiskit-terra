@@ -15,7 +15,8 @@
 from __future__ import annotations
 
 from qiskit.circuit import Gate
-from qiskit.dagcircuit import DAGInNode, DAGOpNode
+from qiskit.dagcircuit import DAGInNode
+from qiskit.dagcircuit import DAGOpNode
 from qiskit.transpiler.basepasses import AnalysisPass
 
 

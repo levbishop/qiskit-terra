@@ -19,8 +19,11 @@ from __future__ import annotations
 import json
 import os
 
-from qiskit.providers.models import BackendProperties, GateConfig, QasmBackendConfiguration
-from qiskit.test.mock.fake_backend import FakeBackend, FakeLegacyBackend
+from qiskit.providers.models import BackendProperties
+from qiskit.providers.models import GateConfig
+from qiskit.providers.models import QasmBackendConfiguration
+from qiskit.test.mock.fake_backend import FakeBackend
+from qiskit.test.mock.fake_backend import FakeLegacyBackend
 
 
 class FakeTokyo(FakeBackend):

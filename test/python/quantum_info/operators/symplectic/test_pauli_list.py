@@ -15,36 +15,33 @@
 from __future__ import annotations
 
 import itertools
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
 from ddt import ddt
+import numpy as np
 from scipy.sparse import csr_matrix
 
 from qiskit import QiskitError
-from qiskit.circuit.library import (
-    CXGate,
-    CYGate,
-    CZGate,
-    HGate,
-    IGate,
-    SdgGate,
-    SGate,
-    SwapGate,
-    XGate,
-    YGate,
-    ZGate,
-)
-from qiskit.quantum_info.operators import (
-    Clifford,
-    Operator,
-    Pauli,
-    PauliList,
-    PauliTable,
-    StabilizerTable,
-)
-from qiskit.quantum_info.random import random_clifford, random_pauli_list
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CYGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import SdgGate
+from qiskit.circuit.library import SGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
+from qiskit.quantum_info.operators import Clifford
+from qiskit.quantum_info.operators import Operator
+from qiskit.quantum_info.operators import Pauli
+from qiskit.quantum_info.operators import PauliList
+from qiskit.quantum_info.operators import PauliTable
+from qiskit.quantum_info.operators import StabilizerTable
+from qiskit.quantum_info.random import random_clifford
+from qiskit.quantum_info.random import random_pauli_list
 from qiskit.test import QiskitTestCase
 
 from .test_pauli import pauli_group_labels

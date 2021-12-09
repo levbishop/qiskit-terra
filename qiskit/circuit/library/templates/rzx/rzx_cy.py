@@ -24,7 +24,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import Parameter, QuantumCircuit
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
 
 
 def rzx_cy(theta: float = None):

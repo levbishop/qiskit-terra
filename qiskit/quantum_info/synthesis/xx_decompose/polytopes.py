@@ -18,7 +18,8 @@ which describes those two-qubit programs accessible to a given sequence of XX-ty
 from __future__ import annotations
 
 from copy import copy
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from dataclasses import field
 from itertools import combinations
 
 import numpy as np

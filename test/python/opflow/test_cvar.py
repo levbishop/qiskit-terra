@@ -14,30 +14,29 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
 from qiskit import QuantumCircuit
-from qiskit.opflow import (
-    AerPauliExpectation,
-    CircuitOp,
-    CVaRExpectation,
-    CVaRMeasurement,
-    I,
-    ListOp,
-    MatrixExpectation,
-    MatrixOp,
-    OpflowError,
-    PauliExpectation,
-    Plus,
-    StateFn,
-    X,
-    Y,
-    Z,
-)
+from qiskit.opflow import AerPauliExpectation
+from qiskit.opflow import CircuitOp
+from qiskit.opflow import CVaRExpectation
+from qiskit.opflow import CVaRMeasurement
+from qiskit.opflow import I
+from qiskit.opflow import ListOp
+from qiskit.opflow import MatrixExpectation
+from qiskit.opflow import MatrixOp
+from qiskit.opflow import OpflowError
+from qiskit.opflow import PauliExpectation
+from qiskit.opflow import Plus
+from qiskit.opflow import StateFn
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
 
 
 class TestCVaRMeasurement(QiskitOpflowTestCase):

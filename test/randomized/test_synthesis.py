@@ -13,22 +13,23 @@
 """Randomized tests of quantum synthesis."""
 from __future__ import annotations
 
-import unittest
 from test.python.quantum_info.test_synthesis import CheckDecompositions
+import unittest
 
+from hypothesis import given
+from hypothesis import settings
+from hypothesis import strategies
 import numpy as np
-from hypothesis import given, settings, strategies
 
 from qiskit import execute
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.extensions import UnitaryGate
 from qiskit.providers.basicaer import UnitarySimulatorPy
 from qiskit.quantum_info.random import random_unitary
-from qiskit.quantum_info.synthesis.two_qubit_decompose import (
-    TwoQubitBasisDecomposer,
-    Ud,
-    two_qubit_cnot_decompose,
-)
+from qiskit.quantum_info.synthesis.two_qubit_decompose import two_qubit_cnot_decompose
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitBasisDecomposer
+from qiskit.quantum_info.synthesis.two_qubit_decompose import Ud
 
 
 class TestSynthesis(CheckDecompositions):

@@ -21,9 +21,11 @@ from __future__ import annotations
 import uuid
 import warnings
 
-from qiskit import circuit, pulse
+from qiskit import circuit
+from qiskit import pulse
 from qiskit.exceptions import QiskitError
-from qiskit.providers import BackendV1, BaseBackend
+from qiskit.providers import BackendV1
+from qiskit.providers import BaseBackend
 from qiskit.providers.models import BackendProperties
 from qiskit.test.mock import fake_job
 

@@ -18,10 +18,18 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit import circuit, pulse
+from qiskit import circuit
+from qiskit import pulse
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.pulse_v2 import device_info, drawings, stylesheet, types
-from qiskit.visualization.pulse_v2.generators import barrier, chart, frame, snapshot, waveform
+from qiskit.visualization.pulse_v2 import device_info
+from qiskit.visualization.pulse_v2 import drawings
+from qiskit.visualization.pulse_v2 import stylesheet
+from qiskit.visualization.pulse_v2 import types
+from qiskit.visualization.pulse_v2.generators import barrier
+from qiskit.visualization.pulse_v2.generators import chart
+from qiskit.visualization.pulse_v2.generators import frame
+from qiskit.visualization.pulse_v2.generators import snapshot
+from qiskit.visualization.pulse_v2.generators import waveform
 
 
 def create_instruction(inst, phase, freq, t0, dt, is_opaque=False):

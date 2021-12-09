@@ -14,35 +14,38 @@
 
 from __future__ import annotations
 
-import unittest
 from collections import Counter
+import unittest
 
-import retworkx as rx
-from ddt import data, ddt
+from ddt import data
+from ddt import ddt
 from numpy import pi
+import retworkx as rx
 
-from qiskit.circuit import (
-    ClassicalRegister,
-    Clbit,
-    Delay,
-    Gate,
-    Instruction,
-    Measure,
-    Parameter,
-    QuantumCircuit,
-    QuantumRegister,
-    Qubit,
-    Reset,
-)
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Delay
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import Measure
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
+from qiskit.circuit import Reset
 from qiskit.circuit.barrier import Barrier
 from qiskit.circuit.library.standard_gates.h import HGate
 from qiskit.circuit.library.standard_gates.i import IGate
 from qiskit.circuit.library.standard_gates.u1 import U1Gate
-from qiskit.circuit.library.standard_gates.x import CXGate, XGate
+from qiskit.circuit.library.standard_gates.x import CXGate
+from qiskit.circuit.library.standard_gates.x import XGate
 from qiskit.circuit.library.standard_gates.y import YGate
 from qiskit.circuit.library.standard_gates.z import CZGate
 from qiskit.converters import circuit_to_dag
-from qiskit.dagcircuit import DAGCircuit, DAGInNode, DAGOpNode, DAGOutNode
+from qiskit.dagcircuit import DAGCircuit
+from qiskit.dagcircuit import DAGInNode
+from qiskit.dagcircuit import DAGOpNode
+from qiskit.dagcircuit import DAGOutNode
 from qiskit.dagcircuit.exceptions import DAGCircuitError
 from qiskit.test import QiskitTestCase
 

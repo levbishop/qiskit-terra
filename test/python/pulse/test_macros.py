@@ -14,17 +14,15 @@
 
 from __future__ import annotations
 
-from qiskit.pulse import (
-    Acquire,
-    AcquireChannel,
-    GaussianSquare,
-    InstructionScheduleMap,
-    MeasureChannel,
-    MemorySlot,
-    Play,
-    Schedule,
-    macros,
-)
+from qiskit.pulse import Acquire
+from qiskit.pulse import AcquireChannel
+from qiskit.pulse import GaussianSquare
+from qiskit.pulse import InstructionScheduleMap
+from qiskit.pulse import macros
+from qiskit.pulse import MeasureChannel
+from qiskit.pulse import MemorySlot
+from qiskit.pulse import Play
+from qiskit.pulse import Schedule
 from qiskit.pulse.exceptions import PulseError
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeOpenPulse2Q

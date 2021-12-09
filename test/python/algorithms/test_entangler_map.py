@@ -14,10 +14,11 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
-from qiskit.utils import get_entangler_map, validate_entangler_map
+from qiskit.utils import get_entangler_map
+from qiskit.utils import validate_entangler_map
 
 
 class TestEntanglerMap(QiskitAlgorithmsTestCase):

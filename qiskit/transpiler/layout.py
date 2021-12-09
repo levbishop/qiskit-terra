@@ -20,7 +20,8 @@ Physical (qu)bits are integers.
 
 from __future__ import annotations
 
-from qiskit.circuit.quantumregister import QuantumRegister, Qubit
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.quantumregister import Qubit
 from qiskit.converters import isinstanceint
 from qiskit.transpiler.exceptions import LayoutError
 

@@ -14,9 +14,11 @@
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 
-from qiskit.circuit import Instruction, QuantumCircuit
+from qiskit.circuit import Instruction
+from qiskit.circuit import QuantumCircuit
 
 
 class ControlFlowOp(Instruction, ABC):

@@ -16,9 +16,12 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit.circuit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.gate import Gate
-from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
 from qiskit.dagcircuit.exceptions import DAGCircuitError
 from qiskit.pulse import Schedule
 from qiskit.test import QiskitTestCase

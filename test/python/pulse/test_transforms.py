@@ -18,20 +18,20 @@ import unittest
 import numpy as np
 
 from qiskit import pulse
-from qiskit.pulse import (
-    Acquire,
-    Constant,
-    Delay,
-    Drag,
-    Gaussian,
-    GaussianSquare,
-    Play,
-    Schedule,
-    Waveform,
-    instructions,
-    transforms,
-)
-from qiskit.pulse.channels import AcquireChannel, DriveChannel, MemorySlot
+from qiskit.pulse import Acquire
+from qiskit.pulse import Constant
+from qiskit.pulse import Delay
+from qiskit.pulse import Drag
+from qiskit.pulse import Gaussian
+from qiskit.pulse import GaussianSquare
+from qiskit.pulse import instructions
+from qiskit.pulse import Play
+from qiskit.pulse import Schedule
+from qiskit.pulse import transforms
+from qiskit.pulse import Waveform
+from qiskit.pulse.channels import AcquireChannel
+from qiskit.pulse.channels import DriveChannel
+from qiskit.pulse.channels import MemorySlot
 from qiskit.pulse.instructions import directives
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock import FakeOpenPulse2Q

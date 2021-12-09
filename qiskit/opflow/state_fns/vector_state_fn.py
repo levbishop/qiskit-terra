@@ -27,7 +27,8 @@ from qiskit.opflow.list_ops.tensored_op import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.state_fns.state_fn import StateFn
 from qiskit.quantum_info import Statevector
-from qiskit.utils import algorithm_globals, arithmetic
+from qiskit.utils import algorithm_globals
+from qiskit.utils import arithmetic
 
 
 class VectorStateFn(StateFn):

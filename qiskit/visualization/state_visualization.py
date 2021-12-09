@@ -34,11 +34,9 @@ from qiskit.utils.deprecation import deprecate_arguments
 from qiskit.visualization.array import array_to_latex
 from qiskit.visualization.exceptions import VisualizationError
 from qiskit.visualization.matplotlib import HAS_MATPLOTLIB
-from qiskit.visualization.utils import (
-    _bloch_multivector_data,
-    _paulivec_data,
-    matplotlib_close_if_inline,
-)
+from qiskit.visualization.utils import _bloch_multivector_data
+from qiskit.visualization.utils import _paulivec_data
+from qiskit.visualization.utils import matplotlib_close_if_inline
 
 
 @deprecate_arguments({"rho": "state"})
@@ -1117,8 +1115,9 @@ def _shade_colors(color, normals, lightsource=None):
             pip_install="pip install matplotlib",
         )
 
+    from matplotlib.colors import LightSource
+    from matplotlib.colors import Normalize
     import matplotlib.colors as mcolors
-    from matplotlib.colors import LightSource, Normalize
 
     if lightsource is None:
         # chosen for backwards-compatibility

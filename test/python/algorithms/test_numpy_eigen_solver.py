@@ -14,14 +14,18 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
+from ddt import data
+from ddt import ddt
 import numpy as np
-from ddt import data, ddt
 
 from qiskit.algorithms import NumPyEigensolver
-from qiskit.opflow import PauliSumOp, X, Y, Z
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import X
+from qiskit.opflow import Y
+from qiskit.opflow import Z
 
 
 @ddt

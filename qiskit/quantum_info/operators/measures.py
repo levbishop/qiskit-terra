@@ -23,9 +23,11 @@ import numpy as np
 from scipy import sparse
 
 from qiskit.circuit.gate import Gate
-from qiskit.exceptions import MissingOptionalLibraryError, QiskitError
+from qiskit.exceptions import MissingOptionalLibraryError
+from qiskit.exceptions import QiskitError
 from qiskit.quantum_info.operators.base_operator import BaseOperator
-from qiskit.quantum_info.operators.channel import Choi, SuperOp
+from qiskit.quantum_info.operators.channel import Choi
+from qiskit.quantum_info.operators.channel import SuperOp
 from qiskit.quantum_info.operators.channel.quantum_channel import QuantumChannel
 from qiskit.quantum_info.operators.operator import Operator
 from qiskit.quantum_info.states.densitymatrix import DensityMatrix

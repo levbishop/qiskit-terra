@@ -14,13 +14,15 @@
 
 from __future__ import annotations
 
+from abc import ABC
+from abc import abstractmethod
 import time
-from abc import ABC, abstractmethod
 from typing import Callable
 
 from qiskit.providers.backend import Backend
 from qiskit.providers.exceptions import JobTimeoutError
-from qiskit.providers.jobstatus import JOB_FINAL_STATES, JobStatus
+from qiskit.providers.jobstatus import JOB_FINAL_STATES
+from qiskit.providers.jobstatus import JobStatus
 
 
 class Job:

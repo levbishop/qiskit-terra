@@ -14,12 +14,15 @@
 
 from __future__ import annotations
 
-import unittest
 from os import path
+import unittest
 
-from ddt import data, ddt, unpack
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 
-from qiskit import BasicAer, execute
+from qiskit import BasicAer
+from qiskit import execute
 from qiskit.circuit.classicalfunction.boolean_expression import BooleanExpression
 from qiskit.test.base import QiskitTestCase
 

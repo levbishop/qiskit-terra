@@ -19,46 +19,44 @@ gate cancellation using commutativity rules.
 from __future__ import annotations
 
 from qiskit.transpiler import TranspilerError
-from qiskit.transpiler.passes import (
-    ALAPSchedule,
-    AlignMeasures,
-    ApplyLayout,
-    ASAPSchedule,
-    BarrierBeforeFinalMeasurements,
-    BasicSwap,
-    BasisTranslator,
-    CheckGateDirection,
-    CheckMap,
-    Collect2qBlocks,
-    CommutativeCancellation,
-    ConsolidateBlocks,
-    ContainsInstruction,
-    CSPLayout,
-    DenseLayout,
-    Depth,
-    EnlargeWithAncilla,
-    Error,
-    FixedPoint,
-    FullAncillaAllocation,
-    GateDirection,
-    Layout2qDistance,
-    LookaheadSwap,
-    NoiseAdaptiveLayout,
-    Optimize1qGatesDecomposition,
-    PulseGates,
-    RemoveResetInZeroState,
-    SabreLayout,
-    SabreSwap,
-    SetLayout,
-    StochasticSwap,
-    TimeUnitConversion,
-    TrivialLayout,
-    UnitarySynthesis,
-    Unroll3qOrMore,
-    UnrollCustomDefinitions,
-    Unroller,
-    ValidatePulseGates,
-)
+from qiskit.transpiler.passes import ALAPSchedule
+from qiskit.transpiler.passes import AlignMeasures
+from qiskit.transpiler.passes import ApplyLayout
+from qiskit.transpiler.passes import ASAPSchedule
+from qiskit.transpiler.passes import BarrierBeforeFinalMeasurements
+from qiskit.transpiler.passes import BasicSwap
+from qiskit.transpiler.passes import BasisTranslator
+from qiskit.transpiler.passes import CheckGateDirection
+from qiskit.transpiler.passes import CheckMap
+from qiskit.transpiler.passes import Collect2qBlocks
+from qiskit.transpiler.passes import CommutativeCancellation
+from qiskit.transpiler.passes import ConsolidateBlocks
+from qiskit.transpiler.passes import ContainsInstruction
+from qiskit.transpiler.passes import CSPLayout
+from qiskit.transpiler.passes import DenseLayout
+from qiskit.transpiler.passes import Depth
+from qiskit.transpiler.passes import EnlargeWithAncilla
+from qiskit.transpiler.passes import Error
+from qiskit.transpiler.passes import FixedPoint
+from qiskit.transpiler.passes import FullAncillaAllocation
+from qiskit.transpiler.passes import GateDirection
+from qiskit.transpiler.passes import Layout2qDistance
+from qiskit.transpiler.passes import LookaheadSwap
+from qiskit.transpiler.passes import NoiseAdaptiveLayout
+from qiskit.transpiler.passes import Optimize1qGatesDecomposition
+from qiskit.transpiler.passes import PulseGates
+from qiskit.transpiler.passes import RemoveResetInZeroState
+from qiskit.transpiler.passes import SabreLayout
+from qiskit.transpiler.passes import SabreSwap
+from qiskit.transpiler.passes import SetLayout
+from qiskit.transpiler.passes import StochasticSwap
+from qiskit.transpiler.passes import TimeUnitConversion
+from qiskit.transpiler.passes import TrivialLayout
+from qiskit.transpiler.passes import UnitarySynthesis
+from qiskit.transpiler.passes import Unroll3qOrMore
+from qiskit.transpiler.passes import UnrollCustomDefinitions
+from qiskit.transpiler.passes import Unroller
+from qiskit.transpiler.passes import ValidatePulseGates
 from qiskit.transpiler.passmanager import PassManager
 from qiskit.transpiler.passmanager_config import PassManagerConfig
 from qiskit.transpiler.timing_constraints import TimingConstraints

@@ -14,14 +14,17 @@
 
 from __future__ import annotations
 
-import unittest
 from collections import defaultdict
 from functools import partial
+import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
-from qiskit import BasicAer, execute
+from qiskit import BasicAer
+from qiskit import execute
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import LinearAmplitudeFunction
 from qiskit.test.base import QiskitTestCase

@@ -19,7 +19,8 @@ import unittest
 
 from numpy.testing import assert_allclose
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.execute_function import execute
 from qiskit.providers.basicaer import UnitarySimulatorPy
 from qiskit.quantum_info.synthesis.local_invariance import two_qubit_local_invariants

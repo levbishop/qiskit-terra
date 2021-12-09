@@ -15,20 +15,29 @@
 from __future__ import annotations
 
 import math
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
+from ddt import ddt
+from ddt import idata
+from ddt import unpack
 import numpy as np
 import retworkx as rx
-from ddt import ddt, idata, unpack
 
-from qiskit import BasicAer, QuantumCircuit, QuantumRegister
+from qiskit import BasicAer
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.algorithms import QAOA
-from qiskit.algorithms.optimizers import COBYLA, NELDER_MEAD
+from qiskit.algorithms.optimizers import COBYLA
+from qiskit.algorithms.optimizers import NELDER_MEAD
 from qiskit.circuit import Parameter
-from qiskit.opflow import I, PauliSumOp, X, Z
+from qiskit.opflow import I
+from qiskit.opflow import PauliSumOp
+from qiskit.opflow import X
+from qiskit.opflow import Z
 from qiskit.quantum_info import Pauli
-from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit.utils import algorithm_globals
+from qiskit.utils import QuantumInstance
 
 W1 = np.array([[0, 1, 0, 1], [1, 0, 1, 0], [0, 1, 0, 1], [1, 0, 1, 0]])
 P1 = 1

@@ -20,7 +20,9 @@ from qiskit import QuantumCircuit
 from qiskit.algorithms.linear_solvers.observables.linear_system_observable import (
     LinearSystemObservable,
 )
-from qiskit.opflow import I, TensoredOp, Z
+from qiskit.opflow import I
+from qiskit.opflow import TensoredOp
+from qiskit.opflow import Z
 from qiskit.quantum_info import Statevector
 
 

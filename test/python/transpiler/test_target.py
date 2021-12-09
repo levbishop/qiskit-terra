@@ -17,26 +17,25 @@ from __future__ import annotations
 import math
 
 from qiskit import pulse
-from qiskit.circuit.library import (
-    CCXGate,
-    CXGate,
-    ECRGate,
-    IGate,
-    RGate,
-    RXGate,
-    RXXGate,
-    RYGate,
-    RZGate,
-    SXGate,
-    UGate,
-    XGate,
-)
+from qiskit.circuit.library import CCXGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import ECRGate
+from qiskit.circuit.library import IGate
+from qiskit.circuit.library import RGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RXXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import SXGate
+from qiskit.circuit.library import UGate
+from qiskit.circuit.library import XGate
 from qiskit.circuit.measure import Measure
 from qiskit.circuit.parameter import Parameter
 from qiskit.pulse.instruction_schedule_map import InstructionScheduleMap
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock.fake_backend_v2 import FakeBackendV2
-from qiskit.transpiler import InstructionProperties, Target
+from qiskit.transpiler import InstructionProperties
+from qiskit.transpiler import Target
 from qiskit.transpiler.coupling import CouplingMap
 from qiskit.transpiler.instruction_durations import InstructionDurations
 from qiskit.transpiler.timing_constraints import TimingConstraints

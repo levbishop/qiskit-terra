@@ -18,14 +18,16 @@ job interface.
 
 from __future__ import annotations
 
+from abc import ABC
+from abc import abstractmethod
 import time
-import warnings
-from abc import ABC, abstractmethod
 from typing import Callable
+import warnings
 
 from qiskit.providers.basebackend import BaseBackend
 from qiskit.providers.exceptions import JobTimeoutError
-from qiskit.providers.jobstatus import JOB_FINAL_STATES, JobStatus
+from qiskit.providers.jobstatus import JOB_FINAL_STATES
+from qiskit.providers.jobstatus import JobStatus
 
 
 class BaseJob(ABC):

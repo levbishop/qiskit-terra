@@ -18,7 +18,8 @@ from __future__ import annotations
 from qiskit.circuit.instruction import Instruction
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import QuantumRegister
-from qiskit.extensions.exceptions import ExtensionError, QiskitError
+from qiskit.extensions.exceptions import ExtensionError
+from qiskit.extensions.exceptions import QiskitError
 
 
 class Snapshot(Instruction):

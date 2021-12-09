@@ -30,11 +30,12 @@ from __future__ import annotations
 
 import itertools
 
-import retworkx as rx
 from numpy import random
+import retworkx as rx
 
 from qiskit.test import QiskitTestCase
-from qiskit.transpiler.passes.routing.algorithms import ApproximateTokenSwapper, util
+from qiskit.transpiler.passes.routing.algorithms import ApproximateTokenSwapper
+from qiskit.transpiler.passes.routing.algorithms import util
 
 
 class TestGeneral(QiskitTestCase):

@@ -16,7 +16,8 @@ from __future__ import annotations
 
 import functools
 
-from qiskit.circuit import ParameterExpression, ParameterVector
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import ParameterVector
 from qiskit.circuit.quantumcircuit import _compare_parameters
 from qiskit.opflow.expectations.pauli_expectation import PauliExpectation
 from qiskit.opflow.gradients.qfi_base import QFIBase

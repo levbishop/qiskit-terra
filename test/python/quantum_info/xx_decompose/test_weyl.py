@@ -16,20 +16,18 @@ Tests for qiskit-terra/qiskit/quantum_info/synthesis/xx_decompose/weyl.py .
 
 from __future__ import annotations
 
-import unittest
 from itertools import permutations
+import unittest
 
 import ddt
 import numpy as np
 
 from qiskit.quantum_info.operators import Operator
-from qiskit.quantum_info.synthesis.xx_decompose.weyl import (
-    apply_reflection,
-    apply_shift,
-    canonical_rotation_circuit,
-    reflection_options,
-    shift_options,
-)
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import apply_reflection
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import apply_shift
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import canonical_rotation_circuit
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import reflection_options
+from qiskit.quantum_info.synthesis.xx_decompose.weyl import shift_options
 
 from .utilities import canonical_matrix
 

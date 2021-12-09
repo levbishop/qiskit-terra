@@ -14,7 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.poughkeepsie.fake_poughkeepsie import (
-    FakeLegacyPoughkeepsie,
-    FakePoughkeepsie,
-)
+from qiskit.test.mock.backends.poughkeepsie.fake_poughkeepsie import FakeLegacyPoughkeepsie
+from qiskit.test.mock.backends.poughkeepsie.fake_poughkeepsie import FakePoughkeepsie

@@ -14,13 +14,16 @@
 
 from __future__ import annotations
 
-import unittest
 from collections import defaultdict
+import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 
-from qiskit import BasicAer, execute
+from qiskit import BasicAer
+from qiskit import execute
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library.arithmetic.piecewise_polynomial_pauli_rotations import (
     PiecewisePolynomialPauliRotations,

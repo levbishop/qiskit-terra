@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import List, Tuple, cast
+from typing import cast, List, Tuple
 
 import numpy as np
 import retworkx as rx

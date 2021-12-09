@@ -17,34 +17,40 @@ from __future__ import annotations
 
 from math import pi
 
+from hypothesis import assume
+from hypothesis import HealthCheck
+from hypothesis import settings
+from hypothesis.stateful import Bundle
+from hypothesis.stateful import invariant
+from hypothesis.stateful import multiple
+from hypothesis.stateful import precondition
+from hypothesis.stateful import rule
+from hypothesis.stateful import RuleBasedStateMachine
 import hypothesis.strategies as st
-from hypothesis import HealthCheck, assume, settings
-from hypothesis.stateful import (
-    Bundle,
-    RuleBasedStateMachine,
-    invariant,
-    multiple,
-    precondition,
-    rule,
-)
 
-from qiskit import Aer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute, transpile
-from qiskit.circuit import Barrier, Gate, Measure, Reset
+from qiskit import Aer
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit import transpile
+from qiskit.circuit import Barrier
+from qiskit.circuit import Gate
+from qiskit.circuit import Measure
+from qiskit.circuit import Reset
 from qiskit.test.base import dicts_almost_equal
-from qiskit.test.mock import (
-    FakeAlmaden,
-    FakeBoeblingen,
-    FakeJohannesburg,
-    FakeMelbourne,
-    FakeOurense,
-    FakePoughkeepsie,
-    FakeRueschlikon,
-    FakeSingapore,
-    FakeTenerife,
-    FakeTokyo,
-    FakeVigo,
-    FakeYorktown,
-)
+from qiskit.test.mock import FakeAlmaden
+from qiskit.test.mock import FakeBoeblingen
+from qiskit.test.mock import FakeJohannesburg
+from qiskit.test.mock import FakeMelbourne
+from qiskit.test.mock import FakeOurense
+from qiskit.test.mock import FakePoughkeepsie
+from qiskit.test.mock import FakeRueschlikon
+from qiskit.test.mock import FakeSingapore
+from qiskit.test.mock import FakeTenerife
+from qiskit.test.mock import FakeTokyo
+from qiskit.test.mock import FakeVigo
+from qiskit.test.mock import FakeYorktown
 
 # pylint: disable=wildcard-import,unused-wildcard-import
 from qiskit.circuit.library.standard_gates import *

@@ -18,7 +18,8 @@ import copy
 
 from qiskit.exceptions import QiskitError
 from qiskit.qobj import QobjExperimentHeader
-from qiskit.qobj.utils import MeasLevel, MeasReturnType
+from qiskit.qobj.utils import MeasLevel
+from qiskit.qobj.utils import MeasReturnType
 
 
 class ExperimentResultData:

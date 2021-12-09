@@ -16,21 +16,23 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.circuit import Barrier
 from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
 from qiskit.test.mock.backends import FakeLima
-from qiskit.transpiler import CouplingMap, Layout, PassManager
+from qiskit.transpiler import CouplingMap
+from qiskit.transpiler import Layout
+from qiskit.transpiler import PassManager
 from qiskit.transpiler.exceptions import TranspilerError
-from qiskit.transpiler.passes import (
-    BIPMapping,
-    CheckMap,
-    Collect2qBlocks,
-    ConsolidateBlocks,
-    UnitarySynthesis,
-)
+from qiskit.transpiler.passes import BIPMapping
+from qiskit.transpiler.passes import CheckMap
+from qiskit.transpiler.passes import Collect2qBlocks
+from qiskit.transpiler.passes import ConsolidateBlocks
+from qiskit.transpiler.passes import UnitarySynthesis
 
 try:
     import cplex  # pylint: disable=unused-import

@@ -161,88 +161,79 @@ Exceptions
 # New Operators
 from __future__ import annotations
 
-from qiskit.opflow.converters import (
-    AbelianGrouper,
-    CircuitSampler,
-    ConverterBase,
-    DictToCircuitSum,
-    PauliBasisChange,
-    TwoQubitReduction,
-)
-from qiskit.opflow.evolutions import (
-    EvolutionBase,
-    EvolutionFactory,
-    EvolvedOp,
-    MatrixEvolution,
-    PauliTrotterEvolution,
-    QDrift,
-    Suzuki,
-    Trotter,
-    TrotterizationBase,
-    TrotterizationFactory,
-)
-from qiskit.opflow.expectations import (
-    AerPauliExpectation,
-    CVaRExpectation,
-    ExpectationBase,
-    ExpectationFactory,
-    MatrixExpectation,
-    PauliExpectation,
-)
-from qiskit.opflow.list_ops import ComposedOp, ListOp, SummedOp, TensoredOp
+from qiskit.opflow.converters import AbelianGrouper
+from qiskit.opflow.converters import CircuitSampler
+from qiskit.opflow.converters import ConverterBase
+from qiskit.opflow.converters import DictToCircuitSum
+from qiskit.opflow.converters import PauliBasisChange
+from qiskit.opflow.converters import TwoQubitReduction
+from qiskit.opflow.evolutions import EvolutionBase
+from qiskit.opflow.evolutions import EvolutionFactory
+from qiskit.opflow.evolutions import EvolvedOp
+from qiskit.opflow.evolutions import MatrixEvolution
+from qiskit.opflow.evolutions import PauliTrotterEvolution
+from qiskit.opflow.evolutions import QDrift
+from qiskit.opflow.evolutions import Suzuki
+from qiskit.opflow.evolutions import Trotter
+from qiskit.opflow.evolutions import TrotterizationBase
+from qiskit.opflow.evolutions import TrotterizationFactory
+from qiskit.opflow.expectations import AerPauliExpectation
+from qiskit.opflow.expectations import CVaRExpectation
+from qiskit.opflow.expectations import ExpectationBase
+from qiskit.opflow.expectations import ExpectationFactory
+from qiskit.opflow.expectations import MatrixExpectation
+from qiskit.opflow.expectations import PauliExpectation
+from qiskit.opflow.list_ops import ComposedOp
+from qiskit.opflow.list_ops import ListOp
+from qiskit.opflow.list_ops import SummedOp
+from qiskit.opflow.list_ops import TensoredOp
 from qiskit.opflow.operator_base import OperatorBase
-from qiskit.opflow.primitive_ops import (
-    CircuitOp,
-    MatrixOp,
-    PauliOp,
-    PauliSumOp,
-    PrimitiveOp,
-    TaperedPauliSumOp,
-    Z2Symmetries,
-)
-from qiskit.opflow.state_fns import (
-    CircuitStateFn,
-    CVaRMeasurement,
-    DictStateFn,
-    OperatorStateFn,
-    SparseVectorStateFn,
-    StateFn,
-    VectorStateFn,
-)
-from qiskit.opflow.utils import anti_commutator, commutator, double_commutator
+from qiskit.opflow.primitive_ops import CircuitOp
+from qiskit.opflow.primitive_ops import MatrixOp
+from qiskit.opflow.primitive_ops import PauliOp
+from qiskit.opflow.primitive_ops import PauliSumOp
+from qiskit.opflow.primitive_ops import PrimitiveOp
+from qiskit.opflow.primitive_ops import TaperedPauliSumOp
+from qiskit.opflow.primitive_ops import Z2Symmetries
+from qiskit.opflow.state_fns import CircuitStateFn
+from qiskit.opflow.state_fns import CVaRMeasurement
+from qiskit.opflow.state_fns import DictStateFn
+from qiskit.opflow.state_fns import OperatorStateFn
+from qiskit.opflow.state_fns import SparseVectorStateFn
+from qiskit.opflow.state_fns import StateFn
+from qiskit.opflow.state_fns import VectorStateFn
+from qiskit.opflow.utils import anti_commutator
+from qiskit.opflow.utils import commutator
+from qiskit.opflow.utils import double_commutator
 
 # Convenience immutable instances
-from qiskit.opflow.operator_globals import (
-    CX,
-    CZ,
-    EVAL_SIG_DIGITS,
-    H,
-    I,
-    Minus,
-    One,
-    Plus,
-    S,
-    Swap,
-    T,
-    X,
-    Y,
-    Z,
-    Zero,
-)
+from qiskit.opflow.operator_globals import CX
+from qiskit.opflow.operator_globals import CZ
+from qiskit.opflow.operator_globals import EVAL_SIG_DIGITS
+from qiskit.opflow.operator_globals import H
+from qiskit.opflow.operator_globals import I
+from qiskit.opflow.operator_globals import Minus
+from qiskit.opflow.operator_globals import One
+from qiskit.opflow.operator_globals import Plus
+from qiskit.opflow.operator_globals import S
+from qiskit.opflow.operator_globals import Swap
+from qiskit.opflow.operator_globals import T
+from qiskit.opflow.operator_globals import X
+from qiskit.opflow.operator_globals import Y
+from qiskit.opflow.operator_globals import Z
+from qiskit.opflow.operator_globals import Zero
 
 # Gradients
-from qiskit.opflow.gradients import (
-    QFI,
-    CircuitGradient,
-    CircuitQFI,
-    DerivativeBase,
-    Gradient,
-    GradientBase,
-    Hessian,
-    HessianBase,
-    NaturalGradient,
-    QFIBase,
-)
+from qiskit.opflow.gradients import CircuitGradient
+from qiskit.opflow.gradients import CircuitQFI
+from qiskit.opflow.gradients import DerivativeBase
+from qiskit.opflow.gradients import Gradient
+from qiskit.opflow.gradients import GradientBase
+from qiskit.opflow.gradients import Hessian
+from qiskit.opflow.gradients import HessianBase
+from qiskit.opflow.gradients import NaturalGradient
+from qiskit.opflow.gradients import QFI
+from qiskit.opflow.gradients import QFIBase
 
 # Exceptions
 from qiskit.opflow.exceptions import OpflowError

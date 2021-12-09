@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import warnings
 from typing import Iterable
+import warnings
 
 from qiskit.circuit.controlflow.control_flow import ControlFlowOp
 from qiskit.circuit.exceptions import CircuitError

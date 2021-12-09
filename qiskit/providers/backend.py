@@ -17,9 +17,10 @@
 
 from __future__ import annotations
 
+from abc import ABC
+from abc import abstractmethod
 import datetime
 import logging
-from abc import ABC, abstractmethod
 from typing import Iterable
 
 from qiskit.circuit.gate import Instruction

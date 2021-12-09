@@ -14,20 +14,23 @@
 
 from __future__ import annotations
 
-import warnings
 from typing import Callable
+import warnings
 
-from qiskit.circuit import ControlledGate, Gate, Instruction, QuantumCircuit, QuantumRegister, Qubit
-from qiskit.circuit.library.standard_gates import (
-    HGate,
-    SdgGate,
-    SGate,
-    TdgGate,
-    TGate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit import ControlledGate
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
+from qiskit.circuit.library.standard_gates import HGate
+from qiskit.circuit.library.standard_gates import SdgGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import TdgGate
+from qiskit.circuit.library.standard_gates import TGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.circuit.library.standard_gates import YGate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.exceptions import QiskitError
 
 

@@ -15,20 +15,28 @@ from __future__ import annotations
 
 import copy
 import logging
+from time import time
 import uuid
 import warnings
-from time import time
 
-from qiskit.assembler import assemble_circuits, assemble_schedules
+from qiskit.assembler import assemble_circuits
+from qiskit.assembler import assemble_schedules
 from qiskit.assembler.run_config import RunConfig
-from qiskit.circuit import Parameter, QuantumCircuit, Qubit
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import Qubit
 from qiskit.exceptions import QiskitError
 from qiskit.providers import BaseBackend
 from qiskit.providers.backend import Backend
-from qiskit.pulse import Instruction, LoConfig, Schedule, ScheduleBlock
+from qiskit.pulse import Instruction
+from qiskit.pulse import LoConfig
+from qiskit.pulse import Schedule
+from qiskit.pulse import ScheduleBlock
 from qiskit.pulse.channels import PulseChannel
-from qiskit.qobj import Qobj, QobjHeader
-from qiskit.qobj.utils import MeasLevel, MeasReturnType
+from qiskit.qobj import Qobj
+from qiskit.qobj import QobjHeader
+from qiskit.qobj.utils import MeasLevel
+from qiskit.qobj.utils import MeasReturnType
 
 logger = logging.getLogger(__name__)
 

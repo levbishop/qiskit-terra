@@ -15,66 +15,72 @@
 
 from __future__ import annotations
 
-import unittest
 from test import combine
+import unittest
 
-import numpy as np
-from ddt import data, ddt, unpack
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 from numpy import pi
+import numpy as np
 
-import qiskit.circuit.add_control as ac
-import qiskit.circuit.library.standard_gates as allGates
-from qiskit import BasicAer, QiskitError, QuantumCircuit, QuantumRegister, execute
-from qiskit.circuit import ControlledGate, Parameter
+from qiskit import BasicAer
+from qiskit import execute
+from qiskit import QiskitError
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import ControlledGate
+from qiskit.circuit import Parameter
 from qiskit.circuit._utils import _compute_control_matrix
+import qiskit.circuit.add_control as ac
 from qiskit.circuit.exceptions import CircuitError
-from qiskit.circuit.library import (
-    Barrier,
-    C3SXGate,
-    C3XGate,
-    C4XGate,
-    CCXGate,
-    CHGate,
-    CPhaseGate,
-    CRXGate,
-    CRYGate,
-    CRZGate,
-    CSwapGate,
-    CSXGate,
-    CU1Gate,
-    CU3Gate,
-    CUGate,
-    CXGate,
-    CYGate,
-    CZGate,
-    HGate,
-    MCPhaseGate,
-    MCU1Gate,
-    MCXGate,
-    MCXGrayCode,
-    MCXRecursive,
-    MCXVChain,
-    MSGate,
-    PhaseGate,
-    RC3XGate,
-    RCCXGate,
-    RXGate,
-    RYGate,
-    RZGate,
-    SwapGate,
-    SXGate,
-    U1Gate,
-    U3Gate,
-    UGate,
-    XGate,
-    YGate,
-    ZGate,
-)
+from qiskit.circuit.library import Barrier
+from qiskit.circuit.library import C3SXGate
+from qiskit.circuit.library import C3XGate
+from qiskit.circuit.library import C4XGate
+from qiskit.circuit.library import CCXGate
+from qiskit.circuit.library import CHGate
+from qiskit.circuit.library import CPhaseGate
+from qiskit.circuit.library import CRXGate
+from qiskit.circuit.library import CRYGate
+from qiskit.circuit.library import CRZGate
+from qiskit.circuit.library import CSwapGate
+from qiskit.circuit.library import CSXGate
+from qiskit.circuit.library import CU1Gate
+from qiskit.circuit.library import CU3Gate
+from qiskit.circuit.library import CUGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import CYGate
+from qiskit.circuit.library import CZGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import MCPhaseGate
+from qiskit.circuit.library import MCU1Gate
+from qiskit.circuit.library import MCXGate
+from qiskit.circuit.library import MCXGrayCode
+from qiskit.circuit.library import MCXRecursive
+from qiskit.circuit.library import MCXVChain
+from qiskit.circuit.library import MSGate
+from qiskit.circuit.library import PhaseGate
+from qiskit.circuit.library import RC3XGate
+from qiskit.circuit.library import RCCXGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import RYGate
+from qiskit.circuit.library import RZGate
+from qiskit.circuit.library import SwapGate
+from qiskit.circuit.library import SXGate
+from qiskit.circuit.library import U1Gate
+from qiskit.circuit.library import U3Gate
+from qiskit.circuit.library import UGate
+from qiskit.circuit.library import XGate
+from qiskit.circuit.library import YGate
+from qiskit.circuit.library import ZGate
+import qiskit.circuit.library.standard_gates as allGates
 from qiskit.converters.circuit_to_dag import circuit_to_dag
 from qiskit.converters.dag_to_circuit import dag_to_circuit
 from qiskit.extensions import UnitaryGate
 from qiskit.quantum_info import Operator
-from qiskit.quantum_info.operators.predicates import is_unitary_matrix, matrix_equal
+from qiskit.quantum_info.operators.predicates import is_unitary_matrix
+from qiskit.quantum_info.operators.predicates import matrix_equal
 from qiskit.quantum_info.random import random_unitary
 from qiskit.quantum_info.states import Statevector
 from qiskit.test import QiskitTestCase
@@ -1250,7 +1256,10 @@ class TestOpenControlledToMatrix(QiskitTestCase):
 class TestSingleControlledRotationGates(QiskitTestCase):
     """Test the controlled rotation gates controlled on one qubit."""
 
-    from qiskit.circuit.library.standard_gates import rx, ry, rz, u1
+    from qiskit.circuit.library.standard_gates import rx
+    from qiskit.circuit.library.standard_gates import ry
+    from qiskit.circuit.library.standard_gates import rz
+    from qiskit.circuit.library.standard_gates import u1
 
     num_ctrl = 2
     num_target = 1

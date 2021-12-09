@@ -17,10 +17,10 @@ Useful for refactoring purposes."""
 
 from __future__ import annotations
 
-import os
-import unittest
 from filecmp import cmp as cmpfile
+import os
 from shutil import copyfile
+import unittest
 
 import matplotlib
 
@@ -61,7 +61,8 @@ class QiskitVisualizationTestCase(QiskitTestCase):
     def assertImagesAreEqual(self, current, expected, diff_tolerance=0.001):
         """Checks if both images are similar enough to be considered equal.
         Similarity is controlled by the ```diff_tolerance``` argument."""
-        from PIL import Image, ImageChops
+        from PIL import Image
+        from PIL import ImageChops
 
         if isinstance(current, str):
             current = Image.open(current)

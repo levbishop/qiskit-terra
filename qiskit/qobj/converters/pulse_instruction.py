@@ -16,14 +16,18 @@
 
 from __future__ import annotations
 
+from enum import Enum
 import hashlib
 import re
 import warnings
-from enum import Enum
 
-from qiskit.circuit import Parameter, ParameterExpression
-from qiskit.pulse import channels, instructions, library
-from qiskit.pulse.configuration import Discriminator, Kernel
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.pulse import channels
+from qiskit.pulse import instructions
+from qiskit.pulse import library
+from qiskit.pulse.configuration import Discriminator
+from qiskit.pulse.configuration import Kernel
 from qiskit.pulse.exceptions import QiskitError
 from qiskit.pulse.parser import parse_string_expr
 from qiskit.pulse.schedule import Schedule

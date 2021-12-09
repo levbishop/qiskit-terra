@@ -22,19 +22,17 @@ import math
 import numpy as np
 import scipy.linalg as la
 
-from qiskit.circuit.library.standard_gates import (
-    PhaseGate,
-    RGate,
-    RXGate,
-    RYGate,
-    RZGate,
-    SXGate,
-    U1Gate,
-    U2Gate,
-    U3Gate,
-    UGate,
-    XGate,
-)
+from qiskit.circuit.library.standard_gates import PhaseGate
+from qiskit.circuit.library.standard_gates import RGate
+from qiskit.circuit.library.standard_gates import RXGate
+from qiskit.circuit.library.standard_gates import RYGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import SXGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import U2Gate
+from qiskit.circuit.library.standard_gates import U3Gate
+from qiskit.circuit.library.standard_gates import UGate
+from qiskit.circuit.library.standard_gates import XGate
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.exceptions import QiskitError

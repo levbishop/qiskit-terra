@@ -16,20 +16,18 @@ Tests for qiskit-terra/qiskit/quantum_info/synthesis/xx_decompose/circuits.py .
 
 from __future__ import annotations
 
-import unittest
 from operator import itemgetter
+import unittest
 
 import ddt
 import numpy as np
 
-import qiskit.quantum_info.operators
 from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library import RZGate
+import qiskit.quantum_info.operators
 from qiskit.quantum_info.synthesis.weyl import weyl_coordinates
-from qiskit.quantum_info.synthesis.xx_decompose.circuits import (
-    decompose_xxyy_into_xxyy_xx,
-    xx_circuit_step,
-)
+from qiskit.quantum_info.synthesis.xx_decompose.circuits import decompose_xxyy_into_xxyy_xx
+from qiskit.quantum_info.synthesis.xx_decompose.circuits import xx_circuit_step
 
 from .utilities import canonical_matrix
 

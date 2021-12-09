@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit.algorithms.optimizers.nlopts.nloptimizer import NLoptOptimizer, NLoptOptimizerType
+from qiskit.algorithms.optimizers.nlopts.nloptimizer import NLoptOptimizer
+from qiskit.algorithms.optimizers.nlopts.nloptimizer import NLoptOptimizerType
 
 
 class DIRECT_L(NLoptOptimizer):  # pylint: disable=invalid-name

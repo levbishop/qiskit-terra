@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import logging
 from collections import OrderedDict
+import logging
 from math import inf
 
 import numpy as np

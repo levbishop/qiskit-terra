@@ -16,7 +16,11 @@ from __future__ import annotations
 
 import unittest
 
-from qiskit import BasicAer, ClassicalRegister, QuantumCircuit, QuantumRegister, execute
+from qiskit import BasicAer
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
 from qiskit.providers.basicaer import BasicAerError
 from qiskit.result import Result
 from qiskit.test import QiskitTestCase

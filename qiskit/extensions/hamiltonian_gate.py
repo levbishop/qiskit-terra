@@ -21,11 +21,15 @@ from numbers import Number
 import numpy
 import scipy.linalg
 
-from qiskit.circuit import Gate, ParameterExpression, QuantumCircuit, QuantumRegister
+from qiskit.circuit import Gate
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.extensions.exceptions import ExtensionError
 from qiskit.extensions.unitary import UnitaryGate
-from qiskit.quantum_info.operators.predicates import is_hermitian_matrix, matrix_equal
+from qiskit.quantum_info.operators.predicates import is_hermitian_matrix
+from qiskit.quantum_info.operators.predicates import matrix_equal
 
 
 class HamiltonianGate(Gate):

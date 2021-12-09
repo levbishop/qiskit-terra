@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import AncillaRegister, QuantumCircuit, QuantumRegister
+from qiskit.circuit import AncillaRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.arithmetic.functional_pauli_rotations import FunctionalPauliRotations
 from qiskit.circuit.library.arithmetic.integer_comparator import IntegerComparator

@@ -23,7 +23,9 @@ import cmath
 
 import numpy as np
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister, Qubit
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.gate import Gate
 from qiskit.exceptions import QiskitError

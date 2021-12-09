@@ -19,7 +19,11 @@ from __future__ import annotations
 import numpy as np
 
 from qiskit import QuantumCircuit
-from qiskit.circuit.library import CXGate, HGate, PhaseGate, RXGate, XGate
+from qiskit.circuit.library import CXGate
+from qiskit.circuit.library import HGate
+from qiskit.circuit.library import PhaseGate
+from qiskit.circuit.library import RXGate
+from qiskit.circuit.library import XGate
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
 from qiskit.transpiler.exceptions import TranspilerError

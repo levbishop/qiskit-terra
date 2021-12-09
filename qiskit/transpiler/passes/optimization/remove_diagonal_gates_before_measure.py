@@ -15,19 +15,17 @@
 from __future__ import annotations
 
 from qiskit.circuit import Measure
-from qiskit.circuit.library.standard_gates import (
-    CRZGate,
-    CU1Gate,
-    CZGate,
-    RZGate,
-    RZZGate,
-    SdgGate,
-    SGate,
-    TdgGate,
-    TGate,
-    U1Gate,
-    ZGate,
-)
+from qiskit.circuit.library.standard_gates import CRZGate
+from qiskit.circuit.library.standard_gates import CU1Gate
+from qiskit.circuit.library.standard_gates import CZGate
+from qiskit.circuit.library.standard_gates import RZGate
+from qiskit.circuit.library.standard_gates import RZZGate
+from qiskit.circuit.library.standard_gates import SdgGate
+from qiskit.circuit.library.standard_gates import SGate
+from qiskit.circuit.library.standard_gates import TdgGate
+from qiskit.circuit.library.standard_gates import TGate
+from qiskit.circuit.library.standard_gates import U1Gate
+from qiskit.circuit.library.standard_gates import ZGate
 from qiskit.dagcircuit import DAGOpNode
 from qiskit.transpiler.basepasses import TransformationPass
 

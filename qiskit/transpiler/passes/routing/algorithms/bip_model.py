@@ -13,8 +13,8 @@
 from __future__ import annotations
 
 import copy
-import logging
 from functools import lru_cache
+import logging
 
 import numpy as np
 
@@ -22,11 +22,10 @@ from qiskit.circuit.library.standard_gates import SwapGate
 from qiskit.exceptions import MissingOptionalLibraryError
 from qiskit.providers.models import BackendProperties
 from qiskit.quantum_info import two_qubit_cnot_decompose
-from qiskit.quantum_info.synthesis.two_qubit_decompose import (
-    TwoQubitWeylDecomposition,
-    trace_to_fid,
-)
-from qiskit.transpiler.exceptions import CouplingError, TranspilerError
+from qiskit.quantum_info.synthesis.two_qubit_decompose import trace_to_fid
+from qiskit.quantum_info.synthesis.two_qubit_decompose import TwoQubitWeylDecomposition
+from qiskit.transpiler.exceptions import CouplingError
+from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.layout import Layout
 
 logger = logging.getLogger(__name__)

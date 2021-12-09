@@ -16,11 +16,9 @@ from __future__ import annotations
 
 from qiskit.test import QiskitTestCase
 
-from .faulty_backends import (
-    FakeOurenseFaultyCX01CX10,
-    FakeOurenseFaultyCX13CX31,
-    FakeOurenseFaultyQ1,
-)
+from .faulty_backends import FakeOurenseFaultyCX01CX10
+from .faulty_backends import FakeOurenseFaultyCX13CX31
+from .faulty_backends import FakeOurenseFaultyQ1
 
 
 class FaultyQubitBackendTestCase(QiskitTestCase):

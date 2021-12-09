@@ -14,7 +14,8 @@
 
 from __future__ import annotations
 
-from qiskit import __qiskit_version__, __version__
+from qiskit import __qiskit_version__
+from qiskit import __version__
 from qiskit.test import QiskitTestCase
 
 

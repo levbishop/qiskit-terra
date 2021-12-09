@@ -39,16 +39,19 @@ the plotter API.
 """
 from __future__ import annotations
 
-import re
 from fractions import Fraction
+import re
 from typing import Any
 
 import numpy as np
 
-from qiskit import circuit, pulse
+from qiskit import circuit
+from qiskit import pulse
 from qiskit.pulse import instructions
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.pulse_v2 import device_info, drawings, types
+from qiskit.visualization.pulse_v2 import device_info
+from qiskit.visualization.pulse_v2 import drawings
+from qiskit.visualization.pulse_v2 import types
 
 
 def gen_filled_waveform_stepwise(

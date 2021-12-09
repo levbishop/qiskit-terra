@@ -14,8 +14,9 @@ Tests AQC framework using hardcoded and randomly generated circuits.
 """
 from __future__ import annotations
 
+from test.python.transpiler.aqc.sample_data import INITIAL_THETAS
+from test.python.transpiler.aqc.sample_data import ORIGINAL_CIRCUIT
 import unittest
-from test.python.transpiler.aqc.sample_data import INITIAL_THETAS, ORIGINAL_CIRCUIT
 
 import numpy as np
 

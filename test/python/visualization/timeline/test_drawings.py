@@ -18,7 +18,8 @@ import numpy as np
 
 import qiskit
 from qiskit.test import QiskitTestCase
-from qiskit.visualization.timeline import drawings, types
+from qiskit.visualization.timeline import drawings
+from qiskit.visualization.timeline import types
 
 
 class TestDrawingObjects(QiskitTestCase):

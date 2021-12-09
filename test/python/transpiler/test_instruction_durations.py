@@ -16,9 +16,11 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import Delay, Parameter
+from qiskit.circuit import Delay
+from qiskit.circuit import Parameter
 from qiskit.test.base import QiskitTestCase
-from qiskit.test.mock.backends import FakeParis, FakeTokyo
+from qiskit.test.mock.backends import FakeParis
+from qiskit.test.mock.backends import FakeTokyo
 from qiskit.transpiler.exceptions import TranspilerError
 from qiskit.transpiler.instruction_durations import InstructionDurations
 

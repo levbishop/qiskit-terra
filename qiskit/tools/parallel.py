@@ -50,9 +50,9 @@ from the multiprocessing library.
 
 from __future__ import annotations
 
+from concurrent.futures import ProcessPoolExecutor
 import os
 import sys
-from concurrent.futures import ProcessPoolExecutor
 
 from qiskit import user_config
 from qiskit.exceptions import QiskitError

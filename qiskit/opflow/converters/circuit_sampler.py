@@ -15,15 +15,17 @@
 
 from __future__ import annotations
 
-import logging
 from functools import partial
+import logging
 from time import time
-from typing import Any, Dict, List, cast
+from typing import Any, cast, Dict, List
 
 import numpy as np
 
 from qiskit import QiskitError
-from qiskit.circuit import Parameter, ParameterExpression, QuantumCircuit
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterExpression
+from qiskit.circuit import QuantumCircuit
 from qiskit.opflow.converters.converter_base import ConverterBase
 from qiskit.opflow.exceptions import OpflowError
 from qiskit.opflow.list_ops.list_op import ListOp
@@ -31,8 +33,10 @@ from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.state_fns.circuit_state_fn import CircuitStateFn
 from qiskit.opflow.state_fns.dict_state_fn import DictStateFn
 from qiskit.opflow.state_fns.state_fn import StateFn
-from qiskit.providers import Backend, BaseBackend
-from qiskit.utils.backend_utils import is_aer_provider, is_statevector_backend
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
+from qiskit.utils.backend_utils import is_aer_provider
+from qiskit.utils.backend_utils import is_statevector_backend
 from qiskit.utils.quantum_instance import QuantumInstance
 
 logger = logging.getLogger(__name__)

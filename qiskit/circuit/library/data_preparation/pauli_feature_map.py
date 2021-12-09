@@ -19,7 +19,9 @@ from typing import Callable
 
 import numpy as np
 
-from qiskit.circuit import Parameter, ParameterVector, QuantumCircuit
+from qiskit.circuit import Parameter
+from qiskit.circuit import ParameterVector
+from qiskit.circuit import QuantumCircuit
 from qiskit.circuit.library.n_local.n_local import NLocal
 from qiskit.circuit.library.standard_gates import HGate
 

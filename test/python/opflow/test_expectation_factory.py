@@ -14,10 +14,15 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.opflow import QiskitOpflowTestCase
+import unittest
 
-from qiskit.opflow import AerPauliExpectation, ExpectationFactory, I, PauliExpectation, X, Z
+from qiskit.opflow import AerPauliExpectation
+from qiskit.opflow import ExpectationFactory
+from qiskit.opflow import I
+from qiskit.opflow import PauliExpectation
+from qiskit.opflow import X
+from qiskit.opflow import Z
 from qiskit.utils import has_aer
 
 if has_aer():

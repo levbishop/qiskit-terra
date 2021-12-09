@@ -15,7 +15,8 @@
 from __future__ import annotations
 
 from qiskit.opflow.expectations.expectation_base import ExpectationBase
-from qiskit.opflow.list_ops import ComposedOp, ListOp
+from qiskit.opflow.list_ops import ComposedOp
+from qiskit.opflow.list_ops import ListOp
 from qiskit.opflow.operator_base import OperatorBase
 from qiskit.opflow.state_fns.operator_state_fn import OperatorStateFn
 

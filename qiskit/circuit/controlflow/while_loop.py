@@ -14,8 +14,11 @@
 
 from __future__ import annotations
 
-from qiskit.circuit import ClassicalRegister, Clbit, QuantumCircuit
-from qiskit.circuit.controlflow.condition import condition_bits, validate_condition
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.controlflow.condition import condition_bits
+from qiskit.circuit.controlflow.condition import validate_condition
 from qiskit.circuit.controlflow.control_flow import ControlFlowOp
 from qiskit.circuit.exceptions import CircuitError
 

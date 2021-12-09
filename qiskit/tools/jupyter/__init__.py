@@ -105,8 +105,10 @@ from IPython import get_ipython
 
 from qiskit.test.mock import FakeBackend
 from qiskit.tools.jupyter.copyright import Copyright
-from qiskit.tools.jupyter.job_watcher import JobWatcher, JobWatcherMagic
-from qiskit.tools.jupyter.jupyter_magics import ProgressBarMagic, StatusMagic
+from qiskit.tools.jupyter.job_watcher import JobWatcher
+from qiskit.tools.jupyter.job_watcher import JobWatcherMagic
+from qiskit.tools.jupyter.jupyter_magics import ProgressBarMagic
+from qiskit.tools.jupyter.jupyter_magics import StatusMagic
 from qiskit.tools.jupyter.monospace import MonospacedOutput
 from qiskit.tools.jupyter.progressbar import HTMLProgressBar
 from qiskit.tools.jupyter.version_table import VersionTable

@@ -33,11 +33,9 @@ Evolution Synthesis
 
 from __future__ import annotations
 
-from qiskit.synthesis.evolution import (
-    EvolutionSynthesis,
-    LieTrotter,
-    MatrixExponential,
-    ProductFormula,
-    QDrift,
-    SuzukiTrotter,
-)
+from qiskit.synthesis.evolution import EvolutionSynthesis
+from qiskit.synthesis.evolution import LieTrotter
+from qiskit.synthesis.evolution import MatrixExponential
+from qiskit.synthesis.evolution import ProductFormula
+from qiskit.synthesis.evolution import QDrift
+from qiskit.synthesis.evolution import SuzukiTrotter

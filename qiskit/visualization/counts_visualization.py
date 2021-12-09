@@ -16,8 +16,9 @@ Visualization functions for measurement counts.
 
 from __future__ import annotations
 
+from collections import Counter
+from collections import OrderedDict
 import functools
-from collections import Counter, OrderedDict
 
 import numpy as np
 

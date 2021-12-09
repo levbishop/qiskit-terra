@@ -15,8 +15,8 @@
 
 from __future__ import annotations
 
-import logging
 from collections import OrderedDict
+import logging
 
 from qiskit.exceptions import QiskitError
 from qiskit.providers.basicaer.qasm_simulator import QasmSimulatorPy
@@ -24,7 +24,8 @@ from qiskit.providers.basicaer.statevector_simulator import StatevectorSimulator
 from qiskit.providers.basicaer.unitary_simulator import UnitarySimulatorPy
 from qiskit.providers.exceptions import QiskitBackendNotFoundError
 from qiskit.providers.provider import ProviderV1
-from qiskit.providers.providerutils import filter_backends, resolve_backend_name
+from qiskit.providers.providerutils import filter_backends
+from qiskit.providers.providerutils import resolve_backend_name
 
 logger = logging.getLogger(__name__)
 

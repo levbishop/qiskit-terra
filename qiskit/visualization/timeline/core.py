@@ -61,7 +61,9 @@ import numpy as np
 
 from qiskit import circuit
 from qiskit.visualization.exceptions import VisualizationError
-from qiskit.visualization.timeline import drawings, events, types
+from qiskit.visualization.timeline import drawings
+from qiskit.visualization.timeline import events
+from qiskit.visualization.timeline import types
 from qiskit.visualization.timeline.stylesheet import QiskitTimelineStyle
 
 

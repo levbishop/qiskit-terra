@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from qiskit.circuit import Parameter, QuantumCircuit, QuantumRegister
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.library.n_local.n_local import NLocal
 
 
@@ -200,7 +202,8 @@ def _validate_prefix(parameter_prefix, operators):
 
 
 def _is_pauli_identity(operator):
-    from qiskit.opflow import PauliOp, PauliSumOp
+    from qiskit.opflow import PauliOp
+    from qiskit.opflow import PauliSumOp
 
     if isinstance(operator, PauliSumOp):
         operator = operator.to_pauli_op()

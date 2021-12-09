@@ -19,10 +19,13 @@ from __future__ import annotations
 import numpy
 
 import qiskit
-from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator, PhaseEstimatorResult
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimator
+from qiskit.algorithms.phase_estimators.phase_estimator import PhaseEstimatorResult
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.classicalregister import ClassicalRegister
-from qiskit.providers import Backend, BaseBackend
+from qiskit.providers import Backend
+from qiskit.providers import BaseBackend
 from qiskit.utils import QuantumInstance
 
 

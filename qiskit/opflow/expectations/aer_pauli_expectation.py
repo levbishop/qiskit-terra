@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import logging
 from functools import reduce
+import logging
 from operator import add
 
 from qiskit.exceptions import MissingOptionalLibraryError

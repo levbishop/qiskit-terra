@@ -29,8 +29,8 @@ import logging
 import os
 import sys
 import unittest
-import warnings
 from unittest.util import safe_repr
+import warnings
 
 try:
     import fixtures
@@ -41,7 +41,8 @@ except ImportError:
     HAS_FIXTURES = False
 
 from qiskit.test.decorators import enforce_subclasses_call
-from qiskit.test.utils import Path, setup_test_logging
+from qiskit.test.utils import Path
+from qiskit.test.utils import setup_test_logging
 
 __unittest = True  # Allows shorter stack trace for .assertDictAlmostEqual
 

@@ -14,8 +14,8 @@
 
 from __future__ import annotations
 
-import unittest
 from collections import Counter
+import unittest
 
 import ddt
 import numpy as np

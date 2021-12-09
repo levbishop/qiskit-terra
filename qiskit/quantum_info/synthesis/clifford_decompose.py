@@ -22,16 +22,14 @@ import numpy as np
 
 from qiskit.circuit import QuantumCircuit
 from qiskit.exceptions import QiskitError
-from qiskit.quantum_info.operators.symplectic.clifford_circuits import (
-    _append_cx,
-    _append_h,
-    _append_s,
-    _append_swap,
-    _append_v,
-    _append_w,
-    _append_x,
-    _append_z,
-)
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_cx
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_h
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_s
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_swap
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_v
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_w
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_x
+from qiskit.quantum_info.operators.symplectic.clifford_circuits import _append_z
 from qiskit.quantum_info.operators.symplectic.pauli import Pauli
 
 

@@ -60,14 +60,19 @@ backend etc.
 from __future__ import annotations
 
 from qiskit.utils.algorithm_globals import algorithm_globals
-from qiskit.utils.backend_utils import has_aer, has_ibmq
+from qiskit.utils.backend_utils import has_aer
+from qiskit.utils.backend_utils import has_ibmq
 from qiskit.utils.circuit_utils import summarize_circuits
-from qiskit.utils.deprecation import deprecate_arguments, deprecate_function
-from qiskit.utils.entangler_map import get_entangler_map, validate_entangler_map
-from qiskit.utils.multiprocessing import is_main_process, local_hardware_info
+from qiskit.utils.deprecation import deprecate_arguments
+from qiskit.utils.deprecation import deprecate_function
+from qiskit.utils.entangler_map import get_entangler_map
+from qiskit.utils.entangler_map import validate_entangler_map
+from qiskit.utils.multiprocessing import is_main_process
+from qiskit.utils.multiprocessing import local_hardware_info
 from qiskit.utils.name_unnamed_args import name_args
 from qiskit.utils.quantum_instance import QuantumInstance
-from qiskit.utils.units import apply_prefix, detach_prefix
+from qiskit.utils.units import apply_prefix
+from qiskit.utils.units import detach_prefix
 
 __all__ = [
     "QuantumInstance",

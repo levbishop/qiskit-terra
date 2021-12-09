@@ -14,4 +14,6 @@
 
 from __future__ import annotations
 
-from qiskit.pulse.library.samplers.decorators import left, midpoint, right
+from qiskit.pulse.library.samplers.decorators import left
+from qiskit.pulse.library.samplers.decorators import midpoint
+from qiskit.pulse.library.samplers.decorators import right

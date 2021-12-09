@@ -15,11 +15,12 @@
 
 from __future__ import annotations
 
-import warnings
 from itertools import product
 from typing import Sequence
+import warnings
 
-from qiskit.circuit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.arithmetic.functional_pauli_rotations import FunctionalPauliRotations
 

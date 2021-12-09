@@ -18,17 +18,15 @@ import unittest.mock
 
 import numpy as np
 
-from qiskit.circuit import (
-    ClassicalRegister,
-    Clbit,
-    Gate,
-    Instruction,
-    InstructionSet,
-    Parameter,
-    QuantumCircuit,
-    QuantumRegister,
-    Qubit,
-)
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import Clbit
+from qiskit.circuit import Gate
+from qiskit.circuit import Instruction
+from qiskit.circuit import InstructionSet
+from qiskit.circuit import Parameter
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import Qubit
 from qiskit.circuit.exceptions import CircuitError
 from qiskit.circuit.library.standard_gates.h import HGate
 from qiskit.circuit.library.standard_gates.s import SGate

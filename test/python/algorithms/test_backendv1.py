@@ -14,16 +14,23 @@
 
 from __future__ import annotations
 
-import unittest
 from test.python.algorithms import QiskitAlgorithmsTestCase
+import unittest
 
 from qiskit import QuantumCircuit
-from qiskit.algorithms import VQE, AmplificationProblem, Grover, Shor
+from qiskit.algorithms import AmplificationProblem
+from qiskit.algorithms import Grover
+from qiskit.algorithms import Shor
+from qiskit.algorithms import VQE
 from qiskit.algorithms.optimizers import SPSA
-from qiskit.circuit.library import EfficientSU2, TwoLocal
-from qiskit.opflow import I, X, Z
+from qiskit.circuit.library import EfficientSU2
+from qiskit.circuit.library import TwoLocal
+from qiskit.opflow import I
+from qiskit.opflow import X
+from qiskit.opflow import Z
 from qiskit.test.mock import FakeProvider
-from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit.utils import algorithm_globals
+from qiskit.utils import QuantumInstance
 from qiskit.utils.mitigation import CompleteMeasFitter
 
 

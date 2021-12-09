@@ -18,14 +18,15 @@ import datetime
 import math
 import types
 
-import ipywidgets as widgets
-import matplotlib.pyplot as plt
 from IPython.display import display
+import ipywidgets as widgets
 from matplotlib.patches import Circle
+import matplotlib.pyplot as plt
 
 from qiskit.exceptions import QiskitError
 from qiskit.test.mock import FakeBackend
-from qiskit.visualization.gate_map import plot_error_map, plot_gate_map
+from qiskit.visualization.gate_map import plot_error_map
+from qiskit.visualization.gate_map import plot_gate_map
 
 try:
     from qiskit.providers.ibmq import IBMQBackend

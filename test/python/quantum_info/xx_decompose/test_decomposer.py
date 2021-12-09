@@ -16,8 +16,8 @@ Tests for qiskit-terra/qiskit/quantum_info/synthesis/xx_decompose/qiskit.py .
 
 from __future__ import annotations
 
-import unittest
 from statistics import mean
+import unittest
 
 import ddt
 import numpy as np
@@ -25,10 +25,8 @@ from scipy.stats import unitary_group
 
 import qiskit
 from qiskit.quantum_info.operators import Operator
-from qiskit.quantum_info.synthesis.xx_decompose.decomposer import (
-    TwoQubitWeylDecomposition,
-    XXDecomposer,
-)
+from qiskit.quantum_info.synthesis.xx_decompose.decomposer import TwoQubitWeylDecomposition
+from qiskit.quantum_info.synthesis.xx_decompose.decomposer import XXDecomposer
 
 from .utilities import canonical_matrix
 

@@ -16,12 +16,16 @@ from __future__ import annotations
 
 import unittest
 
+from ddt import data
+from ddt import ddt
+from ddt import unpack
 import numpy as np
-from ddt import data, ddt, unpack
 from scipy.stats import multivariate_normal
 
 from qiskit.circuit import QuantumCircuit
-from qiskit.circuit.library import LogNormalDistribution, NormalDistribution, UniformDistribution
+from qiskit.circuit.library import LogNormalDistribution
+from qiskit.circuit.library import NormalDistribution
+from qiskit.circuit.library import UniformDistribution
 from qiskit.quantum_info import Statevector
 from qiskit.test.base import QiskitTestCase
 

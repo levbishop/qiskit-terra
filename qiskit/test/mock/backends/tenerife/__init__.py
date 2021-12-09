@@ -14,4 +14,5 @@
 
 from __future__ import annotations
 
-from qiskit.test.mock.backends.tenerife.fake_tenerife import FakeLegacyTenerife, FakeTenerife
+from qiskit.test.mock.backends.tenerife.fake_tenerife import FakeLegacyTenerife
+from qiskit.test.mock.backends.tenerife.fake_tenerife import FakeTenerife

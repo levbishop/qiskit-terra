@@ -28,11 +28,9 @@ from qiskit.converters import circuit_to_dag
 from qiskit.test import QiskitTestCase
 from qiskit.transpiler import PassManager
 from qiskit.transpiler.passes import UnitarySynthesis
-from qiskit.transpiler.passes.synthesis.plugin import (
-    UnitarySynthesisPlugin,
-    UnitarySynthesisPluginManager,
-    unitary_synthesis_plugin_names,
-)
+from qiskit.transpiler.passes.synthesis.plugin import unitary_synthesis_plugin_names
+from qiskit.transpiler.passes.synthesis.plugin import UnitarySynthesisPlugin
+from qiskit.transpiler.passes.synthesis.plugin import UnitarySynthesisPluginManager
 from qiskit.transpiler.passes.synthesis.unitary_synthesis import DefaultUnitarySynthesis
 
 
