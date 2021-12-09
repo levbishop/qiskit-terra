@@ -20,7 +20,7 @@ from logging import StreamHandler
 import math
 import os
 import sys
-from test import combine  # pylint: disable=wrong-import-order
+from test import combine
 from unittest.mock import patch
 
 from ddt import data
