@@ -1031,7 +1031,7 @@ class TestOpConstruction(QiskitOpflowTestCase):
         """Test invalid MatrixOp construction"""
         msg = (
             "MatrixOp can only be instantiated with "
-            "['list', 'ndarray', 'spmatrix', 'Operator'], not "
+            "list | np.ndarray | spmatrix | Operator, not "
         )
 
         with self.assertRaises(TypeError) as cm:

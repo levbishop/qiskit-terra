@@ -14,7 +14,7 @@
 
 from __future__ import annotations
 
-from typing import cast, get_type_hints
+from typing import cast
 
 import numpy as np
 from scipy.sparse import spmatrix
@@ -59,10 +59,9 @@ class MatrixOp(PrimitiveOp):
             primitive = Operator(primitive)
 
         if not isinstance(primitive, Operator):
-            type_hints = get_type_hints(MatrixOp.__init__).get("primitive")
-            valid_cls = [cls.__name__ for cls in type_hints.__args__]
+            type_hints = MatrixOp.__init__.__annotations__.get("primitive")
             raise TypeError(
-                f"MatrixOp can only be instantiated with {valid_cls}, "
+                f"MatrixOp can only be instantiated with {type_hints}, "
                 f"not '{primitive_orig.__class__.__name__}'"
             )
 
