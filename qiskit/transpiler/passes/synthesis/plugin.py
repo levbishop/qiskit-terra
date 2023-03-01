@@ -519,7 +519,7 @@ class HighLevelSynthesisPluginManager:
 
     def method_names(self, op_name):
         """Returns plugin methods for op_name."""
-        if op_name in self.plugins_by_op.keys():
+        if op_name in self.plugins_by_op:
             return self.plugins_by_op[op_name]
         else:
             return []

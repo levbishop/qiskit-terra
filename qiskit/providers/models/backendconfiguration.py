@@ -903,7 +903,7 @@ class PulseBackendConfiguration(QasmBackendConfiguration):
         channels = set()
         try:
             if isinstance(qubit, int):
-                for key in self._qubit_channel_map.keys():
+                for key in self._qubit_channel_map:
                     if qubit in key:
                         channels.update(self._qubit_channel_map[key])
                 if len(channels) == 0:

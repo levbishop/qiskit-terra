@@ -206,7 +206,7 @@ class DictStateFn(StateFn):
             ValueError: invalid parameters.
         """
 
-        indices = [int(v, 2) for v in self.primitive.keys()]
+        indices = [int(v, 2) for v in self.primitive]
         vals = np.array(list(self.primitive.values())) * self.coeff
         spvec = sparse.csr_matrix(
             (vals, (np.zeros(len(indices), dtype=int), indices)), shape=(1, 2**self.num_qubits)

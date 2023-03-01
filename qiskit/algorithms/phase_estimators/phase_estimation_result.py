@@ -120,11 +120,9 @@ class PhaseEstimationResult(PhaseEstimatorResult):
         if isinstance(self.phases, dict):
             counts = self.phases
             if as_float:
-                phases = {
-                    _bit_string_to_phase(k): counts[k] for k in counts.keys() if counts[k] > cutoff
-                }
+                phases = {_bit_string_to_phase(k): counts[k] for k in counts if counts[k] > cutoff}
             else:
-                phases = {k: counts[k] for k in counts.keys() if counts[k] > cutoff}
+                phases = {k: counts[k] for k in counts if counts[k] > cutoff}
 
         else:
             phases = {}

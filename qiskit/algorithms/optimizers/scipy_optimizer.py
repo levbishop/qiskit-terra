@@ -90,9 +90,7 @@ class SciPyOptimizer(Optimizer):
         if hasattr(self, "_OPTIONS"):
             # all _OPTIONS should be keys in self._options, but add a failsafe here
             attributes = [
-                option
-                for option in self._OPTIONS  # pylint: disable=no-member
-                if option in options.keys()
+                option for option in self._OPTIONS if option in options  # pylint: disable=no-member
             ]
 
             settings = {attr: options.pop(attr) for attr in attributes}

@@ -110,7 +110,7 @@ class MeasurementFilter:
         # check forms of raw_data
         if isinstance(raw_data, dict):
             # counts dictionary
-            for data_label in raw_data.keys():
+            for data_label in raw_data:
                 if data_label not in self._state_labels:
                     raise QiskitError(
                         f"Unexpected state label '{data_label}'."

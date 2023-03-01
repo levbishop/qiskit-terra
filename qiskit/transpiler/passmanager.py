@@ -441,7 +441,7 @@ class StagedPassManager(PassManager):
 
     def _validate_init_kwargs(self, kwargs: Dict[str, Any]) -> None:
         expanded_stages = set(self.expanded_stages)
-        for stage in kwargs.keys():
+        for stage in kwargs:
             if stage not in expanded_stages:
                 raise AttributeError(f"{stage} is not a valid stage.")
 

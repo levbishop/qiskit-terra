@@ -140,7 +140,7 @@ def backend_widget(backend):
     num_qubits = config["n_qubits"]
 
     qv_val = "-"
-    if "quantum_volume" in config.keys():
+    if "quantum_volume" in config:
         if config["quantum_volume"]:
             qv_val = config["quantum_volume"]
 

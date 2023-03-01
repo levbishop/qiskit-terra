@@ -606,7 +606,7 @@ class TestSamplerGradient(QiskitTestCase):
         result = job.result()
 
         with self.subTest(msg="assert initialize is preserved"):
-            self.assertTrue(all("initialize" in ops_i[0].keys() for ops_i in ops))
+            self.assertTrue(all("initialize" in ops_i[0] for ops_i in ops))
 
         with self.subTest(msg="assert result is correct"):
             array1 = _quasi2array(result.gradients[0], num_qubits=2)

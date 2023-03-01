@@ -522,7 +522,7 @@ class ScheduleDrawer:
             scale_dict: Scale factor of each channel.
         """
         # count numbers of valid waveform
-        scale_dict = {chan: 0 for chan in output_channels.keys()}
+        scale_dict = {chan: 0 for chan in output_channels}
         for channel, events in output_channels.items():
             v_max = 0
             if channels:
@@ -651,7 +651,7 @@ class ScheduleDrawer:
             fcs: Event table of frame changes.
             y0: vertical position to draw the frame changes.
         """
-        for time in fcs.keys():
+        for time in fcs:
             ax.text(
                 x=time,
                 y=y0,
@@ -669,7 +669,7 @@ class ScheduleDrawer:
             sf: Event table of set frequency.
             y0: vertical position to draw the frame changes.
         """
-        for time in sf.keys():
+        for time in sf:
             ax.text(
                 x=time,
                 y=y0,

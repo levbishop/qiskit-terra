@@ -327,7 +327,7 @@ class FlowController:
             raise TranspilerError("The controller needs a condition.")
 
         if partial_controller:
-            for registered_controller in cls.registered_controllers.keys():
+            for registered_controller in cls.registered_controllers:
                 if registered_controller in partial_controller:
                     return cls.registered_controllers[registered_controller](
                         passes, options, **partial_controller

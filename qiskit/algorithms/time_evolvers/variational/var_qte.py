@@ -259,7 +259,7 @@ class VarQTE(ABC):
         if isinstance(param_values, Mapping):
             init_state_parameter_values = []
             for param in init_state_parameters:
-                if param in param_values.keys():
+                if param in param_values:
                     init_state_parameter_values.append(param_values[param])
                 else:
                     raise ValueError(

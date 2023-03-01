@@ -269,7 +269,7 @@ class TestQGT(QiskitTestCase):
         result = job.result()
 
         with self.subTest(msg="assert initialize is preserved"):
-            self.assertTrue(all("initialize" in ops_i[0].keys() for ops_i in ops))
+            self.assertTrue(all("initialize" in ops_i[0] for ops_i in ops))
 
         with self.subTest(msg="assert result is correct"):
             np.testing.assert_allclose(result.qgts[0], expect, atol=1e-5)

@@ -116,7 +116,7 @@ class HighLevelSynthesis(TransformationPass):
         hls_plugin_manager = HighLevelSynthesisPluginManager()
 
         for node in dag.op_nodes():
-            if node.name in self.hls_config.methods.keys():
+            if node.name in self.hls_config.methods:
                 # the operation's name appears in the user-provided config,
                 # we use the list of methods provided by the user
                 methods = self.hls_config.methods[node.name]

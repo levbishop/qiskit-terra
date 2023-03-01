@@ -110,7 +110,7 @@ class PhaseEstimationScale:
         if isinstance(phases, list):
             phases = [self.scale_phase(x, id_coefficient) for x in phases]
         else:
-            phases = {self.scale_phase(x, id_coefficient): phases[x] for x in phases.keys()}
+            phases = {self.scale_phase(x, id_coefficient): phases[x] for x in phases}
 
         return phases
 

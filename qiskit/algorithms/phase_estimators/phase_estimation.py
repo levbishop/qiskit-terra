@@ -197,7 +197,7 @@ class PhaseEstimation(PhaseEstimator):
             # return counts with keys sorted numerically
             num_shots = circuit_result.results[0].shots
             counts = circuit_result.get_counts()
-            phases = {k[::-1]: counts[k] / num_shots for k in counts.keys()}
+            phases = {k[::-1]: counts[k] / num_shots for k in counts}
             phases = _sort_phases(phases)
             phases = qiskit.result.Counts(
                 phases, memory_slots=counts.memory_slots, creg_sizes=counts.creg_sizes

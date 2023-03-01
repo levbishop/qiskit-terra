@@ -91,9 +91,9 @@ class DenseLayout(AnalysisPass):
         else:
             # Get avg number of cx and meas per qubit
             ops = dag.count_ops(recurse=True)
-            if "cx" in ops.keys():
+            if "cx" in ops:
                 num_cx = ops["cx"]
-            if "measure" in ops.keys():
+            if "measure" in ops:
                 num_meas = ops["measure"]
 
         best_sub = self._best_subset(num_dag_qubits, num_meas, num_cx)

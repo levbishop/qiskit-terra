@@ -464,7 +464,7 @@ class TestEstimatorGradient(QiskitTestCase):
         result = job.result()
 
         with self.subTest(msg="assert initialize is preserved"):
-            self.assertTrue(all("initialize" in ops_i[0].keys() for ops_i in ops))
+            self.assertTrue(all("initialize" in ops_i[0] for ops_i in ops))
 
         with self.subTest(msg="assert result is correct"):
             self.assertAlmostEqual(result.gradients[0].item(), expect, places=5)

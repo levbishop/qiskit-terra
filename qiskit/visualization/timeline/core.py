@@ -448,4 +448,4 @@ class DrawerCanvas:
                 key = overlaps[0]
                 new_links[key] = links[key]
 
-        return {key: new_links[key] for key in links.keys()}
+        return {key: new_links[key] for key in links}

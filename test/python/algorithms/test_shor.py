@@ -139,7 +139,7 @@ class TestShor(QiskitAlgorithmsTestCase):
         circuit = shor.construct_circuit(N=n_v, a=a_v, measurement=True)
 
         result = shor.quantum_instance.execute(circuit)
-        measurements = [int(key, base=2) for key in result.get_counts(circuit).keys()]
+        measurements = [int(key, base=2) for key in result.get_counts(circuit)]
 
         # calculate values that could be measured
         values = [i << (2 * n_v.bit_length() - order.bit_length() + 1) for i in range(order)]
@@ -182,7 +182,7 @@ class TestShor(QiskitAlgorithmsTestCase):
         circuit.measure(down_qreg, down_creg)
 
         result = shor.quantum_instance.execute(circuit)
-        measurements = [int(key, base=2) for key in result.get_counts(circuit).keys()]
+        measurements = [int(key, base=2) for key in result.get_counts(circuit)]
 
         for measurement in measurements:
             self.assertTrue(measurement in values)

@@ -391,7 +391,7 @@ class CircuitSampler(ConverterBase):
             if not isinstance(inst_param, ParameterExpression):
                 return None
             param_mappings = {}
-            for param in inst_param._parameter_symbols.keys():
+            for param in inst_param._parameter_symbols:
                 if param not in input_params:
                     raise ValueError(f"unexpected parameter: {param}")
                 param_mappings[param] = input_params[param]

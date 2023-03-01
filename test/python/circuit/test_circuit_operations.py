@@ -435,7 +435,7 @@ class TestCircuitOperations(QiskitTestCase):
         expected.measure([qr[0], qr[2]], [cr[0], cr[1]])
 
         self.assertEqual(expected, new_circuit)
-        self.assertFalse("measure" in circuit.count_ops().keys())
+        self.assertFalse("measure" in circuit.count_ops())
 
     def test_measure_active_repetition(self):
         """Test measure_active in a circuit with a 'measure' creg.
@@ -526,7 +526,7 @@ class TestCircuitOperations(QiskitTestCase):
         expected.measure(qr, cr)
 
         self.assertEqual(expected, new_circuit)
-        self.assertFalse("measure" in circuit.count_ops().keys())
+        self.assertFalse("measure" in circuit.count_ops())
 
     def test_measure_all_repetition(self):
         """Test measure_all in a circuit with a 'measure' creg.
@@ -571,7 +571,7 @@ class TestCircuitOperations(QiskitTestCase):
         expected = QuantumCircuit(qr)
 
         self.assertEqual(expected, new_circuit)
-        self.assertTrue("measure" in circuit.count_ops().keys())
+        self.assertTrue("measure" in circuit.count_ops())
 
     def test_remove_final_measurements_copy_with_parameters(self):
         """Test remove_final_measurements doesn't corrupt ParameterTable

@@ -41,7 +41,7 @@ class TestKAKOverOptim(QiskitTestCase):
         ops = cz_circ.count_ops()
         self.assertEqual(ops["u2"], 2)
         self.assertEqual(ops["cx"], 1)
-        self.assertFalse("u3" in ops.keys())
+        self.assertFalse("u3" in ops)
 
     def test_cu1_optimization(self):
         """Test that KAK does run on a cu1 gate and

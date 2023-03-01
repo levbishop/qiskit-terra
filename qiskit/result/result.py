@@ -272,7 +272,7 @@ class Result:
             except (AttributeError, QiskitError):  # header is not available
                 header = None
 
-            if "counts" in self.data(key).keys():
+            if "counts" in self.data(key):
                 if header:
                     counts_header = {
                         k: v
@@ -282,7 +282,7 @@ class Result:
                 else:
                     counts_header = {}
                 dict_list.append(Counts(self.data(key)["counts"], **counts_header))
-            elif "statevector" in self.data(key).keys():
+            elif "statevector" in self.data(key):
                 vec = postprocess.format_statevector(self.data(key)["statevector"])
                 dict_list.append(statevector.Statevector(vec).probabilities_dict(decimals=15))
             else:
