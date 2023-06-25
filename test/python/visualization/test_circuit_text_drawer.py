@@ -960,7 +960,7 @@ class TestTextDrawerGatesInCircuit(QiskitTestCase):
         cr = ClassicalRegister(1, "c")
         circuit = QuantumCircuit(qr, cr)
         circuit.measure(qr, cr)
-        self.assertEqual(_text_circuit_drawer(circuit).__repr__(), expected)
+        self.assertEqual(repr(_text_circuit_drawer(circuit)), expected)
 
     def test_text_justify_left(self):
         """Drawing with left justify"""

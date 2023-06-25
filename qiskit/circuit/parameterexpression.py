@@ -528,7 +528,7 @@ class ParameterExpression:
 
     def abs(self):
         """Absolute of a ParameterExpression"""
-        return self.__abs__()
+        return abs(self)
 
     def __eq__(self, other):
         """Check if this parameter expression is equal to another parameter expression

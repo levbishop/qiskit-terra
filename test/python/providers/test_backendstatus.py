@@ -29,7 +29,7 @@ class TestBackendConfiguration(QiskitTestCase):
 
     def test_repr(self):
         """Test representation methods of BackendStatus"""
-        self.assertIsInstance(self.backend_status.__repr__(), str)
+        self.assertIsInstance(repr(self.backend_status), str)
         repr_html = self.backend_status._repr_html_()
         self.assertIsInstance(repr_html, str)
         self.assertIn(self.backend_status.backend_name, repr_html)

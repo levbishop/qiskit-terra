@@ -137,7 +137,7 @@ class TestCircuitDrawer(QiskitTestCase):
             ]
         )
         result = visualization.circuit_drawer(circuit, reverse_bits=True)
-        self.assertEqual(result.__str__(), expected)
+        self.assertEqual(str(result), expected)
 
     def test_no_explict_cregbundle(self):
         """Test no explicit cregbundle should not raise warnings about being disabled
@@ -160,7 +160,7 @@ class TestCircuitDrawer(QiskitTestCase):
             ]
         )
         result = circuit.draw("text")
-        self.assertEqual(result.__str__(), expected)
+        self.assertEqual(str(result), expected)
         # Extra tests that no cregbundle (or any other) warning is raised with the default settings
         # for the other drawers, if they're available to test.
         circuit.draw("latex_source")

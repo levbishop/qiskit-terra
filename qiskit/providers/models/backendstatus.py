@@ -82,7 +82,7 @@ class BackendStatus:
             Representation used in Jupyter notebook and other IDE's that call the method
 
         """
-        rpr = self.__repr__()
+        rpr = repr(self)
         html_code = (
             f"<pre>{html.escape(rpr)}</pre>"
             f"<b>name</b>: {self.backend_name}<br/>"

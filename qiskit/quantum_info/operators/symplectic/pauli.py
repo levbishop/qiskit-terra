@@ -225,7 +225,7 @@ class Pauli(BasePauli):
 
     def __repr__(self):
         """Display representation."""
-        return f"Pauli('{self.__str__()}')"
+        return f"Pauli('{str(self)}')"
 
     def __str__(self):
         """Print representation."""

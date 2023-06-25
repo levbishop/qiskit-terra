@@ -41,11 +41,11 @@ class TestQuaternions(QiskitTestCase):
 
     def test_str(self):
         """Quaternion should have a correct string representation."""
-        self.assertEqual(self.quat_unnormalized.__str__(), self.rnd_array.__str__())
+        self.assertEqual(str(self.quat_unnormalized), str(self.rnd_array))
 
     def test_repr(self):
         """Quaternion should have a correct string representation."""
-        self.assertEqual(self.quat_unnormalized.__repr__(), self.rnd_array.__str__())
+        self.assertEqual(repr(self.quat_unnormalized), str(self.rnd_array))
 
     def test_norm(self):
         """Quaternions should give correct norm."""

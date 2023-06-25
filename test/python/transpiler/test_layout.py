@@ -287,7 +287,7 @@ class LayoutTest(QiskitTestCase):
         )
 
         repr_layout = eval(  # pylint: disable=eval-used
-            layout.__repr__(),
+            repr(layout),
             {
                 "Qubit": Qubit,
                 "QuantumRegister": QuantumRegister,
@@ -303,7 +303,7 @@ class LayoutTest(QiskitTestCase):
         layout = Layout({qr[0]: 0, qr[1]: 3, qr[2]: 4, qr[3]: 5, qr[4]: 6})
 
         repr_layout = eval(  # pylint: disable=eval-used
-            layout.__repr__(),
+            repr(layout),
             {
                 "Qubit": Qubit,
                 "QuantumRegister": QuantumRegister,

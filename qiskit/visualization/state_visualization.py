@@ -1432,7 +1432,7 @@ class TextMatrix:
         return self.prefix + data + dimstr + self.suffix
 
     def __repr__(self):
-        return self.__str__()
+        return str(self)
 
 
 def state_drawer(state, output=None, **drawer_args):
@@ -1500,7 +1500,7 @@ def state_drawer(state, output=None, **drawer_args):
         return Latex(f"$${draw_func(state, **drawer_args)}$$")
 
     if output == "repr":
-        return state.__repr__()
+        return repr(state)
 
     try:
         draw_func = drawers[output]

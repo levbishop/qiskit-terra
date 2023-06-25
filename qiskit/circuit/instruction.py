@@ -423,7 +423,7 @@ class Instruction(Operation):
             qiskit.circuit.Instruction: a copy of the current instruction, with the name updated if it
             was provided
         """
-        cpy = self.__deepcopy__()
+        cpy = copy.deepcopy(self)
 
         if name:
             cpy.name = name
